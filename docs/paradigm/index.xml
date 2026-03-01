@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Paradigms and languages on OOFP 2025-26</title>
+    <link>https://unibz-oofp-25-26.github.io/docs/paradigm/</link>
+    <description>Recent content in Paradigms and languages on OOFP 2025-26</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://unibz-oofp-25-26.github.io/docs/paradigm/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Paradigm</title>
+      <link>https://unibz-oofp-25-26.github.io/docs/paradigm/sections/paradigm/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://unibz-oofp-25-26.github.io/docs/paradigm/sections/paradigm/</guid>
+      <description>&lt;h1 id=&#34;paradigm&#34;&gt;&#xA;  Paradigm&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#paradigm&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;blockquote class=&#34;book-hint warning&#34;&gt;&#xA;&lt;p&gt;A programming &lt;a href=&#34;https://en.wikipedia.org/wiki/Programming_paradigm&#34;&gt;&lt;strong&gt;paradigm&lt;/strong&gt;&lt;/a&gt; is a way to write programs.&#xA;Paradigms include:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;imperative programming,&lt;/li&gt;&#xA;&lt;li&gt;object-oriented programming,&lt;/li&gt;&#xA;&lt;li&gt;functional programming,&lt;/li&gt;&#xA;&lt;li&gt;logical programming,&lt;/li&gt;&#xA;&lt;li&gt;etc.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Programming &lt;em&gt;languages&lt;/em&gt; are often categorized based on the paradigms that they support.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;blockquote class=&#34;book-hint danger&#34;&gt;&#xA;&lt;p&gt;&lt;strong&gt;&lt;em&gt;Disclaimer.&lt;/em&gt;&lt;/strong&gt;&#xA;The boundaries of a paradigm are not always clear, and can be subjective.&#xA;For this reason, we will (cautiously) borrow descriptions from Wikipedia.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;h2 id=&#34;imperative&#34;&gt;&#xA;  Imperative programming&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#imperative&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;h3 id=&#34;languages&#34;&gt;&#xA;  Languages&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#languages&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h3&gt;&#xA;&lt;p&gt;The most widely used programming languages are imperative.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Compile time vs runtime error</title>
+      <link>https://unibz-oofp-25-26.github.io/docs/paradigm/sections/error/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://unibz-oofp-25-26.github.io/docs/paradigm/sections/error/</guid>
+      <description>&lt;h1 id=&#34;compile-time-vs-runtime-error&#34;&gt;&#xA;  Compile time vs runtime error&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#compile-time-vs-runtime-error&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;blockquote class=&#34;book-hint warning&#34;&gt;&#xA;&lt;p&gt;&lt;strong&gt;&lt;em&gt;Definition.&lt;/em&gt;&lt;/strong&gt;&#xA;In (pre)compiled languages (like Java, C/C++, C#, Python, Go, Rust, etc.):&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;A &lt;strong&gt;compile time error&lt;/strong&gt; prevents a program from compiling.&#xA;It can be thought of as a &amp;ldquo;syntactic&amp;rdquo; error.&lt;/li&gt;&#xA;&lt;li&gt;A &lt;strong&gt;runtime error&lt;/strong&gt; (also called a &lt;strong&gt;bug&lt;/strong&gt;) occurs during the execution of a program.&#xA;It may depend on the &lt;em&gt;input&lt;/em&gt; of the program.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;blockquote class=&#34;book-hint info&#34;&gt;&#xA;&lt;p&gt;&lt;strong&gt;&lt;em&gt;Note.&lt;/em&gt;&lt;/strong&gt;&#xA;An IDE can identify some compile time errors (and highlight them), without even attempting to compile the program.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Typing</title>
+      <link>https://unibz-oofp-25-26.github.io/docs/paradigm/sections/type/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://unibz-oofp-25-26.github.io/docs/paradigm/sections/type/</guid>
+      <description>&lt;h1 id=&#34;typing&#34;&gt;&#xA;  Typing&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#typing&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;A typing system restricts the values that can be used in certain contexts.&lt;/p&gt;&#xA;&lt;blockquote class=&#34;book-hint info&#34;&gt;&#xA;&lt;p&gt;&lt;strong&gt;&lt;em&gt;Example.&lt;/em&gt;&lt;/strong&gt;&#xA;In Java, the following instruction is incorrect, because the variable &lt;code&gt;x&lt;/code&gt; has type &lt;code&gt;int&lt;/code&gt;, whereas the value &lt;code&gt;&amp;quot;Hi&amp;quot;&lt;/code&gt; is a string.&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; x &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Hi&amp;#34;&lt;/span&gt;;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This line of code would generate a &lt;a href=&#34;https://unibz-oofp-25-26.github.io/docs/paradigm/sections/error/&#34;&gt;compile-time error&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;blockquote class=&#34;book-hint warning&#34;&gt;&#xA;&lt;p&gt;&lt;strong&gt;&lt;em&gt;Terminology.&lt;/em&gt;&lt;/strong&gt;&#xA;In this example, &lt;code&gt;int&lt;/code&gt; is called a &lt;strong&gt;type annotation&lt;/strong&gt;.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;h2 id=&#34;static-vs-dynamic-typing&#34;&gt;&#xA;  Static vs dynamic typing&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#static-vs-dynamic-typing&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;h3 id=&#34;static-typing&#34;&gt;&#xA;  Static typing&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#static-typing&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h3&gt;&#xA;&lt;blockquote class=&#34;book-hint warning&#34;&gt;&#xA;&lt;p&gt;&lt;strong&gt;&lt;em&gt;Definition.&lt;/em&gt;&lt;/strong&gt;&#xA;A programming language is &lt;strong&gt;statically typed&lt;/strong&gt; if type checks are performed at compile time.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Pure function</title>
+      <link>https://unibz-oofp-25-26.github.io/docs/paradigm/sections/pure/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://unibz-oofp-25-26.github.io/docs/paradigm/sections/pure/</guid>
+      <description>&lt;h1 id=&#34;pure-function&#34;&gt;&#xA;  Pure function&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#pure-function&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;Functional languages like Haskell emphasize the use of &lt;strong&gt;pure functions&lt;/strong&gt;, i.e. which behave like mathematical functions.&lt;/p&gt;&#xA;&lt;p&gt;In imperative code, their adoption varies by language and community.&#xA;For instance, pure functions are not idiomatic in C, but common in languages like Java, JavaScript, Python or Rust.&lt;/p&gt;&#xA;&lt;h2 id=&#34;side-effect&#34;&gt;&#xA;  Side effect&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#side-effect&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;blockquote class=&#34;book-hint warning&#34;&gt;&#xA;&lt;p&gt;&lt;strong&gt;&lt;em&gt;Definition.&lt;/em&gt;&lt;/strong&gt;&#xA;A method/function has a &lt;strong&gt;side effect&lt;/strong&gt; if it modifies a resource (variable, object, array, etc.) that is defined outside of its scope.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

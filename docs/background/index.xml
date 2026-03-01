@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Background on OOFP 2025-26</title>
+    <link>https://unibz-oofp-25-26.github.io/docs/background/</link>
+    <description>Recent content in Background on OOFP 2025-26</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://unibz-oofp-25-26.github.io/docs/background/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Set, list, tuple</title>
+      <link>https://unibz-oofp-25-26.github.io/docs/background/sections/set_list/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://unibz-oofp-25-26.github.io/docs/background/sections/set_list/</guid>
+      <description>&lt;h1 id=&#34;set-list-tuple&#34;&gt;&#xA;  Set, list, tuple&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#set-list-tuple&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;h2 id=&#34;set&#34;&gt;&#xA;  Set&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#set&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;blockquote class=&#34;book-hint warning&#34;&gt;&#xA;&lt;p&gt;A &lt;strong&gt;set&lt;/strong&gt; can be (informally) viewed as a collection of elements with &lt;em&gt;no duplicate&lt;/em&gt; and in &lt;em&gt;no specific order&lt;/em&gt;.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;blockquote class=&#34;book-hint info&#34;&gt;&#xA;&lt;p&gt;&lt;strong&gt;&lt;em&gt;Examples.&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;$\{2,5\}$ and $\{5,2\}$ are the same set,&lt;/li&gt;&#xA;&lt;li&gt;$\{2,5,2\}$ is not a set.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;!-- &lt;span&gt;&#xA;  \(\qquad \qquad \{1,5\}\)&#xA;&lt;/span&gt;&#xA; --&gt;&#xA;&lt;!----&gt;&#xA;&lt;!-- and --&gt;&#xA;&lt;!----&gt;&#xA;&lt;!-- &lt;span&gt;&#xA;  \( \qquad \qquad \{5,1\} \)&#xA;&lt;/span&gt;&#xA; --&gt;&#xA;&lt;h3 id=&#34;power-set&#34;&gt;&#xA;  Power set&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#power-set&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h3&gt;&#xA;&lt;blockquote class=&#34;book-hint warning&#34;&gt;&#xA;&lt;p&gt;&lt;strong&gt;&lt;em&gt;Definition.&lt;/em&gt;&lt;/strong&gt; The &lt;strong&gt;power set&lt;/strong&gt; $\mathcal{P}(X)$ of a set $X$ is the set of all subsets of $X$.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Function</title>
+      <link>https://unibz-oofp-25-26.github.io/docs/background/sections/function/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://unibz-oofp-25-26.github.io/docs/background/sections/function/</guid>
+      <description>&lt;h1 id=&#34;function&#34;&gt;&#xA;  Function&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#function&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;blockquote class=&#34;book-hint warning&#34;&gt;&#xA;&lt;p&gt;A &lt;strong&gt;function&lt;/strong&gt; $f\colon X \to Y$ maps each element $x$ of its &lt;strong&gt;domain&lt;/strong&gt; $X$ to an element $f(x)$ of its &lt;strong&gt;codomain&lt;/strong&gt; $Y$.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;blockquote class=&#34;book-hint info&#34;&gt;&#xA;&lt;p&gt;&lt;strong&gt;&lt;em&gt;Terminology.&lt;/em&gt;&lt;/strong&gt;&#xA;A function is also called a &lt;strong&gt;map&lt;/strong&gt;.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;blockquote class=&#34;book-hint info&#34;&gt;&#xA;&lt;p&gt;&lt;strong&gt;&lt;em&gt;Examples.&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;the function $f\colon \mathbb{Z} \to \mathbb{N}$ defined by&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;$\qquad f(x) = x^2$&lt;/p&gt;&#xA;&lt;p&gt;maps each integer to its squared value.&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;the function $g\colon \mathbb{N} \to \mathcal{P}(\mathbb{N})$ defined by&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;$\qquad g(x) = \{y \mid y \in \mathbb{N},\ y &amp;lt; x\}$&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

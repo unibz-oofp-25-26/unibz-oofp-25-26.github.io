@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  Typing
+  #
+
+A typing system restricts the values that can be used in certain contexts.
+
+Example.
+In Java, the following instruction is incorrect, because the variable x has type int, whereas the value &quot;Hi&quot; is a string.
+int x = &#34;Hi&#34;;
+This line of code would generate a compile-time error.
+
+
+Terminology.
+In this example, int is called a type annotation.
+
+
+  Static vs dynamic typing
+  #
+
+
+  Static typing
+  #
+
+
+Definition.
+A programming language is statically typed if type checks are performed at compile time.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://unibz-oofp-25-26.github.io/docs/paradigm/sections/type/">
+  <meta property="og:site_name" content="OOFP 2025-26">
+  <meta property="og:title" content="Typing">
+  <meta property="og:description" content="Typing # A typing system restricts the values that can be used in certain contexts.
+Example. In Java, the following instruction is incorrect, because the variable x has type int, whereas the value &#34;Hi&#34; is a string.
+int x = &#34;Hi&#34;; This line of code would generate a compile-time error.
+Terminology. In this example, int is called a type annotation.
+Static vs dynamic typing # Static typing # Definition. A programming language is statically typed if type checks are performed at compile time.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+<title>Typing | OOFP 2025-26</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/paradigm/sections/type/">
+<link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.b72b48ae349eef97740c5bce497346cef12044143615bb618d4568f5461bb401.js" integrity="sha256-tytIrjSe75d0DFvOSXNGzvEgRBQ2FbthjUVo9UYbtAE=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css"
+  integrity="sha384-vKruj+a13U8yHIkAyGgK1J3ArTLzrFGBbBc0tDp4ad/EyewESeXE/Iv67Aj8gKZ0"
+  crossorigin="anonymous"
+/>
+
+
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js"
+  integrity="sha384-PwRUT/YqbnEjkZO0zZxNqcxACrXe+j766U2amXcgMg5457rve2Y7I6ZJSm2A0mS4"
+  crossorigin="anonymous"
+></script>
+
+
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js"
+  integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+  crossorigin="anonymous"
+  onload="renderMathInElement(document.body);"
+></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    renderMathInElement(document.body, {
+      delimiters: [
+        { left: "$$", right: "$$", display: true },
+        { left: "$", right: "$", display: false },
+      ],
+    });
+  });
+</script>
+
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>OOFP 2025-26</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-8b45d304a159d86710e1579c97aa5b43" class="toggle"  />
+    <label for="section-8b45d304a159d86710e1579c97aa5b43" class="flex justify-between">
+      <a href="/docs/intro/" class="">This course</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/organization/" class="">Organization</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/material/" class="">Material</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/reading_path/" class="">Reading path</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/evaluation/" class="">Evaluation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/prerequisites/" class="">Prerequisites</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/office_hours/" class="">Office hours</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/content/" class="">Content</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/resources/" class="">Additional resources</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/software/" class="">Software</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b17bf4b701f350b4430cc5371ccad607" class="toggle" checked />
+    <label for="section-b17bf4b701f350b4430cc5371ccad607" class="flex justify-between">
+      <a href="/docs/paradigm/" class="">Paradigms and languages</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/paradigm/sections/paradigm/" class="">Paradigm</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/paradigm/sections/error/" class="">Compile time vs runtime error</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/paradigm/sections/type/" class="active">Typing</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/paradigm/sections/pure/" class="">Pure function</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d689bb2436bd0f51b31e8f95cf070b59" class="toggle"  />
+    <label for="section-d689bb2436bd0f51b31e8f95cf070b59" class="flex justify-between">
+      <a href="/docs/background/" class="">Background</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/background/sections/set_list/" class="">Set, list, tuple</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/background/sections/function/" class="">Function</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Typing</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#static-vs-dynamic-typing">Static vs dynamic typing</a>
+      <ul>
+        <li><a href="#static-typing">Static typing</a></li>
+        <li><a href="#dynamic-typing">Dynamic typing</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="typing">
+  Typing
+  <a class="anchor" href="#typing">#</a>
+</h1>
+<p>A typing system restricts the values that can be used in certain contexts.</p>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong>
+In Java, the following instruction is incorrect, because the variable <code>x</code> has type <code>int</code>, whereas the value <code>&quot;Hi&quot;</code> is a string.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> x <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Hi&#34;</span>;
+</span></span></code></pre></div><p>This line of code would generate a <a href="https://unibz-oofp-25-26.github.io/docs/paradigm/sections/error/">compile-time error</a>.</p>
+</blockquote>
+<blockquote class="book-hint warning">
+<p><strong><em>Terminology.</em></strong>
+In this example, <code>int</code> is called a <strong>type annotation</strong>.</p>
+</blockquote>
+<h2 id="static-vs-dynamic-typing">
+  Static vs dynamic typing
+  <a class="anchor" href="#static-vs-dynamic-typing">#</a>
+</h2>
+<h3 id="static-typing">
+  Static typing
+  <a class="anchor" href="#static-typing">#</a>
+</h3>
+<blockquote class="book-hint warning">
+<p><strong><em>Definition.</em></strong>
+A programming language is <strong>statically typed</strong> if type checks are performed at compile time.</p>
+</blockquote>
+<p>A statically typed language often lets programmers write type annotations (and sometimes requires them to), like in Java.</p>
+<blockquote class="book-hint info">
+<p><strong><em>Languages.</em></strong>
+Statically typed languages include:</p>
+<ul>
+<li>C/C++,</li>
+<li>C#,</li>
+<li>Go,</li>
+<li>Haskell,</li>
+<li>Java/Kotlin/Scala,</li>
+<li>Rust,</li>
+<li>Typescript.</li>
+</ul>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Benefits.</em></strong></p>
+<ul>
+<li>A type mismatch usually results in a <a href="https://unibz-oofp-25-26.github.io/docs/paradigm/sections/error/">compile time error</a>, as opposed to a <a href="https://unibz-oofp-25-26.github.io/docs/paradigm/sections/error/">bug</a>.</li>
+<li>Type annotations can improve <em>readability</em> (documenting the code).</li>
+<li>IDEs can provide <em>better support</em> (refactoring, analysis, autocompletion, &hellip;) for such languages.</li>
+<li><em>Compilers</em> can generate more optimized code when types are fixed.</li>
+</ul>
+</blockquote>
+<blockquote class="book-hint danger">
+<p><strong><em>Drawbacks.</em></strong></p>
+<ul>
+<li>Type annotations means <em>boilerplate code</em>.</li>
+<li>Writing type annotations can be tedious (interferes with problem solving/algorithmic thinking).</li>
+<li>In order to produce <em>generic code</em>, an advanced typing system is required.</li>
+</ul>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong>
+One may want to implement a generic algorithm that sorts an array.</p>
+<p>The same implementation should work for:</p>
+<ul>
+<li>an array of integers,</li>
+<li>an array of strings,</li>
+<li>etc.</li>
+</ul>
+<p>This may require a <a href="https://unibz-oofp-25-26.github.io/notreleased/">generic type</a>, intuitively &ldquo;array of $X$&rdquo;, where $X$ is a <a href="https://unibz-oofp-25-26.github.io/notreleased/">type variable</a>.</p>
+</blockquote>
+<h4 id="inference">
+  Type inference
+  <a class="anchor" href="#inference">#</a>
+</h4>
+<p>Some statistically typed languages provide automatic <em>type inference</em> (at compile time).
+This allows programmers to omit some type annotations.</p>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong>
+In Java, the keyword <code>var</code> can sometimes be used in place of a type annotation, e.g.:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;John Doe&#34;</span>;
+</span></span></code></pre></div><p>In this example, the compiler can infer that the variable <code>name</code> has type <code>String</code>.</p>
+</blockquote>
+<p>Some languages are known for their type inference capabilities.
+These include:</p>
+<ul>
+<li>Haskell,</li>
+<li>Kotlin (which significantly improves Java&rsquo;s type inference).</li>
+</ul>
+<h3 id="dynamic-typing">
+  Dynamic typing
+  <a class="anchor" href="#dynamic-typing">#</a>
+</h3>
+<blockquote class="book-hint warning">
+<p><strong><em>Definition.</em></strong>
+A programming language is <strong>dynamically typed</strong> if type checks are performed at run time.</p>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Languages.</em></strong>
+Dynamically typed languages include:</p>
+<ul>
+<li>Lua,</li>
+<li>JavaScript,</li>
+<li>PHP,</li>
+<li>Python,</li>
+<li>Ruby.</li>
+</ul>
+</blockquote>
+<p>The benefits and drawbacks are symmetric to the ones listed above for statically typed languages.</p>
+<blockquote class="book-hint warning">
+<p><strong><em>Applications.</em></strong>
+Dynamically typed languages are often preferred for:</p>
+<ul>
+<li>smaller projects,</li>
+<li>rapid prototyping/experimentation,</li>
+<li>manipulating objects with flexible structures,</li>
+<li>scripting.</li>
+</ul>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Illustration.</em></strong>
+JavaScript was originally designed for small programs.<br>
+When it started powering more complex ones (including some backends),
+developers faced the limitations of static typing:</p>
+<ul>
+<li>bugs,</li>
+<li>difficult refactoring,</li>
+<li>limited tooling,</li>
+<li>etc.</li>
+</ul>
+<p>TypeScript (2012) was developed to address these issues.
+It extends JavaScript with static typing.</p>
+</blockquote>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#static-vs-dynamic-typing">Static vs dynamic typing</a>
+      <ul>
+        <li><a href="#static-typing">Static typing</a></li>
+        <li><a href="#dynamic-typing">Dynamic typing</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

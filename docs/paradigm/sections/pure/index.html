@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  Pure function
+  #
+
+Functional languages like Haskell emphasize the use of pure functions, i.e. which behave like mathematical functions.
+In imperative code, their adoption varies by language and community.
+For instance, pure functions are not idiomatic in C, but common in languages like Java, JavaScript, Python or Rust.
+
+  Side effect
+  #
+
+
+Definition.
+A method/function has a side effect if it modifies a resource (variable, object, array, etc.) that is defined outside of its scope.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://unibz-oofp-25-26.github.io/docs/paradigm/sections/pure/">
+  <meta property="og:site_name" content="OOFP 2025-26">
+  <meta property="og:title" content="Pure function">
+  <meta property="og:description" content="Pure function # Functional languages like Haskell emphasize the use of pure functions, i.e. which behave like mathematical functions.
+In imperative code, their adoption varies by language and community. For instance, pure functions are not idiomatic in C, but common in languages like Java, JavaScript, Python or Rust.
+Side effect # Definition. A method/function has a side effect if it modifies a resource (variable, object, array, etc.) that is defined outside of its scope.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+<title>Pure function | OOFP 2025-26</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/paradigm/sections/pure/">
+<link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.b72b48ae349eef97740c5bce497346cef12044143615bb618d4568f5461bb401.js" integrity="sha256-tytIrjSe75d0DFvOSXNGzvEgRBQ2FbthjUVo9UYbtAE=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css"
+  integrity="sha384-vKruj+a13U8yHIkAyGgK1J3ArTLzrFGBbBc0tDp4ad/EyewESeXE/Iv67Aj8gKZ0"
+  crossorigin="anonymous"
+/>
+
+
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js"
+  integrity="sha384-PwRUT/YqbnEjkZO0zZxNqcxACrXe+j766U2amXcgMg5457rve2Y7I6ZJSm2A0mS4"
+  crossorigin="anonymous"
+></script>
+
+
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js"
+  integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+  crossorigin="anonymous"
+  onload="renderMathInElement(document.body);"
+></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    renderMathInElement(document.body, {
+      delimiters: [
+        { left: "$$", right: "$$", display: true },
+        { left: "$", right: "$", display: false },
+      ],
+    });
+  });
+</script>
+
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>OOFP 2025-26</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-8b45d304a159d86710e1579c97aa5b43" class="toggle"  />
+    <label for="section-8b45d304a159d86710e1579c97aa5b43" class="flex justify-between">
+      <a href="/docs/intro/" class="">This course</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/organization/" class="">Organization</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/material/" class="">Material</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/reading_path/" class="">Reading path</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/evaluation/" class="">Evaluation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/prerequisites/" class="">Prerequisites</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/office_hours/" class="">Office hours</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/content/" class="">Content</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/resources/" class="">Additional resources</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/software/" class="">Software</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b17bf4b701f350b4430cc5371ccad607" class="toggle" checked />
+    <label for="section-b17bf4b701f350b4430cc5371ccad607" class="flex justify-between">
+      <a href="/docs/paradigm/" class="">Paradigms and languages</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/paradigm/sections/paradigm/" class="">Paradigm</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/paradigm/sections/error/" class="">Compile time vs runtime error</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/paradigm/sections/type/" class="">Typing</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/paradigm/sections/pure/" class="active">Pure function</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d689bb2436bd0f51b31e8f95cf070b59" class="toggle"  />
+    <label for="section-d689bb2436bd0f51b31e8f95cf070b59" class="flex justify-between">
+      <a href="/docs/background/" class="">Background</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/background/sections/set_list/" class="">Set, list, tuple</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/background/sections/function/" class="">Function</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Pure function</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#side-effect">Side effect</a></li>
+    <li><a href="#purity">Purity</a></li>
+    <li><a href="#counterexample">Counterexample</a></li>
+    <li><a href="#benefits">Benefits</a>
+      <ul>
+        <li><a href="#readability">Readability</a></li>
+        <li><a href="#easier-debugging">Easier debugging</a></li>
+        <li><a href="#opportunities-for-static-analysis-comparing-programs-simplifying-a-program-etc">Opportunities for static analysis (comparing programs, simplifying a program, etc.)</a></li>
+        <li><a href="#parallelization">Parallelization</a></li>
+        <li><a href="#caching">Caching</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="pure-function">
+  Pure function
+  <a class="anchor" href="#pure-function">#</a>
+</h1>
+<p>Functional languages like Haskell emphasize the use of <strong>pure functions</strong>, i.e. which behave like mathematical functions.</p>
+<p>In imperative code, their adoption varies by language and community.
+For instance, pure functions are not idiomatic in C, but common in languages like Java, JavaScript, Python or Rust.</p>
+<h2 id="side-effect">
+  Side effect
+  <a class="anchor" href="#side-effect">#</a>
+</h2>
+<blockquote class="book-hint warning">
+<p><strong><em>Definition.</em></strong>
+A method/function has a <strong>side effect</strong> if it modifies a resource (variable, object, array, etc.) that is defined outside of its scope.</p>
+</blockquote>
+<h2 id="purity">
+  Purity
+  <a class="anchor" href="#purity">#</a>
+</h2>
+<blockquote class="book-hint warning">
+<p>A method/function is <strong>pure</strong> if it:</p>
+<ol>
+<li>returns the <em>same</em> value if called twice with the same argument(s), and</li>
+<li>has no side-effect.</li>
+</ol>
+</blockquote>
+<h2 id="counterexample">
+  Counterexample
+  <a class="anchor" href="#counterexample">#</a>
+</h2>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong>
+Consider the following Java class:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyClass</span> {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> x <span style="color:#f92672">=</span> 0;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    ...
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">inc</span>() {
+</span></span><span style="display:flex;"><span>        x<span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">isEqual</span>(<span style="color:#66d9ef">int</span> y) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> x <span style="color:#f92672">==</span> y;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
+<li><code>inc</code> is not pure, because it violates Condition 2 (side effect).</li>
+<li><code>isEqual</code> is not pure either, because it violates Condition 1. For instance, if:
+<ul>
+<li><code>x</code> has value <code>0</code>,</li>
+<li>then <code>isEqual(0)</code> is executed,</li>
+<li>then <code>inc()</code> is executed,</li>
+<li>then <code>isEqual(0)</code> is executed again.</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h2 id="benefits">
+  Benefits
+  <a class="anchor" href="#benefits">#</a>
+</h2>
+<h3 id="readability">
+  Readability
+  <a class="anchor" href="#readability">#</a>
+</h3>
+<p>The behavior of a pure function is fully specified by its arguments.</p>
+<h3 id="easier-debugging">
+  Easier debugging
+  <a class="anchor" href="#easier-debugging">#</a>
+</h3>
+<p>Because it has no side effect, a pure function may cause a bug <em>only</em> if it returns an incorrect value.</p>
+<h3 id="opportunities-for-static-analysis-comparing-programs-simplifying-a-program-etc">
+  Opportunities for static analysis (comparing programs, simplifying a program, etc.)
+  <a class="anchor" href="#opportunities-for-static-analysis-comparing-programs-simplifying-a-program-etc">#</a>
+</h3>
+<blockquote class="book-hint info">
+<p><strong><em>Examples.</em></strong>
+If <code>f</code> and <code>g</code> are pure functions, then for a value <code>a</code> and variables <code>x</code>, <code>y</code>:</p>
+<ul>
+<li><code>f(x) + g(y)</code> can be replaced with <code>g(y) + f(x)</code>,</li>
+<li><code>f(x) == f(x)</code> can be replaced with <code>true</code>,</li>
+<li><code>f(a)</code> can be replaced with it value
+(this property is called <strong>referential transparency</strong>).</li>
+</ul>
+</blockquote>
+<h3 id="parallelization">
+  Parallelization
+  <a class="anchor" href="#parallelization">#</a>
+</h3>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong>
+If <code>f</code> and <code>g</code> are pure functions, then for some values <code>a</code>,<code>b</code>, we can evaluate</p>
+<p>$\qquad$ <code>f(a) + g(b)</code></p>
+<p>by evaluating <code>f(a)</code> and <code>g(b)</code> in parallel.</p>
+</blockquote>
+<h3 id="caching">
+  Caching
+  <a class="anchor" href="#caching">#</a>
+</h3>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong>
+If <code>f</code> is a pure function, then for a value <code>a</code>, we can evaluate</p>
+<p>$\qquad$ <code>f(a) + f(a)</code></p>
+<p>by evaluating <code>f(a)</code> once (and caching the result).</p>
+</blockquote>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#side-effect">Side effect</a></li>
+    <li><a href="#purity">Purity</a></li>
+    <li><a href="#counterexample">Counterexample</a></li>
+    <li><a href="#benefits">Benefits</a>
+      <ul>
+        <li><a href="#readability">Readability</a></li>
+        <li><a href="#easier-debugging">Easier debugging</a></li>
+        <li><a href="#opportunities-for-static-analysis-comparing-programs-simplifying-a-program-etc">Opportunities for static analysis (comparing programs, simplifying a program, etc.)</a></li>
+        <li><a href="#parallelization">Parallelization</a></li>
+        <li><a href="#caching">Caching</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

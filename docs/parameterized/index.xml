@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Parameterized types on OOFP 2025-26</title>
+    <link>http://localhost:1313/docs/parameterized/</link>
+    <description>Recent content in Parameterized types on OOFP 2025-26</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="http://localhost:1313/docs/parameterized/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Type variables</title>
+      <link>http://localhost:1313/docs/parameterized/sections/variable/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/parameterized/sections/variable/</guid>
+      <description>&lt;h1 id=&#34;type-variables&#34;&gt;&#xA;  Type variables&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#type-variables&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;TODO: write something&lt;/p&gt;&#xA;&lt;h2 id=&#34;in-haskell&#34;&gt;&#xA;  In Haskell&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#in-haskell&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;Syntax.&#xA;In Haskell, a type variable starts with a lowercase letter (like a regular variable).&#xA;By convention, the first letters of the alphabet (&lt;code&gt;a&lt;/code&gt;, &lt;code&gt;b&lt;/code&gt;, &lt;code&gt;c&lt;/code&gt;, etc.) are often used as type variables.&lt;/p&gt;&#xA;&lt;blockquote class=&#34;book-hint info&#34;&gt;&#xA;&lt;p&gt;&lt;strong&gt;&lt;em&gt;Examples.&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;the type variable &lt;code&gt;a&lt;/code&gt; stands for any type&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;[a]&lt;/code&gt; is the type of lists&lt;/li&gt;&#xA;&lt;li&gt;a function with type &lt;code&gt;[a] -&amp;gt; [a]&lt;/code&gt; maps a list to a list of the same type&lt;/li&gt;&#xA;&lt;li&gt;a function with type &lt;code&gt;(a, a) -&amp;gt; Bool&lt;/code&gt; maps a pair of elements of the same type to a Boolean value&#xA;&lt;!-- - `a -&gt; a -&gt; Bool` is the type of these functions in curried form. --&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;&lt;strong&gt;&lt;em&gt;Example.&lt;/em&gt;&lt;/strong&gt;&#xA;The Haskell prelude provides two (partial) functions &lt;code&gt;head&lt;/code&gt; and &lt;code&gt;tail&lt;/code&gt; that map a nonempty list to its head and tail respectively.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

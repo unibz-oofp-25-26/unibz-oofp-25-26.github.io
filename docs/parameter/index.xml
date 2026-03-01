@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Type parameter on OOFP 2025-26</title>
+    <link>http://localhost:1313/docs/parameter/</link>
+    <description>Recent content in Type parameter on OOFP 2025-26</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="http://localhost:1313/docs/parameter/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Type variable</title>
+      <link>http://localhost:1313/docs/parameter/sections/variable/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/parameter/sections/variable/</guid>
+      <description>&lt;h1 id=&#34;type-variable&#34;&gt;&#xA;  Type variable&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#type-variable&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;blockquote class=&#34;book-hint warning&#34;&gt;&#xA;&lt;p&gt;A (regular) variable stands for an underspecified value.&#xA;Similarly, a &lt;strong&gt;&lt;em&gt;type variable&lt;/em&gt;&lt;/strong&gt; stands for an underspecified type.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;blockquote class=&#34;book-hint info&#34;&gt;&#xA;&lt;p&gt;&lt;strong&gt;&lt;em&gt;Benefit.&lt;/em&gt;&lt;/strong&gt;&#xA;Type variables let us write functions/methods that apply to different types, without compromising &lt;a href=&#34;&#34;&gt;type safety&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;blockquote class=&#34;book-hint info&#34;&gt;&#xA;&lt;p&gt;&lt;strong&gt;&lt;em&gt;Example.&lt;/em&gt;&lt;/strong&gt;&#xA;Consider a function &lt;code&gt;half&lt;/code&gt; that maps a list to its first half (say rounded down if the list has odd length).&lt;/p&gt;&#xA;&lt;p&gt;The implementation of this function is identical for:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;a list of strings,&lt;/li&gt;&#xA;&lt;li&gt;a list of integers,&lt;/li&gt;&#xA;&lt;li&gt;a list of Boolean values,&lt;/li&gt;&#xA;&lt;li&gt;etc.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;A type variable lets us declare such a function&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Option type</title>
+      <link>http://localhost:1313/docs/parameter/sections/maybe/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/parameter/sections/maybe/</guid>
+      <description>&lt;h1 id=&#34;option-type&#34;&gt;&#xA;  Option type&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#option-type&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;We introduce an important &lt;a href=&#34;&#34;&gt;parameterized&lt;/a&gt; and &lt;a href=&#34;&#34;&gt;composite&lt;/a&gt; type, available in many languages, under a variety of names (&lt;code&gt;Maybe&lt;/code&gt;, &lt;code&gt;Option&lt;/code&gt;, &lt;code&gt;optional&lt;/code&gt;, &lt;code&gt;Optional&lt;/code&gt;, &lt;code&gt;Nullable&lt;/code&gt;, etc.)&lt;/p&gt;&#xA;&lt;p&gt;We will see in the dedicated sections that such a type can also be made a &lt;a href=&#34;&#34;&gt;functor&lt;/a&gt;, and (perhaps most importantly) a &lt;a href=&#34;&#34;&gt;monad&lt;/a&gt;.&#xA;For now, we will use it without these extra features.&lt;/p&gt;&#xA;&lt;h2 id=&#34;motivation&#34;&gt;&#xA;  Motivation&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#motivation&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;blockquote class=&#34;book-hint danger&#34;&gt;&#xA;&lt;p&gt;&lt;strong&gt;&lt;em&gt;Problem.&lt;/em&gt;&lt;/strong&gt;&#xA;A programming language may not have a type that exactly fits the &lt;a href=&#34;&#34;&gt;domain&lt;/a&gt; of a function that we want to implement.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Type class in Haskell</title>
+      <link>http://localhost:1313/docs/parameter/sections/typeclass/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/parameter/sections/typeclass/</guid>
+      <description>&lt;h1 id=&#34;type-classes&#34;&gt;&#xA;  Type classes&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#type-classes&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;TODO: write something&lt;/p&gt;&#xA;&lt;p&gt;TODO: move this to the previous section?&lt;/p&gt;&#xA;&lt;h2 id=&#34;type-classes-1&#34;&gt;&#xA;  Type classes&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#type-classes-1&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;generify-a-function&#34;&gt;&#xA;  Generify a function&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#generify-a-function&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;</description>
+    </item>
+    <item>
+      <title>Generic type</title>
+      <link>http://localhost:1313/docs/parameter/sections/parameterized/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/parameter/sections/parameterized/</guid>
+      <description>&lt;h1 id=&#34;generic-type&#34;&gt;&#xA;  Generic type&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#generic-type&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;h2 id=&#34;in-haskell&#34;&gt;&#xA;  In Haskell&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#in-haskell&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;h3 id=&#34;syntax&#34;&gt;&#xA;  Syntax&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#syntax&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h3&gt;&#xA;&lt;p&gt;We have seen how Haskell uses &lt;a href=&#34;&#34;&gt;constructors&lt;/a&gt; to define composite types.&lt;/p&gt;&#xA;&lt;p&gt;Example (reminder).&#xA;As we have seen &lt;a href=&#34;&#34;&gt;earlier&lt;/a&gt;, the type of lists of integers can be defined as follows:&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-haskell&#34; data-lang=&#34;haskell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;data&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;IntList&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;Nil&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;Cons&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;Int&lt;/span&gt; (&lt;span style=&#34;color:#66d9ef&#34;&gt;IntList&lt;/span&gt;)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Similarly, the type of lists of Booleans can be defined as&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-haskell&#34; data-lang=&#34;haskell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;data&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;BoolList&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;Nil&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;|&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;Cons&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;Bool&lt;/span&gt; (&lt;span style=&#34;color:#66d9ef&#34;&gt;BoolList&lt;/span&gt;)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If we want to make this more generic, we can use a &lt;a href=&#34;&#34;&gt;type variable&lt;/a&gt; instead of the concrete type (&lt;code&gt;Int&lt;/code&gt; or &lt;code&gt;Bool&lt;/code&gt; here).&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,2295 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  Unit tests
+  #
+
+
+  Testing software
+  #
+
+Testing is an integral part of software development.
+Different terminologies coexists to categorize software tests (more or less precise, an with overlapping meanings).
+Common categories are:
+
+functional vs non-functional test
+unit vs integration test
+security test
+performance test
+regression test
+etc.
+
+A test can help developers clarify what a program (resp. component, method) is expected to do.
+So in a sense, tests are part of the documentation or specification of a system, because they provide precise examples of the expected behavior of the program (resp. component, method).">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/docs/unittests/">
+  <meta property="og:site_name" content="OOFP 2025-26">
+  <meta property="og:title" content="Unit tests">
+  <meta property="og:description" content="Unit tests # Testing software # Testing is an integral part of software development.
+Different terminologies coexists to categorize software tests (more or less precise, an with overlapping meanings). Common categories are:
+functional vs non-functional test unit vs integration test security test performance test regression test etc. A test can help developers clarify what a program (resp. component, method) is expected to do. So in a sense, tests are part of the documentation or specification of a system, because they provide precise examples of the expected behavior of the program (resp. component, method).">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="website">
+<title>Unit tests | OOFP 2025-26</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1313/docs/unittests/">
+<link rel="stylesheet" href="/book.min.434035e7885c7f5d12818bd9f111cf1a0925c6fb78382667381c3d5eda3fb4f1.css" integrity="sha256-Q0A154hcf10SgYvZ8RHPGgklxvt4OCZnOBw9Xto/tPE=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.63457a24ba26007e3c0c6c48d8234d2288f6625e47b9dc344a73e24c956f11e6.js" integrity="sha256-Y0V6JLomAH48DGxI2CNNIoj2Yl5Hudw0SnPiTJVvEeY=" crossorigin="anonymous"></script>
+<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/docs/unittests/index.xml" title="OOFP 2025-26" />
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css"
+  integrity="sha384-vKruj+a13U8yHIkAyGgK1J3ArTLzrFGBbBc0tDp4ad/EyewESeXE/Iv67Aj8gKZ0"
+  crossorigin="anonymous"
+/>
+
+
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js"
+  integrity="sha384-PwRUT/YqbnEjkZO0zZxNqcxACrXe+j766U2amXcgMg5457rve2Y7I6ZJSm2A0mS4"
+  crossorigin="anonymous"
+></script>
+
+
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js"
+  integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+  crossorigin="anonymous"
+  onload="renderMathInElement(document.body);"
+></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    renderMathInElement(document.body, {
+      delimiters: [
+        { left: "$$", right: "$$", display: true },
+        { left: "$", right: "$", display: false },
+      ],
+    });
+  });
+</script>
+
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>OOFP 2025-26</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-8b45d304a159d86710e1579c97aa5b43" class="toggle"  />
+    <label for="section-8b45d304a159d86710e1579c97aa5b43" class="flex justify-between">
+      <a href="/docs/intro/" class="">This course</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/schedule/" class="">Schedule</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/evaluation/" class="">Evaluation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/content/" class="">Content</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/paradigms/" class="">Content</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/office_hours/" class="">Office hours</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/bibliography/" class="">Additional resources</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/quiz/" class="">Quiz</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-5f89433932d6f84b1b453c3b7c8effa3" class="toggle"  />
+    <label for="section-5f89433932d6f84b1b453c3b7c8effa3" class="flex justify-between">
+      <a href="/docs/project/" class="">Project</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/project/sections/free_project/" class="">Option 1: free project</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/project/sections/board_game/" class="">Option 2: board game</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-799305e0300c702d39454ff1753190dd" class="toggle"  />
+    <label for="section-799305e0300c702d39454ff1753190dd" class="flex justify-between">
+      <a href="/docs/objects/" class="">Objects and classes</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/objects/sections/objects/" class="">Objects</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/objects/sections/classes/" class="">Class and instance</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/objects/sections/inheritance/" class="">Inheritance</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/objects/sections/methods/" class="">Instance methods</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/objects/sections/tostring/" class="">Displaying objects</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/objects/sections/comparing/" class="">Cast and equality</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/objects/sections/classesasobjects/" class="">Classes as objects</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/objects/sections/quasi-objects/" class="">Quasi-objects</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/objects/sections/clone/" class="">Duplicating objects</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/objects/sections/encapsulation/" class="">Encapsulation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/objects/sections/mutability/" class="">Mutability</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/objects/sections/quiz/" class="">Quiz</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-185b34e1fb4dcef69f8d648f91076774" class="toggle"  />
+    <label for="section-185b34e1fb4dcef69f8d648f91076774" class="flex justify-between">
+      <a href="/docs/interfaces/" class="">Interfaces</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/interfaces/sections/specification/" class="">Specification and programming interface</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/interfaces/sections/java_interfaces/" class="">Java interfaces</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c34bda991aa58acb3c5c88344f5ff4d1" class="toggle"  />
+    <label for="section-c34bda991aa58acb3c5c88344f5ff4d1" class="flex justify-between">
+      <a href="/docs/abstractdatatypes/" class="">Abstract data types</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/abstractdatatypes/sections/list/" class="">List</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/abstractdatatypes/sections/set/" class="">Set</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/abstractdatatypes/sections/map/" class="">Associative array</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/abstractdatatypes/sections/queue/" class="">Stack, queue, priority queue</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/abstractdatatypes/sections/sorting/" class="">Sorting</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d8d0d2b826b1a0a247222fe763e51823" class="toggle"  />
+    <label for="section-d8d0d2b826b1a0a247222fe763e51823" class="flex justify-between">
+      <a href="/docs/datastructures/" class="">Data structures</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/datastructures/sections/list/" class="">Dynamic array and linked list</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/datastructures/sections/hash/" class="">Hash table</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/datastructures/sections/tree/" class="">Binary search tree</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-4ccd6367293b9eacf080672ecff7b0ea" class="toggle"  />
+    <label for="section-4ccd6367293b9eacf080672ecff7b0ea" class="flex justify-between">
+      <a href="/docs/errors/" class="">Errors</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/errors/sections/callstack/" class="">Call stack</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/errors/sections/exceptions/" class="">Exceptions</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/errors/sections/checked/" class="">Runtime vs checked exceptions</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/errors/sections/custom/" class="">Custom exceptions</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/errors/sections/errors/" class="">Java errors</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-54a25c0ad53482778ca10b1a7db8e623" class="toggle"  />
+    <label for="section-54a25c0ad53482778ca10b1a7db8e623" class="flex justify-between">
+      <a href="/docs/recursion/" class="">Recursion</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/recursion/sections/linear/" class="">Linear recursion</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/recursion/sections/nary/" class="">N-ary recursion</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/recursion/sections/correctness/" class="">Correctness</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-82a234af61a7f7a8f74a93bf41b8972c" class="toggle"  />
+    <label for="section-82a234af61a7f7a8f74a93bf41b8972c" class="flex justify-between">
+      <a href="/docs/input/" class="">I/O and serialization</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/input/sections/files/" class="">Paths and files in Java</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/input/sections/read/" class="">Reading from and writing to a file in Java</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/input/sections/property/" class="">Configuration files</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/input/sections/serialize/" class="">Serialization</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/input/sections/json/" class="">JSON Serialization</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c2df39f30f71aa392996209aab1f4ce6" class="toggle"  />
+    <label for="section-c2df39f30f71aa392996209aab1f4ce6" class="flex justify-between">
+      <a href="/docs/lambda/" class="">First-class methods</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/lambda/sections/functional/" class="">Functional programming</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/lambda/sections/pure/" class="">Pure function</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/lambda/sections/anonymous/" class="">Anonymous method</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/lambda/sections/lambda/" class="">Lambda expression</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/lambda/sections/type/" class="">Type of a method</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/lambda/sections/callback/" class="">Callback method</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/lambda/sections/closure/" class="">Free variable and closure</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/lambda/sections/currying/" class="">Currying</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-4eba264df2892829bcc1dda3e221ffc6" class="toggle"  />
+    <label for="section-4eba264df2892829bcc1dda3e221ffc6" class="flex justify-between">
+      <a href="/docs/stream/" class="">Streams in Java</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/stream/sections/pipeline/" class="">Pipeline</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/stream/sections/init/" class="">Source</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/stream/sections/intermediate/" class="">Intermediate operations</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/stream/sections/terminal/" class="">Terminal operation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/stream/sections/numeric/" class="">Numeric stream</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/stream/sections/order/" class="">Multithreading and order</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/stream/sections/optional/" class="">Optional</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-5672a64db9e5a9e8dbaf0b32a88b4211" class="toggle"  />
+    <label for="section-5672a64db9e5a9e8dbaf0b32a88b4211" class="flex justify-between">
+      <a href="/docs/generics/" class="">Generic programming</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/generics/sections/type_checking/" class="">Type checking</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/generics/sections/generics/" class="">Generics</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/generics/sections/subtype/" class="">Subtype</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/generics/sections/variance/" class="">Variance</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/generics/sections/erasure/" class="">Type erasure</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b710bef8048534e98fb41b400ad73a5a" class="toggle"  />
+    <label for="section-b710bef8048534e98fb41b400ad73a5a" class="flex justify-between">
+      <a href="/docs/multithreading/" class="">Multithreading</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/multithreading/sections/concurrency/" class="">Concurrency</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/multithreading/sections/thread/" class="">Process vs thread</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/multithreading/sections/simple/" class="">A simplified view</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/multithreading/sections/race/" class="">Race condition</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/multithreading/sections/synchronization/" class="">Synchronization</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/multithreading/sections/troubleshooting/" class="">Troubleshooting</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/multithreading/sections/abstractions/" class="">Abstractions</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b371a89060f7df76c1332280a6e35aab" class="toggle" checked />
+    <label for="section-b371a89060f7df76c1332280a6e35aab" class="flex justify-between">
+      <a href="/docs/unittests/" class="active">Unit tests</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/unittests/sections/structured/" class="">Code units</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/unittests/sections/tdd/" class="">Development driven by unit tests</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/unittests/sections/junit/" class="">in Java</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d551df9e28ab80c96d827dea56a21dbd" class="toggle"  />
+    <label for="section-d551df9e28ab80c96d827dea56a21dbd" class="flex justify-between">
+      <a href="/docs/simplify/" class="">Simplifying code</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/simplify/sections/factorization/" class="">Factorizing</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/simplify/sections/break/" class="">Break statements and flags</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/simplify/sections/boolean/" class="">Boolean conditions</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-49884d982604681b4e5b3094fc97d1f6" class="toggle"  />
+    <label for="section-49884d982604681b4e5b3094fc97d1f6" class="flex justify-between">
+      <a href="/docs/env/" class="">Development environment</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/env/sections/files/" class="">Hierarchical file system</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/env/sections/backup/" class="">Backup</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/env/sections/install/" class="">Software management</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/env/sections/os/" class="">Operating system</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/env/sections/requirements/" class="">Requirements for this course</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/env/sections/text_editor/" class="">Text editor</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/env/sections/ide/" class="">IDE</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/env/sections/eval/" class="">Evaluation environment</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/env/sections/terminal/" class="">Terminal</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d6e27677885764249de207f53ef3b11c" class="toggle"  />
+    <label for="section-d6e27677885764249de207f53ef3b11c" class="flex justify-between">
+      <a href="/docs/git/" class="">Git</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/git/sections/basics/" class="">Basics: repository, commits and branches</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/git/sections/collaboration/" class="">Basics: network and collaboration</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/git/sections/config/" class="">Configuration</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/git/sections/create/" class="">Create or clone a repository</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/git/sections/navigate/" class="">Navigation, status and history: status, log, checkout, diff, show</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/git/sections/commit/" class="">Add, commit, stash</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/git/sections/branches/" class="">Branches</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/git/sections/sharing/" class="">Synchronization: remote, push, pull</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/git/sections/backtracking/" class="">Backtracking</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/git/sections/resources/" class="">To go further</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/git/sections/ignore/" class="">Ignore</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-3d438ce6389c4e76be7ef5e4f060239b" class="toggle"  />
+    <label for="section-3d438ce6389c4e76be7ef5e4f060239b" class="flex justify-between">
+      <a href="/docs/build/" class="">Build automation</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/build/sections/packaging/" class="">Packaging a Java application</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/build/sections/layout/" class="">Layout</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/build/sections/pom/" class="">Configuration file</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/build/sections/artifact/" class="">Artifact</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/build/sections/dependencies/" class="">Dependencies</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/build/sections/building/" class="">Building</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d689bb2436bd0f51b31e8f95cf070b59" class="toggle"  />
+    <label for="section-d689bb2436bd0f51b31e8f95cf070b59" class="flex justify-between">
+      <a href="/docs/background/" class="">Background</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/background/sections/problem/" class="">Computational problem</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/background/sections/set_tuple_map/" class="">Set, tuple, function</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/background/sections/order/" class="">Relation, preorder</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/background/sections/cost/" class="">Computational cost</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Unit tests</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#testing-software">Testing software</a></li>
+    <li><a href="#unit-tests-1">Unit tests</a></li>
+    <li><a href="#unit-test-design">Unit test design</a></li>
+    <li><a href="#implementation">Implementation</a></li>
+    <li><a href="#unit-tests-and-build-automation">Unit tests and build automation</a></li>
+    <li><a href="#regression-tests">Regression tests</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="unit-tests">
+  Unit tests
+  <a class="anchor" href="#unit-tests">#</a>
+</h1>
+<h2 id="testing-software">
+  Testing software
+  <a class="anchor" href="#testing-software">#</a>
+</h2>
+<p>Testing is an integral part of software development.</p>
+<p>Different terminologies coexists to <a href="https://en.wikipedia.org/wiki/Software_testing_tactics">categorize</a> software tests (more or less precise, an with overlapping meanings).
+Common categories are:</p>
+<ul>
+<li>functional vs non-functional test</li>
+<li>unit vs integration test</li>
+<li>security test</li>
+<li>performance test</li>
+<li>regression test</li>
+<li>etc.</li>
+</ul>
+<p>A test can help developers clarify <em>what</em> a program (resp. component, method) is expected to do.
+So in a sense, tests are part of the <em>documentation</em> or specification of a system, because they provide precise <em>examples</em> of the expected behavior of the program (resp. component, method).</p>
+<p>This is why tests are often part of the development process itself.
+Notably, <a href="http://localhost:1313/docs/unittests/sections/tdd/">test-driven development</a> consists in developing tests cases <em>before</em> software is fully developed.</p>
+<h2 id="unit-tests-1">
+  Unit tests
+  <a class="anchor" href="#unit-tests-1">#</a>
+</h2>
+<blockquote class="book-hint warning">
+<p>A <strong>unit test</strong> is usually understood as:</p>
+<ul>
+<li>testing the behavior of a <em>small</em> piece of code (typically a method),</li>
+<li>automated (typically integrated to the <a href="http://localhost:1313/docs/build/">build</a> process),</li>
+<li>fast.</li>
+</ul>
+<!-- - isolated. -->
+</blockquote>
+<p>Besides, most unit tests are concerned with <em>correctness</em> (rather than performance for instance).</p>
+<blockquote class="book-hint danger">
+<p><strong><em>Warning.</em></strong>
+The tests used to evaluate assignments in this course are implemented via libraries for unit testing.
+However, many of them do <em>not</em> qualify as unit tests.</p>
+</blockquote>
+<blockquote class="book-hint warning">
+<p>In its simplest form, a unit test can be viewed as a pair</p>
+<p>$\qquad$ (input, expected output)</p>
+<p>for a given <a href="http://localhost:1313/docs/background/sections/problem/">computational problem</a>.</p>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong>
+Consider the following problem:</p>
+<blockquote>
+<p><strong><em>Input:</em></strong> a (finite) array of positive integers, representing the successive values of a stock, one value per day.</p>
+<p><strong><em>Output:</em></strong> the maximal gain that can be made by buying on a certain day, and selling the same day or later on.</p></blockquote>
+<p>Possible unit tests for this problem are:</p>
+<ul>
+<li>( [0, 3], 3 )</li>
+<li>( [4, 3, 6, 8, 6], 5 )</li>
+<li>( [2, 4, 9, 1, 3], 7 )</li>
+<li>( [3, 2], 0 )</li>
+<li>etc.</li>
+</ul>
+</blockquote>
+<div class="book-tabs">
+<input type="radio" class="toggle" name="tabs-exercise_finite_unitTests" id="tabs-exercise_finite_unitTests-0" checked="checked" />
+<label for="tabs-exercise_finite_unitTests-0">Exercise</label>
+<div class="book-tabs-content markdown-inner"><p>Consider the following problem:</p>
+<blockquote>
+<p><strong><em>Input:</em></strong> a (finite) array of characters, with possibly duplicated characters (and no restriction on the size of the array).</p>
+<p><strong><em>Output:</em></strong> the size of the longest (left-to-right) sequence in this array that respects alphabetical order.</p></blockquote>
+<p>For instance, for the input</p>
+<p>$\qquad$ <code>[m, q, b, e, e, z, m, e]</code>,</p>
+<p>the expected output is
+<code>4</code>.</p>
+<p><strong><em>Question.</em></strong> Does there exist a (finite) set of unit tests for this problem that guarantees that an implementation is correct?</p>
+</div>
+<input type="radio" class="toggle" name="tabs-exercise_finite_unitTests" id="tabs-exercise_finite_unitTests-1"  />
+<label for="tabs-exercise_finite_unitTests-1">Solution</label>
+<div class="book-tabs-content markdown-inner"><p>No.</p>
+<p>For any (finite) set of unit tests (for this problem), there exists an algorithm that passes the tests but is incorrect.</p>
+<p>To demonstrate this, observe that a unit tests for this problem is a pair
+$(a, i)$,
+where</p>
+<ul>
+<li>$a$ is an array of characters, and</li>
+<li>$i$ is a natural number.</li>
+</ul>
+<p>Take any finite set</p>
+<p>$\qquad (a_1, i_1), (a_2, i_2),\ ..,\ (a_n, i_n)$</p>
+<p>of such unit tests.</p>
+<p>Because this set is finite,
+there exists an array of characters $a_0$ that does not appear in this set of tests.</p>
+<p>Let $i_0$ be the expected output for $a_0$, and let $j$ be any positive integer different from $i_0$.</p>
+<p>Now consider the method (in pseudocode):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-perl" data-lang="perl"><span style="display:flex;"><span>int sizeOfLongestNonDecreasingSequence(char<span style="color:#f92672">[]</span> characters) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span>(characters <span style="color:#f92672">==</span> a_1) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> i_1
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span>(characters <span style="color:#f92672">==</span> a_2) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> i_2
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span>(characters <span style="color:#f92672">==</span> a_n) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> i_n
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> j;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>This algorithm will pass the unit tests, but is incorrect for the input $a_0$.</p>
+</div>
+</div>
+<p>This (artificial) exercise was only meant to illustrate the following:</p>
+<blockquote class="book-hint danger">
+<p><strong><em>Warning.</em></strong>
+In general, no (reasonably small) set of unit tests can ensure that a (non-trivial) method is correct.</p>
+</blockquote>
+<h2 id="unit-test-design">
+  Unit test design
+  <a class="anchor" href="#unit-test-design">#</a>
+</h2>
+<p>Here are a few simple rules of thumb to design unit tests.</p>
+<ol>
+<li>
+<p>The input for a unit test is usually <em>small</em> (this makes debugging easier when the test fails).</p>
+</li>
+<li>
+<p>Two tests for the same method should illustrate different types of inputs/scenarios (writing similar tests is a waste of time).</p>
+</li>
+<li>
+<p>Trivial methods do not need unit tests.</p>
+</li>
+<li>
+<p>Priority is often given to so-called &ldquo;<a href="https://en.wikipedia.org/wiki/Happy_path">happy path</a>&rdquo; tests (a.k.a &ldquo;normal&rdquo; scenarios).
+These are representative of what the tested method is likely to receive as input.</p>
+</li>
+<li>
+<p>In addition to &ldquo;happy path&rdquo; tests, one <em>may</em> implement tests that deal with corner cases (e.g. empty array, value <code>0</code>, etc.).
+However, an exhaustive coverage of corner cases is often unnecessary, because the methods that call the tested method cannot produce such inputs.</p>
+</li>
+<li>
+<p>A unit test should be <em>reproducible</em>.
+In particular, it should not depend on:</p>
+<ul>
+<li>(pseudo)-random values,</li>
+<li>external services (web API, etc.) whose behavior cannot be controlled.</li>
+</ul>
+</li>
+</ol>
+<h2 id="implementation">
+  Implementation
+  <a class="anchor" href="#implementation">#</a>
+</h2>
+<blockquote class="book-hint danger">
+<p><strong><em>Requirement.</em></strong>
+A unit test should itself be <em>free of bugs</em>.</p>
+</blockquote>
+<p>For this reason, unit tests usually:</p>
+<ul>
+<li>rely of widely used libraries for test execution,</li>
+<li>mostly consist of simple, <em>declarative</em> code otherwise.</li>
+</ul>
+<p>In particular, unit tests are a (rare) case where code factorization is <em>not</em> a priority (i.e. unit tests may contain redundant code).</p>
+<h2 id="unit-tests-and-build-automation">
+  Unit tests and build automation
+  <a class="anchor" href="#unit-tests-and-build-automation">#</a>
+</h2>
+<p>Unit tests are usually integrated to the standard build automation process of a project.</p>
+<p>For instance, the <code>test-compile</code> and <code>test</code> phases of Maven&rsquo;s <a href="http://localhost:1313/docs/build/sections/building/#phases">default lifecycle</a> are in charge of compiling and executing unit tests respectively.
+This effectively prevents further phases to be executed if a test fails.</p>
+<h2 id="regression-tests">
+  Regression tests
+  <a class="anchor" href="#regression-tests">#</a>
+</h2>
+<blockquote class="book-hint warning">
+<p>A <strong>regression test</strong> is meant to verify that modifications brought to the code base (e.g. a new feature, code optimization, reorganization, etc. ) do not compromise correctness of functionalities that were already implemented.</p>
+</blockquote>
+<p>Some unit tests may act in practice as regression tests.</p>
+<p>In particular, before sharing code with co-developers (e.g. via the main branch of a git repository), it is good practice to verify that all unit tests as <em>successful</em>.</p>
+<div class="book-tabs">
+<input type="radio" class="toggle" name="tabs-exercise_git_collab_reminder" id="tabs-exercise_git_collab_reminder-0" checked="checked" />
+<label for="tabs-exercise_git_collab_reminder-0">Exercise (reminder)</label>
+<div class="book-tabs-content markdown-inner"><p>Consider a basic collaboration scheme via git, where:</p>
+<ul>
+<li>Alice, Bob and Carol collaborate on the same project,</li>
+<li>they share code via the <code>main</code> branch,</li>
+<li>each of them has a personal branch (named <code>alice</code>, <code>bob</code> and <code>carol</code> respectively) where they write code that is not yet ready to be shared with the others.</li>
+</ul>
+<p>Alice just finished implementing a method, on the branch <code>alice</code>.
+Her code compiles and passes all unit tests.
+Now she wants to share her code with the other two.</p>
+<p>Which sequence of git commands should Alice execute?</p>
+</div>
+<input type="radio" class="toggle" name="tabs-exercise_git_collab_reminder" id="tabs-exercise_git_collab_reminder-1"  />
+<label for="tabs-exercise_git_collab_reminder-1">Solution</label>
+<div class="book-tabs-content markdown-inner"><ol>
+<li>Commit her changes (locally, to the branch <code>alice</code>):</li>
+</ol>
+<ul>
+<li><code>git add .</code></li>
+<li><code>git commit -m &quot;commit message&quot;</code></li>
+</ul>
+<ol start="2">
+<li>Update the remote copy of the branch <code>alice</code> (for backup only):</li>
+</ol>
+<ul>
+<li><code>git push</code></li>
+</ul>
+<ol start="3">
+<li>Synchronize the local copy of the branch <code>main</code> (because Bob and Carol may have added content to it):</li>
+</ol>
+<ul>
+<li><code>git checkout main</code></li>
+<li><code>git pull</code></li>
+</ul>
+<ol start="4">
+<li>Merge (locally) the content of <code>main</code> into <code>alice</code> (and fix the merge conflicts, if any):</li>
+</ol>
+<ul>
+<li><code>git checkout alice</code></li>
+<li><code>git merge main</code></li>
+</ul>
+<ol start="5">
+<li>Merge (locally) the content of <code>alice</code> into <code>main</code> (there should be no more conflict).
+After this step, the local copies of <code>alice</code> and <code>main</code> will be identical.</li>
+</ol>
+<ul>
+<li><code>git checkout main</code></li>
+<li><code>git merge alice</code></li>
+</ul>
+<ol start="6">
+<li>Upload the changes:</li>
+</ol>
+<ul>
+<li><code>git push</code></li>
+</ul>
+<ol start="7">
+<li>Go back to work:</li>
+</ol>
+<ul>
+<li><code>git checkout alice</code></li>
+</ul>
+</div>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#testing-software">Testing software</a></li>
+    <li><a href="#unit-tests-1">Unit tests</a></li>
+    <li><a href="#unit-test-design">Unit test design</a></li>
+    <li><a href="#implementation">Implementation</a></li>
+    <li><a href="#unit-tests-and-build-automation">Unit tests and build automation</a></li>
+    <li><a href="#regression-tests">Regression tests</a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

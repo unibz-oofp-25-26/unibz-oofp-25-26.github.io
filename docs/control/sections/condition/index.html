@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  Boolean condition
+  #
+
+Pattern matching has limitations.
+
+Examples.
+No pattern can match:
+
+integers greater than 2,
+odd integers,
+etc.
+
+
+For more expressive conditions, programming language usually rely on Boolean expressions.
+
+  in Haskell
+  #
+
+
+  Boolean expression
+  #
+
+We have seen how to define a Boolean operator (precisely, the Boolean operator &ldquo;AND&rdquo;) with patterns in Haskell.
+This is not necessary: Haskell provides native implementations, similar to their counterparts in Java (and many programming languages).
+They include:">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://unibz-oofp-25-26.github.io/docs/control/sections/condition/">
+  <meta property="og:site_name" content="OOFP 2025-26">
+  <meta property="og:title" content="Boolean condition">
+  <meta property="og:description" content="Boolean condition # Pattern matching has limitations.
+Examples. No pattern can match:
+integers greater than 2, odd integers, etc. For more expressive conditions, programming language usually rely on Boolean expressions.
+in Haskell # Boolean expression # We have seen how to define a Boolean operator (precisely, the Boolean operator “AND”) with patterns in Haskell.
+This is not necessary: Haskell provides native implementations, similar to their counterparts in Java (and many programming languages). They include:">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+<title>Boolean condition | OOFP 2025-26</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/control/sections/condition/">
+<link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.b72b48ae349eef97740c5bce497346cef12044143615bb618d4568f5461bb401.js" integrity="sha256-tytIrjSe75d0DFvOSXNGzvEgRBQ2FbthjUVo9UYbtAE=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css"
+  integrity="sha384-vKruj+a13U8yHIkAyGgK1J3ArTLzrFGBbBc0tDp4ad/EyewESeXE/Iv67Aj8gKZ0"
+  crossorigin="anonymous"
+/>
+
+
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js"
+  integrity="sha384-PwRUT/YqbnEjkZO0zZxNqcxACrXe+j766U2amXcgMg5457rve2Y7I6ZJSm2A0mS4"
+  crossorigin="anonymous"
+></script>
+
+
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js"
+  integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+  crossorigin="anonymous"
+  onload="renderMathInElement(document.body);"
+></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    renderMathInElement(document.body, {
+      delimiters: [
+        { left: "$$", right: "$$", display: true },
+        { left: "$", right: "$", display: false },
+      ],
+    });
+  });
+</script>
+
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>OOFP 2025-26</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-8b45d304a159d86710e1579c97aa5b43" class="toggle"  />
+    <label for="section-8b45d304a159d86710e1579c97aa5b43" class="flex justify-between">
+      <a href="/docs/intro/" class="">This course</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/organization/" class="">Organization</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/material/" class="">Material</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/reading_path/" class="">Reading path</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/evaluation/" class="">Evaluation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/prerequisites/" class="">Prerequisites</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/office_hours/" class="">Office hours</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/content/" class="">Content</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/resources/" class="">Additional resources</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/software/" class="">Software</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b17bf4b701f350b4430cc5371ccad607" class="toggle"  />
+    <label for="section-b17bf4b701f350b4430cc5371ccad607" class="flex justify-between">
+      <a href="/docs/paradigm/" class="">Paradigms and languages</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/paradigm/sections/paradigm/" class="">Paradigm</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/paradigm/sections/error/" class="">Compile time vs runtime error</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/paradigm/sections/type/" class="">Typing</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/paradigm/sections/pure/" class="">Pure function</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d689bb2436bd0f51b31e8f95cf070b59" class="toggle"  />
+    <label for="section-d689bb2436bd0f51b31e8f95cf070b59" class="flex justify-between">
+      <a href="/docs/background/" class="">Background</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/background/sections/set_list/" class="">Set, list, tuple</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/background/sections/function/" class="">Function</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Boolean condition</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#in-haskell">in Haskell</a>
+      <ul>
+        <li><a href="#boolean-expression">Boolean expression</a></li>
+        <li><a href="#guards">Guards</a></li>
+        <li><a href="#conditional-statement">Conditional statement</a></li>
+        <li><a href="#case-expression">Case expression</a></li>
+      </ul>
+    </li>
+    <li><a href="#in-java">In Java</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="boolean-condition">
+  Boolean condition
+  <a class="anchor" href="#boolean-condition">#</a>
+</h1>
+<p><a href="">Pattern matching</a> has limitations.</p>
+<blockquote class="book-hint info">
+<p><strong><em>Examples.</em></strong>
+No pattern can match:</p>
+<ul>
+<li>integers greater than 2,</li>
+<li>odd integers,</li>
+<li>etc.</li>
+</ul>
+</blockquote>
+<p>For more expressive conditions, programming language usually rely on Boolean expressions.</p>
+<h2 id="in-haskell">
+  in Haskell
+  <a class="anchor" href="#in-haskell">#</a>
+</h2>
+<h3 id="boolean-expression">
+  Boolean expression
+  <a class="anchor" href="#boolean-expression">#</a>
+</h3>
+<p>We have seen how to define a Boolean operator (precisely, the Boolean operator &ldquo;AND&rdquo;) <a href="">with patterns</a> in Haskell.</p>
+<p>This is not necessary: Haskell provides native implementations, similar to their counterparts in Java (and many programming languages).
+They include:</p>
+<ul>
+<li>conjunction, noted <code>&amp;&amp;</code>,</li>
+<li>disjunction, noted <code>||</code>,</li>
+<li>negation, noted <code>not</code>.</li>
+</ul>
+<blockquote class="book-hint info">
+<p><strong><em>Examples.</em></strong></p>
+<ul>
+<li><code>3 &lt; 2 &amp;&amp; 3 &gt; 5</code> evaluates to <code>False</code></li>
+<li><code>not (3 &gt; 5 || True)</code> evaluates to <code>False</code></li>
+</ul>
+</blockquote>
+<h3 id="guards">
+  Guards
+  <a class="anchor" href="#guards">#</a>
+</h3>
+<blockquote class="book-hint warning">
+<p><strong><em>Syntax.</em></strong>
+A <strong>guard</strong> is a Boolean expression preceded with a <code>|</code>.</p>
+</blockquote>
+<p>Similarly to <a href="">patterns</a>, guards let us define a function on a case-by-case basis.
+The first guard that evaluates to <code>True</code> determines the return value.</p>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong>
+The following function maps an integer to its absolute value:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">abs</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Integer</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Integer</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">-- if x &gt;= 0, then return it</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">abs</span> x <span style="color:#f92672">|</span> x <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">=</span> x
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">-- if x &lt; 0, then return - x</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">|</span> x <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">=</span> <span style="color:#f92672">-</span> x
+</span></span></code></pre></div><p>There are two guard in this definition:</p>
+<ul>
+<li><code>| x &gt;= 0</code></li>
+<li><code>| x &lt; 0</code></li>
+</ul>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Note.</em></strong>
+The function above is equivalent to</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">abs</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Integer</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Integer</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">abs</span> x <span style="color:#f92672">|</span> x <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">=</span> x
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">|</span> <span style="color:#66d9ef">True</span> <span style="color:#f92672">=</span> <span style="color:#f92672">-</span> x
+</span></span></code></pre></div></blockquote>
+<blockquote class="book-hint warning">
+<p><strong><em>Syntax.</em></strong>
+Haskell provides the keyword <code>otherwise</code> as an alias for <code>True</code>.</p>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong>
+The function above can be written</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">abs</span><span style="color:#f92672">::</span> <span style="color:#66d9ef">Integer</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Integer</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">abs</span> x <span style="color:#f92672">|</span> x <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">=</span> x
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">|</span> otherwise <span style="color:#f92672">=</span> <span style="color:#f92672">-</span> x
+</span></span></code></pre></div></blockquote>
+<div class="book-tabs">
+<input type="radio" class="toggle" name="tabs-exercise_guard_simplify" id="tabs-exercise_guard_simplify-0" checked="checked" />
+<label for="tabs-exercise_guard_simplify-0">Exercise</label>
+<div class="book-tabs-content markdown-inner"><p>Simplify the following function.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">dummyComp</span><span style="color:#f92672">::</span> <span style="color:#66d9ef">Integer</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Integer</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">dummyComp</span> x y <span style="color:#f92672">|</span> x <span style="color:#f92672">&lt;=</span> y <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">|</span> x <span style="color:#f92672">&lt;</span> y <span style="color:#f92672">||</span> x <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&lt;=</span> y <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">|</span> otherwise <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>
+</span></span></code></pre></div></div>
+<input type="radio" class="toggle" name="tabs-exercise_guard_simplify" id="tabs-exercise_guard_simplify-1"  />
+<label for="tabs-exercise_guard_simplify-1">Possible solution</label>
+<div class="book-tabs-content markdown-inner"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">dummyComp</span><span style="color:#f92672">::</span> <span style="color:#66d9ef">Integer</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Integer</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">dummyComp</span> <span style="color:#66d9ef">_</span> <span style="color:#66d9ef">_</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>
+</span></span></code></pre></div></div>
+</div>
+<p>Syntax.</p>
+<p>A guard can be used after a pattern.</p>
+<p>Example</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">fib</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Integer</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Integer</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">fib</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>                               <span style="color:#75715e">-- pattern only</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">fib</span> n <span style="color:#f92672">|</span> n <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">=</span> fib (n<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>) <span style="color:#f92672">+</span> fib (n<span style="color:#f92672">-</span><span style="color:#ae81ff">2</span>)   <span style="color:#75715e">-- pattern + guard</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">|</span> otherwise <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span></code></pre></div><blockquote class="book-hint info">
+<p><strong><em>To go further.</em></strong></p>
+<p>A pattern can also be used inside a guard, with a left arrow (<code>&lt;-</code>).</p>
+<p>This can be helpful to pattern match the result of a function call.
+We will not cover this syntax here, and refer to XXX or XXX.</p>
+<p>Instead, we will introduce pattern matching <a href="">within case expressions</a>, which can serve the same purpose.</p>
+</blockquote>
+<!-- | <pattern> <- <expression> = <result> -->
+<!-- ``` -->
+<!---->
+<!-- The evaluation goes as follows: -->
+<!---->
+<!-- 1. `<expression>` is evaluated first. -->
+<!-- 2. Its value is matched against the pattern `<pattern>`. -->
+<!-- 3. If the match succeeds, the guard is considered `True` and the right‑hand side (`result`) is selected. -->
+<!-- 4. Otherwise control moves to the next next guard (if any). -->
+<!---->
+<!-- This can be helpful when `<expression>` is a call to another function. -->
+<!---->
+<h3 id="conditional-statement">
+  Conditional statement
+  <a class="anchor" href="#conditional-statement">#</a>
+</h3>
+<p>Haskell also supports &ldquo;if/then/else&rdquo; expressions, similar top their counterparts in imperative languages (like Java).</p>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong>
+The following function maps:</p>
+<ul>
+<li>a (strictly) positive integer to <code>1</code>,</li>
+<li>0 to 0 and</li>
+<li>a negative integer to <code>-1</code>.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">signum</span><span style="color:#f92672">::</span> <span style="color:#66d9ef">Int</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Int</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">signum</span> x <span style="color:#f92672">=</span> <span style="color:#66d9ef">if</span> x <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">then</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>           <span style="color:#66d9ef">if</span> x <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">then</span> <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">else</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>
+</span></span></code></pre></div></blockquote>
+<p>Warning.
+As opposed to Java, the <code>else</code> case is mandatory.</p>
+<p>For instance, the following function definition is not syntactically valid.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">invalid</span><span style="color:#f92672">::</span> <span style="color:#66d9ef">Int</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Int</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">invalid</span> <span style="color:#66d9ef">_</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">True</span> <span style="color:#66d9ef">then</span> <span style="color:#ae81ff">0</span>
+</span></span></code></pre></div><h3 id="case-expression">
+  Case expression
+  <a class="anchor" href="#case-expression">#</a>
+</h3>
+<p><strong><em>Syntax.</em></strong>
+A case expression in Haskell has the form</p>
+<pre tabindex="0"><code>case &lt;expression&gt; of
+  &lt;pattern 1&gt; -&gt; &lt;result 1&gt;
+  ...
+  &lt;pattern n&gt; -&gt; &lt;result n&gt;
+</code></pre><p>It can be helpful to pattern match the output of a function.</p>
+<p><strong><em>Example.</em></strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">parse</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">String</span> <span style="color:#f92672">-&gt;</span> (<span style="color:#66d9ef">String</span>, <span style="color:#66d9ef">Int</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">parse</span> <span style="color:#e6db74">&#34;Bolzano&#34;</span> <span style="color:#f92672">=</span> (<span style="color:#e6db74">&#34;BZ&#34;</span>, <span style="color:#ae81ff">39100</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">parse</span> <span style="color:#e6db74">&#34;Merano&#34;</span> <span style="color:#f92672">=</span> (<span style="color:#e6db74">&#34;BZ&#34;</span>, <span style="color:#ae81ff">39012</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">parse</span> s <span style="color:#f92672">=</span> (<span style="color:#e6db74">&#34;&#34;</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">displayProvince</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">String</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">String</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- calling the function `parse`</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">displayProvince</span> s <span style="color:#f92672">=</span> <span style="color:#66d9ef">case</span> parse x <span style="color:#66d9ef">of</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">-- pattern matching the output</span>
+</span></span><span style="display:flex;"><span>    (s, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>) <span style="color:#f92672">-&gt;</span> <span style="color:#e6db74">&#34;unknown&#34;</span>
+</span></span><span style="display:flex;"><span>    (s, <span style="color:#66d9ef">_</span>) <span style="color:#f92672">-&gt;</span> s
+</span></span></code></pre></div><h2 id="in-java">
+  In Java
+  <a class="anchor" href="#in-java">#</a>
+</h2>
+<p>You should already be familiar with Boolean expressions in Java, as well as their usage in:</p>
+<ul>
+<li>conditional statements (<code>if (&lt;expression&gt;) .. else ..</code>),</li>
+<li>loop termination condition (<code>while (&lt;expression&gt;)</code>),</li>
+<li>switch statements,</li>
+<li>etc.</li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#in-haskell">in Haskell</a>
+      <ul>
+        <li><a href="#boolean-expression">Boolean expression</a></li>
+        <li><a href="#guards">Guards</a></li>
+        <li><a href="#conditional-statement">Conditional statement</a></li>
+        <li><a href="#case-expression">Case expression</a></li>
+      </ul>
+    </li>
+    <li><a href="#in-java">In Java</a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

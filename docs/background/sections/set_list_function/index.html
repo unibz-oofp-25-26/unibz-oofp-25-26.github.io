@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  Set, list, tuple
+  #
+
+
+  Set
+  #
+
+
+A set can be (informally) viewed as a collection of elements with no duplicate and in no specific order.
+
+
+Examples.
+
+$\{2,5\}$ and $\{5,2\}$ are the same set,
+$\{2,5,2\}$ is not a set.
+
+
+
+
+
+
+
+
+  Power set
+  #
+
+
+Definition. The power set $\mathcal{P}(X)$ of a set $X$ is the set of all subsets of $X$.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/docs/background/sections/set_list_function/">
+  <meta property="og:site_name" content="OOFP 2025-26">
+  <meta property="og:title" content="Set, list, tuple">
+  <meta property="og:description" content="Set, list, tuple # Set # A set can be (informally) viewed as a collection of elements with no duplicate and in no specific order.
+Examples.
+$\{2,5\}$ and $\{5,2\}$ are the same set, $\{2,5,2\}$ is not a set. Power set # Definition. The power set $\mathcal{P}(X)$ of a set $X$ is the set of all subsets of $X$.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+<title>Set, list, tuple | OOFP 2025-26</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1313/docs/background/sections/set_list_function/">
+<link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.50d7d2ab6ab4a261677c2d48901e3b6a7482038645468dbcbb77b9ba5c861ee4.js" integrity="sha256-UNfSq2q0omFnfC1IkB47anSCA4ZFRo28u3e5ulyGHuQ=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css"
+  integrity="sha384-vKruj+a13U8yHIkAyGgK1J3ArTLzrFGBbBc0tDp4ad/EyewESeXE/Iv67Aj8gKZ0"
+  crossorigin="anonymous"
+/>
+
+
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js"
+  integrity="sha384-PwRUT/YqbnEjkZO0zZxNqcxACrXe+j766U2amXcgMg5457rve2Y7I6ZJSm2A0mS4"
+  crossorigin="anonymous"
+></script>
+
+
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js"
+  integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+  crossorigin="anonymous"
+  onload="renderMathInElement(document.body);"
+></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    renderMathInElement(document.body, {
+      delimiters: [
+        { left: "$$", right: "$$", display: true },
+        { left: "$", right: "$", display: false },
+      ],
+    });
+  });
+</script>
+
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>OOFP 2025-26</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-8b45d304a159d86710e1579c97aa5b43" class="toggle"  />
+    <label for="section-8b45d304a159d86710e1579c97aa5b43" class="flex justify-between">
+      <a href="/docs/intro/" class="">This course</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/schedule/" class="">Schedule</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/evaluation/" class="">Evaluation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/content/" class="">Content</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/office_hours/" class="">Office hours</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/resources/" class="">Additional resources</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/paradigms/" class="">Programming paradigms</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/quiz/" class="">Quiz</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b9ada72a86a45c984f052f02204ab84a" class="toggle"  />
+    <label for="section-b9ada72a86a45c984f052f02204ab84a" class="flex justify-between">
+      <a href="/docs/haskell_101/" class="">Haskell</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/haskell_101/sections/tokens/" class="">Tokens</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/haskell_101/sections/type/" class="">Base types</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/haskell_101/sections/tuple/" class="">Tuple</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/haskell_101/sections/function/" class="">Function</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/haskell_101/sections/program/" class="">Program</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/haskell_101/sections/condition/" class="">Conditions</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/haskell_101/sections/list/" class="">List</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d689bb2436bd0f51b31e8f95cf070b59" class="toggle" checked />
+    <label for="section-d689bb2436bd0f51b31e8f95cf070b59" class="flex justify-between">
+      <a href="/docs/background/" class="">Background</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/background/sections/set_list_function/" class="active">Set, list, tuple</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/background/sections/function/" class="">Function</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Set, list, tuple</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#set">Set</a>
+      <ul>
+        <li><a href="#power-set">Power set</a></li>
+        <li><a href="#product">Product of sets</a></li>
+        <li><a href="#set-comprehensions">Set comprehensions</a></li>
+      </ul>
+    </li>
+    <li><a href="#list">List, Tuple</a>
+      <ul>
+        <li><a href="#list-1">List</a></li>
+      </ul>
+    </li>
+    <li><a href="#tuple">Tuple</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="set-list-tuple">
+  Set, list, tuple
+  <a class="anchor" href="#set-list-tuple">#</a>
+</h1>
+<h2 id="set">
+  Set
+  <a class="anchor" href="#set">#</a>
+</h2>
+<blockquote class="book-hint warning">
+<p>A <strong>set</strong> can be (informally) viewed as a collection of elements with <em>no duplicate</em> and in <em>no specific order</em>.</p>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Examples.</em></strong></p>
+<ul>
+<li>$\{2,5\}$ and $\{5,2\}$ are the same set,</li>
+<li>$\{2,5,2\}$ is not a set.</li>
+</ul>
+</blockquote>
+<!-- 
+<link rel="stylesheet" href="/katex/katex.min.css" />
+<script defer src="/katex/katex.min.js"></script>
+<script defer src="/katex/auto-render.min.js" onload="renderMathInElement(document.body);"></script><span>
+  \(\qquad \qquad \{1,5\}\)
+</span>
+ -->
+<!---->
+<!-- and -->
+<!---->
+<!-- <span>
+  \( \qquad \qquad \{5,1\} \)
+</span>
+ -->
+<h3 id="power-set">
+  Power set
+  <a class="anchor" href="#power-set">#</a>
+</h3>
+<blockquote class="book-hint warning">
+<p><strong><em>Definition.</em></strong> The <strong>power set</strong> $\mathcal{P}(X)$ of a set $X$ is the set of all subsets of $X$.</p>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong></p>
+<p>$\qquad\qquad
+\mathcal{P}(\{a,b,c\}) = \Big\{
+\{\},
+\{a\}, \{b\}, \{c\},
+\{a,b\}, \{a,c\}, \{b,c\},
+S \Big\}
+$</p>
+</blockquote>
+<p>If $X$ is finite with size $n$, then $\mathcal{P}(X)$ has size $2^n$.</p>
+<blockquote class="book-hint info">
+<p><strong><em>Notation.</em></strong> $2^X$ is an alternative notation for $\mathcal{P}(X)$.</p>
+</blockquote>
+<h3 id="product">
+  Product of sets
+  <a class="anchor" href="#product">#</a>
+</h3>
+<blockquote class="book-hint warning">
+<p><strong><em>Definition.</em></strong> The <strong>product</strong> $X_1 \times X_2$ of two sets $X_1$ and $X_2$ is the set of all <a href="#tuple">pairs</a> $(x_1, x_2)$ such that $x_1 \in x_1$ and $x_2 \in x_2$.</p>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong></p>
+<p>$\qquad\qquad
+\{a,b\} \times \{1,2,3\} = \{ \ (a,1), (a,2), (a,3), (b,1), (b,2), (b,3)\ \}
+$</p>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Notation.</em></strong>
+Similarly to $X_1 \times X_2$:</p>
+<ul>
+<li>$X_1 \times X_2 \times X_3$ denotes the set of all triples $(x_1, x_2, x_3)$ such that $x_1 \in X_1, x_2 \in X_2$ and $x_3 \in X_3$.</li>
+<li>$X_1 \times .. \times X_k$ denotes the set of all tuples $(x_1, ..,  x_k)$ such that $x_1 \in X_1, .., x_k \in X_k$.</li>
+</ul>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Notation.</em></strong></p>
+<ul>
+<li>$X^2$ is sometimes used for $X \times X$,</li>
+<li>$X^3$ is sometimes used for $X \times X \times X$,</li>
+<li>etc.</li>
+</ul>
+</blockquote>
+<h3 id="set-comprehensions">
+  Set comprehensions
+  <a class="anchor" href="#set-comprehensions">#</a>
+</h3>
+<h2 id="list">
+  List, Tuple
+  <a class="anchor" href="#list">#</a>
+</h2>
+<h3 id="list-1">
+  List
+  <a class="anchor" href="#list-1">#</a>
+</h3>
+<blockquote class="book-hint warning">
+<p><strong><em>Definition.</em></strong> A <strong>list</strong> is a (possibly infinite) sequence.</p>
+</blockquote>
+<p>As opposed to a set, a list may contain <em>duplicates</em>, and is <em>ordered</em>.</p>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong>
+The following three lists are different:</p>
+<ul>
+<li>$1,1,4$</li>
+<li>$1,4$</li>
+<li>$1,4,1$</li>
+</ul>
+</blockquote>
+<blockquote class="book-hint warning">
+<p><strong><em>Terminology.</em></strong> In programming languages, the term &ldquo;list&rdquo; is often reserved to the ones whose elements have the same <em>type</em>.
+For instance, a list of integers or a list of strings.</p>
+</blockquote>
+<h2 id="tuple">
+  Tuple
+  <a class="anchor" href="#tuple">#</a>
+</h2>
+<blockquote class="book-hint warning">
+<p><strong><em>Definition.</em></strong> A <strong>tuple</strong> is a finite list.</p>
+</blockquote>
+<p>A tuple is often written in parentheses.</p>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong></p>
+<ul>
+<li>
+<p>$\ ()$ is the 0-tuple or <strong>empty tuple</strong>,</p>
+</li>
+<li>
+<p>$\ (5)$ is a 1-tuple,</p>
+</li>
+<li>
+<p>$\ (5,3)$ is a 2-tuple or <strong>pair</strong>,</p>
+</li>
+<li>
+<p>$\ (\mathit{&ldquo;banana&rdquo;},5)$ is another pair,</p>
+</li>
+<li>
+<p>$\ (\mathit{&ldquo;tomato&rdquo;},5,\mathit{&ldquo;tomato&rdquo;})$ is a 3-tuple or <strong>triple</strong>, etc.</p>
+</li>
+</ul>
+</blockquote>
+<p>An $n$-tuple can also be viewed as an element of a <a href="#product">product</a> of $n$ sets.</p>
+<blockquote class="book-hint info">
+<p><strong><em>Examples.</em></strong></p>
+<ul>
+<li>$ (5,3) \in \mathbb{N}\times \mathbb{N}$</li>
+<li>$ (5,3) \in \mathbb{Z}\times \mathbb{N}$</li>
+<li>$ (5,\sqrt{3}) \in \mathbb{N}\times \mathbb{R}$</li>
+<li>$ (5,\sqrt{3}) \not\in \mathbb{N}\times \mathbb{N}$</li>
+<li>$ (\mathit{&ldquo;tomato&rdquo;},5,\mathit{&ldquo;tomato&rdquo;}) \in \mathsf{String} \times \mathbb{N} \times \mathsf{String} \\$</li>
+</ul>
+</blockquote>
+<div class="book-tabs">
+<input type="radio" class="toggle" name="tabs-exercise_sets" id="tabs-exercise_sets-0" checked="checked" />
+<label for="tabs-exercise_sets-0">Exercise</label>
+<div class="book-tabs-content markdown-inner"><p>Which of these are sets?</p>
+<table>
+  <thead>
+      <tr>
+          <th>expression</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>$\{a, b\}$</td>
+      </tr>
+      <tr>
+          <td>$\{a, b, a\}$</td>
+      </tr>
+      <tr>
+          <td>$\{\}$</td>
+      </tr>
+      <tr>
+          <td>$\{\{\}\}$</td>
+      </tr>
+      <tr>
+          <td>$\{\{\},\{a\}\}$</td>
+      </tr>
+      <tr>
+          <td>$\{\{a\},\{a\}\}$</td>
+      </tr>
+      <tr>
+          <td>$\{\{a\},\{a,b\}\}$</td>
+      </tr>
+      <tr>
+          <td>$\{\{a,b\},\{b,a\}\}$</td>
+      </tr>
+      <tr>
+          <td>$(\{a,b\})$</td>
+      </tr>
+      <tr>
+          <td>$\{(a,b)\}$</td>
+      </tr>
+      <tr>
+          <td>$\{(a, b), (a, b)\}$</td>
+      </tr>
+      <tr>
+          <td>$\{(a, b), (b, a)\}$</td>
+      </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#set">Set</a>
+      <ul>
+        <li><a href="#power-set">Power set</a></li>
+        <li><a href="#product">Product of sets</a></li>
+        <li><a href="#set-comprehensions">Set comprehensions</a></li>
+      </ul>
+    </li>
+    <li><a href="#list">List, Tuple</a>
+      <ul>
+        <li><a href="#list-1">List</a></li>
+      </ul>
+    </li>
+    <li><a href="#tuple">Tuple</a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

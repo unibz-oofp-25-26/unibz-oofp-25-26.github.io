@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  Function
+  #
+
+
+A function $f\colon X \to Y$ maps each element $x$ of its domain $X$ to an element $f(x)$ of its codomain $Y$.
+
+
+Terminology.
+A function is also called a map.
+
+
+Examples.
+
+the function $f\colon \mathbb{Z} \to \mathbb{N}$ defined by
+
+$\qquad f(x) = x^2$
+maps each integer to its squared value.
+
+the function $g\colon \mathbb{N} \to \mathcal{P}(\mathbb{N})$ defined by
+
+$\qquad g(x) = \{y \mid y \in \mathbb{N},\ y &lt; x\}$">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://unibz-oofp-25-26.github.io/docs/background/sections/function/">
+  <meta property="og:site_name" content="OOFP 2025-26">
+  <meta property="og:title" content="Function">
+  <meta property="og:description" content="Function # A function $f\colon X \to Y$ maps each element $x$ of its domain $X$ to an element $f(x)$ of its codomain $Y$.
+Terminology. A function is also called a map.
+Examples.
+the function $f\colon \mathbb{Z} \to \mathbb{N}$ defined by $\qquad f(x) = x^2$
+maps each integer to its squared value.
+the function $g\colon \mathbb{N} \to \mathcal{P}(\mathbb{N})$ defined by $\qquad g(x) = \{y \mid y \in \mathbb{N},\ y &lt; x\}$">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+<title>Function | OOFP 2025-26</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/background/sections/function/">
+<link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.b72b48ae349eef97740c5bce497346cef12044143615bb618d4568f5461bb401.js" integrity="sha256-tytIrjSe75d0DFvOSXNGzvEgRBQ2FbthjUVo9UYbtAE=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css"
+  integrity="sha384-vKruj+a13U8yHIkAyGgK1J3ArTLzrFGBbBc0tDp4ad/EyewESeXE/Iv67Aj8gKZ0"
+  crossorigin="anonymous"
+/>
+
+
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js"
+  integrity="sha384-PwRUT/YqbnEjkZO0zZxNqcxACrXe+j766U2amXcgMg5457rve2Y7I6ZJSm2A0mS4"
+  crossorigin="anonymous"
+></script>
+
+
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js"
+  integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+  crossorigin="anonymous"
+  onload="renderMathInElement(document.body);"
+></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    renderMathInElement(document.body, {
+      delimiters: [
+        { left: "$$", right: "$$", display: true },
+        { left: "$", right: "$", display: false },
+      ],
+    });
+  });
+</script>
+
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>OOFP 2025-26</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-8b45d304a159d86710e1579c97aa5b43" class="toggle"  />
+    <label for="section-8b45d304a159d86710e1579c97aa5b43" class="flex justify-between">
+      <a href="/docs/intro/" class="">This course</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/organization/" class="">Organization</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/material/" class="">Material</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/reading_path/" class="">Reading path</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/evaluation/" class="">Evaluation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/prerequisites/" class="">Prerequisites</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/office_hours/" class="">Office hours</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/content/" class="">Content</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/resources/" class="">Additional resources</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/software/" class="">Software</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b17bf4b701f350b4430cc5371ccad607" class="toggle"  />
+    <label for="section-b17bf4b701f350b4430cc5371ccad607" class="flex justify-between">
+      <a href="/docs/paradigm/" class="">Paradigms and languages</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/paradigm/sections/paradigm/" class="">Paradigm</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/paradigm/sections/error/" class="">Compile time vs runtime error</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/paradigm/sections/type/" class="">Typing</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/paradigm/sections/pure/" class="">Pure function</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d689bb2436bd0f51b31e8f95cf070b59" class="toggle" checked />
+    <label for="section-d689bb2436bd0f51b31e8f95cf070b59" class="flex justify-between">
+      <a href="/docs/background/" class="">Background</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/background/sections/set_list/" class="">Set, list, tuple</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/background/sections/function/" class="active">Function</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Function</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#injection-bijection-surjection">Injection, bijection, surjection</a></li>
+    <li><a href="#anonymous-function">Anonymous function</a></li>
+    <li><a href="#higher-order-function">Higher-order function</a></li>
+    <li><a href="#currying">Currying</a></li>
+    <li><a href="#composition">Composition</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="function">
+  Function
+  <a class="anchor" href="#function">#</a>
+</h1>
+<blockquote class="book-hint warning">
+<p>A <strong>function</strong> $f\colon X \to Y$ maps each element $x$ of its <strong>domain</strong> $X$ to an element $f(x)$ of its <strong>codomain</strong> $Y$.</p>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Terminology.</em></strong>
+A function is also called a <strong>map</strong>.</p>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Examples.</em></strong></p>
+<ul>
+<li>the function $f\colon \mathbb{Z} \to \mathbb{N}$ defined by</li>
+</ul>
+<p>$\qquad f(x) = x^2$</p>
+<p>maps each integer to its squared value.</p>
+<ul>
+<li>the function $g\colon \mathbb{N} \to \mathcal{P}(\mathbb{N})$ defined by</li>
+</ul>
+<p>$\qquad g(x) = \{y \mid y \in \mathbb{N},\ y &lt; x\}$</p>
+<p>maps each natural number to the set of natural numbers that precede it.</p>
+</blockquote>
+<!-- <div class="book-tabs">
+ -->
+<!-- 
+<input type="radio" class="toggle" name="tabs-exercise_number_functions" id="tabs-exercise_number_functions-0" checked="checked" />
+<label for="tabs-exercise_number_functions-0">Exercise</label>
+<div class="book-tabs-content markdown-inner"><p>&ndash;&gt;</p>
+<!-- If $X$ and $Y$ are two finite sets with size -->
+<!-- $\lvert X \rvert$ and -->
+<!-- $\lvert Y \rvert$ respectively, -->
+<!-- then how many functions are there from $X$ to $Y$? -->
+<!---->
+<!-- </div>
+ -->
+<!---->
+<!-- 
+<input type="radio" class="toggle" name="tabs-exercise_number_functions" id="tabs-exercise_number_functions-1"  />
+<label for="tabs-exercise_number_functions-1">Solution</label>
+<div class="book-tabs-content markdown-inner"><p>&ndash;&gt;</p>
+<!---->
+<!-- $\lvert Y \rvert^{\lvert X \rvert}$ -->
+<!---->
+<!-- </div>
+ -->
+<!---->
+<!-- 
+</div>
+ -->
+<!-- <blockquote class="book-hint info">
+   -->
+<!-- **_Notation._** $Y^X$ is sometimes used to denote the set of all functions from $X$ to $Y$. -->
+<!-- So the following are equivalent: -->
+<!---->
+<!-- - $f$ is a function from $X$ to $Y$ -->
+<!-- - $f$ has type $X \to Y$ -->
+<!-- - $f\colon X \to Y$ -->
+<!-- - $f \in Y^X$ -->
+<!---->
+<!-- 
+</blockquote>
+ -->
+<!-- A function $f\colon X \to Y$ can also be viewed as a [set](#set) of "key-value" pairs, namely the set of all pairs $(x, f(x))$ such that $x \in X$. -->
+<!---->
+<!-- If $f$ has _finite_ domain, then it can be (concretely) represented as this set of pairs. -->
+<!-- For instance, the function -->
+<!---->
+<!-- 
+<link rel="stylesheet" href="/katex/katex.min.css" />
+<script defer src="/katex/katex.min.js"></script>
+<script defer src="/katex/auto-render.min.js" onload="renderMathInElement(document.body);"></script><span>
+  \( \qquad \qquad f\colon \{a,b,c\} \to \mathbb{N} \)
+</span>
+ -->
+<!---->
+<!-- defined by -->
+<!---->
+<!-- <span>
+  \( \qquad \qquad f(a) = 1,\ f(b) = 1\)
+</span>
+and<span>
+  \(f(c) = 2\)
+</span>
+ -->
+<!---->
+<!-- can be represented as the set: -->
+<!---->
+<!-- <span>
+  \( -->
+<!-- \qquad \qquad \{\ (a, 1),\ (b, 1),\ (c,2)\ \} -->
+<!-- \)
+</span>
+ -->
+<!---->
+<!-- We may also use the symbol $\mapsto$ to represent these pairs. -->
+<!-- For instance, we may represent the above function as -->
+<!---->
+<!-- <span>
+  \( -->
+<!-- \qquad \qquad \{\ a \mapsto 1,\ b \mapsto 1,\ c \mapsto 2\ \} -->
+<!-- \)
+</span>
+ -->
+<h2 id="injection-bijection-surjection">
+  Injection, bijection, surjection
+  <a class="anchor" href="#injection-bijection-surjection">#</a>
+</h2>
+<blockquote class="book-hint warning">
+<p><strong><em>Definition.</em></strong> A function $f\colon X \to Y$ is:</p>
+<ul>
+<li><strong>injective</strong> (or an <strong>injection</strong>) is no two elements in its domain have the same image, i.e. if for all $ x_1, x_2 \in X$,</li>
+</ul>
+<p>$\qquad \qquad x_1 \neq x_2$ implies $f(x_1) \neq f(x_2)$</p>
+<ul>
+<li><strong>surjective</strong> (or a <strong>surjection</strong>) if every element in its codomain has a preimage, i.e. if</li>
+</ul>
+<p>$\qquad \qquad$ for each $y \in Y$, there is a $x \in X$ such that $y = f(x)$.</p>
+<ul>
+<li><strong>bijective</strong> (or a <strong>bijection</strong>) if it is injective and surjective.</li>
+</ul>
+</blockquote>
+<h2 id="anonymous-function">
+  Anonymous function
+  <a class="anchor" href="#anonymous-function">#</a>
+</h2>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong>
+Consider the function</p>
+<p>$$f\colon \mathbb{Z} \to \mathbb{N} \text{ defined by } f(x) = x^2$$</p>
+<p>This is (arguably) the same function as</p>
+<p>$$g\colon \mathbb{Z} \to \mathbb{N} \text{ defined by } g(x) = x^2$$</p>
+<p>So the name of these function ($f$ or $g$) is in a certain sense irrelevant.
+They can be both described as &ldquo;the function that maps an integer $x$ to $x^2$&rdquo;.</p>
+</blockquote>
+<blockquote class="book-hint warning">
+<p><strong><em>Notation (borrowed from <a href="">lambda calculus</a>).</em></strong></p>
+<p>Let $f(x) = D$ be a function definition (for instance, $D$ could be $x^2$).</p>
+<p>Then $\lambda x.D$ is an alternative notation for $f$.</p>
+<p>In other words, $f$ can be viewed as an alias for $\lambda x.D$.</p>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Example (continued).</em></strong></p>
+<p>$\lambda x.x^2 \colon \mathbb{Z} \to \mathbb{N}$ is the function that maps an integer $x$ to $x^2$.</p>
+<p>It is equivalent to the functions $f$ and $g$ above.</p>
+<p>For instance,</p>
+<p>$$(\lambda x.x^2)(3) = f(3) = g(3) = 9$$</p>
+</blockquote>
+<div class="book-tabs">
+<input type="radio" class="toggle" name="tabs-exercise_lambda" id="tabs-exercise_lambda-0" checked="checked" />
+<label for="tabs-exercise_lambda-0">Exercise</label>
+<div class="book-tabs-content markdown-inner"><p>Evaluate the following expressions:</p>
+<ul>
+<li>$(\lambda x.2x)(5)$</li>
+<li>$(\lambda x.3x)\big((\lambda y.y+2)(1)\big)$</li>
+</ul>
+</div>
+<input type="radio" class="toggle" name="tabs-exercise_lambda" id="tabs-exercise_lambda-1"  />
+<label for="tabs-exercise_lambda-1">Solution</label>
+<div class="book-tabs-content markdown-inner"><table>
+  <thead>
+      <tr>
+          <th>expression</th>
+          <th>value</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>$(\lambda x.2x)(5)$</td>
+          <td>10</td>
+      </tr>
+      <tr>
+          <td>$(\lambda x.3x)((\lambda y.y+2)(1))$</td>
+          <td>9</td>
+      </tr>
+  </tbody>
+</table>
+</div>
+</div>
+<blockquote class="book-hint warning">
+<p><strong><em>Terminology.</em></strong> An anonymous function is also called a <strong>lambda abstraction</strong>.</p>
+</blockquote>
+<h2 id="higher-order-function">
+  Higher-order function
+  <a class="anchor" href="#higher-order-function">#</a>
+</h2>
+<p>The domain of a function may consist of functions.</p>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong>
+We can define a function $\textit{isInjective}$ that maps a function $\mathbb{Z} \to \mathbb{N}$ to $1$ if it is injective, and to $0$ otherwise.</p>
+<p>For instance:</p>
+<ul>
+<li>$\textit{isInjective}(\lambda x.x+1) = 1$</li>
+<li>$\textit{isInjective}(\lambda x.x^2) = 0$</li>
+</ul>
+</blockquote>
+<p>The co-domain of a function may also consist of functions.</p>
+<blockquote class="book-hint info">
+<p><strong><em>Examples.</em></strong>
+Consider the function $f\colon \mathbb{N} \to (\mathbb{N} \to \mathbb{N})$ defined by</p>
+<p>$\qquad f(x) = \lambda y. x^y$</p>
+<p>Then:</p>
+<ul>
+<li>$f(2)$ is the function $\lambda y.2^y$, or equivalently $g(y) = 2^y$,</li>
+<li>$f(3)$ is the function $\lambda y.3^y$, or equivalently $h(y) = 3^y$,</li>
+<li>etc.</li>
+</ul>
+</blockquote>
+<div class="book-tabs">
+<input type="radio" class="toggle" name="tabs-exercise_higher_order" id="tabs-exercise_higher_order-0" checked="checked" />
+<label for="tabs-exercise_higher_order-0">Exercise</label>
+<div class="book-tabs-content markdown-inner"><p>Which of the following definitions are equivalent?</p>
+<ol>
+<li>$f = \lambda x.(\lambda y.x - y)$</li>
+<li>$f(x) = \lambda y.x - y$</li>
+<li>$f(z) = \lambda x.z - x$</li>
+<li>$f(x)(y) = x - y$</li>
+<li>$f(y)(x) = x - y$</li>
+</ol>
+</div>
+<input type="radio" class="toggle" name="tabs-exercise_higher_order" id="tabs-exercise_higher_order-1"  />
+<label for="tabs-exercise_higher_order-1">Solution</label>
+<div class="book-tabs-content markdown-inner"><p>$1,2,3$ and $4$.</p>
+</div>
+</div>
+<h2 id="currying">
+  Currying
+  <a class="anchor" href="#currying">#</a>
+</h2>
+<blockquote class="book-hint info">
+<p><strong><em>Intuition.</em></strong> Consider a function $f\colon X \times Y \to Z$.</p>
+<p>This function takes as argument a <em>pair</em> of elements.</p>
+<p>For instance, this function could be $f\colon \mathbb{N} \times  \mathbb{N} \to \mathbb{N}$, defined by</p>
+<p>$\qquad f(x,y) = x + y$</p>
+<p>If we know the values of $x$ and $y$, then we can evaluate $f(x,y)$.
+For instance, if $x$ is $2$ and $y$ is $3$, then</p>
+<p>$\qquad f(x,y) = 2 + 3 = 5$</p>
+<p>Now what if we only know the value of $x$?<br>
+In this case, we cannot evaluate $f(x,y)$.<br>
+Instead, the best approximation of $f(x,y)$ that we can produce is a function that already knows the value of $x$ and is only &ldquo;waiting&rdquo; for the value of $y$.</p>
+<p>In our example, this function is:</p>
+<p>$\qquad f_2(y) = 2 + y$</p>
+<p>More generally, if we only know the value $a$ of $x$, then the best approximation of $f(x,y)$ that we can produce is the function</p>
+<p>$\qquad f_a(y) = a + y$</p>
+<p>Now the function $\bar{f} \colon X \to (Y \to Z)$ defined by</p>
+<p>$\qquad \bar{f}(x) = f_x$</p>
+<p>is called $f$ <em>in curried form</em>.</p>
+<p>Intuitively, $\bar{f}$:</p>
+<ul>
+<li>takes a value for the first argument of $f$, and</li>
+<li>returns a function that expects a value for the second argument of $f$.</li>
+</ul>
+<p>So in our example, $f$ in curried form is</p>
+<p>$\qquad \bar{f} = \lambda x.(\lambda y.x + y)$</p>
+<p>or equivalently</p>
+<p>$\qquad \bar{f}(x) = \lambda y.x + y$</p>
+<p>or equivalently</p>
+<p>$\qquad \bar{f}(x)(y) = x + y$</p>
+</blockquote>
+<blockquote class="book-hint warning">
+<p><strong><em>Definition.</em></strong>
+If $f\colon X \times Y \to Z$ is a function, then $f$ <strong><em>in curried form</em></strong> is the function</p>
+<p>$\qquad \bar{f}\colon X \to (Y \to Z)$</p>
+<p>defined by</p>
+<p>$\qquad \bar{f} = \lambda x.(\lambda y. f(x,y))$</p>
+<p>or equivalently</p>
+<p>$\qquad \bar{f}(x) = \lambda y. f(x,y)$</p>
+<p>or equivalently</p>
+<p>$\qquad \bar{f}(x)(y) = f(x,y)$</p>
+</blockquote>
+<div class="book-tabs">
+<input type="radio" class="toggle" name="tabs-exercise_curried" id="tabs-exercise_curried-0" checked="checked" />
+<label for="tabs-exercise_curried-0">Exercise</label>
+<div class="book-tabs-content markdown-inner"><p>Write the following functions in curried form</p>
+<ul>
+<li>$f(x,y) = y^x$</li>
+<li>$f(h,x) = h(x)$</li>
+<li>$f(x,y) = \lambda z.x^y + z$</li>
+</ul>
+</div>
+<input type="radio" class="toggle" name="tabs-exercise_curried" id="tabs-exercise_curried-1"  />
+<label for="tabs-exercise_curried-1">Solution</label>
+<div class="book-tabs-content markdown-inner"><ul>
+<li>
+<p>$f(x,y) = y^x$ in curried form is the function $\bar{f}$ defined by</p>
+<p>$\qquad \bar{f}(x)(y) = y^x$</p>
+</li>
+<li>
+<p>$f(h,x) = h(x)$ in curried form is the function $\bar{f}$ defined by:</p>
+<p>$\qquad \bar{f}(h)(x) = h(x)$</p>
+</li>
+<li>
+<p>$f(x,y) = \lambda z.x^y + z$ in curried form is the function $\bar{f}$ defined by:</p>
+<p>$\qquad \bar{f}(x)(y) = \lambda z.x^y + z$</p>
+</li>
+</ul>
+</div>
+</div>
+<blockquote class="book-hint warning">
+<p><strong><em>Generalization.</em></strong>
+Currying is not limited to functions over pairs: this extends to functions over arbitrary <a href="">tuples</a>.
+Let us define it for triples (the case of quadruples, quintuples, etc. is analogous).</p>
+<p>If</p>
+<p>$\qquad f\colon W \times X \times Y \to Z$</p>
+<p>is a function, then $f$ in curried form is the function</p>
+<p>$\qquad \bar{f} \colon  W \to (X \to (Y \to Z))$</p>
+<p>defined by</p>
+<p>$\qquad \bar{f}(w)(x)(y) = f(w,x,y)$</p>
+<!-- where function application associates to the left, i.e. $\bar{f}(w)(x)(y)$ means $(\bar{f}(w)(x))(y)$. -->
+</blockquote>
+<h2 id="composition">
+  Composition
+  <a class="anchor" href="#composition">#</a>
+</h2>
+<blockquote class="book-hint warning">
+<p><strong><em>Definition.</em></strong> The <strong>composition</strong> of two functions</p>
+<p>$\qquad f\colon X \to Y\qquad$ and $\qquad g\colon Y \to Z$</p>
+<p>is the function</p>
+<p>$\qquad g \circ f\colon X \to Z$</p>
+<p>defined by</p>
+<p>$\qquad(g \circ f)(x) = g(f(x))$</p>
+</blockquote>
+<p>For instance,
+if</p>
+<p>$\qquad f(x) = x - 2$</p>
+<p>and</p>
+<p>$\qquad g(y) = 3y,$</p>
+<p>then</p>
+<p>$\qquad(g \circ f)(x) = 3(x - 2)$</p>
+<div class="book-tabs">
+<input type="radio" class="toggle" name="tabs-exercise_composition" id="tabs-exercise_composition-0" checked="checked" />
+<label for="tabs-exercise_composition-0">Exercise</label>
+<div class="book-tabs-content markdown-inner"><p>Evaluate the following expressions</p>
+<p>$\Big((\lambda x.3x) \circ(\lambda y.y+2)\Big)(1)$</p>
+<p>$\Big(\big((\lambda x.(\lambda y.y-x))(1)\big) \circ (\lambda z.2z) \Big) (3)$</p>
+</div>
+<input type="radio" class="toggle" name="tabs-exercise_composition" id="tabs-exercise_composition-1"  />
+<label for="tabs-exercise_composition-1">Solution</label>
+<div class="book-tabs-content markdown-inner"><table>
+  <thead>
+      <tr>
+          <th>expression</th>
+          <th>value</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>$\Big((\lambda x.3x) \circ(\lambda y.y+2)\Big)(1)$</td>
+          <td>9</td>
+      </tr>
+      <tr>
+          <td>$\Big(\big((\lambda x.(\lambda y.y-x))(1)\big) \circ (\lambda z.2z) \Big) (3)$</td>
+          <td>5</td>
+      </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#injection-bijection-surjection">Injection, bijection, surjection</a></li>
+    <li><a href="#anonymous-function">Anonymous function</a></li>
+    <li><a href="#higher-order-function">Higher-order function</a></li>
+    <li><a href="#currying">Currying</a></li>
+    <li><a href="#composition">Composition</a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

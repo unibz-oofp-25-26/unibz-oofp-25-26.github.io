@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  Pattern matching
+  #
+
+Pattern matching is a traditional feature of functional languages.
+It pairs well with sum types (which we will see later).
+Pattern matching is no longer exclusive to functional languages: several imperative languages now support it to some extent (natively or via libraries).
+This includes:
+
+C# (since 2020),
+Java (since 2021),
+PHP (since 2021),
+Python (since 2021)
+Rust (since its first release in 2015).
+
+
+  in Haskell
+  #
+
+A pattern is a syntactic expression that can match certain values.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://unibz-oofp-25-26.github.io/docs/control/sections/pattern/">
+  <meta property="og:site_name" content="OOFP 2025-26">
+  <meta property="og:title" content="Pattern matching">
+  <meta property="og:description" content="Pattern matching # Pattern matching is a traditional feature of functional languages. It pairs well with sum types (which we will see later).
+Pattern matching is no longer exclusive to functional languages: several imperative languages now support it to some extent (natively or via libraries). This includes:
+C# (since 2020), Java (since 2021), PHP (since 2021), Python (since 2021) Rust (since its first release in 2015). in Haskell # A pattern is a syntactic expression that can match certain values.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+<title>Pattern matching | OOFP 2025-26</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/control/sections/pattern/">
+<link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.b72b48ae349eef97740c5bce497346cef12044143615bb618d4568f5461bb401.js" integrity="sha256-tytIrjSe75d0DFvOSXNGzvEgRBQ2FbthjUVo9UYbtAE=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css"
+  integrity="sha384-vKruj+a13U8yHIkAyGgK1J3ArTLzrFGBbBc0tDp4ad/EyewESeXE/Iv67Aj8gKZ0"
+  crossorigin="anonymous"
+/>
+
+
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js"
+  integrity="sha384-PwRUT/YqbnEjkZO0zZxNqcxACrXe+j766U2amXcgMg5457rve2Y7I6ZJSm2A0mS4"
+  crossorigin="anonymous"
+></script>
+
+
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js"
+  integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+  crossorigin="anonymous"
+  onload="renderMathInElement(document.body);"
+></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    renderMathInElement(document.body, {
+      delimiters: [
+        { left: "$$", right: "$$", display: true },
+        { left: "$", right: "$", display: false },
+      ],
+    });
+  });
+</script>
+
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>OOFP 2025-26</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-8b45d304a159d86710e1579c97aa5b43" class="toggle"  />
+    <label for="section-8b45d304a159d86710e1579c97aa5b43" class="flex justify-between">
+      <a href="/docs/intro/" class="">This course</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/organization/" class="">Organization</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/material/" class="">Material</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/reading_path/" class="">Reading path</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/evaluation/" class="">Evaluation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/prerequisites/" class="">Prerequisites</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/office_hours/" class="">Office hours</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/content/" class="">Content</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/resources/" class="">Additional resources</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/software/" class="">Software</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b17bf4b701f350b4430cc5371ccad607" class="toggle"  />
+    <label for="section-b17bf4b701f350b4430cc5371ccad607" class="flex justify-between">
+      <a href="/docs/paradigm/" class="">Paradigms and languages</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/paradigm/sections/paradigm/" class="">Paradigm</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/paradigm/sections/error/" class="">Compile time vs runtime error</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/paradigm/sections/type/" class="">Typing</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/paradigm/sections/pure/" class="">Pure function</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d689bb2436bd0f51b31e8f95cf070b59" class="toggle"  />
+    <label for="section-d689bb2436bd0f51b31e8f95cf070b59" class="flex justify-between">
+      <a href="/docs/background/" class="">Background</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/background/sections/set_list/" class="">Set, list, tuple</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/background/sections/function/" class="">Function</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Pattern matching</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#in-haskell">in Haskell</a>
+      <ul>
+        <li><a href="#the-null-pattern">The null pattern</a></li>
+        <li><a href="#lambda-expression">Lambda expression</a></li>
+        <li><a href="#complex-patterns">Complex patterns</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="pattern-matching">
+  Pattern matching
+  <a class="anchor" href="#pattern-matching">#</a>
+</h1>
+<p>Pattern matching is a traditional feature of functional languages.
+It pairs well with <a href="">sum types</a> (which we will see later).</p>
+<p>Pattern matching is no longer exclusive to functional languages: several imperative languages now support it to some extent (natively or via libraries).
+This includes:</p>
+<ul>
+<li>C# (since 2020),</li>
+<li>Java (since 2021),</li>
+<li>PHP (since 2021),</li>
+<li>Python (since 2021)</li>
+<li>Rust (since its first release in 2015).</li>
+</ul>
+<h2 id="in-haskell">
+  in Haskell
+  <a class="anchor" href="#in-haskell">#</a>
+</h2>
+<p>A <strong>pattern</strong> is a syntactic expression that can match certain values.</p>
+<blockquote class="book-hint info">
+<p><strong><em>Examples.</em></strong>
+Here are some basic Haskell patterns:</p>
+<ul>
+<li>the pattern <code>2</code> matches the number <code>2</code>,</li>
+<li>the pattern <code>True</code> matches the Boolean value <code>True</code>,</li>
+<li>the pattern &ldquo;Unibz&rdquo; matches the string &ldquo;Unibz&rdquo;,</li>
+<li>a variable name (like <code>x</code>, <code>xs</code> or <code>maxValue</code>) matches anything.</li>
+</ul>
+</blockquote>
+<p>Patterns let us define a function on a case-by-case basis.</p>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong>
+The function below maps <code>0</code> to <code>0</code>, and every other integer to its successor.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">fancySucc</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Integer</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Integer</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- if the argument is 0, then map it to 0</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">fancySucc</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- otherwise map the argument x to x + 1</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">fancySucc</span> x <span style="color:#f92672">=</span> x <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
+</span></span></code></pre></div></blockquote>
+<blockquote class="book-hint warning">
+<p><strong><em>Terminology.</em></strong>
+The function above uses:</p>
+<ul>
+<li>the pattern <code>0</code> on the left-hand side of the first equation
+<code>fancySucc 0 = 0</code>, and</li>
+<li>the pattern <code>x</code> on the left-hand side of the second equation
+<code>fancySucc x = x + 1</code>.</li>
+</ul>
+</blockquote>
+<blockquote class="book-hint danger">
+<p><strong><em>Warning.</em></strong>
+The first pattern that matches a value takes precedence.
+So the <em>order</em> of equations matters.</p>
+</blockquote>
+<div class="book-tabs">
+<input type="radio" class="toggle" name="tabs-exercise_pattern_dummy" id="tabs-exercise_pattern_dummy-0" checked="checked" />
+<label for="tabs-exercise_pattern_dummy-0">Exercise</label>
+<div class="book-tabs-content markdown-inner"><p>What does the following function do?
+Can it be simplified?</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">dummySucc</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Integer</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Integer</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">dummySucc</span> x <span style="color:#f92672">=</span> x <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">dummySucc</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span></code></pre></div></div>
+<input type="radio" class="toggle" name="tabs-exercise_pattern_dummy" id="tabs-exercise_pattern_dummy-1"  />
+<label for="tabs-exercise_pattern_dummy-1">Solution</label>
+<div class="book-tabs-content markdown-inner"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">dummySucc</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Integer</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Integer</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">dummySucc</span> x <span style="color:#f92672">=</span> x <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">dummySucc</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>     <span style="color:#75715e">-- this equation cannot be reached</span>
+</span></span></code></pre></div><p>This function maps an integer to its successor.</p>
+<p>The second equation (<code>dummySucc 0 = 0</code>) cannot be reached, because the input <code>0</code> is already handled by the first pattern.</p>
+<p>So the function is equivalent to:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">succ</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Integer</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Integer</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">succ</span> x <span style="color:#f92672">=</span> x <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
+</span></span></code></pre></div></div>
+</div>
+<p>Patterns can be composed into <a href="">tuples</a></p>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong>
+The following function maps a pairs of Boolean values to their conjunction.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">and</span> <span style="color:#f92672">::</span> (<span style="color:#66d9ef">Bool</span>, <span style="color:#66d9ef">Bool</span>) <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- if both arguments are `True`</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">and</span> (<span style="color:#66d9ef">True</span>,<span style="color:#66d9ef">True</span>) <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- otherwise</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">and</span> (x,y) <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>
+</span></span></code></pre></div></blockquote>
+<blockquote class="book-hint danger">
+<p><strong><em>Reminder.</em></strong>
+Function that map pairs of values (like the one above) are unconventional in Haskell.
+Their <a href="">curried form</a> is usually preferred.</p>
+</blockquote>
+<div class="book-tabs">
+<input type="radio" class="toggle" name="tabs-exercise_curried_revision" id="tabs-exercise_curried_revision-0" checked="checked" />
+<label for="tabs-exercise_curried_revision-0">Exercise</label>
+<div class="book-tabs-content markdown-inner"><p>Write the function above in <a href="">curried form</a>, and then in (curried) <a href="">infix</a> form.</p>
+</div>
+<input type="radio" class="toggle" name="tabs-exercise_curried_revision" id="tabs-exercise_curried_revision-1"  />
+<label for="tabs-exercise_curried_revision-1">Possible solution</label>
+<div class="book-tabs-content markdown-inner"><p>Curried form:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">and</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Bool</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">and</span> <span style="color:#66d9ef">True</span> <span style="color:#66d9ef">True</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">and</span> x y <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>
+</span></span></code></pre></div><p>Infix form:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span>(and) <span style="color:#f92672">::</span> <span style="color:#66d9ef">Bool</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">True</span> and <span style="color:#66d9ef">True</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">x</span> and y <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>
+</span></span></code></pre></div></div>
+</div>
+<div class="book-tabs">
+<input type="radio" class="toggle" name="tabs-exercise_" id="tabs-exercise_-0" checked="checked" />
+<label for="tabs-exercise_-0">Exercise</label>
+<div class="book-tabs-content markdown-inner"><p>What does the following function do?</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span>(op) <span style="color:#f92672">::</span> <span style="color:#66d9ef">Bool</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">False</span> op x <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">True</span> op x <span style="color:#f92672">=</span> x
+</span></span></code></pre></div></div>
+<input type="radio" class="toggle" name="tabs-exercise_" id="tabs-exercise_-1"  />
+<label for="tabs-exercise_-1">Solution</label>
+<div class="book-tabs-content markdown-inner"><p>It is equivalent to the function <code>(and)</code> above.</p>
+</div>
+</div>
+<blockquote class="book-hint warning">
+<p><strong><em>Syntax.</em></strong>
+A same variable name cannot appear twice on the left-hand side of an equation.</p>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong>
+The following is <em>not valid syntactically</em> in Haskell</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span>(invalidXNor) <span style="color:#f92672">::</span> <span style="color:#66d9ef">Bool</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">x</span> invalidXNor x <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>    <span style="color:#75715e">-- invalid equation!!!</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">x</span> invalidXNor y <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>
+</span></span></code></pre></div></blockquote>
+<h3 id="the-null-pattern">
+  The null pattern
+  <a class="anchor" href="#the-null-pattern">#</a>
+</h3>
+<p>The null pattern <code>_</code> matches any value (like a variable name), but the value that it matches cannot be reused.
+It can be convenient to indicate that the value is irrelevant.</p>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong>
+Let us reproduce the function <code>(op)</code> introduced above:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span>(op) <span style="color:#f92672">::</span> <span style="color:#66d9ef">Bool</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">False</span> op x <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">True</span> op x <span style="color:#f92672">=</span> x
+</span></span></code></pre></div><p>This function can equivalently be written:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span>(op) <span style="color:#f92672">::</span> <span style="color:#66d9ef">Bool</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- the value of the &#34;second argument&#34; is irrelevant</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">False</span> op <span style="color:#66d9ef">_</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- if this equation is reached, then the value of the &#34;first argument&#34; must be `True`</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">_</span> op x <span style="color:#f92672">=</span> x
+</span></span></code></pre></div></blockquote>
+<p>Contrary to a variable, the null pattern can be used several times on the left-hand side of an equation.
+In such an equation, the values matched by <code>_</code> can be different.</p>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong>
+Let us reproduce the function <code>(and)</code> introduced above:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span>(and) <span style="color:#f92672">::</span> <span style="color:#66d9ef">Bool</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">True</span> and <span style="color:#66d9ef">True</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">x</span> and y <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>
+</span></span></code></pre></div><p>This function can equivalently be written:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span>(and) <span style="color:#f92672">::</span> <span style="color:#66d9ef">Bool</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">True</span> and <span style="color:#66d9ef">True</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- if this equation is reached, then the values of the arguments is irrelevant</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">_</span> and <span style="color:#66d9ef">_</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>
+</span></span></code></pre></div></blockquote>
+<h3 id="lambda-expression">
+  Lambda expression
+  <a class="anchor" href="#lambda-expression">#</a>
+</h3>
+<blockquote class="book-hint warning">
+<p><strong><em>Syntax.</em></strong></p>
+</blockquote>
+<p>A pattern can also be used in place of a variable in a <a href="">lambda expression</a>.</p>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong>
+The two following functions are equivalent:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">aFunction</span> <span style="color:#f92672">::</span> (<span style="color:#66d9ef">Int</span>,<span style="color:#66d9ef">Int</span>) <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Int</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">aFunction</span> (x,y) <span style="color:#f92672">=</span>  x <span style="color:#f92672">+</span> y
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">theSameFunction</span> <span style="color:#f92672">::</span> (<span style="color:#66d9ef">Int</span>,<span style="color:#66d9ef">Int</span>) <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Int</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">theSameFunction</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">\</span>(x,y) <span style="color:#f92672">-&gt;</span> x <span style="color:#f92672">+</span> y
+</span></span></code></pre></div></blockquote>
+<blockquote class="book-hint danger">
+<p><strong><em>Reminder.</em></strong>
+The function above is unconventional in Haskell.
+Its <a href="">curried form</a> is usually preferred:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">aFunction</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Int</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Int</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Int</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">aFunction</span> x y <span style="color:#f92672">=</span>  x <span style="color:#f92672">+</span> y
+</span></span></code></pre></div></blockquote>
+<h3 id="complex-patterns">
+  Complex patterns
+  <a class="anchor" href="#complex-patterns">#</a>
+</h3>
+<p>We will see later on that pattern matching extends to <a href="">lists</a> and <a href="">composite types</a>.</p>
+<pre tabindex="0"><code></code></pre></article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#in-haskell">in Haskell</a>
+      <ul>
+        <li><a href="#the-null-pattern">The null pattern</a></li>
+        <li><a href="#lambda-expression">Lambda expression</a></li>
+        <li><a href="#complex-patterns">Complex patterns</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

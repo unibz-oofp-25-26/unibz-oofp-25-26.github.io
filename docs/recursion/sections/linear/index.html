@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  Linear recursion
+  #
+
+In this section, we will mostly use Haskell code as illustrations.
+
+  Execution
+  #
+
+Example.
+The following function sums the elements of a list of integers
+sum :: [Int] -&gt; Int
+sum [] = 0
+sum (x : xs) = x &#43; sum xs
+Let us clarify how an expression like sum [1,2,3] is evaluated.
+Fist, recall that [1,2,3] is syntactic sugar for 1 : (2 : (3 : [])).
+Therefore when the pattern (x : xs) (line XXX) is matched against [1,2,3]:">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://unibz-oofp-25-26.github.io/docs/recursion/sections/linear/">
+  <meta property="og:site_name" content="OOFP 2025-26">
+  <meta property="og:title" content="Linear recursion">
+  <meta property="og:description" content="Linear recursion # In this section, we will mostly use Haskell code as illustrations.
+Execution # Example.
+The following function sums the elements of a list of integers
+sum :: [Int] -&gt; Int sum [] = 0 sum (x : xs) = x &#43; sum xs Let us clarify how an expression like sum [1,2,3] is evaluated.
+Fist, recall that [1,2,3] is syntactic sugar for 1 : (2 : (3 : [])).
+Therefore when the pattern (x : xs) (line XXX) is matched against [1,2,3]:">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+<title>Linear recursion | OOFP 2025-26</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/recursion/sections/linear/">
+<link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.b72b48ae349eef97740c5bce497346cef12044143615bb618d4568f5461bb401.js" integrity="sha256-tytIrjSe75d0DFvOSXNGzvEgRBQ2FbthjUVo9UYbtAE=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css"
+  integrity="sha384-vKruj+a13U8yHIkAyGgK1J3ArTLzrFGBbBc0tDp4ad/EyewESeXE/Iv67Aj8gKZ0"
+  crossorigin="anonymous"
+/>
+
+
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js"
+  integrity="sha384-PwRUT/YqbnEjkZO0zZxNqcxACrXe+j766U2amXcgMg5457rve2Y7I6ZJSm2A0mS4"
+  crossorigin="anonymous"
+></script>
+
+
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js"
+  integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+  crossorigin="anonymous"
+  onload="renderMathInElement(document.body);"
+></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    renderMathInElement(document.body, {
+      delimiters: [
+        { left: "$$", right: "$$", display: true },
+        { left: "$", right: "$", display: false },
+      ],
+    });
+  });
+</script>
+
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>OOFP 2025-26</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-8b45d304a159d86710e1579c97aa5b43" class="toggle"  />
+    <label for="section-8b45d304a159d86710e1579c97aa5b43" class="flex justify-between">
+      <a href="/docs/intro/" class="">This course</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/organization/" class="">Organization</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/material/" class="">Material</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/reading_path/" class="">Reading path</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/evaluation/" class="">Evaluation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/prerequisites/" class="">Prerequisites</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/office_hours/" class="">Office hours</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/content/" class="">Content</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/resources/" class="">Additional resources</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/software/" class="">Software</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b17bf4b701f350b4430cc5371ccad607" class="toggle"  />
+    <label for="section-b17bf4b701f350b4430cc5371ccad607" class="flex justify-between">
+      <a href="/docs/paradigm/" class="">Paradigms and languages</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/paradigm/sections/paradigm/" class="">Paradigm</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/paradigm/sections/error/" class="">Compile time vs runtime error</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/paradigm/sections/type/" class="">Typing</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/paradigm/sections/pure/" class="">Pure function</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d689bb2436bd0f51b31e8f95cf070b59" class="toggle"  />
+    <label for="section-d689bb2436bd0f51b31e8f95cf070b59" class="flex justify-between">
+      <a href="/docs/background/" class="">Background</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/background/sections/set_list/" class="">Set, list, tuple</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/background/sections/function/" class="">Function</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Linear recursion</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#execution">Execution</a></li>
+    <li><a href="#writing-a-recursive-function">Writing a recursive function</a></li>
+    <li><a href="#carrying-intermediate-values">Carrying intermediate values</a>
+      <ul>
+        <li><a href="#accumulators">Accumulators</a></li>
+        <li><a href="#multiple-return-values">multiple return values</a></li>
+      </ul>
+    </li>
+    <li><a href="#tail-recursion">Tail recursion</a></li>
+    <li><a href="#an-example-in-java">An example in Java</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="linear-recursion">
+  Linear recursion
+  <a class="anchor" href="#linear-recursion">#</a>
+</h1>
+<p>In this section, we will mostly use Haskell code as illustrations.</p>
+<h2 id="execution">
+  Execution
+  <a class="anchor" href="#execution">#</a>
+</h2>
+<p>Example.</p>
+<p>The following function sums the elements of a list of integers</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">sum</span> <span style="color:#f92672">::</span> [<span style="color:#66d9ef">Int</span>] <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Int</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">sum</span> <span style="color:#66d9ef">[]</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">sum</span> (x <span style="color:#66d9ef">:</span> xs) <span style="color:#f92672">=</span> x <span style="color:#f92672">+</span> sum xs
+</span></span></code></pre></div><p>Let us clarify <em>how</em> an expression like <code>sum [1,2,3]</code> is evaluated.</p>
+<p>Fist, <a href="">recall</a> that <code>[1,2,3]</code> is syntactic sugar for <code>1 : (2 : (3 : []))</code>.</p>
+<p>Therefore when the pattern <code>(x : xs)</code> (line XXX) is matched against <code>[1,2,3]</code>:</p>
+<ul>
+<li><code>x</code> matches <code>1</code>, and</li>
+<li><code>xs</code> matches <code>2 : (3 : [])</code> (or equivalently, <code>[2,3]</code>)</li>
+</ul>
+<p>So the evaluation of <code>sum [1,2,3]</code> requires evaluating <code>sum [2,3]</code>, recursively.</p>
+<p>Besides, the <code>+</code> operation is performed <em>after termination</em> of the recursive call.</p>
+<p>So the following <em>sequence</em> of events takes place:</p>
+<ol>
+<li>the evaluation of <code>sum [1,2,3]</code> starts</li>
+<li>$\quad$ the evaluation of <code>sum [2,3]</code> starts</li>
+<li>$\quad\quad$ the evaluation of <code>sum [3]</code> starts</li>
+<li>$\quad\quad\quad$ the evaluation of <code>sum []</code> starts</li>
+<li>$\quad\quad\quad$ the evaluation of <code>sum []</code> ends and returns <code>0</code></li>
+<li>$\quad\quad$ the evaluation of <code>sum [3]</code> ends and returns <code>3 + sum []</code> (i.e. <code>3</code>)</li>
+<li>$\quad$ the evaluation of <code>sum [2,3]</code> ends and returns <code>2 + sum [3]</code> (i.e. <code>5</code>)</li>
+<li>the evaluation of <code>sum [1,2,3]</code> end ands returns <code>1 + sum [2,3]</code> (i.e. <code>6</code>)</li>
+</ol>
+<p>After Step 4, the <a href="">call stack</a> is:</p>
+<pre tabindex="0"><code>sum[]
+sum[3]
+sum[2,3]
+sum[1,2,3]
+</code></pre><h2 id="writing-a-recursive-function">
+  Writing a recursive function
+  <a class="anchor" href="#writing-a-recursive-function">#</a>
+</h2>
+<p>Understanding the execution of a recursive program (as we did above) is mostly useful for <a href="">debugging</a>.</p>
+<p>In order to <em>write</em> a recursive program/function, one can very often use a simpler, high-level methodology:</p>
+<blockquote class="book-hint warning">
+<p><strong><em>Methodology.</em></strong>
+To solve a problem recursively:</p>
+<ul>
+<li><strong><em>(Base case).</em></strong> If the input $I$ is minimal (e.g. of size 0 or size 1), then solve the problem directly.</li>
+<li><strong><em>(Inductive case).</em></strong> Otherwise:
+<ol>
+<li>Decompose $I$ into one or several <em>smaller</em> input(s) $I_1$, .., $I_k$.</li>
+<li>Solve the problem for $I_1$, .., $I_k$ by performing recursive calls.</li>
+<li>Use the results(s) of the recursive calls to solve the problem for $I$.</li>
+</ol>
+</li>
+</ul>
+<p>In other words, in the inductive case, solve the problem for $I$ <em>under the assumption</em> that it can be solved for $I_1$, .., $I_k$.</p>
+</blockquote>
+<p>Example.
+Let us reproduce the function above.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">sum</span> <span style="color:#f92672">::</span> [<span style="color:#66d9ef">Int</span>] <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Int</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- base case (the input list has size 0)</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">sum</span> <span style="color:#66d9ef">[]</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- inductive case (the input list has size n + 1)</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">sum</span> (x <span style="color:#66d9ef">:</span> xs) <span style="color:#f92672">=</span> x <span style="color:#f92672">+</span> sum xs
+</span></span></code></pre></div><p>In this example, the input $I$ is a list.</p>
+<ul>
+<li>In the base case ($I$ is the empty list),
+we solve the problem directly by returning <code>0</code></li>
+<li>In the inductive case, $I$ is of the form $a \colon I&rsquo;$, where $a$ is an integer and $I&rsquo;$ is a list.
+In this case, the sub-list $I&rsquo;$ is our (unique) smaller input.
+We:
+<ul>
+<li>solve the problem for $I&rsquo;$ by calling the function <code>sum</code> recursively, and</li>
+<li>use the result to solve the problem for the full list $I$, assuming that the recursive call is correct.</li>
+</ul>
+</li>
+</ul>
+<p>Hint.
+For pure functions, we can always assume that a recursive call is correct, as long as its input is smaller than the current input $I$.</p>
+<p>Correctness of the whole algorithm holds by induction on the size of the input.</p>
+<p>Example.</p>
+<p>In the example above:</p>
+<ul>
+<li>If the input list has size $0$ (i.e. if it is empty), then the function is trivially correct.</li>
+<li>If the input list has size $1$, then the recursive call (Line XXX) is correct (since it takes as input a list of size $0$),
+so the function is correct,</li>
+<li>If the input list has size $2$, then the recursive call (Line XXX) is correct (since it takes as input a list of size $1$),
+so the function is correct,</li>
+<li>&hellip;</li>
+<li>If the input list has size $n+1$, then the recursive call (Line XXX) is correct (since it takes as input a list of size $n$),
+so the function is correct.</li>
+</ul>
+<p>Hint.
+When the input $I$ is a list, the <a href="">tail</a> of $I$ is often a good candidate for a recursive call.</p>
+<p>Exercise.
+implement in Haskell the function
+<code>length :: [a] -&gt; Int</code>
+that maps a list to its length.</p>
+<p>Exercise.
+Implement in Haskell the function <code>reverse :: [a] -&gt; [a]</code> that maps a list to the reversed list.
+For instance,
+<code>reverse [2,3,1,3]</code> evaluates to <code>[3,1,3,2]</code>.</p>
+<p>Exercise.</p>
+<p>Implement in Haskell the function <code>zip :: [a] -&gt; [b] -&gt; [(a,b)]</code></p>
+<p>Possible solution.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">zip</span> <span style="color:#f92672">::</span> [a] <span style="color:#f92672">-&gt;</span> [b] <span style="color:#f92672">-&gt;</span> [(a,b)]
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">zip</span> <span style="color:#66d9ef">_</span> <span style="color:#66d9ef">[]</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">[]</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">zip</span> <span style="color:#66d9ef">[]</span> <span style="color:#66d9ef">_</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">[]</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">zip</span> (x <span style="color:#66d9ef">:</span> xs) (y <span style="color:#66d9ef">:</span> ys) <span style="color:#f92672">=</span> (x,y) <span style="color:#66d9ef">:</span> zip xs ys
+</span></span></code></pre></div><p>Exercise.
+Implement in Haskell the function <code>endsWith :: a -&gt; [a] -&gt; Bool</code>
+where
+<code>endsWith x xs</code> is <code>True</code> iff <code>xs</code> ends with <code>x</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#75715e">-- empty list</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">endsWith</span> <span style="color:#66d9ef">_</span> <span style="color:#66d9ef">[]</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- list of size 1</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">endsWith</span> x [y] <span style="color:#f92672">=</span> x <span style="color:#f92672">==</span> y
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- list of size  &gt; 1</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">endsWith</span> x (<span style="color:#66d9ef">_</span> <span style="color:#66d9ef">:</span> xs) <span style="color:#f92672">=</span> endsWith x xs
+</span></span></code></pre></div><p>Exercise.</p>
+<p>Implement in Haskell the function
+<code>contains :: a -&gt;  [a] -&gt; Bool</code> where
+<code>contains x ys</code> is <code>True</code> iff <code>x</code> appears in <code>xs</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">contains</span> <span style="color:#66d9ef">_</span> <span style="color:#66d9ef">[]</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">contains</span> x (y <span style="color:#66d9ef">:</span> ys) <span style="color:#f92672">=</span> x <span style="color:#f92672">==</span> y <span style="color:#f92672">||</span> contains x ys
+</span></span><span style="display:flex;"><span>`
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">Exercise</span><span style="color:#f92672">.</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">Implement</span> <span style="color:#66d9ef">in</span> <span style="color:#66d9ef">Haskell</span> a _recursive version_ <span style="color:#66d9ef">of</span> the functions
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>`map <span style="color:#f92672">::</span> (a <span style="color:#f92672">-&gt;</span> b) <span style="color:#f92672">-&gt;</span> [a] <span style="color:#f92672">-&gt;</span> [b]`
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">and</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>`filter <span style="color:#f92672">::</span> (a <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span>) <span style="color:#f92672">-&gt;</span> [a] <span style="color:#f92672">-&gt;</span> [a]`
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">that</span> we have [seen earlier]()<span style="color:#f92672">.</span>
+</span></span><span style="display:flex;"><span>``
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">Exercise</span><span style="color:#f92672">.</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">Implement</span> <span style="color:#66d9ef">in</span> <span style="color:#66d9ef">Haskell</span> the functions
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>`any <span style="color:#f92672">::</span> (a <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span>) <span style="color:#f92672">-&gt;</span> [a] <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span>`
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">and</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>`all <span style="color:#f92672">::</span> (a <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span>) <span style="color:#f92672">-&gt;</span> [a] <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span>`
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">that</span> we have [seen earlier]()<span style="color:#f92672">.</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">Possible</span> solutions<span style="color:#f92672">.</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>```haskell
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">any</span> <span style="color:#f92672">::</span> (a <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span>) <span style="color:#f92672">-&gt;</span> [a] <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">any</span> <span style="color:#66d9ef">_</span> <span style="color:#66d9ef">[]</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">any</span> f (x <span style="color:#66d9ef">:</span> xs) <span style="color:#f92672">=</span> f x <span style="color:#f92672">||</span> any f xs
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">all</span> <span style="color:#f92672">::</span> (a <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span>) <span style="color:#f92672">-&gt;</span> [a] <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">all</span> <span style="color:#66d9ef">_</span> <span style="color:#66d9ef">[]</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">all</span> f (x <span style="color:#66d9ef">:</span> xs) <span style="color:#f92672">=</span> f x <span style="color:#f92672">&amp;&amp;</span> all f xs
+</span></span></code></pre></div><h2 id="carrying-intermediate-values">
+  Carrying intermediate values
+  <a class="anchor" href="#carrying-intermediate-values">#</a>
+</h2>
+<p>In both cases, we need an <em>auxiliary recursive method</em>.</p>
+<h3 id="accumulators">
+  Accumulators
+  <a class="anchor" href="#accumulators">#</a>
+</h3>
+<p>Example.</p>
+<p>Implement the function <code>firstPos :: a -&gt; [a] -&gt; Int</code> where
+<code>firstPos x xs</code> is:</p>
+<ul>
+<li><code>0</code> is <code>x</code> does not appear in <code>xs</code>, and</li>
+<li>the position of the first occurrence of <code>x</code> in <code>xs</code> otherwise (assuming that positions start at <code>1</code>)</li>
+</ul>
+<h3 id="multiple-return-values">
+  multiple return values
+  <a class="anchor" href="#multiple-return-values">#</a>
+</h3>
+<p>Exercise.</p>
+<blockquote>
+<p>[!TODO]
+Consider doing this exercise in Java instead</p>
+</blockquote>
+<p>Implement the function <code>posTailLength :: [Bool] -&gt; Int</code> that maps a list of Boolean values to the number of consecutive <code>True</code> values at the end of the list.</p>
+<p>Solution</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">posTailLength</span> <span style="color:#f92672">::</span> [<span style="color:#66d9ef">Bool</span>] <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Int</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">posTailLength</span> xs <span style="color:#f92672">=</span> first (posTailLengthTrec xs)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- the return type carries an extra value</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">posTailLengthRec</span> <span style="color:#f92672">::</span> [<span style="color:#66d9ef">Bool</span>] <span style="color:#f92672">-&gt;</span> (<span style="color:#66d9ef">Int</span>, <span style="color:#66d9ef">Bool</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">posTailLengthRec</span> <span style="color:#66d9ef">[]</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">posTailLengthRec</span> (<span style="color:#66d9ef">False</span> <span style="color:#66d9ef">:</span> xs) <span style="color:#f92672">=</span> (<span style="color:#66d9ef">False</span>, second (posTailLengthTRec xs))
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">posTailLengthRec</span> (<span style="color:#66d9ef">True</span> <span style="color:#66d9ef">:</span> xs)
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">|</span> (<span style="color:#66d9ef">True</span>, v)  <span style="color:#f92672">&lt;-</span> posTailLengthTrec xs <span style="color:#f92672">=</span> (<span style="color:#66d9ef">True</span>, v <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">|</span> (<span style="color:#66d9ef">False</span>, v) <span style="color:#f92672">&lt;-</span> posTailLengthTrec xs <span style="color:#f92672">=</span> (<span style="color:#66d9ef">False</span>, v)
+</span></span></code></pre></div><h2 id="tail-recursion">
+  Tail recursion
+  <a class="anchor" href="#tail-recursion">#</a>
+</h2>
+<h2 id="an-example-in-java">
+  An example in Java
+  <a class="anchor" href="#an-example-in-java">#</a>
+</h2>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#execution">Execution</a></li>
+    <li><a href="#writing-a-recursive-function">Writing a recursive function</a></li>
+    <li><a href="#carrying-intermediate-values">Carrying intermediate values</a>
+      <ul>
+        <li><a href="#accumulators">Accumulators</a></li>
+        <li><a href="#multiple-return-values">multiple return values</a></li>
+      </ul>
+    </li>
+    <li><a href="#tail-recursion">Tail recursion</a></li>
+    <li><a href="#an-example-in-java">An example in Java</a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

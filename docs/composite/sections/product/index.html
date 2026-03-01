@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  Product type
+  #
+
+
+A product type can be viewed as a simplistic class, and its instances as simplistic objects.
+
+  in Haskell
+  #
+
+
+Syntax.
+Like an enumerated type, a product type in Haskell can be declared with the keyword data, as follows
+data &lt;product type name&gt; = &lt;definition&gt;
+
+There are two alternative syntaxes for this &lt;definition&gt;:
+
+a tuple type, or
+a definition with a constructor.
+
+
+  Definition as a tuple type
+  #
+
+
+Example.
+The declaration below defines a product type Interval.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://unibz-oofp-25-26.github.io/docs/composite/sections/product/">
+  <meta property="og:site_name" content="OOFP 2025-26">
+  <meta property="og:title" content="Product type">
+  <meta property="og:description" content="Product type # A product type can be viewed as a simplistic class, and its instances as simplistic objects.
+in Haskell # Syntax. Like an enumerated type, a product type in Haskell can be declared with the keyword data, as follows
+data &lt;product type name&gt; = &lt;definition&gt; There are two alternative syntaxes for this &lt;definition&gt;:
+a tuple type, or a definition with a constructor. Definition as a tuple type # Example. The declaration below defines a product type Interval.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+<title>Product type | OOFP 2025-26</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/composite/sections/product/">
+<link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.b72b48ae349eef97740c5bce497346cef12044143615bb618d4568f5461bb401.js" integrity="sha256-tytIrjSe75d0DFvOSXNGzvEgRBQ2FbthjUVo9UYbtAE=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css"
+  integrity="sha384-vKruj+a13U8yHIkAyGgK1J3ArTLzrFGBbBc0tDp4ad/EyewESeXE/Iv67Aj8gKZ0"
+  crossorigin="anonymous"
+/>
+
+
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js"
+  integrity="sha384-PwRUT/YqbnEjkZO0zZxNqcxACrXe+j766U2amXcgMg5457rve2Y7I6ZJSm2A0mS4"
+  crossorigin="anonymous"
+></script>
+
+
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js"
+  integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+  crossorigin="anonymous"
+  onload="renderMathInElement(document.body);"
+></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    renderMathInElement(document.body, {
+      delimiters: [
+        { left: "$$", right: "$$", display: true },
+        { left: "$", right: "$", display: false },
+      ],
+    });
+  });
+</script>
+
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>OOFP 2025-26</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-8b45d304a159d86710e1579c97aa5b43" class="toggle"  />
+    <label for="section-8b45d304a159d86710e1579c97aa5b43" class="flex justify-between">
+      <a href="/docs/intro/" class="">This course</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/organization/" class="">Organization</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/material/" class="">Material</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/reading_path/" class="">Reading path</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/evaluation/" class="">Evaluation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/prerequisites/" class="">Prerequisites</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/office_hours/" class="">Office hours</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/content/" class="">Content</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/resources/" class="">Additional resources</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/software/" class="">Software</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b17bf4b701f350b4430cc5371ccad607" class="toggle"  />
+    <label for="section-b17bf4b701f350b4430cc5371ccad607" class="flex justify-between">
+      <a href="/docs/paradigm/" class="">Paradigms and languages</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/paradigm/sections/paradigm/" class="">Paradigm</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/paradigm/sections/error/" class="">Compile time vs runtime error</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/paradigm/sections/type/" class="">Typing</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/paradigm/sections/pure/" class="">Pure function</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d689bb2436bd0f51b31e8f95cf070b59" class="toggle"  />
+    <label for="section-d689bb2436bd0f51b31e8f95cf070b59" class="flex justify-between">
+      <a href="/docs/background/" class="">Background</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/background/sections/set_list/" class="">Set, list, tuple</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/background/sections/function/" class="">Function</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Product type</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#in-haskell">in Haskell</a>
+      <ul>
+        <li><a href="#definition-as-a-tuple-type">Definition as a tuple type</a></li>
+        <li><a href="#instances">Instances</a></li>
+        <li><a href="#definition-with-a-constructor">Definition with a constructor</a></li>
+        <li><a href="#instance">Instance</a></li>
+        <li><a href="#pattern-matching">Pattern matching</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="product-type">
+  Product type
+  <a class="anchor" href="#product-type">#</a>
+</h1>
+<!-- A product type describes values that consist of valuessimplistic -->
+<p>A product type can be viewed as a simplistic <a href="">class</a>, and its instances as simplistic <a href="">objects</a>.</p>
+<h2 id="in-haskell">
+  in Haskell
+  <a class="anchor" href="#in-haskell">#</a>
+</h2>
+<blockquote class="book-hint warning">
+<p><strong><em>Syntax.</em></strong>
+Like an <a href="">enumerated type</a>, a product type in Haskell can be declared with the keyword <code>data</code>, as follows</p>
+<pre tabindex="0"><code>data &lt;product type name&gt; = &lt;definition&gt;
+</code></pre></blockquote>
+<p>There are two alternative syntaxes for this <code>&lt;definition&gt;</code>:</p>
+<ul>
+<li>a <a href="">tuple type</a>, or</li>
+<li>a definition with a <a href="">constructor</a>.</li>
+</ul>
+<h3 id="definition-as-a-tuple-type">
+  Definition as a tuple type
+  <a class="anchor" href="#definition-as-a-tuple-type">#</a>
+</h3>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong>
+The declaration below defines a product type <code>Interval</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#75715e">-- a temporal interval, represented as two timestamps (start and end)</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">data</span> <span style="color:#66d9ef">Interval</span> <span style="color:#f92672">=</span> (<span style="color:#66d9ef">Int</span>, <span style="color:#66d9ef">Int</span>)
+</span></span></code></pre></div><p>In this definition, <code>(Int, Int)</code> is the type of pairs of integers.</p>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong>
+The expression below define a product type <code>Signal</code>.</p>
+<p>A <code>Signal</code> consists of:</p>
+<ul>
+<li>an <code>Interval</code>, and</li>
+<li>a value for the enumerated type <code>Light</code> seen <a href="">earlier</a>.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#75715e">-- a traffic signalling event, represented as a temporal interval and the light (Green, Yellow or Red) during that interval</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">data</span> <span style="color:#66d9ef">Signal</span> <span style="color:#f92672">=</span> (<span style="color:#66d9ef">Interval</span>, <span style="color:#66d9ef">Light</span>)
+</span></span></code></pre></div><p>In this definition, <code>(Interval, Light)</code> is the type of all pairs with:</p>
+<ul>
+<li>a first element of type <code>Interval</code>, and</li>
+<li>a second element of type <code>Light</code>.</li>
+</ul>
+</blockquote>
+<h3 id="instances">
+  Instances
+  <a class="anchor" href="#instances">#</a>
+</h3>
+<blockquote class="book-hint warning">
+<p><strong><em>Syntax (reminder).</em></strong>
+A tuple in Haskell is written in parentheses.</p>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Examples.</em></strong>
+Consider the two product types that we just defined:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#66d9ef">data</span> <span style="color:#66d9ef">Interval</span> <span style="color:#f92672">=</span> (<span style="color:#66d9ef">Int</span>, <span style="color:#66d9ef">Int</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">data</span> <span style="color:#66d9ef">Signal</span> <span style="color:#f92672">=</span> (<span style="color:#66d9ef">Interval</span>, <span style="color:#66d9ef">Light</span>)
+</span></span></code></pre></div><p>Then:</p>
+<ul>
+<li>the pair <code>(5,8)</code> has type <code>Interval</code>,</li>
+<li>the pair <code>((5,8), Red)</code> has type <code>Signal</code>.</li>
+</ul>
+</blockquote>
+<h3 id="definition-with-a-constructor">
+  Definition with a constructor
+  <a class="anchor" href="#definition-with-a-constructor">#</a>
+</h3>
+<p>Haskell provides another syntax to define a product type, by means of a <strong><em>constructor</em></strong>.
+As we will see later, when combined with <a href="">sum types</a>, this syntax allows:</p>
+<ul>
+<li>concise pattern matching, and</li>
+<li><a href="">recursive types</a>.</li>
+</ul>
+<p>So this is often the <em>preferred way</em> to define a product type.</p>
+<blockquote class="book-hint warning">
+<p><strong><em>Syntax.</em></strong>
+A product type with constructor can be declared as</p>
+<pre tabindex="0"><code>data &lt;product type name&gt; = &lt;constructor&gt; &lt;type name 1&gt; ... &lt;type name n&gt;
+</code></pre><p>where the constructor and each type name starts with a capital letter.</p>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Example (continued).</em></strong>
+The two types <a href="">above</a> can alternatively be declared:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#66d9ef">data</span> <span style="color:#66d9ef">Interval</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">IntervalC</span> <span style="color:#66d9ef">Int</span> <span style="color:#66d9ef">Int</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">data</span> <span style="color:#66d9ef">Signal</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">SignalC</span> <span style="color:#66d9ef">Interval</span> <span style="color:#66d9ef">Light</span>
+</span></span></code></pre></div><p>The constructors for these types are <code>IntervalC</code> and <code>SignalC</code></p>
+</blockquote>
+<blockquote class="book-hint warning">
+<p><strong><em>Syntax.</em></strong>
+The name of a constructor is arbitrary.</p>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong>
+the type <code>Interval</code> can equivalently be declared</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#66d9ef">data</span> <span style="color:#66d9ef">Interval</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">MyConstructor</span> <span style="color:#66d9ef">Int</span> <span style="color:#66d9ef">Int</span>
+</span></span></code></pre></div></blockquote>
+<blockquote class="book-hint danger">
+<p><strong><em>Warning.</em></strong>
+The name of a product type and its constructor can be identical (as in Java).</p>
+<p>This is a widely adopted practice in Haskell.</p>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#66d9ef">data</span> <span style="color:#66d9ef">Interval</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">Interval</span> <span style="color:#66d9ef">Int</span> <span style="color:#66d9ef">Int</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">data</span> <span style="color:#66d9ef">Signal</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">Signal</span> <span style="color:#66d9ef">Interval</span> <span style="color:#66d9ef">Light</span>     <span style="color:#75715e">-- `Interval` here stands for the type, not the constructor</span>
+</span></span></code></pre></div></blockquote>
+<blockquote class="book-hint warning">
+<p><strong><em>Convention.</em></strong>
+In this course, for didactic purposes, we will different names for a product type and its constructor.</p>
+</blockquote>
+<h3 id="instance">
+  Instance
+  <a class="anchor" href="#instance">#</a>
+</h3>
+<p>An instance of such a type is created with its constructor (as in <a href="">Java</a>).</p>
+<blockquote class="book-hint info">
+<p><strong><em>Examples.</em></strong>
+Consider the two product types that we have just defined:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#66d9ef">data</span> <span style="color:#66d9ef">Interval</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">IntervalC</span> <span style="color:#66d9ef">Int</span> <span style="color:#66d9ef">Int</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">data</span> <span style="color:#66d9ef">Signal</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">SignalC</span> <span style="color:#66d9ef">Interval</span> <span style="color:#66d9ef">Light</span>
+</span></span></code></pre></div><p>Then:</p>
+<ul>
+<li>
+<p>the expression <code>IntervalC 5 10</code> has type <code>Interval</code>,</p>
+</li>
+<li>
+<p>the expression <code>SignalC (Interval 5 10) Red</code> has type <code>Signal</code>.</p>
+</li>
+</ul>
+</blockquote>
+<h3 id="pattern-matching">
+  Pattern matching
+  <a class="anchor" href="#pattern-matching">#</a>
+</h3>
+<p>A constructor can be used to create complex <a href="">patterns</a>.</p>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong>
+In the program below:</p>
+<ul>
+<li>the function <code>getLight</code> maps a signal to its light (i.e. <code>Green</code>, <code>Yellow</code> or <code>Red</code>),</li>
+<li>the function <code>isLenghty</code> maps a signal to <code>True</code> if its interval is longer than 3.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#66d9ef">data</span> <span style="color:#66d9ef">Interval</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">IntervalC</span> <span style="color:#66d9ef">Int</span> <span style="color:#66d9ef">Int</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">data</span> <span style="color:#66d9ef">Signal</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">SignalC</span> <span style="color:#66d9ef">Interval</span> <span style="color:#66d9ef">Light</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">getLight</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Signal</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Light</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">getLight</span> <span style="color:#66d9ef">SignalC</span> <span style="color:#66d9ef">_</span> l <span style="color:#f92672">=</span> l
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">isLenghty</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Signal</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">isLenghty</span> <span style="color:#66d9ef">SignalC</span> (<span style="color:#66d9ef">IntervalC</span> b e) <span style="color:#66d9ef">_</span> <span style="color:#f92672">=</span> e <span style="color:#f92672">-</span> b <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">3</span>
+</span></span></code></pre></div></blockquote>
+<div class="book-tabs">
+<input type="radio" class="toggle" name="tabs-exercise_product_type_rec" id="tabs-exercise_product_type_rec-0" checked="checked" />
+<label for="tabs-exercise_product_type_rec-0">Exercise</label>
+<div class="book-tabs-content markdown-inner"><p>Consider the following program:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#66d9ef">data</span> <span style="color:#66d9ef">Interval</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">IntervalC</span> <span style="color:#66d9ef">Int</span> <span style="color:#66d9ef">Int</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">data</span> <span style="color:#66d9ef">Signal</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">SignalC</span> <span style="color:#66d9ef">Interval</span> <span style="color:#66d9ef">Light</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">aFunction</span> <span style="color:#f92672">::</span> [<span style="color:#66d9ef">Signal</span>] <span style="color:#f92672">-&gt;</span> [<span style="color:#66d9ef">Interval</span>]
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">aFunction</span> <span style="color:#66d9ef">[]</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">[]</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">aFunction</span> (<span style="color:#66d9ef">SignalC</span> i <span style="color:#66d9ef">Red</span> <span style="color:#66d9ef">:</span> ss) <span style="color:#f92672">=</span> i <span style="color:#66d9ef">:</span> aFunction ss
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">aFunction</span> (<span style="color:#66d9ef">_</span> <span style="color:#66d9ef">:</span> ss) <span style="color:#f92672">=</span> aFunction ss
+</span></span></code></pre></div><ol>
+<li>What does the following expression evaluate to?</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">aFunction</span> [
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">SignalC</span> (<span style="color:#66d9ef">IntervalC</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">2</span>) <span style="color:#66d9ef">Red</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">SignalC</span> (<span style="color:#66d9ef">IntervalC</span> <span style="color:#ae81ff">2</span> <span style="color:#ae81ff">3</span>) <span style="color:#66d9ef">Green</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">SignalC</span> (<span style="color:#66d9ef">IntervalC</span> <span style="color:#ae81ff">3</span> <span style="color:#ae81ff">4</span>) <span style="color:#66d9ef">Orange</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">SignalC</span> (<span style="color:#66d9ef">IntervalC</span> <span style="color:#ae81ff">4</span> <span style="color:#ae81ff">6</span>) <span style="color:#66d9ef">Red</span>,
+</span></span><span style="display:flex;"><span>]
+</span></span></code></pre></div><ol start="2">
+<li>More generally, what does the function <code>aFunction</code> do?</li>
+</ol>
+</div>
+<input type="radio" class="toggle" name="tabs-exercise_product_type_rec" id="tabs-exercise_product_type_rec-1"  />
+<label for="tabs-exercise_product_type_rec-1">Solution</label>
+<div class="book-tabs-content markdown-inner"><ol>
+<li></li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span>[(<span style="color:#66d9ef">IntervalC</span> <span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">2</span>), (<span style="color:#66d9ef">IntervalC</span> <span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">6</span>)]
+</span></span></code></pre></div><ol start="2">
+<li>It maps a list of signals to the intervals for which the light was red.</li>
+</ol>
+</div>
+</div>
+<div class="book-tabs">
+<input type="radio" class="toggle" name="tabs-exercise_product_type_filter_map" id="tabs-exercise_product_type_filter_map-0" checked="checked" />
+<label for="tabs-exercise_product_type_filter_map-0">Exercise</label>
+<div class="book-tabs-content markdown-inner"><p>Same two questions as above, for the function <code>anotherFunction</code> below (recall the higher-order functions <code>filter</code> and <code>map</code> seen <a href="">earlier</a>).</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#66d9ef">data</span> <span style="color:#66d9ef">Interval</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">IntervalC</span> <span style="color:#66d9ef">Int</span> <span style="color:#66d9ef">Int</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">data</span> <span style="color:#66d9ef">Signal</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">SignalC</span> <span style="color:#66d9ef">Interval</span> <span style="color:#66d9ef">Light</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">anotherFunction</span> <span style="color:#f92672">::</span> [<span style="color:#66d9ef">Signal</span>] <span style="color:#f92672">-&gt;</span> [<span style="color:#66d9ef">Interval</span>]
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">anotherFunction</span> <span style="color:#f92672">=</span> (map <span style="color:#a6e22e">\</span>(<span style="color:#66d9ef">SignalC</span> i <span style="color:#66d9ef">_</span>) <span style="color:#f92672">-&gt;</span> i) <span style="color:#f92672">.</span> (filter <span style="color:#a6e22e">\</span>(<span style="color:#66d9ef">SignalC</span> <span style="color:#66d9ef">_</span> l) <span style="color:#f92672">-&gt;</span> l <span style="color:#f92672">==</span> <span style="color:#66d9ef">Red</span>)
+</span></span></code></pre></div></div>
+<input type="radio" class="toggle" name="tabs-exercise_product_type_filter_map" id="tabs-exercise_product_type_filter_map-1"  />
+<label for="tabs-exercise_product_type_filter_map-1">Solution</label>
+<div class="book-tabs-content markdown-inner"><p>It is equivalent to the function of the previous exercise.</p>
+</div>
+</div>
+<h4 id="unary-constructor">
+  Unary constructor
+  <a class="anchor" href="#unary-constructor">#</a>
+</h4>
+<blockquote class="book-hint warning">
+<p><strong><em>Syntax.</em></strong>
+A constructor can also create &ldquo;tuples&rdquo; that consist of a single value.
+This will be useful to define <a href="">recursive types</a>.</p>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong>
+The following type is valid in Haskell.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#66d9ef">data</span> <span style="color:#66d9ef">DummyType</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">DummyTypeC</span> <span style="color:#66d9ef">Int</span>
+</span></span></code></pre></div></blockquote>
+<h4 id="record-like-notation">
+  Record-like notation
+  <a class="anchor" href="#record-like-notation">#</a>
+</h4>
+<blockquote class="book-hint warning">
+<p><strong><em>Syntax.</em></strong>
+Haskell provides an alternative notation for a product type with constructor, using attribute names.
+This is very similar to structures in C or <a href="">records</a> in Java.
+For instance:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#66d9ef">data</span> <span style="color:#66d9ef">Interval</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">Interval</span> { start <span style="color:#f92672">::</span> <span style="color:#66d9ef">Int</span>, end <span style="color:#f92672">::</span> <span style="color:#66d9ef">Int</span> }
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">data</span> <span style="color:#66d9ef">Signal</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">Signal</span> { interval <span style="color:#f92672">::</span> <span style="color:#66d9ef">Interval</span>, light <span style="color:#f92672">::</span> <span style="color:#66d9ef">Light</span> }
+</span></span></code></pre></div><p>For details, we refer to XXX.</p>
+<p>We will <em>not</em> use this syntax in this course (but feel free to use it during the exam).</p>
+</blockquote>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#in-haskell">in Haskell</a>
+      <ul>
+        <li><a href="#definition-as-a-tuple-type">Definition as a tuple type</a></li>
+        <li><a href="#instances">Instances</a></li>
+        <li><a href="#definition-with-a-constructor">Definition with a constructor</a></li>
+        <li><a href="#instance">Instance</a></li>
+        <li><a href="#pattern-matching">Pattern matching</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

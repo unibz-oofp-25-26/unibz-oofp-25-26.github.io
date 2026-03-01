@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  Recursion and termination
+  #
+
+
+  Tail recursive function
+  #
+
+
+  In Haskell
+  #
+
+Exercise.
+The function failedReverse below seems similar to the function reverse seen in the previous section.
+However, there is something wrong with it.
+Can you identify what it is?
+failedReverse :: [Int] -&gt; [Int]
+failedReverse [] = []
+failedReverse (x : xs) = failedReverse (xs &#43;&#43; [x])
+
+main :: IO ()
+main = print $ failedReverse [1,2,3]
+Solution.
+The recursive call (Line XXX) is performed on a list that is not smaller than the input list.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://unibz-oofp-25-26.github.io/docs/recursion/sections/termination/">
+  <meta property="og:site_name" content="OOFP 2025-26">
+  <meta property="og:title" content="Termination">
+  <meta property="og:description" content="Recursion and termination # Tail recursive function # In Haskell # Exercise.
+The function failedReverse below seems similar to the function reverse seen in the previous section.
+However, there is something wrong with it. Can you identify what it is?
+failedReverse :: [Int] -&gt; [Int] failedReverse [] = [] failedReverse (x : xs) = failedReverse (xs &#43;&#43; [x]) main :: IO () main = print $ failedReverse [1,2,3] Solution.
+The recursive call (Line XXX) is performed on a list that is not smaller than the input list.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+<title>Termination | OOFP 2025-26</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/recursion/sections/termination/">
+<link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.b72b48ae349eef97740c5bce497346cef12044143615bb618d4568f5461bb401.js" integrity="sha256-tytIrjSe75d0DFvOSXNGzvEgRBQ2FbthjUVo9UYbtAE=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css"
+  integrity="sha384-vKruj+a13U8yHIkAyGgK1J3ArTLzrFGBbBc0tDp4ad/EyewESeXE/Iv67Aj8gKZ0"
+  crossorigin="anonymous"
+/>
+
+
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js"
+  integrity="sha384-PwRUT/YqbnEjkZO0zZxNqcxACrXe+j766U2amXcgMg5457rve2Y7I6ZJSm2A0mS4"
+  crossorigin="anonymous"
+></script>
+
+
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js"
+  integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+  crossorigin="anonymous"
+  onload="renderMathInElement(document.body);"
+></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    renderMathInElement(document.body, {
+      delimiters: [
+        { left: "$$", right: "$$", display: true },
+        { left: "$", right: "$", display: false },
+      ],
+    });
+  });
+</script>
+
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>OOFP 2025-26</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-8b45d304a159d86710e1579c97aa5b43" class="toggle"  />
+    <label for="section-8b45d304a159d86710e1579c97aa5b43" class="flex justify-between">
+      <a href="/docs/intro/" class="">This course</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/organization/" class="">Organization</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/material/" class="">Material</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/reading_path/" class="">Reading path</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/evaluation/" class="">Evaluation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/prerequisites/" class="">Prerequisites</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/office_hours/" class="">Office hours</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/content/" class="">Content</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/resources/" class="">Additional resources</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/software/" class="">Software</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b17bf4b701f350b4430cc5371ccad607" class="toggle"  />
+    <label for="section-b17bf4b701f350b4430cc5371ccad607" class="flex justify-between">
+      <a href="/docs/paradigm/" class="">Paradigms and languages</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/paradigm/sections/paradigm/" class="">Paradigm</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/paradigm/sections/error/" class="">Compile time vs runtime error</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/paradigm/sections/type/" class="">Typing</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/paradigm/sections/pure/" class="">Pure function</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d689bb2436bd0f51b31e8f95cf070b59" class="toggle"  />
+    <label for="section-d689bb2436bd0f51b31e8f95cf070b59" class="flex justify-between">
+      <a href="/docs/background/" class="">Background</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/background/sections/set_list/" class="">Set, list, tuple</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/background/sections/function/" class="">Function</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Termination</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#tail-recursive-function">Tail recursive function</a>
+      <ul>
+        <li><a href="#in-haskell">In Haskell</a></li>
+      </ul>
+    </li>
+    <li><a href="#stack-overflow">Stack overflow</a>
+      <ul>
+        <li><a href="#in-haskell-1">In Haskell</a></li>
+      </ul>
+    </li>
+    <li><a href="#lazy-evaluation">Lazy evaluation</a>
+      <ul>
+        <li><a href="#in-haskell-2">In Haskell</a></li>
+      </ul>
+    </li>
+    <li><a href="#infinite-lists">Infinite lists</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="recursion-and-termination">
+  Recursion and termination
+  <a class="anchor" href="#recursion-and-termination">#</a>
+</h1>
+<h2 id="tail-recursive-function">
+  Tail recursive function
+  <a class="anchor" href="#tail-recursive-function">#</a>
+</h2>
+<h3 id="in-haskell">
+  In Haskell
+  <a class="anchor" href="#in-haskell">#</a>
+</h3>
+<p>Exercise.</p>
+<p>The function <code>failedReverse</code> below seems similar to the function <code>reverse</code> seen in the <a href="">previous section</a>.</p>
+<p>However, there is something wrong with it.
+Can you identify what it is?</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">failedReverse</span> <span style="color:#f92672">::</span> [<span style="color:#66d9ef">Int</span>] <span style="color:#f92672">-&gt;</span> [<span style="color:#66d9ef">Int</span>]
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">failedReverse</span> <span style="color:#66d9ef">[]</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">[]</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">failedReverse</span> (x <span style="color:#66d9ef">:</span> xs) <span style="color:#f92672">=</span> failedReverse (xs <span style="color:#f92672">++</span> [x])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">main</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">IO</span> ()
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">main</span> <span style="color:#f92672">=</span> print <span style="color:#f92672">$</span> failedReverse [<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>]
+</span></span></code></pre></div><p>Solution.</p>
+<p>The recursive call (Line XXX) is performed on a list that is <em>not smaller</em> than the input list.</p>
+<p>As a consequence, if <code>ys</code> is a nonempty list, then the evaluation of <code>failedReverse ys</code> does not terminate.</p>
+<blockquote class="book-hint info">
+<p><strong><em>Execution.</em></strong>
+The function <code>failedReverse</code> is <a href="">tail-recursive</a>.
+The compiler is able to transform it into a loop, which in this case does not terminate.
+So if we execute the program, it simply loops, indefinitely.</p>
+</blockquote>
+<h2 id="stack-overflow">
+  Stack overflow
+  <a class="anchor" href="#stack-overflow">#</a>
+</h2>
+<h3 id="in-haskell-1">
+  In Haskell
+  <a class="anchor" href="#in-haskell-1">#</a>
+</h3>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong>
+Here is another non-terminating program</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">failedId</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Int</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Int</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">failedId</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">failedId</span> x <span style="color:#f92672">=</span> failedId (x <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">main</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">IO</span> ()
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">main</span> <span style="color:#f92672">=</span> print <span style="color:#f92672">$</span> failedId <span style="color:#ae81ff">3</span>
+</span></span></code></pre></div></blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Note.</em></strong>
+As opposed to the previous example, the function <code>failedId </code> here is <em>not</em> <a href="">tail-recursive</a>.
+The compiler is unable to transform it into a loop.</p>
+<p>As a consequence, the <a href="">call stack</a> <em>grows</em> as follows</p>
+<pre tabindex="0"><code>... etc
+
+failedId 8
+failedId 7
+failedId 6
+failedId 5
+failedId 4
+failedId 3
+main
+</code></pre><p>until its capacity is exhausted.
+When this happens, the program is interrupted with a <em>stack overflow</em> exception.</p>
+</blockquote>
+<p><strong><em>Definition.</em></strong>
+A <strong>stack overflow</strong> exception is thrown during the execution of a program if the capacity of the call stack is exhausted.</p>
+<p><strong><em>Warning.</em></strong>
+A stack overflow is usually due to a non-terminating recursive call.
+However, a non-terminating recursive call may not result in a stack overflow, as illustrated with our first example.</p>
+<h2 id="lazy-evaluation">
+  Lazy evaluation
+  <a class="anchor" href="#lazy-evaluation">#</a>
+</h2>
+<h3 id="in-haskell-2">
+  In Haskell
+  <a class="anchor" href="#in-haskell-2">#</a>
+</h3>
+<p><strong><em>Example.</em></strong>
+Recall the function <code>take :: Int -&gt; [a] -&gt; [a]</code> seen the <a href="">previous section</a>,
+where <code>take k xs</code> consists of the first <code>k</code> elements of the list <code>xs</code> (or the whole <code>xs</code> if it has less than <code>k</code> elements).</p>
+<p>Now consider the following program</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">succs</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Integer</span> <span style="color:#f92672">-&gt;</span> [<span style="color:#66d9ef">Integer</span>]
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">succs</span> x <span style="color:#f92672">=</span> x <span style="color:#66d9ef">:</span> succs (x <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">main</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">IO</span> ()
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">main</span> <span style="color:#f92672">=</span> print <span style="color:#f92672">$</span> take <span style="color:#ae81ff">5</span> (succs <span style="color:#ae81ff">3</span>)
+</span></span></code></pre></div><p>Execution.</p>
+<p>Intuitively, <code>succs 3</code> is the (infinite) list of integers $\ge 3$, i.e. the list $3, 4, 5, 6, \ldots $</p>
+<p>A naive evaluation strategy for the expression <code>take 5 (lazy 3)</code> would proceed in two steps:</p>
+<ol>
+<li><em>first</em> evaluate <code>succs 3</code>, and</li>
+<li><em>then</em> retain the first 5 elements of the resulting list.</li>
+</ol>
+<p>Since the evaluation of <code>succs 3</code> (a.k.a. Step 1) does not terminate, the whole program would not terminate either.</p>
+<p>Instead, Haskell&rsquo;s lazy evaluation allows a different strategy, where only the first 5 elements of <code>lazy 3</code> are computed.</p>
+<p>As a consequence, the program terminates and prints <code>[3,4,5,6,7]</code>.</p>
+<p>Example (continued).</p>
+<p>Let us simplify the function <code>main</code> as follows:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">main</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">IO</span> ()
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">main</span> <span style="color:#f92672">=</span> print <span style="color:#f92672">$</span> succs <span style="color:#ae81ff">3</span>
+</span></span></code></pre></div><p><strong><em>Execution.</em></strong></p>
+<p>As expected, this new program does not terminate.
+However, thanks to lazy evaluation, the program can still print the elements <code>succs 3</code> on the fly, as soon as thy are computed.
+This is analogous to processing a continuous stream of incoming data.</p>
+<h2 id="infinite-lists">
+  Infinite lists
+  <a class="anchor" href="#infinite-lists">#</a>
+</h2>
+<p>Several built-in Haskell functions produce infinite lists (like the function <code>succs</code> above).
+They can be convenient to define functions that act on the $n$ first elements of a list, when $n$ is not known in advance.</p>
+<p><strong><em>Example.</em></strong>
+The Haslell Prelude provide the function <code>iterate :: (a -&gt; a) -&gt; a -&gt; [a]</code>, where
+<code>iterate f x</code> is the infintie list of iterative applications of <code>f</code> to <code>x</code></p>
+<p>For instance
+<code>iterate (+1) x</code> is equivalent to the function <code>succs</code> above.</p>
+<p>Exercise.</p>
+<p>Define the function <code>repeat :: a -&gt; [a]</code> that repeats an elemtn infinitely many times.</p>
+<p>Possible solution.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">repeat</span> <span style="color:#f92672">::</span> a <span style="color:#f92672">-&gt;</span> [a]
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">repeat</span> <span style="color:#f92672">=</span> iterate id
+</span></span></code></pre></div><p>Alternative solution.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">repeat</span> <span style="color:#f92672">::</span> a <span style="color:#f92672">-&gt;</span> [a]
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">repeat</span> x <span style="color:#f92672">=</span> x <span style="color:#66d9ef">:</span> repeat x
+</span></span></code></pre></div></article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#tail-recursive-function">Tail recursive function</a>
+      <ul>
+        <li><a href="#in-haskell">In Haskell</a></li>
+      </ul>
+    </li>
+    <li><a href="#stack-overflow">Stack overflow</a>
+      <ul>
+        <li><a href="#in-haskell-1">In Haskell</a></li>
+      </ul>
+    </li>
+    <li><a href="#lazy-evaluation">Lazy evaluation</a>
+      <ul>
+        <li><a href="#in-haskell-2">In Haskell</a></li>
+      </ul>
+    </li>
+    <li><a href="#infinite-lists">Infinite lists</a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  Program
+  #
+
+
+  File
+  #
+
+A simple Haskell program is written in a file with the extension .hs.
+For instance, MyProgram.hs.
+
+  Content
+  #
+
+
+  Functions
+  #
+
+A Haskell program primarily consists of function definitions.
+
+Hint.
+The order of function definitions in a program is irrelevant.
+
+
+  The function main
+  #
+
+To make a program executable, one of its functions must be the entry point.
+By default, this function is called main, and has type IO ().">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://unibz-oofp-25-26.github.io/docs/haskell/sections/program/">
+  <meta property="og:site_name" content="OOFP 2025-26">
+  <meta property="og:title" content="Program">
+  <meta property="og:description" content="Program # File # A simple Haskell program is written in a file with the extension .hs. For instance, MyProgram.hs.
+Content # Functions # A Haskell program primarily consists of function definitions.
+Hint. The order of function definitions in a program is irrelevant.
+The function main # To make a program executable, one of its functions must be the entry point. By default, this function is called main, and has type IO ().">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+<title>Program | OOFP 2025-26</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/haskell/sections/program/">
+<link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.b72b48ae349eef97740c5bce497346cef12044143615bb618d4568f5461bb401.js" integrity="sha256-tytIrjSe75d0DFvOSXNGzvEgRBQ2FbthjUVo9UYbtAE=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css"
+  integrity="sha384-vKruj+a13U8yHIkAyGgK1J3ArTLzrFGBbBc0tDp4ad/EyewESeXE/Iv67Aj8gKZ0"
+  crossorigin="anonymous"
+/>
+
+
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js"
+  integrity="sha384-PwRUT/YqbnEjkZO0zZxNqcxACrXe+j766U2amXcgMg5457rve2Y7I6ZJSm2A0mS4"
+  crossorigin="anonymous"
+></script>
+
+
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js"
+  integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+  crossorigin="anonymous"
+  onload="renderMathInElement(document.body);"
+></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    renderMathInElement(document.body, {
+      delimiters: [
+        { left: "$$", right: "$$", display: true },
+        { left: "$", right: "$", display: false },
+      ],
+    });
+  });
+</script>
+
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>OOFP 2025-26</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-8b45d304a159d86710e1579c97aa5b43" class="toggle"  />
+    <label for="section-8b45d304a159d86710e1579c97aa5b43" class="flex justify-between">
+      <a href="/docs/intro/" class="">This course</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/organization/" class="">Organization</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/material/" class="">Material</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/reading_path/" class="">Reading path</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/evaluation/" class="">Evaluation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/prerequisites/" class="">Prerequisites</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/office_hours/" class="">Office hours</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/content/" class="">Content</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/resources/" class="">Additional resources</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/software/" class="">Software</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b17bf4b701f350b4430cc5371ccad607" class="toggle"  />
+    <label for="section-b17bf4b701f350b4430cc5371ccad607" class="flex justify-between">
+      <a href="/docs/paradigm/" class="">Paradigms and languages</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/paradigm/sections/paradigm/" class="">Paradigm</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/paradigm/sections/error/" class="">Compile time vs runtime error</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/paradigm/sections/type/" class="">Typing</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/paradigm/sections/pure/" class="">Pure function</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d689bb2436bd0f51b31e8f95cf070b59" class="toggle"  />
+    <label for="section-d689bb2436bd0f51b31e8f95cf070b59" class="flex justify-between">
+      <a href="/docs/background/" class="">Background</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/background/sections/set_list/" class="">Set, list, tuple</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/background/sections/function/" class="">Function</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Program</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#file">File</a></li>
+    <li><a href="#content">Content</a>
+      <ul>
+        <li><a href="#functions">Functions</a></li>
+        <li><a href="#modules">Modules</a></li>
+        <li><a href="#comments">Comments</a></li>
+      </ul>
+    </li>
+    <li><a href="#compilation-execution">Compilation, execution</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="program">
+  Program
+  <a class="anchor" href="#program">#</a>
+</h1>
+<h2 id="file">
+  File
+  <a class="anchor" href="#file">#</a>
+</h2>
+<p>A simple Haskell program is written in a file with the extension <code>.hs</code>.
+For instance, <code>MyProgram.hs</code>.</p>
+<h2 id="content">
+  Content
+  <a class="anchor" href="#content">#</a>
+</h2>
+<h3 id="functions">
+  Functions
+  <a class="anchor" href="#functions">#</a>
+</h3>
+<p>A Haskell program primarily consists of <a href="">function definitions</a>.</p>
+<blockquote class="book-hint info">
+<p><strong><em>Hint.</em></strong>
+The order of function definitions in a program is irrelevant.</p>
+</blockquote>
+<h4 id="the-function-main">
+  The function <code>main</code>
+  <a class="anchor" href="#the-function-main">#</a>
+</h4>
+<p>To make a program executable, one of its functions must be the entry point.
+By default, this function is called <code>main</code>, and has type <code>IO ()</code>.</p>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong>
+This is a small executable Haskell program.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">main</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">IO</span> ()
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">main</span> <span style="color:#f92672">=</span> print <span style="color:#f92672">$</span> square <span style="color:#ae81ff">3</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">square</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Integer</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Integer</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">square</span> x <span style="color:#f92672">=</span> x<span style="color:#f92672">^</span><span style="color:#ae81ff">2</span>
+</span></span></code></pre></div><p>The function <code>main</code> calls the function <code>square</code> with the argument <code>3</code>, and prints the result.</p>
+</blockquote>
+<blockquote class="book-hint warning">
+<p><strong><em>Syntax.</em></strong> The <code>$</code> operator is an alternative syntax for function application.</p>
+<p>In the function <code>main</code> above, the equation</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">main</span> <span style="color:#f92672">=</span> print <span style="color:#f92672">$</span> square <span style="color:#ae81ff">3</span>
+</span></span></code></pre></div><p>is equivalent to:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">main</span> <span style="color:#f92672">=</span> print (square <span style="color:#ae81ff">3</span>)
+</span></span></code></pre></div></blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Reminder.</em></strong> Types in Haskell are <a href="">optional</a>, but highly recommended.
+Your IDE may be able to generate them.</p>
+</blockquote>
+<h3 id="modules">
+  Modules
+  <a class="anchor" href="#modules">#</a>
+</h3>
+<blockquote class="book-hint warning">
+<p>A Haskell program can import other Haskell programs, called <strong>modules</strong>.</p>
+</blockquote>
+<h4 id="importing-a-module">
+  Importing a module
+  <a class="anchor" href="#importing-a-module">#</a>
+</h4>
+<blockquote class="book-hint warning">
+<p>Every program imports a default module called the Haskell <strong>Prelude</strong>.
+It contains many of the functions and types that we will need in this course.</p>
+</blockquote>
+<p>If you want to import another module, add the following to your file, <em>before any function definition</em>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#960050;background-color:#1e0010">&lt;</span>moduleName<span style="color:#f92672">&gt;</span>
+</span></span></code></pre></div><blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong>
+the function <code>ord</code> that we have seen <a href="">earlier</a> is defined in a module called <code>Data.Char</code>.</p>
+<p>In order to use this function, you can import this module, as follows:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> Data.Char
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">main</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">IO</span> ()
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">main</span> <span style="color:#f92672">=</span> print <span style="color:#f92672">$</span> ord <span style="color:#e6db74">&#39;V&#39;</span>
+</span></span></code></pre></div></blockquote>
+<blockquote class="book-hint danger">
+<p><strong><em>Warning.</em></strong>
+If you define a function that is already defined in the Prelude or an imported module, then your program will not compile.</p>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong>
+The function <code>reverse</code> is already defined in the Prelude.
+So if we try to implement it, we should give it a different name, for instance <code>reverse'</code>.</p>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>To go further.</em></strong>
+You can also:</p>
+<ul>
+<li>selectively import certain functions from a module (e.g. write <code>import Data.Char (ord)</code> in the example above), or</li>
+<li>require imported function to be preceded by the module name (this is called a <strong>qualified</strong> import).</li>
+</ul>
+<p>For the syntax, we refer to XXX or XXX.</p>
+</blockquote>
+<h4 id="declaring-a-module">
+  Declaring a module
+  <a class="anchor" href="#declaring-a-module">#</a>
+</h4>
+<p>Optionally, you can make your own program a module (which lets you import it in other programs).</p>
+<blockquote class="book-hint warning">
+<p><strong><em>Syntax.</em></strong>
+A module name must start with a capital letter.</p>
+</blockquote>
+<blockquote class="book-hint warning">
+<p><strong><em>Syntax.</em></strong>
+To make your program a module, start with (assuming that you want to name your module <code>MyModule</code>):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#66d9ef">module</span> MyModule <span style="color:#66d9ef">where</span>
+</span></span></code></pre></div></blockquote>
+<blockquote class="book-hint warning">
+<p><strong><em>Syntax.</em></strong>
+By convention, the name of a module is often the name of its file, without extension.</p>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>To go further.</em></strong>
+You can also select which functions of your module will be exported.
+This lets you expose only the main functions of your module (hiding auxiliary functions).</p>
+<p>For the syntax, we refer to XXX or XXX.</p>
+</blockquote>
+<h3 id="comments">
+  Comments
+  <a class="anchor" href="#comments">#</a>
+</h3>
+<ul>
+<li>A commented line starts with <code>--</code>.</li>
+<li>A commented block is between <code>{-</code> and <code>-}</code>.</li>
+</ul>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#75715e">-- Squares an integer</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">square</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Integer</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Integer</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">square</span> x <span style="color:#f92672">=</span> x<span style="color:#f92672">^</span><span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">{-
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  Computes the factorial of a non‑negative integer.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  Does not terminate for a negative integer.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">-}</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">factorial</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Integer</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Integer</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- Base case</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">factorial</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- Inductive case</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">factorial</span> n <span style="color:#f92672">=</span> n <span style="color:#f92672">*</span> factorial (n <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>)
+</span></span></code></pre></div></blockquote>
+<h2 id="compilation-execution">
+  Compilation, execution
+  <a class="anchor" href="#compilation-execution">#</a>
+</h2>
+<p>Your IDE may provide a way to compile and run an <a href="">executable</a> program.
+Otherwise, within a terminal (assuming that your file is named <code>MyProgram.hs</code>), run:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>runghc MyProgram.hs
+</span></span></code></pre></div></article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#file">File</a></li>
+    <li><a href="#content">Content</a>
+      <ul>
+        <li><a href="#functions">Functions</a></li>
+        <li><a href="#modules">Modules</a></li>
+        <li><a href="#comments">Comments</a></li>
+      </ul>
+    </li>
+    <li><a href="#compilation-execution">Compilation, execution</a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
