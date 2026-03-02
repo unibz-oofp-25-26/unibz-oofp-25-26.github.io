@@ -51,7 +51,7 @@ Imperative programming # Languages # The most widely used programming languages 
 <link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/paradigm/sections/paradigm/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.b72b48ae349eef97740c5bce497346cef12044143615bb618d4568f5461bb401.js" integrity="sha256-tytIrjSe75d0DFvOSXNGzvEgRBQ2FbthjUVo9UYbtAE=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.e4efbd95168200ff6272c0e1f9a029394ce36e54c818fb9f54952d6e5d5e7869.js" integrity="sha256-5O&#43;9lRaCAP9icsDh&#43;aApOUzjblTIGPufVJUtbl1eeGk=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -590,7 +590,7 @@ The distinction between imperative and declarative programming (a.k.a. “how”
 <p><strong><em>Similarities.</em></strong>
 Imperative languages tend to share similar:</p>
 <ul>
-<li>elementary operations, e.g. variable assignment</li>
+<li>elementary operations, e.g. variable assignment,</li>
 <li><a href="">control structures</a>: &ldquo;if/then/else&rdquo; statements, loops, method calls, etc.</li>
 <li><a href="https://unibz-oofp-25-26.github.io/notreleased/">data structures</a>: arrays, linked lists, <a href="https://unibz-oofp-25-26.github.io/notreleased/">associative arrays</a>, etc.</li>
 </ul>
@@ -666,7 +666,7 @@ Functional languages include:</p>
 <p>From <a href="https://en.wikipedia.org/wiki/Functional_programming">Wikipedia</a></p>
 <blockquote>
 <p>&ldquo;Functional programming has its roots in <em>academia</em>, evolving from the <em>lambda calculus</em>, a formal system of computation based only on functions.&rdquo;
-&ldquo;[&hellip;] By restricting side effects, programs can have fewer bugs, be easier to debug and test, and be more suited to formal verification.&rdquo;</p>
+&ldquo;[&hellip;] By restricting <em>side effects</em>, programs can have fewer bugs, be easier to debug and test, and be more suited to formal verification.&rdquo;</p>
 </blockquote>
 <p>And from the Wikipedia page on <a href="https://en.wikipedia.org/wiki/Programming_paradigm">programming paradigms</a>:</p>
 <blockquote>
@@ -674,19 +674,20 @@ Functional languages include:</p>
 </blockquote>
 <blockquote class="book-hint warning">
 <p><strong><em>Application.</em></strong>
-Many functional features have been borrowed by imperative languages (notably these last 15 years).</p>
-<p>These include:</p>
+Many functional features have been borrowed by imperative languages (notably these last 15 years).
+The table below lists a few of them.</p>
+</blockquote>
 <table>
   <thead>
       <tr>
           <th>functional feature</th>
-          <th>some imperative languages that support it (to some extent)</th>
+          <th>some imperative languages that support it<br>(to some extent)</th>
       </tr>
   </thead>
   <tbody>
       <tr>
           <td><a href="https://unibz-oofp-25-26.github.io/notreleased/">immutable</a> data structures</td>
-          <td>C++, C#, Go, Java, JavaScript, Python, Rust</td>
+          <td>C++, C#, Go, Java, Rust</td>
       </tr>
       <tr>
           <td><a href="https://unibz-oofp-25-26.github.io/notreleased/">higher-order functions</a></td>
@@ -694,10 +695,6 @@ Many functional features have been borrowed by imperative languages (notably the
       </tr>
       <tr>
           <td><a href="https://unibz-oofp-25-26.github.io/notreleased/">anonymous functions</a></td>
-          <td>C++, C#, Go, Java, JavaScript, Python, Rust</td>
-      </tr>
-      <tr>
-          <td>closures</td>
           <td>C++, C#, Go, Java, JavaScript, Python, Rust</td>
       </tr>
       <tr>
@@ -718,13 +715,14 @@ Many functional features have been borrowed by imperative languages (notably the
       </tr>
   </tbody>
 </table>
-<p>As a result, some languages in this table
-may be presented as &ldquo;functional&rdquo; (among other paradigms), even though they that are primarily imperative or object-oriented.</p>
+<blockquote class="book-hint warning">
+<p><strong><em>Terminology.</em></strong>
+As a result, languages in this table are sometimes presented as &ldquo;functional&rdquo; (among other paradigms), even though they are primarily imperative or object-oriented.</p>
 </blockquote>
 <blockquote class="book-hint info">
 <p><strong><em>Note.</em></strong>
-Java 8 (2014) was an important release, sometime credited with &ldquo;modernising&rdquo; the language.
-It introduced several functional features, notably the <a href="https://unibz-oofp-25-26.github.io/notreleased/">Stream</a> API, which has seen a wide adoption.</p>
+Java 8 (2014) introduced important functional features (notably the <a href="https://unibz-oofp-25-26.github.io/notreleased/">Stream</a> API, which has seen a wide adoption).<br>
+This release of Java is sometimes credited with &ldquo;modernising&rdquo; the language.</p>
 </blockquote>
 </article>
  
