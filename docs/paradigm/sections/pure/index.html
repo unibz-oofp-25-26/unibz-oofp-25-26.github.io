@@ -34,7 +34,7 @@ Side effect # Definition. A method/function has a side effect if it modifies a r
 <link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/paradigm/sections/pure/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.898dcf8c76840781af51386ab338f13e1ee92582d026ed9a357a81f9eef83206.js" integrity="sha256-iY3PjHaEB4GvUThqszjxPh7pJYLQJu2aNXqB&#43;e74MgY=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.badf99b02e5c60f587c64f56fb6560e18b8b02c339175fb7cd1e2b6e7e36838e.js" integrity="sha256-ut&#43;ZsC5cYPWHxk9W&#43;2Vg4YuLAsM5F1&#43;3zR4rbn42g44=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -528,10 +528,8 @@ Consider the following Java class:</p>
 <p><strong><em>Examples.</em></strong>
 If <code>f</code> and <code>g</code> are pure functions, then for a value <code>a</code> and variables <code>x</code>, <code>y</code>:</p>
 <ul>
-<li><code>f(x) + g(y)</code> can be replaced with <code>g(y) + f(x)</code>,</li>
-<li><code>f(x) == f(x)</code> can be replaced with <code>true</code>,</li>
-<li><code>f(a)</code> can be replaced with it value
-(this property is called <strong>referential transparency</strong>).</li>
+<li><code>f(x) || g(y)</code> can be replaced with <code>g(y) || f(x)</code>,</li>
+<li><code>f(x) == f(x)</code> can be replaced with <code>true</code>.</li>
 </ul>
 </blockquote>
 <h3 id="parallelization">
