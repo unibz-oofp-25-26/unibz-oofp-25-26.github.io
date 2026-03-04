@@ -49,7 +49,7 @@ $\{2,5\}$ and $\{5,2\}$ are the same set, $\{2,5,2\}$ is not a set. Power set # 
 <link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/background/sections/set_list/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.ba675ed9bca891f7957ba3bb26bc8f1879fa1a3f85e1571d1cd1ec10c9f823a2.js" integrity="sha256-umde2byokfeVe6O7JryPGHn6Gj&#43;F4VcdHNHsEMn4I6I=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.23ddf38cc6d1231f551c538730a20c0ea1352d9f5ea9d7574e9e714aaf5351fe.js" integrity="sha256-I93zjMbRIx9VHFOHMKIMDqE1LZ9eqddXTp5xSq9TUf4=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -346,6 +346,105 @@ https://github.com/alex-shpak/hugo-book
   
 
   
+    <input type="checkbox" id="section-eb0a250150a82657aa03f0717afdcd45" class="toggle"  />
+    <label for="section-eb0a250150a82657aa03f0717afdcd45" class="flex justify-between">
+      <a href="/docs/haskell/" class="">Basic syntax of Haskell</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/haskell/sections/tokens/" class="">Tokens</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/haskell/sections/type/" class="">Base types</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/haskell/sections/native/" class="">Native functions</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/haskell/sections/tuple/" class="">Tuple</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/haskell/sections/function/" class="">Function</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/haskell/sections/program/" class="">Program</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
     <input type="checkbox" id="section-d689bb2436bd0f51b31e8f95cf070b59" class="toggle" checked />
     <label for="section-d689bb2436bd0f51b31e8f95cf070b59" class="flex justify-between">
       <a href="/docs/background/" class="">Background</a>
@@ -555,13 +654,17 @@ If $X$ is a set of numbers, then the expression</p>
 <p>means</p>
 <p>$\qquad$ all $x^2$ such that $x \in X$ and $x \ge 5$.</p>
 <p>This is the <em>set</em> that consists of all numbers greater or equal to $5$ in $X$, each squared.</p>
+<p>For instance, if $X = \{2,3,5,7\}$, then</p>
+<p>$\qquad\{x^2 \mid x \in X,\ x \ge 5\} = \{25, 49\}$</p>
 </blockquote>
 <blockquote class="book-hint warning">
 <p><strong><em>Syntax and meaning.</em></strong>
-A <strong>set comprehension</strong> is an expression of the form $\{\alpha \mid \varphi_1, \ldots, \varphi_n \}$, where:</p>
+A <strong>set comprehension</strong> is an expression of the form</p>
+<p>$\qquad \{\alpha \mid \varphi_1, \ldots, \varphi_n \}$</p>
+<p>where:</p>
 <ul>
-<li>$\alpha$ is a expression (like $x^2$), and</li>
-<li>each $\varphi_i$ is a Boolean condition (like $x \in X$).</li>
+<li>$\alpha$ is a expression (e.g. $x^2$), and</li>
+<li>each $\varphi_i$ is a Boolean condition (e.g. $x \in X$).</li>
 </ul>
 <p>It describes the <em>set</em> of all $\alpha$&rsquo;s such that the conditions $\varphi_1, \ldots, \varphi_n$ hold (altogether).</p>
 </blockquote>
@@ -599,31 +702,19 @@ and $\mathbb{N}$ the set of integers $\ge 0$).</p>
   </tbody>
 </table>
 </div>
+<!-- 
 <input type="radio" class="toggle" name="tabs-exercise_set_comprehension" id="tabs-exercise_set_comprehension-1"  />
 <label for="tabs-exercise_set_comprehension-1">Solution</label>
-<div class="book-tabs-content markdown-inner"><table>
-  <thead>
-      <tr>
-          <th>Set comprehension</th>
-          <th>corresponding set</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>$\{x^2 \mid x \in \{2,3,5,7\},\ x \ge 5\}$</td>
-          <td>$\{25, 49\}$</td>
-      </tr>
-      <tr>
-          <td>$\{ - x \mid x \in \mathbb{Z},\ x \le 0\}$</td>
-          <td>$\mathbb{N}$</td>
-      </tr>
-      <tr>
-          <td>$\{ x + y \mid x \in \{3,6\},\ y \in \mathbb{N},\ 4 \le y \le 6,\ y &lt; x \}$</td>
-          <td>$\{10,11\}$</td>
-      </tr>
-  </tbody>
-</table>
-</div>
+<div class="book-tabs-content markdown-inner"><p>&ndash;&gt;</p>
+<!---->
+<!-- | Set comprehension                                                               | corresponding set | -->
+<!-- | ------------------------------------------------------------------------------- | ----------------- | -->
+<!-- | $\\{x^2 \mid x \in \\{2,3,5,7\\},\ x \ge 5\\}$                                  | $\\{25, 49\\}$    | -->
+<!-- | $\\{ - x \mid x \in \mathbb{Z},\ x \le 0\\}$                                    | $\mathbb{N}$      | -->
+<!-- | $\\{ x + y \mid x \in \\{3,6\\},\ y \in \mathbb{N},\ 4 \le y \le 6,\ y < x \\}$ | $\\{10,11\\}$     | -->
+<!---->
+<!-- </div>
+ -->
 </div>
 <h2 id="list">
   List, Tuple
@@ -642,8 +733,8 @@ and $\mathbb{N}$ the set of integers $\ge 0$).</p>
 The following three lists are different:</p>
 <ul>
 <li>$1,1,4$</li>
-<li>$1,4$</li>
 <li>$1,4,1$</li>
+<li>$1,4$</li>
 </ul>
 </blockquote>
 <blockquote class="book-hint warning">
@@ -681,8 +772,8 @@ For instance, a list of integers or a list of strings.</p>
 <ul>
 <li>$ (5,3) \in \mathbb{N}\times \mathbb{N}$</li>
 <li>$ (5,3) \in \mathbb{Z}\times \mathbb{N}$</li>
-<li>$ (5,\sqrt{3}) \in \mathbb{N}\times \mathbb{R}$</li>
 <li>$ (5,\sqrt{3}) \not\in \mathbb{N}\times \mathbb{N}$</li>
+<li>$ (5,\sqrt{3}) \in \mathbb{N}\times \mathbb{R}$</li>
 <li>$ (\mathit{&ldquo;tomato&rdquo;},5,\mathit{&ldquo;tomato&rdquo;}) \in \mathsf{String} \times \mathbb{N} \times \mathsf{String} \\$</li>
 </ul>
 </blockquote>
@@ -749,67 +840,28 @@ For instance, a list of integers or a list of strings.</p>
   </tbody>
 </table>
 </div>
+<!-- 
 <input type="radio" class="toggle" name="tabs-exercise_sets" id="tabs-exercise_sets-1"  />
 <label for="tabs-exercise_sets-1">Solution</label>
-<div class="book-tabs-content markdown-inner"><table>
-  <thead>
-      <tr>
-          <th>expression</th>
-          <th>is a set</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>$\{a, b\}$</td>
-          <td>yes</td>
-      </tr>
-      <tr>
-          <td>$\{a, b, a\}$</td>
-          <td>no</td>
-      </tr>
-      <tr>
-          <td>$\{\}$</td>
-          <td>yes</td>
-      </tr>
-      <tr>
-          <td>$\{\{\}\}$</td>
-          <td>yes</td>
-      </tr>
-      <tr>
-          <td>$\{\{\},\{a\}\}$</td>
-          <td>yes</td>
-      </tr>
-      <tr>
-          <td>$\{\{a\},\{a\}\}$</td>
-          <td>no</td>
-      </tr>
-      <tr>
-          <td>$\{\{a\},\{a,b\}\}$</td>
-          <td>yes</td>
-      </tr>
-      <tr>
-          <td>$\{\{a,b\},\{b,a\}\}$</td>
-          <td>no</td>
-      </tr>
-      <tr>
-          <td>$(\{a,b\})$</td>
-          <td>no</td>
-      </tr>
-      <tr>
-          <td>$\{(a,b)\}$</td>
-          <td>yes</td>
-      </tr>
-      <tr>
-          <td>$\{(a, b), (a, b)\}$</td>
-          <td>no</td>
-      </tr>
-      <tr>
-          <td>$\{(a, b), (b, a)\}$</td>
-          <td>yes</td>
-      </tr>
-  </tbody>
-</table>
-</div>
+<div class="book-tabs-content markdown-inner"><p>&ndash;&gt;</p>
+<!---->
+<!-- | expression                  | is a set | -->
+<!-- | --------------------------- | -------- | -->
+<!-- | $\\{a, b\\}$                | yes      | -->
+<!-- | $\\{a, b, a\\}$             | no       | -->
+<!-- | $\\{\\}$                    | yes      | -->
+<!-- | $\\{\\{\\}\\}$              | yes      | -->
+<!-- | $\\{\\{\\},\\{a\\}\\}$      | yes      | -->
+<!-- | $\\{\\{a\\},\\{a\\}\\}$     | no       | -->
+<!-- | $\\{\\{a\\},\\{a,b\\}\\}$   | yes      | -->
+<!-- | $\\{\\{a,b\\},\\{b,a\\}\\}$ | no       | -->
+<!-- | $(\\{a,b\\})$               | no       | -->
+<!-- | $\\{(a,b)\\}$               | yes      | -->
+<!-- | $\\{(a, b), (a, b)\\}$      | no       | -->
+<!-- | $\\{(a, b), (b, a)\\}$      | yes      | -->
+<!---->
+<!-- </div>
+ -->
 </div>
 </article>
  

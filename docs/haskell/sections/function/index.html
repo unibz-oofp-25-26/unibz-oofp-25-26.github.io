@@ -46,7 +46,7 @@ Syntax. Note that $f(x)$ is written f x, without parentheses. This also holds wh
 <link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/haskell/sections/function/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.ba675ed9bca891f7957ba3bb26bc8f1879fa1a3f85e1571d1cd1ec10c9f823a2.js" integrity="sha256-umde2byokfeVe6O7JryPGHn6Gj&#43;F4VcdHNHsEMn4I6I=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.23ddf38cc6d1231f551c538730a20c0ea1352d9f5ea9d7574e9e714aaf5351fe.js" integrity="sha256-I93zjMbRIx9VHFOHMKIMDqE1LZ9eqddXTp5xSq9TUf4=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -343,6 +343,105 @@ https://github.com/alex-shpak/hugo-book
   
 
   
+    <input type="checkbox" id="section-eb0a250150a82657aa03f0717afdcd45" class="toggle" checked />
+    <label for="section-eb0a250150a82657aa03f0717afdcd45" class="flex justify-between">
+      <a href="/docs/haskell/" class="">Basic syntax of Haskell</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/haskell/sections/tokens/" class="">Tokens</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/haskell/sections/type/" class="">Base types</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/haskell/sections/native/" class="">Native functions</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/haskell/sections/tuple/" class="">Tuple</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/haskell/sections/function/" class="active">Function</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/haskell/sections/program/" class="">Program</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
     <input type="checkbox" id="section-d689bb2436bd0f51b31e8f95cf070b59" class="toggle"  />
     <label for="section-d689bb2436bd0f51b31e8f95cf070b59" class="flex justify-between">
       <a href="/docs/background/" class="">Background</a>
@@ -434,12 +533,12 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#function-definition">Function definition</a></li>
+    <li><a href="#definition">Function definition</a></li>
     <li><a href="#function-type">Function type</a></li>
     <li><a href="#alias">Alias</a>
       <ul>
-        <li><a href="#expression-where-alias"><code>&lt;expression&gt; where &lt;alias&gt;</code></a></li>
-        <li><a href="#let-alias-in-expression"><code>let &lt;alias&gt; in &lt;expression&gt;</code></a></li>
+        <li><a href="#where"><code>&lt;expression&gt; where &lt;alias definition&gt;</code></a></li>
+        <li><a href="#let-alias-definition-in-expression"><code>let &lt;alias definition&gt; in &lt;expression&gt;</code></a></li>
       </ul>
     </li>
     <li><a href="#composition">Composition</a></li>
@@ -459,13 +558,13 @@ https://github.com/alex-shpak/hugo-book
   Function
   <a class="anchor" href="#function">#</a>
 </h1>
-<h2 id="function-definition">
+<h2 id="definition">
   Function definition
-  <a class="anchor" href="#function-definition">#</a>
+  <a class="anchor" href="#definition">#</a>
 </h2>
 <blockquote class="book-hint warning">
 <p><strong><em>Syntax.</em></strong>
-A function in Haskell is defined analogously to a <a href="">mathematical function</a>, with the symbol <code>=</code>.</p>
+A function in Haskell is defined analogously to a <a href="https://unibz-oofp-25-26.github.io/docs/background/sections/function/">mathematical function</a>, with the symbol <code>=</code>.</p>
 </blockquote>
 <blockquote class="book-hint info">
 <p><strong><em>Example.</em></strong>
@@ -529,7 +628,7 @@ Function types in Haskell can be automatically inferred.</p>
 <ul>
 <li>write the function type,</li>
 <li>then implement the function,</li>
-<li>use your IDE to check that your implementation meets the type requirements.</li>
+<li>use your IDE (or the compiler) to check that your implementation meets the type requirements.</li>
 </ul>
 <p>Note that the first option option may produce a type that is too generic for your needs.</p>
 </blockquote>
@@ -538,14 +637,14 @@ Function types in Haskell can be automatically inferred.</p>
   <a class="anchor" href="#alias">#</a>
 </h2>
 <p>Haskell provides several syntaxes to use aliases in function definitions.</p>
-<h3 id="expression-where-alias">
-  <code>&lt;expression&gt; where &lt;alias&gt;</code>
-  <a class="anchor" href="#expression-where-alias">#</a>
+<h3 id="where">
+  <code>&lt;expression&gt; where &lt;alias definition&gt;</code>
+  <a class="anchor" href="#where">#</a>
 </h3>
 <blockquote class="book-hint info">
 <p><strong><em>Example.</em></strong>
 The two following functions are equivalent (where <code>ord :: Char -&gt; Int</code> maps a character to its Unicode number).</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#75715e">-- True iff x is an ASCII character</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#75715e">-- True iff the input character is an ASCII character</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">isAsciiChar</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Char</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">isAsciiChar</span> x <span style="color:#f92672">=</span> ord x <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">&amp;&amp;</span> ord x <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">127</span>    <span style="color:#75715e">-- the expression `ord x` is repeated</span>
 </span></span><span style="display:flex;"><span>
@@ -555,9 +654,9 @@ The two following functions are equivalent (where <code>ord :: Char -&gt; Int</c
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">where</span>
 </span></span><span style="display:flex;"><span>    code <span style="color:#f92672">=</span> ord x   <span style="color:#75715e">-- the alias is defined after it is used</span>
 </span></span></code></pre></div></blockquote>
-<h3 id="let-alias-in-expression">
-  <code>let &lt;alias&gt; in &lt;expression&gt;</code>
-  <a class="anchor" href="#let-alias-in-expression">#</a>
+<h3 id="let-alias-definition-in-expression">
+  <code>let &lt;alias definition&gt; in &lt;expression&gt;</code>
+  <a class="anchor" href="#let-alias-definition-in-expression">#</a>
 </h3>
 <blockquote class="book-hint info">
 <p><strong><em>Example.</em></strong>
@@ -578,12 +677,13 @@ See details <a href="https://wiki.haskell.org/Let_vs._Where">here</a>.</p>
 </h2>
 <blockquote class="book-hint warning">
 <p><strong><em>Syntax.</em></strong>
-The <a href="">composition</a> operator $\circ$ is written <code>.</code> in Haskell.</p>
+The <a href="https://unibz-oofp-25-26.github.io/docs/background/sections/function/#composition">composition</a> operator $\circ$ is written <code>.</code> in Haskell.</p>
 </blockquote>
 <blockquote class="book-hint info">
 <p><strong><em>Example.</em></strong>
-The functions <code>isAsciiChar2</code>, <code>isAsciiChar3</code> and <code>isAsciiChar4</code> are equivalent to the function <code>isAsciiChar</code> above.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">ascii</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Int</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span>
+The functions <code>isAsciiChar2</code>, <code>isAsciiChar3</code> and <code>isAsciiChar4</code> below are equivalent to the function <code>isAsciiChar</code> above.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#75715e">-- auxiliary function that checks whether a number is within the ascii range</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ascii</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Int</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">ascii</span> x <span style="color:#f92672">=</span> x <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">&amp;&amp;</span> x <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">127</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">isAsciiChar2</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Char</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span>
@@ -642,12 +742,12 @@ Your IDE may suggest it.</p>
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#function-definition">Function definition</a></li>
+    <li><a href="#definition">Function definition</a></li>
     <li><a href="#function-type">Function type</a></li>
     <li><a href="#alias">Alias</a>
       <ul>
-        <li><a href="#expression-where-alias"><code>&lt;expression&gt; where &lt;alias&gt;</code></a></li>
-        <li><a href="#let-alias-in-expression"><code>let &lt;alias&gt; in &lt;expression&gt;</code></a></li>
+        <li><a href="#where"><code>&lt;expression&gt; where &lt;alias definition&gt;</code></a></li>
+        <li><a href="#let-alias-definition-in-expression"><code>let &lt;alias definition&gt; in &lt;expression&gt;</code></a></li>
       </ul>
     </li>
     <li><a href="#composition">Composition</a></li>
