@@ -48,7 +48,7 @@ Static vs dynamic typing # Static typing # Definition. A programming language is
 <link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/paradigm/sections/type/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.967885938c6eb9d9b414fee860d8b3ab5d0cb15b6360980fa96f9936957ad027.js" integrity="sha256-lniFk4xuudm0FP7oYNizq10MsVtjYJgPqW&#43;ZNpV60Cc=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.ba675ed9bca891f7957ba3bb26bc8f1879fa1a3f85e1571d1cd1ec10c9f823a2.js" integrity="sha256-umde2byokfeVe6O7JryPGHn6Gj&#43;F4VcdHNHsEMn4I6I=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -495,7 +495,7 @@ Statically typed languages include:</p>
 <li>Typescript.</li>
 </ul>
 </blockquote>
-<blockquote class="book-hint info">
+<blockquote class="book-hint warning">
 <p><strong><em>Benefits.</em></strong></p>
 <ul>
 <li>A type mismatch usually results in a <a href="https://unibz-oofp-25-26.github.io/docs/paradigm/sections/error/">compile time error</a>, as opposed to a <a href="https://unibz-oofp-25-26.github.io/docs/paradigm/sections/error/">bug</a>.</li>
@@ -503,6 +503,24 @@ Statically typed languages include:</p>
 <li>Expressive types enable more advanced <em>tooling</em> (analysis, refactoring, autocompletion, &hellip;).</li>
 <li><em>Compilers</em> can generate more optimized code when types are fixed.</li>
 </ul>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>In practice.</em></strong>
+An expressive type system often means:</p>
+<ul>
+<li>more time spent <em>writing</em> code,</li>
+<li>less time spent <em>debugging</em> it.</li>
+</ul>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Illustration.</em></strong>
+The catchphrase &ldquo;if it compiles, it is correct&rdquo; (or &ldquo;if it compiles, it works&rdquo;) is often used for languages with expressive type systems,
+in particular:</p>
+<ul>
+<li>functional languages (like Haskell or OCaml),</li>
+<li>Rust (more recently).</li>
+</ul>
+<p>This is (obviously) an overstatement.</p>
 </blockquote>
 <blockquote class="book-hint danger">
 <p><strong><em>Drawbacks.</em></strong></p>
@@ -531,11 +549,11 @@ One may want to implement a generic algorithm that sorts an array.</p>
 This allows programmers to omit some type annotations.</p>
 <blockquote class="book-hint info">
 <p><strong><em>Example.</em></strong>
-In Java, the keyword <code>var</code> can sometimes be used in place of a type annotation, e.g.:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;John Doe&#34;</span>;
+In Java (since 2018), the keyword <code>var</code> can sometimes be used in place of a type annotation, e.g.:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Alice&#34;</span>;
 </span></span></code></pre></div><p>In this example, the compiler can infer that the variable <code>name</code> has type <code>String</code>.</p>
 </blockquote>
-<p>Some languages are known for their type inference capabilities.
+<p>Some languages (more specifically the compilers for these languages) are known for their type inference capabilities.
 These include:</p>
 <ul>
 <li>Haskell,</li>
@@ -575,7 +593,7 @@ Dynamically typed languages are often preferred for:</p>
 <p><strong><em>Illustration.</em></strong>
 JavaScript was originally designed for small programs.<br>
 When it started powering more complex ones (including some backends),
-developers faced the limitations of static typing:</p>
+developers faced the limitations of dynamic typing:</p>
 <ul>
 <li>bugs,</li>
 <li>difficult refactoring,</li>
