@@ -49,7 +49,7 @@ $\{2,5\}$ and $\{5,2\}$ are the same set, $\{2,5,2\}$ is not a set. Power set # 
 <link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/background/sections/set_list/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.23ddf38cc6d1231f551c538730a20c0ea1352d9f5ea9d7574e9e714aaf5351fe.js" integrity="sha256-I93zjMbRIx9VHFOHMKIMDqE1LZ9eqddXTp5xSq9TUf4=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.b7dbeec6ae77db584225ab517020a3b06953151ba8b6c9b4383f206622138ba9.js" integrity="sha256-t9vuxq5321hCJatRcCCjsGlTFRuotsm0OD8gZiITi6k=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -546,9 +546,9 @@ https://github.com/alex-shpak/hugo-book
     <li><a href="#list">List, Tuple</a>
       <ul>
         <li><a href="#list-1">List</a></li>
+        <li><a href="#tuple">Tuple</a></li>
       </ul>
     </li>
-    <li><a href="#tuple">Tuple</a></li>
   </ul>
 </nav>
 
@@ -702,19 +702,31 @@ and $\mathbb{N}$ the set of integers $\ge 0$).</p>
   </tbody>
 </table>
 </div>
-<!-- 
 <input type="radio" class="toggle" name="tabs-exercise_set_comprehension" id="tabs-exercise_set_comprehension-1"  />
 <label for="tabs-exercise_set_comprehension-1">Solution</label>
-<div class="book-tabs-content markdown-inner"><p>&ndash;&gt;</p>
-<!---->
-<!-- | Set comprehension                                                               | corresponding set | -->
-<!-- | ------------------------------------------------------------------------------- | ----------------- | -->
-<!-- | $\\{x^2 \mid x \in \\{2,3,5,7\\},\ x \ge 5\\}$                                  | $\\{25, 49\\}$    | -->
-<!-- | $\\{ - x \mid x \in \mathbb{Z},\ x \le 0\\}$                                    | $\mathbb{N}$      | -->
-<!-- | $\\{ x + y \mid x \in \\{3,6\\},\ y \in \mathbb{N},\ 4 \le y \le 6,\ y < x \\}$ | $\\{10,11\\}$     | -->
-<!---->
-<!-- </div>
- -->
+<div class="book-tabs-content markdown-inner"><table>
+  <thead>
+      <tr>
+          <th>Set comprehension</th>
+          <th>corresponding set</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>$\{x^2 \mid x \in \{2,3,5,7\},\ x \ge 5\}$</td>
+          <td>$\{25, 49\}$</td>
+      </tr>
+      <tr>
+          <td>$\{ - x \mid x \in \mathbb{Z},\ x \le 0\}$</td>
+          <td>$\mathbb{N}$</td>
+      </tr>
+      <tr>
+          <td>$\{ x + y \mid x \in \{3,6\},\ y \in \mathbb{N},\ 4 \le y \le 6,\ y &lt; x \}$</td>
+          <td>$\{10,11\}$</td>
+      </tr>
+  </tbody>
+</table>
+</div>
 </div>
 <h2 id="list">
   List, Tuple
@@ -741,10 +753,10 @@ The following three lists are different:</p>
 <p><strong><em>Terminology.</em></strong> In programming languages, the term &ldquo;list&rdquo; is often reserved to those whose elements have the same <em>type</em>.
 For instance, a list of integers or a list of strings.</p>
 </blockquote>
-<h2 id="tuple">
+<h3 id="tuple">
   Tuple
   <a class="anchor" href="#tuple">#</a>
-</h2>
+</h3>
 <blockquote class="book-hint warning">
 <p><strong><em>Definition.</em></strong> A <strong>tuple</strong> is a finite list.</p>
 </blockquote>
@@ -840,28 +852,67 @@ For instance, a list of integers or a list of strings.</p>
   </tbody>
 </table>
 </div>
-<!-- 
 <input type="radio" class="toggle" name="tabs-exercise_sets" id="tabs-exercise_sets-1"  />
 <label for="tabs-exercise_sets-1">Solution</label>
-<div class="book-tabs-content markdown-inner"><p>&ndash;&gt;</p>
-<!---->
-<!-- | expression                  | is a set | -->
-<!-- | --------------------------- | -------- | -->
-<!-- | $\\{a, b\\}$                | yes      | -->
-<!-- | $\\{a, b, a\\}$             | no       | -->
-<!-- | $\\{\\}$                    | yes      | -->
-<!-- | $\\{\\{\\}\\}$              | yes      | -->
-<!-- | $\\{\\{\\},\\{a\\}\\}$      | yes      | -->
-<!-- | $\\{\\{a\\},\\{a\\}\\}$     | no       | -->
-<!-- | $\\{\\{a\\},\\{a,b\\}\\}$   | yes      | -->
-<!-- | $\\{\\{a,b\\},\\{b,a\\}\\}$ | no       | -->
-<!-- | $(\\{a,b\\})$               | no       | -->
-<!-- | $\\{(a,b)\\}$               | yes      | -->
-<!-- | $\\{(a, b), (a, b)\\}$      | no       | -->
-<!-- | $\\{(a, b), (b, a)\\}$      | yes      | -->
-<!---->
-<!-- </div>
- -->
+<div class="book-tabs-content markdown-inner"><table>
+  <thead>
+      <tr>
+          <th>expression</th>
+          <th>is a set</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>$\{a, b\}$</td>
+          <td>yes</td>
+      </tr>
+      <tr>
+          <td>$\{a, b, a\}$</td>
+          <td>no</td>
+      </tr>
+      <tr>
+          <td>$\{\}$</td>
+          <td>yes</td>
+      </tr>
+      <tr>
+          <td>$\{\{\}\}$</td>
+          <td>yes</td>
+      </tr>
+      <tr>
+          <td>$\{\{\},\{a\}\}$</td>
+          <td>yes</td>
+      </tr>
+      <tr>
+          <td>$\{\{a\},\{a\}\}$</td>
+          <td>no</td>
+      </tr>
+      <tr>
+          <td>$\{\{a\},\{a,b\}\}$</td>
+          <td>yes</td>
+      </tr>
+      <tr>
+          <td>$\{\{a,b\},\{b,a\}\}$</td>
+          <td>no</td>
+      </tr>
+      <tr>
+          <td>$(\{a,b\})$</td>
+          <td>no</td>
+      </tr>
+      <tr>
+          <td>$\{(a,b)\}$</td>
+          <td>yes</td>
+      </tr>
+      <tr>
+          <td>$\{(a, b), (a, b)\}$</td>
+          <td>no</td>
+      </tr>
+      <tr>
+          <td>$\{(a, b), (b, a)\}$</td>
+          <td>yes</td>
+      </tr>
+  </tbody>
+</table>
+</div>
 </div>
 </article>
  
@@ -914,9 +965,9 @@ For instance, a list of integers or a list of strings.</p>
     <li><a href="#list">List, Tuple</a>
       <ul>
         <li><a href="#list-1">List</a></li>
+        <li><a href="#tuple">Tuple</a></li>
       </ul>
     </li>
-    <li><a href="#tuple">Tuple</a></li>
   </ul>
 </nav>
 

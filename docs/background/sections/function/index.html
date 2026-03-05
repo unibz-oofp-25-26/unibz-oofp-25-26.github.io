@@ -49,7 +49,7 @@ $\ $the function $g\colon \mathbb{N} \to \mathcal{P}(\mathbb{N})$ defined by $\q
 <link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/background/sections/function/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.23ddf38cc6d1231f551c538730a20c0ea1352d9f5ea9d7574e9e714aaf5351fe.js" integrity="sha256-I93zjMbRIx9VHFOHMKIMDqE1LZ9eqddXTp5xSq9TUf4=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.b7dbeec6ae77db584225ab517020a3b06953151ba8b6c9b4383f206622138ba9.js" integrity="sha256-t9vuxq5321hCJatRcCCjsGlTFRuotsm0OD8gZiITi6k=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -695,7 +695,7 @@ They can be both described as</p>
 <p>$\qquad$&ldquo;the function that maps an integer $x$ to $x^2$&rdquo;.</p>
 </blockquote>
 <blockquote class="book-hint warning">
-<p><strong><em>Notation (borrowed from <a href="">lambda calculus</a>).</em></strong></p>
+<p><strong><em>Notation (borrowed from <a href="https://en.wikipedia.org/wiki/Lambda_calculus">lambda calculus</a>).</em></strong></p>
 <p>Let $f(x) = D$ be a function definition (for instance, $D$ could be $x^2$).</p>
 <p>Then $\lambda x.D$ is an alternative notation for $f$.</p>
 <p>In other words, $f$ can be viewed as an alias for $\lambda x.D$.</p>
@@ -716,18 +716,27 @@ For instance,</p>
 <li>$(\lambda x.3x)\big((\lambda y.y+2)(1)\big)$</li>
 </ul>
 </div>
-<!-- 
 <input type="radio" class="toggle" name="tabs-exercise_lambda" id="tabs-exercise_lambda-1"  />
 <label for="tabs-exercise_lambda-1">Solution</label>
-<div class="book-tabs-content markdown-inner"><p>&ndash;&gt;</p>
-<!---->
-<!-- | expression                           | value | -->
-<!-- | ------------------------------------ | ----- | -->
-<!-- | $(\lambda x.2x)(5)$                  | 10    | -->
-<!-- | $(\lambda x.3x)((\lambda y.y+2)(1))$ | 9     | -->
-<!---->
-<!-- </div>
- -->
+<div class="book-tabs-content markdown-inner"><table>
+  <thead>
+      <tr>
+          <th>expression</th>
+          <th>value</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>$(\lambda x.2x)(5)$</td>
+          <td>10</td>
+      </tr>
+      <tr>
+          <td>$(\lambda x.3x)((\lambda y.y+2)(1))$</td>
+          <td>9</td>
+      </tr>
+  </tbody>
+</table>
+</div>
 </div>
 <blockquote class="book-hint warning">
 <p><strong><em>Terminology.</em></strong> An anonymous function is also called a <strong>lambda abstraction</strong>.</p>
@@ -770,15 +779,10 @@ Consider the function $f\colon \mathbb{N} \to (\mathbb{N} \to \mathbb{N})$ defin
 <li>$f(y)(x) = x - y$</li>
 </ol>
 </div>
-<!-- 
 <input type="radio" class="toggle" name="tabs-exercise_higher_order" id="tabs-exercise_higher_order-1"  />
 <label for="tabs-exercise_higher_order-1">Solution</label>
-<div class="book-tabs-content markdown-inner"><p>&ndash;&gt;</p>
-<!---->
-<!-- $1,2,3$ and $4$. -->
-<!---->
-<!-- </div>
- -->
+<div class="book-tabs-content markdown-inner"><p>$1,2,3$ and $4$.</p>
+</div>
 </div>
 <h2 id="currying">
   Currying
@@ -835,25 +839,23 @@ If $f\colon X \times Y \to Z$ is a function, then $f$ <strong><em>in curried for
 <li>$f(x,y) = \lambda z.x^y + z$</li>
 </ul>
 </div>
-<!-- 
 <input type="radio" class="toggle" name="tabs-exercise_curried" id="tabs-exercise_curried-1"  />
 <label for="tabs-exercise_curried-1">Solution</label>
-<div class="book-tabs-content markdown-inner"><p>&ndash;&gt;</p>
-<!---->
-<!-- - $f(x,y) = y^x$ in curried form is the function $\bar{f}$ defined by -->
-<!---->
-<!--   $\qquad \bar{f}(x)(y) = y^x$ -->
-<!---->
-<!-- - $f(h,x) = h(x)$ in curried form is the function $\bar{f}$ defined by: -->
-<!---->
-<!--   $\qquad \bar{f}(h)(x) = h(x)$ -->
-<!---->
-<!-- - $f(x,y) = \lambda z.x^y + z$ in curried form is the function $\bar{f}$ defined by: -->
-<!---->
-<!--   $\qquad \bar{f}(x)(y) = \lambda z.x^y + z$ -->
-<!---->
-<!-- </div>
- -->
+<div class="book-tabs-content markdown-inner"><ul>
+<li>
+<p>$f(x,y) = y^x$ in curried form is the function $\bar{f}$ defined by</p>
+<p>$\qquad \bar{f}(x)(y) = y^x$</p>
+</li>
+<li>
+<p>$f(h,x) = h(x)$ in curried form is the function $\bar{f}$ defined by:</p>
+<p>$\qquad \bar{f}(h)(x) = h(x)$</p>
+</li>
+<li>
+<p>$f(x,y) = \lambda z.x^y + z$ in curried form is the function $\bar{f}$ defined by:</p>
+<p>$\qquad \bar{f}(x)(y) = \lambda z.x^y + z$</p>
+</li>
+</ul>
+</div>
 </div>
 <blockquote class="book-hint warning">
 <p><strong><em>Generalization.</em></strong>
@@ -893,18 +895,27 @@ if</p>
 <p>$\Big((\lambda x.3x) \circ(\lambda y.y+2)\Big)(1)$</p>
 <p>$\Big(\big((\lambda x.(\lambda y.y-x))(1)\big) \circ (\lambda z.2z) \Big) (3)$</p>
 </div>
-<!-- 
 <input type="radio" class="toggle" name="tabs-exercise_composition" id="tabs-exercise_composition-1"  />
 <label for="tabs-exercise_composition-1">Solution</label>
-<div class="book-tabs-content markdown-inner"><p>&ndash;&gt;</p>
-<!---->
-<!-- | expression                                                                     | value | -->
-<!-- | ------------------------------------------------------------------------------ | ----- | -->
-<!-- | $\Big((\lambda x.3x) \circ(\lambda y.y+2)\Big)(1)$                             | 9     | -->
-<!-- | $\Big(\big((\lambda x.(\lambda y.y-x))(1)\big) \circ (\lambda z.2z) \Big) (3)$ | 5     | -->
-<!---->
-<!-- </div>
- -->
+<div class="book-tabs-content markdown-inner"><table>
+  <thead>
+      <tr>
+          <th>expression</th>
+          <th>value</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>$\Big((\lambda x.3x) \circ(\lambda y.y+2)\Big)(1)$</td>
+          <td>9</td>
+      </tr>
+      <tr>
+          <td>$\Big(\big((\lambda x.(\lambda y.y-x))(1)\big) \circ (\lambda z.2z) \Big) (3)$</td>
+          <td>5</td>
+      </tr>
+  </tbody>
+</table>
+</div>
 </div>
 </article>
  
