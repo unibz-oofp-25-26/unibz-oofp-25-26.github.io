@@ -2,38 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Control flow on OOFP 2025-26</title>
-    <link>http://localhost:1313/docs/control/</link>
+    <link>https://unibz-oofp-25-26.github.io/docs/control/</link>
     <description>Recent content in Control flow on OOFP 2025-26</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <atom:link href="http://localhost:1313/docs/control/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://unibz-oofp-25-26.github.io/docs/control/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Pattern matching</title>
-      <link>http://localhost:1313/docs/control/sections/pattern/</link>
+      <link>https://unibz-oofp-25-26.github.io/docs/control/sections/pattern/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/control/sections/pattern/</guid>
-      <description>&lt;h1 id=&#34;pattern-matching&#34;&gt;&#xA;  Pattern matching&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#pattern-matching&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;Pattern matching is a traditional feature of functional languages.&#xA;It pairs well with &lt;a href=&#34;&#34;&gt;sum types&lt;/a&gt; (which we will see later).&lt;/p&gt;&#xA;&lt;p&gt;Pattern matching is no longer exclusive to functional languages: several imperative languages now support it to some extent (natively or via libraries).&#xA;This includes:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;C# (since 2020),&lt;/li&gt;&#xA;&lt;li&gt;Java (since 2021),&lt;/li&gt;&#xA;&lt;li&gt;PHP (since 2021),&lt;/li&gt;&#xA;&lt;li&gt;Python (since 2021)&lt;/li&gt;&#xA;&lt;li&gt;Rust (since its first release in 2015).&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;in-haskell&#34;&gt;&#xA;  in Haskell&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#in-haskell&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;A &lt;strong&gt;pattern&lt;/strong&gt; is a syntactic expression that can match certain values.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Boolean condition</title>
-      <link>http://localhost:1313/docs/control/sections/condition/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/control/sections/condition/</guid>
-      <description>&lt;h1 id=&#34;boolean-condition&#34;&gt;&#xA;  Boolean condition&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#boolean-condition&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;&#34;&gt;Pattern matching&lt;/a&gt; has limitations.&lt;/p&gt;&#xA;&lt;blockquote class=&#34;book-hint info&#34;&gt;&#xA;&lt;p&gt;&lt;strong&gt;&lt;em&gt;Examples.&lt;/em&gt;&lt;/strong&gt;&#xA;No pattern can match:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;integers greater than 2,&lt;/li&gt;&#xA;&lt;li&gt;odd integers,&lt;/li&gt;&#xA;&lt;li&gt;etc.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;For more expressive conditions, programming language usually rely on Boolean expressions.&lt;/p&gt;&#xA;&lt;h2 id=&#34;in-haskell&#34;&gt;&#xA;  in Haskell&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#in-haskell&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;h3 id=&#34;boolean-expression&#34;&gt;&#xA;  Boolean expression&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#boolean-expression&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h3&gt;&#xA;&lt;p&gt;We have seen how to define a Boolean operator (precisely, the Boolean operator &amp;ldquo;AND&amp;rdquo;) &lt;a href=&#34;&#34;&gt;with patterns&lt;/a&gt; in Haskell.&lt;/p&gt;&#xA;&lt;p&gt;This is not necessary: Haskell provides native implementations, similar to their counterparts in Java (and many programming languages).&#xA;They include:&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>List comprehension</title>
-      <link>http://localhost:1313/docs/control/sections/comprehension/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/control/sections/comprehension/</guid>
-      <description>&lt;h1 id=&#34;list-comprehension&#34;&gt;&#xA;  List comprehension&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#list-comprehension&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;Pure functional programming does not admit loops.&lt;/p&gt;&#xA;&lt;p&gt;In particular, this is the case of Haskell.&#xA;So iteration in Haskell is primarily achieved via &lt;a href=&#34;&#34;&gt;recursive functions&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;p&gt;However, Haskell also provides a convenient syntax for a limited form of iteration, called &lt;strong&gt;list comprehensions&lt;/strong&gt;.&#xA;These have also been integrated to Python since the release of Python 2 (in 2000).&lt;/p&gt;&#xA;&lt;h2 id=&#34;syntax&#34;&gt;&#xA;  Syntax&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#syntax&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;We have already seen the syntax for &lt;a href=&#34;&#34;&gt;set comprehension&lt;/a&gt;.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Call stack</title>
-      <link>http://localhost:1313/docs/control/sections/stack/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/control/sections/stack/</guid>
-      <description>&lt;h1 id=&#34;call-stask&#34;&gt;&#xA;  Call stask&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#call-stask&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;</description>
+      <guid>https://unibz-oofp-25-26.github.io/docs/control/sections/pattern/</guid>
+      <description>&lt;h1 id=&#34;pattern-matching&#34;&gt;&#xA;  Pattern matching&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#pattern-matching&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;Pattern matching is a traditional feature of functional languages.&#xA;It pairs well with &lt;a href=&#34;https://unibz-oofp-25-26.github.io/notreleased/&#34;&gt;sum types&lt;/a&gt; (which we will see later).&lt;/p&gt;&#xA;&lt;p&gt;Pattern matching is no longer exclusive to functional languages: several imperative languages now support it to some extent (natively or via libraries).&#xA;This includes:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;C# (since 2020),&lt;/li&gt;&#xA;&lt;li&gt;Java (since 2021),&lt;/li&gt;&#xA;&lt;li&gt;PHP (since 2021),&lt;/li&gt;&#xA;&lt;li&gt;Python (since 2021)&lt;/li&gt;&#xA;&lt;li&gt;Rust (since its first release in 2015).&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;haskell&#34;&gt;&#xA;  in Haskell&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#haskell&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;A &lt;strong&gt;pattern&lt;/strong&gt; is a syntactic expression that can match certain values.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
