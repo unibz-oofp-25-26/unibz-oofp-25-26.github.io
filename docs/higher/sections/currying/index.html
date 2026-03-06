@@ -19,13 +19,13 @@ Functional program traditionally define functions in curried form (for a definit
 A Haskell function can (in theory) take a tuple as argument.
 
 Example.
-power :: (Integer, Integer) -&gt; Integer
+power :: (Int, Int) -&gt; Int
 power (x,y) = x^y
 
 However, functions in curried form are usually preferred, because they are more versatile.
 
 Example. The function above in curried form can be written:
-power :: Integer -&gt; (Integer -&gt; Integer)
+power :: Int -&gt; (Int -&gt; Int)
 power = \x -&gt; (\y -&gt; x^y)
 or equivalently:">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
@@ -36,9 +36,9 @@ or equivalently:">
   <meta property="og:description" content="Currying # Functional program traditionally define functions in curried form (for a definition, we refer to the dedicated section).
 In Haskell # Syntax # A Haskell function can (in theory) take a tuple as argument.
 Example.
-power :: (Integer, Integer) -&gt; Integer power (x,y) = x^y However, functions in curried form are usually preferred, because they are more versatile.
+power :: (Int, Int) -&gt; Int power (x,y) = x^y However, functions in curried form are usually preferred, because they are more versatile.
 Example. The function above in curried form can be written:
-power :: Integer -&gt; (Integer -&gt; Integer) power = \x -&gt; (\y -&gt; x^y) or equivalently:">
+power :: Int -&gt; (Int -&gt; Int) power = \x -&gt; (\y -&gt; x^y) or equivalently:">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
@@ -48,7 +48,7 @@ power :: Integer -&gt; (Integer -&gt; Integer) power = \x -&gt; (\y -&gt; x^y) o
 <link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/higher/sections/currying/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.b7dbeec6ae77db584225ab517020a3b06953151ba8b6c9b4383f206622138ba9.js" integrity="sha256-t9vuxq5321hCJatRcCCjsGlTFRuotsm0OD8gZiITi6k=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.66fdf9e942f0e080be4d4b26ee4120bb4e816f024f5f78dccd0f95d307fc00c3.js" integrity="sha256-Zv356ULw4IC&#43;TUsm7kEgu06BbwJPX3jczQ&#43;V0wf8AMM=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -444,6 +444,53 @@ https://github.com/alex-shpak/hugo-book
   
 
   
+    <input type="checkbox" id="section-2e35b5b0c21ab79cc6b70c0c8a6135fa" class="toggle" checked />
+    <label for="section-2e35b5b0c21ab79cc6b70c0c8a6135fa" class="flex justify-between">
+      <a href="/docs/higher/" class="">Higher-order function</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/higher/sections/anonymous/" class="">Anonymous function</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/higher/sections/currying/" class="active">Currying</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
     <input type="checkbox" id="section-d689bb2436bd0f51b31e8f95cf070b59" class="toggle"  />
     <label for="section-d689bb2436bd0f51b31e8f95cf070b59" class="flex justify-between">
       <a href="/docs/background/" class="">Background</a>
@@ -535,7 +582,7 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#in-haskell">In Haskell</a>
+    <li><a href="#haskell">In Haskell</a>
       <ul>
         <li><a href="#syntax">Syntax</a></li>
         <li><a href="#infix-notation">Infix notation</a></li>
@@ -557,42 +604,46 @@ https://github.com/alex-shpak/hugo-book
   Currying
   <a class="anchor" href="#currying">#</a>
 </h1>
-<p>Functional program traditionally define functions in <em>curried form</em> (for a definition, we refer to the <a href="">dedicated section</a>).</p>
-<h2 id="in-haskell">
+<p>Functional program traditionally define functions in <em>curried form</em> (for a definition, we refer to the <a href="https://unibz-oofp-25-26.github.io/docs/background/sections/function/#currying">dedicated section</a>).</p>
+<h2 id="haskell">
   In Haskell
-  <a class="anchor" href="#in-haskell">#</a>
+  <a class="anchor" href="#haskell">#</a>
 </h2>
 <h3 id="syntax">
   Syntax
   <a class="anchor" href="#syntax">#</a>
 </h3>
-<p>A Haskell function can (in theory) take a <a href="">tuple</a> as argument.</p>
+<p>A Haskell function can (in theory) take a <a href="https://unibz-oofp-25-26.github.io/docs/background/sections/set_list/#tuple">tuple</a> as argument.</p>
 <blockquote class="book-hint info">
 <p><strong><em>Example.</em></strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">power</span> <span style="color:#f92672">::</span> (<span style="color:#66d9ef">Integer</span>, <span style="color:#66d9ef">Integer</span>) <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Integer</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">power</span> <span style="color:#f92672">::</span> (<span style="color:#66d9ef">Int</span>, <span style="color:#66d9ef">Int</span>) <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Int</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">power</span> (x,y) <span style="color:#f92672">=</span> x<span style="color:#f92672">^</span>y
 </span></span></code></pre></div></blockquote>
-<p>However, functions in <a href="">curried form</a> are usually preferred, because they are more versatile.</p>
+<p>However, functions in <a href="https://unibz-oofp-25-26.github.io/docs/background/sections/function/#currying">curried form</a> are usually preferred, because they are more versatile.</p>
 <blockquote class="book-hint info">
 <p><strong><em><em>Example.</em></em></strong> The function above in curried form can be written:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">power</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Integer</span> <span style="color:#f92672">-&gt;</span> (<span style="color:#66d9ef">Integer</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Integer</span>)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">power</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Int</span> <span style="color:#f92672">-&gt;</span> (<span style="color:#66d9ef">Int</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Int</span>)
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">power</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">\</span>x <span style="color:#f92672">-&gt;</span> (<span style="color:#a6e22e">\</span>y <span style="color:#f92672">-&gt;</span> x<span style="color:#f92672">^</span>y)
 </span></span></code></pre></div><p>or equivalently:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">power</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Integer</span> <span style="color:#f92672">-&gt;</span> (<span style="color:#66d9ef">Integer</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Integer</span>)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">power</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Int</span> <span style="color:#f92672">-&gt;</span> (<span style="color:#66d9ef">Int</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Int</span>)
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">power</span> x <span style="color:#f92672">=</span> <span style="color:#a6e22e">\</span>y <span style="color:#f92672">-&gt;</span> x<span style="color:#f92672">^</span>y
 </span></span></code></pre></div><p>or equivalently (and more commonly):</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">power</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Integer</span> <span style="color:#f92672">-&gt;</span> (<span style="color:#66d9ef">Integer</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Integer</span>)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">power</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Int</span> <span style="color:#f92672">-&gt;</span> (<span style="color:#66d9ef">Int</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Int</span>)
 </span></span><span style="display:flex;"><span>(power x) y <span style="color:#f92672">=</span> x<span style="color:#f92672">^</span>y
 </span></span></code></pre></div></blockquote>
 <blockquote class="book-hint warning">
 <p><strong><em>Syntax.</em></strong>
-Parentheses are redundant in the last of these three definitions, because:</p>
-<ul>
-<li>the <code>-&gt;</code> operator associates to the right, and</li>
-<li>function application associates to the left.</li>
-</ul>
-<p>So this function is normally written:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">power</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Integer</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Integer</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Integer</span>
+The <code>-&gt;</code> operator associates to the right, meaning that</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#66d9ef">A</span> <span style="color:#f92672">-&gt;</span> (<span style="color:#66d9ef">B</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">C</span>)
+</span></span></code></pre></div><p>can be written</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#66d9ef">A</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">B</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">C</span>
+</span></span></code></pre></div><p>Similarly,
+function application associates to the left, meaning that</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">(</span>f x<span style="color:#f92672">)</span> y
+</span></span></code></pre></div><p>can be written</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>f x y
+</span></span></code></pre></div><p>So the function above is normally written:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">power</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Int</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Int</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Int</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">power</span> x y <span style="color:#f92672">=</span> x<span style="color:#f92672">^</span>y
 </span></span></code></pre></div></blockquote>
 <div class="book-tabs">
@@ -712,27 +763,20 @@ These functions are implicitly in curried form.</p>
 <p><strong><em>Example.</em></strong>
 The function <code>&amp;&amp;</code> has type <code>Bool -&gt; Bool -&gt; Bool</code>.</p>
 </blockquote>
-<p>So we can call an infix function with its &ldquo;first argument&rdquo; only (like any function in curried form).</p>
+<p>Like any function in curried form, we can call an infix function with its &ldquo;first argument&rdquo; only.</p>
 <blockquote class="book-hint info">
-<p><strong><em>Example.</em></strong>
-<code>(2 -)</code> is the function that subtracts a number from two.</p>
-<p>In other words, the two functions below are equivalent:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">myFunction</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Integer</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Integer</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">myFunction</span> x <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">-</span> x
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">theSameFunction</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Integer</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Integer</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">theSameFunction</span> <span style="color:#f92672">=</span> (<span style="color:#ae81ff">2</span> <span style="color:#f92672">-</span>)
+<p><strong><em>Example.</em></strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#ae81ff">2</span> <span style="color:#f92672">-</span>
+</span></span></code></pre></div><p>is the function that subtracts a number from two.<br>
+This is an alternative syntax for</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">\</span>x <span style="color:#f92672">-&gt;</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">-</span> x
 </span></span></code></pre></div></blockquote>
-<p>Surprisingly, an infix function in Haskell can also be called with its &ldquo;second argument&rdquo; only (whereas a prefix function cannot).</p>
+<p>Surprisingly, in some contexts, an infix function can also be called with its &ldquo;second argument&rdquo; only (whereas a prefix function cannot).</p>
 <blockquote class="book-hint info">
-<p><strong><em>Example.</em></strong>
-<code>(- 2)</code> is the function that subtracts two from a number.</p>
-<p>In other words, the two functions below are equivalent:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">myFunction</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Integer</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Integer</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">myFunction</span> x <span style="color:#f92672">=</span> x <span style="color:#f92672">-</span> <span style="color:#ae81ff">2</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">theSameFunction</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Integer</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Integer</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">theSameFunction</span> <span style="color:#f92672">=</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">2</span>
+<p><strong><em>Example.</em></strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#f92672">-</span> <span style="color:#ae81ff">2</span>
+</span></span></code></pre></div><p>is an alternative syntax (allowed in certain contexts only) for</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">\</span>x <span style="color:#f92672">-&gt;</span> x <span style="color:#f92672">-</span> <span style="color:#ae81ff">2</span>
 </span></span></code></pre></div></blockquote>
 <h4 id="infix-to-prefix">
   Infix to prefix
@@ -744,8 +788,8 @@ The function <code>&amp;&amp;</code> has type <code>Bool -&gt; Bool -&gt; Bool</
 <table>
   <thead>
       <tr>
-          <th>infix form</th>
-          <th>equivalent prefix form</th>
+          <th>an expression</th>
+          <th>an equivalent expression</th>
       </tr>
   </thead>
   <tbody>
@@ -760,38 +804,24 @@ The function <code>&amp;&amp;</code> has type <code>Bool -&gt; Bool -&gt; Bool</
   </tbody>
 </table>
 </blockquote>
-<blockquote class="book-hint info">
-<p><strong><em>Example.</em></strong>
-The two functions below are equivalent:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">myFunction</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Integer</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Integer</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">myFunction</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">-</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">theSameFunction</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Integer</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Integer</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">theSameFunction</span> <span style="color:#f92672">=</span> (<span style="color:#f92672">-</span>) <span style="color:#ae81ff">2</span>
-</span></span></code></pre></div></blockquote>
-<p>This is helpful in contexts where the infix form cannot be used.</p>
-<blockquote class="book-hint info">
-<p><strong><em>Example.</em></strong>
-We can pass the function <code>&amp;&amp;</code> to another function, by surrounding it with parentheses.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">applyBoolOp</span> <span style="color:#f92672">::</span> (<span style="color:#66d9ef">Bool</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span>) <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">applyBoolOp</span> f x y <span style="color:#f92672">=</span> f x y
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">main</span> <span style="color:#f92672">=</span> print <span style="color:#f92672">$</span> applyBoolOp (<span style="color:#f92672">&amp;&amp;</span>) <span style="color:#66d9ef">True</span> <span style="color:#66d9ef">False</span>
-</span></span></code></pre></div></blockquote>
-<p>We can also define an infix function.
+<p>This is helpful in contexts where the infix form cannot be used.
+For instance,
+we can pass the function <code>&amp;&amp;</code> to another function by surrounding it with parentheses.</p>
+<p>We can also define an infix function, as long as its name consists of so-called &ldquo;symbol characters&rdquo;.
+This means not letter, number, etc. (the full list symbol characters can be found <a href="https://stackoverflow.com/questions/10548170/what-characters-are-permitted-for-haskell-operators">here</a>).
 In this case, the type declaration must use parentheses.</p>
 <blockquote class="book-hint info">
-<p><strong><em>Example.</em></strong> The program below define a function <code>myOp</code> in infix form.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span>(myOp) <span style="color:#f92672">::</span> <span style="color:#66d9ef">Integer</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Integer</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">x</span> myOp y <span style="color:#f92672">=</span> x <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">&amp;&amp;</span> x <span style="color:#f92672">&lt;</span> y
+<p><strong><em>Example.</em></strong> The program below define a function <code>^^^</code> in infix form.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span>(<span style="color:#f92672">^^^</span>) <span style="color:#f92672">::</span> <span style="color:#66d9ef">Integer</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Integer</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">x</span> <span style="color:#f92672">^^^</span> y <span style="color:#f92672">=</span> x <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">&amp;&amp;</span> x <span style="color:#f92672">&lt;</span> y
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">main</span> <span style="color:#f92672">=</span> print <span style="color:#f92672">$</span> <span style="color:#ae81ff">2</span> myOp <span style="color:#ae81ff">4</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">main</span> <span style="color:#f92672">=</span> print <span style="color:#f92672">$</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">^^^</span> <span style="color:#ae81ff">4</span>
 </span></span></code></pre></div></blockquote>
 <h4 id="prefix-to-infix">
   Prefix to infix
   <a class="anchor" href="#prefix-to-infix">#</a>
 </h4>
-<p>Conversely, a curried function in prefix form can be used as an infix one, by surrounding it with <code>`</code>.</p>
+<p>A curried function in prefix form can be used as an infix one, by surrounding it with <code>`</code>.</p>
 <blockquote class="book-hint info">
 <p><strong><em>Examples.</em></strong></p>
 <table>
@@ -813,16 +843,6 @@ In this case, the type declaration must use parentheses.</p>
   </tbody>
 </table>
 </blockquote>
-<p>This allows us to call a function in curried form with its &ldquo;second argument&rdquo; only.</p>
-<blockquote class="book-hint info">
-<p><strong><em>Example.</em></strong>
-The two functions below are equivalent.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">myFunction</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">String</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">myFunction</span> x <span style="color:#f92672">=</span> isPrefixOf x <span style="color:#e6db74">&#34;fooBar&#34;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">theSameFunction</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">String</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">theSameFunction</span> <span style="color:#f92672">=</span> `isPrefixOf` <span style="color:#e6db74">&#34;fooBar&#34;</span>
-</span></span></code></pre></div></blockquote>
 </article>
  
       
@@ -864,7 +884,7 @@ The two functions below are equivalent.</p>
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#in-haskell">In Haskell</a>
+    <li><a href="#haskell">In Haskell</a>
       <ul>
         <li><a href="#syntax">Syntax</a></li>
         <li><a href="#infix-notation">Infix notation</a></li>

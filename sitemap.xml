@@ -40,11 +40,9 @@
   </url><url>
     <loc>https://unibz-oofp-25-26.github.io/docs/background/sections/function/</loc>
   </url><url>
-    <loc>https://unibz-oofp-25-26.github.io/docs/higher/sections/hof_lists/</loc>
+    <loc>https://unibz-oofp-25-26.github.io/docs/higher/</loc>
   </url><url>
     <loc>https://unibz-oofp-25-26.github.io/docs/haskell/sections/native/</loc>
-  </url><url>
-    <loc>https://unibz-oofp-25-26.github.io/docs/parameter/sections/maybe/</loc>
   </url><url>
     <loc>https://unibz-oofp-25-26.github.io/docs/intro/sections/reading_path/</loc>
   </url><url>
@@ -83,6 +81,8 @@
     <loc>https://unibz-oofp-25-26.github.io/docs/intro/sections/content/</loc>
   </url><url>
     <loc>https://unibz-oofp-25-26.github.io/docs/control/sections/comprehension/</loc>
+  </url><url>
+    <loc>https://unibz-oofp-25-26.github.io/docs/parameter/sections/maybe/</loc>
   </url><url>
     <loc>https://unibz-oofp-25-26.github.io/docs/haskell/sections/program/</loc>
   </url><url>
