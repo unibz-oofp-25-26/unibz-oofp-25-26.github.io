@@ -48,7 +48,7 @@ power :: Int -&gt; (Int -&gt; Int) power = \x -&gt; (\y -&gt; x^y) or equivalent
 <link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/higher/sections/currying/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.2e4f364b29e139073593590efd39c8e73d61f18d61e1c9755d83f24cd8d62f75.js" integrity="sha256-Lk82SynhOQc1k1kO/TnI5z1h8Y1h4cl1XYPyTNjWL3U=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.33ad3d7b5d88d496cd5af3dfec10d9425e47726cf147af5606032d9b4a5125b9.js" integrity="sha256-M609e12I1JbNWvPf7BDZQl5HcmzxR69WBgMtm0pRJbk=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -432,6 +432,19 @@ https://github.com/alex-shpak/hugo-book
         </li>
       
     
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/haskell/sections/list/" class="">List</a>
+  
+
+        </li>
+      
+    
   </ul>
 
         </li>
@@ -508,6 +521,19 @@ https://github.com/alex-shpak/hugo-book
 
   
     <a href="/docs/control/sections/pattern/" class="">Pattern matching</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/control/sections/condition/" class="">Boolean condition</a>
   
 
         </li>
@@ -690,11 +716,18 @@ function application associates to the left, meaning that</p>
 <li>$\textit{applySwapped}(x,f) = f(x)$.</li>
 </ul>
 </div>
+<!-- 
 <input type="radio" class="toggle" name="tabs-exercise_curried_apply_swapped" id="tabs-exercise_curried_apply_swapped-1"  />
 <label for="tabs-exercise_curried_apply_swapped-1">Possible solution</label>
-<div class="book-tabs-content markdown-inner"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">applySwapped</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">String</span> <span style="color:#f92672">-&gt;</span> (<span style="color:#66d9ef">String</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span>) <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">applySwapped</span> x f <span style="color:#f92672">=</span> f x
-</span></span></code></pre></div></div>
+<div class="book-tabs-content markdown-inner"><p>&ndash;&gt;</p>
+<!---->
+<!-- ```haskell -->
+<!-- applySwapped :: String -> (String -> Bool) -> Bool -->
+<!-- applySwapped x f = f x -->
+<!-- ``` -->
+<!---->
+<!-- </div>
+ -->
 </div>
 <div class="book-tabs">
 <input type="radio" class="toggle" name="tabs-exercise_curried_partial" id="tabs-exercise_curried_partial-0" checked="checked" />
@@ -716,17 +749,17 @@ function application associates to the left, meaning that</p>
 <li>What does this function do?</li>
 </ol>
 </div>
+<!-- 
 <input type="radio" class="toggle" name="tabs-exercise_curried_partial" id="tabs-exercise_curried_partial-1"  />
 <label for="tabs-exercise_curried_partial-1">Solution</label>
-<div class="book-tabs-content markdown-inner"><ol>
-<li>
-<p><code>Integer -&gt; Integer</code></p>
-</li>
-<li>
-<p>It maps an integer <code>y</code> to <code>y - 1</code>.</p>
-</li>
-</ol>
-</div>
+<div class="book-tabs-content markdown-inner"><p>&ndash;&gt;</p>
+<!---->
+<!-- 1. `Integer -> Integer` -->
+<!---->
+<!-- 1. It maps an integer `y` to `y - 1`. -->
+<!---->
+<!-- </div>
+ -->
 </div>
 <div class="book-tabs">
 <input type="radio" class="toggle" name="tabs-exercise_curried_unicode" id="tabs-exercise_curried_unicode-0" checked="checked" />
@@ -760,13 +793,15 @@ So what does the method <code>main</code> print?</p>
 <li><code>(Int -&gt; Int) -&gt; (Char -&gt; Int -&gt; Char) -&gt; Int -&gt; Char -&gt; Int</code></li>
 </ul>
 </div>
+<!-- 
 <input type="radio" class="toggle" name="tabs-exercise_curried_unicode" id="tabs-exercise_curried_unicode-1"  />
 <label for="tabs-exercise_curried_unicode-1">Solution</label>
-<div class="book-tabs-content markdown-inner"><ol>
-<li>116</li>
-<li><code>Int -&gt; Int -&gt; (Char -&gt; Int) -&gt; Char -&gt; Int</code></li>
-</ol>
-</div>
+<div class="book-tabs-content markdown-inner"><p>&ndash;&gt;</p>
+<!---->
+<!-- 1. 116 -->
+<!-- 2. `Int -> Int -> (Char -> Int) -> Char -> Int` -->
+<!--    </div>
+ -->
 </div>
 <div class="book-tabs">
 <input type="radio" class="toggle" name="tabs-exercise_composition" id="tabs-exercise_composition-0" checked="checked" />
@@ -779,12 +814,19 @@ So what does the method <code>main</code> print?</p>
 <li>$\textit{applyAndCompose}(x,f,g)$ is the <a href="">composition</a> of $f(x)$ and $g$.</li>
 </ul>
 </div>
+<!-- 
 <input type="radio" class="toggle" name="tabs-exercise_composition" id="tabs-exercise_composition-1"  />
 <label for="tabs-exercise_composition-1">Possible solution</label>
-<div class="book-tabs-content markdown-inner"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">applyAndCompose</span> <span style="color:#f92672">::</span> (<span style="color:#66d9ef">Integer</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">String</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Integer</span>) <span style="color:#f92672">-&gt;</span> (<span style="color:#66d9ef">Integer</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span>) <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Integer</span> <span style="color:#f92672">-&gt;</span>  <span style="color:#66d9ef">String</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">-- the RHS can also be written g . f x (parentheses are redundant here)</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">applyAndCompose</span> f g x <span style="color:#f92672">=</span> g <span style="color:#f92672">.</span> (f x)
-</span></span></code></pre></div></div>
+<div class="book-tabs-content markdown-inner"><p>&ndash;&gt;</p>
+<!---->
+<!-- ```haskell -->
+<!-- applyAndCompose :: (Integer -> String -> Integer) -> (Integer -> Bool) -> Integer ->  String -> Bool -->
+<!-- -- the RHS can also be written g . f x (parentheses are redundant here) -->
+<!-- applyAndCompose f g x = g . (f x) -->
+<!-- ``` -->
+<!---->
+<!-- </div>
+ -->
 </div>
 <h3 id="infix-notation">
   Infix notation
