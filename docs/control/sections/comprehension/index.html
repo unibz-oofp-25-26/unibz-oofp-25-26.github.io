@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+<head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="
@@ -11,7 +11,7 @@ Pure functional programming does not admit loops.
 In particular, this is the case of Haskell.
 So iteration in Haskell is primarily achieved via recursive functions.
 However, Haskell also provides a convenient syntax for a limited form of iteration, called list comprehensions.
-These have also been integrated to Python since the release of Python 2 (in 2000).
+List comprehensions are also available in Python (with a slightly different syntax) since the release of Python 2 (in 2000).
 
   Syntax
   #
@@ -19,12 +19,13 @@ These have also been integrated to Python since the release of Python 2 (in 2000
 We have already seen the syntax for set comprehension.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/docs/control/sections/comprehension/">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://unibz-oofp-25-26.github.io/docs/control/sections/comprehension/">
   <meta property="og:site_name" content="OOFP 2025-26">
   <meta property="og:title" content="List comprehension">
   <meta property="og:description" content="List comprehension # Pure functional programming does not admit loops.
 In particular, this is the case of Haskell. So iteration in Haskell is primarily achieved via recursive functions.
-However, Haskell also provides a convenient syntax for a limited form of iteration, called list comprehensions. These have also been integrated to Python since the release of Python 2 (in 2000).
+However, Haskell also provides a convenient syntax for a limited form of iteration, called list comprehensions.
+List comprehensions are also available in Python (with a slightly different syntax) since the release of Python 2 (in 2000).
 Syntax # We have already seen the syntax for set comprehension.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
@@ -32,10 +33,10 @@ Syntax # We have already seen the syntax for set comprehension.">
 <title>List comprehension | OOFP 2025-26</title>
 <link rel="icon" href="/favicon.png" >
 <link rel="manifest" href="/manifest.json">
-<link rel="canonical" href="http://localhost:1313/docs/control/sections/comprehension/">
+<link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/control/sections/comprehension/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.fca3d1c34df81a45a55e768a3d5e9ae4cb81f9abfa8f05a9e4fb282f87959bfe.js" integrity="sha256-/KPRw034GkWlXnaKPV6a5MuB&#43;av6jwWp5PsoL4eVm/4=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.7ef2640f856fd4e42bb38547b4423202009b60be7c5387ccb6c26b24802d25aa.js" integrity="sha256-fvJkD4Vv1OQrs4VHtEIyAgCbYL58U4fMtsJrJIAtJao=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -479,19 +480,6 @@ https://github.com/alex-shpak/hugo-book
         </li>
       
     
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/higher/sections/useful_hofs/" class="">Some higher-order functions</a>
-  
-
-        </li>
-      
-    
   </ul>
 
         </li>
@@ -547,285 +535,6 @@ https://github.com/alex-shpak/hugo-book
 
   
     <a href="/docs/control/sections/comprehension/" class="active">List comprehension</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/control/sections/stack/" class="">Call stack</a>
-  
-
-        </li>
-      
-    
-  </ul>
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <input type="checkbox" id="section-54a25c0ad53482778ca10b1a7db8e623" class="toggle"  />
-    <label for="section-54a25c0ad53482778ca10b1a7db8e623" class="flex justify-between">
-      <a href="/docs/recursion/" class="">Recursion</a>
-    </label>
-  
-
-          
-  <ul>
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/recursion/sections/linear/" class="">Linear recursion</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/recursion/sections/termination/" class="">Termination</a>
-  
-
-        </li>
-      
-    
-  </ul>
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <input type="checkbox" id="section-5a2ffba79bc385d1bf5f76a6795485f1" class="toggle"  />
-    <label for="section-5a2ffba79bc385d1bf5f76a6795485f1" class="flex justify-between">
-      <a href="/docs/parameter/" class="">Type parameter</a>
-    </label>
-  
-
-          
-  <ul>
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/parameter/sections/variable/" class="">Type variable</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/parameter/sections/typeclass/" class="">Type class in Haskell</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/parameter/sections/parameterized/" class="">Generic type</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/parameter/sections/maybe/" class="">Option type</a>
-  
-
-        </li>
-      
-    
-  </ul>
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <input type="checkbox" id="section-d92e119f475bae7b2a2364fe0e1fc445" class="toggle"  />
-    <label for="section-d92e119f475bae7b2a2364fe0e1fc445" class="flex justify-between">
-      <a href="/docs/composite/" class="">Composite type</a>
-    </label>
-  
-
-          
-  <ul>
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/composite/sections/enum/" class="">Enumerated type</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/composite/sections/product/" class="">Product type</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/composite/sections/recursive/" class="">Recursive type</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/composite/sections/sum/" class="">Sum type</a>
-  
-
-        </li>
-      
-    
-  </ul>
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <input type="checkbox" id="section-007945605153592d0fc2acb75802d872" class="toggle"  />
-    <label for="section-007945605153592d0fc2acb75802d872" class="flex justify-between">
-      <a href="/docs/pattern/" class="">Functional patterns</a>
-    </label>
-  
-
-          
-  <ul>
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/pattern/sections/fold/" class="">Fold</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/pattern/sections/pipe/" class="">Pipeline</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/pattern/sections/functor/" class="">Functor</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/pattern/sections/monad/" class="">Monad</a>
   
 
         </li>
@@ -955,14 +664,14 @@ https://github.com/alex-shpak/hugo-book
 </h1>
 <p>Pure functional programming does not admit loops.</p>
 <p>In particular, this is the case of Haskell.
-So iteration in Haskell is primarily achieved via <a href="">recursive functions</a>.</p>
-<p>However, Haskell also provides a convenient syntax for a limited form of iteration, called <strong>list comprehensions</strong>.
-These have also been integrated to Python since the release of Python 2 (in 2000).</p>
+So iteration in Haskell is primarily achieved via <a href="https://unibz-oofp-25-26.github.io/notreleased/">recursive functions</a>.</p>
+<p>However, Haskell also provides a convenient syntax for a limited form of iteration, called <strong>list comprehensions</strong>.<br>
+List comprehensions are also available in Python (with a slightly different syntax) since the release of Python 2 (in 2000).</p>
 <h2 id="syntax">
   Syntax
   <a class="anchor" href="#syntax">#</a>
 </h2>
-<p>We have already seen the syntax for <a href="">set comprehension</a>.</p>
+<p>We have already seen the syntax for <a href="https://unibz-oofp-25-26.github.io/docs/background/sections/set_list/#comprehension">set comprehension</a>.</p>
 <p>Haskell provides a similar syntax for lists.</p>
 <blockquote class="book-hint info">
 <p><strong><em>Example.</em></strong>
@@ -976,9 +685,9 @@ In the example above, the expression <code>x &lt;- xs</code> is called a <strong
 </blockquote>
 <p>A list comprehension may have several generators.</p>
 <blockquote class="book-hint info">
-<p><strong><em>Example.</em></strong> Here is a list comprehension with two generators:</p>
+<p><strong><em>Example.</em></strong> The following list comprehension has two generators:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span>[x <span style="color:#f92672">+</span> y <span style="color:#f92672">|</span> x <span style="color:#f92672">&lt;-</span> xs, y <span style="color:#f92672">&lt;-</span> ys]
-</span></span></code></pre></div><p>It evaluates to the list of all <code>x + y</code> such that <code>x</code> is in <code>xs</code> and <code>y</code> is in <code>ys</code>.</p>
+</span></span></code></pre></div><p>This expression evaluates to the list of all <code>x + y</code> such that <code>x</code> is in <code>xs</code> and <code>y</code> is in <code>ys</code>.</p>
 </blockquote>
 <h2 id="evaluation">
   Evaluation
@@ -1010,10 +719,14 @@ For instance, <code>sum [2,3,6]</code> evaluates to <code>11</code>.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">myFunction</span> <span style="color:#f92672">::</span> [<span style="color:#66d9ef">Int</span>] <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Int</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">myFunction</span> xs <span style="color:#f92672">=</span> sum [<span style="color:#ae81ff">1</span> <span style="color:#f92672">|</span> x <span style="color:#f92672">&lt;-</span> xs]
 </span></span></code></pre></div></div>
+<!-- 
 <input type="radio" class="toggle" name="tabs-exercise_list_comp_length" id="tabs-exercise_list_comp_length-1"  />
 <label for="tabs-exercise_list_comp_length-1">Solution</label>
-<div class="book-tabs-content markdown-inner"><p>It maps a list to its length.</p>
-</div>
+<div class="book-tabs-content markdown-inner"><p>&ndash;&gt;</p>
+<!---->
+<!-- It maps a list to its length. -->
+<!-- </div>
+ -->
 </div>
 <div class="book-tabs">
 <input type="radio" class="toggle" name="tabs-exercise_list_comp_flatmap" id="tabs-exercise_list_comp_flatmap-0" checked="checked" />
@@ -1022,13 +735,19 @@ For instance, <code>sum [2,3,6]</code> evaluates to <code>11</code>.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">myFunction</span> <span style="color:#f92672">::</span> [[<span style="color:#66d9ef">Int</span>]] <span style="color:#f92672">-&gt;</span> [<span style="color:#66d9ef">Int</span>]
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">myFunction</span> xss <span style="color:#f92672">=</span> [x <span style="color:#f92672">|</span> xs <span style="color:#f92672">&lt;-</span> xss, x <span style="color:#f92672">&lt;-</span> xs]
 </span></span></code></pre></div></div>
+<!-- 
 <input type="radio" class="toggle" name="tabs-exercise_list_comp_flatmap" id="tabs-exercise_list_comp_flatmap-1"  />
 <label for="tabs-exercise_list_comp_flatmap-1">Solution</label>
-<div class="book-tabs-content markdown-inner"><p>It concatenates the inner lists in a list of lists.</p>
-<p>For instance</p>
-<p><code>myFunction [[1,3], [2,5], [1,3,4]]</code> evaluates to
-<code>[1,3,2,5,1,3,4]</code></p>
-</div>
+<div class="book-tabs-content markdown-inner"><p>&ndash;&gt;</p>
+<!---->
+<!-- It concatenates the inner lists in a list of lists. -->
+<!---->
+<!-- For instance -->
+<!---->
+<!-- `myFunction [[1,3], [2,5], [1,3,4]]` evaluates to -->
+<!-- `[1,3,2,5,1,3,4]` -->
+<!-- </div>
+ -->
 </div>
 <div class="book-tabs">
 <input type="radio" class="toggle" name="tabs-exercise_list_comp_discard" id="tabs-exercise_list_comp_discard-0" checked="checked" />
@@ -1038,21 +757,28 @@ For instance, <code>sum [2,3,6]</code> evaluates to <code>11</code>.</p>
 </span></span></code></pre></div><p>such that <code>discard x xs</code> is the list identical to <code>xs</code>, but where all occurrences of <code>x</code> have been discarded.</p>
 <p>For instance, <code>discard 3 [1,3,2,3]</code> should evaluate to <code>[1,2]</code>.</p>
 </div>
+<!-- 
 <input type="radio" class="toggle" name="tabs-exercise_list_comp_discard" id="tabs-exercise_list_comp_discard-1"  />
 <label for="tabs-exercise_list_comp_discard-1">Possible solution</label>
-<div class="book-tabs-content markdown-inner"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">discard</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Int</span> <span style="color:#f92672">-&gt;</span> [<span style="color:#66d9ef">Int</span>] <span style="color:#f92672">-&gt;</span> [<span style="color:#66d9ef">Int</span>]
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">discard</span> x xs <span style="color:#f92672">=</span> [y <span style="color:#f92672">|</span> y <span style="color:#f92672">&lt;-</span> xs, y <span style="color:#f92672">/=</span> x]
-</span></span></code></pre></div></div>
+<div class="book-tabs-content markdown-inner"><p>&ndash;&gt;</p>
+<!---->
+<!-- ```haskell -->
+<!-- discard :: Int -> [Int] -> [Int] -->
+<!-- discard x xs = [y | y <- xs, y /= x] -->
+<!-- ``` -->
+<!---->
+<!-- </div>
+ -->
 </div>
 <h2 id="pattern-matching">
   Pattern matching
   <a class="anchor" href="#pattern-matching">#</a>
 </h2>
-<p>The left-hand side of a generator can be a <a href="">pattern</a>.</p>
+<p>The left-hand side of a generator can be a <a href="https://unibz-oofp-25-26.github.io/docs/control/sections/pattern/#haskell">pattern</a>.</p>
 <blockquote class="book-hint info">
 <p><strong><em>Example.</em></strong>
 The expression</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span>[x <span style="color:#f92672">|</span> (x, <span style="color:#66d9ef">_</span>) <span style="color:#f92672">&lt;-</span> [(<span style="color:#e6db74">&#34;Bolzano&#34;</span>, <span style="color:#ae81ff">39100</span>), (<span style="color:#e6db74">&#34;Merano&#34;</span>, <span style="color:#ae81ff">39012</span>)]]
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span>[ x <span style="color:#f92672">|</span> (x, <span style="color:#66d9ef">_</span>) <span style="color:#f92672">&lt;-</span> [(<span style="color:#e6db74">&#34;Bolzano&#34;</span>, <span style="color:#ae81ff">39100</span>), (<span style="color:#e6db74">&#34;Merano&#34;</span>, <span style="color:#ae81ff">39012</span>)] ]
 </span></span></code></pre></div><p>evaluates to</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span>[<span style="color:#e6db74">&#34;Bolzano&#34;</span>, <span style="color:#e6db74">&#34;Merano&#34;</span>]
 </span></span></code></pre></div></blockquote>
@@ -1065,11 +791,18 @@ The expression</p>
 </span></span></code></pre></div><p>should evaluate to</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span>[<span style="color:#ae81ff">3</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">1</span>]
 </span></span></code></pre></div></div>
+<!-- 
 <input type="radio" class="toggle" name="tabs-exercise_list_comp_firstIfSecPos" id="tabs-exercise_list_comp_firstIfSecPos-1"  />
 <label for="tabs-exercise_list_comp_firstIfSecPos-1">Possible solution</label>
-<div class="book-tabs-content markdown-inner"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">firstsIfSecPos</span> <span style="color:#f92672">::</span> [(<span style="color:#66d9ef">Integer</span>, <span style="color:#66d9ef">Integer</span>)] <span style="color:#f92672">-&gt;</span> [<span style="color:#66d9ef">Integer</span>]
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">firstsIfSecPos</span> ps <span style="color:#f92672">=</span> [x <span style="color:#f92672">|</span> (x, y) <span style="color:#f92672">&lt;-</span> ps, y <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span>]
-</span></span></code></pre></div></div>
+<div class="book-tabs-content markdown-inner"><p>&ndash;&gt;</p>
+<!---->
+<!-- ```haskell -->
+<!-- firstsIfSecPos :: [(Integer, Integer)] -> [Integer] -->
+<!-- firstsIfSecPos ps = [x | (x, y) <- ps, y >= 0] -->
+<!-- ``` -->
+<!---->
+<!-- </div>
+ -->
 </div>
 </article>
  
