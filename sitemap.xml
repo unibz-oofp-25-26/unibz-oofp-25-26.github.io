@@ -36,6 +36,8 @@
   </url><url>
     <loc>https://unibz-oofp-25-26.github.io/docs/haskell/</loc>
   </url><url>
+    <loc>https://unibz-oofp-25-26.github.io/docs/parameter/sections/bound/</loc>
+  </url><url>
     <loc>https://unibz-oofp-25-26.github.io/docs/higher/sections/currying/</loc>
   </url><url>
     <loc>https://unibz-oofp-25-26.github.io/docs/background/sections/function/</loc>
@@ -51,8 +53,6 @@
     <loc>https://unibz-oofp-25-26.github.io/docs/composite/sections/sum/</loc>
   </url><url>
     <loc>https://unibz-oofp-25-26.github.io/docs/recursion/sections/termination/</loc>
-  </url><url>
-    <loc>https://unibz-oofp-25-26.github.io/docs/parameter/sections/typeclass/</loc>
   </url><url>
     <loc>https://unibz-oofp-25-26.github.io/docs/paradigm/sections/type/</loc>
   </url><url>
@@ -74,7 +74,7 @@
   </url><url>
     <loc>https://unibz-oofp-25-26.github.io/docs/pattern/sections/functor/</loc>
   </url><url>
-    <loc>https://unibz-oofp-25-26.github.io/docs/parameter/sections/parameterized/</loc>
+    <loc>https://unibz-oofp-25-26.github.io/docs/parameter/sections/generic_type/</loc>
   </url><url>
     <loc>https://unibz-oofp-25-26.github.io/docs/pattern/sections/monad/</loc>
   </url><url>

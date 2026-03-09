@@ -50,7 +50,7 @@ The function main # To make a program executable, one of its functions must be t
 <link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/haskell/sections/program/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.e3e5ffae9614af998c32d66afa34dd4d1563af8f37860a4365db66b2f7a46f27.js" integrity="sha256-4&#43;X/rpYUr5mMMtZq&#43;jTdTRVjr483hgpDZdtmsvekbyc=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.95a6ee43cacd981b37ccd704a2b5056d3202db0f0d86fd1031dd365196df704f.js" integrity="sha256-labuQ8rNmBs3zNcEorUFbTIC2w8Nhv0QMd02UZbfcE8=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -735,19 +735,23 @@ Your IDE may be able to generate them.</p>
 <blockquote class="book-hint warning">
 <p>A Haskell program can import other Haskell programs, called <strong>modules</strong>.</p>
 </blockquote>
-<h4 id="importing-a-module">
-  Importing a module
-  <a class="anchor" href="#importing-a-module">#</a>
+<h4 id="the-haskell-prelude">
+  The Haskell Prelude
+  <a class="anchor" href="#the-haskell-prelude">#</a>
 </h4>
 <blockquote class="book-hint warning">
 <p>Every program implicitly imports a default module called the Haskell <strong>Prelude</strong>.
 It contains many of the functions and types that we will need in this course.</p>
 </blockquote>
+<h4 id="importing-a-module">
+  Importing a module
+  <a class="anchor" href="#importing-a-module">#</a>
+</h4>
 <p>If you want to import another module, add the following to your file, <em>before any function definition</em>:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#960050;background-color:#1e0010">&lt;</span>moduleName<span style="color:#f92672">&gt;</span>
 </span></span></code></pre></div><blockquote class="book-hint info">
 <p><strong><em>Example.</em></strong>
-the function <code>ord</code> that we have seen <a href="https://unibz-oofp-25-26.github.io/docs/haskell/sections/function/#where">earlier</a> is defined in a module called <code>Data.Char</code>.</p>
+The function <code>ord</code> that we have seen <a href="https://unibz-oofp-25-26.github.io/docs/haskell/sections/function/#where">earlier</a> is defined in a module called <code>Data.Char</code>.</p>
 <p>In order to use this function, you can import this module, as follows:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> Data.Char
 </span></span><span style="display:flex;"><span>
