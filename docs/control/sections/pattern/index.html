@@ -22,6 +22,7 @@ Rust (since its first release in 2015).
   in Haskell
   #
 
+
 A pattern is a syntactic expression that can match certain values.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
@@ -40,7 +41,7 @@ C# (since 2020), Java (since 2021), PHP (since 2021), Python (since 2021) Rust (
 <link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/control/sections/pattern/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.142f49be423afde35d87d4112b5c6308154f2bfdb357fadf967ed28cd4382bf2.js" integrity="sha256-FC9JvkI6/eNdh9QRK1xjCBVPK/2zV/rfln7SjNQ4K/I=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.2254144a3c0063f37a00bd62661d5da3eda286737d91ec38266509ec0b046816.js" integrity="sha256-IlQUSjwAY/N6AL1iZh1do&#43;2ihnN9kew4JmUJ7AsEaBY=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -650,6 +651,7 @@ https://github.com/alex-shpak/hugo-book
     <li><a href="#haskell">in Haskell</a>
       <ul>
         <li><a href="#the-null-pattern">The null pattern</a></li>
+        <li><a href="#case">Case expression</a></li>
         <li><a href="#alias-definition">Alias definition</a></li>
         <li><a href="#lambda-expression">Lambda expression</a></li>
         <li><a href="#complex-patterns">Complex patterns</a></li>
@@ -686,7 +688,9 @@ This includes:</p>
   in Haskell
   <a class="anchor" href="#haskell">#</a>
 </h2>
+<blockquote class="book-hint warning">
 <p>A <strong>pattern</strong> is a syntactic expression that can match certain values.</p>
+</blockquote>
 <blockquote class="book-hint info">
 <p><strong><em>Examples.</em></strong>
 Here are some basic Haskell patterns:</p>
@@ -861,6 +865,35 @@ Let us reproduce the function <code>and</code> introduced above:</p>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">-- if this equation is reached, then the values of the arguments is irrelevant</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">_</span> `and` <span style="color:#66d9ef">_</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>
 </span></span></code></pre></div></blockquote>
+<h3 id="case">
+  Case expression
+  <a class="anchor" href="#case">#</a>
+</h3>
+<blockquote class="book-hint warning">
+<p><strong><em>Syntax.</em></strong>
+A case expression has the form</p>
+<pre tabindex="0"><code>case &lt;expression&gt; of
+  &lt;pattern 1&gt; -&gt; &lt;expression 1&gt;
+  ...
+  &lt;pattern n&gt; -&gt; &lt;expression n&gt;
+</code></pre><p>It can be helpful to pattern match the output of a function call.</p>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#75715e">-- Maps an address to the corresponding city</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">extractCity</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">String</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">String</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">extractCity</span> address <span style="color:#f92672">=</span> <span style="color:#f92672">&lt;</span>some expression here<span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- Maps an address to the corresponding province</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">getProvince</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">String</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">String</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- call the function `extractCity` with the input address</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">getProvince</span> address <span style="color:#f92672">=</span> <span style="color:#66d9ef">case</span> extractCity address <span style="color:#66d9ef">of</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">-- pattern match the output</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;Bolzano&#34;</span> <span style="color:#f92672">-&gt;</span> <span style="color:#e6db74">&#34;BZ&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;Merano&#34;</span> <span style="color:#f92672">-&gt;</span> <span style="color:#e6db74">&#34;BZ&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;Trento&#34;</span> <span style="color:#f92672">-&gt;</span> <span style="color:#e6db74">&#34;TN&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">_</span> <span style="color:#f92672">-&gt;</span> <span style="color:#e6db74">&#34;Unknown&#34;</span>
+</span></span></code></pre></div></blockquote>
 <h3 id="alias-definition">
   Alias definition
   <a class="anchor" href="#alias-definition">#</a>
@@ -868,7 +901,7 @@ Let us reproduce the function <code>and</code> introduced above:</p>
 <blockquote class="book-hint warning">
 <p><strong><em>Syntax.</em></strong>
 A pattern can also be used in an <a href="https://unibz-oofp-25-26.github.io/docs/haskell/sections/function/#alias">alias definition</a>.</p>
-<p>This lets us pattern match the <em>output</em> of a function call.</p>
+<p>This also lets us pattern match the output of a function call.</p>
 </blockquote>
 <blockquote class="book-hint info">
 <p><strong><em>Example.</em></strong></p>
@@ -909,7 +942,7 @@ The two following functions are equivalent:</p>
 The function above is unconventional in Haskell.
 Its <a href="https://unibz-oofp-25-26.github.io/docs/higher/sections/currying/#haskell">curried form</a> is usually preferred:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">aFunction</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Int</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Int</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Int</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">aFunction</span> x y <span style="color:#f92672">=</span>  x <span style="color:#f92672">+</span> y
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">aFunction</span> x y <span style="color:#f92672">=</span> x <span style="color:#f92672">+</span> y
 </span></span></code></pre></div></blockquote>
 <h3 id="complex-patterns">
   Complex patterns
@@ -960,6 +993,7 @@ Its <a href="https://unibz-oofp-25-26.github.io/docs/higher/sections/currying/#h
     <li><a href="#haskell">in Haskell</a>
       <ul>
         <li><a href="#the-null-pattern">The null pattern</a></li>
+        <li><a href="#case">Case expression</a></li>
         <li><a href="#alias-definition">Alias definition</a></li>
         <li><a href="#lambda-expression">Lambda expression</a></li>
         <li><a href="#complex-patterns">Complex patterns</a></li>

@@ -16,7 +16,7 @@ Lists in Haskell are recursive.
 Definition (finite list in Haskell).
 
 [] is the empty list,
-if xs is a list and x an element, then x:xs is a list.
+if x is an element and xs a list, then x : xs is a list.
 
 In addition, all elements in a list must have the same type.
 If this type is a, then the list has type [a].
@@ -32,7 +32,7 @@ $\qquad$5 : (2 : [])">
   <meta property="og:title" content="List">
   <meta property="og:description" content="List # Recursive form # Lists in Haskell are recursive.
 Definition (finite list in Haskell).
-[] is the empty list, if xs is a list and x an element, then x:xs is a list. In addition, all elements in a list must have the same type. If this type is a, then the list has type [a].
+[] is the empty list, if x is an element and xs a list, then x : xs is a list. In addition, all elements in a list must have the same type. If this type is a, then the list has type [a].
 Example. The Haskell list
 $\qquad$5 : (2 : [])">
   <meta property="og:locale" content="en_us">
@@ -44,7 +44,7 @@ $\qquad$5 : (2 : [])">
 <link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/haskell/sections/list/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.142f49be423afde35d87d4112b5c6308154f2bfdb357fadf967ed28cd4382bf2.js" integrity="sha256-FC9JvkI6/eNdh9QRK1xjCBVPK/2zV/rfln7SjNQ4K/I=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.2254144a3c0063f37a00bd62661d5da3eda286737d91ec38266509ec0b046816.js" integrity="sha256-IlQUSjwAY/N6AL1iZh1do&#43;2ihnN9kew4JmUJ7AsEaBY=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -680,7 +680,7 @@ https://github.com/alex-shpak/hugo-book
 <p><strong><em>Definition (finite list in Haskell).</em></strong></p>
 <ul>
 <li><code>[]</code> is the empty list,</li>
-<li>if <code>xs</code> is a list and <code>x</code> an element, then <code>x:xs</code> is a list.</li>
+<li>if <code>x</code> is an element and <code>xs</code> a list, then <code>x : xs</code> is a list.</li>
 </ul>
 <p>In addition, all elements in a list must have the same type.
 If this type is <code>a</code>, then the list has type <code>[a]</code>.</p>
@@ -702,7 +702,6 @@ The empty list <code>[]</code> has type <code>[a]</code> for any type <code>a</c
 The following types are valid for the empty list:</p>
 <ul>
 <li><code>[Int]</code> (list of bounded integers)</li>
-<li><code>[Integer]</code> (list of arbitrary integers)</li>
 <li><code>[String]</code> (list of strings)</li>
 <li><code>[[String]]</code> (list of lists of strings)</li>
 <li>etc.</li>
@@ -722,7 +721,7 @@ The operator <code>:</code> associates to the right. This makes some parentheses
 <table>
   <thead>
       <tr>
-          <th><a href="">list</a></th>
+          <th><a href="https://unibz-oofp-25-26.github.io/docs/background/sections/set_list/#list">list</a></th>
           <th>in Haskell</th>
           <th>omitting parentheses</th>
       </tr>
@@ -748,12 +747,12 @@ The operator <code>:</code> associates to the right. This makes some parentheses
 </blockquote>
 <blockquote class="book-hint warning">
 <p><strong><em>Terminology.</em></strong>
-If <code>x:xs</code> is a list, then:</p>
+If <code>x : xs</code> is a list, then:</p>
 <ul>
 <li><code>x</code> is called its <strong>head</strong>,</li>
 <li><code>xs</code> is called its <strong>tail</strong>.</li>
 </ul>
-<p>The head is intuitively the first element of the list, and the tail is the rest of it.</p>
+<p>The head is intuitively the first element of the list, and the tail is the <em>rest</em> of it.</p>
 </blockquote>
 <blockquote class="book-hint info">
 <p><strong><em>Note.</em></strong>
@@ -925,11 +924,11 @@ The operator <code>++</code> concatenates two lists.</p>
   <a class="anchor" href="#list-patterns">#</a>
 </h2>
 <blockquote class="book-hint warning">
-<p><strong><em>Base <a href="">pattern</a>.</em></strong>
+<p><strong><em>Base <a href="https://unibz-oofp-25-26.github.io/docs/control/sections/pattern/#haskell">pattern</a>.</em></strong>
 <code>[]</code> is a pattern. It matches the empty list.</p>
 </blockquote>
 <blockquote class="book-hint warning">
-<p><strong><em>Composite <a href="">patterns</a>.</em></strong>
+<p><strong><em>Composite <a href="https://unibz-oofp-25-26.github.io/docs/control/sections/pattern/#haskell">patterns</a>.</em></strong>
 If <code>p</code> and <code>q</code> are patterns, then</p>
 <p>$\qquad$ <code>(p : q)</code></p>
 <p>is also a pattern.
