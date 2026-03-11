@@ -7,30 +7,27 @@
   Bound
   #
 
-A type variable can be too generic in some contexts.
+A type variable may be too generic for our needs.
 
 Examples.
-We may want to write an algorithm where:
-
-the input can have any numeric type (integer, float, etc.), or
-the input a list of elements that can be naturally ordered (numbers, but also strings, etc.).
+We may want to write an algorithm where the input can have any numeric type (integer, float, etc.).
+In this case, a type variable is too generic, because it can also stand for a non-numeric type (e.g. string, Boolean value, a function type, etc.).
 
 
-
-  in Haskell
+  In Haskell
   #
 
 
 Example.
-The following function does not compile, because the operation &#43; is not defined for an arbitrary type a.">
+The following function does not compile, because the operation &#43; is not defined for an arbitrary type.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="https://unibz-oofp-25-26.github.io/docs/parameter/sections/bound/">
   <meta property="og:site_name" content="OOFP 2025-26">
   <meta property="og:title" content="Bound">
-  <meta property="og:description" content="Bound # A type variable can be too generic in some contexts.
-Examples. We may want to write an algorithm where:
-the input can have any numeric type (integer, float, etc.), or the input a list of elements that can be naturally ordered (numbers, but also strings, etc.). in Haskell # Example. The following function does not compile, because the operation &#43; is not defined for an arbitrary type a.">
+  <meta property="og:description" content="Bound # A type variable may be too generic for our needs.
+Examples. We may want to write an algorithm where the input can have any numeric type (integer, float, etc.). In this case, a type variable is too generic, because it can also stand for a non-numeric type (e.g. string, Boolean value, a function type, etc.).
+In Haskell # Example. The following function does not compile, because the operation &#43; is not defined for an arbitrary type.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
@@ -40,7 +37,7 @@ the input can have any numeric type (integer, float, etc.), or the input a list 
 <link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/parameter/sections/bound/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.1d4b9610a376bd4c2b8518f16fa94deb81ea9a90bd6786514b5f952686be1169.js" integrity="sha256-HUuWEKN2vUwrhRjxb6lN64HqmpC9Z4ZRS1&#43;VJoa&#43;EWk=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.142f49be423afde35d87d4112b5c6308154f2bfdb357fadf967ed28cd4382bf2.js" integrity="sha256-FC9JvkI6/eNdh9QRK1xjCBVPK/2zV/rfln7SjNQ4K/I=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -647,7 +644,7 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#in-haskell">in Haskell</a>
+    <li><a href="#haskell">In Haskell</a>
       <ul>
         <li><a href="#type-class">Type class</a></li>
       </ul>
@@ -668,24 +665,21 @@ https://github.com/alex-shpak/hugo-book
   Bound
   <a class="anchor" href="#bound">#</a>
 </h1>
-<p>A type variable can be too generic in some contexts.</p>
+<p>A type variable may be too generic for our needs.</p>
 <blockquote class="book-hint info">
 <p><strong><em>Examples.</em></strong>
-We may want to write an algorithm where:</p>
-<ul>
-<li>the input can have any numeric type (integer, float, etc.), or</li>
-<li>the input a list of elements that can be naturally ordered (numbers, but also strings, etc.).</li>
-</ul>
+We may want to write an algorithm where the input can have any <em>numeric</em> type (integer, float, etc.).
+In this case, a type variable is too generic, because it can also stand for a non-numeric type (e.g. string, Boolean value, a function type, etc.).</p>
 </blockquote>
-<h2 id="in-haskell">
-  in Haskell
-  <a class="anchor" href="#in-haskell">#</a>
+<h2 id="haskell">
+  In Haskell
+  <a class="anchor" href="#haskell">#</a>
 </h2>
 <blockquote class="book-hint info">
 <p><strong><em>Example.</em></strong>
-The following function does <em>not</em> compile, because the operation <code>+</code> is not defined for an arbitrary type <code>a</code>.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">plusTwo</span> <span style="color:#f92672">::</span> a <span style="color:#f92672">-&gt;</span> a
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">plusTwo</span> x <span style="color:#f92672">=</span> x <span style="color:#f92672">+</span> <span style="color:#ae81ff">2</span>   <span style="color:#75715e">-- compilation error</span>
+The following function does <em>not</em> compile, because the operation <code>+</code> is not defined for an arbitrary type.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">plusTwo</span> <span style="color:#f92672">::</span> a <span style="color:#f92672">-&gt;</span> a   <span style="color:#75715e">-- arbitrary type `a`</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">plusTwo</span> x <span style="color:#f92672">=</span> x <span style="color:#f92672">+</span> <span style="color:#ae81ff">2</span>   <span style="color:#75715e">-- compilation error: `a`s may not be &#34;summable&#34;</span>
 </span></span></code></pre></div></blockquote>
 <h3 id="type-class">
   Type class
@@ -706,27 +700,77 @@ We will <em>not</em> see in this course:</p>
 </blockquote>
 <blockquote class="book-hint warning">
 <p><strong><em>Syntax.</em></strong>
-A type class constraint has the form</p>
+A <strong>type class constraint</strong> has the form</p>
 <pre tabindex="0"><code>&lt;class&gt; a
 </code></pre><p>where <code>a</code> is a type variable.</p>
 </blockquote>
+<blockquote class="book-hint info">
 <p><strong><em>Examples.</em></strong></p>
 <ul>
-<li>the constraint <code>Num a</code> restricts the variable <code>a</code> to numeric types.</li>
-<li>the constraint <code>Eq a</code> restricts the variable <code>a</code> to types that implement equality (<code>==</code>).</li>
+<li>the type class constraint <code>Num a</code> restricts the variable <code>a</code> to numeric types.</li>
+<li>the type class constraint <code>Eq a</code> restricts the variable <code>a</code> to types that implement equality (<code>==</code>).</li>
 </ul>
+</blockquote>
 <blockquote class="book-hint warning">
 <p><strong><em>Syntax.</em></strong>
-A type declaration can be preceded with one or several type constraints, as foillows</p>
-<pre tabindex="0"><code>(&lt;constraint 1&gt;, .., &lt;consttraint n&gt;) =&gt; &lt;type declaration&gt;
+A type can be preceded with one or several type constraints, as follows</p>
+<pre tabindex="0"><code>(&lt;constraint 1&gt;, ..., &lt;constraint n&gt;) =&gt; &lt;type&gt;
 </code></pre></blockquote>
 <blockquote class="book-hint info">
 <p><strong><em>Example (continued).</em></strong>
 We can rewrite the function <code>plusTwo</code> above as</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">plusTwo</span> <span style="color:#f92672">::</span> (<span style="color:#66d9ef">Num</span> a) <span style="color:#f92672">=&gt;</span> a <span style="color:#f92672">-&gt;</span> a
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#75715e">-- This function compiles (as opposed to the one above)</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">plusTwo</span> <span style="color:#f92672">::</span> (<span style="color:#66d9ef">Num</span> a) <span style="color:#f92672">=&gt;</span> a <span style="color:#f92672">-&gt;</span> a
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">plusTwo</span> x <span style="color:#f92672">=</span> x <span style="color:#f92672">+</span> <span style="color:#ae81ff">2</span>
-</span></span></code></pre></div><p>The type constraint <code>Num a</code> requires <code>a</code> to be a numeric type.
-This program compiles, because numeric types must implement the function <code>+</code>.</p>
+</span></span></code></pre></div><p>The type class constraint <code>Num a</code> requires <code>a</code> to be a numeric type.
+This function compiles, because numeric types must implement the function <code>+</code>.</p>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#75715e">-- Returns true iff the input consists of two identical elements</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">myFunction</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Eq</span> a <span style="color:#f92672">=&gt;</span> [a] <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">myFunction</span> [x ,y] <span style="color:#f92672">=</span> x <span style="color:#f92672">==</span> y
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">myFunction</span> <span style="color:#66d9ef">_</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>
+</span></span></code></pre></div></blockquote>
+<blockquote class="book-hint warning">
+<p>Here are a few useful type classes</p>
+<table>
+  <thead>
+      <tr>
+          <th>Type class</th>
+          <th>implemented functions</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><code>Eq</code></td>
+          <td><code>==</code>, <code>/=</code></td>
+      </tr>
+      <tr>
+          <td><code>Ord</code></td>
+          <td><code>&lt;</code>, <code>&lt;=</code>, <code>&gt;</code>, <code>&gt;=</code>, &hellip;</td>
+      </tr>
+      <tr>
+          <td><code>Num</code></td>
+          <td><code>+</code>, <code>*</code>, <code>^</code>, &hellip;</td>
+      </tr>
+      <tr>
+          <td><code>Integral</code></td>
+          <td><code>+</code>, <code>*</code>, <code>^</code>, <code>div</code> (integer division), <code>mod</code> (modulo), &hellip;</td>
+      </tr>
+      <tr>
+          <td><code>Show</code></td>
+          <td><code>show</code> (returns a human readable string), <code>print</code></td>
+      </tr>
+  </tbody>
+</table>
+</blockquote>
+<blockquote class="book-hint warning">
+<p><strong><em>.To go further.</em></strong>
+A type class can be a subclass of another.</p>
+<p>For instance,
+<code> Integral</code> is a subclass of <code>Num</code>,</p>
+<p>We will <em>not</em> cover this notion in this course.</p>
 </blockquote>
 </article>
  
@@ -769,7 +813,7 @@ This program compiles, because numeric types must implement the function <code>+
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#in-haskell">in Haskell</a>
+    <li><a href="#haskell">In Haskell</a>
       <ul>
         <li><a href="#type-class">Type class</a></li>
       </ul>
