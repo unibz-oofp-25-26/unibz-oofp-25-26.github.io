@@ -41,7 +41,7 @@ C# (since 2020), Java (since 2021), PHP (since 2021), Python (since 2021) Rust (
 <link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/control/sections/pattern/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.4982945b06f7a3b4f115909ee4d5b8a62df319a56406d6e2f545aaed0c8805e0.js" integrity="sha256-SYKUWwb3o7TxFZCe5NW4pi3zGaVkBtbi9UWq7QyIBeA=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.498cf1dcf39f67e7178f3d96b0daa054b669ad2eae20d2f7b5f847aac4dc7cee.js" integrity="sha256-SYzx3POfZ&#43;cXjz2WsNqgVLZprS6uINL3tfhHqsTcfO4=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -735,30 +735,17 @@ Can it be simplified?</p>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">dummySucc</span> x <span style="color:#f92672">=</span> x <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">dummySucc</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
 </span></span></code></pre></div></div>
-<!-- 
 <input type="radio" class="toggle" name="tabs-exercise_pattern_dummy" id="tabs-exercise_pattern_dummy-1"  />
 <label for="tabs-exercise_pattern_dummy-1">Solution</label>
-<div class="book-tabs-content markdown-inner"><p>&ndash;&gt;</p>
-<!---->
-<!-- ```haskell -->
-<!-- dummySucc :: Integer -> Integer -->
-<!-- dummySucc x = x + 1 -->
-<!-- dummySucc 0 = 0     -- this equation cannot be reached -->
-<!-- ``` -->
-<!---->
-<!-- This function maps an integer to its successor. -->
-<!---->
-<!-- The second equation (`dummySucc 0 = 0`) cannot be reached, because the input `0` is already handled by the first pattern. -->
-<!---->
-<!-- So the function is equivalent to: -->
-<!---->
-<!-- ```haskell -->
-<!-- succ :: Integer -> Integer -->
-<!-- succ x = x + 1 -->
-<!-- ``` -->
-<!---->
-<!-- </div>
- -->
+<div class="book-tabs-content markdown-inner"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">dummySucc</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Integer</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Integer</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">dummySucc</span> x <span style="color:#f92672">=</span> x <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">dummySucc</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>     <span style="color:#75715e">-- this equation cannot be reached</span>
+</span></span></code></pre></div><p>This function maps an integer to its successor.</p>
+<p>The second equation (<code>dummySucc 0 = 0</code>) cannot be reached, because the input <code>0</code> is already handled by the first pattern.</p>
+<p>So the function is equivalent to:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">succ</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Integer</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Integer</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">succ</span> x <span style="color:#f92672">=</span> x <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
+</span></span></code></pre></div></div>
 </div>
 <p>Patterns can be composed into <a href="https://unibz-oofp-25-26.github.io/docs/haskell/sections/tuple/">tuples</a>.</p>
 <blockquote class="book-hint info">
@@ -780,29 +767,17 @@ Their <a href="https://unibz-oofp-25-26.github.io/docs/higher/sections/currying/
 <label for="tabs-exercise_curried_revision-0">Exercise</label>
 <div class="book-tabs-content markdown-inner"><p>Write the function above in <a href="https://unibz-oofp-25-26.github.io/docs/higher/sections/currying/#haskell">curried form</a>.</p>
 </div>
-<!-- 
 <input type="radio" class="toggle" name="tabs-exercise_curried_revision" id="tabs-exercise_curried_revision-1"  />
 <label for="tabs-exercise_curried_revision-1">Possible solution</label>
-<div class="book-tabs-content markdown-inner"><p>&ndash;&gt;</p>
-<!---->
-<!-- Curried form: -->
-<!---->
-<!-- ```haskell -->
-<!-- and :: Bool -> Bool -> Bool -->
-<!-- and True True = True -->
-<!-- and x y = False -->
-<!-- ``` -->
-<!---->
-<!-- Or equivalently (with infix notation): -->
-<!---->
-<!-- ```haskell -->
-<!-- and :: Bool -> Bool -> Bool -->
-<!-- True `and` True = True -->
-<!-- x `and` y = False -->
-<!-- ``` -->
-<!---->
-<!-- </div>
- -->
+<div class="book-tabs-content markdown-inner"><p>Curried form:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">and</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Bool</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">and</span> <span style="color:#66d9ef">True</span> <span style="color:#66d9ef">True</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">and</span> x y <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>
+</span></span></code></pre></div><p>Or equivalently (with infix notation):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">and</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Bool</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">True</span> `and` <span style="color:#66d9ef">True</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">x</span> `and` y <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>
+</span></span></code></pre></div></div>
 </div>
 <div class="book-tabs">
 <input type="radio" class="toggle" name="tabs-exercise_" id="tabs-exercise_-0" checked="checked" />
@@ -812,14 +787,10 @@ Their <a href="https://unibz-oofp-25-26.github.io/docs/higher/sections/currying/
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">False</span> `op` x <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">True</span> `op` x <span style="color:#f92672">=</span> x
 </span></span></code></pre></div></div>
-<!-- 
 <input type="radio" class="toggle" name="tabs-exercise_" id="tabs-exercise_-1"  />
 <label for="tabs-exercise_-1">Solution</label>
-<div class="book-tabs-content markdown-inner"><p>&ndash;&gt;</p>
-<!---->
-<!-- It is equivalent to the function `and` above. -->
-<!-- </div>
- -->
+<div class="book-tabs-content markdown-inner"><p>It is equivalent to the function <code>and</code> above.</p>
+</div>
 </div>
 <blockquote class="book-hint warning">
 <p><strong><em>Syntax.</em></strong>
