@@ -44,7 +44,7 @@ $\qquad$5 : (2 : [])">
 <link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/haskell/sections/list/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.498cf1dcf39f67e7178f3d96b0daa054b669ad2eae20d2f7b5f847aac4dc7cee.js" integrity="sha256-SYzx3POfZ&#43;cXjz2WsNqgVLZprS6uINL3tfhHqsTcfO4=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.79dcfa4e93e047cbeb06c5beb3cf2c159eba6bdfb209d1c79d620653a9256265.js" integrity="sha256-edz6TpPgR8vrBsW&#43;s88sFZ66a9&#43;yCdHHnWIGU6klYmU=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -792,7 +792,7 @@ As <em>syntactic sugar</em>, a list can also be written in non-recursive form, w
 </h2>
 <blockquote class="book-hint warning">
 <p><strong><em>Syntax.</em></strong>
-The operator <code>++</code> concatenates two lists.</p>
+The operator <code>++</code> concatenates two lists with the same type.</p>
 </blockquote>
 <blockquote class="book-hint info">
 <p><strong><em>Examples.</em></strong></p>
@@ -985,7 +985,7 @@ Precisely, the type <code>String</code> is an alias for the type <code>[Char]</c
 The following function returns <code>True</code> iff the input string starts with an uppercase ASCII letter:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">startsWithUp</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">String</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">startsWithUp</span> <span style="color:#66d9ef">[]</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>                       <span style="color:#75715e">-- empty string</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">startsWithUp</span> (c <span style="color:#66d9ef">:</span> cs) <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;A&#39;</span> <span style="color:#f92672">&lt;=</span> c <span style="color:#f92672">&amp;&amp;</span> c <span style="color:#f92672">&lt;=</span> <span style="color:#e6db74">&#39;Z&#39;</span>  <span style="color:#75715e">-- here `&lt;=` is the alphabetical order</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">startsWithUp</span> (c <span style="color:#66d9ef">:</span> <span style="color:#66d9ef">_</span>) <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;A&#39;</span> <span style="color:#f92672">&lt;=</span> c <span style="color:#f92672">&amp;&amp;</span> c <span style="color:#f92672">&lt;=</span> <span style="color:#e6db74">&#39;Z&#39;</span>  <span style="color:#75715e">-- here `&lt;=` is the alphabetical order</span>
 </span></span></code></pre></div></blockquote>
 </article>
  

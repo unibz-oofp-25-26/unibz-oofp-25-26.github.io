@@ -12,10 +12,6 @@ A (regular) variable stands for an underspecified value.
 Similarly, a type variable stands for an underspecified type.
 
 
-Benefit.
-Type variables let us write functions/methods that apply to different types, without compromising type safety.
-
-
 Example.
 Consider a function half that maps a list to its first half (say rounded down if the list has odd length).
 The implementation of this function is identical for:
@@ -31,8 +27,8 @@ A type variable lets us declare such a function">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="https://unibz-oofp-25-26.github.io/docs/parameter/sections/variable/">
   <meta property="og:site_name" content="OOFP 2025-26">
   <meta property="og:title" content="Type variable">
-  <meta property="og:description" content="Type variable # A (regular) variable stands for an underspecified value. Similarly, a type variable stands for an underspecified type.
-Benefit. Type variables let us write functions/methods that apply to different types, without compromising type safety.
+  <meta property="og:description" content="Type variable # A (regular) variable stands for an underspecified value.
+Similarly, a type variable stands for an underspecified type.
 Example. Consider a function half that maps a list to its first half (say rounded down if the list has odd length).
 The implementation of this function is identical for:
 a list of strings, a list of integers, a list of Boolean values, etc. A type variable lets us declare such a function">
@@ -45,7 +41,7 @@ a list of strings, a list of integers, a list of Boolean values, etc. A type var
 <link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/parameter/sections/variable/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.498cf1dcf39f67e7178f3d96b0daa054b669ad2eae20d2f7b5f847aac4dc7cee.js" integrity="sha256-SYzx3POfZ&#43;cXjz2WsNqgVLZprS6uINL3tfhHqsTcfO4=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.79dcfa4e93e047cbeb06c5beb3cf2c159eba6bdfb209d1c79d620653a9256265.js" integrity="sha256-edz6TpPgR8vrBsW&#43;s88sFZ66a9&#43;yCdHHnWIGU6klYmU=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -674,12 +670,8 @@ https://github.com/alex-shpak/hugo-book
   <a class="anchor" href="#type-variable">#</a>
 </h1>
 <blockquote class="book-hint warning">
-<p>A (regular) variable stands for an underspecified value.
-Similarly, a <strong><em>type variable</em></strong> stands for an underspecified type.</p>
-</blockquote>
-<blockquote class="book-hint info">
-<p><strong><em>Benefit.</em></strong>
-Type variables let us write functions/methods that apply to different types, without compromising <a href="">type safety</a>.</p>
+<p>A (regular) variable stands for an underspecified value.</p>
+<p>Similarly, a <strong><em>type variable</em></strong> stands for an underspecified type.</p>
 </blockquote>
 <blockquote class="book-hint info">
 <p><strong><em>Example.</em></strong>
@@ -695,8 +687,7 @@ Consider a function <code>half</code> that maps a list to its first half (say ro
 <ul>
 <li>in Haskell:</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#75715e">-- `a` is a type variable in this declaration</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">half</span> <span style="color:#f92672">::</span> [a] <span style="color:#f92672">-&gt;</span> [a]
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">half</span> <span style="color:#f92672">::</span> [a] <span style="color:#f92672">-&gt;</span> [a]    <span style="color:#75715e">-- `a` is a type variable here</span>
 </span></span></code></pre></div><ul>
 <li>or in Java:</li>
 </ul>
@@ -732,12 +723,12 @@ The Haskell Prelude provides two (partial) functions <code>head</code> and <code
 Observe the type declarations in these definitions.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#75715e">-- Maps an nonempty list to its head. Throws an error if the list is empty.</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">head</span> <span style="color:#f92672">::</span> [a] <span style="color:#f92672">-&gt;</span> a
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">head</span> (x<span style="color:#66d9ef">:</span><span style="color:#66d9ef">_</span>) <span style="color:#f92672">=</span> x
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">head</span> (x <span style="color:#66d9ef">:</span> <span style="color:#66d9ef">_</span>) <span style="color:#f92672">=</span> x
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">head</span> <span style="color:#66d9ef">[]</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">error</span> <span style="color:#e6db74">&#34;Prelude.head: empty list&#34;</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">-- Maps an nonempty list to its tail. Throws an error if the list is empty.</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">tail</span> <span style="color:#f92672">::</span> [a] <span style="color:#f92672">-&gt;</span> [a]
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">tail</span> (<span style="color:#66d9ef">_</span><span style="color:#66d9ef">:</span>xs) <span style="color:#f92672">=</span> xs
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">tail</span> (<span style="color:#66d9ef">_</span> <span style="color:#66d9ef">:</span> xs) <span style="color:#f92672">=</span> xs
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">tail</span> <span style="color:#66d9ef">[]</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">error</span> <span style="color:#e6db74">&#34;Prelude.tail: empty list&#34;</span>
 </span></span></code></pre></div></blockquote>
 <p>Exercise</p>

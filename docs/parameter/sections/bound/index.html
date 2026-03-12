@@ -37,7 +37,7 @@ In Haskell # Example. The following function does not compile, because the opera
 <link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/parameter/sections/bound/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.498cf1dcf39f67e7178f3d96b0daa054b669ad2eae20d2f7b5f847aac4dc7cee.js" integrity="sha256-SYzx3POfZ&#43;cXjz2WsNqgVLZprS6uINL3tfhHqsTcfO4=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.79dcfa4e93e047cbeb06c5beb3cf2c159eba6bdfb209d1c79d620653a9256265.js" integrity="sha256-edz6TpPgR8vrBsW&#43;s88sFZ66a9&#43;yCdHHnWIGU6klYmU=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -686,8 +686,14 @@ The following function does <em>not</em> compile, because the operation <code>+<
   <a class="anchor" href="#type-class">#</a>
 </h3>
 <blockquote class="book-hint warning">
-<p>A <strong>type class</strong> in Haskell declares a set of functions.
-Each type that belongs to this class must implement these functions.</p>
+<p>A <strong>type class</strong> in Haskell is associated with one or several functions (e.g. the function <code>+</code>).</p>
+<p>Each type that belongs to this class must implement these functions.</p>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong>
+The type class <code>Num</code> is the class of numeric types.</p>
+<p>The types <code>Int</code>, <code>Integer</code> or <code>Float</code> belong to this class.</p>
+<p>These types implement the functions <code>+</code>, <code>*</code>, etc.</p>
 </blockquote>
 <blockquote class="book-hint danger">
 <p><strong><em>Disclaimer.</em></strong>
@@ -698,17 +704,17 @@ We will <em>not</em> see in this course:</p>
 </ul>
 <p>For details, we refer (for instance) to <a href="https://learnyouahaskell.github.io/types-and-typeclasses.html">this page</a>.</p>
 </blockquote>
+<p>We can use a type class to restrict a type variable to certain types.</p>
 <blockquote class="book-hint warning">
 <p><strong><em>Syntax.</em></strong>
 A <strong>type class constraint</strong> has the form</p>
-<pre tabindex="0"><code>&lt;class&gt; a
-</code></pre><p>where <code>a</code> is a type variable.</p>
-</blockquote>
+<pre tabindex="0"><code>&lt;type class&gt; &lt;type variable&gt;
+</code></pre></blockquote>
 <blockquote class="book-hint info">
 <p><strong><em>Examples.</em></strong></p>
 <ul>
-<li>the type class constraint <code>Num a</code> restricts the variable <code>a</code> to numeric types.</li>
-<li>the type class constraint <code>Eq a</code> restricts the variable <code>a</code> to types that implement equality (<code>==</code>).</li>
+<li>The type class constraint <code>Num a</code> restricts the variable <code>a</code> to numeric types.</li>
+<li>The type class constraint <code>Eq a</code> restricts the variable <code>a</code> to types that implement equality (<code>==</code>).</li>
 </ul>
 </blockquote>
 <blockquote class="book-hint warning">
@@ -725,13 +731,6 @@ We can rewrite the function <code>plusTwo</code> above as</p>
 </span></span></code></pre></div><p>The type class constraint <code>Num a</code> requires <code>a</code> to be a numeric type.
 This function compiles, because numeric types must implement the function <code>+</code>.</p>
 </blockquote>
-<blockquote class="book-hint info">
-<p><strong><em>Example.</em></strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#75715e">-- Returns true iff the input consists of two identical elements</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">myFunction</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Eq</span> a <span style="color:#f92672">=&gt;</span> [a] <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">myFunction</span> [x ,y] <span style="color:#f92672">=</span> x <span style="color:#f92672">==</span> y
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">myFunction</span> <span style="color:#66d9ef">_</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>
-</span></span></code></pre></div></blockquote>
 <blockquote class="book-hint warning">
 <p>Here are a few useful type classes</p>
 <table>
@@ -748,7 +747,7 @@ This function compiles, because numeric types must implement the function <code>
       </tr>
       <tr>
           <td><code>Ord</code></td>
-          <td><code>&lt;</code>, <code>&lt;=</code>, <code>&gt;</code>, <code>&gt;=</code>, &hellip;</td>
+          <td><code>==</code>, <code>/=</code>, <code>&lt;</code>, <code>&lt;=</code>, <code>&gt;</code>, <code>&gt;=</code>, &hellip;</td>
       </tr>
       <tr>
           <td><code>Num</code></td>
@@ -760,16 +759,26 @@ This function compiles, because numeric types must implement the function <code>
       </tr>
       <tr>
           <td><code>Show</code></td>
-          <td><code>show</code> (returns a human readable string), <code>print</code></td>
+          <td><code>show</code> (returns a human readable string), <code>print</code>, &hellip;</td>
       </tr>
   </tbody>
 </table>
 </blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#75715e">-- Returns true iff the input list consists of two identical elements</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">myFunction</span> <span style="color:#f92672">::</span> (<span style="color:#66d9ef">Eq</span> a) <span style="color:#f92672">=&gt;</span> [a] <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">myFunction</span> [x,y] <span style="color:#f92672">=</span> x <span style="color:#f92672">==</span> y
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">myFunction</span> <span style="color:#66d9ef">_</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>
+</span></span></code></pre></div></blockquote>
 <blockquote class="book-hint warning">
-<p><strong><em>.To go further.</em></strong>
-A type class can be a subclass of another.</p>
-<p>For instance,
-<code> Integral</code> is a subclass of <code>Num</code>,</p>
+<p><strong><em>To go further.</em></strong>
+A type class can be a subclass of another.<br>
+For instance:</p>
+<ul>
+<li><code>Integral</code> is a subclass of <code>Num</code>,</li>
+<li><code>Ord</code> is a subclass of <code>Eq</code>.</li>
+</ul>
 <p>We will <em>not</em> cover this notion in this course.</p>
 </blockquote>
 </article>

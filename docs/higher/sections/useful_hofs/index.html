@@ -70,7 +70,7 @@ In Haskell # filter # The function filter retains elements of a list that satisf
 <link rel="canonical" href="http://localhost:1313/docs/higher/sections/useful_hofs/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.f5bebfd60dc046baa78b65b2aea2c8292b83256dcd457d988e44319263cb8902.js" integrity="sha256-9b6/1g3ARrqni2WyrqLIKSuDJW3NRX2YjkQxkmPLiQI=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.1a18f5992c118a8d2385bc2e384444ec52b3d10d7ec54ce8b3c66a4aeb959fdb.js" integrity="sha256-Ghj1mSwRio0jhbwuOERE7FKz0Q1&#43;xUzos8ZqSuuVn9s=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -1052,7 +1052,7 @@ https://github.com/alex-shpak/hugo-book
 </span></span></code></pre></div></blockquote>
 <blockquote class="book-hint info">
 <p><strong><em>Example.</em></strong>
-The following function maps an Integer to <code>True</code> iff it is <code>even</code>:</p>
+Let us first define an auxiliary function <code>even</code> that maps an <code>Int</code> to <code>True</code> iff it is even:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">even</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Int</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">even</span> x <span style="color:#f92672">=</span> x `mod` <span style="color:#ae81ff">2</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>  <span style="color:#75715e">-- `mod` is the &#34;modulo&#34; function, used here in infix form</span>
 </span></span></code></pre></div><p>Then</p>
