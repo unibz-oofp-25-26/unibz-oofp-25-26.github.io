@@ -18,7 +18,7 @@
   </url><url>
     <loc>https://unibz-oofp-25-26.github.io/docs/haskell/sections/tokens/</loc>
   </url><url>
-    <loc>https://unibz-oofp-25-26.github.io/docs/parameter/sections/variable/</loc>
+    <loc>https://unibz-oofp-25-26.github.io/docs/generic/sections/variable/</loc>
   </url><url>
     <loc>https://unibz-oofp-25-26.github.io/docs/haskell/sections/type/</loc>
   </url><url>
@@ -36,7 +36,7 @@
   </url><url>
     <loc>https://unibz-oofp-25-26.github.io/docs/haskell/</loc>
   </url><url>
-    <loc>https://unibz-oofp-25-26.github.io/docs/parameter/sections/bound/</loc>
+    <loc>https://unibz-oofp-25-26.github.io/docs/generic/sections/bound/</loc>
   </url><url>
     <loc>https://unibz-oofp-25-26.github.io/docs/higher/sections/currying/</loc>
   </url><url>
@@ -74,8 +74,6 @@
   </url><url>
     <loc>https://unibz-oofp-25-26.github.io/docs/pattern/sections/functor/</loc>
   </url><url>
-    <loc>https://unibz-oofp-25-26.github.io/docs/parameter/sections/generic_type/</loc>
-  </url><url>
     <loc>https://unibz-oofp-25-26.github.io/docs/pattern/sections/monad/</loc>
   </url><url>
     <loc>https://unibz-oofp-25-26.github.io/docs/intro/sections/office_hours/</loc>
@@ -84,7 +82,9 @@
   </url><url>
     <loc>https://unibz-oofp-25-26.github.io/docs/control/sections/comprehension/</loc>
   </url><url>
-    <loc>https://unibz-oofp-25-26.github.io/docs/parameter/sections/maybe/</loc>
+    <loc>https://unibz-oofp-25-26.github.io/docs/higher/sections/useful_hofs/</loc>
+  </url><url>
+    <loc>https://unibz-oofp-25-26.github.io/docs/generic/</loc>
   </url><url>
     <loc>https://unibz-oofp-25-26.github.io/docs/haskell/sections/program/</loc>
   </url><url>

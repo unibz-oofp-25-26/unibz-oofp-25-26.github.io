@@ -35,7 +35,7 @@ Haskell does not admit loops, so linear recursion is the standard way to perform
 <link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/recursion/sections/linear/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.9255151d42cdce774fda72831d3e3fe152d22fec3ab5515e049242991eb36928.js" integrity="sha256-klUVHULNzndP2nKDHT4/4VLSL&#43;w6tVFeBJJCmR6zaSg=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.417b32b657332f094280afdb32244acd590431f36992d0d90daf086fc4940c1c.js" integrity="sha256-QXsytlczLwlCgK/bMiRKzVkEMfNpktDZDa8Ib8SUDBw=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -479,6 +479,19 @@ https://github.com/alex-shpak/hugo-book
         </li>
       
     
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/higher/sections/useful_hofs/" class="">A few higher-order functions</a>
+  
+
+        </li>
+      
+    
   </ul>
 
         </li>
@@ -534,6 +547,53 @@ https://github.com/alex-shpak/hugo-book
 
   
     <a href="/docs/control/sections/comprehension/" class="">List comprehension</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-97db6297fa77b8e8a3d66808fea4d894" class="toggle"  />
+    <label for="section-97db6297fa77b8e8a3d66808fea4d894" class="flex justify-between">
+      <a href="/docs/generic/" class="">Genericity</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/generic/sections/variable/" class="">Type variable</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/generic/sections/bound/" class="">Bound</a>
   
 
         </li>
@@ -707,7 +767,7 @@ The following function sums the elements of a list of integers</p>
 <li><code>xs</code> matches <code>2 : (3 : [])</code> (or equivalently, <code>[2,3]</code>)</li>
 </ul>
 <p>So the evaluation of <code>sum [1,2,3]</code> performs a <strong>recursive call</strong> <code>sum [2,3]</code> (Line 3 still).</p>
-<p>Besides, the <code>+</code> operation is performed <em>after termination</em> of the recursive call.</p>
+<p>Besides, the <code>+</code> operation is performed <em>after</em> the recursive call.</p>
 <p>So the following <em>sequence</em> of events takes place:</p>
 <ol>
 <li>the evaluation of <code>sum [1,2,3]</code> starts</li>
@@ -805,7 +865,7 @@ In the example above, the base case is clearly correct:</p>
 </span></span></code></pre></div><p>As for the inductive case,
 if the recursive call <code>sum xs</code> is correct, then the function is also clearly correct:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">sum</span> (x <span style="color:#66d9ef">:</span> xs) <span style="color:#f92672">=</span> x <span style="color:#f92672">+</span> sum xs
-</span></span></code></pre></div><p>Therefore for any input list $I$:</p>
+</span></span></code></pre></div><p>Therefore for any (finite) input list $I$:</p>
 <ul>
 <li>
 <p>$0)$ If $I$ has size $0$ (i.e. if it is empty), then the function is correct.</p>
@@ -853,7 +913,7 @@ If you want to test your code, you need to give them different names (for instan
 <label for="tabs-exercise_rec_length-1">Possible solution</label>
 <div class="book-tabs-content markdown-inner"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">length</span> <span style="color:#f92672">::</span> [a] <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Int</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">length</span> <span style="color:#66d9ef">[]</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">length</span> (x <span style="color:#66d9ef">:</span> xs) <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> length xs
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">length</span> (<span style="color:#66d9ef">_</span> <span style="color:#66d9ef">:</span> xs) <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> length xs
 </span></span></code></pre></div></div>
 </div>
 <div class="book-tabs">
