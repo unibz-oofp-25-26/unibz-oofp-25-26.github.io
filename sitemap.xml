@@ -52,8 +52,6 @@
   </url><url>
     <loc>https://unibz-oofp-25-26.github.io/docs/composite/sections/sum/</loc>
   </url><url>
-    <loc>https://unibz-oofp-25-26.github.io/docs/recursion/sections/termination/</loc>
-  </url><url>
     <loc>https://unibz-oofp-25-26.github.io/docs/paradigm/sections/type/</loc>
   </url><url>
     <loc>https://unibz-oofp-25-26.github.io/docs/control/sections/condition/</loc>
@@ -87,6 +85,10 @@
     <loc>https://unibz-oofp-25-26.github.io/docs/generic/</loc>
   </url><url>
     <loc>https://unibz-oofp-25-26.github.io/docs/haskell/sections/program/</loc>
+  </url><url>
+    <loc>https://unibz-oofp-25-26.github.io/docs/recursion/</loc>
+  </url><url>
+    <loc>https://unibz-oofp-25-26.github.io/docs/control/sections/stack/</loc>
   </url><url>
     <loc>https://unibz-oofp-25-26.github.io/docs/intro/sections/resources/</loc>
   </url><url>

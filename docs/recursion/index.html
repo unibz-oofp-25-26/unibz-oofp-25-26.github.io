@@ -1,28 +1,62 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+<head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="
   Recursion
   #
-">
+
+
+Definition.
+A function/method is recursive if it calls itself, directly or indirectly.
+
+
+Example.
+The following method (in pseudocode) is recursive:
+    myMethod() {
+        ...
+        myMethod()
+        ...
+    }
+
+
+Example.
+The following two methods (in pseudocode) are recursive:
+    myMethod1() {
+        ...
+        myMethod2()
+        ...
+    }
+
+    myMethod2() {
+        ...
+        myMethod1()
+        ...
+    }
+
+
+Usage.
+In theory, a recursive algorithm can be rewritten using loops only (and conversely).">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/docs/recursion/">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://unibz-oofp-25-26.github.io/docs/recursion/">
   <meta property="og:site_name" content="OOFP 2025-26">
   <meta property="og:title" content="Recursion">
-  <meta property="og:description" content="Recursion #">
+  <meta property="og:description" content="Recursion # Definition. A function/method is recursive if it calls itself, directly or indirectly.
+Example. The following method (in pseudocode) is recursive:
+myMethod() { ... myMethod() ... } Example. The following two methods (in pseudocode) are recursive:
+myMethod1() { ... myMethod2() ... } myMethod2() { ... myMethod1() ... } Usage. In theory, a recursive algorithm can be rewritten using loops only (and conversely).">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="website">
 <title>Recursion | OOFP 2025-26</title>
 <link rel="icon" href="/favicon.png" >
 <link rel="manifest" href="/manifest.json">
-<link rel="canonical" href="http://localhost:1313/docs/recursion/">
+<link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/recursion/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.5d82e97f4dd8d21a14339048a26139376a831eb1a2fb43dafa49a8a1bc65d4eb.js" integrity="sha256-XYLpf03Y0hoUM5BIomE5N2qDHrGi&#43;0Pa&#43;kmoobxl1Os=" crossorigin="anonymous"></script>
-<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/docs/recursion/index.xml" title="OOFP 2025-26" />
+  <script defer src="/en.search.min.f18d87ad16ced79ac3846653b97b81604c4c5ddd541fb1647f03c7484f9969ee.js" integrity="sha256-8Y2HrRbO15rDhGZTuXuBYExMXd1UH7FkfwPHSE&#43;Zae4=" crossorigin="anonymous"></script>
+<link rel="alternate" type="application/rss+xml" href="https://unibz-oofp-25-26.github.io/docs/recursion/index.xml" title="OOFP 2025-26" />
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -447,19 +481,6 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/higher/sections/useful_hofs/" class="">A few higher-order functions</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
     <a href="/docs/higher/sections/anonymous/" class="">Anonymous function</a>
   
 
@@ -474,6 +495,19 @@ https://github.com/alex-shpak/hugo-book
 
   
     <a href="/docs/higher/sections/currying/" class="">Currying</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/higher/sections/useful_hofs/" class="">A few higher-order functions</a>
   
 
         </li>
@@ -599,32 +633,6 @@ https://github.com/alex-shpak/hugo-book
         </li>
       
     
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/generic/sections/generic_type/" class="">Generic type</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/generic/sections/maybe/" class="">Option type</a>
-  
-
-        </li>
-      
-    
   </ul>
 
         </li>
@@ -654,165 +662,6 @@ https://github.com/alex-shpak/hugo-book
 
   
     <a href="/docs/recursion/sections/linear/" class="">Linear recursion</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/recursion/sections/termination/" class="">Termination</a>
-  
-
-        </li>
-      
-    
-  </ul>
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <input type="checkbox" id="section-d92e119f475bae7b2a2364fe0e1fc445" class="toggle"  />
-    <label for="section-d92e119f475bae7b2a2364fe0e1fc445" class="flex justify-between">
-      <a href="/docs/composite/" class="">Composite type</a>
-    </label>
-  
-
-          
-  <ul>
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/composite/sections/enum/" class="">Enumerated type</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/composite/sections/product/" class="">Product type</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/composite/sections/recursive/" class="">Recursive type</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/composite/sections/sum/" class="">Sum type</a>
-  
-
-        </li>
-      
-    
-  </ul>
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <input type="checkbox" id="section-007945605153592d0fc2acb75802d872" class="toggle"  />
-    <label for="section-007945605153592d0fc2acb75802d872" class="flex justify-between">
-      <a href="/docs/pattern/" class="">Functional patterns</a>
-    </label>
-  
-
-          
-  <ul>
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/pattern/sections/fold/" class="">Fold</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/pattern/sections/pipe/" class="">Pipeline</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/pattern/sections/functor/" class="">Functor</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/pattern/sections/monad/" class="">Monad</a>
   
 
         </li>
@@ -934,6 +783,40 @@ https://github.com/alex-shpak/hugo-book
   Recursion
   <a class="anchor" href="#recursion">#</a>
 </h1>
+<blockquote class="book-hint warning">
+<p><strong><em>Definition.</em></strong>
+A function/method is <strong>recursive</strong> if it calls itself, directly or indirectly.</p>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong>
+The following method (in pseudocode) is recursive:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-perl" data-lang="perl"><span style="display:flex;"><span>    myMethod() {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span>        myMethod()
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span></code></pre></div></blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong>
+The following two methods (in pseudocode) are recursive:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-perl" data-lang="perl"><span style="display:flex;"><span>    myMethod1() {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span>        myMethod2()
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    myMethod2() {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span>        myMethod1()
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span></code></pre></div></blockquote>
+<blockquote class="book-hint warning">
+<p><strong><em>Usage.</em></strong>
+In theory, a recursive algorithm can be rewritten using loops only (and conversely).</p>
+<p>In practice, some problems are easier to <em>solve</em> recursively.
+This includes many problem that involve <em>tree-like</em> structures (e.g. a folder, a JSON or XML document, an algebraic expression, etc.), and more generally <em>graphs</em>.</p>
+</blockquote>
 </article>
  
       

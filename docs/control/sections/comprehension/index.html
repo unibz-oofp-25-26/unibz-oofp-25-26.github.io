@@ -10,7 +10,7 @@
 Pure functional programming does not admit loops.
 In particular, this is the case of Haskell.
 So iteration in Haskell is primarily achieved via recursive functions.
-However, Haskell also provides a convenient syntax for a limited form of iteration, called list comprehensions.
+Besides, Haskell provides an alternative syntax for a limited form of iteration, called list comprehensions.
 List comprehensions are also available in Python (with a slightly different syntax) since the release of Python 2 (in 2000).
 
   Syntax
@@ -24,7 +24,7 @@ We have already seen set comprehensions.">
   <meta property="og:title" content="List comprehension">
   <meta property="og:description" content="List comprehension # Pure functional programming does not admit loops.
 In particular, this is the case of Haskell. So iteration in Haskell is primarily achieved via recursive functions.
-However, Haskell also provides a convenient syntax for a limited form of iteration, called list comprehensions.
+Besides, Haskell provides an alternative syntax for a limited form of iteration, called list comprehensions.
 List comprehensions are also available in Python (with a slightly different syntax) since the release of Python 2 (in 2000).
 Syntax # We have already seen set comprehensions.">
   <meta property="og:locale" content="en_us">
@@ -36,7 +36,7 @@ Syntax # We have already seen set comprehensions.">
 <link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/control/sections/comprehension/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.ee360c47c44aac8f984aaa886bc45b530c9a9cb3e8845d937a5822b3202cf939.js" integrity="sha256-7jYMR8RKrI&#43;YSqqIa8RbUwyanLPohF2TelgisyAs&#43;Tk=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.f18d87ad16ced79ac3846653b97b81604c4c5ddd541fb1647f03c7484f9969ee.js" integrity="sha256-8Y2HrRbO15rDhGZTuXuBYExMXd1UH7FkfwPHSE&#43;Zae4=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -553,6 +553,19 @@ https://github.com/alex-shpak/hugo-book
         </li>
       
     
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/control/sections/stack/" class="">Call stack</a>
+  
+
+        </li>
+      
+    
   </ul>
 
         </li>
@@ -595,6 +608,40 @@ https://github.com/alex-shpak/hugo-book
 
   
     <a href="/docs/generic/sections/bound/" class="">Bound</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-54a25c0ad53482778ca10b1a7db8e623" class="toggle"  />
+    <label for="section-54a25c0ad53482778ca10b1a7db8e623" class="flex justify-between">
+      <a href="/docs/recursion/" class="">Recursion</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/recursion/sections/linear/" class="">Linear recursion</a>
   
 
         </li>
@@ -725,7 +772,7 @@ https://github.com/alex-shpak/hugo-book
 <p>Pure functional programming does not admit loops.</p>
 <p>In particular, this is the case of Haskell.
 So iteration in Haskell is primarily achieved via <a href="https://unibz-oofp-25-26.github.io/notreleased/">recursive functions</a>.</p>
-<p>However, Haskell also provides a convenient syntax for a limited form of iteration, called <strong>list comprehensions</strong>.<br></p>
+<p>Besides, Haskell provides an alternative syntax for a <em>limited</em> form of iteration, called <strong>list comprehensions</strong>.<br></p>
 <p>List comprehensions are also available in Python (with a slightly different syntax) since the release of Python 2 (in 2000).</p>
 <h2 id="syntax">
   Syntax
@@ -849,7 +896,7 @@ The expression</p>
 <p>For instance,</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">firstsIfSecPos</span> [(<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">4</span>), (<span style="color:#ae81ff">5</span>,<span style="color:#f92672">-</span><span style="color:#ae81ff">2</span>), (<span style="color:#f92672">-</span><span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">6</span>), (<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">3</span>)]
 </span></span></code></pre></div><p>should evaluate to</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span>[<span style="color:#ae81ff">3</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">1</span>]
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span>[<span style="color:#ae81ff">3</span>,<span style="color:#f92672">-</span><span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">1</span>]
 </span></span></code></pre></div></div>
 <!-- 
 <input type="radio" class="toggle" name="tabs-exercise_list_comp_firstIfSecPos" id="tabs-exercise_list_comp_firstIfSecPos-1"  />

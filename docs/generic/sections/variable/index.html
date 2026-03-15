@@ -8,8 +8,7 @@
   #
 
 
-A (regular) variable stands for an underspecified value.
-Similarly, a type variable stands for an underspecified type.
+A type variable stands for an underspecified type.
 
 
 Example.
@@ -21,17 +20,37 @@ a list of integers,
 a list of Boolean values,
 etc.
 
-A type variable lets us declare such a function">
+A type variable lets us declare such a function
+
+in Haskell:
+
+half :: [a] -&gt; [a]    -- `a` is a type variable here
+
+or in Java:
+
+/* will be revealed later */
+
+
+
+
+
+
+  In Haskell
+  #
+
+
+Syntax.
+In Haskell, a type variable starts with a lowercase letter (like a regular variable).">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="https://unibz-oofp-25-26.github.io/docs/generic/sections/variable/">
   <meta property="og:site_name" content="OOFP 2025-26">
   <meta property="og:title" content="Type variable">
-  <meta property="og:description" content="Type variable # A (regular) variable stands for an underspecified value.
-Similarly, a type variable stands for an underspecified type.
+  <meta property="og:description" content="Type variable # A type variable stands for an underspecified type.
 Example. Consider a function half that maps a list to its first half (say rounded down if the list has odd length).
 The implementation of this function is identical for:
-a list of strings, a list of integers, a list of Boolean values, etc. A type variable lets us declare such a function">
+a list of strings, a list of integers, a list of Boolean values, etc. A type variable lets us declare such a function
+in Haskell: half :: [a] -&gt; [a] -- `a` is a type variable here or in Java: /* will be revealed later */ In Haskell # Syntax. In Haskell, a type variable starts with a lowercase letter (like a regular variable).">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
@@ -41,7 +60,7 @@ a list of strings, a list of integers, a list of Boolean values, etc. A type var
 <link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/generic/sections/variable/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.ee360c47c44aac8f984aaa886bc45b530c9a9cb3e8845d937a5822b3202cf939.js" integrity="sha256-7jYMR8RKrI&#43;YSqqIa8RbUwyanLPohF2TelgisyAs&#43;Tk=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.f18d87ad16ced79ac3846653b97b81604c4c5ddd541fb1647f03c7484f9969ee.js" integrity="sha256-8Y2HrRbO15rDhGZTuXuBYExMXd1UH7FkfwPHSE&#43;Zae4=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -558,6 +577,19 @@ https://github.com/alex-shpak/hugo-book
         </li>
       
     
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/control/sections/stack/" class="">Call stack</a>
+  
+
+        </li>
+      
+    
   </ul>
 
         </li>
@@ -600,6 +632,40 @@ https://github.com/alex-shpak/hugo-book
 
   
     <a href="/docs/generic/sections/bound/" class="">Bound</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-54a25c0ad53482778ca10b1a7db8e623" class="toggle"  />
+    <label for="section-54a25c0ad53482778ca10b1a7db8e623" class="flex justify-between">
+      <a href="/docs/recursion/" class="">Recursion</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/recursion/sections/linear/" class="">Linear recursion</a>
   
 
         </li>
@@ -730,8 +796,7 @@ https://github.com/alex-shpak/hugo-book
   <a class="anchor" href="#type-variable">#</a>
 </h1>
 <blockquote class="book-hint warning">
-<p>A (regular) variable stands for an underspecified value.</p>
-<p>Similarly, a <strong><em>type variable</em></strong> stands for an underspecified type.</p>
+<p>A <strong><em>type variable</em></strong> stands for an underspecified type.</p>
 </blockquote>
 <blockquote class="book-hint info">
 <p><strong><em>Example.</em></strong>
@@ -771,8 +836,8 @@ In Haskell, a type variable starts with a lowercase letter (like a regular varia
 <ul>
 <li>The type variable <code>a</code> stands for any type,</li>
 <li><code>[a]</code> is the type of lists,</li>
-<li>a function with type <code>[a] -&gt; [a]</code> maps a list to a list of the same type,</li>
-<li>a function with type <code>(a, a) -&gt; Bool</code> maps a pair of elements of the same type to a Boolean value.
+<li>a function with type <code>[a] -&gt; [a]</code> maps a list to a list <em>of the same type</em>,</li>
+<li>a function with type <code>(a, a) -&gt; Bool</code> maps a pair of elements <em>of the same type</em> to a Boolean value, and its <a href="https://unibz-oofp-25-26.github.io/docs/higher/sections/currying/#haskell">curried version</a> has type <code>a -&gt; a -&gt; Bool</code>.
 <!-- - `a -> a -> Bool` is the type of these functions in curried form. -->
 </li>
 </ul>
@@ -794,7 +859,7 @@ Observe the type declarations in these definitions.</p>
 <div class="book-tabs">
 <input type="radio" class="toggle" name="tabs-exercise_" id="tabs-exercise_-0" checked="checked" />
 <label for="tabs-exercise_-0">Exercise</label>
-<div class="book-tabs-content markdown-inner"><p>Implement the native function composition operator (<code>.</code>) of Haskell, where <code>g . f</code> is the composition of <code>f</code> and <code>g</code>.</p>
+<div class="book-tabs-content markdown-inner"><p>Implement the native <a href="https://unibz-oofp-25-26.github.io/docs/haskell/sections/function/#composition">function composition</a> operator (<code>.</code>) of Haskell, where <code>g . f</code> is the composition of <code>f</code> and <code>g</code>.</p>
 </div>
 <!-- 
 <input type="radio" class="toggle" name="tabs-exercise_" id="tabs-exercise_-1"  />

@@ -70,7 +70,7 @@ In Haskell # filter # The function filter retains elements of a list that satisf
 <link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/higher/sections/useful_hofs/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.ee360c47c44aac8f984aaa886bc45b530c9a9cb3e8845d937a5822b3202cf939.js" integrity="sha256-7jYMR8RKrI&#43;YSqqIa8RbUwyanLPohF2TelgisyAs&#43;Tk=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.f18d87ad16ced79ac3846653b97b81604c4c5ddd541fb1647f03c7484f9969ee.js" integrity="sha256-8Y2HrRbO15rDhGZTuXuBYExMXd1UH7FkfwPHSE&#43;Zae4=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -587,6 +587,19 @@ https://github.com/alex-shpak/hugo-book
         </li>
       
     
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/control/sections/stack/" class="">Call stack</a>
+  
+
+        </li>
+      
+    
   </ul>
 
         </li>
@@ -629,6 +642,40 @@ https://github.com/alex-shpak/hugo-book
 
   
     <a href="/docs/generic/sections/bound/" class="">Bound</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-54a25c0ad53482778ca10b1a7db8e623" class="toggle"  />
+    <label for="section-54a25c0ad53482778ca10b1a7db8e623" class="flex justify-between">
+      <a href="/docs/recursion/" class="">Recursion</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/recursion/sections/linear/" class="">Linear recursion</a>
   
 
         </li>
@@ -948,11 +995,10 @@ For instance,</p>
   <a class="anchor" href="#all-and-any">#</a>
 </h3>
 <blockquote class="book-hint warning">
-<p>The functions <code>all</code> and <code>any</code> have type <code>(a -&gt; Bool) -&gt; [a] -&gt; Bool</code>.</p>
-<ul>
-<li>The expression <code>all f xs</code> evaluates to <code>True</code> iff <code>f x</code> evaluates to <code>True</code> for <em>every</em> element <code>x</code> of the list <code>xs</code>.</li>
-<li>The expression <code>any f xs</code> evaluates to <code>True</code> iff <code>f x</code> evaluates to <code>True</code> for <em>at least one</em> element <code>x</code> of the list <code>xs</code>.</li>
-</ul>
+<p>The functions <code>all</code> and <code>any</code> have type</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span>(a <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span>) <span style="color:#f92672">-&gt;</span> [a] <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span>
+</span></span></code></pre></div><p>The expression <code>all f xs</code> evaluates to <code>True</code> iff <code>f x</code> evaluates to <code>True</code> for <em>every</em> element <code>x</code> of the list <code>xs</code>.</p>
+<p>The expression <code>any f xs</code> evaluates to <code>True</code> iff <code>f x</code> evaluates to <code>True</code> for <em>at least one</em> element <code>x</code> of the list <code>xs</code>.</p>
 </blockquote>
 <blockquote class="book-hint info">
 <p><strong><em>Note.</em></strong>
@@ -962,10 +1008,10 @@ We will see how these two functions can be implemented in the section on <a href
 <p><strong><em>Examples.</em></strong></p>
 <ul>
 <li>
-<p><code>all even [1,4,5,4]</code> evaluates to <code>False</code></p>
+<p><code>all even [4,4,2]</code> evaluates to <code>True</code></p>
 </li>
 <li>
-<p><code>all even [4,4,2]</code> evaluates to <code>True</code></p>
+<p><code>all even [1,4,5,4]</code> evaluates to <code>False</code></p>
 </li>
 <li>
 <p><code>all even []</code> evaluates to <code>True</code></p>

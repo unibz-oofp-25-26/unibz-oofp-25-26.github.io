@@ -39,7 +39,7 @@ In Haskell # Example. The following function does not compile, because the opera
 <link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/generic/sections/bound/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.ee360c47c44aac8f984aaa886bc45b530c9a9cb3e8845d937a5822b3202cf939.js" integrity="sha256-7jYMR8RKrI&#43;YSqqIa8RbUwyanLPohF2TelgisyAs&#43;Tk=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.f18d87ad16ced79ac3846653b97b81604c4c5ddd541fb1647f03c7484f9969ee.js" integrity="sha256-8Y2HrRbO15rDhGZTuXuBYExMXd1UH7FkfwPHSE&#43;Zae4=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -556,6 +556,19 @@ https://github.com/alex-shpak/hugo-book
         </li>
       
     
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/control/sections/stack/" class="">Call stack</a>
+  
+
+        </li>
+      
+    
   </ul>
 
         </li>
@@ -598,6 +611,40 @@ https://github.com/alex-shpak/hugo-book
 
   
     <a href="/docs/generic/sections/bound/" class="active">Bound</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-54a25c0ad53482778ca10b1a7db8e623" class="toggle"  />
+    <label for="section-54a25c0ad53482778ca10b1a7db8e623" class="flex justify-between">
+      <a href="/docs/recursion/" class="">Recursion</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/recursion/sections/linear/" class="">Linear recursion</a>
   
 
         </li>
@@ -749,22 +796,29 @@ The following function does <em>not</em> compile, because the operation <code>+<
   <a class="anchor" href="#type-class">#</a>
 </h3>
 <blockquote class="book-hint warning">
-<p>A <strong>type class</strong> in Haskell is associated with one or several functions (e.g. the function <code>+</code>).</p>
-<p>Each type that belongs to this class must implement these functions.</p>
+<p>A <strong>type class</strong> in Haskell stands for a set of possible types.</p>
 </blockquote>
 <blockquote class="book-hint info">
 <p><strong><em>Example.</em></strong>
-The type class <code>Num</code> is the class of numeric types.</p>
+<code>Num</code> is the class of numeric types.</p>
 <p>The types <code>Int</code>, <code>Integer</code> or <code>Float</code> belong to this class.</p>
-<p>These types implement the functions <code>+</code>, <code>*</code>, etc.</p>
 </blockquote>
 <blockquote class="book-hint warning">
-<p>Here are a few useful type classes</p>
+<p>A type class is is associated with one or several <em>functions</em>.</p>
+<p>Each type that belongs to this class must support these functions.</p>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong>
+The types that belong to the class <code>Num</code> must support the functions <code>+</code>, <code>*</code>, etc.</p>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Examples.</em></strong>
+We will use the following type classes:</p>
 <table>
   <thead>
       <tr>
-          <th>Type class</th>
-          <th>implemented functions</th>
+          <th>type class</th>
+          <th>supported functions</th>
       </tr>
   </thead>
   <tbody>
@@ -814,7 +868,7 @@ A <strong>type class constraint</strong> has the form</p>
 <p><strong><em>Examples.</em></strong></p>
 <ul>
 <li>The type class constraint <code>Num a</code> restricts the variable <code>a</code> to numeric types.</li>
-<li>The type class constraint <code>Eq a</code> restricts the variable <code>a</code> to types that implement equality (<code>==</code>).</li>
+<li>The type class constraint <code>Eq a</code> restricts the variable <code>a</code> to types that support equality (<code>==</code>) and inequality (<code>\=</code>).</li>
 </ul>
 </blockquote>
 <blockquote class="book-hint warning">

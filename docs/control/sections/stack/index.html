@@ -1,28 +1,40 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+<head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="
-  Call stask
+  Call stack
   #
-">
+
+
+During the execution of a program, the call stack keeps track of ongoing function/method calls:
+
+
+when a function/method is called, a frame is pushed on top of the stack:
+the frame stores information about the execution of the function/method (current value of variables, &hellip;),
+
+
+when the execution of the call terminates, the frame is popped from the stack,
+and control is passed back to the calling function/method (whose frame is now on top of the stack).">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/docs/control/sections/stack/">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://unibz-oofp-25-26.github.io/docs/control/sections/stack/">
   <meta property="og:site_name" content="OOFP 2025-26">
   <meta property="og:title" content="Call stack">
-  <meta property="og:description" content="Call stask #">
+  <meta property="og:description" content="Call stack # During the execution of a program, the call stack keeps track of ongoing function/method calls:
+when a function/method is called, a frame is pushed on top of the stack: the frame stores information about the execution of the function/method (current value of variables, …),
+when the execution of the call terminates, the frame is popped from the stack, and control is passed back to the calling function/method (whose frame is now on top of the stack).">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
 <title>Call stack | OOFP 2025-26</title>
 <link rel="icon" href="/favicon.png" >
 <link rel="manifest" href="/manifest.json">
-<link rel="canonical" href="http://localhost:1313/docs/control/sections/stack/">
+<link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/control/sections/stack/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.5d82e97f4dd8d21a14339048a26139376a831eb1a2fb43dafa49a8a1bc65d4eb.js" integrity="sha256-XYLpf03Y0hoUM5BIomE5N2qDHrGi&#43;0Pa&#43;kmoobxl1Os=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.f18d87ad16ced79ac3846653b97b81604c4c5ddd541fb1647f03c7484f9969ee.js" integrity="sha256-8Y2HrRbO15rDhGZTuXuBYExMXd1UH7FkfwPHSE&#43;Zae4=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -447,19 +459,6 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/higher/sections/useful_hofs/" class="">A few higher-order functions</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
     <a href="/docs/higher/sections/anonymous/" class="">Anonymous function</a>
   
 
@@ -474,6 +473,19 @@ https://github.com/alex-shpak/hugo-book
 
   
     <a href="/docs/higher/sections/currying/" class="">Currying</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/higher/sections/useful_hofs/" class="">A few higher-order functions</a>
   
 
         </li>
@@ -599,32 +611,6 @@ https://github.com/alex-shpak/hugo-book
         </li>
       
     
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/generic/sections/generic_type/" class="">Generic type</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/generic/sections/maybe/" class="">Option type</a>
-  
-
-        </li>
-      
-    
   </ul>
 
         </li>
@@ -654,165 +640,6 @@ https://github.com/alex-shpak/hugo-book
 
   
     <a href="/docs/recursion/sections/linear/" class="">Linear recursion</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/recursion/sections/termination/" class="">Termination</a>
-  
-
-        </li>
-      
-    
-  </ul>
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <input type="checkbox" id="section-d92e119f475bae7b2a2364fe0e1fc445" class="toggle"  />
-    <label for="section-d92e119f475bae7b2a2364fe0e1fc445" class="flex justify-between">
-      <a href="/docs/composite/" class="">Composite type</a>
-    </label>
-  
-
-          
-  <ul>
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/composite/sections/enum/" class="">Enumerated type</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/composite/sections/product/" class="">Product type</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/composite/sections/recursive/" class="">Recursive type</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/composite/sections/sum/" class="">Sum type</a>
-  
-
-        </li>
-      
-    
-  </ul>
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <input type="checkbox" id="section-007945605153592d0fc2acb75802d872" class="toggle"  />
-    <label for="section-007945605153592d0fc2acb75802d872" class="flex justify-between">
-      <a href="/docs/pattern/" class="">Functional patterns</a>
-    </label>
-  
-
-          
-  <ul>
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/pattern/sections/fold/" class="">Fold</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/pattern/sections/pipe/" class="">Pipeline</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/pattern/sections/functor/" class="">Functor</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/pattern/sections/monad/" class="">Monad</a>
   
 
         </li>
@@ -919,7 +746,12 @@ https://github.com/alex-shpak/hugo-book
   <aside class="hidden clearfix">
     
   
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#in-haskell">In Haskell</a></li>
+    <li><a href="#recursion-and-stack-overflow">Recursion and stack overflow</a></li>
+  </ul>
+</nav>
 
 
 
@@ -930,10 +762,114 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown book-article"><h1 id="call-stask">
-  Call stask
-  <a class="anchor" href="#call-stask">#</a>
+  <article class="markdown book-article"><h1 id="call-stack">
+  Call stack
+  <a class="anchor" href="#call-stack">#</a>
 </h1>
+<blockquote class="book-hint warning">
+<p>During the execution of a program, the <strong>call stack</strong> keeps track of ongoing function/method calls:</p>
+<ul>
+<li>
+<p>when a function/method is called, a <strong>frame</strong> is <a href="https://unibz-oofp-25-26.github.io/notreleased/">pushed</a> on top of the stack:
+the frame stores information about the execution of the function/method (current value of variables, &hellip;),</p>
+</li>
+<li>
+<p>when the execution of the call terminates, the frame is <a href="https://unibz-oofp-25-26.github.io/notreleased/">popped</a> from the stack,
+and control is passed back to the calling function/method (whose frame is now on top of the stack).</p>
+</li>
+</ul>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Hint.</em></strong>
+A <strong>debugger</strong> provides a representation of the successive states of a call stack, with references to the source code.
+This gives the illusion of source code being interpreted verbatim.</p>
+</blockquote>
+<h2 id="in-haskell">
+  In Haskell
+  <a class="anchor" href="#in-haskell">#</a>
+</h2>
+<blockquote class="book-hint danger">
+<p><strong><em>Warning.</em></strong>
+We assume here a simplified call stack, for a naive execution.</p>
+<p>The Haskell compiler may produce a program that applies a <a href="https://unibz-oofp-25-26.github.io/docs/control/#lazy">lazy evaluation</a> strategy, which can be more complex.
+We will not cover this in detail.</p>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong>
+Consider the following program:</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">main</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">IO</span> ()
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">main</span> <span style="color:#f92672">=</span> print <span style="color:#f92672">$</span>
+</span></span><span style="display:flex;"><span>  function1 <span style="color:#ae81ff">5</span> <span style="color:#f92672">+</span>
+</span></span><span style="display:flex;"><span>  function3 <span style="color:#ae81ff">3</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">function1</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Int</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Int</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">function1</span> x <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> function2 x
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">function2</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Int</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Int</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">function2</span> x <span style="color:#f92672">=</span> x <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">function3</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Int</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Int</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">function3</span> x <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span> <span style="color:#f92672">*</span> x
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>When the method <code>main</code> is called, it is added (a.k.a. <a href="https://unibz-oofp-25-26.github.io/notreleased/">pushed</a>) on top of the call stack.
+This can be represented as:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-perl" data-lang="perl"><span style="display:flex;"><span>main
+</span></span></code></pre></div><p>When execution &ldquo;reaches&rdquo; Line 3, <code>function1</code> is called (with argument <code>5</code>) and added to the stack:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-perl" data-lang="perl"><span style="display:flex;"><span>function1 <span style="color:#ae81ff">5</span>
+</span></span><span style="display:flex;"><span>main : <span style="color:#ae81ff">3</span>          <span style="color:#75715e"># 3 is a line number here</span>
+</span></span></code></pre></div><p>Then Line 7, <code>function1</code> calls <code>function2</code> (with the argument <code>5</code> still):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-perl" data-lang="perl"><span style="display:flex;"><span>function2 <span style="color:#ae81ff">5</span>
+</span></span><span style="display:flex;"><span>function1 <span style="color:#ae81ff">5</span> : <span style="color:#ae81ff">7</span>
+</span></span><span style="display:flex;"><span>main : <span style="color:#ae81ff">3</span>
+</span></span></code></pre></div><p>When the call <code>function2 5</code> terminates, it returns the value <code>4</code> and passes control back to the previous call in the stack (namely <code>function1 5</code>),
+which can resume its execution:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-perl" data-lang="perl"><span style="display:flex;"><span>function1 <span style="color:#ae81ff">5</span>
+</span></span><span style="display:flex;"><span>main : <span style="color:#ae81ff">3</span>
+</span></span></code></pre></div><p>When this call terminates, it returns the value <code>8</code> and passes control back to the function <code>main</code>,
+which resumes its execution where it left off:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-perl" data-lang="perl"><span style="display:flex;"><span>main
+</span></span></code></pre></div><p>When execution &ldquo;reaches&rdquo; Line 4, <code>function3</code> is called (with argument <code>3</code>) and added to the stack:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-perl" data-lang="perl"><span style="display:flex;"><span>function3 <span style="color:#ae81ff">3</span>
+</span></span><span style="display:flex;"><span>main : <span style="color:#ae81ff">4</span>
+</span></span></code></pre></div><p>After the call <code>function3 3</code> terminates, it returns the value <code>12</code>, and passes control back to the function <code>main</code>,
+which can now sum the two values that it received (<code>8</code> and <code>12</code>), and print the result.</p>
+</blockquote>
+<h2 id="recursion-and-stack-overflow">
+  Recursion and stack overflow
+  <a class="anchor" href="#recursion-and-stack-overflow">#</a>
+</h2>
+<blockquote class="book-hint info">
+<p><strong><em>Note.</em></strong>
+If a function/method is <a href="https://unibz-oofp-25-26.github.io/notreleased/">recursive</a> (i.e. if it calls itself, <em>directly or indirectly</em>), then it may appear multiple times in the call stack.
+E.g.:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-perl" data-lang="perl"><span style="display:flex;"><span>method1
+</span></span><span style="display:flex;"><span>method2: <span style="color:#ae81ff">16</span>
+</span></span><span style="display:flex;"><span>method1: <span style="color:#ae81ff">8</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;</span>rest of the call stack<span style="color:#f92672">&gt;</span>
+</span></span></code></pre></div></blockquote>
+<blockquote class="book-hint warning">
+<p><strong><em>Definition.</em></strong>
+A <strong>stack overflow</strong> occurs when the size of the call stack exceeds the capacity allowed by the execution environment.
+This is usually due to a non-terminating recursive method.</p>
+</blockquote>
 </article>
  
       
@@ -973,7 +909,12 @@ https://github.com/alex-shpak/hugo-book
       <div class="book-toc-content">
         
   
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#in-haskell">In Haskell</a></li>
+    <li><a href="#recursion-and-stack-overflow">Recursion and stack overflow</a></li>
+  </ul>
+</nav>
 
 
  

@@ -19,7 +19,7 @@ etc.
 
 For more expressive conditions, programming language usually rely on Boolean expressions.
 
-  in Haskell
+  In Haskell
   #
 
 
@@ -37,7 +37,7 @@ They include:">
   <meta property="og:description" content="Boolean condition # Pattern matching has limitations.
 Examples. No pattern can match:
 integers greater than 2, odd integers, etc. For more expressive conditions, programming language usually rely on Boolean expressions.
-in Haskell # Boolean expression # We have seen how to define a Boolean operator (precisely, the Boolean operator “AND”) with patterns in Haskell.
+In Haskell # Boolean expression # We have seen how to define a Boolean operator (precisely, the Boolean operator “AND”) with patterns in Haskell.
 This is not necessary: Haskell provides native implementations, similar to their counterparts in Java (and many programming languages). They include:">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
@@ -48,7 +48,7 @@ This is not necessary: Haskell provides native implementations, similar to their
 <link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/control/sections/condition/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.ee360c47c44aac8f984aaa886bc45b530c9a9cb3e8845d937a5822b3202cf939.js" integrity="sha256-7jYMR8RKrI&#43;YSqqIa8RbUwyanLPohF2TelgisyAs&#43;Tk=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.f18d87ad16ced79ac3846653b97b81604c4c5ddd541fb1647f03c7484f9969ee.js" integrity="sha256-8Y2HrRbO15rDhGZTuXuBYExMXd1UH7FkfwPHSE&#43;Zae4=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -565,6 +565,19 @@ https://github.com/alex-shpak/hugo-book
         </li>
       
     
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/control/sections/stack/" class="">Call stack</a>
+  
+
+        </li>
+      
+    
   </ul>
 
         </li>
@@ -607,6 +620,40 @@ https://github.com/alex-shpak/hugo-book
 
   
     <a href="/docs/generic/sections/bound/" class="">Bound</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-54a25c0ad53482778ca10b1a7db8e623" class="toggle"  />
+    <label for="section-54a25c0ad53482778ca10b1a7db8e623" class="flex justify-between">
+      <a href="/docs/recursion/" class="">Recursion</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/recursion/sections/linear/" class="">Linear recursion</a>
   
 
         </li>
@@ -715,7 +762,7 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#haskell">in Haskell</a>
+    <li><a href="#haskell">In Haskell</a>
       <ul>
         <li><a href="#boolean-expression">Boolean expression</a></li>
         <li><a href="#guard">Guards</a></li>
@@ -751,7 +798,7 @@ No pattern can match:</p>
 </blockquote>
 <p>For more expressive conditions, programming language usually rely on Boolean expressions.</p>
 <h2 id="haskell">
-  in Haskell
+  In Haskell
   <a class="anchor" href="#haskell">#</a>
 </h2>
 <h3 id="boolean-expression">
@@ -847,7 +894,7 @@ A guard can be used after a pattern.</p>
 A pattern can also be used inside a guard, with a left arrow (<code>&lt;-</code>).</p>
 <p>This can be helpful to pattern match the result of a function call.
 We will not cover this syntax here.
-Instead, we will introduce pattern matching <a href="#case">within case expressions</a>, which can serve the same purpose.</p>
+Instead, we already introduced pattern matching within a <a href="https://unibz-oofp-25-26.github.io/docs/control/sections/pattern/#case">case expression</a> or <a href="https://unibz-oofp-25-26.github.io/docs/control/sections/pattern/#alias">an alias definition</a>, which can serve the same purpose.</p>
 </blockquote>
 <!-- | <pattern> <- <expression> = <result> -->
 <!-- ``` -->
@@ -865,13 +912,13 @@ Instead, we will introduce pattern matching <a href="#case">within case expressi
   Conditional statement
   <a class="anchor" href="#conditional">#</a>
 </h3>
-<p>Haskell also supports &ldquo;if/then/else&rdquo; expressions, similar top their counterparts in imperative languages (like Java).</p>
+<p>Haskell also supports &ldquo;if/then/else&rdquo; expressions, similar to their counterparts in imperative languages (like Java).</p>
 <blockquote class="book-hint info">
 <p><strong><em>Example.</em></strong>
 The following function maps:</p>
 <ul>
 <li>a (strictly) positive integer to <code>1</code>,</li>
-<li>0 to 0 and</li>
+<li><code>0</code> to <code>0</code>, and</li>
 <li>a negative integer to <code>-1</code>.</li>
 </ul>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">signum</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Int</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Int</span>
@@ -945,7 +992,7 @@ The following function definition is <em>not</em> valid syntactically:</p>
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#haskell">in Haskell</a>
+    <li><a href="#haskell">In Haskell</a>
       <ul>
         <li><a href="#boolean-expression">Boolean expression</a></li>
         <li><a href="#guard">Guards</a></li>

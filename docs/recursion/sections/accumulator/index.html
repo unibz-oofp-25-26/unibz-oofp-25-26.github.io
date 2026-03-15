@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  Accumulator and tail recursion
+  #
+
+
+  Tail recursion
+  #
+
+Definition.
+A function/method is tail-recursive if it is:
+
+linear recursive, and
+does not perform any operation after a recursive call.
+
+
+.Example.
+The following function is tail-recursive
+-- `True` iff the input string ends with an `s`
+endsWithS :: String -&gt; Bool
+endsWithS [] = False
+endsWithS [&#39;s&#39;] = True
+endsWithS (x : xs) = endsWithS xs
+
+
+.Example.
+The function sum seen above (and reproduced here is not tail-recursive, becasue the addition (Line 3) is perfomred after termination oif the recursive call.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/docs/recursion/sections/accumulator/">
+  <meta property="og:site_name" content="OOFP 2025-26">
+  <meta property="og:title" content="Accumulator">
+  <meta property="og:description" content="Accumulator and tail recursion # Tail recursion # Definition. A function/method is tail-recursive if it is:
+linear recursive, and does not perform any operation after a recursive call. .Example. The following function is tail-recursive
+-- `True` iff the input string ends with an `s` endsWithS :: String -&gt; Bool endsWithS [] = False endsWithS [&#39;s&#39;] = True endsWithS (x : xs) = endsWithS xs .Example. The function sum seen above (and reproduced here is not tail-recursive, becasue the addition (Line 3) is perfomred after termination oif the recursive call.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+<title>Accumulator | OOFP 2025-26</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1313/docs/recursion/sections/accumulator/">
+<link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.17c8298b04beaf70ce3d20e620fdc11ca71b2fa52517cc6a434003b48933887e.js" integrity="sha256-F8gpiwS&#43;r3DOPSDmIP3BHKcbL6UlF8xqQ0ADtIkziH4=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css"
+  integrity="sha384-vKruj+a13U8yHIkAyGgK1J3ArTLzrFGBbBc0tDp4ad/EyewESeXE/Iv67Aj8gKZ0"
+  crossorigin="anonymous"
+/>
+
+
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js"
+  integrity="sha384-PwRUT/YqbnEjkZO0zZxNqcxACrXe+j766U2amXcgMg5457rve2Y7I6ZJSm2A0mS4"
+  crossorigin="anonymous"
+></script>
+
+
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js"
+  integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+  crossorigin="anonymous"
+  onload="renderMathInElement(document.body);"
+></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    renderMathInElement(document.body, {
+      delimiters: [
+        { left: "$$", right: "$$", display: true },
+        { left: "$", right: "$", display: false },
+      ],
+    });
+  });
+</script>
+
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>OOFP 2025-26</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-8b45d304a159d86710e1579c97aa5b43" class="toggle"  />
+    <label for="section-8b45d304a159d86710e1579c97aa5b43" class="flex justify-between">
+      <a href="/docs/intro/" class="">This course</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/organization/" class="">Organization</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/material/" class="">Material</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/reading_path/" class="">Reading path</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/evaluation/" class="">Evaluation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/prerequisites/" class="">Prerequisites</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/office_hours/" class="">Office hours</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/content/" class="">Content</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/resources/" class="">Additional resources</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/software/" class="">Software</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b17bf4b701f350b4430cc5371ccad607" class="toggle"  />
+    <label for="section-b17bf4b701f350b4430cc5371ccad607" class="flex justify-between">
+      <a href="/docs/paradigm/" class="">Paradigms and languages</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/paradigm/sections/paradigm/" class="">Paradigm</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/paradigm/sections/error/" class="">Compile time vs runtime error</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/paradigm/sections/type/" class="">Typing</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/paradigm/sections/pure/" class="">Pure function</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-eb0a250150a82657aa03f0717afdcd45" class="toggle"  />
+    <label for="section-eb0a250150a82657aa03f0717afdcd45" class="flex justify-between">
+      <a href="/docs/haskell/" class="">Basic syntax of Haskell</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/haskell/sections/tokens/" class="">Tokens</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/haskell/sections/type/" class="">Base types</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/haskell/sections/native/" class="">Native functions</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/haskell/sections/tuple/" class="">Tuple</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/haskell/sections/function/" class="">Function</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/haskell/sections/program/" class="">Program</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/haskell/sections/list/" class="">List</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-2e35b5b0c21ab79cc6b70c0c8a6135fa" class="toggle"  />
+    <label for="section-2e35b5b0c21ab79cc6b70c0c8a6135fa" class="flex justify-between">
+      <a href="/docs/higher/" class="">Higher-order function</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/higher/sections/anonymous/" class="">Anonymous function</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/higher/sections/currying/" class="">Currying</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/higher/sections/useful_hofs/" class="">A few higher-order functions</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-a9f24c38594f15da67150d02f87a60d7" class="toggle"  />
+    <label for="section-a9f24c38594f15da67150d02f87a60d7" class="flex justify-between">
+      <a href="/docs/control/" class="">Control flow</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/control/sections/pattern/" class="">Pattern matching</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/control/sections/condition/" class="">Boolean condition</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/control/sections/comprehension/" class="">List comprehension</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/control/sections/stack/" class="">Call stack</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-97db6297fa77b8e8a3d66808fea4d894" class="toggle"  />
+    <label for="section-97db6297fa77b8e8a3d66808fea4d894" class="flex justify-between">
+      <a href="/docs/generic/" class="">Genericity</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/generic/sections/variable/" class="">Type variable</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/generic/sections/bound/" class="">Bound</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/generic/sections/generic_type/" class="">Generic type</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/generic/sections/maybe/" class="">Option type</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-54a25c0ad53482778ca10b1a7db8e623" class="toggle" checked />
+    <label for="section-54a25c0ad53482778ca10b1a7db8e623" class="flex justify-between">
+      <a href="/docs/recursion/" class="">Recursion</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/recursion/sections/linear/" class="">Linear recursion</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/recursion/sections/intermediate/" class="">Intermediate result</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/recursion/sections/accumulator/" class="active">Accumulator</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/recursion/sections/termination/" class="">Termination</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d92e119f475bae7b2a2364fe0e1fc445" class="toggle"  />
+    <label for="section-d92e119f475bae7b2a2364fe0e1fc445" class="flex justify-between">
+      <a href="/docs/composite/" class="">Composite type</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/composite/sections/enum/" class="">Enumerated type</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/composite/sections/product/" class="">Product type</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/composite/sections/recursive/" class="">Recursive type</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/composite/sections/sum/" class="">Sum type</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-007945605153592d0fc2acb75802d872" class="toggle"  />
+    <label for="section-007945605153592d0fc2acb75802d872" class="flex justify-between">
+      <a href="/docs/pattern/" class="">Functional patterns</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/pattern/sections/fold/" class="">Fold</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/pattern/sections/pipe/" class="">Pipeline</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/pattern/sections/functor/" class="">Functor</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/pattern/sections/monad/" class="">Monad</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d689bb2436bd0f51b31e8f95cf070b59" class="toggle"  />
+    <label for="section-d689bb2436bd0f51b31e8f95cf070b59" class="flex justify-between">
+      <a href="/docs/background/" class="">Background</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/background/sections/set_list/" class="">Set, list, tuple</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/background/sections/function/" class="">Function</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Accumulator</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#tail-recursion">Tail recursion</a></li>
+    <li><a href="#tail-recursion-elimination-tce">Tail recursion elimination (TCE)</a></li>
+    <li><a href="#accumulator">Accumulator</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="accumulator-and-tail-recursion">
+  Accumulator and tail recursion
+  <a class="anchor" href="#accumulator-and-tail-recursion">#</a>
+</h1>
+<h2 id="tail-recursion">
+  Tail recursion
+  <a class="anchor" href="#tail-recursion">#</a>
+</h2>
+<p>Definition.
+A function/method is <strong>tail-recursive</strong> if it is:</p>
+<ul>
+<li><a href="">linear recursive</a>, and</li>
+<li>does not perform any operation after a recursive call.</li>
+</ul>
+<blockquote class="book-hint info">
+<p>.<strong><em>Example.</em></strong>
+The following function is tail-recursive</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#75715e">-- `True` iff the input string ends with an `s`</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">endsWithS</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">String</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">endsWithS</span> <span style="color:#66d9ef">[]</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">endsWithS</span> [<span style="color:#e6db74">&#39;s&#39;</span>] <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">endsWithS</span> (x <span style="color:#66d9ef">:</span> xs) <span style="color:#f92672">=</span> endsWithS xs
+</span></span></code></pre></div></blockquote>
+<blockquote class="book-hint info">
+<p>.<strong><em>Example.</em></strong>
+The function <code>sum</code> seen <a href="">above</a> (and reproduced here is <em>not</em> tail-recursive, becasue the addition (Line 3) is perfomred <em>after</em> termination oif the recursive call.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">sum</span> <span style="color:#f92672">::</span> [<span style="color:#66d9ef">Int</span>] <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Int</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">sum</span> <span style="color:#66d9ef">[]</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">sum</span> (x <span style="color:#66d9ef">:</span> xs) <span style="color:#f92672">=</span> x <span style="color:#f92672">+</span> sum xs
+</span></span></code></pre></div></blockquote>
+<h2 id="tail-recursion-elimination-tce">
+  Tail recursion elimination (TCE)
+  <a class="anchor" href="#tail-recursion-elimination-tce">#</a>
+</h2>
+<p>As we have seen <a href="">above</a>, when the function <code>sum</code> is executed, the call stack accumulates stack frames, one per recursive call.
+Intuitively, if the input list is nonempty, then the function must &ldquo;wait&rdquo; for the recursive call to terminate, before resuming its execution.</p>
+<p>This is not needed for a tail-recursive function (like <code>endsWith</code>), since no operation is performed after the recursive call.</p>
+<p>Accordingly, the Haskell compiler
+can optimize the execution of such functions, using a <em>single</em> stack frame (the execution becomes similar to that of a loop).</p>
+<blockquote class="book-hint warning">
+<p><strong><em>Terminology.</em></strong>
+This optimization technique is called <strong>tail-call elimination (TCE)</strong>.</p>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Support.</em></strong>
+Support for TCE varies across programming languages (or compilers):</p>
+<ul>
+<li>many functional languages have compilers that perform TCE: Erlang, F#, Haskell, OCaml, &hellip;</li>
+<li>For imperative languages, TCE may:
+<ul>
+<li>not be performed: Java, &hellip;</li>
+<li>not be guaranteed: Rust, &hellip;</li>
+<li>require explicit annotations: Kotlin, &hellip;</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h2 id="accumulator">
+  Accumulator
+  <a class="anchor" href="#accumulator">#</a>
+</h2>
+<blockquote class="book-hint info">
+<p><strong><em>Hint.</em></strong>
+A linear recursive function/method can always be rewritten into a tail-recursive one, by passing it extra argument(s).</p>
+</blockquote>
+<blockquote class="book-hint warning">
+<p><strong><em>Terminology.</em></strong>
+These extra arguments are called <strong>accumulators</strong>.</p>
+</blockquote>
+<blockquote class="book-hint danger">
+<p><strong><em>Warning.</em></strong>
+Because accumulators are extra input arguments, we need an <em>auxiliary</em> recursive function with a different signature (similarly to what we did above to <a href="">return</a> additional values).</p>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong></p>
+</blockquote>
+<p>The function <code>sum</code> can be turned into a tail recursive function <code>sumT</code>,
+with an accumulator that carries the sum of the values seen so far, as follows:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">sumT</span> <span style="color:#f92672">::</span> [<span style="color:#66d9ef">Int</span>] <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Int</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">sumT</span> xs <span style="color:#f92672">=</span> sumTrec <span style="color:#ae81ff">0</span> xs
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">{-
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  The accumulator `acc` carries the sum of values encountered so far
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">-}</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">sumTrec</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Int</span> <span style="color:#f92672">-&gt;</span> [<span style="color:#66d9ef">Int</span>] <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Int</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">sumTRec</span> acc <span style="color:#66d9ef">[]</span> <span style="color:#f92672">=</span> acc <span style="color:#75715e">-- when reaching the end of the list, return the accumulator</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">sumTRec</span> acc (x <span style="color:#66d9ef">:</span> xs) <span style="color:#f92672">=</span> sumTRec (acc <span style="color:#f92672">+</span> x) xs <span style="color:#75715e">-- no operation is performed after the recursive call</span>
+</span></span></code></pre></div></article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#tail-recursion">Tail recursion</a></li>
+    <li><a href="#tail-recursion-elimination-tce">Tail recursion elimination (TCE)</a></li>
+    <li><a href="#accumulator">Accumulator</a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
