@@ -39,7 +39,7 @@ In Haskell # Example. The following function does not compile, because the opera
 <link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/generic/sections/bound/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.f18d87ad16ced79ac3846653b97b81604c4c5ddd541fb1647f03c7484f9969ee.js" integrity="sha256-8Y2HrRbO15rDhGZTuXuBYExMXd1UH7FkfwPHSE&#43;Zae4=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.23110669cdadea4fe76e5e0acf75d216efe0ce6737fbd5bdb05acf776bc5fca7.js" integrity="sha256-IxEGac2t6k/nbl4Kz3XSFu/gzmc3&#43;9W9sFrPd2vF/Kc=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -790,7 +790,8 @@ because it can also stand for a non-numeric type (e.g. string, Boolean value, a 
 The following function does <em>not</em> compile, because the operation <code>+</code> is not defined for arbitrary types.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">timesTwo</span> <span style="color:#f92672">::</span> a <span style="color:#f92672">-&gt;</span> a   <span style="color:#75715e">-- arbitrary type `a`</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">timesTwo</span> x <span style="color:#f92672">=</span> x <span style="color:#f92672">+</span> x   <span style="color:#75715e">-- compilation error: `a`s may not be &#34;summable&#34;</span>
-</span></span></code></pre></div></blockquote>
+</span></span></code></pre></div><p>In order to restrict <code>a</code> to numeric types, we can use a so-called &ldquo;type class constraint&rdquo; (defined below).</p>
+</blockquote>
 <h3 id="type-class">
   Type class
   <a class="anchor" href="#type-class">#</a>
@@ -873,7 +874,7 @@ A <strong>type class constraint</strong> has the form</p>
 </blockquote>
 <blockquote class="book-hint warning">
 <p><strong><em>Syntax.</em></strong>
-A type can be preceded with one or several type constraints, as follows</p>
+A type can be preceded with one or several type constraints, followed by a <code>=&gt;</code>:</p>
 <pre tabindex="0"><code>(&lt;constraint 1&gt;, ..., &lt;constraint n&gt;) =&gt; &lt;type&gt;
 </code></pre></blockquote>
 <blockquote class="book-hint info">
