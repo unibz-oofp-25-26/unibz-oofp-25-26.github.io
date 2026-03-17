@@ -38,7 +38,7 @@ Recall that a string in Haskell is an array of characters. For simplicity, we wi
 <link rel="canonical" href="http://localhost:1313/docs/recursion/sections/intermediate/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.cc49c2c8ab1b651c1c20becf4a5f37d806a14612ebbe6a6116b135247ae5a767.js" integrity="sha256-zEnCyKsbZRwcIL7PSl832AahRhLrvmphFrE1JHrlp2c=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.2da5be8bdf3e8bb544f42e005a1fb3e47cd5b4318321e2b26c31d9b6fe86729c.js" integrity="sha256-LaW&#43;i98&#43;i7VE9C4AWh&#43;z5HzVtDGDIeKybDHZtv6Gcpw=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -998,8 +998,8 @@ We want to implement a function</p>
 <p><a href="http://localhost:1313/docs/haskell/sections/list/#string">Recall</a> that a string in Haskell is an array of characters.
 For simplicity, we will assume that words are separated by a blank space (noted <code>' '</code> in Haskell).</p>
 <p>Consider a string <code>s</code> of the form <code>(c : cs)</code>.<br>
-Performing a recursive call on <code>cs</code> does not provide enough information to solve the problem for the whole string.<br></p>
-<p>In addition to the length <code>lw</code> of the longest word in <code>cs</code>, we may also use the length <code>fw</code> of the first word in <code>cs</code>.<br>
+Performing a recursive call on <code>cs</code> does not provide enough information to solve the problem for the whole string.<br>
+In addition to the length <code>lw</code> of the longest word in <code>cs</code>, we may also use the length <code>fw</code> of the first word in <code>cs</code>.<br>
 Then:</p>
 <ul>
 <li>if <code>c</code> is a blank space, then <code>longestWord s</code> is <code>lw</code>,</li>
