@@ -34,7 +34,7 @@ when the execution of the call terminates, the frame is popped from the stack, a
 <link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/control/sections/stack/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.1440073c37a63a452af4acc61be9d7fa492df5a4bad820445a6f433a3e033b3b.js" integrity="sha256-FEAHPDemOkUq9KzGG&#43;nX&#43;kkt9aS62CBEWm9DOj4DOzs=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.ec038e0e021908f0d945201c2c93d2d361501054ca7c61b7c1959778088ea419.js" integrity="sha256-7AOODgIZCPDZRSAcLJPS02FQEFTKfGG3wZWXeAiOpBk=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -829,7 +829,7 @@ Consider the following program:</p>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">function3</span> x <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span> <span style="color:#f92672">*</span> x
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>When the method <code>main</code> is called, it is added (a.k.a. <a href="https://unibz-oofp-25-26.github.io/notreleased/">pushed</a>) on top of the call stack.
+</div><p>When the method <code>main</code> is called, it is added (a.k.a. <a href="https://unibz-oofp-25-26.github.io/notreleased/">pushed</a>) to the (previously empty) call stack.
 This can be represented as:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-perl" data-lang="perl"><span style="display:flex;"><span>main
 </span></span></code></pre></div><p>When execution &ldquo;reaches&rdquo; Line 3, <code>function1</code> is called (with argument <code>5</code>) and added to the stack:</p>
@@ -861,8 +861,8 @@ which can now sum the two values that it received (<code>8</code> and <code>12</
 If a function/method is <a href="https://unibz-oofp-25-26.github.io/notreleased/">recursive</a> (i.e. if it calls itself, <em>directly or indirectly</em>), then it may appear multiple times in the call stack.
 E.g.:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-perl" data-lang="perl"><span style="display:flex;"><span>method1
-</span></span><span style="display:flex;"><span>method2: <span style="color:#ae81ff">16</span>
-</span></span><span style="display:flex;"><span>method1: <span style="color:#ae81ff">8</span>
+</span></span><span style="display:flex;"><span>method2 : <span style="color:#ae81ff">16</span>
+</span></span><span style="display:flex;"><span>method1 : <span style="color:#ae81ff">8</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;</span>rest of the call stack<span style="color:#f92672">&gt;</span>
 </span></span></code></pre></div></blockquote>
 <blockquote class="book-hint warning">
