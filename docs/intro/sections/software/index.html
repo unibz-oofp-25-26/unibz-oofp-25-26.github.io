@@ -15,17 +15,16 @@ No particular software is required for the lectures.
 The exercises can be solved using web applications, for instance:
 
 the Haskell playground and
-the Java playground
+the Java playground.
 
-However, an IDE may be more comfortable.
+However, a proper code editor may be more comfortable.
 
   Assignments
   #
 
 For the assignments, you will need an IDE for Haskell and Java (possibly the same one).
-We provide elementary instructions below.
-
-Further details will be provided during the first lab (dedicated to software-related questions for this course).">
+We provide detailed instructions below.
+Before these, we briefly explain what a package manager is, why it can be useful, and how to install and use one.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="https://unibz-oofp-25-26.github.io/docs/intro/sections/software/">
@@ -33,10 +32,9 @@ Further details will be provided during the first lab (dedicated to software-rel
   <meta property="og:title" content="Software">
   <meta property="og:description" content="Recommended software # Lectures # No particular software is required for the lectures.
 The exercises can be solved using web applications, for instance:
-the Haskell playground and the Java playground However, an IDE may be more comfortable.
-Assignments # For the assignments, you will need an IDE for Haskell and Java (possibly the same one).
-We provide elementary instructions below.
-Further details will be provided during the first lab (dedicated to software-related questions for this course).">
+the Haskell playground and the Java playground. However, a proper code editor may be more comfortable.
+Assignments # For the assignments, you will need an IDE for Haskell and Java (possibly the same one). We provide detailed instructions below.
+Before these, we briefly explain what a package manager is, why it can be useful, and how to install and use one.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
@@ -46,7 +44,7 @@ Further details will be provided during the first lab (dedicated to software-rel
 <link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/intro/sections/software/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.dd507e46c7308d468a0cf92e2ea019b0b99bb1924bfa74bac3d35f75afb87268.js" integrity="sha256-3VB&#43;RscwjUaKDPkuLqAZsLmbsZJL&#43;nS6w9Nfda&#43;4cmg=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.9de9834e072c74b28c76f6c3f1be6600a6054c273350aace6707ff782bc9684a.js" integrity="sha256-nemDTgcsdLKMdvbD8b5mAKYFTCczUKrOZwf/eCvJaEo=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -761,10 +759,20 @@ https://github.com/alex-shpak/hugo-book
 <nav id="TableOfContents">
   <ul>
     <li><a href="#lectures">Lectures</a></li>
-    <li><a href="#assignments">Assignments</a>
+    <li><a href="#assignments">Assignments</a></li>
+    <li><a href="#package_manager">Automated dependency management</a>
       <ul>
-        <li><a href="#haskell">Haskell</a></li>
+        <li><a href="#os-package-manager">OS package manager</a></li>
+        <li><a href="#language-specific-package-manager">Language-specific package manager</a></li>
+        <li><a href="#other-software-repositories">Other software repositories</a></li>
+        <li><a href="#install_pm">Installing an (OS) package manager</a></li>
+        <li><a href="#installing-a-program-with-a-package-manager">Installing a program with a package manager</a></li>
+      </ul>
+    </li>
+    <li><a href="#install">Installing software for this course</a>
+      <ul>
         <li><a href="#java">Java</a></li>
+        <li><a href="#haskell">Haskell</a></li>
       </ul>
     </li>
   </ul>
@@ -791,17 +799,391 @@ https://github.com/alex-shpak/hugo-book
 <p>The exercises can be solved using web applications, for instance:</p>
 <ul>
 <li>the <a href="https://play.haskell.org/">Haskell playground</a> and</li>
-<li>the <a href="https://dev.java/playground/">Java playground</a></li>
+<li>the <a href="https://dev.java/playground/">Java playground</a>.</li>
 </ul>
-<p>However, an IDE may be more comfortable.</p>
+<p>However, a proper code editor may be more comfortable.</p>
 <h2 id="assignments">
   Assignments
   <a class="anchor" href="#assignments">#</a>
 </h2>
-<p>For the assignments, you will need an IDE for Haskell and Java (possibly the same one).</p>
-<p>We provide <em>elementary</em> instructions below.</p>
+<p>For the assignments, you will need an IDE for Haskell and Java (possibly the same one).
+We provide detailed instructions <a href="#install">below</a>.</p>
+<p>Before these, we briefly explain what a package manager is, why it can be useful, and how to install and use one.</p>
 <blockquote class="book-hint info">
-<p>Further details will be provided during the first lab (dedicated to software-related questions for this course).</p>
+<p>Further explanations will be provided during the first lab (dedicated to software-related questions for this course).</p>
+</blockquote>
+<h2 id="package_manager">
+  Automated dependency management
+  <a class="anchor" href="#package_manager">#</a>
+</h2>
+<blockquote class="book-hint warning">
+<p><strong><em>Definitions.</em></strong>
+A <strong>package</strong> is a program together with metadata.
+These metadata include the program&rsquo;s name, version, release date, authors, licence and the names of its <em>dependencies</em> (together with their <em>versions</em>).</p>
+<p>A <strong>software repository</strong> is a collection of packages that comply to the same format of metadata.
+A software repository (precisely, multiple copies of it) is generally hosted on the cloud.</p>
+<p>A <strong>package manager</strong> is a program that runs on a user&rsquo;s machine.
+It automates the installation, update and removal of packages from a software repository (or possibly several).</p>
+</blockquote>
+<h3 id="os-package-manager">
+  OS package manager
+  <a class="anchor" href="#os-package-manager">#</a>
+</h3>
+<blockquote class="book-hint warning">
+<p>Some package managers only depend on a specific OS.
+Notably, this is the preferred way to install software on Linux.</p>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Examples.</em></strong>
+Widely used OS package managers include:</p>
+<ul>
+<li>apt for Debian and derivatives,</li>
+<li>dnf for Fedora and derivatives,</li>
+<li>pacman for Arch and derivatives,</li>
+<li>Homebrew for macOS,</li>
+<li>Chocolatey and Scoop for Windows.</li>
+</ul>
+</blockquote>
+<h3 id="language-specific-package-manager">
+  Language-specific package manager
+  <a class="anchor" href="#language-specific-package-manager">#</a>
+</h3>
+<blockquote class="book-hint warning">
+<p>Many <em>programming languages</em> have dedicated package managers.</p>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Examples.</em></strong></p>
+<ul>
+<li>Maven for Java,</li>
+<li>npm for Node.js (Javascript)</li>
+<li>pip for Python,</li>
+<li>NuGet for .NET (C#, F#, and Visual Basic)</li>
+<li>RubyGems for Ruby,</li>
+<li>CPAN for Perl</li>
+<li>CRAN for R,</li>
+<li>etc.</li>
+</ul>
+</blockquote>
+<h3 id="other-software-repositories">
+  Other software repositories
+  <a class="anchor" href="#other-software-repositories">#</a>
+</h3>
+<blockquote class="book-hint warning">
+<p>Some <em>applications</em> also have dedicated software repositories for plugins (and plugin managers to handle these plugins).
+For instance.</p>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Examples</em></strong></p>
+<ul>
+<li>The VSCode market place,</li>
+<li>CTAN for LateX,</li>
+<li>MELPA for Emacs,</li>
+<li>etc.</li>
+</ul>
+</blockquote>
+<p>Other applications (such as zsh, vim or neovim) only have plugin managers, without a centralized software repository.
+These managers install plugins directly from hosts (e.g. GitHub repositories).</p>
+<blockquote class="book-hint warning">
+<p><strong><em>Benefits.</em></strong>
+Installing, updating and removing software via a package manager is often recommended.<br>
+In particular:</p>
+<ul>
+<li>the <em>dependencies</em> of a package are also installed (or it some cases updated or removed) <em>transitively</em>,</li>
+<li>the installation process often uses a <em>default</em> configuration and directory layout (environment variables, etc.) that facilitates interaction with other programs,</li>
+<li>the package manager can <em>update</em> all the programs that it manages, in a centralized way, thus avoiding problems related version compatibility (and more generally, <a href="https://en.wikipedia.org/wiki/Dependency_hell">dependency hell</a>),</li>
+<li>a package manager prevents <em>uninstalling</em> a program if another depends on it.</li>
+</ul>
+<p>Besides, the installation (or update or removal) procedure is often <em>simpler</em>, thus leaving less room for manual errors.</p>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong>
+Here is the full manual procedure to install Maven with the apt package manager (on Debian and derivatives):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>apt install maven
+</span></span></code></pre></div><p>and similarly with Homebrew (on macOS):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>brew install maven
+</span></span></code></pre></div><p>or with Chocolatey (on Windows):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>choco install maven
+</span></span></code></pre></div><p>In comparison, the procedure to install Maven manually on Windows is <a href="https://phoenixnap.com/kb/install-maven-windows">more involved</a>, thus more likely to introduce errors (trough inadvertence, or by following outdated instructions).</p>
+</blockquote>
+<blockquote class="book-hint danger">
+<p><strong><em>Warning (on Windows).</em></strong>
+The default and/or most frequent software installation instructions found on the web for Windows are typically manual.
+For programming-related software (especially open-source) we recommend looking first for a corresponding package on Chocolatey.</p>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong>
+As a (rather extreme) example, compare installing MinGW (to get the GCC compiler) with:</p>
+<ul>
+<li>this <a href="https://www.freecodecamp.org/news/how-to-install-c-and-cpp-compiler-on-windows/">long procedure</a>, or</li>
+<li>a simple command (with Chocolatey):</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>choco install mingw
+</span></span></code></pre></div></blockquote>
+<blockquote class="book-hint danger">
+<p><strong><em>Warning (on Windows).</em></strong>
+Package management is less mature and standardized on Windows than on Linux and macOS.</p>
+<p>So in some cases, a manual installation is still preferred.</p>
+</blockquote>
+<h3 id="install_pm">
+  Installing an (OS) package manager
+  <a class="anchor" href="#install_pm">#</a>
+</h3>
+<h4 id="on-linux">
+  On Linux
+  <a class="anchor" href="#on-linux">#</a>
+</h4>
+<p>A package manager (<code>apt</code>, <code>dnf</code>, <code>pacman</code>, etc.) should already be installed on your system.</p>
+<h4 id="brew">
+  On macOS
+  <a class="anchor" href="#brew">#</a>
+</h4>
+<blockquote class="book-hint warning">
+<p><a href="https://brew.sh/">Homebrew</a> is the most commonly used package manager for macOS.<br></p>
+</blockquote>
+<blockquote class="book-hint warning">
+<p><strong><em>Installation.</em></strong>
+To install Homebrew:</p>
+<ul>
+<li>
+<p>Copy the command provided at <a href="https://brew.sh/">this address</a>.</p>
+</li>
+<li>
+<p>Open a terminal, paste the command there and execute it (by pressing <code>Enter</code>).</p>
+</li>
+<li>
+<p>Read and follow the instructions (displayed in the terminal) carefully!!</p>
+</li>
+</ul>
+</blockquote>
+<h4 id="choco">
+  On Windows
+  <a class="anchor" href="#choco">#</a>
+</h4>
+<blockquote class="book-hint warning">
+<p><a href="https://chocolatey.org/">Chocolatey</a> is a popular package manager for Windows.</p>
+</blockquote>
+<blockquote class="book-hint warning">
+<p><strong><em>Installation.</em></strong>
+To install Chocolatey:</p>
+<ul>
+<li>
+<p>Open the Windows PowerShell <em>as administrator</em>:</p>
+<p><img src="/img/intro/powershell_admin.png" alt="" /></p>
+</li>
+<li>
+<p>Follow the installation instructions on <a href="https://chocolatey.org/install#individual">this page</a>.</p>
+</li>
+</ul>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Hint.</em></strong>
+In these instructions, &ldquo;run&rdquo; a command means:</p>
+<ul>
+<li>copy it,</li>
+<li>paste it to the PowerShell,</li>
+<li>press <code>Enter</code>.</li>
+</ul>
+</blockquote>
+<h3 id="installing-a-program-with-a-package-manager">
+  Installing a program with a package manager
+  <a class="anchor" href="#installing-a-program-with-a-package-manager">#</a>
+</h3>
+<h4 id="on-linux-1">
+  On Linux
+  <a class="anchor" href="#on-linux-1">#</a>
+</h4>
+<p>If you are on Linux, you most probably use a package manager already.</p>
+<h4 id="on-macos-with-homebrew">
+  On macOS (with <a href="">Homebrew</a>)
+  <a class="anchor" href="#on-macos-with-homebrew">#</a>
+</h4>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong>
+To install a program with Homebrew:</p>
+<ul>
+<li>
+<p>Use <a href="https://brew.sh/">this page</a> to search for the program that you want to install (for instance, <code>git</code>).</p>
+</li>
+<li>
+<p>Copy the corresponding command (in this example, <code>brew install git</code>):</p>
+<p><img src="/img/intro/brew_git.png" alt="" /></p>
+</li>
+<li>
+<p>Open a terminal, paste the command there and execute it (by pressing <code>Enter</code>).</p>
+</li>
+<li>
+<p>Follow the instructions displayed in the terminal (if any).</p>
+</li>
+</ul>
+</blockquote>
+<h4 id="on-window-with-chocolatey">
+  On Window (with Chocolatey)
+  <a class="anchor" href="#on-window-with-chocolatey">#</a>
+</h4>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong>
+To install a program with Chocolatey:</p>
+<ul>
+<li>
+<p>Use <a href="https://community.chocolatey.org/packages">this page</a> to search for the program that you want to install (for instance, <code>git</code>)</p>
+</li>
+<li>
+<p>Copy the corresponding command (in this example, <code>choco install git</code>):</p>
+<p><img src="/img/intro/choco_git.png" alt="" /></p>
+</li>
+<li>
+<p>Open the Windows PowerShell as administrator:</p>
+<p><img src="/img/intro/powershell_admin.png" alt="" /></p>
+</li>
+<li>
+<p>Paste the command there and execute it (by pressing <code>Enter</code>).</p>
+</li>
+<li>
+<p>Follow the instructions (if any, for instance accept to tun the installation scripts).</p>
+</li>
+<li>
+<p>By default, most packages are installed in <code>C:\ProgramData\Chocolatey\lib</code>,
+and an executable link is created in <code>C:\ProgramData\Chocolatey\bin</code>.</p>
+</li>
+</ul>
+</blockquote>
+<h2 id="install">
+  Installing software for this course
+  <a class="anchor" href="#install">#</a>
+</h2>
+<blockquote class="book-hint warning">
+<p><strong><em>Reminder.</em></strong>
+No software is required to follow the lectures.<br>
+The exercises can be solved using web applications, for instance:</p>
+<ul>
+<li>the <a href="https://play.haskell.org/">Haskell playground</a> and</li>
+<li>the <a href="https://dev.java/playground/">Java playground</a>.</li>
+</ul>
+<p>However, a proper code editor may be more comfortable.</p>
+<p>You will also need a code editor if you decide to do the <a href="https://unibz-oofp-25-26.github.io/docs/intro/sections/evaluation/#assignments">assignments</a>.</p>
+</blockquote>
+<h3 id="java">
+  Java
+  <a class="anchor" href="#java">#</a>
+</h3>
+<h4 id="java-development-kit-jdk">
+  Java Development Kit (JDK)
+  <a class="anchor" href="#java-development-kit-jdk">#</a>
+</h4>
+<p>For the assignments, you will need a JDK (for instance OpenJDK) for Java 17 or later.</p>
+<p>If you followed the course &ldquo;Computer Programming&rdquo; last semester, then you should have one already.
+Otherwise, to install a JDK:</p>
+<ul>
+<li>A <a href="#package_manager">package manager</a> is often recommended. OS-specific commands are provided below.</li>
+<li>Alternatively, some editors (like VSCode on Windows and macOS) can come <a href="https://code.visualstudio.com/docs/languages/java">bundled</a> with a JDK, whereas others (like IntelliJ IDEA) can help you download one.</li>
+</ul>
+<blockquote class="book-hint warning">
+<p><strong><em>Installing a JDK with a package manager.</em></strong></p>
+<blockquote class="book-hint warning">
+  <p><strong><em>on Windows (with <a href="#choco">Chocolatey</a>).</em></strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>choco install openjdk
+</span></span></code></pre></div>
+</blockquote>
+<blockquote class="book-hint warning">
+  <p><strong><em>on macOS (with <a href="#brew">Homebrew</a>).</em></strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>brew install openjdk
+</span></span></code></pre></div>
+</blockquote>
+<blockquote class="book-hint warning">
+  <p><strong><em>on Linux (as sudoer).</em></strong></p>
+<blockquote class="book-hint warning">
+  <p><strong><em>Debian and derivatives.</em></strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>apt install openjdk-17-jdk
+</span></span></code></pre></div><p>Depending on your distribution (Debian, Ubuntu, Mint, Zorin OS, etc.), a more recent version that 17 may be available.</p>
+</blockquote>
+<blockquote class="book-hint warning">
+  <p><strong><em>Arch and derivatives.</em></strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pacman -S jdk-openjdk
+</span></span></code></pre></div>
+</blockquote>
+<blockquote class="book-hint warning">
+  <p><strong><em>Fedora and derivatives.</em></strong>
+List available versions with:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>dnf search openjdk
+</span></span></code></pre></div><p>Then</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>dnf install &lt;openjdk-package-name&gt;
+</span></span></code></pre></div><p>For instance</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>dnf install java-21-openjdk.x86_64
+</span></span></code></pre></div>
+</blockquote>
+</blockquote>
+</blockquote>
+<h4 id="maven">
+  Maven
+  <a class="anchor" href="#maven">#</a>
+</h4>
+<p>You will need Maven to run the assignment&rsquo;s tests on your machine.</p>
+<p>The preferred way to install Maven is via a <a href="#package_manager">package manager</a>.
+Details are provided below.</p>
+<p>Alternatively, you can download and install it <a href="https://phoenixnap.com/kb/install-maven-windows">manually</a> (this may require setting up and/or updating environment variables).</p>
+<blockquote class="book-hint warning">
+<p><strong><em>Installing Maven with a package manager.</em></strong></p>
+<blockquote class="book-hint warning">
+  <p><strong><em>on Window (with <a href="#choco">Chocolatey</a>)</em></strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>choco install maven
+</span></span></code></pre></div>
+</blockquote>
+<blockquote class="book-hint warning">
+  <p><strong><em>on macOS (with <a href="#brew">Homebrew</a>).</em></strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>brew install maven
+</span></span></code></pre></div>
+</blockquote>
+<blockquote class="book-hint warning">
+  <p><strong><em>on Linux (as sudoer).</em></strong></p>
+<blockquote class="book-hint warning">
+  <p><strong><em>Debian and derivatives.</em></strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>apt install maven
+</span></span></code></pre></div>
+</blockquote>
+<blockquote class="book-hint warning">
+  <p><strong><em>Arch and derivatives.</em></strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pacman -S maven
+</span></span></code></pre></div>
+</blockquote>
+<blockquote class="book-hint warning">
+  <p><strong><em>Fedora and derivatives.</em></strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>dnf install maven
+</span></span></code></pre></div>
+</blockquote>
+</blockquote>
+</blockquote>
+<h4 id="editor">
+  Editor
+  <a class="anchor" href="#editor">#</a>
+</h4>
+<p>Popular editors/IDEs for Java include:</p>
+<ul>
+<li><a href="https://www.jetbrains.com/idea/">IntelliJ IDEA</a>,</li>
+<li><a href="https://code.visualstudio.com/">VSCode</a> (or its open source version <a href="https://github.com/microsoft/vscode">Code OSS</a>),</li>
+<li><a href="https://eclipseide.org/">Eclipse</a></li>
+<li><a href="https://netbeans.apache.org/front/main/index.html">NetBeans</a></li>
+</ul>
+<p>VSCode (or sometimes its open source version Code OSS) can be installed via a package manager.</p>
+<p>For the other three, we recommend following the publisher&rsquo;s instructions.</p>
+<blockquote class="book-hint warning">
+<p><strong><em>Setting up VSCode for Java.</em></strong></p>
+<ul>
+<li>
+<p>Click on the marketplace icon:</p>
+<p><img src="/img/intro/vscode_marketplace.png" alt="" /></p>
+</li>
+<li>
+<p>Search for the <a href="https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack">Extension Pack for Java</a>.</p>
+</li>
+<li>
+<p>Click on <code>Install</code>.</p>
+</li>
+</ul>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Note.</em></strong>
+If you installed the open source version of VSCode, then you may not have access by default to the Microsoft VSCode marketplace.
+You can change this by editing a config file, as explained <a href="https://stackoverflow.com/questions/64463768/cant-find-certain-extensions-in-code-ossopen-source-variant-of-visual-studio-c">here</a>.</p>
 </blockquote>
 <h3 id="haskell">
   Haskell
@@ -811,62 +1193,196 @@ https://github.com/alex-shpak/hugo-book
   Compiler and language server
   <a class="anchor" href="#compiler-and-language-server">#</a>
 </h4>
-<p>You will need:</p>
+<p>For the assignments, you will need:</p>
 <ul>
 <li>the Glasgow Haskell Compiler (GHC) and</li>
 <li>The Haskell Language Server (HLS).</li>
 </ul>
-<p>These can be installed either:</p>
+<p>There are two <em>alternative</em> ways to install them:</p>
 <ul>
-<li>via a package manager (<a href="https://chocolatey.org/">Chocolatey</a> on Windows, <a href="https://brew.sh/">Homebrew</a> on macOS, or your distribution&rsquo;s package manager on Linux), or</li>
-<li>with the <a href="https://www.haskell.org/ghcup/">GHCup installer</a>.</li>
+<li>with the <a href="https://www.haskell.org/ghcup/">GHCup installer</a>, or</li>
+<li>via a <a href="#package_manager">package manager</a>.</li>
 </ul>
 <blockquote class="book-hint danger">
 <p><strong><em>Warning.</em></strong>
-If you are using an Arch-based distribution, the GHCup installer is <a href="https://dixonary.co.uk/blog/haskell/cabal-2020">recommended</a>.</p>
+<em>One</em> of these two options is enough.
+If one does not work on your system, then try the other.</p>
 </blockquote>
-<h4 id="editor">
+<p>Both options have benefits and drawbacks:</p>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th>Benefits</th>
+          <th>Drawbacks</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Installation via GHCup</td>
+          <td>Integration with VSCode should be seamless.</td>
+          <td>These programs will not be managed by your package manager.<br> On Windows, installing the installer requires an additional compatibility layer (MSYS2).</td>
+      </tr>
+      <tr>
+          <td>Installation via a package manager</td>
+          <td>These programs will be managed by your package manager.</td>
+          <td>You need to point VSCode to the location of the Haskell Language Server (as explained <a href="#path_to_hls">below</a>).</td>
+      </tr>
+  </tbody>
+</table>
+<blockquote class="book-hint danger">
+<p><strong><em>Warning.</em></strong>
+If you are using an Arch-based distribution, then the GHCup installer is <a href="https://dixonary.co.uk/blog/haskell/cabal-2020">recommended</a>.</p>
+</blockquote>
+<blockquote class="book-hint danger">
+<p><strong><em>Warning.</em></strong>
+For some Debian-based distribution, the Haskell Language Server is not available as a package.</p>
+</blockquote>
+<blockquote class="book-hint warning">
+<p><strong><em>First option: install GHC and HLS via GHCup.</em></strong></p>
+<ul>
+<li>
+<p>Copy the command provided at <a href="https://www.haskell.org/ghcup/">this address</a>.</p>
+</li>
+<li>
+<p>Open a terminal as a <em>non-admin</em> user (on Windows, simply click on Powershell).</p>
+</li>
+<li>
+<p>Paste the command there and execute it (by pressing <code>Enter</code>).</p>
+</li>
+<li>
+<p>Follow the instructions displayed in the terminal.
+You will prompted to make a few decisions.
+When asked whether the Haskell Language Server (HLS) should be installed, answer yes.
+For the other questions, the default option should be fine.</p>
+</li>
+<li>
+<p>Close the terminal and reopen one.</p>
+</li>
+<li>
+<p>Paste <code>ghcup tui</code> and press <code>Enter</code>.
+This will open terminal user interface for the installer.
+Check that HLS and GHC are installed.
+If not, then install them (keybindings are provided at the bottom of the screen).</p>
+</li>
+</ul>
+</blockquote>
+<blockquote class="book-hint warning">
+<p><strong><em>Second option: install GHC and HLS via a package manager.</em></strong></p>
+<blockquote class="book-hint warning">
+  <p><strong><em>on Window (with <a href="#choco">Chocolatey</a>).</em></strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>choco install ghc
+</span></span></code></pre></div><p>$\qquad$</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>choco install haskell-language-server
+</span></span></code></pre></div>
+</blockquote>
+<blockquote class="book-hint warning">
+  <p><strong><em>on macOS (with <a href="#brew">Homebrew</a>).</em></strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>brew install ghc
+</span></span></code></pre></div><p>$\qquad$</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>brew install haskell-language-server
+</span></span></code></pre></div>
+</blockquote>
+<blockquote class="book-hint warning">
+  <p><strong><em>on Linux (as sudoer).</em></strong></p>
+<blockquote class="book-hint warning">
+  <p><strong><em>Debian and derivatives.</em></strong>
+The Haskell Language Server (HLS) may or may not be available as a package, depending on your distribution.
+If not, then use GHCup instead to install both HLS and GHC.</p>
+</blockquote>
+<blockquote class="book-hint warning">
+  <p><strong><em>Fedora and derivatives.</em></strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>dnf install ghc
+</span></span></code></pre></div><p>$\qquad$</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>dnf install haskell-language-server
+</span></span></code></pre></div>
+</blockquote>
+</blockquote>
+</blockquote>
+<h4 id="path_to_hls">
   Editor
-  <a class="anchor" href="#editor">#</a>
+  <a class="anchor" href="#path_to_hls">#</a>
 </h4>
 <p><a href="https://code.visualstudio.com/">VSCode</a> (or its open source version <a href="https://github.com/microsoft/vscode">Code OSS</a>) is a popular choice to develop in Haskell.</p>
-<p>The <a href="https://marketplace.visualstudio.com/items?itemName=haskell.haskell">Haskell extension</a>
-will let you benefit from the functionalities of HLS (autocompletion, go to definition, etc.) as well as automatic <a href="https://unibz-oofp-25-26.github.io/docs/paradigm/sections/type/#inference">type inference</a>.
-It can be installed from within VSCode (via the marketplace).</p>
-<p>You can also install the <a href="https://marketplace.visualstudio.com/items?itemName=midhunan.haskellrun">Haskell Run</a> extension to run functions individually with a click.</p>
-<h3 id="java">
-  Java
-  <a class="anchor" href="#java">#</a>
-</h3>
-<h4 id="java-development-kit-jdk">
-  Java Development Kit (JDK)
-  <a class="anchor" href="#java-development-kit-jdk">#</a>
-</h4>
-<p>You will need a JDK (for instance OpenJDK) for Java 21 or later.
-There are many ways to install one:</p>
+<p>For Haskell, you will need to:</p>
 <ul>
-<li>Using a package manager (<a href="https://chocolatey.org/">Chocolatey</a> on Windows, <a href="https://brew.sh/">Homebrew</a> on macOS or your distribution&rsquo;s package manager on Linux)
-is often recommended.</li>
-<li>Alternatively, some editors (like VSCode on Windows and macOS) can come <a href="https://code.visualstudio.com/docs/languages/java">bundled</a> with a JDK, whereas others (like IntelliJ IDEA) can help you download one.</li>
+<li>Install the <a href="https://marketplace.visualstudio.com/items?itemName=haskell.haskell">Haskell</a> extension,</li>
+<li>(optionally) install the <a href="https://marketplace.visualstudio.com/items?itemName=midhunan.haskellrun">Haskell run</a> extension,</li>
+<li>if you installed HLS via a package manage, then point VSCode to its location.</li>
 </ul>
-<h4 id="maven">
-  Maven
-  <a class="anchor" href="#maven">#</a>
-</h4>
-<p>You will need Maven to run the assignment&rsquo;s tests on your machine.</p>
-<p>The preferred way to install Maven is via a package manager (<a href="https://chocolatey.org/">Chocolatey</a> on Windows, <a href="https://brew.sh/">Homebrew</a> on macOS or your distribution&rsquo;s package manager on Linux).</p>
-<p>Alternatively, you can download and install it <a href="https://maven.apache.org/install.html">manually</a> (this may require setting up and/or updating environment variables).</p>
-<h4 id="editor-1">
-  Editor
-  <a class="anchor" href="#editor-1">#</a>
-</h4>
-<p>Popular editors/IDEs for Java include:</p>
+<p>Detailed instructions are provided below.</p>
+<blockquote class="book-hint warning">
+<p><strong><em>Installing the VSCode extension(s) for Haskell.</em></strong></p>
 <ul>
-<li><a href="https://www.jetbrains.com/idea/">IntelliJ IDEA</a>,</li>
-<li><a href="https://code.visualstudio.com/">VSCode</a> (or its open source version <a href="https://github.com/microsoft/vscode">Code OSS</a>),</li>
-<li><a href="https://eclipseide.org/">Eclipse</a></li>
-<li><a href="https://netbeans.apache.org/front/main/index.html">NetBeans</a></li>
+<li>
+<p>Click on the marketplace icon:</p>
+<p><img src="/img/intro/vscode_marketplace.png" alt="" /></p>
+</li>
+<li>
+<p>Search for the <a href="https://marketplace.visualstudio.com/items?itemName=haskell.haskell">Haskell</a> extension.</p>
+</li>
+<li>
+<p>Click on <code>Install</code>.</p>
+</li>
 </ul>
+<p>Optionally, if you want to run your Haskell code with a click:</p>
+<ul>
+<li>
+<p>Click on the marketplace icon:</p>
+<p><img src="/img/intro/vscode_marketplace.png" alt="" /></p>
+</li>
+<li>
+<p>Search for the <a href="https://marketplace.visualstudio.com/items?itemName=midhunan.haskellrun">Haskell Run</a> extension.</p>
+</li>
+<li>
+<p>Click on <code>Install</code>.</p>
+</li>
+</ul>
+<blockquote class="book-hint info">
+  <p><strong><em>Note.</em></strong>
+If you installed the open source version of VSCode, then you may not have access by default to the Microsoft marketplace.
+You can fix this by editing a config file, as explained <a href="https://stackoverflow.com/questions/64463768/cant-find-certain-extensions-in-code-ossopen-source-variant-of-visual-studio-c">here</a>.</p>
+</blockquote>
+</blockquote>
+<blockquote class="book-hint warning">
+<p><strong><em>Pointing VSCode to HLS.</em></strong></p>
+<p>If you installed the Haskell Language Server (HLS) via GHCup, then VSCode should find it automatically.</p>
+<p>If you installed it instead via a package manager, then you need to indicate where it is, as follows:</p>
+<ul>
+<li>
+<p>Press <code>Ctrl+Shift+P</code>, and select (or search for) for <code>Preferences: Open user settings</code>.</p>
+</li>
+<li>
+<p>Click on <code>edit as JSON</code>.</p>
+</li>
+<li>
+<p>Replace the line</p>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#e6db74">&#34;haskell.manageHLS&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;GHCup&#34;</span>,
+</span></span></code></pre></div><p>with</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#e6db74">&#34;haskell.serverExecutablePath&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;&lt;path to HLS&gt;&#34;</span>,
+</span></span></code></pre></div><p>where <code>&lt;path to HLS&gt;</code> is the (absolute) path to the folder that contains HLS on your machine.</p>
+<blockquote class="book-hint warning">
+  <p><strong><em>on Linux and macOS.</em></strong>
+To retrieve the path to HLS, execute (in a terminal):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>which haskell-language-server
+</span></span></code></pre></div>
+</blockquote>
+<blockquote class="book-hint warning">
+  <p><strong><em>on Windows.</em></strong>
+If you used Chocolatey to install HLS, then the path should be <code>C:\ProgramData\Chocolatey\bin</code></p>
+<blockquote class="book-hint danger">
+  <p><strong><em>Warning.</em></strong>
+In a string, the character <code>\</code> needs to be escaped.<br>
+For instance, if the path is</p>
+<pre tabindex="0"><code>C:\ProgramData\Chocolatey\bin
+</code></pre><p>then write</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#e6db74">&#34;haskell.serverExecutablePath&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;C:\\ProgramData\\Chocolatey\\bin&#34;</span>,
+</span></span></code></pre></div>
+</blockquote>
+</blockquote>
+</blockquote>
 </article>
  
       
@@ -909,10 +1425,20 @@ is often recommended.</li>
 <nav id="TableOfContents">
   <ul>
     <li><a href="#lectures">Lectures</a></li>
-    <li><a href="#assignments">Assignments</a>
+    <li><a href="#assignments">Assignments</a></li>
+    <li><a href="#package_manager">Automated dependency management</a>
       <ul>
-        <li><a href="#haskell">Haskell</a></li>
+        <li><a href="#os-package-manager">OS package manager</a></li>
+        <li><a href="#language-specific-package-manager">Language-specific package manager</a></li>
+        <li><a href="#other-software-repositories">Other software repositories</a></li>
+        <li><a href="#install_pm">Installing an (OS) package manager</a></li>
+        <li><a href="#installing-a-program-with-a-package-manager">Installing a program with a package manager</a></li>
+      </ul>
+    </li>
+    <li><a href="#install">Installing software for this course</a>
+      <ul>
         <li><a href="#java">Java</a></li>
+        <li><a href="#haskell">Haskell</a></li>
       </ul>
     </li>
   </ul>
