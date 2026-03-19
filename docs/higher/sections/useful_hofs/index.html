@@ -70,7 +70,7 @@ In Haskell # filter # The function filter retains elements of a list that satisf
 <link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/higher/sections/useful_hofs/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.ec038e0e021908f0d945201c2c93d2d361501054ca7c61b7c1959778088ea419.js" integrity="sha256-7AOODgIZCPDZRSAcLJPS02FQEFTKfGG3wZWXeAiOpBk=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.6e78cd0601147a59b65fe52ab6f454a1e30d3fc838af9009e61a39836f60fe3b.js" integrity="sha256-bnjNBgEUelm2X&#43;UqtvRUoeMNP8g4r5AJ5ho5g29g/js=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -889,18 +889,11 @@ For instance,</p>
 </span></span></code></pre></div><p>should evaluate to</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span>[<span style="color:#ae81ff">2</span>,<span style="color:#f92672">-</span><span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">2</span>]
 </span></span></code></pre></div></div>
-<!-- 
 <input type="radio" class="toggle" name="tabs-exercise_filter" id="tabs-exercise_filter-1"  />
 <label for="tabs-exercise_filter-1">Possible solution</label>
-<div class="book-tabs-content markdown-inner"><p>&ndash;&gt;</p>
-<!---->
-<!-- ```haskell -->
-<!-- retainIfEqual :: (Int -> Int) -> Int -> [Int] -> [Int] -->
-<!-- retainIfEqual f y = filter (\x -> f x == y) -->
-<!-- ``` -->
-<!---->
-<!-- </div>
- -->
+<div class="book-tabs-content markdown-inner"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">retainIfEqual</span> <span style="color:#f92672">::</span> (<span style="color:#66d9ef">Int</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Int</span>) <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Int</span> <span style="color:#f92672">-&gt;</span> [<span style="color:#66d9ef">Int</span>] <span style="color:#f92672">-&gt;</span> [<span style="color:#66d9ef">Int</span>]
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">retainIfEqual</span> f y <span style="color:#f92672">=</span> filter (<span style="color:#a6e22e">\</span>x <span style="color:#f92672">-&gt;</span> f x <span style="color:#f92672">==</span> y)
+</span></span></code></pre></div></div>
 </div>
 <h3 id="map">
   <code>map</code>
@@ -931,19 +924,11 @@ For instance,</p>
 </span></span></code></pre></div><p>should evaluate to</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span>[[<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">6</span>],[<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">4</span>],[<span style="color:#ae81ff">8</span>],<span style="color:#66d9ef">[]</span>]
 </span></span></code></pre></div></div>
-<!-- 
 <input type="radio" class="toggle" name="tabs-exercise_map_filter" id="tabs-exercise_map_filter-1"  />
 <label for="tabs-exercise_map_filter-1">Possible solution</label>
-<div class="book-tabs-content markdown-inner"><p>&ndash;&gt;</p>
-<!---->
-<!-- ```haskell -->
-<!-- trimOdds :: [[Int]] -> [[Int]] -->
-<!-- trimOdds = map (filter even) -->
-<!---->
-<!-- ``` -->
-<!---->
-<!-- </div>
- -->
+<div class="book-tabs-content markdown-inner"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">trimOdds</span> <span style="color:#f92672">::</span> [[<span style="color:#66d9ef">Int</span>]] <span style="color:#f92672">-&gt;</span> [[<span style="color:#66d9ef">Int</span>]]
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">trimOdds</span> <span style="color:#f92672">=</span> map (filter even)
+</span></span></code></pre></div></div>
 </div>
 <!-- <div class="book-tabs">
  -->
@@ -1034,18 +1019,11 @@ We will see how these two functions can be implemented in the section on <a href
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">appearsIn</span> <span style="color:#f92672">::</span> (<span style="color:#66d9ef">Eq</span> a) <span style="color:#f92672">=&gt;</span> a <span style="color:#f92672">-&gt;</span> [a] <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span>
 </span></span></code></pre></div><p>such that <code>appearsIn x xs</code> is <code>True</code> iff <code>x</code> appears in <code>xs</code>.</p>
 </div>
-<!-- 
 <input type="radio" class="toggle" name="tabs-exercise_any" id="tabs-exercise_any-1"  />
 <label for="tabs-exercise_any-1">Possible solution</label>
-<div class="book-tabs-content markdown-inner"><p>&ndash;&gt;</p>
-<!---->
-<!-- ```haskell -->
-<!-- appearsIn :: Eq a => a -> [a] -> Bool -->
-<!-- appearsIn x = any (x ==) -->
-<!-- ``` -->
-<!---->
-<!-- </div>
- -->
+<div class="book-tabs-content markdown-inner"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">appearsIn</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Eq</span> a <span style="color:#f92672">=&gt;</span> a <span style="color:#f92672">-&gt;</span> [a] <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">appearsIn</span> x <span style="color:#f92672">=</span> any (x <span style="color:#f92672">==</span>)
+</span></span></code></pre></div></div>
 </div>
 <div class="book-tabs">
 <input type="radio" class="toggle" name="tabs-exercise_filter_any" id="tabs-exercise_filter_any-0" checked="checked" />
@@ -1054,19 +1032,12 @@ We will see how these two functions can be implemented in the section on <a href
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">restrictTo</span> <span style="color:#f92672">::</span> (<span style="color:#66d9ef">Eq</span> a) <span style="color:#f92672">=&gt;</span> [a] <span style="color:#f92672">-&gt;</span> [a] <span style="color:#f92672">-&gt;</span> [a]
 </span></span></code></pre></div><p>such that <code>restrictTo xs ys</code> consists of all elements of <code>xs</code> that appear in <code>ys</code>, in the same order as they appear in <code>xs</code> (and preserving duplicates).</p>
 </div>
-<!-- 
 <input type="radio" class="toggle" name="tabs-exercise_filter_any" id="tabs-exercise_filter_any-1"  />
 <label for="tabs-exercise_filter_any-1">Possible solution</label>
-<div class="book-tabs-content markdown-inner"><p>&ndash;&gt;</p>
-<!---->
-<!-- ```haskell -->
-<!-- restrictTo :: Eq a => [a] -> [a] -> [a] -->
-<!-- -- reuse the function `appearsIn` defined in the previous exercise -->
-<!-- restrictTo xs ys = filter' (\x -> appearsIn x ys) xs -->
-<!-- ``` -->
-<!---->
-<!-- </div>
- -->
+<div class="book-tabs-content markdown-inner"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">restrictTo</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Eq</span> a <span style="color:#f92672">=&gt;</span> [a] <span style="color:#f92672">-&gt;</span> [a] <span style="color:#f92672">-&gt;</span> [a]
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- reuse the function `appearsIn` defined in the previous exercise</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">restrictTo</span> xs ys <span style="color:#f92672">=</span> filter&#39; (<span style="color:#a6e22e">\</span>x <span style="color:#f92672">-&gt;</span> appearsIn x ys) xs
+</span></span></code></pre></div></div>
 </div>
 <h3 id="flip">
   flip
