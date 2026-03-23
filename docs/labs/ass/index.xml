@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Assignments on OOFP 2025-26</title>
+    <link>http://localhost:1313/docs/labs/ass/</link>
+    <description>Recent content in Assignments on OOFP 2025-26</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="http://localhost:1313/docs/labs/ass/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Ssh key</title>
+      <link>http://localhost:1313/docs/labs/ass/sections/ssh/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/docs/labs/ass/sections/ssh/</guid>
+      <description>&lt;h1 id=&#34;ssh-key&#34;&gt;&#xA;  ssh key&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#ssh-key&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;An ssh key allows you to connect to a remote machine via the ssh protocol.&#xA;Among other uses, this is the preferred way to share data with a git hosting service (such as GitHub, Gitlab or Bitbucket).&lt;/p&gt;&#xA;&lt;p&gt;You only need &lt;em&gt;one&lt;/em&gt; ssh key per machine (laptop, desktop, phone, etc.).&#xA;So from your laptop, you can use the &lt;em&gt;same&lt;/em&gt; ssh key to connect to a server or interact with GitHub, Gitlab, etc.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

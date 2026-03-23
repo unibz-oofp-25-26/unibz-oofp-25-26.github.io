@@ -1,0 +1,1282 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  Assignment 1: higher-order functions and linear recursion
+  #
+
+
+  Exercise 1: utility functions
+  #
+
+Implement the following functions, by completing the functions stubs in the file Src/Utility.hs
+
+Hint.
+Some of these functions can be used to implement others.
+
+
+Hint.
+Feel free to create additional (auxiliary) functions to simplify your implementation.
+
+
+  hasSep
+  #
+
+Implement the function
+hasSep :: String -&gt; Bool
+such that hasSep s evaluates to True iff s contains at least one /.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/docs/ass/sections/ass1/">
+  <meta property="og:site_name" content="OOFP 2025-26">
+  <meta property="og:title" content="Assignment 1">
+  <meta property="og:description" content="Assignment 1: higher-order functions and linear recursion # Exercise 1: utility functions # Implement the following functions, by completing the functions stubs in the file Src/Utility.hs
+Hint. Some of these functions can be used to implement others.
+Hint. Feel free to create additional (auxiliary) functions to simplify your implementation.
+hasSep # Implement the function
+hasSep :: String -&gt; Bool such that hasSep s evaluates to True iff s contains at least one /.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+<title>Assignment 1 | OOFP 2025-26</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="http://localhost:1313/docs/ass/sections/ass1/">
+<link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.db9fc63ab69076868fa2f0a53317007f9fc74114ea54a2609e0c417dc2407edd.js" integrity="sha256-25/GOraQdoaPovClMxcAf5/HQRTqVKJgngxBfcJAft0=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css"
+  integrity="sha384-vKruj+a13U8yHIkAyGgK1J3ArTLzrFGBbBc0tDp4ad/EyewESeXE/Iv67Aj8gKZ0"
+  crossorigin="anonymous"
+/>
+
+
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js"
+  integrity="sha384-PwRUT/YqbnEjkZO0zZxNqcxACrXe+j766U2amXcgMg5457rve2Y7I6ZJSm2A0mS4"
+  crossorigin="anonymous"
+></script>
+
+
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js"
+  integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+  crossorigin="anonymous"
+  onload="renderMathInElement(document.body);"
+></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    renderMathInElement(document.body, {
+      delimiters: [
+        { left: "$$", right: "$$", display: true },
+        { left: "$", right: "$", display: false },
+      ],
+    });
+  });
+</script>
+
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>OOFP 2025-26</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-8b45d304a159d86710e1579c97aa5b43" class="toggle"  />
+    <label for="section-8b45d304a159d86710e1579c97aa5b43" class="flex justify-between">
+      <a href="/docs/intro/" class="">This course</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/organization/" class="">Organization</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/material/" class="">Material</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/reading_path/" class="">Reading path</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/evaluation/" class="">Evaluation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/prerequisites/" class="">Prerequisites</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/office_hours/" class="">Office hours</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/content/" class="">Content</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/resources/" class="">Additional resources</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/software/" class="">Software</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b17bf4b701f350b4430cc5371ccad607" class="toggle"  />
+    <label for="section-b17bf4b701f350b4430cc5371ccad607" class="flex justify-between">
+      <a href="/docs/paradigm/" class="">Paradigms and languages</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/paradigm/sections/paradigm/" class="">Paradigm</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/paradigm/sections/error/" class="">Compile time vs runtime error</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/paradigm/sections/type/" class="">Typing</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/paradigm/sections/pure/" class="">Pure function</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-eb0a250150a82657aa03f0717afdcd45" class="toggle"  />
+    <label for="section-eb0a250150a82657aa03f0717afdcd45" class="flex justify-between">
+      <a href="/docs/haskell/" class="">Basic syntax of Haskell</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/haskell/sections/tokens/" class="">Tokens</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/haskell/sections/type/" class="">Base types</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/haskell/sections/native/" class="">Native functions</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/haskell/sections/tuple/" class="">Tuple</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/haskell/sections/function/" class="">Function</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/haskell/sections/program/" class="">Program</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/haskell/sections/list/" class="">List</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-2e35b5b0c21ab79cc6b70c0c8a6135fa" class="toggle"  />
+    <label for="section-2e35b5b0c21ab79cc6b70c0c8a6135fa" class="flex justify-between">
+      <a href="/docs/higher/" class="">Higher-order function</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/higher/sections/anonymous/" class="">Anonymous function</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/higher/sections/currying/" class="">Currying</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/higher/sections/useful_hofs/" class="">A few higher-order functions</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-a9f24c38594f15da67150d02f87a60d7" class="toggle"  />
+    <label for="section-a9f24c38594f15da67150d02f87a60d7" class="flex justify-between">
+      <a href="/docs/control/" class="">Control flow</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/control/sections/pattern/" class="">Pattern matching</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/control/sections/condition/" class="">Boolean condition</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/control/sections/comprehension/" class="">List comprehension</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/control/sections/stack/" class="">Call stack</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-97db6297fa77b8e8a3d66808fea4d894" class="toggle"  />
+    <label for="section-97db6297fa77b8e8a3d66808fea4d894" class="flex justify-between">
+      <a href="/docs/generic/" class="">Genericity</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/generic/sections/variable/" class="">Type variable</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/generic/sections/bound/" class="">Bound</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-54a25c0ad53482778ca10b1a7db8e623" class="toggle"  />
+    <label for="section-54a25c0ad53482778ca10b1a7db8e623" class="flex justify-between">
+      <a href="/docs/recursion/" class="">Recursion</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/recursion/sections/linear/" class="">Linear recursion</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d689bb2436bd0f51b31e8f95cf070b59" class="toggle"  />
+    <label for="section-d689bb2436bd0f51b31e8f95cf070b59" class="flex justify-between">
+      <a href="/docs/background/" class="">Background</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/background/sections/set_list/" class="">Set, list, tuple</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/background/sections/function/" class="">Function</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c98f96b18785aef1d766e440ba328a79" class="toggle" checked />
+    <label for="section-c98f96b18785aef1d766e440ba328a79" class="flex justify-between">
+      <a href="/docs/ass/" class="">Assignments</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/ass/sections/ass1/" class="active">Assignment 1</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Assignment 1</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#exercise-1-utility-functions">Exercise 1: utility functions</a>
+      <ul>
+        <li><a href="#hassep"><code>hasSep</code></a></li>
+        <li><a href="#somehassep"><code>someHasSep</code></a></li>
+        <li><a href="#maptwice"><code>mapTwice</code></a></li>
+        <li><a href="#keepfullmatches"><code>keepFullMatches</code></a></li>
+        <li><a href="#appearsinsome"><code>appearsInSome</code></a></li>
+        <li><a href="#hastwin"><code>hasTwin</code></a></li>
+        <li><a href="#satisfiesall"><code>satisfiesAll</code></a></li>
+        <li><a href="#shiftAndZip"><code>shiftAndZip</code></a></li>
+        <li><a href="#hasconsdup"><code>hasConsDup</code></a></li>
+        <li><a href="#prefix"><code>prefix</code></a></li>
+        <li><a href="#sublist"><code>sublist</code></a></li>
+      </ul>
+    </li>
+    <li><a href="#exercise-2-playing-cards">Exercise 2: playing cards</a>
+      <ul>
+        <li><a href="#isfaceless"><code>isFaceless</code></a></li>
+        <li><a href="#countocc"><code>countOcc</code></a></li>
+        <li><a href="#isfourofakind"><code>isFourOfAKind</code></a></li>
+        <li><a href="#allsamesuit"><code>allSameSuit</code></a></li>
+        <li><a href="#isflush"><code>isFlush</code></a></li>
+        <li><a href="#precedes"><code>precedes</code></a></li>
+        <li><a href="#issorted"><code>isSorted</code></a></li>
+        <li><a href="#mergesorted"><code>mergeSorted</code></a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="assignment-1-higher-order-functions-and-linear-recursion">
+  Assignment 1: higher-order functions and linear recursion
+  <a class="anchor" href="#assignment-1-higher-order-functions-and-linear-recursion">#</a>
+</h1>
+<h2 id="exercise-1-utility-functions">
+  Exercise 1: utility functions
+  <a class="anchor" href="#exercise-1-utility-functions">#</a>
+</h2>
+<p>Implement the following functions, by completing the functions stubs in the file <code>Src/Utility.hs</code></p>
+<blockquote class="book-hint info">
+<p><strong><em>Hint.</em></strong>
+Some of these functions can be used to implement others.</p>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Hint.</em></strong>
+Feel free to create additional (auxiliary) functions to simplify your implementation.</p>
+</blockquote>
+<h3 id="hassep">
+  <code>hasSep</code>
+  <a class="anchor" href="#hassep">#</a>
+</h3>
+<p>Implement the function</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">hasSep</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">String</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span>
+</span></span></code></pre></div><p>such that <code>hasSep s</code> evaluates to <code>True</code> iff <code>s</code> contains at least one <code>/</code>.</p>
+<p>For instance,</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">hasSep</span> <span style="color:#e6db74">&#34;alice/workspace/oofp&#34;</span>
+</span></span></code></pre></div><p>should evaluate to <code>True</code>,
+whereas</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">hasSep</span> <span style="color:#e6db74">&#34;hi there&#34;</span>
+</span></span></code></pre></div><p>should evaluate to <code>False</code>.</p>
+<h3 id="somehassep">
+  <code>someHasSep</code>
+  <a class="anchor" href="#somehassep">#</a>
+</h3>
+<p>Implement the function</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">someHasSep</span> <span style="color:#f92672">::</span> [<span style="color:#66d9ef">String</span>] <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span>
+</span></span></code></pre></div><p>such that <code>someHasSep ss</code> evaluates to <code>True</code> iff one or several strings in <code>ss</code> contain at least one <code>/</code>.</p>
+<p>For instance,</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">someHasSep</span> [<span style="color:#e6db74">&#34;Paste&#34;</span>,<span style="color:#e6db74">&#34;cd alice/workspace/oofp&#34;</span>,<span style="color:#e6db74">&#34;and&#34;</span>,<span style="color:#e6db74">&#34;press&#34;</span>,<span style="color:#e6db74">&#34;enter&#34;</span>]
+</span></span></code></pre></div><p>should evaluate to <code>True</code>, whereas</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">someHasSep</span> [<span style="color:#e6db74">&#34;Restart&#34;</span>,<span style="color:#e6db74">&#34;the&#34;</span>,<span style="color:#e6db74">&#34;program&#34;</span>]
+</span></span></code></pre></div><p>should evaluate to <code>False</code>.</p>
+<h3 id="maptwice">
+  <code>mapTwice</code>
+  <a class="anchor" href="#maptwice">#</a>
+</h3>
+<p>Implement the function</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">mapTwice</span> <span style="color:#f92672">::</span> (a <span style="color:#f92672">-&gt;</span> b) <span style="color:#f92672">-&gt;</span> (b <span style="color:#f92672">-&gt;</span> c) <span style="color:#f92672">-&gt;</span> [a] <span style="color:#f92672">-&gt;</span> [c]
+</span></span></code></pre></div><p>such that
+<code>mapTwice f g xs</code> applies <code>f</code> to each element of <code>xs</code>, and then <code>g</code> to each element of the resulting list.</p>
+<p>For instance,</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">mapTwice</span> (<span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>) (<span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span>) [<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">3</span>]
+</span></span></code></pre></div><p>should evaluate to <code>[4,8]</code>.</p>
+<h3 id="keepfullmatches">
+  <code>keepFullMatches</code>
+  <a class="anchor" href="#keepfullmatches">#</a>
+</h3>
+<blockquote class="book-hint warning">
+<p><strong><em>Terminology.</em></strong>
+We say that an element <code>x</code> with type <code>a</code> <strong>satisfies</strong> a function <code>f :: a -&gt; Bool</code> if <code>f x</code> evaluates to <code>True</code>.</p>
+</blockquote>
+<p>Implement the function</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">keepFullMatches</span> <span style="color:#f92672">::</span> (a <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span>) <span style="color:#f92672">-&gt;</span> [[a]] <span style="color:#f92672">-&gt;</span> [[a]]
+</span></span></code></pre></div><p>such that <code>keepFullMatches f xss</code> consists of the lists in <code>xss</code> whose elements all satisfy <code>f</code> (in the same order as they appear in <code>xss</code>).</p>
+<p>For instance,</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">keepFullMatches</span> even [[<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">4</span>], [<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">6</span>,<span style="color:#ae81ff">2</span>], [<span style="color:#ae81ff">3</span>], <span style="color:#66d9ef">[]</span>, [<span style="color:#ae81ff">8</span>,<span style="color:#ae81ff">5</span>,<span style="color:#ae81ff">2</span>]]
+</span></span></code></pre></div><p>should evaluate to <code>[[2,6,2], []]</code>.</p>
+<h3 id="appearsinsome">
+  <code>appearsInSome</code>
+  <a class="anchor" href="#appearsinsome">#</a>
+</h3>
+<p>Implement the function</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">appearsInSome</span> <span style="color:#f92672">::</span> (<span style="color:#66d9ef">Eq</span> a) <span style="color:#f92672">=&gt;</span> a <span style="color:#f92672">-&gt;</span> [[a]] <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span>
+</span></span></code></pre></div><p>such that <code>appearsInSome x xss</code> evaluates to <code>True</code> iff <code>x</code> appears in at least one of the lists in <code>xss</code>.</p>
+<p>For instance,</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">appearsInSome</span> <span style="color:#ae81ff">3</span> [[<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">4</span>], [<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">6</span>,<span style="color:#ae81ff">3</span>], <span style="color:#66d9ef">[]</span>, [<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">3</span>]]
+</span></span></code></pre></div><p>should evaluate to <code>True</code>,
+whereas</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">appearsInSome</span> <span style="color:#ae81ff">3</span> [[<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">4</span>], [<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">2</span>], <span style="color:#66d9ef">[]</span>, [<span style="color:#ae81ff">6</span>]]
+</span></span></code></pre></div><p>should evaluate to <code>False</code>.</p>
+<h3 id="hastwin">
+  <code>hasTwin</code>
+  <a class="anchor" href="#hastwin">#</a>
+</h3>
+<p>Implement the function</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">hasTwin</span> <span style="color:#f92672">::</span> (<span style="color:#66d9ef">Eq</span> a) <span style="color:#f92672">=&gt;</span> [(a,a)] <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span>
+</span></span></code></pre></div><p>such that <code>hasTwin xs</code> is <code>True</code> iff the list <code>xs</code> contains at least one pair of identical elements.</p>
+<p>For instance,</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">hasTwin</span> [(<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>), (<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">2</span>), (<span style="color:#ae81ff">5</span>,<span style="color:#ae81ff">3</span>), (<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">3</span>)]
+</span></span></code></pre></div><p>should evaluate to <code>True</code>,
+whereas</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">hasTwin</span> [(<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>), (<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">1</span>), (<span style="color:#ae81ff">5</span>,<span style="color:#ae81ff">3</span>), (<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>)]
+</span></span></code></pre></div><p>should evaluate to <code>False</code>.</p>
+<h3 id="satisfiesall">
+  <code>satisfiesAll</code>
+  <a class="anchor" href="#satisfiesall">#</a>
+</h3>
+<p>Implement the function</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">satisfiesAll</span> <span style="color:#f92672">::</span> [a <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span>] <span style="color:#f92672">-&gt;</span> a <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span>
+</span></span></code></pre></div><p>such that <code>satisfiesAll fs x</code> evaluates to <code>True</code> iff <code>f x</code> evaluates to <code>True</code> for each function <code>f</code> in <code>fs</code>.</p>
+<p>For instance,</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">satisfiesAll</span> [even, (<span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">3</span>)] <span style="color:#ae81ff">8</span>
+</span></span></code></pre></div><p>should evaluate to <code>True</code>,
+whereas</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">satisfiesAll</span> [even, (<span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">3</span>)] <span style="color:#ae81ff">2</span>
+</span></span></code></pre></div><p>should evaluate to <code>False</code>.</p>
+<h3 id="shiftAndZip">
+  <code>shiftAndZip</code>
+  <a class="anchor" href="#shiftAndZip">#</a>
+</h3>
+<p>Implement the function</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">shiftAndZip</span> <span style="color:#f92672">::</span> [a] <span style="color:#f92672">-&gt;</span>  [(a,a)]
+</span></span></code></pre></div><p>such that <code>shiftAndZip xs</code> consists of each element of <code>xs</code> (except for the last one) paired with its successor, in the same order as in <code>xs</code>.</p>
+<p>For instance,</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">shiftAndZip</span> [<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">8</span>]
+</span></span></code></pre></div><p>should evaluate to <code>[(1,2),(2,4),(4,8)]</code></p>
+<blockquote class="book-hint warning">
+<p><strong><em>Restriction.</em></strong>
+You can assume that the list <code>xs</code> has length $\ge 2$.</p>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Hint.</em></strong>
+You may take advantage of the native Haskell function <code>zip</code>, seen <a href="http://localhost:1313/docs/recursion/sections/linear/#examples">during the lectures</a>.</p>
+</blockquote>
+<h3 id="hasconsdup">
+  <code>hasConsDup</code>
+  <a class="anchor" href="#hasconsdup">#</a>
+</h3>
+<p>Implement the function</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">hasConsDup</span> <span style="color:#f92672">::</span> (<span style="color:#66d9ef">Eq</span> a) <span style="color:#f92672">=&gt;</span> [a] <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span>
+</span></span></code></pre></div><p>such that <code>hasConsDup xs</code> is <code>True</code> iff the list <code>xs</code> contains two consecutive occurrences of a same element.</p>
+<p>For instance (since that a <a href="http://localhost:1313/docs/haskell/sections/list/#string"><code>String</code></a> in Haskell is a list of characters),</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">hasConsDup</span> <span style="color:#e6db74">&#34;this is possible&#34;</span>
+</span></span></code></pre></div><p>should evaluate to <code>True</code>, whereas</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">hasConsDup</span> <span style="color:#e6db74">&#34;this is unlikely&#34;</span>
+</span></span></code></pre></div><p>should evaluate to <code>False</code>.</p>
+<blockquote class="book-hint warning">
+<p><strong><em>Restriction</em></strong>
+You can assume that the list <code>xs</code> has length $\ge 2$.</p>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Hint.</em></strong>
+You may take advantage of some functions implemented above.</p>
+</blockquote>
+<h3 id="prefix">
+  <code>prefix</code>
+  <a class="anchor" href="#prefix">#</a>
+</h3>
+<p>Implement the function</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">prefix</span> <span style="color:#f92672">::</span> [a] <span style="color:#f92672">-&gt;</span> [a] <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span>
+</span></span></code></pre></div><p>such that <code>prefix xs ys</code> evaluates to <code>True</code> iff the list <code>xs</code> is a prefix of the list <code>ys</code>.</p>
+<p>For instance,</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">prefix</span> [<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">3</span>] [<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">5</span>,<span style="color:#ae81ff">4</span>]
+</span></span></code></pre></div><p>should evaluate to <code>True</code>,
+whereas</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">prefix</span> [<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">3</span>] [<span style="color:#ae81ff">6</span>,<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">5</span>,<span style="color:#ae81ff">4</span>]
+</span></span></code></pre></div><p>should evaluate to <code>False</code>.</p>
+<h3 id="sublist">
+  <code>sublist</code>
+  <a class="anchor" href="#sublist">#</a>
+</h3>
+<p>Implement the function</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">sublist</span> <span style="color:#f92672">::</span> [a] <span style="color:#f92672">-&gt;</span> [a] <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span>
+</span></span></code></pre></div><p>such that <code>sublist xs ys</code> is <code>True</code> iff the list <code>xs</code> appears as a (contiguous) sublist of the list <code>ys</code>.</p>
+<p>For instance,</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">sublist</span> [<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">3</span>] [<span style="color:#ae81ff">6</span>,<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">5</span>,<span style="color:#ae81ff">4</span>]
+</span></span></code></pre></div><p>should evaluate to <code>True</code>,
+whereas</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">prefix</span> [<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">3</span>] [<span style="color:#ae81ff">6</span>,<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">5</span>,<span style="color:#ae81ff">4</span>]
+</span></span></code></pre></div><p>should evaluate to <code>False</code>.</p>
+<h2 id="exercise-2-playing-cards">
+  Exercise 2: playing cards
+  <a class="anchor" href="#exercise-2-playing-cards">#</a>
+</h2>
+<blockquote class="book-hint warning">
+<p><strong><em>Data format.</em></strong></p>
+<blockquote class="book-hint warning">
+  <p><strong><em>Playing card.</em></strong>
+We represent a playing card as a pair <code>(s, r)</code> with type <code>(Char, Int)</code>, where:</p>
+<ul>
+<li>
+<p><code>s</code> represents the card&rsquo;s suit: either
+<code>'C'</code>,
+<code>'D'</code>,
+<code>'H'</code> or
+<code>'S'</code>
+(
+for Clubs,
+Diamonds,
+Hearts,
+and Spades respectively
+), and</p>
+</li>
+<li>
+<p><code>r</code> represent the card&rsquo;s rank. This is an <code>Int</code> between <code>1</code> and <code>13</code>, where:</p>
+<ul>
+<li><code>1</code>, <code>11</code>, <code>12</code> and <code>13</code> stands for an ace, jack, queen and king respectively, and</li>
+<li>the numbers <code>2</code> to <code>10</code> stand for themselves.</li>
+</ul>
+</li>
+</ul>
+<p>We assume that the lowest rank is <code>1</code> (aka ace) and that the highest is <code>13</code> (aka king).</p>
+</blockquote>
+<blockquote class="book-hint warning">
+  <p><strong><em>Hand.</em></strong>
+We represent a <strong>hand</strong> as a list of cards.
+Therefore a hand has type <code>[(Char, Int)]</code>.</p>
+</blockquote>
+</blockquote>
+<!-- We assume that players sort their hand by suit first (in alphabetical order), and then by rank. -->
+<!---->
+<!-- For instance, the following hand is sorted: -->
+<!---->
+<!-- `[('H',6),('S',3),('S',12)]` -->
+<!---->
+<!-- whereas the following hand is not sorted -->
+<!---->
+<!-- `[('S',12),('H',2),('S',3)]` -->
+<blockquote class="book-hint info">
+<p><strong><em>Hint.</em></strong>
+Some functions below can be used to implement others.</p>
+</blockquote>
+<p><strong><em>Hint.</em></strong>
+Some functions of the previous exercise can be used to implement some functions below.</p>
+<h3 id="isfaceless">
+  <code>isFaceless</code>
+  <a class="anchor" href="#isfaceless">#</a>
+</h3>
+<p>Implement the function</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">isFaceless</span> <span style="color:#f92672">::</span> [(<span style="color:#66d9ef">Char</span>, <span style="color:#66d9ef">Int</span>)] <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span>
+</span></span></code></pre></div><p>such that
+<code>isFaceless h</code>
+evaluates to <code>True</code> iff the hand <code>h</code> has no jack, queen or king.</p>
+<p>For instance,</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">isFaceless</span> [(<span style="color:#e6db74">&#39;S&#39;</span>,<span style="color:#ae81ff">2</span>), (<span style="color:#e6db74">&#39;C&#39;</span>,<span style="color:#ae81ff">10</span>)]
+</span></span></code></pre></div><p>should evaluate to <code>True</code>,
+whereas</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">isFaceless</span> [(<span style="color:#e6db74">&#39;S&#39;</span>,<span style="color:#ae81ff">2</span>), (<span style="color:#e6db74">&#39;C&#39;</span>,<span style="color:#ae81ff">11</span>), (<span style="color:#e6db74">&#39;C&#39;</span>,<span style="color:#ae81ff">5</span>)]
+</span></span></code></pre></div><p>should evaluate to <code>False</code>.</p>
+<h4 id="sumspades">
+  <code>sumSpades</code>
+  <a class="anchor" href="#sumspades">#</a>
+</h4>
+<p>Implement the function</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">sumSpades</span> <span style="color:#f92672">::</span> [(<span style="color:#66d9ef">Char</span>, <span style="color:#66d9ef">Int</span>)] <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Int</span>
+</span></span></code></pre></div><p>such that
+<code>sumSpades h</code>
+evaluates to the sum of the ranks of all Spades in the hand <code>h</code>.</p>
+<p>For instance,</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">sumSpades</span> [(<span style="color:#e6db74">&#39;S&#39;</span>,<span style="color:#ae81ff">2</span>), (<span style="color:#e6db74">&#39;C&#39;</span>,<span style="color:#ae81ff">10</span>), (<span style="color:#e6db74">&#39;S&#39;</span>,<span style="color:#ae81ff">12</span>), (<span style="color:#e6db74">&#39;H&#39;</span>,<span style="color:#ae81ff">1</span>)]
+</span></span></code></pre></div><p>should evaluate to <code>14</code>.</p>
+<h3 id="countocc">
+  <code>countOcc</code>
+  <a class="anchor" href="#countocc">#</a>
+</h3>
+<p>Implement the function</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">countOcc</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Int</span> <span style="color:#f92672">-&gt;</span> [(<span style="color:#66d9ef">Char</span>, <span style="color:#66d9ef">Int</span>)] <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Int</span>
+</span></span></code></pre></div><p>such that
+<code>countOcc r h</code>
+is the number of occurrences of the rank <code>r</code> in the hand <code>h</code>.</p>
+<p>For instance,</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">countOcc</span> <span style="color:#ae81ff">12</span> [(<span style="color:#e6db74">&#39;S&#39;</span>,<span style="color:#ae81ff">12</span>), (<span style="color:#e6db74">&#39;C&#39;</span>,<span style="color:#ae81ff">4</span>), (<span style="color:#e6db74">&#39;C&#39;</span>,<span style="color:#ae81ff">12</span>)]
+</span></span></code></pre></div><p>should evaluate to <code>2</code>.</p>
+<h3 id="isfourofakind">
+  <code>isFourOfAKind</code>
+  <a class="anchor" href="#isfourofakind">#</a>
+</h3>
+<blockquote class="book-hint warning">
+<p><strong><em>Terminology.</em></strong>
+In poker, a <strong>&ldquo;four of a kind&rdquo;</strong> is a hand of 5 cards where 4 have the same rank.</p>
+</blockquote>
+<p>Implement the function</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">isFourOfAKind</span> <span style="color:#f92672">::</span> [(<span style="color:#66d9ef">Char</span>, <span style="color:#66d9ef">Int</span>)] <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span>
+</span></span></code></pre></div><p>such that
+<code>isFourOfAKind h</code> evaluates to <code>True</code> iff <code>h</code> is a &ldquo;four of a kind&rdquo;.</p>
+<blockquote class="book-hint warning">
+<p><strong><em>Restriction</em>.</strong>
+You can assume that cards in <code>h</code> are distinct.</p>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Hint.</em></strong>
+in Haskell, the list of all integers from <code>1</code> to <code>13</code> (both inclusive) can be written <code>[1 .. 13]</code>.</p>
+</blockquote>
+<h3 id="allsamesuit">
+  <code>allSameSuit</code>
+  <a class="anchor" href="#allsamesuit">#</a>
+</h3>
+<p>Implement the function</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">allSameSuit</span> <span style="color:#f92672">::</span> [(<span style="color:#66d9ef">Char</span>, <span style="color:#66d9ef">Int</span>)] <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span>
+</span></span></code></pre></div><p>such that
+<code>allSameSuit h</code> evaluates to <code>True</code> iff all cards in the hand <code>h</code> have the same suit.</p>
+<p>For instance,</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">allSameSuit</span> [(<span style="color:#e6db74">&#39;S&#39;</span>,<span style="color:#ae81ff">12</span>), (<span style="color:#e6db74">&#39;S&#39;</span>,<span style="color:#ae81ff">3</span>)]
+</span></span></code></pre></div><p>should evaluate to <code>True</code>,
+whereas</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">allSameSuit</span> [(<span style="color:#e6db74">&#39;S&#39;</span>,<span style="color:#ae81ff">12</span>), (<span style="color:#e6db74">&#39;H&#39;</span>,<span style="color:#ae81ff">2</span>), (<span style="color:#e6db74">&#39;S&#39;</span>,<span style="color:#ae81ff">3</span>)]
+</span></span></code></pre></div><p>should evaluate to <code>False</code>.</p>
+<h3 id="isflush">
+  <code>isFlush</code>
+  <a class="anchor" href="#isflush">#</a>
+</h3>
+<blockquote class="book-hint warning">
+<p><strong><em>Terminology.</em></strong>
+In poker, a <strong>flush</strong> is a hand of 5 cards with the same suit.</p>
+</blockquote>
+<p>Implement the function</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">isFlush</span> <span style="color:#f92672">::</span> [(<span style="color:#66d9ef">Char</span>, <span style="color:#66d9ef">Int</span>)] <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span>
+</span></span></code></pre></div><p>such that
+<code>isFlush h</code> evaluates to <code>True</code> iff <code>h</code> is a flush.</p>
+<blockquote class="book-hint warning">
+<p><strong><em>Restriction.</em></strong>
+You can assume that all cards in <code>h</code> are different.</p>
+</blockquote>
+<h3 id="precedes">
+  <code>precedes</code>
+  <a class="anchor" href="#precedes">#</a>
+</h3>
+<blockquote class="book-hint warning">
+<p><strong><em>Convention.</em></strong>
+We assume that players sort their hand by suit first (in alphabetical order), and then by rank.
+For instance, the following hand is sorted:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span>[(<span style="color:#e6db74">&#39;H&#39;</span>,<span style="color:#ae81ff">6</span>), (<span style="color:#e6db74">&#39;S&#39;</span>,<span style="color:#ae81ff">3</span>), (<span style="color:#e6db74">&#39;S&#39;</span>,<span style="color:#ae81ff">12</span>)]
+</span></span></code></pre></div><p>whereas the following hand is not sorted</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span>[(<span style="color:#e6db74">&#39;S&#39;</span>,<span style="color:#ae81ff">12</span>), (<span style="color:#e6db74">&#39;H&#39;</span>,<span style="color:#ae81ff">2</span>), (<span style="color:#e6db74">&#39;S&#39;</span>,<span style="color:#ae81ff">3</span>)]
+</span></span></code></pre></div></blockquote>
+<p>Implement the function</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">precedes</span> <span style="color:#f92672">::</span> (<span style="color:#66d9ef">Char</span>, <span style="color:#66d9ef">Int</span>) <span style="color:#f92672">-&gt;</span> (<span style="color:#66d9ef">Char</span>, <span style="color:#66d9ef">Int</span>) <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span>
+</span></span></code></pre></div><p>such that
+<code>precedes c1 c2</code>
+evaluates to <code>True</code> iff the card <code>c1</code> precedes the card <code>c2</code> in the sorting order.</p>
+<h3 id="issorted">
+  <code>isSorted</code>
+  <a class="anchor" href="#issorted">#</a>
+</h3>
+<p>Implement the function <code>isSorted :: [(Char, Int)] -&gt; Bool</code></p>
+<p>such that</p>
+<p><code>isSorted h</code></p>
+<p>evaluates to <code>True</code> iff the hand <code>h</code> is sorted (according to the order defined <a href="#precedes">above</a>).</p>
+<blockquote class="book-hint info">
+<p><strong><em>Hint.</em></strong>
+You may take advantage of the function <a href="#shiftAndZip"><code>shiftAndZip</code></a> implemented in the first exercise.</p>
+</blockquote>
+<h3 id="mergesorted">
+  <code>mergeSorted</code>
+  <a class="anchor" href="#mergesorted">#</a>
+</h3>
+<p>Implement the function</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">mergeSorted</span> <span style="color:#f92672">::</span> [(<span style="color:#66d9ef">Char</span>, <span style="color:#66d9ef">Int</span>)] <span style="color:#f92672">-&gt;</span> [(<span style="color:#66d9ef">Char</span>, <span style="color:#66d9ef">Int</span>)] <span style="color:#f92672">-&gt;</span> [(<span style="color:#66d9ef">Char</span>, <span style="color:#66d9ef">Int</span>)]
+</span></span></code></pre></div><p>that merges two sorted hands into a sorted hand (where the sorting order is the one defined <a href="#precedes">above</a>).</p>
+<p>Precisely, if <code>h1</code> and <code>h2</code> are two sorted hands, then <code>mergeSorted h1 h2</code> evaluates to the sorted hand that consists of the cards of <code>h1</code> and <code>h2</code>.</p>
+<p>For instance,</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">mergeSorted</span> [(<span style="color:#e6db74">&#39;H&#39;</span>,<span style="color:#ae81ff">6</span>), (<span style="color:#e6db74">&#39;S&#39;</span>,<span style="color:#ae81ff">3</span>)] [(<span style="color:#e6db74">&#39;C&#39;</span>,<span style="color:#ae81ff">10</span>), (<span style="color:#e6db74">&#39;S&#39;</span>,<span style="color:#ae81ff">5</span>)]
+</span></span></code></pre></div><p>should evaluates to</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span>[(<span style="color:#e6db74">&#39;C&#39;</span>,<span style="color:#ae81ff">10</span>), (<span style="color:#e6db74">&#39;H&#39;</span>,<span style="color:#ae81ff">6</span>), (<span style="color:#e6db74">&#39;S&#39;</span>,<span style="color:#ae81ff">3</span>), (<span style="color:#e6db74">&#39;S&#39;</span>,<span style="color:#ae81ff">5</span>)]
+</span></span></code></pre></div></article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#exercise-1-utility-functions">Exercise 1: utility functions</a>
+      <ul>
+        <li><a href="#hassep"><code>hasSep</code></a></li>
+        <li><a href="#somehassep"><code>someHasSep</code></a></li>
+        <li><a href="#maptwice"><code>mapTwice</code></a></li>
+        <li><a href="#keepfullmatches"><code>keepFullMatches</code></a></li>
+        <li><a href="#appearsinsome"><code>appearsInSome</code></a></li>
+        <li><a href="#hastwin"><code>hasTwin</code></a></li>
+        <li><a href="#satisfiesall"><code>satisfiesAll</code></a></li>
+        <li><a href="#shiftAndZip"><code>shiftAndZip</code></a></li>
+        <li><a href="#hasconsdup"><code>hasConsDup</code></a></li>
+        <li><a href="#prefix"><code>prefix</code></a></li>
+        <li><a href="#sublist"><code>sublist</code></a></li>
+      </ul>
+    </li>
+    <li><a href="#exercise-2-playing-cards">Exercise 2: playing cards</a>
+      <ul>
+        <li><a href="#isfaceless"><code>isFaceless</code></a></li>
+        <li><a href="#countocc"><code>countOcc</code></a></li>
+        <li><a href="#isfourofakind"><code>isFourOfAKind</code></a></li>
+        <li><a href="#allsamesuit"><code>allSameSuit</code></a></li>
+        <li><a href="#isflush"><code>isFlush</code></a></li>
+        <li><a href="#precedes"><code>precedes</code></a></li>
+        <li><a href="#issorted"><code>isSorted</code></a></li>
+        <li><a href="#mergesorted"><code>mergeSorted</code></a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
