@@ -35,7 +35,7 @@ Haskell does not admit loops, so linear recursion is the standard way to perform
 <link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/recursion/sections/linear/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.393079ac8a3235d08ad9681e216fda2acd2fea4ba0c4fc9850efc71eac02b0e9.js" integrity="sha256-OTB5rIoyNdCK2WgeIW/aKs0v6kugxPyYUO/HHqwCsOk=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.3a70ebe607448c55c80105773c44f5abf53c3897e2a05b6b5a1afb4b243bdd5c.js" integrity="sha256-OnDr5gdEjFXIAQV3PET1q/U8OJfioFtrWhr7SyQ73Vw=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -807,7 +807,7 @@ Accordingly, in this section, we will mostly use Haskell as an illustration.</p>
 </h2>
 <blockquote class="book-hint info">
 <p><strong><em>Example.</em></strong>
-The following function sums the elements of a list of integers:</p>
+The following function sums a list of integers:</p>
 <div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
@@ -840,11 +840,11 @@ The following function sums the elements of a list of integers:</p>
 <li>$\quad$ the evaluation of <code>sum [2,3]</code> ends and returns <code>2 + sum [3]</code> (i.e. <code>5</code>)</li>
 <li>the evaluation of <code>sum [1,2,3]</code> end ands returns <code>1 + sum [2,3]</code> (i.e. <code>6</code>)</li>
 </ol>
-<p>After Step 4, the <a href="https://unibz-oofp-25-26.github.io/docs/control/sections/stack/">call stack</a> is (omitting line numbers):</p>
+<p>After Step 4, the <a href="https://unibz-oofp-25-26.github.io/docs/control/sections/stack/">call stack</a> is:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-perl" data-lang="perl"><span style="display:flex;"><span>sum <span style="color:#f92672">[]</span>
-</span></span><span style="display:flex;"><span>sum [<span style="color:#ae81ff">3</span>]
-</span></span><span style="display:flex;"><span>sum [<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>]
-</span></span><span style="display:flex;"><span>sum [<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>]
+</span></span><span style="display:flex;"><span>sum [<span style="color:#ae81ff">3</span>] : <span style="color:#ae81ff">3</span>
+</span></span><span style="display:flex;"><span>sum [<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>] : <span style="color:#ae81ff">3</span>
+</span></span><span style="display:flex;"><span>sum [<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>] : <span style="color:#ae81ff">3</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;</span>rest of the stack<span style="color:#f92672">&gt;</span>
 </span></span></code></pre></div></blockquote>
 <blockquote class="book-hint info">
@@ -868,8 +868,8 @@ To solve a problem recursively:</p>
 <li><strong><em>(Base case).</em></strong> If the input $I$ is minimal (e.g. of size 0 or size 1), then solve the problem directly.</li>
 <li><strong><em>(Inductive case).</em></strong> Otherwise:
 <ol>
-<li>Decompose $I$ into one or several <em>smaller</em> input(s) $I_1$, .., $I_k$.</li>
-<li>Solve the problem for $I_1$, .., $I_k$ by performing recursive calls.</li>
+<li>Within $I$, identify one or several candidate <em>smaller</em> input(s) $I_1$, .., $I_k$.</li>
+<li>Solve the problem for each $I_1$, .., $I_k$ by performing recursive calls.</li>
 <li>Use the results(s) of the recursive calls to solve the problem for $I$.</li>
 </ol>
 </li>
@@ -899,7 +899,7 @@ We:
 </ul>
 </blockquote>
 <blockquote class="book-hint info">
-<p>Hint.
+<p><strong><em>Hint.</em></strong>
 When the input $I$ is a list, the <a href="https://unibz-oofp-25-26.github.io/docs/haskell/sections/list/">tail</a> of $I$ is often a good candidate for a recursive call.</p>
 </blockquote>
 <h2 id="correctness">
