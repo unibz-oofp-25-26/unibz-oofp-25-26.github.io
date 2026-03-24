@@ -35,7 +35,7 @@ Haskell does not admit loops, so linear recursion is the standard way to perform
 <link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/recursion/sections/linear/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.e2517c17b5ad254b3fb7cfdb28b659ea7978ceb90ceda26f7e3be0959451ca37.js" integrity="sha256-4lF8F7WtJUs/t8/bKLZZ6nl4zrkM7aJvfjvglZRRyjc=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.46d5bf996781e49f28afafbae96efea73416b2b6ac48cb77aecd3b77c2f940aa.js" integrity="sha256-RtW/mWeB5J8or6&#43;66W7&#43;pzQWsrasSMt3rs07d8L5QKo=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -727,6 +727,19 @@ https://github.com/alex-shpak/hugo-book
           
   <ul>
     
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/ass/sections/ass1/" class="">Assignment 1</a>
+  
+
+        </li>
+      
+    
   </ul>
 
         </li>
@@ -986,19 +999,12 @@ If you want to test your code, you need to give them different names (for instan
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">length</span> <span style="color:#f92672">::</span> [a] <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Int</span>
 </span></span></code></pre></div><p>that maps a list to its length.</p>
 </div>
-<!-- 
 <input type="radio" class="toggle" name="tabs-exercise_rec_length" id="tabs-exercise_rec_length-1"  />
 <label for="tabs-exercise_rec_length-1">Possible solution</label>
-<div class="book-tabs-content markdown-inner"><p>&ndash;&gt;</p>
-<!---->
-<!-- ```haskell -->
-<!-- length :: [a] -> Int -->
-<!-- length [] = 0 -->
-<!-- length (_ : xs) = 1 + length xs -->
-<!-- ``` -->
-<!---->
-<!-- </div>
- -->
+<div class="book-tabs-content markdown-inner"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">length</span> <span style="color:#f92672">::</span> [a] <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Int</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">length</span> <span style="color:#66d9ef">[]</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">length</span> (<span style="color:#66d9ef">_</span> <span style="color:#66d9ef">:</span> xs) <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> length xs
+</span></span></code></pre></div></div>
 </div>
 <div class="book-tabs">
 <input type="radio" class="toggle" name="tabs-exercise_rec_reverse" id="tabs-exercise_rec_reverse-0" checked="checked" />
@@ -1009,19 +1015,12 @@ If you want to test your code, you need to give them different names (for instan
 For instance,
 <code>reverse [2,3,1,3]</code> should evaluates to <code>[3,1,3,2]</code>.</p>
 </div>
-<!-- 
 <input type="radio" class="toggle" name="tabs-exercise_rec_reverse" id="tabs-exercise_rec_reverse-1"  />
 <label for="tabs-exercise_rec_reverse-1">Possible solution</label>
-<div class="book-tabs-content markdown-inner"><p>&ndash;&gt;</p>
-<!---->
-<!-- ```haskell -->
-<!-- reverse :: [a] -> [a] -->
-<!-- reverse [] = [] -->
-<!-- reverse (x : xs) = reverse xs ++ [x] -->
-<!-- ``` -->
-<!---->
-<!-- </div>
- -->
+<div class="book-tabs-content markdown-inner"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">reverse</span> <span style="color:#f92672">::</span> [a] <span style="color:#f92672">-&gt;</span> [a]
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">reverse</span> <span style="color:#66d9ef">[]</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">[]</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">reverse</span> (x <span style="color:#66d9ef">:</span> xs) <span style="color:#f92672">=</span> reverse xs <span style="color:#f92672">++</span> [x]
+</span></span></code></pre></div></div>
 </div>
 <div class="book-tabs">
 <input type="radio" class="toggle" name="tabs-exercise_rec_endsWith" id="tabs-exercise_rec_endsWith-0" checked="checked" />
@@ -1031,23 +1030,16 @@ For instance,
 </span></span></code></pre></div><p>such that
 <code>endsWith x xs</code> is <code>True</code> iff <code>xs</code> ends with <code>x</code>.</p>
 </div>
-<!-- 
 <input type="radio" class="toggle" name="tabs-exercise_rec_endsWith" id="tabs-exercise_rec_endsWith-1"  />
 <label for="tabs-exercise_rec_endsWith-1">Possible solution</label>
-<div class="book-tabs-content markdown-inner"><p>&ndash;&gt;</p>
-<!---->
-<!-- ```haskell -->
-<!-- endsWith :: (Eq a) => a -> [a] -> Bool -->
-<!-- -- empty list -->
-<!-- endsWith _ [] = False -->
-<!-- -- list of size 1 -->
-<!-- endsWith x [y] = x == y -->
-<!-- -- list of size  > 1 -->
-<!-- endsWith x (_ : xs) = endsWith x xs -->
-<!-- ``` -->
-<!---->
-<!-- </div>
- -->
+<div class="book-tabs-content markdown-inner"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">endsWith</span> <span style="color:#f92672">::</span> (<span style="color:#66d9ef">Eq</span> a) <span style="color:#f92672">=&gt;</span> a <span style="color:#f92672">-&gt;</span> [a] <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- empty list</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">endsWith</span> <span style="color:#66d9ef">_</span> <span style="color:#66d9ef">[]</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- list of size 1</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">endsWith</span> x [y] <span style="color:#f92672">=</span> x <span style="color:#f92672">==</span> y
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- list of size  &gt; 1</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">endsWith</span> x (<span style="color:#66d9ef">_</span> <span style="color:#66d9ef">:</span> xs) <span style="color:#f92672">=</span> endsWith x xs
+</span></span></code></pre></div></div>
 </div>
 <div class="book-tabs">
 <input type="radio" class="toggle" name="tabs-exercise_rec_filter_map_any_all" id="tabs-exercise_rec_filter_map_any_all-0" checked="checked" />
@@ -1062,39 +1054,23 @@ For instance,
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">all</span> <span style="color:#f92672">::</span> (a <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span>) <span style="color:#f92672">-&gt;</span> [a] <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span>
 </span></span></code></pre></div><p>that we have <a href="https://unibz-oofp-25-26.github.io/docs/higher/sections/useful_hofs/">seen earlier</a>.</p>
 </div>
-<!-- 
 <input type="radio" class="toggle" name="tabs-exercise_rec_filter_map_any_all" id="tabs-exercise_rec_filter_map_any_all-1"  />
 <label for="tabs-exercise_rec_filter_map_any_all-1">Possible solutions</label>
-<div class="book-tabs-content markdown-inner"><p>&ndash;&gt;</p>
-<!---->
-<!-- ```haskell -->
-<!-- map :: (a -> b) -> [a] -> [b] -->
-<!-- map _ [] = [] -->
-<!-- map f (x: xs) = f x : map f xs -->
-<!-- ``` -->
-<!---->
-<!-- ```haskell -->
-<!-- filter :: (a -> Bool) -> [a] -> [a] -->
-<!-- filter _ [] = [] -->
-<!-- filter f (x : xs) -->
-<!--   | f x = x : filter f xs -->
-<!--   | otherwise = filter f xs -->
-<!-- ``` -->
-<!---->
-<!-- ```haskell -->
-<!-- any :: (a -> Bool) -> [a] -> Bool -->
-<!-- any _ [] = False -->
-<!-- any f (x : xs) = f x || any f xs -->
-<!-- ``` -->
-<!---->
-<!-- ```haskell -->
-<!-- all :: (a -> Bool) -> [a] -> Bool -->
-<!-- all _ [] = True -->
-<!-- all f (x : xs) = f x && all f xs -->
-<!-- ``` -->
-<!---->
-<!-- </div>
- -->
+<div class="book-tabs-content markdown-inner"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">map</span> <span style="color:#f92672">::</span> (a <span style="color:#f92672">-&gt;</span> b) <span style="color:#f92672">-&gt;</span> [a] <span style="color:#f92672">-&gt;</span> [b]
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">map</span> <span style="color:#66d9ef">_</span> <span style="color:#66d9ef">[]</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">[]</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">map</span> f (x<span style="color:#66d9ef">:</span> xs) <span style="color:#f92672">=</span> f x <span style="color:#66d9ef">:</span> map f xs
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">filter</span> <span style="color:#f92672">::</span> (a <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span>) <span style="color:#f92672">-&gt;</span> [a] <span style="color:#f92672">-&gt;</span> [a]
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">filter</span> <span style="color:#66d9ef">_</span> <span style="color:#66d9ef">[]</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">[]</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">filter</span> f (x <span style="color:#66d9ef">:</span> xs)
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">|</span> f x <span style="color:#f92672">=</span> x <span style="color:#66d9ef">:</span> filter f xs
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">|</span> otherwise <span style="color:#f92672">=</span> filter f xs
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">any</span> <span style="color:#f92672">::</span> (a <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span>) <span style="color:#f92672">-&gt;</span> [a] <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">any</span> <span style="color:#66d9ef">_</span> <span style="color:#66d9ef">[]</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">any</span> f (x <span style="color:#66d9ef">:</span> xs) <span style="color:#f92672">=</span> f x <span style="color:#f92672">||</span> any f xs
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">all</span> <span style="color:#f92672">::</span> (a <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span>) <span style="color:#f92672">-&gt;</span> [a] <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">all</span> <span style="color:#66d9ef">_</span> <span style="color:#66d9ef">[]</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">all</span> f (x <span style="color:#66d9ef">:</span> xs) <span style="color:#f92672">=</span> f x <span style="color:#f92672">&amp;&amp;</span> all f xs
+</span></span></code></pre></div></div>
 </div>
 <div class="book-tabs">
 <input type="radio" class="toggle" name="tabs-exercise_rec_zip" id="tabs-exercise_rec_zip-0" checked="checked" />
@@ -1107,20 +1083,13 @@ For instance,</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">zip</span> [<span style="color:#e6db74">&#39;a&#39;</span>,<span style="color:#e6db74">&#39;b&#39;</span>,<span style="color:#e6db74">&#39;c&#39;</span>] [<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>]
 </span></span></code></pre></div><p>should evaluate to <code>[('a',1), ('b',2)]</code>.</p>
 </div>
-<!-- 
 <input type="radio" class="toggle" name="tabs-exercise_rec_zip" id="tabs-exercise_rec_zip-1"  />
 <label for="tabs-exercise_rec_zip-1">Possible solution</label>
-<div class="book-tabs-content markdown-inner"><p>&ndash;&gt;</p>
-<!---->
-<!-- ```haskell -->
-<!-- zip :: [a] -> [b] -> [(a,b)] -->
-<!-- zip _ [] = [] -->
-<!-- zip [] _ = [] -->
-<!-- zip (x : xs) (y : ys) = (x,y) : zip xs ys -->
-<!-- ``` -->
-<!---->
-<!-- </div>
- -->
+<div class="book-tabs-content markdown-inner"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">zip</span> <span style="color:#f92672">::</span> [a] <span style="color:#f92672">-&gt;</span> [b] <span style="color:#f92672">-&gt;</span> [(a,b)]
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">zip</span> <span style="color:#66d9ef">_</span> <span style="color:#66d9ef">[]</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">[]</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">zip</span> <span style="color:#66d9ef">[]</span> <span style="color:#66d9ef">_</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">[]</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">zip</span> (x <span style="color:#66d9ef">:</span> xs) (y <span style="color:#66d9ef">:</span> ys) <span style="color:#f92672">=</span> (x,y) <span style="color:#66d9ef">:</span> zip xs ys
+</span></span></code></pre></div></div>
 </div>
 </article>
  
