@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+<head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="
@@ -11,6 +11,7 @@
   Tail recursion
   #
 
+
 Definition.
 A function/method is tail-recursive if it is:
 
@@ -18,35 +19,36 @@ linear recursive, and
 does not perform any operation after a recursive call.
 
 
-.Example.
+
+Example.
 The following function is tail-recursive
 -- `True` iff the input string ends with an `s`
 endsWithS :: String -&gt; Bool
-endsWithS [] = False
-endsWithS [&#39;s&#39;] = True
-endsWithS (x : xs) = endsWithS xs
+endsWithS [] = False               -- first base case
+endsWithS [&#39;s&#39;] = True             -- second base case
+endsWithS (c : cs) = endsWithS cs  -- inductive case
 
 
-.Example.
-The function sum seen above (and reproduced here is not tail-recursive, becasue the addition (Line 3) is perfomred after termination oif the recursive call.">
+Example.
+The function sum seen earlier (and reproduced here) is not tail-recursive, because the addition (Line 3) is performed after termination of the recursive call.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/docs/recursion/sections/accumulator/">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://unibz-oofp-25-26.github.io/docs/recursion/sections/accumulator/">
   <meta property="og:site_name" content="OOFP 2025-26">
-  <meta property="og:title" content="Accumulator">
+  <meta property="og:title" content="Accumulator and tail recursion">
   <meta property="og:description" content="Accumulator and tail recursion # Tail recursion # Definition. A function/method is tail-recursive if it is:
-linear recursive, and does not perform any operation after a recursive call. .Example. The following function is tail-recursive
--- `True` iff the input string ends with an `s` endsWithS :: String -&gt; Bool endsWithS [] = False endsWithS [&#39;s&#39;] = True endsWithS (x : xs) = endsWithS xs .Example. The function sum seen above (and reproduced here is not tail-recursive, becasue the addition (Line 3) is perfomred after termination oif the recursive call.">
+linear recursive, and does not perform any operation after a recursive call. Example. The following function is tail-recursive
+-- `True` iff the input string ends with an `s` endsWithS :: String -&gt; Bool endsWithS [] = False -- first base case endsWithS [&#39;s&#39;] = True -- second base case endsWithS (c : cs) = endsWithS cs -- inductive case Example. The function sum seen earlier (and reproduced here) is not tail-recursive, because the addition (Line 3) is performed after termination of the recursive call.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
-<title>Accumulator | OOFP 2025-26</title>
+<title>Accumulator and tail recursion | OOFP 2025-26</title>
 <link rel="icon" href="/favicon.png" >
 <link rel="manifest" href="/manifest.json">
-<link rel="canonical" href="http://localhost:1313/docs/recursion/sections/accumulator/">
+<link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/recursion/sections/accumulator/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.5e97edd66535170edcb0fc00330131166c33b6395f362e51a21997679171d3fc.js" integrity="sha256-Xpft1mU1Fw7csPwAMwExFmwztjlfNi5RohmXZ5Fx0/w=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.5e8e42c411d80e6f90d277debf0fd0be9778947297a463f286fc1022fa04bbfb.js" integrity="sha256-Xo5CxBHYDm&#43;Q0nfevw/Qvpd4lHKXpGPyhvwQIvoEu/s=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -623,32 +625,6 @@ https://github.com/alex-shpak/hugo-book
         </li>
       
     
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/generic/sections/generic_type/" class="">Generic type</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/generic/sections/maybe/" class="">Option type</a>
-  
-
-        </li>
-      
-    
   </ul>
 
         </li>
@@ -703,166 +679,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/recursion/sections/accumulator/" class="active">Accumulator</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/recursion/sections/termination/" class="">Termination</a>
-  
-
-        </li>
-      
-    
-  </ul>
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <input type="checkbox" id="section-d92e119f475bae7b2a2364fe0e1fc445" class="toggle"  />
-    <label for="section-d92e119f475bae7b2a2364fe0e1fc445" class="flex justify-between">
-      <a href="/docs/composite/" class="">Composite type</a>
-    </label>
-  
-
-          
-  <ul>
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/composite/sections/enum/" class="">Enumerated type</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/composite/sections/product/" class="">Product type</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/composite/sections/recursive/" class="">Recursive type</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/composite/sections/sum/" class="">Sum type</a>
-  
-
-        </li>
-      
-    
-  </ul>
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <input type="checkbox" id="section-007945605153592d0fc2acb75802d872" class="toggle"  />
-    <label for="section-007945605153592d0fc2acb75802d872" class="flex justify-between">
-      <a href="/docs/pattern/" class="">Functional patterns</a>
-    </label>
-  
-
-          
-  <ul>
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/pattern/sections/fold/" class="">Fold</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/pattern/sections/pipe/" class="">Pipeline</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/pattern/sections/functor/" class="">Functor</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/pattern/sections/monad/" class="">Monad</a>
+    <a href="/docs/recursion/sections/accumulator/" class="active">Accumulator and tail recursion</a>
   
 
         </li>
@@ -989,7 +806,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <h3>Accumulator</h3>
+  <h3>Accumulator and tail recursion</h3>
 
   <label for="toc-control">
     
@@ -1028,24 +845,26 @@ https://github.com/alex-shpak/hugo-book
   Tail recursion
   <a class="anchor" href="#tail-recursion">#</a>
 </h2>
-<p>Definition.
+<blockquote class="book-hint warning">
+<p><strong><em>Definition.</em></strong>
 A function/method is <strong>tail-recursive</strong> if it is:</p>
 <ul>
-<li><a href="">linear recursive</a>, and</li>
+<li><a href="https://unibz-oofp-25-26.github.io/docs/recursion/sections/linear/">linear recursive</a>, and</li>
 <li>does not perform any operation after a recursive call.</li>
 </ul>
+</blockquote>
 <blockquote class="book-hint info">
-<p>.<strong><em>Example.</em></strong>
+<p><strong><em>Example.</em></strong>
 The following function is tail-recursive</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#75715e">-- `True` iff the input string ends with an `s`</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">endsWithS</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">String</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">endsWithS</span> <span style="color:#66d9ef">[]</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">endsWithS</span> [<span style="color:#e6db74">&#39;s&#39;</span>] <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">endsWithS</span> (x <span style="color:#66d9ef">:</span> xs) <span style="color:#f92672">=</span> endsWithS xs
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">endsWithS</span> <span style="color:#66d9ef">[]</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>               <span style="color:#75715e">-- first base case</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">endsWithS</span> [<span style="color:#e6db74">&#39;s&#39;</span>] <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>             <span style="color:#75715e">-- second base case</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">endsWithS</span> (c <span style="color:#66d9ef">:</span> cs) <span style="color:#f92672">=</span> endsWithS cs  <span style="color:#75715e">-- inductive case</span>
 </span></span></code></pre></div></blockquote>
 <blockquote class="book-hint info">
-<p>.<strong><em>Example.</em></strong>
-The function <code>sum</code> seen <a href="">above</a> (and reproduced here is <em>not</em> tail-recursive, becasue the addition (Line 3) is perfomred <em>after</em> termination oif the recursive call.</p>
+<p><strong><em>Example.</em></strong>
+The function <code>sum</code> seen <a href="https://unibz-oofp-25-26.github.io/docs/recursion/sections/linear/">earlier</a> (and reproduced here) is <em>not</em> tail-recursive, because the addition (Line 3) is performed <em>after</em> termination of the recursive call.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">sum</span> <span style="color:#f92672">::</span> [<span style="color:#66d9ef">Int</span>] <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Int</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">sum</span> <span style="color:#66d9ef">[]</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">sum</span> (x <span style="color:#66d9ef">:</span> xs) <span style="color:#f92672">=</span> x <span style="color:#f92672">+</span> sum xs
@@ -1054,8 +873,8 @@ The function <code>sum</code> seen <a href="">above</a> (and reproduced here is 
   Tail recursion elimination (TCE)
   <a class="anchor" href="#tail-recursion-elimination-tce">#</a>
 </h2>
-<p>As we have seen <a href="">above</a>, when the function <code>sum</code> is executed, the call stack accumulates stack frames, one per recursive call.
-Intuitively, if the input list is nonempty, then the function must &ldquo;wait&rdquo; for the recursive call to terminate, before resuming its execution.</p>
+<p>As we have seen <a href="https://unibz-oofp-25-26.github.io/docs/recursion/sections/linear/#execution">earlier</a>, when the function <code>sum</code> is executed, the call stack accumulates stack frames, one per recursive call.
+Intuitively, each function call (except for the last one) must &ldquo;wait&rdquo; for its recursive call to terminate, before resuming its execution.</p>
 <p>This is not needed for a tail-recursive function (like <code>endsWith</code>), since no operation is performed after the recursive call.</p>
 <p>Accordingly, the Haskell compiler
 can optimize the execution of such functions, using a <em>single</em> stack frame (the execution becomes similar to that of a loop).</p>
@@ -1081,9 +900,8 @@ Support for TCE varies across programming languages (or compilers):</p>
   Accumulator
   <a class="anchor" href="#accumulator">#</a>
 </h2>
-<blockquote class="book-hint info">
-<p><strong><em>Hint.</em></strong>
-A linear recursive function/method can always be rewritten into a tail-recursive one, by passing it extra argument(s).</p>
+<blockquote class="book-hint warning">
+<p>A linear recursive function/method can always be rewritten into a tail-recursive one, by passing it extra argument(s) that carry over computations.</p>
 </blockquote>
 <blockquote class="book-hint warning">
 <p><strong><em>Terminology.</em></strong>
@@ -1091,23 +909,28 @@ These extra arguments are called <strong>accumulators</strong>.</p>
 </blockquote>
 <blockquote class="book-hint danger">
 <p><strong><em>Warning.</em></strong>
-Because accumulators are extra input arguments, we need an <em>auxiliary</em> recursive function with a different signature (similarly to what we did above to <a href="">return</a> additional values).</p>
+Because accumulators are extra input arguments, we need an <em>auxiliary</em> recursive function with a different type (similarly to what we did earlier to <a href="https://unibz-oofp-25-26.github.io/docs/recursion/sections/intermediate/">return</a> additional values).</p>
 </blockquote>
 <blockquote class="book-hint info">
-<p><strong><em>Example.</em></strong></p>
-</blockquote>
-<p>The function <code>sum</code> can be turned into a tail recursive function <code>sumT</code>,
-with an accumulator that carries the sum of the values seen so far, as follows:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">sumT</span> <span style="color:#f92672">::</span> [<span style="color:#66d9ef">Int</span>] <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Int</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">sumT</span> xs <span style="color:#f92672">=</span> sumTrec <span style="color:#ae81ff">0</span> xs
+<p><strong><em>Example.</em></strong>
+The function <code>sum</code> can be implemented in a tail-recursive way,
+with an accumulator that carries the sum of the values seen so far:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">sum</span> <span style="color:#f92672">::</span> [<span style="color:#66d9ef">Int</span>] <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Int</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">sum</span> xs <span style="color:#f92672">=</span> sumRec <span style="color:#ae81ff">0</span> xs
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">{-
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  The accumulator `acc` carries the sum of values encountered so far
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  Auxiliary function.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  The accumulator `acc` carries the sum of values encountered so far.
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">-}</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">sumTrec</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Int</span> <span style="color:#f92672">-&gt;</span> [<span style="color:#66d9ef">Int</span>] <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Int</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">sumTRec</span> acc <span style="color:#66d9ef">[]</span> <span style="color:#f92672">=</span> acc <span style="color:#75715e">-- when reaching the end of the list, return the accumulator</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">sumTRec</span> acc (x <span style="color:#66d9ef">:</span> xs) <span style="color:#f92672">=</span> sumTRec (acc <span style="color:#f92672">+</span> x) xs <span style="color:#75715e">-- no operation is performed after the recursive call</span>
-</span></span></code></pre></div></article>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">sumRec</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Int</span> <span style="color:#f92672">-&gt;</span> [<span style="color:#66d9ef">Int</span>] <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Int</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">sumRec</span> acc <span style="color:#66d9ef">[]</span> <span style="color:#f92672">=</span> acc <span style="color:#75715e">-- when reaching the end of the list, return the accumulator</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">sumRec</span> acc (x <span style="color:#66d9ef">:</span> xs) <span style="color:#f92672">=</span> sumRec (acc <span style="color:#f92672">+</span> x) xs <span style="color:#75715e">-- no operation is performed after the recursive call</span>
+</span></span></code></pre></div></blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Hint.</em></strong>
+Some problems are easier to solve with accumulators (instead of <a href="https://unibz-oofp-25-26.github.io/docs/recursion/sections/intermediate/">returning additional values</a>).</p>
+</blockquote>
+</article>
  
       
 

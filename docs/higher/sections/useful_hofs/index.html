@@ -70,7 +70,7 @@ In Haskell # filter # The function filter retains elements of a list that satisf
 <link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/higher/sections/useful_hofs/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.adc1013e85026e2a66b0135c29fa8e24197ba20f8e6ac957fdc63df6b3433cbd.js" integrity="sha256-rcEBPoUCbipmsBNcKfqOJBl7og&#43;OaslX/cY99rNDPL0=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.5e8e42c411d80e6f90d277debf0fd0be9778947297a463f286fc1022fa04bbfb.js" integrity="sha256-Xo5CxBHYDm&#43;Q0nfevw/Qvpd4lHKXpGPyhvwQIvoEu/s=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -694,6 +694,19 @@ https://github.com/alex-shpak/hugo-book
         </li>
       
     
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/recursion/sections/accumulator/" class="">Accumulator and tail recursion</a>
+  
+
+        </li>
+      
+    
   </ul>
 
         </li>
@@ -837,6 +850,7 @@ https://github.com/alex-shpak/hugo-book
         <li><a href="#map"><code>map</code></a></li>
         <li><a href="#all_any"><code>all</code> and <code>any</code></a></li>
         <li><a href="#takeWhile"><code>takeWhile</code></a></li>
+        <li><a href="#fold"><code>foldr</code> and <code>foldl</code></a></li>
         <li><a href="#flip"><code>flip</code></a></li>
       </ul>
     </li>
@@ -1111,9 +1125,9 @@ We will see how these two functions can be implemented in the section on <a href
 </h3>
 <blockquote class="book-hint warning">
 <p>The function <code>takeWhile</code> has the same type has the function <code>filter</code></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">takeWhile</span> <span style="color:#f92672">::</span> (a <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span>) <span style="color:#f92672">-&gt;</span> [a] <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span>
-</span></span></code></pre></div><p>The list <code>takeWhile f xs</code> is the longest prefix of <code>xs</code> such that <code>all f xs</code> evaluates to <code>True</code>.</p>
-<p>We will how it can be implemented in the section on <a href="https://unibz-oofp-25-26.github.io/docs/recursion/sections/linear/#examples">linear recursion</a> (last exercise).</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">takeWhile</span> <span style="color:#f92672">::</span> (a <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span>) <span style="color:#f92672">-&gt;</span> [a] <span style="color:#f92672">-&gt;</span> [a]
+</span></span></code></pre></div><p>The list <code>takeWhile f xs</code> is the longest prefix <code>xs'</code> of <code>xs</code> such that <code>all f xs'</code> evaluates to <code>True</code>.</p>
+<p>We will see how it can be implemented in the section on <a href="https://unibz-oofp-25-26.github.io/docs/recursion/sections/linear/#examples">linear recursion</a> (last exercise).</p>
 </blockquote>
 <blockquote class="book-hint info">
 <p><strong><em>Examples.</em></strong></p>
@@ -1122,6 +1136,126 @@ We will see how these two functions can be implemented in the section on <a href
 <li><code>takewhile even [1,3]</code> evaluates to <code>[]</code></li>
 <li><code>takewhile even [4,6,2]</code> evaluates to <code>[4,6,2]</code></li>
 <li><code>takewhile even []</code> evaluates to <code>[]</code></li>
+</ul>
+</blockquote>
+<h3 id="fold">
+  <code>foldr</code> and <code>foldl</code>
+  <a class="anchor" href="#fold">#</a>
+</h3>
+<h4 id="foldr">
+  <code>foldr</code>
+  <a class="anchor" href="#foldr">#</a>
+</h4>
+<blockquote class="book-hint warning">
+<p>The function <code>foldr</code> aggregates the elements of a list.</p>
+<p>Intuitively, <code>foldr f z xs</code>:</p>
+<ul>
+<li>aggregates the list <code>xs</code> with the aggregation function <code>f</code>, where</li>
+<li><code>z</code> is the default aggregation value (for the empty list).</li>
+</ul>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong>
+<code>foldr (+) 0 [1,2,3]</code> evaluates to <code>6</code>.<br>
+In this example:</p>
+<ul>
+<li>the aggregation function is <code>+</code>, and</li>
+<li>the default value is <code>0</code>.</li>
+</ul>
+</blockquote>
+<blockquote class="book-hint warning">
+<p><strong><em>Definition.</em></strong>
+<code>foldr</code> can be defined <a href="https://unibz-oofp-25-26.github.io/docs/recursion/sections/linear/">recursively</a> as:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">foldr</span> <span style="color:#f92672">::</span> (a <span style="color:#f92672">-&gt;</span> b <span style="color:#f92672">-&gt;</span> b) <span style="color:#f92672">-&gt;</span> b <span style="color:#f92672">-&gt;</span> [a] <span style="color:#f92672">-&gt;</span> b
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">foldr</span> <span style="color:#66d9ef">_</span> z <span style="color:#66d9ef">[]</span> <span style="color:#f92672">=</span> z
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">foldr</span> f z (x <span style="color:#66d9ef">:</span> xs) <span style="color:#f92672">=</span> f x (foldr f z xs)
+</span></span></code></pre></div></blockquote>
+<blockquote class="book-hint warning">
+<p><strong><em>Terminology.</em></strong>
+<code>foldr</code> (and its equivalent in other programming languages) is sometimes called a <strong>right‑associative</strong> fold,
+because it intuitively aggregates <em>from right to left</em>.</p>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Examples.</em></strong></p>
+<ul>
+<li><code>foldr (+) 0 [1,2,3]</code> evaluates to <code>1 + (2 + (3 + 0)) = 6</code></li>
+<li><code>foldr (*) 1 [2,3,4]</code> evaluates to <code>2 * (3  * (4 * 1)) = 24</code></li>
+<li><code>foldr (&amp;&amp;) True [True,False]</code> evaluates to <code>True &amp;&amp; (False &amp;&amp; True)) = False</code></li>
+<li><code>foldr (-) 0 [1,2,3]</code> evaluates to <code>1 - (2 - (3 - 0)) = 2</code></li>
+</ul>
+</blockquote>
+<div class="book-tabs">
+<input type="radio" class="toggle" name="tabs-exercise_fold_or" id="tabs-exercise_fold_or-0" checked="checked" />
+<label for="tabs-exercise_fold_or-0">Exercise</label>
+<div class="book-tabs-content markdown-inner"><p>Consider the two functions below:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">or</span> <span style="color:#f92672">::</span> [<span style="color:#66d9ef">Bool</span>] <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">or</span> <span style="color:#f92672">=</span> foldr (<span style="color:#f92672">||</span>) <span style="color:#66d9ef">False</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">myFunction</span> <span style="color:#f92672">::</span> (a <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span>) <span style="color:#f92672">-&gt;</span> [a] <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">myFunction</span> f <span style="color:#f92672">=</span> or <span style="color:#f92672">.</span> (map f)
+</span></span></code></pre></div><ol>
+<li>Evaluate the following expressions:</li>
+</ol>
+<ul>
+<li><code>myFunction (\x -&gt; x &gt; 2) [-2,0,2]</code></li>
+<li><code>myFunction (\x -&gt; x &gt; 2) [3,0,2]</code></li>
+<li><code>myFunction (\x -&gt; x /= 5) [3,0]</code></li>
+<li><code>myFunction (\x -&gt; x /= 5) [5]</code></li>
+<li><code>myFunction (\x -&gt; x /= 5) []</code></li>
+</ul>
+<p>What does the function <code>myFunction</code> do?</p>
+</div>
+<input type="radio" class="toggle" name="tabs-exercise_fold_or" id="tabs-exercise_fold_or-1"  />
+<label for="tabs-exercise_fold_or-1">Solution</label>
+<div class="book-tabs-content markdown-inner"><ol>
+<li></li>
+</ol>
+<ul>
+<li><code>myFunction (\x -&gt; x &gt; 2) [-2,0,2]</code> evaluates to <code>False</code></li>
+<li><code>myFunction (\x -&gt; x &gt; 2) [3,0,2]</code> evaluates to <code>True</code></li>
+<li><code>myFunction (\x -&gt; x /= 5) [3,0]</code> evaluates to <code>True</code></li>
+<li><code>myFunction (\x -&gt; x /= 5) [5]</code> evaluates to <code>True</code></li>
+<li><code>myFunction (\x -&gt; x /= 5) []</code> evaluates to <code>False</code></li>
+</ul>
+<ol start="2">
+<li>This function is equivalent to the function <code>any</code> that we have seen <a href="">already</a>.</li>
+</ol>
+</div>
+</div>
+<h4 id="foldl">
+  <code>foldl</code>
+  <a class="anchor" href="#foldl">#</a>
+</h4>
+<blockquote class="book-hint warning">
+<p>The function
+<code>foldl</code>
+is the <em>left-associative</em> fold.</p>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong>
+<code>foldl (+) 0 [1,2,3]</code> evaluates to <code>((0 + 1) + 2) + 3 = 6</code></p>
+</blockquote>
+<blockquote class="book-hint warning">
+<p><strong><em>Definition.</em></strong>
+<code>foldr</code> is defined as follows:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">foldl</span> <span style="color:#f92672">::</span> (b <span style="color:#f92672">-&gt;</span> a <span style="color:#f92672">-&gt;</span> b) <span style="color:#f92672">-&gt;</span> b <span style="color:#f92672">-&gt;</span> [a] <span style="color:#f92672">-&gt;</span> b
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">foldl</span> f z <span style="color:#66d9ef">[]</span>     <span style="color:#f92672">=</span> z
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">foldl</span> f z (x <span style="color:#66d9ef">:</span> xs) <span style="color:#f92672">=</span> foldl f (f z x) xs
+</span></span></code></pre></div></blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Note.</em></strong>
+Observe that <code>foldl</code> is <a href="https://unibz-oofp-25-26.github.io/docs/recursion/sections/accumulator/">tail recursive</a>, whereas <code>foldr</code> is not.</p>
+</blockquote>
+<blockquote class="book-hint danger">
+<p><strong><em>Warning.</em></strong>
+<code>foldr f</code> and <code>foldl f</code> may differ,
+for the same aggregation function <code>f</code>.</p>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong></p>
+<ul>
+<li><code>foldr (-) 0 [1,2,3]</code> evaluates to <code>1 - (2 - (3 - 0)) = 2</code></li>
+<li><code>foldl (-) 0 [1,2,3]</code> evaluates to <code>((0 - 1) - 2) - 3  = - 6</code></li>
 </ul>
 </blockquote>
 <h3 id="flip">
@@ -1188,6 +1322,7 @@ We will see how these two functions can be implemented in the section on <a href
         <li><a href="#map"><code>map</code></a></li>
         <li><a href="#all_any"><code>all</code> and <code>any</code></a></li>
         <li><a href="#takeWhile"><code>takeWhile</code></a></li>
+        <li><a href="#fold"><code>foldr</code> and <code>foldl</code></a></li>
         <li><a href="#flip"><code>flip</code></a></li>
       </ul>
     </li>
