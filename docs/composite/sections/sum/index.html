@@ -50,7 +50,7 @@ Point is a product type, and Shape is a sum type. -- a point in the Euclidean pl
 <link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/composite/sections/sum/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.5839983e556aa3e612d093eff4ce66370a09e25e3b49b5dc2306dd472b5d7d84.js" integrity="sha256-WDmYPlVqo&#43;YS0JPv9M5mNwoJ4l47SbXcIwbdRytdfYQ=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.f9759a7143268e8a991ed60e12ce0fbdf48f24bfdbd0dd2ad6f212db93a7cda7.js" integrity="sha256-&#43;XWacUMmjoqZHtYOEs4PvfSPJL/b0N0q1vIS25Onzac=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -627,6 +627,32 @@ https://github.com/alex-shpak/hugo-book
         </li>
       
     
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/generic/sections/generic_type/" class="">Generic type</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/generic/sections/maybe/" class="">Option type</a>
+  
+
+        </li>
+      
+    
   </ul>
 
         </li>
@@ -887,7 +913,7 @@ https://github.com/alex-shpak/hugo-book
     <li><a href="#in-haskell">in Haskell</a>
       <ul>
         <li><a href="#pattern-matching">Pattern matching</a></li>
-        <li><a href="#recursive-type">Recursive type</a></li>
+        <li><a href="#recusrive">Recursive type</a></li>
       </ul>
     </li>
   </ul>
@@ -954,9 +980,9 @@ Let us define a function <code>perimeter</code> that maps a <code>Shape</code> t
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">perimeter</span> (<span style="color:#66d9ef">TriangleC</span> p1 p2 p3) <span style="color:#f92672">=</span> distance p1 p2 <span style="color:#f92672">+</span> distance p2 p3 <span style="color:#f92672">+</span> distance p1 p3
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">perimeter</span> (<span style="color:#66d9ef">RectangleC</span> p1 p2 p3 p4) <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> (distance p1 p2 <span style="color:#f92672">+</span> distance p2 p3)
 </span></span></code></pre></div></blockquote>
-<h3 id="recursive-type">
+<h3 id="recusrive">
   Recursive type
-  <a class="anchor" href="#recursive-type">#</a>
+  <a class="anchor" href="#recusrive">#</a>
 </h3>
 <p>A type can appear in its own definition.</p>
 <blockquote class="book-hint info">
@@ -1019,7 +1045,7 @@ Recursive types are the standard way to define trees (and several other recursiv
     <li><a href="#in-haskell">in Haskell</a>
       <ul>
         <li><a href="#pattern-matching">Pattern matching</a></li>
-        <li><a href="#recursive-type">Recursive type</a></li>
+        <li><a href="#recusrive">Recursive type</a></li>
       </ul>
     </li>
   </ul>
