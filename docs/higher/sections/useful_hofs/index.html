@@ -70,7 +70,7 @@ In Haskell # filter # The function filter retains elements of a list that satisf
 <link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/higher/sections/useful_hofs/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.5e8e42c411d80e6f90d277debf0fd0be9778947297a463f286fc1022fa04bbfb.js" integrity="sha256-Xo5CxBHYDm&#43;Q0nfevw/Qvpd4lHKXpGPyhvwQIvoEu/s=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.5839983e556aa3e612d093eff4ce66370a09e25e3b49b5dc2306dd472b5d7d84.js" integrity="sha256-WDmYPlVqo&#43;YS0JPv9M5mNwoJ4l47SbXcIwbdRytdfYQ=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -719,6 +719,66 @@ https://github.com/alex-shpak/hugo-book
   
 
   
+    <input type="checkbox" id="section-d92e119f475bae7b2a2364fe0e1fc445" class="toggle"  />
+    <label for="section-d92e119f475bae7b2a2364fe0e1fc445" class="flex justify-between">
+      <a href="/docs/composite/" class="">Composite type</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/composite/sections/enum/" class="">Enumerated type</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/composite/sections/product/" class="">Product type</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/composite/sections/sum/" class="">Sum type</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
     <input type="checkbox" id="section-d689bb2436bd0f51b31e8f95cf070b59" class="toggle"  />
     <label for="section-d689bb2436bd0f51b31e8f95cf070b59" class="flex justify-between">
       <a href="/docs/background/" class="">Background</a>
@@ -1205,22 +1265,22 @@ because it intuitively aggregates <em>from right to left</em>.</p>
 </ul>
 <p>What does the function <code>myFunction</code> do?</p>
 </div>
+<!-- 
 <input type="radio" class="toggle" name="tabs-exercise_fold_or" id="tabs-exercise_fold_or-1"  />
 <label for="tabs-exercise_fold_or-1">Solution</label>
-<div class="book-tabs-content markdown-inner"><ol>
-<li></li>
-</ol>
-<ul>
-<li><code>myFunction (\x -&gt; x &gt; 2) [-2,0,2]</code> evaluates to <code>False</code></li>
-<li><code>myFunction (\x -&gt; x &gt; 2) [3,0,2]</code> evaluates to <code>True</code></li>
-<li><code>myFunction (\x -&gt; x /= 5) [3,0]</code> evaluates to <code>True</code></li>
-<li><code>myFunction (\x -&gt; x /= 5) [5]</code> evaluates to <code>True</code></li>
-<li><code>myFunction (\x -&gt; x /= 5) []</code> evaluates to <code>False</code></li>
-</ul>
-<ol start="2">
-<li>This function is equivalent to the function <code>any</code> that we have seen <a href="">already</a>.</li>
-</ol>
-</div>
+<div class="book-tabs-content markdown-inner"><p>&ndash;&gt;</p>
+<!---->
+<!-- 1. -->
+<!---->
+<!-- - `myFunction (\x -> x > 2) [-2,0,2]` evaluates to `False` -->
+<!-- - `myFunction (\x -> x > 2) [3,0,2]` evaluates to `True` -->
+<!-- - `myFunction (\x -> x /= 5) [3,0]` evaluates to `True` -->
+<!-- - `myFunction (\x -> x /= 5) [5]` evaluates to `True` -->
+<!-- - `myFunction (\x -> x /= 5) []` evaluates to `False` -->
+<!---->
+<!-- 2. This function is equivalent to the function `any` that we have seen [already](). -->
+<!--    </div>
+ -->
 </div>
 <h4 id="foldl">
   <code>foldl</code>

@@ -52,8 +52,6 @@
   </url><url>
     <loc>https://unibz-oofp-25-26.github.io/docs/intro/sections/reading_path/</loc>
   </url><url>
-    <loc>https://unibz-oofp-25-26.github.io/docs/composite/sections/recursive/</loc>
-  </url><url>
     <loc>https://unibz-oofp-25-26.github.io/docs/composite/sections/sum/</loc>
   </url><url>
     <loc>https://unibz-oofp-25-26.github.io/docs/paradigm/sections/type/</loc>
@@ -97,6 +95,8 @@
     <loc>https://unibz-oofp-25-26.github.io/docs/control/sections/stack/</loc>
   </url><url>
     <loc>https://unibz-oofp-25-26.github.io/docs/intro/sections/resources/</loc>
+  </url><url>
+    <loc>https://unibz-oofp-25-26.github.io/docs/composite/</loc>
   </url><url>
     <loc>https://unibz-oofp-25-26.github.io/docs/haskell/sections/list/</loc>
   </url><url>

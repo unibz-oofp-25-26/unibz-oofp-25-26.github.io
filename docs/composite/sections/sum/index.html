@@ -15,7 +15,7 @@ A sum type represents several alternative types.
 
 Syntax.
 A sum type in Haskell is declared as
-data &lt;sum type name&gt; = &lt;first type definition&gt; | ... | &lt;last type definition&gt;
+data &lt;sum type name&gt; = &lt;type definition n&gt; | ... | &lt;type definition n&gt;
 
 
 Example.
@@ -25,14 +25,13 @@ Point is a product type, and
 Shape is a sum type.
 
 -- a point in the Euclidean plane, represented by its coordinates
-data Point = Point Double Double
+data Point = PointC Float Float
 
 -- a shape, defined as either a triangle or a rectangle
-data Shape = Triangle Point Point Point | Rectangle Point Point Point Point
+data Shape = TriangleC Point Point Point | RectangleC Point Point Point Point
 
 
-Note.
-in Haskell, an enumerated type is a sum type.">
+Syntax. Observe that in this example, the type Shape has two alternative constructors (TriangleC and RectangleC).">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="https://unibz-oofp-25-26.github.io/docs/composite/sections/sum/">
@@ -40,8 +39,8 @@ in Haskell, an enumerated type is a sum type.">
   <meta property="og:title" content="Sum type">
   <meta property="og:description" content="Sum type # A sum type represents several alternative types.
 in Haskell # Syntax. A sum type in Haskell is declared as
-data &lt;sum type name&gt; = &lt;first type definition&gt; | ... | &lt;last type definition&gt; Example. In the following declarations:
-Point is a product type, and Shape is a sum type. -- a point in the Euclidean plane, represented by its coordinates data Point = Point Double Double -- a shape, defined as either a triangle or a rectangle data Shape = Triangle Point Point Point | Rectangle Point Point Point Point Note. in Haskell, an enumerated type is a sum type.">
+data &lt;sum type name&gt; = &lt;type definition n&gt; | ... | &lt;type definition n&gt; Example. In the following declarations:
+Point is a product type, and Shape is a sum type. -- a point in the Euclidean plane, represented by its coordinates data Point = PointC Float Float -- a shape, defined as either a triangle or a rectangle data Shape = TriangleC Point Point Point | RectangleC Point Point Point Point Syntax. Observe that in this example, the type Shape has two alternative constructors (TriangleC and RectangleC).">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
@@ -51,7 +50,7 @@ Point is a product type, and Shape is a sum type. -- a point in the Euclidean pl
 <link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/composite/sections/sum/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.5e8e42c411d80e6f90d277debf0fd0be9778947297a463f286fc1022fa04bbfb.js" integrity="sha256-Xo5CxBHYDm&#43;Q0nfevw/Qvpd4lHKXpGPyhvwQIvoEu/s=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.5839983e556aa3e612d093eff4ce66370a09e25e3b49b5dc2306dd472b5d7d84.js" integrity="sha256-WDmYPlVqo&#43;YS0JPv9M5mNwoJ4l47SbXcIwbdRytdfYQ=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -700,6 +699,66 @@ https://github.com/alex-shpak/hugo-book
   
 
   
+    <input type="checkbox" id="section-d92e119f475bae7b2a2364fe0e1fc445" class="toggle" checked />
+    <label for="section-d92e119f475bae7b2a2364fe0e1fc445" class="flex justify-between">
+      <a href="/docs/composite/" class="">Composite type</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/composite/sections/enum/" class="">Enumerated type</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/composite/sections/product/" class="">Product type</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/composite/sections/sum/" class="active">Sum type</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
     <input type="checkbox" id="section-d689bb2436bd0f51b31e8f95cf070b59" class="toggle"  />
     <label for="section-d689bb2436bd0f51b31e8f95cf070b59" class="flex justify-between">
       <a href="/docs/background/" class="">Background</a>
@@ -828,6 +887,7 @@ https://github.com/alex-shpak/hugo-book
     <li><a href="#in-haskell">in Haskell</a>
       <ul>
         <li><a href="#pattern-matching">Pattern matching</a></li>
+        <li><a href="#recursive-type">Recursive type</a></li>
       </ul>
     </li>
   </ul>
@@ -846,7 +906,7 @@ https://github.com/alex-shpak/hugo-book
   Sum type
   <a class="anchor" href="#sum-type">#</a>
 </h1>
-<p>A sum type represents several alternative types.</p>
+<p>A sum type represents several <em>alternative</em> types.</p>
 <h2 id="in-haskell">
   in Haskell
   <a class="anchor" href="#in-haskell">#</a>
@@ -854,48 +914,66 @@ https://github.com/alex-shpak/hugo-book
 <blockquote class="book-hint warning">
 <p><strong><em>Syntax.</em></strong>
 A sum type in Haskell is declared as</p>
-<pre tabindex="0"><code>data &lt;sum type name&gt; = &lt;first type definition&gt; | ... | &lt;last type definition&gt;
+<pre tabindex="0"><code>data &lt;sum type name&gt; = &lt;type definition n&gt; | ... | &lt;type definition n&gt;
 </code></pre></blockquote>
 <blockquote class="book-hint info">
 <p><strong><em>Example.</em></strong>
 In the following declarations:</p>
 <ul>
-<li><code>Point</code> is a <a href="">product type</a>, and</li>
+<li><code>Point</code> is a <a href="https://unibz-oofp-25-26.github.io/docs/composite/sections/product/">product type</a>, and</li>
 <li><code>Shape</code> is a sum type.</li>
 </ul>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#75715e">-- a point in the Euclidean plane, represented by its coordinates</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">data</span> <span style="color:#66d9ef">Point</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">Point</span> <span style="color:#66d9ef">Double</span> <span style="color:#66d9ef">Double</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">data</span> <span style="color:#66d9ef">Point</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">PointC</span> <span style="color:#66d9ef">Float</span> <span style="color:#66d9ef">Float</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">-- a shape, defined as either a triangle or a rectangle</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">data</span> <span style="color:#66d9ef">Shape</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">Triangle</span> <span style="color:#66d9ef">Point</span> <span style="color:#66d9ef">Point</span> <span style="color:#66d9ef">Point</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">Rectangle</span> <span style="color:#66d9ef">Point</span> <span style="color:#66d9ef">Point</span> <span style="color:#66d9ef">Point</span> <span style="color:#66d9ef">Point</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">data</span> <span style="color:#66d9ef">Shape</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">TriangleC</span> <span style="color:#66d9ef">Point</span> <span style="color:#66d9ef">Point</span> <span style="color:#66d9ef">Point</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">RectangleC</span> <span style="color:#66d9ef">Point</span> <span style="color:#66d9ef">Point</span> <span style="color:#66d9ef">Point</span> <span style="color:#66d9ef">Point</span>
 </span></span></code></pre></div></blockquote>
+<blockquote class="book-hint warning">
+<p><strong><em>Syntax.</em></strong> Observe that in this example, the type <code>Shape</code> has two alternative constructors (<code>TriangleC</code> and <code>RectangleC</code>).</p>
+</blockquote>
 <blockquote class="book-hint info">
 <p><strong><em>Note.</em></strong>
-in Haskell, an <a href="">enumerated type</a> is a sum type.</p>
-<p>More precisely, the alternative &ldquo;values&rdquo; of an enumerated type are nullary (a.k.a. 0-ary) constructors, i.e. constructors with no argument.</p>
+in Haskell, an <a href="https://unibz-oofp-25-26.github.io/docs/composite/sections/enum/">enumerated type</a> is a sum type.</p>
+<p>Precisely, the alternative &ldquo;values&rdquo; of an enumerated type are <em>nullary</em> constructors (i.e. constructors with no argument).</p>
 </blockquote>
 <h3 id="pattern-matching">
   Pattern matching
   <a class="anchor" href="#pattern-matching">#</a>
 </h3>
-<p>Just like an enumerated type,
-a sum type provides alternative <a href="">patterns</a>.</p>
+<p>Like an <a href="https://unibz-oofp-25-26.github.io/docs/composite/sections/enum/">enumerated type</a>,
+a sum type lets us use alternative <a href="https://unibz-oofp-25-26.github.io/docs/control/sections/pattern/">patterns</a>.</p>
 <blockquote class="book-hint info">
 <p><strong><em>Example (continued).</em></strong>
 Let us define a function <code>perimeter</code> that maps a <code>Shape</code> to its perimeter.</p>
-<p>First, we define an auxiliary function <code>distance</code> (in <a href="">curried form</a>) that maps two points to their distance:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">distance</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Point</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Point</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Double</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">distance</span> (<span style="color:#66d9ef">Point</span> x1 y1) (<span style="color:#66d9ef">Point</span> x2 y2) <span style="color:#f92672">=</span> sqrt ( (x2 <span style="color:#f92672">-</span> x1) <span style="color:#f92672">^</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">+</span> (y2 <span style="color:#f92672">-</span> y1) <span style="color:#f92672">^</span> <span style="color:#ae81ff">2</span> )
-</span></span></code></pre></div><p>In this definition, observe the usage of the <a href="">constructor</a> <code>Point</code> to create the two patterns <code>Point x1 y1</code> and <code>Point x2 y2</code>.</p>
-<p>We can now define our main function:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">perimeter</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Shape</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Double</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">perimeter</span> <span style="color:#66d9ef">Triangle</span> p1 p2 p3 <span style="color:#f92672">=</span> distance p1 p2 <span style="color:#f92672">+</span> distance p2 p3 <span style="color:#f92672">+</span> distance p1 p3
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">perimeter</span> <span style="color:#66d9ef">Rectangle</span> p1 p2 p3 p4 <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> (distance p1 p2 <span style="color:#f92672">+</span> distance p2 p3)
-</span></span></code></pre></div><p>Here we created one pattern out of each alternative definition of the sum type <code>Shape</code>:</p>
-<ul>
-<li>the pattern <code>Triangle p1 p2 p3</code>, and</li>
-<li>the pattern <code>Rectangle p1 p2 p3 p4</code>.</li>
-</ul>
+<p>First, we define an auxiliary function <code>distance</code> that maps two points to their distance:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">distance</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Point</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Point</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Float</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">distance</span> (<span style="color:#66d9ef">PointC</span> x1 y1) (<span style="color:#66d9ef">PointC</span> x2 y2) <span style="color:#f92672">=</span> sqrt ( (x2 <span style="color:#f92672">-</span> x1) <span style="color:#f92672">^</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">+</span> (y2 <span style="color:#f92672">-</span> y1) <span style="color:#f92672">^</span> <span style="color:#ae81ff">2</span> )
+</span></span></code></pre></div><p>We can now define our main function:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">perimeter</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Shape</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Float</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">perimeter</span> (<span style="color:#66d9ef">TriangleC</span> p1 p2 p3) <span style="color:#f92672">=</span> distance p1 p2 <span style="color:#f92672">+</span> distance p2 p3 <span style="color:#f92672">+</span> distance p1 p3
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">perimeter</span> (<span style="color:#66d9ef">RectangleC</span> p1 p2 p3 p4) <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> (distance p1 p2 <span style="color:#f92672">+</span> distance p2 p3)
+</span></span></code></pre></div></blockquote>
+<h3 id="recursive-type">
+  Recursive type
+  <a class="anchor" href="#recursive-type">#</a>
+</h3>
+<p>A type can appear in its own definition.</p>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong>
+The following type is equivalent to the type <code>[Int]</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#66d9ef">data</span> <span style="color:#66d9ef">IntList</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">Nil</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">Cons</span> <span style="color:#66d9ef">Int</span> <span style="color:#66d9ef">IntList</span>
+</span></span></code></pre></div><p>where <code>Nil</code> stands for the empty list, and <code>Cons</code> stands for <code>:</code>.</p>
+<p>We can rewrite our recursive function <a href="https://unibz-oofp-25-26.github.io/docs/recursion/sections/linear/"><code>sum</code></a> accordingly:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#66d9ef">data</span> <span style="color:#66d9ef">IntList</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">Nil</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">Cons</span> <span style="color:#66d9ef">Int</span> <span style="color:#66d9ef">IntList</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">sum</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">IntList</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Int</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">sum</span> <span style="color:#66d9ef">Nil</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>                    <span style="color:#75715e">-- base case</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">sum</span> (<span style="color:#66d9ef">Cons</span> x xs) <span style="color:#f92672">=</span> x <span style="color:#f92672">+</span> sum xs   <span style="color:#75715e">-- inductive case</span>
+</span></span></code></pre></div></blockquote>
+<blockquote class="book-hint warning">
+<p><strong><em>To go further.</em></strong>
+Recursive types are the standard way to define trees (and several other recursive structures) in Haskell.</p>
+<p>Due to limited time, we will not study trees (or more generally, n-ary recursion) in Haskell, but in Java instead.</p>
 </blockquote>
 </article>
  
@@ -941,6 +1019,7 @@ Let us define a function <code>perimeter</code> that maps a <code>Shape</code> t
     <li><a href="#in-haskell">in Haskell</a>
       <ul>
         <li><a href="#pattern-matching">Pattern matching</a></li>
+        <li><a href="#recursive-type">Recursive type</a></li>
       </ul>
     </li>
   </ul>

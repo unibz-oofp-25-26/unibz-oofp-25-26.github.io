@@ -8,28 +8,21 @@
   #
 
 An enumerated type is a finite set of alternative values.
-This is a more readable alternative to so-called &ldquo;magic numbers&rdquo;.
+
 
 Example.
-A traffic light can have three colors: green, yellow and red.
-We could model this with a &ldquo;magic number&rdquo;.
-For instance, a variable x with type integer, where:
-
-x &lt; 0 means green,
-x == 0 means yellow,
-x &gt; 0 means red.
-
-Instead, we can declare an enumerated type (for instance named Light) with 3 possible values (Green, Yellow and Red), and use a variable of this type.
-Then instead of">
+A playing card can have one of four suits: Clubs, Diamonds, Hearts or Spades.
+In the first assignment, we modeled these values as four characters &#39;C&#39;, &#39;D&#39;, &#39;H&#39; or &#39;S&#39;.
+This solution is unsatisfying, because the type Char allows other letters.
+Instead, we could declare an enumerated type (for instance named Suit) with 4 possible values (Clubs, Diamonds, Hearts and Spades).">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="https://unibz-oofp-25-26.github.io/docs/composite/sections/enum/">
   <meta property="og:site_name" content="OOFP 2025-26">
   <meta property="og:title" content="Enumerated type">
-  <meta property="og:description" content="Enumerated type # An enumerated type is a finite set of alternative values. This is a more readable alternative to so-called “magic numbers”.
-Example. A traffic light can have three colors: green, yellow and red.
-We could model this with a “magic number”. For instance, a variable x with type integer, where:
-x &lt; 0 means green, x == 0 means yellow, x &gt; 0 means red. Instead, we can declare an enumerated type (for instance named Light) with 3 possible values (Green, Yellow and Red), and use a variable of this type. Then instead of">
+  <meta property="og:description" content="Enumerated type # An enumerated type is a finite set of alternative values.
+Example. A playing card can have one of four suits: Clubs, Diamonds, Hearts or Spades.
+In the first assignment, we modeled these values as four characters &#39;C&#39;, &#39;D&#39;, &#39;H&#39; or &#39;S&#39;. This solution is unsatisfying, because the type Char allows other letters. Instead, we could declare an enumerated type (for instance named Suit) with 4 possible values (Clubs, Diamonds, Hearts and Spades).">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
@@ -39,7 +32,7 @@ x &lt; 0 means green, x == 0 means yellow, x &gt; 0 means red. Instead, we can d
 <link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/composite/sections/enum/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.5e8e42c411d80e6f90d277debf0fd0be9778947297a463f286fc1022fa04bbfb.js" integrity="sha256-Xo5CxBHYDm&#43;Q0nfevw/Qvpd4lHKXpGPyhvwQIvoEu/s=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.5839983e556aa3e612d093eff4ce66370a09e25e3b49b5dc2306dd472b5d7d84.js" integrity="sha256-WDmYPlVqo&#43;YS0JPv9M5mNwoJ4l47SbXcIwbdRytdfYQ=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -688,6 +681,66 @@ https://github.com/alex-shpak/hugo-book
   
 
   
+    <input type="checkbox" id="section-d92e119f475bae7b2a2364fe0e1fc445" class="toggle" checked />
+    <label for="section-d92e119f475bae7b2a2364fe0e1fc445" class="flex justify-between">
+      <a href="/docs/composite/" class="">Composite type</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/composite/sections/enum/" class="active">Enumerated type</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/composite/sections/product/" class="">Product type</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/composite/sections/sum/" class="">Sum type</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
     <input type="checkbox" id="section-d689bb2436bd0f51b31e8f95cf070b59" class="toggle"  />
     <label for="section-d689bb2436bd0f51b31e8f95cf070b59" class="flex justify-between">
       <a href="/docs/background/" class="">Background</a>
@@ -830,24 +883,14 @@ https://github.com/alex-shpak/hugo-book
   Enumerated type
   <a class="anchor" href="#enumerated-type">#</a>
 </h1>
-<p>An enumerated type is a finite set of alternative values.
-This is a more readable alternative to so-called &ldquo;magic numbers&rdquo;.</p>
+<p>An enumerated type is a finite set of alternative values.</p>
+<!-- This is a more readable alternative to so-called "magic numbers", -->
 <blockquote class="book-hint info">
 <p><strong><em>Example.</em></strong>
-A traffic light can have three colors: green, yellow and red.</p>
-<p>We could model this with a &ldquo;magic number&rdquo;.
-For instance, a variable <code>x</code> with type integer, where:</p>
-<ul>
-<li><code>x &lt; 0</code> means green,</li>
-<li><code>x == 0</code> means yellow,</li>
-<li><code>x &gt; 0</code> means red.</li>
-</ul>
-<p>Instead, we can declare an enumerated type (for instance named <code>Light</code>) with 3 possible values (<code>Green</code>, <code>Yellow</code> and <code>Red</code>), and use a variable of this type.
-Then instead of</p>
-<p><code>x &lt; 0</code>,</p>
-<p>we can write</p>
-<p><code>x ==  Red</code>,</p>
-<p>which is more readable.</p>
+A playing card can have one of four suits: Clubs, Diamonds, Hearts or Spades.</p>
+<p>In the <a href="https://unibz-oofp-25-26.github.io/docs/ass/sections/ass1/">first assignment</a>, we modeled these values as four characters <code>'C'</code>, <code>'D'</code>, <code>'H'</code> or <code>'S'</code>.
+This solution is unsatisfying, because the type <code>Char</code> allows other letters.
+Instead, we could declare an enumerated type (for instance named <code>Suit</code>) with 4 possible values (<code>Clubs</code>, <code>Diamonds</code>, <code>Hearts</code> and <code>Spades</code>).</p>
 </blockquote>
 <h2 id="in-haskell">
   In Haskell
@@ -856,61 +899,57 @@ Then instead of</p>
 <blockquote class="book-hint warning">
 <p><strong><em>Syntax.</em></strong>
 An enumerated type in Haskell can be written</p>
-<pre tabindex="0"><code>data &lt;enumerated type name&gt; = &lt;first value &gt; | ... | &lt;last value&gt;
+<pre tabindex="0"><code>data &lt;enumerated type name&gt; = &lt;value 1&gt; | ... | &lt;value n&gt;
 </code></pre><p>where:</p>
 <ul>
-<li>the type name and the values start with a capital letter, and</li>
+<li>the type name and the values start with a <em>capital letter</em>, and</li>
 <li>values are distinct.</li>
 </ul>
 </blockquote>
 <blockquote class="book-hint info">
 <p><strong><em>Example.</em></strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#66d9ef">data</span> <span style="color:#66d9ef">Light</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">Green</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">Yellow</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">Red</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#66d9ef">data</span> <span style="color:#66d9ef">Suit</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">Clubs</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">Diamonds</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">Hearts</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">Spades</span>
 </span></span></code></pre></div></blockquote>
 <blockquote class="book-hint info">
 <p><strong><em>Note.</em></strong>
 The type <code>Bool</code> in Haskell is an enumerated type (with values <code>True</code> and <code>False</code>):</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#66d9ef">data</span> <span style="color:#66d9ef">Bool</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">True</span>
 </span></span></code></pre></div></blockquote>
-<p>An enumerated type can be used like a regular one (e.g. in a <a href="">pattern</a>).</p>
+<p>An enumerated type can be used like a regular one (e.g. in a <a href="https://unibz-oofp-25-26.github.io/docs/control/sections/pattern/">pattern</a>).</p>
 <blockquote class="book-hint info">
 <p><strong><em>Example.</em></strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#66d9ef">data</span> <span style="color:#66d9ef">Light</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">Green</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">Yellow</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">Red</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#66d9ef">data</span> <span style="color:#66d9ef">Suit</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">Clubs</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">Diamonds</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">Hearts</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">Spades</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">-- pattern matching</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">canPass</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Light</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">canPass</span> <span style="color:#66d9ef">Red</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">canPass</span> <span style="color:#66d9ef">_</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">-- Boolean condition</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">isRisky</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Int</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Light</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">isRisky</span> speed state <span style="color:#f92672">=</span> speed <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">30</span> <span style="color:#f92672">&amp;&amp;</span> state <span style="color:#f92672">/=</span> <span style="color:#66d9ef">Green</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">isRed</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Suit</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">isRed</span> <span style="color:#66d9ef">Diamonds</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">isRed</span> <span style="color:#66d9ef">Hearts</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">isRed</span> <span style="color:#66d9ef">_</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>
 </span></span></code></pre></div></blockquote>
 <blockquote class="book-hint danger">
 <p><strong><em>Warning.</em></strong>
 By default, when we create a type, it does not support functions like <code>==</code>, <code>/=</code>, <code>show</code>, <code>print</code>, etc.</p>
-<p>We can use the keyword <code>deriving</code> to</p>
-<ul>
-<li>declare that our type belongs to the <a href="">type classes</a> for such functions, and</li>
-<li>ask the compiler to automatically implement these functions.</li>
-</ul>
-<p>For instance:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#66d9ef">data</span> <span style="color:#66d9ef">Light</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">Green</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">Yellow</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">Red</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">deriving</span> (<span style="color:#66d9ef">Eq</span>, <span style="color:#66d9ef">Show</span>) <span style="color:#75715e">-- declare that `Light` belongs to the type classes `Eq` and `Show`</span>
+<p>A solution is the keyword <code>deriving</code>.
+It lets us declare that our type belongs to some <a href="https://unibz-oofp-25-26.github.io/docs/generic/sections/bound/">type classes</a>.
+The compiler will automatically implement the function associated these classes for our type.<br>
+For instance:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#66d9ef">data</span> <span style="color:#66d9ef">Suit</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">Clubs</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">Diamonds</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">Hearts</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">Spades</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">deriving</span> (<span style="color:#66d9ef">Eq</span>, <span style="color:#66d9ef">Show</span>) <span style="color:#75715e">-- declare that `Suit` belongs to the type classes `Eq` and `Show`</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">isRisky</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Int</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Light</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">-- we can use /= here to compare two lights</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">isRisky</span> speed state <span style="color:#f92672">=</span> speed <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">30</span> <span style="color:#f92672">&amp;&amp;</span> state <span style="color:#f92672">/=</span> <span style="color:#66d9ef">Green</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">isSmooth</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Suit</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- we can use /= here to compare two suits</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">isSmooth</span> s <span style="color:#f92672">=</span> s <span style="color:#f92672">/=</span> <span style="color:#66d9ef">Spades</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">next</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Light</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Light</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">next</span> <span style="color:#66d9ef">Green</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">Yellow</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">next</span> <span style="color:#66d9ef">Yellow</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">Red</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">next</span> <span style="color:#66d9ef">Red</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">Green</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">next</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Suit</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Suit</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">next</span> <span style="color:#66d9ef">Clubs</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">Diamonds</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">next</span> <span style="color:#66d9ef">Diamonds</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">Hearts</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">next</span> <span style="color:#66d9ef">Hearts</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">Spades</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">next</span> <span style="color:#66d9ef">Spades</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">Clubs</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">main</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">IO</span> ()
-</span></span><span style="display:flex;"><span><span style="color:#75715e">-- we can use `print` here to display the value of a light</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">main</span> <span style="color:#f92672">=</span> print <span style="color:#f92672">$</span> next <span style="color:#66d9ef">Green</span>
-</span></span></code></pre></div><p>This observation holds for the other composite types seen in this section (<a href="">product type</a> and <a href="">sum type</a>).</p>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- we can use `print` here to display the value of a suit</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">main</span> <span style="color:#f92672">=</span> print <span style="color:#f92672">$</span> next <span style="color:#66d9ef">Hearts</span>
+</span></span></code></pre></div><p>This observation holds for the other composite types seen in this section (<a href="https://unibz-oofp-25-26.github.io/docs/composite/sections/product/">product type</a> and <a href="https://unibz-oofp-25-26.github.io/docs/composite/sections/sum/">sum type</a>).</p>
 </blockquote>
 </article>
  
