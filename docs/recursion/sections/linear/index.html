@@ -35,7 +35,7 @@ Haskell does not admit loops, so linear recursion is the standard way to perform
 <link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/recursion/sections/linear/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.2e300d43f93d989eb2202d400f7959a8b54b9ab85233abf8e135cd738f42e0bd.js" integrity="sha256-LjANQ/k9mJ6yIC1AD3lZqLVLmrhSM6v44TXNc49C4L0=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.adc1013e85026e2a66b0135c29fa8e24197ba20f8e6ac957fdc63df6b3433cbd.js" integrity="sha256-rcEBPoUCbipmsBNcKfqOJBl7og&#43;OaslX/cY99rNDPL0=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -1090,6 +1090,33 @@ For instance,</p>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">zip</span> <span style="color:#66d9ef">[]</span> <span style="color:#66d9ef">_</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">[]</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">zip</span> (x <span style="color:#66d9ef">:</span> xs) (y <span style="color:#66d9ef">:</span> ys) <span style="color:#f92672">=</span> (x,y) <span style="color:#66d9ef">:</span> zip xs ys
 </span></span></code></pre></div></div>
+</div>
+<div class="book-tabs">
+<input type="radio" class="toggle" name="tabs-exercise_last_word_alt" id="tabs-exercise_last_word_alt-0" checked="checked" />
+<label for="tabs-exercise_last_word_alt-0">Exercise</label>
+<div class="book-tabs-content markdown-inner"><p>Recall the function <code>reverse :: [a] -&gt; [a]</code> seen <a href="https://unibz-oofp-25-26.github.io/docs/recursion/sections/linear/#examples">earlier</a>, which reverses a list.</p>
+<p>Another useful function provided by the Haskell Prelude is <code>takeWhile</code>, defined as follows:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">takeWhile</span> <span style="color:#f92672">::</span> (a <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span>) <span style="color:#f92672">-&gt;</span> [a] <span style="color:#f92672">-&gt;</span> [a]
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">takeWhile</span> <span style="color:#66d9ef">_</span> <span style="color:#66d9ef">[]</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">[]</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">takeWhile</span> f (x <span style="color:#66d9ef">:</span> xs) <span style="color:#f92672">|</span> f x <span style="color:#f92672">=</span> x <span style="color:#66d9ef">:</span> takeWhile f xs
+</span></span><span style="display:flex;"><span>                     <span style="color:#f92672">|</span> otherwise <span style="color:#f92672">=</span> <span style="color:#66d9ef">[]</span>
+</span></span></code></pre></div><p>Let us assume for simplicity that:</p>
+<ul>
+<li>words in a string are separated with a blank space (<code>' '</code> in Haskell), and</li>
+<li>strings have no trailing <code>' '</code>.</li>
+</ul>
+<p>What does the function <code>myFunction</code> below do (recall that <code>.</code> stands for <a href="">function composition</a>)?</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">myFunction</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">String</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">String</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">myFunction</span> <span style="color:#f92672">=</span> reverse <span style="color:#f92672">.</span> takeWhile (<span style="color:#f92672">/=</span> <span style="color:#e6db74">&#39; &#39;</span>) <span style="color:#f92672">.</span> reverse
+</span></span></code></pre></div></div>
+<!-- 
+<input type="radio" class="toggle" name="tabs-exercise_last_word_alt" id="tabs-exercise_last_word_alt-1"  />
+<label for="tabs-exercise_last_word_alt-1">Solution</label>
+<div class="book-tabs-content markdown-inner"><p>&ndash;&gt;</p>
+<!-- It maps a string to its last word. -->
+<!---->
+<!-- </div>
+ -->
 </div>
 </article>
  
