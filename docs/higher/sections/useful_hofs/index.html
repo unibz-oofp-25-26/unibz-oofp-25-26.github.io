@@ -70,7 +70,7 @@ In Haskell # filter # The function filter retains elements of a list that satisf
 <link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/higher/sections/useful_hofs/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.4878ecda0297b69981bce5de6fc8a4fcbb5d37e8b0bf72bcbef63d7f283b1331.js" integrity="sha256-SHjs2gKXtpmBvOXeb8ik/LtdN&#43;iwv3K8vvY9fyg7EzE=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.784e7b90ccf27f1de6d6fda4d28d179c727662d9462bad72d16a342109e44570.js" integrity="sha256-eE57kMzyfx3m1v2k0o0XnHJ2YtlGK61y0Wo0IQnkRXA=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -1292,22 +1292,22 @@ because it intuitively aggregates <em>from right to left</em>.</p>
 </ul>
 <p>What does the function <code>myFunction</code> do?</p>
 </div>
-<!-- 
 <input type="radio" class="toggle" name="tabs-exercise_fold_or" id="tabs-exercise_fold_or-1"  />
 <label for="tabs-exercise_fold_or-1">Solution</label>
-<div class="book-tabs-content markdown-inner"><p>&ndash;&gt;</p>
-<!---->
-<!-- 1. -->
-<!---->
-<!-- - `myFunction (\x -> x > 2) [-2,0,2]` evaluates to `False` -->
-<!-- - `myFunction (\x -> x > 2) [3,0,2]` evaluates to `True` -->
-<!-- - `myFunction (\x -> x /= 5) [3,0]` evaluates to `True` -->
-<!-- - `myFunction (\x -> x /= 5) [5]` evaluates to `True` -->
-<!-- - `myFunction (\x -> x /= 5) []` evaluates to `False` -->
-<!---->
-<!-- 2. This function is equivalent to the function `any` that we have seen [already](). -->
-<!--    </div>
- -->
+<div class="book-tabs-content markdown-inner"><ol>
+<li></li>
+</ol>
+<ul>
+<li><code>myFunction (\x -&gt; x &gt; 2) [-2,0,2]</code> evaluates to <code>False</code></li>
+<li><code>myFunction (\x -&gt; x &gt; 2) [3,0,2]</code> evaluates to <code>True</code></li>
+<li><code>myFunction (\x -&gt; x /= 5) [3,0]</code> evaluates to <code>True</code></li>
+<li><code>myFunction (\x -&gt; x /= 5) [5]</code> evaluates to <code>True</code></li>
+<li><code>myFunction (\x -&gt; x /= 5) []</code> evaluates to <code>False</code></li>
+</ul>
+<ol start="2">
+<li>This function is equivalent to the function <code>any</code> that we have seen <a href="">already</a>.</li>
+</ol>
+</div>
 </div>
 <h4 id="foldl">
   <code>foldl</code>

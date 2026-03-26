@@ -26,7 +26,7 @@ The following function is tail-recursive
 endsWithS :: String -&gt; Bool
 endsWithS [] = False               -- first base case
 endsWithS [&#39;s&#39;] = True             -- second base case
-endsWithS (c : cs) = endsWithS cs  -- inductive case
+endsWithS (_ : cs) = endsWithS cs  -- inductive case
 
 
 Example.
@@ -38,7 +38,7 @@ The function sum seen earlier (and reproduced here) is not tail-recursive, becau
   <meta property="og:title" content="Accumulator and tail recursion">
   <meta property="og:description" content="Accumulator and tail recursion # Tail recursion # Definition. A function/method is tail-recursive if it is:
 linear recursive, and does not perform any operation after a recursive call. Example. The following function is tail-recursive
--- `True` iff the input string ends with an `s` endsWithS :: String -&gt; Bool endsWithS [] = False -- first base case endsWithS [&#39;s&#39;] = True -- second base case endsWithS (c : cs) = endsWithS cs -- inductive case Example. The function sum seen earlier (and reproduced here) is not tail-recursive, because the addition (Line 3) is performed after termination of the recursive call.">
+-- `True` iff the input string ends with an `s` endsWithS :: String -&gt; Bool endsWithS [] = False -- first base case endsWithS [&#39;s&#39;] = True -- second base case endsWithS (_ : cs) = endsWithS cs -- inductive case Example. The function sum seen earlier (and reproduced here) is not tail-recursive, because the addition (Line 3) is performed after termination of the recursive call.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
@@ -48,7 +48,7 @@ linear recursive, and does not perform any operation after a recursive call. Exa
 <link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/recursion/sections/accumulator/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.4878ecda0297b69981bce5de6fc8a4fcbb5d37e8b0bf72bcbef63d7f283b1331.js" integrity="sha256-SHjs2gKXtpmBvOXeb8ik/LtdN&#43;iwv3K8vvY9fyg7EzE=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.784e7b90ccf27f1de6d6fda4d28d179c727662d9462bad72d16a342109e44570.js" integrity="sha256-eE57kMzyfx3m1v2k0o0XnHJ2YtlGK61y0Wo0IQnkRXA=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -946,7 +946,7 @@ The following function is tail-recursive</p>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">endsWithS</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">String</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">endsWithS</span> <span style="color:#66d9ef">[]</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>               <span style="color:#75715e">-- first base case</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">endsWithS</span> [<span style="color:#e6db74">&#39;s&#39;</span>] <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>             <span style="color:#75715e">-- second base case</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">endsWithS</span> (c <span style="color:#66d9ef">:</span> cs) <span style="color:#f92672">=</span> endsWithS cs  <span style="color:#75715e">-- inductive case</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">endsWithS</span> (<span style="color:#66d9ef">_</span> <span style="color:#66d9ef">:</span> cs) <span style="color:#f92672">=</span> endsWithS cs  <span style="color:#75715e">-- inductive case</span>
 </span></span></code></pre></div></blockquote>
 <blockquote class="book-hint info">
 <p><strong><em>Example.</em></strong>
