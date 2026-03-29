@@ -7,31 +7,19 @@
   Pipeline
   #
 
-
-  Motivation
-  #
-
-
-Syntax.
-Consider a chain of function applications, where the output of each function is the (unique) input to the next function in the chain.
-For instance
-$\qquad h(g(f(x)))$
-Computationally,
-this reads from right to left :
-$\qquad$ &ldquo;start with $x$, then apply $f$ to it, then apply $g$ to the result, and then $h$ to the result&rdquo;.
-
-Instead, when we write code, it can be convenient to use an expression
-that mimics the order of execution (when read from left to right).">
+Functional languages offer a convenient syntax to compose functions that modify lists.
+This lets us apply sequence of operations (filter, transform, aggregate, etc.) to a stream of incoming data,
+analogously to Unix-like pipes.
+This style of programming also pairs well with functors and monads, which we will see in later sections.
+Thanks to lazy evaluation, each operation in the pipeline can start feeding partial results to the next one, even if it has not finished processing its input.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="https://unibz-oofp-25-26.github.io/docs/pattern/sections/pipe/">
   <meta property="og:site_name" content="OOFP 2025-26">
   <meta property="og:title" content="Pipeline">
-  <meta property="og:description" content="Pipeline # Motivation # Syntax. Consider a chain of function applications, where the output of each function is the (unique) input to the next function in the chain. For instance
-$\qquad h(g(f(x)))$
-Computationally, this reads from right to left :
-$\qquad$ “start with $x$, then apply $f$ to it, then apply $g$ to the result, and then $h$ to the result”.
-Instead, when we write code, it can be convenient to use an expression that mimics the order of execution (when read from left to right).">
+  <meta property="og:description" content="Pipeline # Functional languages offer a convenient syntax to compose functions that modify lists.
+This lets us apply sequence of operations (filter, transform, aggregate, etc.) to a stream of incoming data, analogously to Unix-like pipes. This style of programming also pairs well with functors and monads, which we will see in later sections.
+Thanks to lazy evaluation, each operation in the pipeline can start feeding partial results to the next one, even if it has not finished processing its input.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
@@ -41,7 +29,7 @@ Instead, when we write code, it can be convenient to use an expression that mimi
 <link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/pattern/sections/pipe/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.a5770d99c8eb307684fa207034072bcb1bea2e27de1f5ac21108153d4e1deb23.js" integrity="sha256-pXcNmcjrMHaE&#43;iBwNAcryxvqLifeH1rCEQgVPU4d6yM=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.a4e07cbf61df083b50aa72f63de283326c71fc4d7c9aed0fad7a8f9cf1934016.js" integrity="sha256-pOB8v2HfCDtQqnL2PeKDMmxx/E18mu0PrXqPnPGTQBY=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -776,6 +764,40 @@ https://github.com/alex-shpak/hugo-book
   
 
   
+    <input type="checkbox" id="section-007945605153592d0fc2acb75802d872" class="toggle" checked />
+    <label for="section-007945605153592d0fc2acb75802d872" class="flex justify-between">
+      <a href="/docs/pattern/" class="">Functional patterns</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/pattern/sections/pipe/" class="active">Pipeline</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
     <input type="checkbox" id="section-d689bb2436bd0f51b31e8f95cf070b59" class="toggle"  />
     <label for="section-d689bb2436bd0f51b31e8f95cf070b59" class="flex justify-between">
       <a href="/docs/background/" class="">Background</a>
@@ -901,14 +923,14 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#motivation">Motivation</a></li>
-    <li><a href="#usage">Usage</a>
+    <li><a href="#in-haskell">In Haskell</a>
       <ul>
-        <li><a href="#in-functional-languages">In functional languages</a></li>
-        <li><a href="#beyond-functional-languages">Beyond functional languages</a></li>
+        <li><a href="#operation-on-a-list">Operation on a list</a></li>
+        <li><a href="#composition">Composition</a></li>
+        <li><a href="#evaluation">Evaluation</a></li>
+        <li><a href="#simplified-syntax">Simplified syntax</a></li>
       </ul>
     </li>
-    <li><a href="#in-haskell">in Haskell</a></li>
   </ul>
 </nav>
 
@@ -925,144 +947,228 @@ https://github.com/alex-shpak/hugo-book
   Pipeline
   <a class="anchor" href="#pipeline">#</a>
 </h1>
-<h2 id="motivation">
-  Motivation
-  <a class="anchor" href="#motivation">#</a>
-</h2>
-<blockquote class="book-hint warning">
-<p><strong><em>Syntax.</em></strong>
-Consider a chain of function applications, where the output of each function is the (unique) input to the next function in the chain.
-For instance</p>
-<p>$\qquad h(g(f(x)))$</p>
-<p>Computationally,
-this reads from <em>right to left</em> :</p>
-<p>$\qquad$ &ldquo;start with $x$, then apply $f$ to it, then apply $g$ to the result, and then $h$ to the result&rdquo;.</p>
-<!-- Syntactically, the name of the function _precedes_ its argument. -->
-<p>Instead, when we write code, it can be convenient to use an expression
-that mimics the order of execution (when read from left to right).</p>
-<p>For instance, we could define a reverse application symbol $\vartriangleright$ and write:</p>
-<!-- This lets us describes $g(f(x))$ as a _pipeline_: -->
-<p>$\qquad ((x \vartriangleright f) \vartriangleright g) \vartriangleright h$</p>
-<p>Or, assuming that $\vartriangleright$ associates to the left:</p>
-<p>$\qquad x \vartriangleright f \vartriangleright g \vartriangleright h$</p>
-<!-- This can be easily achieved in a language like Haskell, -->
-<!-- by defining a [higher level function]() (for instance, let us call it $\vartriangleright$) that stands for "forward" function application. -->
-</blockquote>
+<p>Functional languages offer a convenient syntax to <em>compose</em> functions that modify lists.</p>
+<p>This lets us apply sequence of operations (filter, transform, aggregate, etc.) to a stream of incoming data,
+analogously to <a href="https://en.wikipedia.org/wiki/Pipeline_%28Unix%29">Unix-like pipes</a>.
+This style of programming also pairs well with <a href="https://unibz-oofp-25-26.github.io/notreleased/">functors</a> and <a href="https://unibz-oofp-25-26.github.io/notreleased/">monads</a>, which we will see in later sections.</p>
+<p>Thanks to <a href="https://unibz-oofp-25-26.github.io/docs/control/#lazy">lazy evaluation</a>, each operation in the pipeline can start feeding partial results to the next one, even if it has not finished processing its input.</p>
 <blockquote class="book-hint info">
-<p><strong><em>Note.</em></strong>
-A similar observation can be made for function composition: $g \circ f$ means &ldquo;$f$ followed by $g$&rdquo;.
-Instead, it can be more convenient to write $f$ <em>before</em> $g$.</p>
+<p><strong><em>Adoption.</em></strong>
+A variety of imperative languages (notably C++, C#, Java or Rust) have borrowed or adapted this pattern.
+For instance, pipelines have become an important part of Java programming, since the release of Java <a href="">Stream</a> API (2014).</p>
+<p>This pattern has also been adopted by some scripting languages for statistical analysis, such as R (natively) or Matlab (via libraries).</p>
 </blockquote>
-<h2 id="usage">
-  Usage
-  <a class="anchor" href="#usage">#</a>
-</h2>
-<h3 id="in-functional-languages">
-  In functional languages
-  <a class="anchor" href="#in-functional-languages">#</a>
-</h3>
-<p>Many functional languages provide operators for reverse application and/or composition, or let us define such operators (as <a href="">higher-order functions</a>).</p>
-<p>These are often used to specify a sequence of operations (filter, transform, aggregate, etc.) applied to a stream of incoming data.
-This is analogous to a sequence of <a href="https://en.wikipedia.org/wiki/Pipeline_%28Unix%29">Unix-like pipes</a>, where the output of a command is fed as input to the next command.</p>
-<p>Thanks to <a href="">lazy evaluation</a>, each operation in the pipeline can start feeding partial results to the next one, even if it has not finished processing its input.
-This style of programming also pairs well with <a href="">functors</a> and <a href="">monads</a>, which we will see in later sections.</p>
-<h3 id="beyond-functional-languages">
-  Beyond functional languages
-  <a class="anchor" href="#beyond-functional-languages">#</a>
-</h3>
-<p>A variety of imperative languages (notably C++, C#, Java or Rust) have borrowed or adapted this pattern.
-For instance, pipelines have become an essential part of Java programming, since the release of Java <a href="">Stream</a> API (2014).</p>
-<p>This pattern has also made its way to scripting languages for statistical analysis, such as R (natively) or Matlab (via libraries).</p>
 <h2 id="in-haskell">
-  in Haskell
+  In Haskell
   <a class="anchor" href="#in-haskell">#</a>
 </h2>
+<h3 id="operation-on-a-list">
+  Operation on a list
+  <a class="anchor" href="#operation-on-a-list">#</a>
+</h3>
+<p>We have seen several <a href="https://unibz-oofp-25-26.github.io/docs/higher/sections/useful_hofs/">higher-order functions</a> commonly used to specify operation on lists: <code>map</code>, <code>filter</code>, <code>takeWhile</code>, <code>all</code>, <code>any</code>, <code>foldr</code>, <code>foldl</code>, <code>find</code>, etc.</p>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong>
+Recall the <a href="https://unibz-oofp-25-26.github.io/docs/composite/sections/product/">product type</a> that we have used to model a playing card:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#66d9ef">data</span> <span style="color:#66d9ef">Card</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">CardC</span> { suit <span style="color:#f92672">::</span> <span style="color:#66d9ef">Suit</span>, rank <span style="color:#f92672">::</span> <span style="color:#66d9ef">Int</span> }
+</span></span></code></pre></div><p>Then the function</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">filter</span> (<span style="color:#a6e22e">\</span>c <span style="color:#f92672">-&gt;</span> suit c <span style="color:#f92672">==</span> <span style="color:#66d9ef">Spades</span>)
+</span></span></code></pre></div><p>has type</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span>[<span style="color:#66d9ef">Card</span>] <span style="color:#f92672">-&gt;</span> [<span style="color:#66d9ef">Card</span>]
+</span></span></code></pre></div><p>It retains all cards with suit <code>Spades</code>.</p>
+</blockquote>
+<h3 id="composition">
+  Composition
+  <a class="anchor" href="#composition">#</a>
+</h3>
+<blockquote class="book-hint info">
+<p><strong><em>Example (continued).</em></strong>
+The following function sums the ranks of all spades in a list of card.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#66d9ef">data</span> <span style="color:#66d9ef">Card</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">CardC</span> { suit <span style="color:#f92672">::</span> <span style="color:#66d9ef">Suit</span>, rank <span style="color:#f92672">::</span> <span style="color:#66d9ef">Int</span> }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">myPipeline</span> <span style="color:#f92672">::</span> [<span style="color:#66d9ef">Card</span>] <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Int</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">myPipeline</span> <span style="color:#f92672">=</span> sum <span style="color:#f92672">.</span> map rank <span style="color:#f92672">.</span> filter (<span style="color:#a6e22e">\</span>c <span style="color:#f92672">-&gt;</span> suit c <span style="color:#f92672">==</span> <span style="color:#66d9ef">Spades</span>)
+</span></span></code></pre></div><p><code>myPipeline</code> is the composition of three functions:</p>
+<ul>
+<li>the function <code>filter (\c -&gt; suit c == Spades)</code> seen above,</li>
+<li>the function <code>map rank</code>, which maps each retained card to its rank,</li>
+<li>the function <code>sum</code>, which aggregates these ranks.</li>
+</ul>
+</blockquote>
+<h3 id="evaluation">
+  Evaluation
+  <a class="anchor" href="#evaluation">#</a>
+</h3>
+<p>Thanks to <a href="https://unibz-oofp-25-26.github.io/docs/control/#lazy">lazy evaluation</a>, each function in a pipeline may process its input on the fly, without waiting for termination of the previous function in the pipeline.</p>
+<blockquote class="book-hint info">
+<p><strong><em>Example (continued).</em></strong>
+In the example above, let us use:</p>
+<ul>
+<li><code>f</code> for the first function in the pipeline (i.e <code>filter (\c -&gt; suit c == Spades)</code>),</li>
+<li><code>g</code> for the second function in the pipeline (i.e <code>map (\c -&gt; rank c)</code>),</li>
+<li><code>h</code> for the third function in the pipeline (i.e <code>foldl (+) 0</code>).</li>
+</ul>
+<p>so that <code>myPipeline</code> can be defined as</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">myPipeline</span> <span style="color:#f92672">=</span> h <span style="color:#f92672">.</span> g <span style="color:#f92672">.</span> f
+</span></span></code></pre></div><p>For a list of cards <code>cs</code>, a naive evaluation strategy would:</p>
+<ul>
+<li>first evaluate <code>f cs</code>,</li>
+<li>then apply <code>g</code> to the resulting list,</li>
+<li>the apply <code>h</code> to the resulting list.</li>
+</ul>
+<p>Instead, thanks to <a href="https://unibz-oofp-25-26.github.io/docs/control/#lazy">lazy evaluation</a>, the function <code>g</code> can process cards on the fly, as soon as they are output by <code>f</code> (and similarly for <code>h</code> and <code>g</code>).</p>
+</blockquote>
+<h3 id="simplified-syntax">
+  Simplified syntax
+  <a class="anchor" href="#simplified-syntax">#</a>
+</h3>
+<h4 id="function-composition">
+  Function composition
+  <a class="anchor" href="#function-composition">#</a>
+</h4>
+<blockquote class="book-hint info">
+<p><strong><em>Motivation.</em></strong>
+Consider a composition $c$ of functions.<br>
+For instance</p>
+<p>$\qquad c = h \circ g \circ f$</p>
+<p>Computationally,
+this reads from <em>right to left</em> :</p>
+<p>$\qquad$ &ldquo;apply $f$, then apply $g$ to the result, and then $h$ to the result.&rdquo;</p>
+<p>Instead, when we write code, it can be convenient to use an expression
+that mimics the order of execution.</p>
+<p>For instance, we could define a reverse composition symbol $\vartriangleright$ and write:</p>
+<p>$\qquad c = f \vartriangleright g \vartriangleright h$</p>
+</blockquote>
 <blockquote class="book-hint warning">
 <p><strong><em>Syntax.</em></strong>
-The Haskell module <strong><code>Data.Function</code></strong> provides a reverse application function called <code>&amp;</code> (equivalent to the $\vartriangleright$ symbol that we used above).
-It is defined as expected:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span>(<span style="color:#f92672">&amp;</span>) <span style="color:#f92672">::</span> a <span style="color:#f92672">-&gt;</span> (a <span style="color:#f92672">-&gt;</span> b) <span style="color:#f92672">-&gt;</span> b
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">x</span> <span style="color:#f92672">&amp;</span> f <span style="color:#f92672">=</span> f x
-</span></span></code></pre></div><p>This function associates to the left, i.e. <code>x &amp; f &amp; g</code> means <code>(x &amp; f) &amp; g</code></p>
-</blockquote>
+The Haskell <a href="https://unibz-oofp-25-26.github.io/docs/haskell/sections/program/#module">module</a> <code>Control.Category</code> provides a reverse composition function <code>&gt;&gt;&gt;</code>.<br>
+It can be defined as follows:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span>(<span style="color:#f92672">&gt;&gt;&gt;</span>) <span style="color:#f92672">::</span> (a <span style="color:#f92672">-&gt;</span> b) <span style="color:#f92672">-&gt;</span> (b <span style="color:#f92672">-&gt;</span> c) <span style="color:#f92672">-&gt;</span> a <span style="color:#f92672">-&gt;</span> c
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">f</span> <span style="color:#f92672">&gt;&gt;&gt;</span> g <span style="color:#f92672">=</span> g <span style="color:#f92672">.</span> f
+</span></span></code></pre></div></blockquote>
+<p>This lets us write</p>
+<p>$\qquad$ <code>f &gt;&gt;&gt; g &gt;&gt;&gt; h</code></p>
+<p>instead of</p>
+<p>$\qquad$ <code>h . g . f</code></p>
 <blockquote class="book-hint info">
-<p><strong><em>Example.</em></strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">h</span> (g (f x))
-</span></span></code></pre></div><p>can be written</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">x</span> <span style="color:#f92672">&amp;</span> f <span style="color:#f92672">&amp;</span> g <span style="color:#f92672">&amp;</span> h
-</span></span></code></pre></div><p>Or more commonly:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">x</span> <span style="color:#f92672">&amp;</span> f
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&amp;</span> g
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&amp;</span> h
+<p><strong><em>Example(continued).</em></strong>
+The pipeline above can alternatively be defined as</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> Control.Category
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">myPipeline</span> <span style="color:#f92672">::</span> [<span style="color:#66d9ef">Card</span>] <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Int</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">myPipeline</span> <span style="color:#f92672">=</span>
+</span></span><span style="display:flex;"><span>  filter (<span style="color:#a6e22e">\</span>c <span style="color:#f92672">-&gt;</span> suit c <span style="color:#f92672">==</span> <span style="color:#66d9ef">Spades</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&gt;&gt;&gt;</span> map rank
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&gt;&gt;&gt;</span> sum
 </span></span></code></pre></div></blockquote>
 <div class="book-tabs">
-<input type="radio" class="toggle" name="tabs-exercise_pipe_app_eval" id="tabs-exercise_pipe_app_eval-0" checked="checked" />
-<label for="tabs-exercise_pipe_app_eval-0">Exercise</label>
-<div class="book-tabs-content markdown-inner"><p>Recall the following functions:</p>
-<ul>
-<li><code>even :: Int -&gt; Bool</code>, which maps an integer to <code>True</code> iff it is even,</li>
-<li><code>filter :: (a -&gt; Bool) -&gt; [a] -&gt; [a]</code>, where <code>filter f xs</code> retains the elements of <code>xs</code> for which <code>f</code> evaluates to <code>True</code>,</li>
-<li><code>map :: (a -&gt; b) -&gt; [a] -&gt; [b]</code>, where <code>map f xs</code> applies <code>f</code> to each elements of <code>xs</code>,</li>
-<li><code>all :: (a -&gt; Bool) -&gt; [a] -&gt; Bool</code>, where <code>all f xs</code> is <code>True</code> iff <code>f</code> evaluates to <code>True</code> for every element in <code>xs</code></li>
-<li><code>maybeFirst :: [a] -&gt; Maybe a</code>, which maps a nonempty list its head (and the empty list to <code>Nothing</code>),</li>
-<li><code>maybeLast :: [a] -&gt; Maybe a</code>, which maps a nonempty list its last element (and the empty list to <code>Nothing</code>).</li>
-</ul>
+<input type="radio" class="toggle" name="tabs-exercise_pipe_app_fun" id="tabs-exercise_pipe_app_fun-0" checked="checked" />
+<label for="tabs-exercise_pipe_app_fun-0">Exercise</label>
+<div class="book-tabs-content markdown-inner"><p>Let</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">maybeHead</span> <span style="color:#f92672">::</span> [a] <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Maybe</span> a
+</span></span></code></pre></div><p>map a nonempty list to its head (and the empty list to <code>Nothing</code>).</p>
+<p>Simplify the following function:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">myPipe</span> <span style="color:#f92672">::</span> [<span style="color:#66d9ef">Int</span>] <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Maybe</span> <span style="color:#66d9ef">Int</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">myPipe</span> <span style="color:#f92672">=</span>
+</span></span><span style="display:flex;"><span>  filter even
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&gt;&gt;&gt;</span> map (<span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&gt;&gt;&gt;</span> filter even
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&gt;&gt;&gt;</span> maybeHead
+</span></span></code></pre></div></div>
+<!-- 
+<input type="radio" class="toggle" name="tabs-exercise_pipe_app_fun" id="tabs-exercise_pipe_app_fun-1"  />
+<label for="tabs-exercise_pipe_app_fun-1">Solution</label>
+<div class="book-tabs-content markdown-inner"><p>&ndash;&gt;</p>
+<!---->
+<!-- ```haskell -->
+<!-- myPipe :: [Int] -> Maybe Int -->
+<!-- myPipe _ = Nothing -->
+<!-- ``` -->
+<!---->
+<!-- </div>
+ -->
+</div>
+<h4 id="function-application">
+  Function application
+  <a class="anchor" href="#function-application">#</a>
+</h4>
+<p>A similar syntax can be used to chain function applications.</p>
+<blockquote class="book-hint info">
+<p><strong><em>Motivation.</em></strong></p>
+<p>$\qquad h(g(f(x)))$</p>
+<p>means</p>
+<p>$\qquad$ &ldquo;start from $x$, then apply $f$ to it, then apply $g$ to the result, and then apply $h$ to the result&rdquo;.</p>
+<p>Instead, it can be more convenient to first write $x$, then $f$, then $g$, then $h$.</p>
+</blockquote>
+<blockquote class="book-hint warning">
+<p><strong><em>Syntax.</em></strong>
+The module <code>Data.FFunction</code> provides a reverse application function <code>&amp;</code>.
+It can be defined as:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span>(<span style="color:#f92672">&amp;</span>) <span style="color:#f92672">::</span> a <span style="color:#f92672">-&gt;</span> (a <span style="color:#f92672">-&gt;</span> b) <span style="color:#f92672">-&gt;</span> b
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">x</span> <span style="color:#f92672">&amp;</span> f <span style="color:#f92672">=</span> f x
+</span></span></code></pre></div><p>The function <code>&amp;</code> associates to the left, so that <code>x &amp; f &amp; g</code> is syntactic sugar for <code>(x &amp; f) &amp; g</code>.</p>
+</blockquote>
+<p>This let us write</p>
+<p>$\qquad$ <code>x &amp; f &amp; g &amp; h</code></p>
+<p>instead of</p>
+<p>$\qquad$ <code>h (g (f x))</code></p>
+<blockquote class="book-hint info">
+<p><strong><em>Example(continued).</em></strong>
+The pipeline above can alternatively be defined as</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> Data.Function
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">myPipeline</span> <span style="color:#f92672">::</span> [<span style="color:#66d9ef">Card</span>] <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Int</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">myPipeline</span> cs <span style="color:#f92672">=</span>
+</span></span><span style="display:flex;"><span>  cs
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&amp;</span> filter (<span style="color:#a6e22e">\</span>c <span style="color:#f92672">-&gt;</span> suit c <span style="color:#f92672">==</span> <span style="color:#66d9ef">Spades</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&amp;</span> map rank
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&amp;</span> sum
+</span></span></code></pre></div></blockquote>
+<div class="book-tabs">
+<input type="radio" class="toggle" name="tabs-16" id="tabs-16-0" checked="checked" />
+<label for="tabs-16-0">Exercise</label>
+<div class="book-tabs-content markdown-inner"><p>Let</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">maybeHead</span> <span style="color:#f92672">::</span> [a] <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Maybe</span> a
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">maybeLast</span> <span style="color:#f92672">::</span> [a] <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Maybe</span> a
+</span></span></code></pre></div><p>map a nonempty list to its head and last element respectively (and the empty list to <code>Nothing</code>).</p>
 <p>Evaluate the following expressions.</p>
 <ol>
 <li>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span>[<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">7</span>] <span style="color:#f92672">&amp;</span> filter even
-</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&amp;</span> map (<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&amp;</span> map (<span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)
 </span></span><span style="display:flex;"><span>          <span style="color:#f92672">&amp;</span> maybeLast
 </span></span></code></pre></div></li>
 <li>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span>[<span style="color:#f92672">-</span><span style="color:#ae81ff">5</span>,<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">2</span>,<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">&amp;</span> filter (<span style="color:#a6e22e">\</span>x <span style="color:#f92672">-&gt;</span> x <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span>)
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&amp;</span> map (<span style="color:#a6e22e">\</span>x <span style="color:#f92672">-&gt;</span> <span style="color:#f92672">-</span>x)
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&amp;</span> filter (<span style="color:#a6e22e">\</span>x <span style="color:#f92672">-&gt;</span> x <span style="color:#f92672">&gt;</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">2</span>)
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&amp;</span> all (not even)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span> [<span style="color:#f92672">-</span><span style="color:#ae81ff">5</span>,<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">2</span>,<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">&amp;</span> filter (<span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>             <span style="color:#f92672">&amp;</span> map (<span style="color:#a6e22e">\</span>x <span style="color:#f92672">-&gt;</span> <span style="color:#f92672">-</span>x)
+</span></span><span style="display:flex;"><span>             <span style="color:#f92672">&amp;</span> filter (<span style="color:#f92672">&gt;</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>             <span style="color:#f92672">&amp;</span> all (not <span style="color:#f92672">.</span> even)
 </span></span></code></pre></div></li>
 <li>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span>   [ (<span style="color:#e6db74">&#34;Bolzano&#34;</span>, <span style="color:#e6db74">&#34;BZ&#34;</span>, <span style="color:#ae81ff">39100</span>),
-</span></span><span style="display:flex;"><span>     (<span style="color:#e6db74">&#34;Rovereto&#34;</span>, <span style="color:#e6db74">&#34;TN&#34;</span>, <span style="color:#ae81ff">38068</span>),
-</span></span><span style="display:flex;"><span>     (<span style="color:#e6db74">&#34;Merano&#34;</span>, <span style="color:#e6db74">&#34;BZ&#34;</span>, <span style="color:#ae81ff">39012</span>),
-</span></span><span style="display:flex;"><span>     (<span style="color:#e6db74">&#34;Bressanone&#34;</span>, <span style="color:#e6db74">&#34;BZ&#34;</span>, <span style="color:#ae81ff">39042</span>) ] <span style="color:#f92672">&amp;</span> filter <span style="color:#a6e22e">\</span>(<span style="color:#66d9ef">_</span>, prov, zip) <span style="color:#f92672">-&gt;</span> prov <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;BZ&#34;</span> <span style="color:#f92672">&amp;&amp;</span> zip <span style="color:#f92672">/=</span> <span style="color:#ae81ff">39100</span>
-</span></span><span style="display:flex;"><span>                                   <span style="color:#f92672">&amp;</span> map <span style="color:#a6e22e">\</span>(name, <span style="color:#66d9ef">_</span>, <span style="color:#66d9ef">_</span>) <span style="color:#f92672">-&gt;</span> name
-</span></span><span style="display:flex;"><span>                                   <span style="color:#f92672">&amp;</span> maybeFirst
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span> [ (<span style="color:#e6db74">&#34;Bolzano&#34;</span>, <span style="color:#e6db74">&#34;BZ&#34;</span>, <span style="color:#ae81ff">39100</span>),
+</span></span><span style="display:flex;"><span>   (<span style="color:#e6db74">&#34;Rovereto&#34;</span>, <span style="color:#e6db74">&#34;TN&#34;</span>, <span style="color:#ae81ff">38068</span>),
+</span></span><span style="display:flex;"><span>   (<span style="color:#e6db74">&#34;Merano&#34;</span>, <span style="color:#e6db74">&#34;BZ&#34;</span>, <span style="color:#ae81ff">39012</span>),
+</span></span><span style="display:flex;"><span>   (<span style="color:#e6db74">&#34;Bressanone&#34;</span>, <span style="color:#e6db74">&#34;BZ&#34;</span>, <span style="color:#ae81ff">39042</span>)
+</span></span><span style="display:flex;"><span> ]
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">&amp;</span> filter (<span style="color:#a6e22e">\</span>(<span style="color:#66d9ef">_</span>, prov, zip) <span style="color:#f92672">-&gt;</span> prov <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;BZ&#34;</span> <span style="color:#f92672">&amp;&amp;</span> zip <span style="color:#f92672">/=</span> <span style="color:#ae81ff">39100</span>)
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">&amp;</span> map (<span style="color:#a6e22e">\</span>(name, <span style="color:#66d9ef">_</span>, <span style="color:#66d9ef">_</span>) <span style="color:#f92672">-&gt;</span> name)
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">&amp;</span> maybeHead
 </span></span></code></pre></div></li>
 </ol>
 </div>
-<input type="radio" class="toggle" name="tabs-exercise_pipe_app_eval" id="tabs-exercise_pipe_app_eval-1"  />
-<label for="tabs-exercise_pipe_app_eval-1">Solution</label>
-<div class="book-tabs-content markdown-inner"><ol>
-<li><code>Just 5</code></li>
-<li><code>True</code></li>
-<li><code>Just &quot;Merano&quot;</code></li>
-</ol>
+<!-- 
+<input type="radio" class="toggle" name="tabs-16" id="tabs-16-1"  />
+<label for="tabs-16-1">Solution</label>
+<div class="book-tabs-content markdown-inner"><p>&ndash;&gt;</p>
+<!---->
+<!-- 1. `Just 5` -->
+<!-- 2. `True` -->
+<!-- 3. `Just "Merano"` -->
+<!---->
+<!-- </div>
+ -->
 </div>
-</div>
-<div class="book-tabs">
-<input type="radio" class="toggle" name="tabs-exercise_pipe_app_fun" id="tabs-exercise_pipe_app_fun-0" checked="checked" />
-<label for="tabs-exercise_pipe_app_fun-0">Exercise</label>
-<div class="book-tabs-content markdown-inner"><p>Simplify the following function.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">myPipe</span> <span style="color:#f92672">::</span> [<span style="color:#66d9ef">Int</span>] <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Maybe</span> <span style="color:#66d9ef">Int</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">myPipe</span> xs <span style="color:#f92672">=</span> xs <span style="color:#f92672">&amp;</span> filter even
-</span></span><span style="display:flex;"><span>               <span style="color:#f92672">&amp;</span> map (<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>)
-</span></span><span style="display:flex;"><span>               <span style="color:#f92672">&amp;</span> filter even
-</span></span><span style="display:flex;"><span>               <span style="color:#f92672">&amp;</span> maybeFirst
-</span></span></code></pre></div></div>
-<input type="radio" class="toggle" name="tabs-exercise_pipe_app_fun" id="tabs-exercise_pipe_app_fun-1"  />
-<label for="tabs-exercise_pipe_app_fun-1">Solution</label>
-<div class="book-tabs-content markdown-inner"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">myPipe</span> <span style="color:#f92672">::</span> [<span style="color:#66d9ef">Int</span>] <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Maybe</span> <span style="color:#66d9ef">Int</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">myPipe</span> <span style="color:#66d9ef">_</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">Nothing</span>
-</span></span></code></pre></div></div>
-</div>
-<p>Syntax.</p>
-<p>We can use</p>
-<ul>
-<li>forward function application: <code>&amp;</code> from the module <code>Data.Function</code></li>
-<li>reverse function composition: <code>&gt;&gt;&gt;</code> form the module <code>Control.Category</code></li>
-</ul>
-<p>Show how these can be used with <code>filter,</code> <code>map,</code> <code>flatmap</code>, <code>foldr</code>, etc.</p>
-<pre tabindex="0"><code></code></pre><pre tabindex="0"><code></code></pre></article>
+</article>
  
       
 
@@ -1103,14 +1209,14 @@ It is defined as expected:</p>
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#motivation">Motivation</a></li>
-    <li><a href="#usage">Usage</a>
+    <li><a href="#in-haskell">In Haskell</a>
       <ul>
-        <li><a href="#in-functional-languages">In functional languages</a></li>
-        <li><a href="#beyond-functional-languages">Beyond functional languages</a></li>
+        <li><a href="#operation-on-a-list">Operation on a list</a></li>
+        <li><a href="#composition">Composition</a></li>
+        <li><a href="#evaluation">Evaluation</a></li>
+        <li><a href="#simplified-syntax">Simplified syntax</a></li>
       </ul>
     </li>
-    <li><a href="#in-haskell">in Haskell</a></li>
   </ul>
 </nav>
 

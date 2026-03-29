@@ -70,7 +70,7 @@ In Haskell # filter # The function filter retains elements of a list that satisf
 <link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/higher/sections/useful_hofs/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.a5770d99c8eb307684fa207034072bcb1bea2e27de1f5ac21108153d4e1deb23.js" integrity="sha256-pXcNmcjrMHaE&#43;iBwNAcryxvqLifeH1rCEQgVPU4d6yM=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.a4e07cbf61df083b50aa72f63de283326c71fc4d7c9aed0fad7a8f9cf1934016.js" integrity="sha256-pOB8v2HfCDtQqnL2PeKDMmxx/E18mu0PrXqPnPGTQBY=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -805,6 +805,40 @@ https://github.com/alex-shpak/hugo-book
   
 
   
+    <input type="checkbox" id="section-007945605153592d0fc2acb75802d872" class="toggle"  />
+    <label for="section-007945605153592d0fc2acb75802d872" class="flex justify-between">
+      <a href="/docs/pattern/" class="">Functional patterns</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/pattern/sections/pipe/" class="">Pipeline</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
     <input type="checkbox" id="section-d689bb2436bd0f51b31e8f95cf070b59" class="toggle"  />
     <label for="section-d689bb2436bd0f51b31e8f95cf070b59" class="flex justify-between">
       <a href="/docs/background/" class="">Background</a>
@@ -1352,8 +1386,8 @@ for the same aggregation function <code>f</code>.</p>
 <blockquote class="book-hint warning">
 <p>The function</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">find</span> <span style="color:#f92672">::</span> (a <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span>) <span style="color:#f92672">-&gt;</span> [a] <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Maybe</span> a
-</span></span></code></pre></div><p>is defined in the <a href="https://unibz-oofp-25-26.github.io/docs/haskell/sections/program/#module">module</a> <code>Data.List</code>.</p>
-<p>We will see how <code>find</code> can be implemented (and the meaning of <code>Maybe a</code>) in the section on the <a href="https://unibz-oofp-25-26.github.io/docs/generic/sections/maybe/">option type</a>.</p>
+</span></span></code></pre></div><p>is defined in the Haskell <a href="https://unibz-oofp-25-26.github.io/docs/haskell/sections/program/#module">module</a> <code>Data.List</code>.</p>
+<p>We will see how <code>find</code> can be implemented (and the meaning of <code>Maybe a</code>) in the section about the <a href="https://unibz-oofp-25-26.github.io/docs/generic/sections/maybe/">option type</a>.</p>
 <p>The expression <code>find f xs</code> evaluates to:</p>
 <ul>
 <li><code>Just x</code> if <code>x</code> is the first value in <code>xs</code> for which <code>fs</code> is <code>True</code>, and</li>

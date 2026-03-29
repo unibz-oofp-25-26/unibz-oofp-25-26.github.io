@@ -4,8 +4,6 @@
   <url>
     <loc>https://unibz-oofp-25-26.github.io/docs/composite/sections/enum/</loc>
   </url><url>
-    <loc>https://unibz-oofp-25-26.github.io/docs/pattern/sections/fold/</loc>
-  </url><url>
     <loc>https://unibz-oofp-25-26.github.io/docs/recursion/sections/linear/</loc>
   </url><url>
     <loc>https://unibz-oofp-25-26.github.io/docs/intro/sections/organization/</loc>
@@ -74,11 +72,7 @@
   </url><url>
     <loc>https://unibz-oofp-25-26.github.io/docs/haskell/sections/function/</loc>
   </url><url>
-    <loc>https://unibz-oofp-25-26.github.io/docs/pattern/sections/functor/</loc>
-  </url><url>
     <loc>https://unibz-oofp-25-26.github.io/docs/generic/sections/generic_type/</loc>
-  </url><url>
-    <loc>https://unibz-oofp-25-26.github.io/docs/pattern/sections/monad/</loc>
   </url><url>
     <loc>https://unibz-oofp-25-26.github.io/docs/intro/sections/office_hours/</loc>
   </url><url>
@@ -103,6 +97,8 @@
     <loc>https://unibz-oofp-25-26.github.io/docs/composite/</loc>
   </url><url>
     <loc>https://unibz-oofp-25-26.github.io/docs/haskell/sections/list/</loc>
+  </url><url>
+    <loc>https://unibz-oofp-25-26.github.io/docs/pattern/</loc>
   </url><url>
     <loc>https://unibz-oofp-25-26.github.io/docs/intro/sections/software/</loc>
   </url><url>

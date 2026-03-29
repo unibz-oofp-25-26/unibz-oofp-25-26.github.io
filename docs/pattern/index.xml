@@ -2,38 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Functional patterns on OOFP 2025-26</title>
-    <link>http://localhost:1313/docs/pattern/</link>
+    <link>https://unibz-oofp-25-26.github.io/docs/pattern/</link>
     <description>Recent content in Functional patterns on OOFP 2025-26</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <atom:link href="http://localhost:1313/docs/pattern/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Fold</title>
-      <link>http://localhost:1313/docs/pattern/sections/fold/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/pattern/sections/fold/</guid>
-      <description>&lt;h1 id=&#34;fold&#34;&gt;&#xA;  Fold&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#fold&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;A variety of operations on a list can be understood as combining its values inductively, either from&#xA;left to right or from right to left.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;&lt;em&gt;Example.&lt;/em&gt;&lt;/strong&gt; Consider the list&lt;/p&gt;&#xA;&lt;p&gt;$\qquad 1, 2, 3, 4$&lt;/p&gt;&#xA;&lt;p&gt;The sum of its elements can be computed inductively as:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;$((1 + 2) + 3) + 4\qquad$ (left-to-right), or&lt;/li&gt;&#xA;&lt;li&gt;$1 + (2 + (3 + 4))\qquad$ (right-to-left)&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Similarly, the least element in this list can be computed as&lt;/p&gt;</description>
-    </item>
+    <atom:link href="https://unibz-oofp-25-26.github.io/docs/pattern/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Pipeline</title>
-      <link>http://localhost:1313/docs/pattern/sections/pipe/</link>
+      <link>https://unibz-oofp-25-26.github.io/docs/pattern/sections/pipe/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/pattern/sections/pipe/</guid>
-      <description>&lt;h1 id=&#34;pipeline&#34;&gt;&#xA;  Pipeline&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#pipeline&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;h2 id=&#34;motivation&#34;&gt;&#xA;  Motivation&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#motivation&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;blockquote class=&#34;book-hint warning&#34;&gt;&#xA;&lt;p&gt;&lt;strong&gt;&lt;em&gt;Syntax.&lt;/em&gt;&lt;/strong&gt;&#xA;Consider a chain of function applications, where the output of each function is the (unique) input to the next function in the chain.&#xA;For instance&lt;/p&gt;&#xA;&lt;p&gt;$\qquad h(g(f(x)))$&lt;/p&gt;&#xA;&lt;p&gt;Computationally,&#xA;this reads from &lt;em&gt;right to left&lt;/em&gt; :&lt;/p&gt;&#xA;&lt;p&gt;$\qquad$ &amp;ldquo;start with $x$, then apply $f$ to it, then apply $g$ to the result, and then $h$ to the result&amp;rdquo;.&lt;/p&gt;&#xA;&lt;!-- Syntactically, the name of the function _precedes_ its argument. --&gt;&#xA;&lt;p&gt;Instead, when we write code, it can be convenient to use an expression&#xA;that mimics the order of execution (when read from left to right).&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Functor</title>
-      <link>http://localhost:1313/docs/pattern/sections/functor/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/pattern/sections/functor/</guid>
-      <description>&lt;h1 id=&#34;functor&#34;&gt;&#xA;  Functor&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#functor&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;The notion of functor comes from a branch of mathematics called category theory.&lt;/p&gt;&#xA;&lt;p&gt;For programmers, a functor can be viewed as a &lt;a href=&#34;&#34;&gt;parameterized type&lt;/a&gt; that implements a certain function, while respecting certain &lt;a href=&#34;&#34;&gt;constraints&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;h2 id=&#34;in-haskell&#34;&gt;&#xA;  In Haskell&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#in-haskell&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;blockquote class=&#34;book-hint warning&#34;&gt;&#xA;&lt;p&gt;&lt;strong&gt;&lt;em&gt;Notation.&lt;/em&gt;&lt;/strong&gt;&#xA;We will use &lt;code&gt;t&lt;/code&gt; in this section to refer to a Haskell functor.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;&lt;strong&gt;&lt;em&gt;Definition.&lt;/em&gt;&lt;/strong&gt;&#xA;A functor in Haskell is a &lt;a href=&#34;&#34;&gt;parameterized type&lt;/a&gt; &lt;code&gt;t&lt;/code&gt; that implements a function&lt;/p&gt;&#xA;&lt;p&gt;$\qquad$ &lt;code&gt;fmap :: (a -&amp;gt; b) -&amp;gt; t a -&amp;gt; t b&lt;/code&gt;&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Monad</title>
-      <link>http://localhost:1313/docs/pattern/sections/monad/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/docs/pattern/sections/monad/</guid>
-      <description>&lt;h1 id=&#34;monad&#34;&gt;&#xA;  Monad&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#monad&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;Like &lt;a href=&#34;&#34;&gt;functors&lt;/a&gt;, monads come from category theory.&lt;/p&gt;&#xA;&lt;p&gt;For programmers, a monad can be viewed as a functor that implements additional functions, while respecting certain &lt;a href=&#34;&#34;&gt;constraints&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;h2 id=&#34;in-haskell&#34;&gt;&#xA;  In Haskell&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#in-haskell&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h2&gt;&#xA;&lt;p&gt;We have seen in the previous section that a &lt;a href=&#34;&#34;&gt;functor&lt;/a&gt; is a &lt;a href=&#34;&#34;&gt;parameterized type&lt;/a&gt; that implements the function &lt;code&gt;fmap&lt;/code&gt;.&lt;/p&gt;&#xA;&lt;p&gt;A monad is a functor that implements two additional functions, called &lt;code&gt;return&lt;/code&gt; and &lt;code&gt;join&lt;/code&gt;.&lt;/p&gt;&#xA;&lt;blockquote class=&#34;book-hint info&#34;&gt;&#xA;&lt;p&gt;&lt;strong&gt;&lt;em&gt;Example.&lt;/em&gt;&lt;/strong&gt;&#xA;We have seen how the parameterized type &amp;ldquo;List&amp;rdquo; (written &lt;code&gt;[ ]&lt;/code&gt; in Haskell) can be made a functor by implementing &lt;code&gt;fmap&lt;/code&gt;.&lt;/p&gt;</description>
+      <guid>https://unibz-oofp-25-26.github.io/docs/pattern/sections/pipe/</guid>
+      <description>&lt;h1 id=&#34;pipeline&#34;&gt;&#xA;  Pipeline&#xA;  &lt;a class=&#34;anchor&#34; href=&#34;#pipeline&#34;&gt;#&lt;/a&gt;&#xA;&lt;/h1&gt;&#xA;&lt;p&gt;Functional languages offer a convenient syntax to &lt;em&gt;compose&lt;/em&gt; functions that modify lists.&lt;/p&gt;&#xA;&lt;p&gt;This lets us apply sequence of operations (filter, transform, aggregate, etc.) to a stream of incoming data,&#xA;analogously to &lt;a href=&#34;https://en.wikipedia.org/wiki/Pipeline_%28Unix%29&#34;&gt;Unix-like pipes&lt;/a&gt;.&#xA;This style of programming also pairs well with &lt;a href=&#34;https://unibz-oofp-25-26.github.io/notreleased/&#34;&gt;functors&lt;/a&gt; and &lt;a href=&#34;https://unibz-oofp-25-26.github.io/notreleased/&#34;&gt;monads&lt;/a&gt;, which we will see in later sections.&lt;/p&gt;&#xA;&lt;p&gt;Thanks to &lt;a href=&#34;https://unibz-oofp-25-26.github.io/docs/control/#lazy&#34;&gt;lazy evaluation&lt;/a&gt;, each operation in the pipeline can start feeding partial results to the next one, even if it has not finished processing its input.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
