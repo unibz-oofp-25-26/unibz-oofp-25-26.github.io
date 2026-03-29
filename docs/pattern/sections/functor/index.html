@@ -45,7 +45,7 @@ be a generic type, and implement the function fmap :: (Functor t) =&gt; (a -&gt;
 <link rel="canonical" href="http://localhost:1313/docs/pattern/sections/functor/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.7a59f245bea639e6744027e7db0dec157c19359bc16e1bbbcc7665d49c0c9f1d.js" integrity="sha256-elnyRb6mOeZ0QCfn2w3sFXwZNZvBbhu7zHZl1JwMnx0=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.a4a4264bb633183868e62adb1ceddef296b19f9ea83bfc4a41a438f07d002028.js" integrity="sha256-pKQmS7YzGDho5irbHO3e8paxn56oO/xKQaQ48H0AICg=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -708,19 +708,6 @@ https://github.com/alex-shpak/hugo-book
         </li>
       
     
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/recursion/sections/termination/" class="">Termination</a>
-  
-
-        </li>
-      
-    
   </ul>
 
         </li>
@@ -809,19 +796,6 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/pattern/sections/fold/" class="">Fold</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
     <a href="/docs/pattern/sections/pipe/" class="">Pipeline</a>
   
 
@@ -836,19 +810,6 @@ https://github.com/alex-shpak/hugo-book
 
   
     <a href="/docs/pattern/sections/functor/" class="active">Functor</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/pattern/sections/monad/" class="">Monad</a>
   
 
         </li>
@@ -1061,33 +1022,34 @@ So</p>
 <ul>
 <li>
 <p>It should preserve <a href="">function composition</a>, i.,e:</p>
-<p>$qquad$ <code>fmap (g . f)</code> must be equal to <code>(fmap g) . (fmap f)</code></p>
+<p>$qquad$ <code>fmap (g . f)</code> and <code>(fmap g) . (fmap f)</code> must be the same function</p>
 </li>
 <li>
 <p>I must preserve the <a href="">identity function </a>, i.e:</p>
-<p>$qquad$ <code>fmap id</code> must be equal to <code>id</code></p>
+<p>$qquad$ <code>fmap id</code> and <code>id</code> must be the same function</p>
 </li>
 </ul>
 <p>(where the first <code>id</code> is over <code>a</code> and the second over <code>t a</code>).</p>
 <p><strong><em>In practice.</em></strong>
 These constraints significantly reduce the possible implemenations of <code>fmap</code>.</p>
 <p><strong><em>Example.</em></strong>
-For the tyype list, <code>map</code> is the way to imolpement <code>fmap</code> while satisfying these constraints.</p>
-<p><strong><em>Limitation.</em></strong>
-The compiler cannot check whether an impleemntation of <code>fmap</code> is mathematically correct (i.e. whether it satisfiooes tese contraints).</p>
+For the type &ldquo;List&rdquo;, we have seen that <code>fmap</code> coincides with <code>map</code>.</p>
+<p>This turns out to be the <em>only</em> way to implement <code>fmap</code> while respecting these constraints.</p>
 <p><strong><em>Observation.</em></strong>
-<code>fmap</code> is often the &ldquo;natural&rdquo; way to lift a function to a generic type.
-For instance, turn a function $f : X \to Y$ into a function that maps:</p>
+These constraints often capture
+the &ldquo;natural&rdquo; way to lift a function to a generic type,
+i.e. turn a function $f : X \to Y$ into a function that maps:</p>
 <ul>
-<li>a list of $X$ to a list of $Y$&rsquo;s</li>
-<li>a set of $X$ to a set of $Y$&rsquo;s</li>
-<li>a tree of $X$ to a tree of $Y$&rsquo;s</li>
-<li>an optional $X$ to an optional $Y$&rsquo;s,</li>
+<li>a list of $X$ to a list of $Y$&rsquo;s, or</li>
+<li>a set of $X$ to a set of $Y$&rsquo;s, or</li>
+<li>a tree of $X$ to a tree of $Y$&rsquo;s, or</li>
+<li>an optional $X$ to an optional $Y$, or</li>
 <li>etc.</li>
 </ul>
-<p><strong><em>To go further.</em></strong></p>
-<p>Functors have applications in automnatic program verification.</p>
-<p>In Haskell, the type class functor also lets us write generic code that involves the funtrion <code>fmap</code> (regardless of its implementation for a specififc type).</p>
+<p><strong><em>To go further.</em></strong>
+In general, the compiler <em>cannot</em> check whether an implementation of <code>fmap</code> is mathematically correct (i.e. whether it satisfies these constraints).</p>
+<p>Instead, functors have applications in automatic program verification.</p>
+<p>Another benefit of the type class <code>Functor</code> (in Haskell at least) is that it lets us write generic code that involves the function <code>fmap</code> (regardless of its implementation for a specific functor).</p>
 <h3 id="maybe-as-a-functor">
   <code>Maybe</code> as a functor
   <a class="anchor" href="#maybe-as-a-functor">#</a>
@@ -1189,7 +1151,7 @@ For instance:</p>
 <p><code>Maybe a -&gt; Maybe Maybe b</code></p>
 <p>Instead, we need to turn <code>f</code> into a function with type</p>
 <p><code>Maybe a -&gt; Maybe b</code></p>
-<p>We will cover this case in the section <a href="">monads</a></p>
+<p>We will cover this case in the section on <a href="">monads</a>.</p>
 </article>
  
       
