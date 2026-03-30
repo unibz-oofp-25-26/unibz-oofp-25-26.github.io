@@ -8,18 +8,18 @@
   #
 
 Functional languages offer a convenient syntax to compose functions that modify lists.
-This lets us apply sequence of operations (filter, transform, aggregate, etc.) to a stream of incoming data,
+This lets us apply a sequence of operations (filter, transform, aggregate, etc.) to a stream of incoming data,
 analogously to Unix-like pipes.
 This style of programming also pairs well with functors and monads, which we will see in later sections.
-Thanks to lazy evaluation, each operation in the pipeline can start feeding partial results to the next one, even if it has not finished processing its input.">
+Thanks to lazy evaluation, each operation in the pipeline can start feeding partial results to the next one, even if it has not finished processing its input list.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="https://unibz-oofp-25-26.github.io/docs/pattern/sections/pipe/">
   <meta property="og:site_name" content="OOFP 2025-26">
   <meta property="og:title" content="Pipeline">
   <meta property="og:description" content="Pipeline # Functional languages offer a convenient syntax to compose functions that modify lists.
-This lets us apply sequence of operations (filter, transform, aggregate, etc.) to a stream of incoming data, analogously to Unix-like pipes. This style of programming also pairs well with functors and monads, which we will see in later sections.
-Thanks to lazy evaluation, each operation in the pipeline can start feeding partial results to the next one, even if it has not finished processing its input.">
+This lets us apply a sequence of operations (filter, transform, aggregate, etc.) to a stream of incoming data, analogously to Unix-like pipes. This style of programming also pairs well with functors and monads, which we will see in later sections.
+Thanks to lazy evaluation, each operation in the pipeline can start feeding partial results to the next one, even if it has not finished processing its input list.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
@@ -29,7 +29,7 @@ Thanks to lazy evaluation, each operation in the pipeline can start feeding part
 <link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/pattern/sections/pipe/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.7efbec4e155b794d3a2c1c59a2eecab34e89477ca5c1d24a96b7fcb18be2039f.js" integrity="sha256-fvvsThVbeU06LBxZou7Ks06JR3ylwdJKlrf8sYviA58=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.b5dd67a8c9fca8dde2eb7fcff3f490b9a9c0e3f5bf2200537e6f7d54e6578272.js" integrity="sha256-td1nqMn8qN3i63/P8/SQuanA4/W/IgBTfm99VOZXgnI=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -948,10 +948,10 @@ https://github.com/alex-shpak/hugo-book
   <a class="anchor" href="#pipeline">#</a>
 </h1>
 <p>Functional languages offer a convenient syntax to <em>compose</em> functions that modify lists.</p>
-<p>This lets us apply sequence of operations (filter, transform, aggregate, etc.) to a stream of incoming data,
+<p>This lets us apply a sequence of operations (filter, transform, aggregate, etc.) to a stream of incoming data,
 analogously to <a href="https://en.wikipedia.org/wiki/Pipeline_%28Unix%29">Unix-like pipes</a>.
 This style of programming also pairs well with <a href="https://unibz-oofp-25-26.github.io/notreleased/">functors</a> and <a href="https://unibz-oofp-25-26.github.io/notreleased/">monads</a>, which we will see in later sections.</p>
-<p>Thanks to <a href="https://unibz-oofp-25-26.github.io/docs/control/#lazy">lazy evaluation</a>, each operation in the pipeline can start feeding partial results to the next one, even if it has not finished processing its input.</p>
+<p>Thanks to <a href="https://unibz-oofp-25-26.github.io/docs/control/#lazy">lazy evaluation</a>, each operation in the pipeline can start feeding partial results to the next one, even if it has not finished processing its input list.</p>
 <blockquote class="book-hint info">
 <p><strong><em>Adoption.</em></strong>
 A variety of imperative languages (notably C++, C#, Java or Rust) have borrowed or adapted this pattern.
@@ -966,10 +966,10 @@ For instance, pipelines have become an important part of Java programming, since
   Operation on a list
   <a class="anchor" href="#operation-on-a-list">#</a>
 </h3>
-<p>We have seen several <a href="https://unibz-oofp-25-26.github.io/docs/higher/sections/useful_hofs/">higher-order functions</a> commonly used to specify operation on lists: <code>map</code>, <code>filter</code>, <code>takeWhile</code>, <code>all</code>, <code>any</code>, <code>foldr</code>, <code>foldl</code>, <code>find</code>, etc.</p>
+<p>We have encountered several <a href="https://unibz-oofp-25-26.github.io/docs/higher/sections/useful_hofs/">higher-order functions</a> commonly used to specify operation on lists: <code>map</code>, <code>filter</code>, <code>takeWhile</code>, <code>all</code>, <code>any</code>, <code>foldr</code>, <code>foldl</code>, <code>find</code>, etc.</p>
 <blockquote class="book-hint info">
 <p><strong><em>Example.</em></strong>
-Recall the <a href="https://unibz-oofp-25-26.github.io/docs/composite/sections/product/">product type</a> that we have used to model a playing card:</p>
+Recall the <a href="https://unibz-oofp-25-26.github.io/docs/composite/sections/product/">product type</a> that we used to model a playing card:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#66d9ef">data</span> <span style="color:#66d9ef">Card</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">CardC</span> { suit <span style="color:#f92672">::</span> <span style="color:#66d9ef">Suit</span>, rank <span style="color:#f92672">::</span> <span style="color:#66d9ef">Int</span> }
 </span></span></code></pre></div><p>Then the function</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">filter</span> (<span style="color:#a6e22e">\</span>c <span style="color:#f92672">-&gt;</span> suit c <span style="color:#f92672">==</span> <span style="color:#66d9ef">Spades</span>)
@@ -1005,8 +1005,8 @@ The following function sums the ranks of all spades in a list of card.</p>
 In the example above, let us use:</p>
 <ul>
 <li><code>f</code> for the first function in the pipeline (i.e <code>filter (\c -&gt; suit c == Spades)</code>),</li>
-<li><code>g</code> for the second function in the pipeline (i.e <code>map (\c -&gt; rank c)</code>),</li>
-<li><code>h</code> for the third function in the pipeline (i.e <code>foldl (+) 0</code>).</li>
+<li><code>g</code> for the second function in the pipeline (i.e <code>map rank</code>),</li>
+<li><code>h</code> for the third function in the pipeline (i.e <code>sum</code>).</li>
 </ul>
 <p>so that <code>myPipeline</code> can be defined as</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">myPipeline</span> <span style="color:#f92672">=</span> h <span style="color:#f92672">.</span> g <span style="color:#f92672">.</span> f
@@ -1036,7 +1036,7 @@ this reads from <em>right to left</em> :</p>
 <p>$\qquad$ &ldquo;apply $f$, then $g$, then $h$.&rdquo;</p>
 <p>Instead, when we write code, it can be convenient to use an expression
 that mimics the order of execution.</p>
-<p>For instance, we could define a reverse composition symbol $\gtrdot$ and write:</p>
+<p>For instance, we could define a reverse composition symbol $\gtrdot$, and write:</p>
 <p>$\qquad c = f \gtrdot g \gtrdot h$</p>
 </blockquote>
 <blockquote class="book-hint warning">
@@ -1145,7 +1145,8 @@ The pipeline above can alternatively be defined as</p>
 </span></span><span style="display:flex;"><span>             <span style="color:#f92672">&amp;</span> all (not <span style="color:#f92672">.</span> even)
 </span></span></code></pre></div></li>
 <li>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span> [ (<span style="color:#e6db74">&#34;Bolzano&#34;</span>, <span style="color:#e6db74">&#34;BZ&#34;</span>, <span style="color:#ae81ff">39100</span>),
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span> [
+</span></span><span style="display:flex;"><span>   (<span style="color:#e6db74">&#34;Bolzano&#34;</span>, <span style="color:#e6db74">&#34;BZ&#34;</span>, <span style="color:#ae81ff">39100</span>),
 </span></span><span style="display:flex;"><span>   (<span style="color:#e6db74">&#34;Rovereto&#34;</span>, <span style="color:#e6db74">&#34;TN&#34;</span>, <span style="color:#ae81ff">38068</span>),
 </span></span><span style="display:flex;"><span>   (<span style="color:#e6db74">&#34;Merano&#34;</span>, <span style="color:#e6db74">&#34;BZ&#34;</span>, <span style="color:#ae81ff">39012</span>),
 </span></span><span style="display:flex;"><span>   (<span style="color:#e6db74">&#34;Bressanone&#34;</span>, <span style="color:#e6db74">&#34;BZ&#34;</span>, <span style="color:#ae81ff">39042</span>)

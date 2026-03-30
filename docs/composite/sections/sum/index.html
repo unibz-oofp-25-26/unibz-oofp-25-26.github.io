@@ -50,7 +50,7 @@ Point is a product type, and Shape is a sum type. -- a point in the Euclidean pl
 <link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/composite/sections/sum/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.7efbec4e155b794d3a2c1c59a2eecab34e89477ca5c1d24a96b7fcb18be2039f.js" integrity="sha256-fvvsThVbeU06LBxZou7Ks06JR3ylwdJKlrf8sYviA58=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.b5dd67a8c9fca8dde2eb7fcff3f490b9a9c0e3f5bf2200537e6f7d54e6578272.js" integrity="sha256-td1nqMn8qN3i63/P8/SQuanA4/W/IgBTfm99VOZXgnI=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -947,7 +947,7 @@ https://github.com/alex-shpak/hugo-book
     <li><a href="#in-haskell">in Haskell</a>
       <ul>
         <li><a href="#pattern-matching">Pattern matching</a></li>
-        <li><a href="#recusrive">Recursive type</a></li>
+        <li><a href="#recursive">Recursive type</a></li>
       </ul>
     </li>
   </ul>
@@ -1014,9 +1014,9 @@ Let us define a function <code>perimeter</code> that maps a <code>Shape</code> t
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">perimeter</span> (<span style="color:#66d9ef">TriangleC</span> p1 p2 p3) <span style="color:#f92672">=</span> distance p1 p2 <span style="color:#f92672">+</span> distance p2 p3 <span style="color:#f92672">+</span> distance p1 p3
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">perimeter</span> (<span style="color:#66d9ef">RectangleC</span> p1 p2 p3 p4) <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> (distance p1 p2 <span style="color:#f92672">+</span> distance p2 p3)
 </span></span></code></pre></div></blockquote>
-<h3 id="recusrive">
+<h3 id="recursive">
   Recursive type
-  <a class="anchor" href="#recusrive">#</a>
+  <a class="anchor" href="#recursive">#</a>
 </h3>
 <p>A type can appear in its own definition.</p>
 <blockquote class="book-hint info">
@@ -1079,7 +1079,7 @@ Recursive types are the standard way to define trees (and several other recursiv
     <li><a href="#in-haskell">in Haskell</a>
       <ul>
         <li><a href="#pattern-matching">Pattern matching</a></li>
-        <li><a href="#recusrive">Recursive type</a></li>
+        <li><a href="#recursive">Recursive type</a></li>
       </ul>
     </li>
   </ul>

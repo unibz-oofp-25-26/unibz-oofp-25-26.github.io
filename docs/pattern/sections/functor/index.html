@@ -18,7 +18,7 @@ Definition.
 Functor in Haskell is a type class.
 A type t that belongs to this class must:
 
-be a generic type, and
+be a generic type (with a single type variable), and
 implement the function
 
 fmap :: (Functor t) =&gt; (a -&gt; b) -&gt; t a -&gt; t b
@@ -35,7 +35,7 @@ The function fmap lifts a function">
 For programmers, a functor can be viewed as a generic type that implements a certain function (called fmap in Haskell), while respecting certain constraints.
 In Haskell # Definition. Functor in Haskell is a type class.
 A type t that belongs to this class must:
-be a generic type, and implement the function fmap :: (Functor t) =&gt; (a -&gt; b) -&gt; t a -&gt; t b Terminology. The function fmap lifts a function">
+be a generic type (with a single type variable), and implement the function fmap :: (Functor t) =&gt; (a -&gt; b) -&gt; t a -&gt; t b Terminology. The function fmap lifts a function">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
@@ -45,7 +45,7 @@ be a generic type, and implement the function fmap :: (Functor t) =&gt; (a -&gt;
 <link rel="canonical" href="http://localhost:1313/docs/pattern/sections/functor/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.a4a4264bb633183868e62adb1ceddef296b19f9ea83bfc4a41a438f07d002028.js" integrity="sha256-pKQmS7YzGDho5irbHO3e8paxn56oO/xKQaQ48H0AICg=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.84ec2b1d3e6f6d6384251eb64a0a514bade43899a61ea60c180a720f0c4ccfe4.js" integrity="sha256-hOwrHT5vbWOEJR62SgpRS63kOJmmHqYMGApyDwxMz&#43;Q=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -708,6 +708,19 @@ https://github.com/alex-shpak/hugo-book
         </li>
       
     
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/recursion/sections/termination/" class="">Termination</a>
+  
+
+        </li>
+      
+    
   </ul>
 
         </li>
@@ -796,6 +809,19 @@ https://github.com/alex-shpak/hugo-book
   
 
   
+    <a href="/docs/pattern/sections/fold/" class="">Fold</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
     <a href="/docs/pattern/sections/pipe/" class="">Pipeline</a>
   
 
@@ -810,6 +836,19 @@ https://github.com/alex-shpak/hugo-book
 
   
     <a href="/docs/pattern/sections/functor/" class="active">Functor</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/pattern/sections/monad/" class="">Monad</a>
   
 
         </li>
@@ -952,13 +991,13 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#in-haskell">In Haskell</a>
+    <li><a href="#haskell">In Haskell</a>
       <ul>
         <li><a href="#constraints">Constraints</a></li>
-        <li><a href="#maybe-as-a-functor"><code>Maybe</code> as a functor</a></li>
+        <li><a href="#usage">Usage</a></li>
+        <li><a href="#maybe"><code>Maybe</code> as a functor</a></li>
       </ul>
     </li>
-    <li><a href="#another-frequent-scenario-is-the-one-where">Another frequent scenario is the one where:</a></li>
   </ul>
 </nav>
 
@@ -976,17 +1015,17 @@ https://github.com/alex-shpak/hugo-book
   <a class="anchor" href="#functor">#</a>
 </h1>
 <p>The notion of functor comes from a branch of mathematics called <a href="https://en.wikipedia.org/wiki/Category_theory">category theory</a>.</p>
-<p>For programmers, a functor can be viewed as a <a href="http://localhost:1313/docs/generic/sections/generic_type/">generic type</a> that implements a certain function (called <code>fmap</code> in Haskell), while respecting certain <a href="">constraints</a>.</p>
-<h2 id="in-haskell">
+<p>For programmers, a functor can be viewed as a <a href="http://localhost:1313/docs/generic/sections/generic_type/">generic type</a> that implements a certain function (called <code>fmap</code> in Haskell), while respecting certain <a href="#constraints">constraints</a>.</p>
+<h2 id="haskell">
   In Haskell
-  <a class="anchor" href="#in-haskell">#</a>
+  <a class="anchor" href="#haskell">#</a>
 </h2>
 <blockquote class="book-hint warning">
 <p><strong><em>Definition.</em></strong>
 <code>Functor</code> in Haskell is a <a href="http://localhost:1313/docs/generic/sections/bound/#class">type class</a>.</p>
 <p>A type <code>t</code> that belongs to this class must:</p>
 <ul>
-<li>be a <a href="http://localhost:1313/docs/generic/sections/generic_type/">generic type</a>, and</li>
+<li>be a <a href="http://localhost:1313/docs/generic/sections/generic_type/">generic type</a> (with a single type variable), and</li>
 <li>implement the function</li>
 </ul>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">fmap</span> <span style="color:#f92672">::</span> (<span style="color:#66d9ef">Functor</span> t) <span style="color:#f92672">=&gt;</span> (a <span style="color:#f92672">-&gt;</span> b) <span style="color:#f92672">-&gt;</span> t a <span style="color:#f92672">-&gt;</span> t b
@@ -998,100 +1037,154 @@ The function <code>fmap</code> <strong>lifts</strong> a function</p>
 <p>to a function</p>
 <p>$\qquad$ <code>fmap f :: t a -&gt; t b</code></p>
 </blockquote>
-  <!-- <blockquote class="book-hint warning">
-   -->
 <blockquote class="book-hint info">
-  <p><strong><em>Example.</em></strong>
+<p><strong><em>Example.</em></strong>
 The type &ldquo;List&rdquo; (noted <code>[ ]</code> in Haskell) is a functor.</p>
 <p>So for this type, <code>fmap</code> lifts a function</p>
 <p>$\qquad$ <code>f :: a -&gt; b</code></p>
 <p>to a function</p>
 <p>$\qquad$ <code>fmap f :: [a] -&gt; [b]</code></p>
-<p>Precisely, for the type &ldquo;List&rdquo;, <code>fmap</code> is identical to <code>map</code>.<br>
-So</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">fmap</span> (<span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>) [<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>]
-</span></span></code></pre></div><p>evaluates to <code>[2,3,4]</code>, just like</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">map</span> (<span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>) [<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>]
-</span></span></code></pre></div>
 </blockquote>
 <h3 id="constraints">
   Constraints
   <a class="anchor" href="#constraints">#</a>
 </h3>
-<p>The mathematical definition of a functor requires that <code>fmap</code> satisfies two additional properties:</p>
-<ul>
-<li>
-<p>It should preserve <a href="">function composition</a>, i.,e:</p>
-<p>$qquad$ <code>fmap (g . f)</code> and <code>(fmap g) . (fmap f)</code> must be the same function</p>
-</li>
-<li>
-<p>I must preserve the <a href="">identity function </a>, i.e:</p>
-<p>$qquad$ <code>fmap id</code> and <code>id</code> must be the same function</p>
-</li>
-</ul>
-<p>(where the first <code>id</code> is over <code>a</code> and the second over <code>t a</code>).</p>
-<p><strong><em>In practice.</em></strong>
-These constraints significantly reduce the possible implemenations of <code>fmap</code>.</p>
+<p>The mathematical definition of a functor requires that <code>fmap</code> satisfies two additional constraints, sometimes called the <strong>functor laws</strong>.</p>
+<blockquote class="book-hint warning">
+<p><strong><em>Constraint.</em></strong>
+<code>fmap</code> should preserve <a href="http://localhost:1313/docs/haskell/sections/function/#composition">function composition</a>, i.e.</p>
+<p>$\qquad$ <code>fmap (g . f)</code> and <code>(fmap g) . (fmap f)</code> must be the same function.</p>
+</blockquote>
+<blockquote class="book-hint warning">
+<p><strong><em>Constraint.</em></strong>
+<code>fmap</code> must preserve the <a href="http://localhost:1313/docs/haskell/sections/function/#id">identity function </a>, i.e.</p>
+<p>$\qquad$ <code>fmap id</code> and <code>id</code> must be the same function.</p>
+<p>(where the first <code>id</code> is over <code>a</code>, and the second over <code>t a</code>).</p>
+</blockquote>
+<p>These two laws limit the possible implementations of <code>fmap</code>.</p>
+<blockquote class="book-hint info">
+<p><strong><em>Example (continued).</em></strong>
+For the type &ldquo;List&rdquo;, the implementation of <code>fmap</code> coincides with <code>map</code>.</p>
+<p>Indeed, this is the <em>only</em> way to implement <code>fmap</code> while respecting the two functor laws.<br>
+So for instance</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">fmap</span> (<span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>) [<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>]
+</span></span></code></pre></div><p>evaluates to <code>[2,3,4]</code>, just like</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">map</span> (<span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>) [<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>]
+</span></span></code></pre></div></blockquote>
+<h3 id="usage">
+  Usage
+  <a class="anchor" href="#usage">#</a>
+</h3>
+<blockquote class="book-hint warning">
+<p><strong><em>Intuition.</em></strong>
+A functor can often be viewed as a &ldquo;container&rdquo; type.</p>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Examples.</em></strong>
+&ldquo;List&rdquo;, &ldquo;Set&rdquo;, &ldquo;Tree&rdquo; and &ldquo;<a href="http://localhost:1313/docs/generic/sections/maybe/">Optional</a>&rdquo; are all functors.</p>
+</blockquote>
+<blockquote class="book-hint warning">
+<p><strong><em>Intuition.</em></strong>
+The functor laws often capture
+the &ldquo;natural&rdquo; (a.k.a. expected) way to lift a function to a container type.</p>
+</blockquote>
+<blockquote class="book-hint info">
 <p><strong><em>Example.</em></strong>
-For the type &ldquo;List&rdquo;, we have seen that <code>fmap</code> coincides with <code>map</code>.</p>
-<p>This turns out to be the <em>only</em> way to implement <code>fmap</code> while respecting these constraints.</p>
-<p><strong><em>Observation.</em></strong>
-These constraints often capture
-the &ldquo;natural&rdquo; way to lift a function to a generic type,
-i.e. turn a function $f : X \to Y$ into a function that maps:</p>
+Consider the function</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">ord</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Char</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Int</span>
+</span></span></code></pre></div><p>that maps a character to its Unicode point.</p>
+<p>We can lift it to a function <code>fmap ord</code>.<br>
+Then:</p>
 <ul>
-<li>a list of $X$ to a list of $Y$&rsquo;s, or</li>
-<li>a set of $X$ to a set of $Y$&rsquo;s, or</li>
-<li>a tree of $X$ to a tree of $Y$&rsquo;s, or</li>
-<li>an optional $X$ to an optional $Y$, or</li>
+<li>If <code>cs</code> is a <em>list</em> of characters, then <code>fmap ord cs</code> is the <em>list</em> of their Unicode points,</li>
+<li>If <code>cs</code> is a <em>set</em> of characters, then <code>fmap ord cs</code> is the <em>set</em> of their Unicode points,</li>
+<li>If <code>c</code> is an <em>optional</em> character, then <code>fmap ord c</code> is its <em>optional</em> Unicode point,</li>
 <li>etc.</li>
 </ul>
-<p><strong><em>To go further.</em></strong>
-In general, the compiler <em>cannot</em> check whether an implementation of <code>fmap</code> is mathematically correct (i.e. whether it satisfies these constraints).</p>
-<p>Instead, functors have applications in automatic program verification.</p>
-<p>Another benefit of the type class <code>Functor</code> (in Haskell at least) is that it lets us write generic code that involves the function <code>fmap</code> (regardless of its implementation for a specific functor).</p>
-<h3 id="maybe-as-a-functor">
+</blockquote>
+<blockquote class="book-hint warning">
+<p><strong><em>To go further.</em></strong></p>
+<blockquote class="book-hint warning">
+  <p><strong><em>Benefit.</em></strong>
+One can write generic code that uses <code>fmap</code>, regardless of its implementation for a specific functor (for an illustration, we refer to <a href="http://localhost:1313/docs/intro/sections/resources/#haskell"><em>Programming in Haskell</em></a>).</p>
+</blockquote>
+<blockquote class="book-hint warning">
+  <p><strong><em>Other applications.</em></strong>
+Functors are used for automatic program verification.</p>
+</blockquote>
+</blockquote>
+<blockquote class="book-hint danger">
+<p><strong><em>Limitation.</em></strong>
+In general, the Haskell compiler <em>cannot</em> check whether an implementation of <code>fmap</code> satisfies the functor laws.</p>
+</blockquote>
+<h3 id="maybe">
   <code>Maybe</code> as a functor
-  <a class="anchor" href="#maybe-as-a-functor">#</a>
+  <a class="anchor" href="#maybe">#</a>
 </h3>
-<p>The type <code>Maybe</code> is also a functor.</p>
-<p>Accordingly, the function <code>fmap</code> for the type <code>Maybe</code> lifts a function</p>
-<p><code>f :: a -&gt; b</code></p>
+<blockquote class="book-hint info">
+<p><strong><em>Reminder.</em></strong>
+<code>Maybe</code> is the <a href="http://localhost:1313/docs/generic/sections/maybe/">option type</a> of Haskell.</p>
+<p>It is declared as:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#66d9ef">data</span> <span style="color:#66d9ef">Maybe</span> a <span style="color:#f92672">=</span> <span style="color:#66d9ef">Nothing</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">Just</span> a
+</span></span></code></pre></div></blockquote>
+<blockquote class="book-hint warning">
+<p><strong><em>Implementation.</em></strong>
+The type <code>Maybe</code> is a functor. Therefore it implements <code>fmap</code>.</p>
+<p>So in this case, <code>fmap</code> <a href="#haskell">lifts</a> a function</p>
+<p>$\qquad$ <code>f :: a -&gt; b</code></p>
 <p>to a function</p>
-<p><code>fmap f :: Maybe a -&gt; Maybe b</code></p>
-<p>This is once again done in the expected (aka &ldquo;natural&rdquo;) way.</p>
-<p><code>fmap f</code></p>
-<p>is the function that maps:</p>
+<p>$\qquad$ <code>fmap f :: Maybe a -&gt; Maybe b</code></p>
+<p>This function maps</p>
 <ul>
 <li><code>Nothing</code> to <code>Nothing</code>, and</li>
 <li><code>Just x</code> to <code>Just (f x)</code>.</li>
 </ul>
-<p><strong><em>Usage.</em></strong>
-<code>fmap</code> for the type <code>Maybe</code> lets us intuitively propagate &ldquo;null values&rdquo; (.e. <code>Nothing</code>) <a href="">without boilerplate code</a>.</p>
+<p>Or in other words:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">fmap</span> <span style="color:#f92672">::</span> (a <span style="color:#f92672">-&gt;</span> b) <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Maybe</span> a <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Maybe</span> b
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">fmap</span> <span style="color:#66d9ef">_</span> <span style="color:#66d9ef">Nothing</span>   <span style="color:#f92672">=</span> <span style="color:#66d9ef">Nothing</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">fmap</span> f (<span style="color:#66d9ef">Just</span> x)  <span style="color:#f92672">=</span> <span style="color:#66d9ef">Just</span> (f x)
+</span></span></code></pre></div></blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Examples.</em></strong>
+We can use <code>fmap</code> to lift the function <code>(+ 1)</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">fmap</span> (<span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>) <span style="color:#66d9ef">Nothing</span>    <span style="color:#75715e">-- evaluates to `Nothing`</span>
+</span></span></code></pre></div><p>$\qquad$</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">fmap</span> (<span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>) <span style="color:#66d9ef">Just</span> <span style="color:#ae81ff">3</span>     <span style="color:#75715e">-- evaluates to `Just 4`</span>
+</span></span></code></pre></div></blockquote>
+<h4 id="usage-1">
+  Usage
+  <a class="anchor" href="#usage-1">#</a>
+</h4>
+<blockquote class="book-hint warning">
+<p>For the functor <code>Maybe</code>,
+<code>fmap</code> lets us propagate some &ldquo;null values&rdquo; (i.e. <code>Nothing</code>) without <a href="http://localhost:1313/docs/generic/sections/maybe/#null_prop">boilerplate code</a>.</p>
+</blockquote>
+<blockquote class="book-hint info">
 <p><strong><em>Example.</em></strong>
 Consider a function</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">maybeHead</span> <span style="color:#f92672">::</span> [<span style="color:#66d9ef">Int</span>] <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Maybe</span> <span style="color:#66d9ef">Int</span>
-</span></span></code></pre></div><p>that maps a nonemty list to its head, and the empty list to <code>Nothing</code>.</p>
-<p>For instance,</p>
+</span></span></code></pre></div><p>that maps a list to its head (if present).</p>
+<p>For instance:</p>
 <ul>
 <li><code>maybeHead []</code> evaluates to <code>Nothing</code></li>
 <li><code>maybeHead [2,3,4]</code> evaluates to <code>Just 2</code></li>
 </ul>
 <p>Now let us assume that we want to:</p>
 <ul>
-<li>apply the function <code>(+3)</code> to the output of <code>maybeHead</code> if it is present, and</li>
-<li>propagate the &ldquo;null value&rdquo; (aka <code>Nothing</code>) otherwise.</li>
+<li>apply the function <code>(^ 2)</code> to the output of <code>maybeHead</code> <em>if present</em>, and</li>
+<li>propagate the &ldquo;null value&rdquo; (a.k.a. <code>Nothing</code>) otherwise.</li>
 </ul>
 <p>No need to check explicitly whether <code>maybeHead</code> outputs <code>Nothing</code>.
 Instead, we can use <code>fmap</code>.<br>
 For instance:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">myFunction</span> <span style="color:#f92672">::</span> [<span style="color:#66d9ef">Int</span>] <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Maybe</span> <span style="color:#66d9ef">Int</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">myFunction</span> <span style="color:#f92672">=</span> maybeHead <span style="color:#f92672">&gt;&gt;&gt;</span> fmap (<span style="color:#f92672">+</span><span style="color:#ae81ff">3</span>)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">maybeHeadSquared</span> <span style="color:#f92672">::</span> [<span style="color:#66d9ef">Int</span>] <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Maybe</span> <span style="color:#66d9ef">Int</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">maybeHeadSquared</span> <span style="color:#f92672">=</span> maybeHead <span style="color:#f92672">&gt;&gt;&gt;</span> fmap (<span style="color:#f92672">^</span> <span style="color:#ae81ff">2</span>)   <span style="color:#75715e">-- compose `maybeHead` with `fmap (^ 2)`</span>
 </span></span></code></pre></div><p>Then</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">myFunction</span> [<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">4</span>]
-</span></span></code></pre></div><p>evaluates to <code>Just 5</code>, whereas</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">myFunction</span> <span style="color:#66d9ef">[]</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">maybeHeadSquared</span> [<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">5</span>]
+</span></span></code></pre></div><p>evaluates to <code>Just 9</code>, whereas</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">maybeHeadSquared</span> <span style="color:#66d9ef">[]</span>
 </span></span></code></pre></div><p>evaluates to <code>Nothing</code>.</p>
+</blockquote>
 <div class="book-tabs">
 <input type="radio" class="toggle" name="tabs-exercise_maybe_functor" id="tabs-exercise_maybe_functor-0" checked="checked" />
 <label for="tabs-exercise_maybe_functor-0">Exercise</label>
@@ -1116,9 +1209,8 @@ For instance:</p>
 </span></span><span style="display:flex;"><span>              <span style="color:#f92672">&amp;</span> map (maybeHead)
 </span></span><span style="display:flex;"><span>              <span style="color:#f92672">&amp;</span> map (fmap (<span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>))
 </span></span></code></pre></div></div>
-</div>
-<input type="radio" class="toggle" name="tabs-warning" id="tabs-warning-2"  />
-<label for="tabs-warning-2">Solution</label>
+<input type="radio" class="toggle" name="tabs-exercise_maybe_functor" id="tabs-exercise_maybe_functor-1"  />
+<label for="tabs-exercise_maybe_functor-1">Solution</label>
 <div class="book-tabs-content markdown-inner"><ol start="2">
 <li>
 <p>Nothing</p>
@@ -1131,27 +1223,41 @@ For instance:</p>
 </li>
 </ol>
 </div>
+</div>
+<!-- <blockquote class="book-hint warning">
+   -->
+<!-- **_Scope._** -->
+<!-- This pattern handles the scenario where: -->
+<!---->
+<!-- - `f` has type `a -> b`, and -->
+<!-- - we want to apply `f` to an input value that may be "null" (i.e. which has type `Maybe a`). -->
+<!---->
+<!-- 
 </blockquote>
-<p><strong><em>Limitation.</em></strong>
-<code>fmap</code> lifts a function</p>
-<p>f :: a -&gt; b</p>
-<p>to a function</p>
-<p><code>fmap f -&gt; Maybe a -&gt; Maybe b</code></p>
-<p>This lets us apply <code>f</code> to an input value that may be &ldquo;null&rdquo;, and propagate the &ldquo;null&rdquo; value if this is the case.</p>
-<p>This does not cover all scenarios of &ldquo;null value&rdquo; propagation.</p>
-<h2 id="another-frequent-scenario-is-the-one-where">
-  Another frequent scenario is the one where:
-  <a class="anchor" href="#another-frequent-scenario-is-the-one-where">#</a>
-</h2>
-<ul>
-<li>we apply <code>f</code> to an input value that may be &ldquo;null&rdquo;, and</li>
-<li><code>f</code> has type <code>a -&gt; Maybe b</code> (meaning that it may return a &ldquo;null&rdquo; value, for some non-null inputs).</li>
-</ul>
-<p>In this case, <code>flatmap f</code> has type</p>
-<p><code>Maybe a -&gt; Maybe Maybe b</code></p>
-<p>Instead, we need to turn <code>f</code> into a function with type</p>
-<p><code>Maybe a -&gt; Maybe b</code></p>
-<p>We will cover this case in the section on <a href="">monads</a>.</p>
+ -->
+<!---->
+<!-- <blockquote class="book-hint danger">
+   -->
+<!---->
+<!-- **_Limitation._** -->
+<!-- This pattern does _not_ handle the scenario where: -->
+<!---->
+<!-- - `f` has type `a -> Maybe b` (meaning that it may return a "null" value, for some non-null inputs), and -->
+<!-- - we want to apply `f` to an input value that may be "null". -->
+<!---->
+<!-- In this case, `fmap f` has type -->
+<!---->
+<!-- $\qquad$ `Maybe a -> Maybe (Maybe b)` -->
+<!---->
+<!-- Instead, we want to turn `f` into a function with type -->
+<!---->
+<!-- $\qquad$ `Maybe a -> Maybe b` -->
+<!---->
+<!-- We will cover this case in the section on [monads](http://localhost:1313/docs/pattern/sections/monad/). -->
+<!---->
+<!-- 
+</blockquote>
+ -->
 </article>
  
       
@@ -1193,13 +1299,13 @@ For instance:</p>
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#in-haskell">In Haskell</a>
+    <li><a href="#haskell">In Haskell</a>
       <ul>
         <li><a href="#constraints">Constraints</a></li>
-        <li><a href="#maybe-as-a-functor"><code>Maybe</code> as a functor</a></li>
+        <li><a href="#usage">Usage</a></li>
+        <li><a href="#maybe"><code>Maybe</code> as a functor</a></li>
       </ul>
     </li>
-    <li><a href="#another-frequent-scenario-is-the-one-where">Another frequent scenario is the one where:</a></li>
   </ul>
 </nav>
 
