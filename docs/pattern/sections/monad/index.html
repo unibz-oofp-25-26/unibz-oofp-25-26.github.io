@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+<head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="
@@ -9,41 +9,27 @@
 
 Like functors, monads come from category theory.
 For programmers, a monad can be viewed as a functor that implements additional functions, while respecting certain constraints.
-
-  In Haskell
-  #
-
-We have seen in the previous section that a functor is a generic type that implements the function fmap.
-
-Monad in Haskell is type class.
-A type t that belongs to this class must:
-
-belong to the type class Functor, and
-implement the functions
-
-return :: (Monad m) =&gt; a -&gt; m a
-$\qquad$ and">
+Monads serve a variety of purposes in functional programs.
+For instance, this includes reading data or writing to a log.
+In this section, we will only focus on two of the simplest monads, namely the type of lists and the option type (as we did for functors).">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/docs/pattern/sections/monad/">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://unibz-oofp-25-26.github.io/docs/pattern/sections/monad/">
   <meta property="og:site_name" content="OOFP 2025-26">
   <meta property="og:title" content="Monad">
   <meta property="og:description" content="Monad # Like functors, monads come from category theory.
 For programmers, a monad can be viewed as a functor that implements additional functions, while respecting certain constraints.
-In Haskell # We have seen in the previous section that a functor is a generic type that implements the function fmap.
-Monad in Haskell is type class.
-A type t that belongs to this class must:
-belong to the type class Functor, and implement the functions return :: (Monad m) =&gt; a -&gt; m a $\qquad$ and">
+Monads serve a variety of purposes in functional programs. For instance, this includes reading data or writing to a log. In this section, we will only focus on two of the simplest monads, namely the type of lists and the option type (as we did for functors).">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
 <title>Monad | OOFP 2025-26</title>
 <link rel="icon" href="/favicon.png" >
 <link rel="manifest" href="/manifest.json">
-<link rel="canonical" href="http://localhost:1313/docs/pattern/sections/monad/">
+<link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/pattern/sections/monad/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.84ec2b1d3e6f6d6384251eb64a0a514bade43899a61ea60c180a720f0c4ccfe4.js" integrity="sha256-hOwrHT5vbWOEJR62SgpRS63kOJmmHqYMGApyDwxMz&#43;Q=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.d2986a2501c6b936622eb9e0073e50161234b611303b22dd3418c58583b578fb.js" integrity="sha256-0phqJQHGuTZiLrngBz5QFhI0thEwOyLdNBjFhYO1ePs=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -706,19 +692,6 @@ https://github.com/alex-shpak/hugo-book
         </li>
       
     
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/recursion/sections/termination/" class="">Termination</a>
-  
-
-        </li>
-      
-    
   </ul>
 
         </li>
@@ -799,19 +772,6 @@ https://github.com/alex-shpak/hugo-book
 
           
   <ul>
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/pattern/sections/fold/" class="">Fold</a>
-  
-
-        </li>
-      
     
       
         <li>
@@ -1013,28 +973,30 @@ https://github.com/alex-shpak/hugo-book
   Monad
   <a class="anchor" href="#monad">#</a>
 </h1>
-<p>Like <a href="http://localhost:1313/docs/pattern/sections/functor/">functors</a>, monads come from category theory.</p>
+<p>Like <a href="https://unibz-oofp-25-26.github.io/docs/pattern/sections/functor/">functors</a>, monads come from category theory.</p>
 <p>For programmers, a monad can be viewed as a functor that implements additional functions, while respecting certain constraints.</p>
+<p>Monads serve a variety of purposes in functional programs.
+For instance, this includes reading data or writing to a log.
+In this section, we will only focus on two of the simplest monads, namely the type of lists and the option type (as we did for functors).</p>
 <h2 id="in-haskell">
   In Haskell
   <a class="anchor" href="#in-haskell">#</a>
 </h2>
-<p>We have seen in the previous section that a <a href="http://localhost:1313/docs/pattern/sections/functor/">functor</a> is a <a href="http://localhost:1313/docs/generic/sections/generic_type/">generic type</a> that implements the function <code>fmap</code>.</p>
+<p>We have seen in the previous section that a <a href="https://unibz-oofp-25-26.github.io/docs/pattern/sections/functor/">functor</a> is a <a href="https://unibz-oofp-25-26.github.io/docs/generic/sections/generic_type/">generic type</a> that implements the function <code>fmap</code>.</p>
 <blockquote class="book-hint warning">
-<p><code>Monad</code> in Haskell is <a href="">type class</a>.</p>
-<p>A type <code>t</code> that belongs to this class must:</p>
-<ul>
-<li>belong to the type class <code>Functor</code>, and</li>
-<li>implement the functions</li>
-</ul>
+<p>A monad is a <a href="https://unibz-oofp-25-26.github.io/docs/pattern/sections/functor/">functor</a> that implements two additional functions</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">return</span> <span style="color:#f92672">::</span> (<span style="color:#66d9ef">Monad</span> m) <span style="color:#f92672">=&gt;</span> a <span style="color:#f92672">-&gt;</span> m a
-</span></span></code></pre></div><p>$\qquad$ and</p>
+</span></span></code></pre></div><p>and</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">join</span> <span style="color:#f92672">::</span> (<span style="color:#66d9ef">Monad</span> m) <span style="color:#f92672">=&gt;</span> m (m a) <span style="color:#f92672">-&gt;</span> m a
 </span></span></code></pre></div></blockquote>
 <blockquote class="book-hint info">
 <p><strong><em>Example.</em></strong>
 We have seen how the generic type &ldquo;List&rdquo; (written <code>[ ]</code> in Haskell) can be made a functor by implementing <code>fmap</code>.</p>
 <p>We will see that it can also be made a monad, by implementing <code>return</code> and <code>join</code>.</p>
+</blockquote>
+<blockquote class="book-hint danger">
+<p><strong><em>Warning.</em></strong>
+If you want to use the function <code>join</code>, then <a href="https://unibz-oofp-25-26.github.io/docs/haskell/sections/program/#module">import</a> the module <code>Control.Monad</code>.</p>
 </blockquote>
 <!-- <blockquote class="book-hint warning">
    -->
@@ -1047,9 +1009,9 @@ We have seen how the generic type &ldquo;List&rdquo; (written <code>[ ]</code> i
   Core functions
   <a class="anchor" href="#core-functions">#</a>
 </h3>
-<h4 id="return">
-  <code>return</code>
-  <a class="anchor" href="#return">#</a>
+<h4 id="return-also-called-pure">
+  <code>return</code> (also called <code>pure</code>)
+  <a class="anchor" href="#return-also-called-pure">#</a>
 </h4>
 <blockquote class="book-hint warning">
 <p>The function</p>
@@ -1120,7 +1082,7 @@ For the monad &ldquo;List&rdquo;, <code>join</code> concatenates the inner lists
   <a class="anchor" href="#derived-functions">#</a>
 </h3>
 <p>Two useful higher-order functions can be derived from <code>join</code> and <code>fmap</code> (recall that a monad is a functor, so it implements <code>fmap</code>).
-Both are <a href="http://localhost:1313/docs/higher/sections/currying/#infix">infix</a> functions, noted <code>&gt;&gt;=</code> and <code>&gt;=&gt;</code> respectivbely.</p>
+Both are <a href="https://unibz-oofp-25-26.github.io/docs/higher/sections/currying/#infix">infix</a> functions, noted <code>&gt;&gt;=</code> and <code>&gt;=&gt;</code> respectivbely.</p>
 <h4 id="-pronounced-bind">
   <code>&gt;&gt;=</code> (pronounced &ldquo;bind&rdquo;)
   <a class="anchor" href="#-pronounced-bind">#</a>
@@ -1142,12 +1104,12 @@ Then the evaluation of <code>x &gt;&gt;= f</code>:</p>
 </span></span></code></pre></div></blockquote>
 <blockquote class="book-hint info">
 <p><strong><em>Concrete illustration (continued).</em></strong>
-Let us introduce a <a href="http://localhost:1313/docs/composite/sections/product/">product type</a> for Italian provinces:</p>
+Let us introduce a <a href="https://unibz-oofp-25-26.github.io/docs/composite/sections/product/">product type</a> for Italian provinces:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#66d9ef">data</span> <span style="color:#66d9ef">Province</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">ProvinceC</span> { name <span style="color:#f92672">::</span> <span style="color:#66d9ef">String</span>, cities <span style="color:#f92672">::</span> [<span style="color:#66d9ef">String</span>] }
 </span></span></code></pre></div><p>The expression</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span>[
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">ProvinceC</span> { name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;AltoAdige&#34;</span> , cities <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;Bolzano&#34;</span>, <span style="color:#e6db74">&#34;Merano&#34;</span>] },
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">ProvinceC</span> { name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Trentino&#34;</span> ,  cities <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;Trento&#34;</span>, <span style="color:#e6db74">&#34;Rovereto&#34;</span>] },
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">ProvinceC</span> { name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Trentino&#34;</span> ,  cities <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;Trento&#34;</span>, <span style="color:#e6db74">&#34;Rovereto&#34;</span>]}
 </span></span><span style="display:flex;"><span>] <span style="color:#f92672">&gt;&gt;=</span> cities
 </span></span></code></pre></div><p>evaluates to</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span>[<span style="color:#e6db74">&#34;Bolzano&#34;</span>, <span style="color:#e6db74">&#34;Merano&#34;</span>, <span style="color:#e6db74">&#34;Trento&#34;</span> , <span style="color:#e6db74">&#34;Rovereto&#34;</span>]
@@ -1160,12 +1122,12 @@ For the monad &ldquo;List&rdquo;, the function <code>&gt;&gt;=</code> may be eas
 It can be defined as:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">flatmap</span> <span style="color:#f92672">::</span> (a <span style="color:#f92672">-&gt;</span> [b]) <span style="color:#f92672">-&gt;</span> [a] <span style="color:#f92672">-&gt;</span> [b]
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">flatmap</span> f xs <span style="color:#f92672">=</span> xs <span style="color:#f92672">&gt;&gt;=</span> f    <span style="color:#75715e">-- swap the order of `f` and `xs`</span>
-</span></span></code></pre></div><p>The type of <code>flatmap</code> is closer to the types of other <a href="http://localhost:1313/docs/higher/sections/useful_hofs/">higher-order functions</a> encountered for lists: <code>map</code>, <code>filter</code>, etc.</p>
+</span></span></code></pre></div><p>The type of <code>flatmap</code> is closer to the types of other <a href="https://unibz-oofp-25-26.github.io/docs/higher/sections/useful_hofs/">higher-order functions</a> encountered for lists: <code>map</code>, <code>filter</code>, etc.</p>
 <p>So we can write</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">flatmap</span> cities
 </span></span><span style="display:flex;"><span>[
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">ProvinceC</span> { name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;AltoAdige&#34;</span> , cities <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;Bolzano&#34;</span>, <span style="color:#e6db74">&#34;Merano&#34;</span>] },
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">ProvinceC</span> { name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Trentino&#34;</span> ,  cities <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;Trento&#34;</span>, <span style="color:#e6db74">&#34;Rovereto&#34;</span>] },
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">ProvinceC</span> { name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Trentino&#34;</span> ,  cities <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;Trento&#34;</span>, <span style="color:#e6db74">&#34;Rovereto&#34;</span>]}
 </span></span><span style="display:flex;"><span>]
 </span></span></code></pre></div></blockquote>
 <h5 id="usage-of--vs-fmap-vs-function-application">
@@ -1258,22 +1220,22 @@ The following table recaps when <code>&gt;&gt;=</code>, <code>fmap</code> and pl
           <td></td>
       </tr>
       <tr>
-          <td><code>3 &gt;&gt;= preds</code></td>
+          <td><code>2 &gt;&gt;= preds</code></td>
           <td></td>
           <td></td>
       </tr>
       <tr>
-          <td><code>[3] &gt;&gt;= preds</code></td>
+          <td><code>[2] &gt;&gt;= preds</code></td>
           <td></td>
           <td></td>
       </tr>
       <tr>
-          <td><code>return 3 &gt;&gt;= preds</code></td>
+          <td><code>return 2 &gt;&gt;= preds</code></td>
           <td></td>
           <td></td>
       </tr>
       <tr>
-          <td><code>[[3]] &gt;&gt;= preds</code></td>
+          <td><code>[[2]] &gt;&gt;= preds</code></td>
           <td></td>
           <td></td>
       </tr>
@@ -1283,7 +1245,7 @@ The following table recaps when <code>&gt;&gt;=</code>, <code>fmap</code> and pl
           <td></td>
       </tr>
       <tr>
-          <td><code>fmap preds 3</code></td>
+          <td><code>fmap preds 2</code></td>
           <td></td>
           <td></td>
       </tr>
@@ -1309,12 +1271,12 @@ The following table recaps when <code>&gt;&gt;=</code>, <code>fmap</code> and pl
   </thead>
   <tbody>
       <tr>
-          <td><code>preds [3]</code></td>
+          <td><code>preds [2]</code></td>
           <td>no</td>
           <td></td>
       </tr>
       <tr>
-          <td><code>preds 3</code></td>
+          <td><code>preds 2</code></td>
           <td>yes</td>
           <td><code>[0,1]</code></td>
       </tr>
@@ -1324,39 +1286,39 @@ The following table recaps when <code>&gt;&gt;=</code>, <code>fmap</code> and pl
           <td><code>[]</code></td>
       </tr>
       <tr>
-          <td><code>3 &gt;&gt;= preds</code></td>
+          <td><code>2 &gt;&gt;= preds</code></td>
           <td>no</td>
           <td></td>
       </tr>
       <tr>
-          <td><code>[3] &gt;&gt;= preds</code></td>
+          <td><code>[2] &gt;&gt;= preds</code></td>
           <td>yes</td>
-          <td>[0,1,2]</td>
+          <td>[0,1]</td>
       </tr>
       <tr>
-          <td><code>return 3 &gt;&gt;= preds</code></td>
+          <td><code>return 2 &gt;&gt;= preds</code></td>
           <td>yes</td>
-          <td>[0, 1, 2]</td>
+          <td>[0,1]</td>
       </tr>
       <tr>
-          <td><code>[[3]] &gt;&gt;= preds</code></td>
+          <td><code>[[2]] &gt;&gt;= preds</code></td>
           <td>no</td>
           <td></td>
       </tr>
       <tr>
           <td><code>[2,3] &gt;&gt;= preds</code></td>
           <td>yes</td>
-          <td>[0, 1, 0, 1, 2]</td>
+          <td>[0,1,0,1,2]</td>
       </tr>
       <tr>
-          <td><code>fmap preds 3</code></td>
+          <td><code>fmap preds 2</code></td>
           <td>no</td>
           <td></td>
       </tr>
       <tr>
           <td><code>fmap preds [2,3]</code></td>
           <td>yes</td>
-          <td>[[0, 1], [0, 1, 2]]</td>
+          <td>[[0,1], [0,1,2]]</td>
       </tr>
   </tbody>
 </table>
@@ -1376,7 +1338,8 @@ It can be derived as</p>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">join</span> x <span style="color:#f92672">=</span> x <span style="color:#f92672">&gt;&gt;=</span> id
 </span></span></code></pre></div><p>So there is an alternative (equivalent) way to define a monad,
 where <code>&gt;&gt;=</code> is primitive and <code>join</code> is derived from it.</p>
-<p>You will find this alternative definition in some textbooks or websites.</p>
+<p>You will find this alternative definition in some textbooks or websites.
+This is also how <code>join</code> is implemented within the standard Haskell libraries.</p>
 </blockquote>
 <h4 id="-pronounced-fish">
   <code>&gt;=&gt;</code> (pronounced &ldquo;fish&rdquo;)
@@ -1385,7 +1348,7 @@ where <code>&gt;&gt;=</code> is primitive and <code>join</code> is derived from 
 <blockquote class="book-hint warning">
 <p>Another convenient function that can be derived from <code>return</code> and <code>join</code> is:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span>(<span style="color:#f92672">&gt;=&gt;</span>) <span style="color:#f92672">::</span> (a <span style="color:#f92672">-&gt;</span> m b) <span style="color:#f92672">-&gt;</span> (b <span style="color:#f92672">-&gt;</span> m c) <span style="color:#f92672">-&gt;</span> (a <span style="color:#f92672">-&gt;</span> m c)
-</span></span></code></pre></div><p>Intuitively, the relation between <code>&gt;&gt;=</code> and <code>&gt;=&gt;</code> is analogous to the relation between function application and <a href="">function composition</a> (or between their <a href="">reversed versions</a> <code>&amp;</code> and <code>&gt;&gt;&gt;</code>).</p>
+</span></span></code></pre></div><p>Intuitively, the relation between <code>&gt;&gt;=</code> and <code>&gt;=&gt;</code> is analogous to the relation between function application and <a href="https://unibz-oofp-25-26.github.io/docs/haskell/sections/function/#composition">function composition</a> (or between their reversed versions <a href="https://unibz-oofp-25-26.github.io/docs/pattern/sections/pipe/#forward_app"><code>&amp;</code></a> and <a href="https://unibz-oofp-25-26.github.io/docs/pattern/sections/pipe/#forward_comp"><code>&gt;&gt;&gt;</code></a>).</p>
 </blockquote>
 <blockquote class="book-hint danger">
 <p><strong><em>Disclaimer.</em></strong>
@@ -1537,12 +1500,12 @@ Due to limited time, we will not cover <code>(&gt;=&gt;)</code> it in this cours
   Constraints
   <a class="anchor" href="#constraints">#</a>
 </h3>
-<p>We have seen <a href="http://localhost:1313/docs/pattern/sections/functor/">earlier</a> that the function <code>fmap</code> must satisfy additional <a href="http://localhost:1313/docs/pattern/sections/functor/#constraints">constraints</a> (sometimes called the functor laws) for a generic type to be a mathematically valid functor.</p>
+<p>We have seen <a href="https://unibz-oofp-25-26.github.io/docs/pattern/sections/functor/">earlier</a> that the function <code>fmap</code> must satisfy additional <a href="https://unibz-oofp-25-26.github.io/docs/pattern/sections/functor/#constraints">constraints</a> (sometimes called the functor laws) for a generic type to be a mathematically valid functor.</p>
 <p>Similarly, the functions associated to a monad (e.g. <code>return</code> and <code>join</code>) must satisfy certain constraints.</p>
-<blockquote class="book-hint warning">
-<p><strong><em>To go further.</em></strong>
-Due to limited time, we will not see these constraints in this course.
-We refer to <a href="https://bartoszmilewski.com/2016/11/21/monads-programmers-definition/">this page</a> for a good introduction (in particular, these constraints may be easier to understand when expressed over <code>return</code> and <code>&gt;=&gt;</code>).</p>
+<blockquote class="book-hint danger">
+<p><strong><em>Disclaimer.</em></strong>
+Due to limited time, we will not see these constraints in this course.</p>
+<p>We refer to <a href="https://bartoszmilewski.com/2016/11/21/monads-programmers-definition/">this page</a> for a good introduction (in particular, these constraints may be easier to understand when expressed over <code>return</code> and <code>&gt;=&gt;</code>).</p>
 </blockquote>
 <!-- One can formulate these constraints by focusing on the `>=>` and `return` functions, as follows: -->
 <!---->
@@ -1578,16 +1541,16 @@ We refer to <a href="https://bartoszmilewski.com/2016/11/21/monads-programmers-d
   <a class="anchor" href="#maybe-as-a-monad">#</a>
 </h3>
 <p>We have seen above how the functor &ldquo;List&rdquo; (noted <code>[ ]</code> in Haskell) can be made a monad, by implementing the functions <code>return</code> an <code>join</code>.</p>
-<p>We will now do this with the functor <a href="http://localhost:1313/docs/pattern/sections/functor/#maybe"><code>Maybe</code></a>.</p>
+<p>We will now do this with the functor <a href="https://unibz-oofp-25-26.github.io/docs/pattern/sections/functor/#maybe"><code>Maybe</code></a>.</p>
 <blockquote class="book-hint info">
 <p><strong><em>Reminder.</em></strong>
-<code>Maybe</code> is the <a href="http://localhost:1313/docs/generic/sections/maybe/">option type</a> of Haskell.
+<code>Maybe</code> is the <a href="https://unibz-oofp-25-26.github.io/docs/generic/sections/maybe/">option type</a> of Haskell.
 It is declared as:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#66d9ef">data</span> <span style="color:#66d9ef">Maybe</span> a <span style="color:#f92672">=</span> <span style="color:#66d9ef">Nothing</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">Just</span> a
 </span></span></code></pre></div></blockquote>
-<h4 id="return-1">
+<h4 id="return">
   <code>return</code>
-  <a class="anchor" href="#return-1">#</a>
+  <a class="anchor" href="#return">#</a>
 </h4>
 <blockquote class="book-hint warning">
 <p>The function <code>return</code> for the type <code>Maybe</code> simply wraps a value (with the constructor <code>Just</code>):</p>
@@ -1601,7 +1564,7 @@ It is declared as:</p>
 <blockquote class="book-hint warning">
 <p>The function <code>join</code> for the type <code>Maybe</code> transforms a <code>Maybe (Maybe a)</code> into a <code>Maybe a</code> in the expected way:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">join</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Maybe</span> (<span style="color:#66d9ef">Maybe</span> a) <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Maybe</span> a
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">join</span> <span style="color:#66d9ef">Just</span> (<span style="color:#66d9ef">Just</span> x) <span style="color:#f92672">=</span> <span style="color:#66d9ef">Just</span> x
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">join</span> (<span style="color:#66d9ef">Just</span> (<span style="color:#66d9ef">Just</span> x)) <span style="color:#f92672">=</span> <span style="color:#66d9ef">Just</span> x
 </span></span><span style="display:flex;"><span><span style="color:#75715e">-- covers the two remaining cases: `Nothing` and `Just Nothing`</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">join</span> <span style="color:#66d9ef">_</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">Nothing</span>
 </span></span></code></pre></div></blockquote>
@@ -1611,7 +1574,7 @@ It is declared as:</p>
 </h4>
 <blockquote class="book-hint warning">
 <p>The function <code>&gt;&gt;=</code> for the type <code>Maybe</code> can be defined as</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span>(<span style="color:#f92672">&gt;&gt;=</span>) <span style="color:#f92672">::</span> (<span style="color:#66d9ef">Maybe</span> a) <span style="color:#f92672">-&gt;</span> (a <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Maybe</span> b) <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Maybe</span> b
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span>(<span style="color:#f92672">&gt;&gt;=</span>) <span style="color:#f92672">::</span> <span style="color:#66d9ef">Maybe</span> a <span style="color:#f92672">-&gt;</span> (a <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Maybe</span> b) <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Maybe</span> b
 </span></span><span style="display:flex;"><span><span style="color:#75715e">-- propagate `Nothing`</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">Nothing</span> <span style="color:#f92672">&gt;&gt;=</span> <span style="color:#66d9ef">_</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">Nothing</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">-- otherwise apply the function</span>
@@ -1621,14 +1584,14 @@ It is declared as:</p>
 <blockquote class="book-hint info">
 <p><strong><em>Example.</em></strong>
 Consider the function</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">maybeLog</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Int</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Maybe</span> <span style="color:#66d9ef">Float</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">maybeLog</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Float</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Maybe</span> <span style="color:#66d9ef">Float</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">maybeLog</span> x <span style="color:#f92672">|</span> x <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">Nothing</span>                 <span style="color:#75715e">-- if the input is negative, then return `Nothing`</span>
 </span></span><span style="display:flex;"><span>           <span style="color:#f92672">|</span> otherwise <span style="color:#f92672">=</span> <span style="color:#66d9ef">Just</span> (logBase <span style="color:#ae81ff">2</span> x)  <span style="color:#75715e">-- otherwise compute its log base 2</span>
 </span></span></code></pre></div><p>The function <code>&gt;&gt;=</code> lets us apply <code>maybeLog</code> to an optional input.<br>
 For instance</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#66d9ef">Nothing</span> <span style="color:#f92672">&gt;&gt;=</span> maybeLog          <span style="color:#75715e">-- evaluates to `Nothing`</span>
 </span></span></code></pre></div><p>$\qquad$</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#66d9ef">Just</span> (<span style="color:#f92672">-</span> <span style="color:#ae81ff">8</span>) <span style="color:#f92672">&gt;&gt;=</span> maybeLog       <span style="color:#75715e">-- evaluates to `Nothing`</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#66d9ef">Just</span> (<span style="color:#f92672">-</span><span style="color:#ae81ff">8</span>) <span style="color:#f92672">&gt;&gt;=</span> maybeLog       <span style="color:#75715e">-- evaluates to `Nothing`</span>
 </span></span></code></pre></div><p>$\qquad$</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span> <span style="color:#66d9ef">Just</span> <span style="color:#ae81ff">8</span> <span style="color:#f92672">&gt;&gt;=</span> maybeLog          <span style="color:#75715e">-- evaluates to `Just 3`</span>
 </span></span></code></pre></div></blockquote>
@@ -1636,13 +1599,13 @@ For instance</p>
   Usage
   <a class="anchor" href="#usage">#</a>
 </h4>
-<p>The function <code>&gt;&gt;=</code> is convenient to <em>chain</em> computations that may &ldquo;fail&rdquo; (i.e. return <code>Nothing</code>): it lets us write code that automatically takes care of <a href="http://localhost:1313/docs/generic/sections/maybe/#null_prop">propagating failures</a> (a.k.a. &ldquo;null values&rdquo;) in such scenarios.</p>
+<p>The function <code>&gt;&gt;=</code> is convenient to <em>chain</em> computations that may &ldquo;fail&rdquo; (i.e. return <code>Nothing</code>): it lets us write code that automatically takes care of <a href="https://unibz-oofp-25-26.github.io/docs/generic/sections/maybe/#null_prop">propagating failures</a> (a.k.a. &ldquo;null values&rdquo;) in such scenarios.</p>
 <blockquote class="book-hint info">
 <p><strong><em>Example (continued).</em></strong>
 In addition to <code>maybeLog</code>, consider the function</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">safeDiv</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Int</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Int</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Maybe</span> <span style="color:#66d9ef">Int</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">safeDiv</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Float</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Float</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Maybe</span> <span style="color:#66d9ef">Float</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">safeDiv</span> <span style="color:#66d9ef">_</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">Nothing</span>          <span style="color:#75715e">-- if the divisor is `0`, then return `Nothing`</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">safeDiv</span> x y <span style="color:#f92672">=</span> <span style="color:#66d9ef">Just</span> (div x y)   <span style="color:#75715e">-- otherwise perform an integer division</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">safeDiv</span> x y <span style="color:#f92672">=</span> <span style="color:#66d9ef">Just</span> (x <span style="color:#f92672">/</span> y)   <span style="color:#75715e">-- otherwise perform a division</span>
 </span></span></code></pre></div><p>Intuitively,</p>
 <ul>
 <li><code>safeDiv</code> only &ldquo;succeeds&rdquo; for a divisor $\neq 0$, and</li>
@@ -1653,7 +1616,7 @@ without the need to check whether <code>safeDiv</code> succeeded.<br>
 For instance:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">safeDiv</span> <span style="color:#ae81ff">4</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">&gt;&gt;=</span> maybeLog          <span style="color:#75715e">-- evaluates to `Nothing` (`safeDiv` &#34;fails&#34;)</span>
 </span></span></code></pre></div><p>$\qquad$</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">safeDiv</span> <span style="color:#ae81ff">24</span> (<span style="color:#f92672">-</span> <span style="color:#ae81ff">3</span>) <span style="color:#f92672">&gt;&gt;=</span> maybeLog     <span style="color:#75715e">-- evaluates to `Nothing` (maybeLog` &#34;fails&#34;)</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">safeDiv</span> <span style="color:#ae81ff">24</span> (<span style="color:#f92672">-</span><span style="color:#ae81ff">3</span>) <span style="color:#f92672">&gt;&gt;=</span> maybeLog      <span style="color:#75715e">-- evaluates to `Nothing` (maybeLog` &#34;fails&#34;)</span>
 </span></span></code></pre></div><p>$\qquad$</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">safeDiv</span> <span style="color:#ae81ff">24</span> <span style="color:#ae81ff">3</span> <span style="color:#f92672">&gt;&gt;=</span> maybeLog         <span style="color:#75715e">-- evaluates to `Just 3` (`safeDiv` and `maybeLog` both &#34;succeed&#34;)</span>
 </span></span></code></pre></div></blockquote>
@@ -1665,32 +1628,32 @@ For instance:</p>
 <li><code>maybeLast :: [a] -&gt; Maybe a</code>, which maps a nonempty list its last element (and the empty list to <code>Nothing</code>),</li>
 <li><code>maybeLog :: Int -&gt; Maybe Float</code> from our the example immediately above.</li>
 </ul>
-<p>Now consider the following <a href="">pipeline</a> function:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">myPipe</span> <span style="color:#f92672">::</span> [<span style="color:#66d9ef">Int</span>] <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Maybe</span> <span style="color:#66d9ef">Float</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">myPipe</span> xs <span style="color:#f92672">=</span> xs <span style="color:#f92672">&amp;</span> filter even
-</span></span><span style="display:flex;"><span>               <span style="color:#f92672">&amp;</span> maybeLast
-</span></span><span style="display:flex;"><span>               <span style="color:#f92672">&gt;&gt;=</span> maybeLog
-</span></span><span style="display:flex;"><span>               <span style="color:#f92672">&amp;</span> fmap (<span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)
+<p>Now consider the following function:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">myFunction</span> <span style="color:#f92672">::</span> [<span style="color:#66d9ef">Float</span>] <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Maybe</span> <span style="color:#66d9ef">Float</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">myFunction</span> xs <span style="color:#f92672">=</span> xs <span style="color:#f92672">&amp;</span> filter (<span style="color:#f92672">/=</span> <span style="color:#ae81ff">5</span>)
+</span></span><span style="display:flex;"><span>                   <span style="color:#f92672">&amp;</span> maybeLast
+</span></span><span style="display:flex;"><span>                 <span style="color:#f92672">&gt;&gt;=</span> maybeLog
+</span></span><span style="display:flex;"><span>                   <span style="color:#f92672">&amp;</span> fmap (<span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)
 </span></span></code></pre></div><p>Evaluate the following expressions</p>
 <ul>
-<li><code>myPipe []</code></li>
-<li><code>myPipe [3,8]</code></li>
-<li><code>myPipe [3,5]</code></li>
-<li><code>myPipe [4,3,-2,5]</code></li>
+<li><code>myFunction []</code></li>
+<li><code>myFunction [5,8]</code></li>
+<li><code>myFunction [5,5]</code></li>
+<li><code>myFunction [4,3,-2,5]</code></li>
 </ul>
 </div>
 <input type="radio" class="toggle" name="tabs-exercise_maybe_bind" id="tabs-exercise_maybe_bind-1"  />
 <label for="tabs-exercise_maybe_bind-1">Solution</label>
-<div class="book-tabs-content markdown-inner"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">myPipe</span> <span style="color:#f92672">::</span> [<span style="color:#66d9ef">Int</span>] <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Maybe</span> <span style="color:#66d9ef">Float</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">myPipe</span> xs <span style="color:#f92672">=</span> xs <span style="color:#f92672">&amp;</span> filter even
-</span></span><span style="display:flex;"><span>               <span style="color:#f92672">&amp;</span> maybeLast
-</span></span><span style="display:flex;"><span>               <span style="color:#f92672">&gt;&gt;=</span> maybeLog
-</span></span><span style="display:flex;"><span>               <span style="color:#f92672">&amp;</span> fmap (<span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)
+<div class="book-tabs-content markdown-inner"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">myFunction</span> <span style="color:#f92672">::</span> [<span style="color:#66d9ef">Float</span>] <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Maybe</span> <span style="color:#66d9ef">Float</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">myFunction</span> xs <span style="color:#f92672">=</span> xs <span style="color:#f92672">&amp;</span> filter (<span style="color:#f92672">/=</span> <span style="color:#ae81ff">5</span>)
+</span></span><span style="display:flex;"><span>                   <span style="color:#f92672">&amp;</span> maybeLast
+</span></span><span style="display:flex;"><span>                 <span style="color:#f92672">&gt;&gt;=</span> maybeLog
+</span></span><span style="display:flex;"><span>                   <span style="color:#f92672">&amp;</span> fmap (<span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)
 </span></span></code></pre></div><ul>
-<li><code>myPipe []</code> evaluates to <code>Nothing</code> (<code>maybeLast</code> &ldquo;fails&rdquo; and <code>Nothing</code> is propagated)</li>
-<li><code>myPipe [3,8]</code> evaluates to <code>Just 4</code> (<code>maybeLast</code> and <code>maybeLog</code> both &ldquo;succeed&rdquo;)</li>
-<li><code>myPipe [3,5]</code> evaluates to <code>Nothing</code> (<code>maybeLast</code> &ldquo;fails&rdquo; and <code>Nothing</code> is propagated)</li>
-<li><code>myPipe [4,3,-2,5]</code> evaluates to <code>Nothing</code> (<code>maybeLast</code> &ldquo;succeeds&rdquo;, <code>maybeLog</code> &ldquo;fails&rdquo; and <code>Nothing</code> is propagated)</li>
+<li><code>myFunction []</code> evaluates to <code>Nothing</code> (<code>maybeLast</code> &ldquo;fails&rdquo; and <code>Nothing</code> is propagated)</li>
+<li><code>myFunction [5,8]</code> evaluates to <code>Just 4</code> (<code>maybeLast</code> and <code>maybeLog</code> both &ldquo;succeed&rdquo;)</li>
+<li><code>myFunction [5,5]</code> evaluates to <code>Nothing</code> (<code>maybeLast</code> &ldquo;fails&rdquo; and <code>Nothing</code> is propagated)</li>
+<li><code>myFunction [4,3,-2,5]</code> evaluates to <code>Nothing</code> (<code>maybeLast</code> &ldquo;succeeds&rdquo;, <code>maybeLog</code> &ldquo;fails&rdquo; and <code>Nothing</code> is propagated)</li>
 </ul>
 </div>
 </div>
@@ -1702,8 +1665,8 @@ For instance:</p>
 <!-- we can rewrite the pipeline of the exercise immediately above in a more concise fashion: -->
 <!---->
 <!-- ```haskell -->
-<!-- myPipe :: [Int] -> Maybe Float -->
-<!-- myPipe = filter even -->
+<!-- myFunction :: [Int] -> Maybe Float -->
+<!-- myFunction = filter even -->
 <!--           >>> maybeLast -->
 <!--           >=> maybeLog -->
 <!-- ``` -->
