@@ -34,7 +34,7 @@ Motivation # Problem. A programming language may not have a type that exactly fi
 <link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/generic/sections/maybe/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.3a6f59121632e32ead4900908ee29daeb052b39d231c538a6f143b7dbd766efe.js" integrity="sha256-Om9ZEhYy4y6tSQCQjuKdrrBSs50jHFOKbxQ7fb12bv4=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.9901a82b8bc6a2ea4899909555bd94ac2cc2fff8938848122b616cd140e901dc.js" integrity="sha256-mQGoK4vGoupImZCVVb2UrCzC//iTiEgSK2Fs0UDpAdw=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -960,7 +960,7 @@ https://github.com/alex-shpak/hugo-book
       </ul>
     </li>
     <li><a href="#option-type-1">Option type</a></li>
-    <li><a href="#in-haskell">in Haskell</a></li>
+    <li><a href="#in-haskell">In Haskell</a></li>
   </ul>
 </nav>
 
@@ -1019,7 +1019,7 @@ When we implement a function, we may need to handle undesired inputs.</p>
   <a class="anchor" href="#null_prop">#</a>
 </h3>
 <p>A common way for a function $f$ to handle non-supported inputs consists in returning a special value.
-Depending on the language, this value may be <code>null</code>, <code>nil</code>, <code>undefined</code>, etc.</p>
+Depending on the language, this value may be called <code>null</code>, <code>nil</code>, <code>undefined</code>, etc.</p>
 <blockquote class="book-hint warning">
 <p><strong><em>Consequence.</em></strong>
 A function that <em>calls</em> $f$ must take this possibility into consideration:</p>
@@ -1031,11 +1031,20 @@ A function that <em>calls</em> $f$ must take this possibility into consideration
 <blockquote class="book-hint danger">
 <p><strong><em>Drawback.</em></strong>
 Programmers often forget to check whether the value returned by $f$ is <code>null</code>.
-This is a notorious source of <a href="https://unibz-oofp-25-26.github.io/docs/paradigm/sections/error/">bugs</a> (e.g. &ldquo;null pointer exception&rdquo;).</p>
+This is a well-known source of <a href="https://unibz-oofp-25-26.github.io/docs/paradigm/sections/error/">bugs</a> (e.g. &ldquo;null pointer exception&rdquo;).</p>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Illustration.</em></strong>
+Tony Hoare is often credited for inventing the <code>null</code> value (when working on the programming language ALGOL W).
+He notoriously said (in 2009):</p>
+<blockquote>
+<p>&ldquo;I call it my billion-dollar mistake. It was the invention of the null reference in 1965. [&hellip;]
+I couldn’t resist the temptation to put in a null reference, [&hellip;] This has led to innumerable errors, vulnerabilities, and system crashes, which have probably caused a billion dollars of pain and damage in the last forty years.&rdquo;</p>
+</blockquote>
 </blockquote>
 <blockquote class="book-hint danger">
 <p><strong><em>Second drawback.</em></strong>
-Handling null values creates boilerplate code (made worse by the fact that <code>null</code> are often propagated).<br>
+Handling <code>null</code> values creates boilerplate code (made worse by the fact that <code>null</code> is often propagated).<br>
 For instance (in Java):</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Integer <span style="color:#a6e22e">myMethod1</span> (Integer x){
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span>(x <span style="color:#f92672">==</span> 0){
@@ -1062,15 +1071,15 @@ For instance (in Java):</p>
   <a class="anchor" href="#option-type-1">#</a>
 </h2>
 <blockquote class="book-hint warning">
-<p>Functional languages typically do not have <code>null</code> values.
+<p>Functional languages typically do <em>not</em> have a <code>null</code> value.
 Instead, they rely on one of several <em>special types</em> for optional values.</p>
 <p>These are often called <strong>option types</strong> or <strong>maybe types</strong>.</p>
 </blockquote>
 <blockquote class="book-hint info">
-<p><strong><em>Benefits.</em></strong></p>
+<p><strong><em>Benefits.</em></strong> In a <code>null</code>-free language with option types:</p>
 <ol>
 <li>
-<p>The return type of a function clearly indicates whether it may not return a value.
+<p>The return type of a function indicates whether it may not return a value.
 This reduces:</p>
 <ul>
 <li>the odds of a non-handled missing value, and</li>
@@ -1079,12 +1088,12 @@ This reduces:</p>
 </li>
 <li>
 <p>Option types can be paired with higher-order functions that propagate &ldquo;missing values&rdquo; automatically (thus reducing boilerplate code).
-We will introduce such functions in the sections on <a href="https://unibz-oofp-25-26.github.io/notreleased/">functors</a> and <a href="https://unibz-oofp-25-26.github.io/notreleased/">monads</a>.</p>
+We will introduce such functions in the sections on <a href="https://unibz-oofp-25-26.github.io/docs/pattern/sections/functor/">functors</a> and <a href="https://unibz-oofp-25-26.github.io/docs/pattern/sections/monad/">monads</a>.</p>
 </li>
 </ol>
 </blockquote>
 <h2 id="in-haskell">
-  in Haskell
+  In Haskell
   <a class="anchor" href="#in-haskell">#</a>
 </h2>
 <p>Haskell uses a <a href="https://unibz-oofp-25-26.github.io/docs/generic/sections/generic_type/">generic</a> option type called <code>Maybe</code>.</p>
@@ -1195,7 +1204,7 @@ that maps a nonempty list to its last element, and the empty list to <code>Nothi
       </ul>
     </li>
     <li><a href="#option-type-1">Option type</a></li>
-    <li><a href="#in-haskell">in Haskell</a></li>
+    <li><a href="#in-haskell">In Haskell</a></li>
   </ul>
 </nav>
 
