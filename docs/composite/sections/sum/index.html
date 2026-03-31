@@ -15,7 +15,7 @@ A sum type represents several alternative types.
 
 Syntax.
 A sum type in Haskell is declared as
-data &lt;sum type name&gt; = &lt;type definition n&gt; | ... | &lt;type definition n&gt;
+data &lt;sum type name&gt; = &lt;type 1&gt; | ... | &lt;type n&gt;
 
 
 Example.
@@ -31,7 +31,20 @@ data Point = PointC Float Float
 data Shape = TriangleC Point Point Point | RectangleC Point Point Point Point
 
 
-Syntax. Observe that in this example, the type Shape has two alternative constructors (TriangleC and RectangleC).">
+
+
+
+
+
+
+
+
+
+
+
+
+Note.
+in Haskell, an enumerated type is a sum type.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="https://unibz-oofp-25-26.github.io/docs/composite/sections/sum/">
@@ -39,8 +52,8 @@ Syntax. Observe that in this example, the type Shape has two alternative constru
   <meta property="og:title" content="Sum type">
   <meta property="og:description" content="Sum type # A sum type represents several alternative types.
 in Haskell # Syntax. A sum type in Haskell is declared as
-data &lt;sum type name&gt; = &lt;type definition n&gt; | ... | &lt;type definition n&gt; Example. In the following declarations:
-Point is a product type, and Shape is a sum type. -- a point in the Euclidean plane, represented by its coordinates data Point = PointC Float Float -- a shape, defined as either a triangle or a rectangle data Shape = TriangleC Point Point Point | RectangleC Point Point Point Point Syntax. Observe that in this example, the type Shape has two alternative constructors (TriangleC and RectangleC).">
+data &lt;sum type name&gt; = &lt;type 1&gt; | ... | &lt;type n&gt; Example. In the following declarations:
+Point is a product type, and Shape is a sum type. -- a point in the Euclidean plane, represented by its coordinates data Point = PointC Float Float -- a shape, defined as either a triangle or a rectangle data Shape = TriangleC Point Point Point | RectangleC Point Point Point Point Note. in Haskell, an enumerated type is a sum type.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
@@ -50,7 +63,7 @@ Point is a product type, and Shape is a sum type. -- a point in the Euclidean pl
 <link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/composite/sections/sum/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.4e731ac3083d054326a506ec61e75db58fd960f6354b8b7bf295a1ca25f35fb9.js" integrity="sha256-TnMawwg9BUMmpQbsYeddtY/ZYPY1S4t78pWhyiXzX7k=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.3a6f59121632e32ead4900908ee29daeb052b39d231c538a6f143b7dbd766efe.js" integrity="sha256-Om9ZEhYy4y6tSQCQjuKdrrBSs50jHFOKbxQ7fb12bv4=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -1000,7 +1013,7 @@ https://github.com/alex-shpak/hugo-book
 <blockquote class="book-hint warning">
 <p><strong><em>Syntax.</em></strong>
 A sum type in Haskell is declared as</p>
-<pre tabindex="0"><code>data &lt;sum type name&gt; = &lt;type definition n&gt; | ... | &lt;type definition n&gt;
+<pre tabindex="0"><code>data &lt;sum type name&gt; = &lt;type 1&gt; | ... | &lt;type n&gt;
 </code></pre></blockquote>
 <blockquote class="book-hint info">
 <p><strong><em>Example.</em></strong>
@@ -1015,9 +1028,21 @@ In the following declarations:</p>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">-- a shape, defined as either a triangle or a rectangle</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">data</span> <span style="color:#66d9ef">Shape</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">TriangleC</span> <span style="color:#66d9ef">Point</span> <span style="color:#66d9ef">Point</span> <span style="color:#66d9ef">Point</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">RectangleC</span> <span style="color:#66d9ef">Point</span> <span style="color:#66d9ef">Point</span> <span style="color:#66d9ef">Point</span> <span style="color:#66d9ef">Point</span>
 </span></span></code></pre></div></blockquote>
-<blockquote class="book-hint warning">
-<p><strong><em>Syntax.</em></strong> Observe that in this example, the type <code>Shape</code> has two alternative constructors (<code>TriangleC</code> and <code>RectangleC</code>).</p>
+<!-- <blockquote class="book-hint info">
+   -->
+<!-- **_Observation._** In this example, we use constructors (`TriangleC` and `RectangleC`) directly in the definition of the type `Shape`. -->
+<!---->
+<!-- Alternatively, we could have introduced names for the triangle and rectangle types, as follows: -->
+<!---->
+<!-- ```haskell -->
+<!-- data Shape = Triangle | Rectangle -->
+<!-- data Triangle = TriangleC Point Point Point -->
+<!-- data Rectangle = RectangleC Point Point Point Point -->
+<!-- ``` -->
+<!---->
+<!-- 
 </blockquote>
+ -->
 <blockquote class="book-hint info">
 <p><strong><em>Note.</em></strong>
 in Haskell, an <a href="https://unibz-oofp-25-26.github.io/docs/composite/sections/enum/">enumerated type</a> is a sum type.</p>
