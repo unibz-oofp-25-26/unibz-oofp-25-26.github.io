@@ -34,7 +34,7 @@ Motivation # Problem. A programming language may not have a type that exactly fi
 <link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/generic/sections/maybe/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.9901a82b8bc6a2ea4899909555bd94ac2cc2fff8938848122b616cd140e901dc.js" integrity="sha256-mQGoK4vGoupImZCVVb2UrCzC//iTiEgSK2Fs0UDpAdw=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.3dd513ac993506331b41f00b220e40c3b4060f689cbd9cd5253b97785ce89674.js" integrity="sha256-PdUTrJk1BjMbQfALIg5Aw7QGD2icvZzVJTuXeFzolnQ=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -1113,8 +1113,9 @@ The following function maps a nonempty list with head <code>x</code> to <code>Ju
 <div class="book-tabs">
 <input type="radio" class="toggle" name="tabs-exercise_maybeLast" id="tabs-exercise_maybeLast-0" checked="checked" />
 <label for="tabs-exercise_maybeLast-0">Exercise</label>
-<div class="book-tabs-content markdown-inner"><p>Implement the function <code>maybeLast :: [a] -&gt; Maybe a</code>
-that maps a nonempty list to its last element, and the empty list to <code>Nothing</code>.</p>
+<div class="book-tabs-content markdown-inner"><p>Implement the function</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">maybeLast</span> <span style="color:#f92672">::</span> [a] <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Maybe</span> a
+</span></span></code></pre></div><p>that maps a nonempty list to its last element, and the empty list to <code>Nothing</code>.</p>
 </div>
 <!-- 
 <input type="radio" class="toggle" name="tabs-exercise_maybeLast" id="tabs-exercise_maybeLast-1"  />
@@ -1130,12 +1131,26 @@ that maps a nonempty list to its last element, and the empty list to <code>Nothi
 <!---->
 <!-- </div>
  -->
+<!---->
+<!-- 
+<input type="radio" class="toggle" name="tabs-exercise_maybeLast" id="tabs-exercise_maybeLast-2"  />
+<label for="tabs-exercise_maybeLast-2">Alternative solution</label>
+<div class="book-tabs-content markdown-inner"><p>&ndash;&gt;</p>
+<!---->
+<!-- ```haskell -->
+<!-- maybeLast :: [a] -> Maybe a -->
+<!-- maybeLast = maybeHead . reverse -->
+<!-- ``` -->
+<!---->
+<!-- </div>
+ -->
 </div>
 <div class="book-tabs">
 <input type="radio" class="toggle" name="tabs-exercise_find" id="tabs-exercise_find-0" checked="checked" />
 <label for="tabs-exercise_find-0">Exercise</label>
-<div class="book-tabs-content markdown-inner"><p>Implement the native function <code>find :: (a -&gt; Bool) -&gt; [a] -&gt; Maybe a</code> so that</p>
-<p><code>find f xs</code> evaluates to:</p>
+<div class="book-tabs-content markdown-inner"><p>Implement the native function</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">find</span> <span style="color:#f92672">::</span> (a <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span>) <span style="color:#f92672">-&gt;</span> [a] <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Maybe</span> a
+</span></span></code></pre></div><p>so that <code>find f xs</code> evaluates to:</p>
 <ul>
 <li>the first element of <code>xs</code> for which <code>f</code> evaluates to <code>True</code>, and</li>
 <li><code>Nothing</code> if there is no such element.</li>
