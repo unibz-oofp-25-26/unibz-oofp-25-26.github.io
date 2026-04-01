@@ -10,7 +10,7 @@
 Like functors, monads come from category theory.
 For programmers, a monad can be viewed as a functor that implements additional functions, while respecting certain constraints.
 Monads serve a variety of purposes in functional programs.
-For instance, this includes reading data or writing to a log.
+This includes (among other) writing to a log, or reading data.
 In this section, we will only focus on two of the simplest monads, namely the type of lists and the option type (as we did for functors).">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
@@ -19,7 +19,8 @@ In this section, we will only focus on two of the simplest monads, namely the ty
   <meta property="og:title" content="Monad">
   <meta property="og:description" content="Monad # Like functors, monads come from category theory.
 For programmers, a monad can be viewed as a functor that implements additional functions, while respecting certain constraints.
-Monads serve a variety of purposes in functional programs. For instance, this includes reading data or writing to a log. In this section, we will only focus on two of the simplest monads, namely the type of lists and the option type (as we did for functors).">
+Monads serve a variety of purposes in functional programs. This includes (among other) writing to a log, or reading data.
+In this section, we will only focus on two of the simplest monads, namely the type of lists and the option type (as we did for functors).">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
@@ -29,7 +30,7 @@ Monads serve a variety of purposes in functional programs. For instance, this in
 <link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/pattern/sections/monad/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.1fc51e810dbfdc197cd824e6f16d1e535f336abd1ae4327393ff19cf80fdbb1e.js" integrity="sha256-H8UegQ2/3Bl82CTm8W0eU18zar0a5DJzk/8Zz4D9ux4=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.f1bbd1c000ea8276a9418727913e44504b226f0ae14cd3a6f8c710641c379817.js" integrity="sha256-8bvRwADqgnapQYcnkT5EUEsibwrhTNOm&#43;McQZBw3mBc=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -1036,8 +1037,8 @@ https://github.com/alex-shpak/hugo-book
 <p>Like <a href="https://unibz-oofp-25-26.github.io/docs/pattern/sections/functor/">functors</a>, monads come from category theory.</p>
 <p>For programmers, a monad can be viewed as a functor that implements additional functions, while respecting certain constraints.</p>
 <p>Monads serve a variety of purposes in functional programs.
-For instance, this includes reading data or writing to a log.
-In this section, we will only focus on two of the simplest monads, namely the type of lists and the option type (as we did for functors).</p>
+This includes (among other) writing to a log, or reading data.</p>
+<p>In this section, we will only focus on two of the simplest monads, namely the type of lists and the option type (as we did for functors).</p>
 <h2 id="in-haskell">
   In Haskell
   <a class="anchor" href="#in-haskell">#</a>
@@ -1143,9 +1144,9 @@ For the monad &ldquo;List&rdquo;, <code>join</code> concatenates the inner lists
 </h3>
 <p>Two useful higher-order functions can be derived from <code>join</code> and <code>fmap</code> (recall that a monad is a functor, so it implements <code>fmap</code>).
 Both are <a href="https://unibz-oofp-25-26.github.io/docs/higher/sections/currying/#infix">infix</a> functions, noted <code>&gt;&gt;=</code> and <code>&gt;=&gt;</code> respectivbely.</p>
-<h4 id="-pronounced-bind">
+<h4 id="bind">
   <code>&gt;&gt;=</code> (pronounced &ldquo;bind&rdquo;)
-  <a class="anchor" href="#-pronounced-bind">#</a>
+  <a class="anchor" href="#bind">#</a>
 </h4>
 <blockquote class="book-hint warning">
 <p>The function <code>&gt;&gt;=</code> has type</p>
@@ -1265,17 +1266,12 @@ The following table recaps when <code>&gt;&gt;=</code>, <code>fmap</code> and pl
   </thead>
   <tbody>
       <tr>
-          <td><code>preds [2]</code></td>
-          <td>no</td>
-          <td></td>
-      </tr>
-      <tr>
           <td><code>preds 2</code></td>
           <td>yes</td>
           <td><code>[0,1]</code></td>
       </tr>
       <tr>
-          <td><code>preds 0</code></td>
+          <td><code>fmap preds 2</code></td>
           <td></td>
           <td></td>
       </tr>
@@ -1285,32 +1281,32 @@ The following table recaps when <code>&gt;&gt;=</code>, <code>fmap</code> and pl
           <td></td>
       </tr>
       <tr>
+          <td><code>preds [2]</code></td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>fmap preds [2]</code></td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
           <td><code>[2] &gt;&gt;= preds</code></td>
           <td></td>
           <td></td>
       </tr>
       <tr>
-          <td><code>return 2 &gt;&gt;= preds</code></td>
-          <td></td>
-          <td></td>
-      </tr>
-      <tr>
-          <td><code>[[2]] &gt;&gt;= preds</code></td>
-          <td></td>
-          <td></td>
-      </tr>
-      <tr>
-          <td><code>[2,3] &gt;&gt;= preds</code></td>
-          <td></td>
-          <td></td>
-      </tr>
-      <tr>
-          <td><code>fmap preds 2</code></td>
+          <td><code>preds [2,3]</code></td>
           <td></td>
           <td></td>
       </tr>
       <tr>
           <td><code>fmap preds [2,3]</code></td>
+          <td></td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>[2,3] &gt;&gt;= preds</code></td>
           <td></td>
           <td></td>
       </tr>
@@ -1331,44 +1327,9 @@ The following table recaps when <code>&gt;&gt;=</code>, <code>fmap</code> and pl
   </thead>
   <tbody>
       <tr>
-          <td><code>preds [2]</code></td>
-          <td>no</td>
-          <td></td>
-      </tr>
-      <tr>
           <td><code>preds 2</code></td>
           <td>yes</td>
           <td><code>[0,1]</code></td>
-      </tr>
-      <tr>
-          <td><code>preds 0</code></td>
-          <td>yes</td>
-          <td><code>[]</code></td>
-      </tr>
-      <tr>
-          <td><code>2 &gt;&gt;= preds</code></td>
-          <td>no</td>
-          <td></td>
-      </tr>
-      <tr>
-          <td><code>[2] &gt;&gt;= preds</code></td>
-          <td>yes</td>
-          <td>[0,1]</td>
-      </tr>
-      <tr>
-          <td><code>return 2 &gt;&gt;= preds</code></td>
-          <td>yes</td>
-          <td>[0,1]</td>
-      </tr>
-      <tr>
-          <td><code>[[2]] &gt;&gt;= preds</code></td>
-          <td>no</td>
-          <td></td>
-      </tr>
-      <tr>
-          <td><code>[2,3] &gt;&gt;= preds</code></td>
-          <td>yes</td>
-          <td>[0,1,0,1,2]</td>
       </tr>
       <tr>
           <td><code>fmap preds 2</code></td>
@@ -1376,9 +1337,39 @@ The following table recaps when <code>&gt;&gt;=</code>, <code>fmap</code> and pl
           <td></td>
       </tr>
       <tr>
+          <td><code>2 &gt;&gt;= preds</code></td>
+          <td>no</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>preds [2]</code></td>
+          <td>no</td>
+          <td></td>
+      </tr>
+      <tr>
+          <td><code>fmap preds [2]</code></td>
+          <td>yes</td>
+          <td><code>[[0,1]]</code></td>
+      </tr>
+      <tr>
+          <td><code>[2] &gt;&gt;= preds</code></td>
+          <td>yes</td>
+          <td><code>[0,1]</code></td>
+      </tr>
+      <tr>
+          <td><code>preds [2,3]</code></td>
+          <td>no</td>
+          <td></td>
+      </tr>
+      <tr>
           <td><code>fmap preds [2,3]</code></td>
           <td>yes</td>
-          <td>[[0,1], [0,1,2]]</td>
+          <td><code>[[0,1], [0,1,2]]</code></td>
+      </tr>
+      <tr>
+          <td><code>[2,3] &gt;&gt;= preds</code></td>
+          <td>yes</td>
+          <td><code>[0,1,0,1,2]</code></td>
       </tr>
   </tbody>
 </table>
@@ -1628,9 +1619,9 @@ It is declared as:</p>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">-- covers the two remaining cases: `Nothing` and `Just Nothing`</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">join</span> <span style="color:#66d9ef">_</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">Nothing</span>
 </span></span></code></pre></div></blockquote>
-<h4 id="heading">
+<h4 id="bind_maybe">
   <code>&gt;&gt;=</code>
-  <a class="anchor" href="#heading">#</a>
+  <a class="anchor" href="#bind_maybe">#</a>
 </h4>
 <blockquote class="book-hint warning">
 <p>The function <code>&gt;&gt;=</code> for the type <code>Maybe</code> can be defined as</p>
@@ -1686,7 +1677,7 @@ For instance:</p>
 <div class="book-tabs-content markdown-inner"><p>Consider the following functions:</p>
 <ul>
 <li><code>maybeLast :: [a] -&gt; Maybe a</code>, which maps a nonempty list its last element (and the empty list to <code>Nothing</code>),</li>
-<li><code>maybeLog :: Int -&gt; Maybe Float</code> from our the example immediately above.</li>
+<li><code>maybeLog :: Float -&gt; Maybe Float</code> from our the example immediately above.</li>
 </ul>
 <p>Now consider the following function:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">myFunction</span> <span style="color:#f92672">::</span> [<span style="color:#66d9ef">Float</span>] <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Maybe</span> <span style="color:#66d9ef">Float</span>

@@ -46,7 +46,7 @@ Example. Consider the two following objects (in pseudocode):
 <link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/objects/sections/class/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.1fc51e810dbfdc197cd824e6f16d1e535f336abd1ae4327393ff19cf80fdbb1e.js" integrity="sha256-H8UegQ2/3Bl82CTm8W0eU18zar0a5DJzk/8Zz4D9ux4=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.f1bbd1c000ea8276a9418727913e44504b226f0ae14cd3a6f8c710641c379817.js" integrity="sha256-8bvRwADqgnapQYcnkT5EUEsibwrhTNOm&#43;McQZBw3mBc=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -1127,7 +1127,7 @@ The constructor of a Java class must have the <em>same name</em> as the class.</
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">int</span> zipCode;
 </span></span><span style="display:flex;"><span>  String region;
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#75715e">/* constructor for the class `City` */</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// constructor for the class `City`</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">City</span>(String n, <span style="color:#66d9ef">int</span> z, String r){
 </span></span><span style="display:flex;"><span>    name <span style="color:#f92672">=</span> n;
 </span></span><span style="display:flex;"><span>    zipCode <span style="color:#f92672">=</span> z;
@@ -1152,9 +1152,9 @@ The constructor above can equivalently be written:</p>
 </span></span><span style="display:flex;"><span>  String region;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">City</span>(String name, <span style="color:#66d9ef">int</span> zipCode, String region){
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/** There is no ambiguity in the instruction below:
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     *  - `this.name` refers to the attribute, whereas
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">     *  - `name` (on the right-hand side) refers to the argument of the constructor. */</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/* There is no ambiguity in the instruction below:
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">       - `this.name` refers to the attribute, whereas
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">       - `name` (on the right-hand side) refers to the argument of the constructor. */</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> name;
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">zipCode</span> <span style="color:#f92672">=</span> zipCode;
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">region</span> <span style="color:#f92672">=</span> region;
@@ -1213,10 +1213,10 @@ The attributes of an object can be accessed like regular variables by using <cod
 </blockquote>
 <blockquote class="book-hint info">
 <p><strong><em>Example (continued).</em></strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>  City thatCity <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> City(<span style="color:#e6db74">&#34;Siena&#34;</span>, 53100, <span style="color:#e6db74">&#34;Lazio&#34;</span>);      <span style="color:#75715e">/* create an object */</span>
-</span></span><span style="display:flex;"><span>  System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Wrong region: &#34;</span> <span style="color:#f92672">+</span> thatCity.<span style="color:#a6e22e">region</span>); <span style="color:#75715e">/* access the value of the attribute `region` */</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>  City thatCity <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> City(<span style="color:#e6db74">&#34;Siena&#34;</span>, 53100, <span style="color:#e6db74">&#34;Lazio&#34;</span>);      <span style="color:#75715e">// create an object</span>
+</span></span><span style="display:flex;"><span>  System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Wrong region: &#34;</span> <span style="color:#f92672">+</span> thatCity.<span style="color:#a6e22e">region</span>); <span style="color:#75715e">// access the value of the attribute `region`</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  thatCity.<span style="color:#a6e22e">region</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Tuscany&#34;</span>;                            <span style="color:#75715e">/* modify the value of the attribute `region` */</span>
+</span></span><span style="display:flex;"><span>  thatCity.<span style="color:#a6e22e">region</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Tuscany&#34;</span>;                            <span style="color:#75715e">// modify the value of the attribute `region`</span>
 </span></span><span style="display:flex;"><span>  System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Better now: &#34;</span> <span style="color:#f92672">+</span> thatCity.<span style="color:#a6e22e">region</span>);
 </span></span></code></pre></div><p>outputs</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Wrong region: Lazio
