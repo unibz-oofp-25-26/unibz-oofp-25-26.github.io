@@ -1,29 +1,31 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+<head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="
-  Objects and classes
+  Object and class
   #
 
-This chapter introduces some basic notions of (class-based) object-oriented programming.">
+This chapter introduces some basic notions of (class-based) object-oriented programming.
+We will illustrate them with Java.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/docs/objects/">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://unibz-oofp-25-26.github.io/docs/objects/">
   <meta property="og:site_name" content="OOFP 2025-26">
-  <meta property="og:title" content="Objects and classes">
-  <meta property="og:description" content="Objects and classes # This chapter introduces some basic notions of (class-based) object-oriented programming.">
+  <meta property="og:title" content="Object and class">
+  <meta property="og:description" content="Object and class # This chapter introduces some basic notions of (class-based) object-oriented programming.
+We will illustrate them with Java.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="website">
-<title>Objects and classes | OOFP 2025-26</title>
+<title>Object and class | OOFP 2025-26</title>
 <link rel="icon" href="/favicon.png" >
 <link rel="manifest" href="/manifest.json">
-<link rel="canonical" href="http://localhost:1313/docs/objects/">
-<link rel="stylesheet" href="/book.min.434035e7885c7f5d12818bd9f111cf1a0925c6fb78382667381c3d5eda3fb4f1.css" integrity="sha256-Q0A154hcf10SgYvZ8RHPGgklxvt4OCZnOBw9Xto/tPE=" crossorigin="anonymous">
+<link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/objects/">
+<link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.63457a24ba26007e3c0c6c48d8234d2288f6625e47b9dc344a73e24c956f11e6.js" integrity="sha256-Y0V6JLomAH48DGxI2CNNIoj2Yl5Hudw0SnPiTJVvEeY=" crossorigin="anonymous"></script>
-<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/docs/objects/index.xml" title="OOFP 2025-26" />
+  <script defer src="/en.search.min.1fc51e810dbfdc197cd824e6f16d1e535f336abd1ae4327393ff19cf80fdbb1e.js" integrity="sha256-H8UegQ2/3Bl82CTm8W0eU18zar0a5DJzk/8Zz4D9ux4=" crossorigin="anonymous"></script>
+<link rel="alternate" type="application/rss+xml" href="https://unibz-oofp-25-26.github.io/docs/objects/index.xml" title="OOFP 2025-26" />
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -125,7 +127,33 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/intro/sections/schedule/" class="">Schedule</a>
+    <a href="/docs/intro/sections/organization/" class="">Organization</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/material/" class="">Material</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/reading_path/" class="">Reading path</a>
   
 
         </li>
@@ -151,20 +179,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/intro/sections/content/" class="">Content</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/intro/sections/paradigms/" class="">Content</a>
+    <a href="/docs/intro/sections/prerequisites/" class="">Prerequisites</a>
   
 
         </li>
@@ -190,7 +205,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/intro/sections/bibliography/" class="">Additional resources</a>
+    <a href="/docs/intro/sections/content/" class="">Content</a>
   
 
         </li>
@@ -203,41 +218,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/intro/sections/quiz/" class="">Quiz</a>
-  
-
-        </li>
-      
-    
-  </ul>
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <input type="checkbox" id="section-5f89433932d6f84b1b453c3b7c8effa3" class="toggle"  />
-    <label for="section-5f89433932d6f84b1b453c3b7c8effa3" class="flex justify-between">
-      <a href="/docs/project/" class="">Project</a>
-    </label>
-  
-
-          
-  <ul>
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/project/sections/free_project/" class="">Option 1: free project</a>
+    <a href="/docs/intro/sections/resources/" class="">Additional resources</a>
   
 
         </li>
@@ -250,7 +231,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/project/sections/board_game/" class="">Option 2: board game</a>
+    <a href="/docs/intro/sections/software/" class="">Software</a>
   
 
         </li>
@@ -268,9 +249,9 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-799305e0300c702d39454ff1753190dd" class="toggle" checked />
-    <label for="section-799305e0300c702d39454ff1753190dd" class="flex justify-between">
-      <a href="/docs/objects/" class="active">Objects and classes</a>
+    <input type="checkbox" id="section-b17bf4b701f350b4430cc5371ccad607" class="toggle"  />
+    <label for="section-b17bf4b701f350b4430cc5371ccad607" class="flex justify-between">
+      <a href="/docs/paradigm/" class="">Paradigms and languages</a>
     </label>
   
 
@@ -284,7 +265,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/objects/sections/objects/" class="">Objects</a>
+    <a href="/docs/paradigm/sections/paradigm/" class="">Paradigm</a>
   
 
         </li>
@@ -297,7 +278,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/objects/sections/classes/" class="">Class and instance</a>
+    <a href="/docs/paradigm/sections/error/" class="">Compile time vs runtime error</a>
   
 
         </li>
@@ -310,7 +291,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/objects/sections/inheritance/" class="">Inheritance</a>
+    <a href="/docs/paradigm/sections/type/" class="">Typing</a>
   
 
         </li>
@@ -323,111 +304,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/objects/sections/methods/" class="">Instance methods</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/objects/sections/tostring/" class="">Displaying objects</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/objects/sections/comparing/" class="">Cast and equality</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/objects/sections/classesasobjects/" class="">Classes as objects</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/objects/sections/quasi-objects/" class="">Quasi-objects</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/objects/sections/clone/" class="">Duplicating objects</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/objects/sections/encapsulation/" class="">Encapsulation</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/objects/sections/mutability/" class="">Mutability</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/objects/sections/quiz/" class="">Quiz</a>
+    <a href="/docs/paradigm/sections/pure/" class="">Pure function</a>
   
 
         </li>
@@ -445,9 +322,9 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-185b34e1fb4dcef69f8d648f91076774" class="toggle"  />
-    <label for="section-185b34e1fb4dcef69f8d648f91076774" class="flex justify-between">
-      <a href="/docs/interfaces/" class="">Interfaces</a>
+    <input type="checkbox" id="section-eb0a250150a82657aa03f0717afdcd45" class="toggle"  />
+    <label for="section-eb0a250150a82657aa03f0717afdcd45" class="flex justify-between">
+      <a href="/docs/haskell/" class="">Basic syntax of Haskell</a>
     </label>
   
 
@@ -461,7 +338,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/interfaces/sections/specification/" class="">Specification and programming interface</a>
+    <a href="/docs/haskell/sections/tokens/" class="">Tokens</a>
   
 
         </li>
@@ -474,7 +351,72 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/interfaces/sections/java_interfaces/" class="">Java interfaces</a>
+    <a href="/docs/haskell/sections/type/" class="">Base types</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/haskell/sections/native/" class="">Native functions</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/haskell/sections/tuple/" class="">Tuple</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/haskell/sections/function/" class="">Function</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/haskell/sections/program/" class="">Program</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/haskell/sections/list/" class="">List</a>
   
 
         </li>
@@ -492,9 +434,9 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-c34bda991aa58acb3c5c88344f5ff4d1" class="toggle"  />
-    <label for="section-c34bda991aa58acb3c5c88344f5ff4d1" class="flex justify-between">
-      <a href="/docs/abstractdatatypes/" class="">Abstract data types</a>
+    <input type="checkbox" id="section-2e35b5b0c21ab79cc6b70c0c8a6135fa" class="toggle"  />
+    <label for="section-2e35b5b0c21ab79cc6b70c0c8a6135fa" class="flex justify-between">
+      <a href="/docs/higher/" class="">Higher-order function</a>
     </label>
   
 
@@ -508,7 +450,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/abstractdatatypes/sections/list/" class="">List</a>
+    <a href="/docs/higher/sections/anonymous/" class="">Anonymous function</a>
   
 
         </li>
@@ -521,7 +463,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/abstractdatatypes/sections/set/" class="">Set</a>
+    <a href="/docs/higher/sections/currying/" class="">Currying</a>
   
 
         </li>
@@ -534,33 +476,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/abstractdatatypes/sections/map/" class="">Associative array</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/abstractdatatypes/sections/queue/" class="">Stack, queue, priority queue</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/abstractdatatypes/sections/sorting/" class="">Sorting</a>
+    <a href="/docs/higher/sections/useful_hofs/" class="">A few higher-order functions</a>
   
 
         </li>
@@ -578,9 +494,9 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-d8d0d2b826b1a0a247222fe763e51823" class="toggle"  />
-    <label for="section-d8d0d2b826b1a0a247222fe763e51823" class="flex justify-between">
-      <a href="/docs/datastructures/" class="">Data structures</a>
+    <input type="checkbox" id="section-a9f24c38594f15da67150d02f87a60d7" class="toggle"  />
+    <label for="section-a9f24c38594f15da67150d02f87a60d7" class="flex justify-between">
+      <a href="/docs/control/" class="">Control flow</a>
     </label>
   
 
@@ -594,7 +510,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/datastructures/sections/list/" class="">Dynamic array and linked list</a>
+    <a href="/docs/control/sections/pattern/" class="">Pattern matching</a>
   
 
         </li>
@@ -607,7 +523,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/datastructures/sections/hash/" class="">Hash table</a>
+    <a href="/docs/control/sections/condition/" class="">Boolean condition</a>
   
 
         </li>
@@ -620,7 +536,20 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/datastructures/sections/tree/" class="">Binary search tree</a>
+    <a href="/docs/control/sections/comprehension/" class="">List comprehension</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/control/sections/stack/" class="">Call stack</a>
   
 
         </li>
@@ -638,9 +567,9 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-4ccd6367293b9eacf080672ecff7b0ea" class="toggle"  />
-    <label for="section-4ccd6367293b9eacf080672ecff7b0ea" class="flex justify-between">
-      <a href="/docs/errors/" class="">Errors</a>
+    <input type="checkbox" id="section-97db6297fa77b8e8a3d66808fea4d894" class="toggle"  />
+    <label for="section-97db6297fa77b8e8a3d66808fea4d894" class="flex justify-between">
+      <a href="/docs/generic/" class="">Genericity</a>
     </label>
   
 
@@ -654,7 +583,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/errors/sections/callstack/" class="">Call stack</a>
+    <a href="/docs/generic/sections/variable/" class="">Type variable</a>
   
 
         </li>
@@ -667,7 +596,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/errors/sections/exceptions/" class="">Exceptions</a>
+    <a href="/docs/generic/sections/bound/" class="">Bound</a>
   
 
         </li>
@@ -680,7 +609,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/errors/sections/checked/" class="">Runtime vs checked exceptions</a>
+    <a href="/docs/generic/sections/generic_type/" class="">Generic type</a>
   
 
         </li>
@@ -693,20 +622,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/errors/sections/custom/" class="">Custom exceptions</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/errors/sections/errors/" class="">Java errors</a>
+    <a href="/docs/generic/sections/maybe/" class="">Option type</a>
   
 
         </li>
@@ -753,7 +669,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/recursion/sections/nary/" class="">N-ary recursion</a>
+    <a href="/docs/recursion/sections/intermediate/" class="">Intermediate result</a>
   
 
         </li>
@@ -766,93 +682,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/recursion/sections/correctness/" class="">Correctness</a>
-  
-
-        </li>
-      
-    
-  </ul>
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <input type="checkbox" id="section-82a234af61a7f7a8f74a93bf41b8972c" class="toggle"  />
-    <label for="section-82a234af61a7f7a8f74a93bf41b8972c" class="flex justify-between">
-      <a href="/docs/input/" class="">I/O and serialization</a>
-    </label>
-  
-
-          
-  <ul>
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/input/sections/files/" class="">Paths and files in Java</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/input/sections/read/" class="">Reading from and writing to a file in Java</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/input/sections/property/" class="">Configuration files</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/input/sections/serialize/" class="">Serialization</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/input/sections/json/" class="">JSON Serialization</a>
+    <a href="/docs/recursion/sections/accumulator/" class="">Accumulator and tail recursion</a>
   
 
         </li>
@@ -870,9 +700,9 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-c2df39f30f71aa392996209aab1f4ce6" class="toggle"  />
-    <label for="section-c2df39f30f71aa392996209aab1f4ce6" class="flex justify-between">
-      <a href="/docs/lambda/" class="">First-class methods</a>
+    <input type="checkbox" id="section-d92e119f475bae7b2a2364fe0e1fc445" class="toggle"  />
+    <label for="section-d92e119f475bae7b2a2364fe0e1fc445" class="flex justify-between">
+      <a href="/docs/composite/" class="">Composite type</a>
     </label>
   
 
@@ -886,7 +716,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/lambda/sections/functional/" class="">Functional programming</a>
+    <a href="/docs/composite/sections/enum/" class="">Enumerated type</a>
   
 
         </li>
@@ -899,7 +729,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/lambda/sections/pure/" class="">Pure function</a>
+    <a href="/docs/composite/sections/product/" class="">Product type</a>
   
 
         </li>
@@ -912,72 +742,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/lambda/sections/anonymous/" class="">Anonymous method</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/lambda/sections/lambda/" class="">Lambda expression</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/lambda/sections/type/" class="">Type of a method</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/lambda/sections/callback/" class="">Callback method</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/lambda/sections/closure/" class="">Free variable and closure</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/lambda/sections/currying/" class="">Currying</a>
+    <a href="/docs/composite/sections/sum/" class="">Sum type</a>
   
 
         </li>
@@ -995,9 +760,9 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-4eba264df2892829bcc1dda3e221ffc6" class="toggle"  />
-    <label for="section-4eba264df2892829bcc1dda3e221ffc6" class="flex justify-between">
-      <a href="/docs/stream/" class="">Streams in Java</a>
+    <input type="checkbox" id="section-007945605153592d0fc2acb75802d872" class="toggle"  />
+    <label for="section-007945605153592d0fc2acb75802d872" class="flex justify-between">
+      <a href="/docs/pattern/" class="">Functional patterns</a>
     </label>
   
 
@@ -1011,7 +776,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/stream/sections/pipeline/" class="">Pipeline</a>
+    <a href="/docs/pattern/sections/pipe/" class="">Pipeline</a>
   
 
         </li>
@@ -1024,7 +789,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/stream/sections/init/" class="">Source</a>
+    <a href="/docs/pattern/sections/functor/" class="">Functor</a>
   
 
         </li>
@@ -1037,59 +802,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/stream/sections/intermediate/" class="">Intermediate operations</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/stream/sections/terminal/" class="">Terminal operation</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/stream/sections/numeric/" class="">Numeric stream</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/stream/sections/order/" class="">Multithreading and order</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/stream/sections/optional/" class="">Optional</a>
+    <a href="/docs/pattern/sections/monad/" class="">Monad</a>
   
 
         </li>
@@ -1107,9 +820,9 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-5672a64db9e5a9e8dbaf0b32a88b4211" class="toggle"  />
-    <label for="section-5672a64db9e5a9e8dbaf0b32a88b4211" class="flex justify-between">
-      <a href="/docs/generics/" class="">Generic programming</a>
+    <input type="checkbox" id="section-799305e0300c702d39454ff1753190dd" class="toggle" checked />
+    <label for="section-799305e0300c702d39454ff1753190dd" class="flex justify-between">
+      <a href="/docs/objects/" class="active">Object and class</a>
     </label>
   
 
@@ -1123,7 +836,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/generics/sections/type_checking/" class="">Type checking</a>
+    <a href="/docs/objects/sections/object/" class="">Object</a>
   
 
         </li>
@@ -1136,7 +849,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/generics/sections/generics/" class="">Generics</a>
+    <a href="/docs/objects/sections/class/" class="">Class and instance</a>
   
 
         </li>
@@ -1149,666 +862,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/generics/sections/subtype/" class="">Subtype</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/generics/sections/variance/" class="">Variance</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/generics/sections/erasure/" class="">Type erasure</a>
-  
-
-        </li>
-      
-    
-  </ul>
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <input type="checkbox" id="section-b710bef8048534e98fb41b400ad73a5a" class="toggle"  />
-    <label for="section-b710bef8048534e98fb41b400ad73a5a" class="flex justify-between">
-      <a href="/docs/multithreading/" class="">Multithreading</a>
-    </label>
-  
-
-          
-  <ul>
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/multithreading/sections/concurrency/" class="">Concurrency</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/multithreading/sections/thread/" class="">Process vs thread</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/multithreading/sections/simple/" class="">A simplified view</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/multithreading/sections/race/" class="">Race condition</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/multithreading/sections/synchronization/" class="">Synchronization</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/multithreading/sections/troubleshooting/" class="">Troubleshooting</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/multithreading/sections/abstractions/" class="">Abstractions</a>
-  
-
-        </li>
-      
-    
-  </ul>
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <input type="checkbox" id="section-b371a89060f7df76c1332280a6e35aab" class="toggle"  />
-    <label for="section-b371a89060f7df76c1332280a6e35aab" class="flex justify-between">
-      <a href="/docs/unittests/" class="">Unit tests</a>
-    </label>
-  
-
-          
-  <ul>
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/unittests/sections/structured/" class="">Code units</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/unittests/sections/tdd/" class="">Development driven by unit tests</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/unittests/sections/junit/" class="">in Java</a>
-  
-
-        </li>
-      
-    
-  </ul>
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <input type="checkbox" id="section-d551df9e28ab80c96d827dea56a21dbd" class="toggle"  />
-    <label for="section-d551df9e28ab80c96d827dea56a21dbd" class="flex justify-between">
-      <a href="/docs/simplify/" class="">Simplifying code</a>
-    </label>
-  
-
-          
-  <ul>
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/simplify/sections/factorization/" class="">Factorizing</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/simplify/sections/break/" class="">Break statements and flags</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/simplify/sections/boolean/" class="">Boolean conditions</a>
-  
-
-        </li>
-      
-    
-  </ul>
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <input type="checkbox" id="section-49884d982604681b4e5b3094fc97d1f6" class="toggle"  />
-    <label for="section-49884d982604681b4e5b3094fc97d1f6" class="flex justify-between">
-      <a href="/docs/env/" class="">Development environment</a>
-    </label>
-  
-
-          
-  <ul>
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/env/sections/files/" class="">Hierarchical file system</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/env/sections/backup/" class="">Backup</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/env/sections/install/" class="">Software management</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/env/sections/os/" class="">Operating system</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/env/sections/requirements/" class="">Requirements for this course</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/env/sections/text_editor/" class="">Text editor</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/env/sections/ide/" class="">IDE</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/env/sections/eval/" class="">Evaluation environment</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/env/sections/terminal/" class="">Terminal</a>
-  
-
-        </li>
-      
-    
-  </ul>
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <input type="checkbox" id="section-d6e27677885764249de207f53ef3b11c" class="toggle"  />
-    <label for="section-d6e27677885764249de207f53ef3b11c" class="flex justify-between">
-      <a href="/docs/git/" class="">Git</a>
-    </label>
-  
-
-          
-  <ul>
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/git/sections/basics/" class="">Basics: repository, commits and branches</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/git/sections/collaboration/" class="">Basics: network and collaboration</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/git/sections/config/" class="">Configuration</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/git/sections/create/" class="">Create or clone a repository</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/git/sections/navigate/" class="">Navigation, status and history: status, log, checkout, diff, show</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/git/sections/commit/" class="">Add, commit, stash</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/git/sections/branches/" class="">Branches</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/git/sections/sharing/" class="">Synchronization: remote, push, pull</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/git/sections/backtracking/" class="">Backtracking</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/git/sections/resources/" class="">To go further</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/git/sections/ignore/" class="">Ignore</a>
-  
-
-        </li>
-      
-    
-  </ul>
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <input type="checkbox" id="section-3d438ce6389c4e76be7ef5e4f060239b" class="toggle"  />
-    <label for="section-3d438ce6389c4e76be7ef5e4f060239b" class="flex justify-between">
-      <a href="/docs/build/" class="">Build automation</a>
-    </label>
-  
-
-          
-  <ul>
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/build/sections/packaging/" class="">Packaging a Java application</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/build/sections/layout/" class="">Layout</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/build/sections/pom/" class="">Configuration file</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/build/sections/artifact/" class="">Artifact</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/build/sections/dependencies/" class="">Dependencies</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/build/sections/building/" class="">Building</a>
+    <a href="/docs/objects/sections/value_ref/" class="">Passing by value or by reference</a>
   
 
         </li>
@@ -1842,7 +896,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/background/sections/problem/" class="">Computational problem</a>
+    <a href="/docs/background/sections/set_list/" class="">Set, list, tuple</a>
   
 
         </li>
@@ -1855,8 +909,13 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/background/sections/set_tuple_map/" class="">Set, tuple, function</a>
+    <a href="/docs/background/sections/function/" class="">Function</a>
   
+
+        </li>
+      
+    
+  </ul>
 
         </li>
       
@@ -1868,11 +927,14 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/background/sections/order/" class="">Relation, preorder</a>
+    <input type="checkbox" id="section-c98f96b18785aef1d766e440ba328a79" class="toggle"  />
+    <label for="section-c98f96b18785aef1d766e440ba328a79" class="flex justify-between">
+      <a href="/docs/ass/" class="">Assignments</a>
+    </label>
   
 
-        </li>
-      
+          
+  <ul>
     
       
         <li>
@@ -1881,7 +943,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/background/sections/cost/" class="">Computational cost</a>
+    <a href="/docs/ass/sections/ass1/" class="">Assignment 1</a>
   
 
         </li>
@@ -1927,7 +989,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <h3>Objects and classes</h3>
+  <h3>Object and class</h3>
 
   <label for="toc-control">
     
@@ -1952,11 +1014,12 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown book-article"><h1 id="objects-and-classes">
-  Objects and classes
-  <a class="anchor" href="#objects-and-classes">#</a>
+  <article class="markdown book-article"><h1 id="object-and-class">
+  Object and class
+  <a class="anchor" href="#object-and-class">#</a>
 </h1>
 <p>This chapter introduces some basic notions of (class-based) object-oriented programming.</p>
+<p>We will illustrate them with Java.</p>
 </article>
  
       
