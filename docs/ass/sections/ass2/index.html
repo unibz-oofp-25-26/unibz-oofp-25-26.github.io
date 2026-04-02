@@ -52,7 +52,7 @@ Just x if x is the last element of the list xs for which f x is True, or Nothing
 <link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/ass/sections/ass2/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.f7cfc3a9f8acb8d7c794a8e684b835a039467271d2a1bcc310a12923a0fd72c3.js" integrity="sha256-98/DqfisuNfHlKjmhLg1oDlGcnHSobzDEKEpI6D9csM=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.bf49480c882f3f870577337413c53ea987bf9ca702222c1eafb4430a62f78091.js" integrity="sha256-v0lIDIgvP4cFdzN0E8U&#43;qYe/nKcCIiwer7RDCmL3gJE=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -1196,10 +1196,13 @@ You may take advantage of one of the native <a href="https://unibz-oofp-25-26.gi
 <p>Instead,</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">firstAgreement</span> (`mod` <span style="color:#ae81ff">2</span>) (`mod` <span style="color:#ae81ff">3</span>)[<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">8</span>]
 </span></span></code></pre></div><p>should evaluate to <code>Nothing</code>.</p>
-<blockquote class="book-hint info">
-<p><strong><em>Hint.</em></strong>
-You may take advantage of the function <a href="https://unibz-oofp-25-26.github.io/docs/higher/sections/useful_hofs/#find"><code>find</code></a> (in the module <code>Data.List</code>).</p>
+<!-- <blockquote class="book-hint info">
+   -->
+<!-- **_Hint._** -->
+<!-- You may take advantage of the function [`find`](https://unibz-oofp-25-26.github.io/docs/higher/sections/useful_hofs/#find) (in the module `Data.List`). -->
+<!-- 
 </blockquote>
+ -->
 <h3 id="keeplastoccin">
   <code>keepLastOccIn</code>
   <a class="anchor" href="#keeplastoccin">#</a>
@@ -1332,10 +1335,14 @@ You can assume that the list <code>ps</code> does not contain duplicates (but it
 <p><strong><em>Restriction.</em></strong>
 You can assume that tests in <code>ts</code> are in chronological order.</p>
 </blockquote>
-<blockquote class="book-hint info">
-<p><strong><em>Hint.</em></strong>
-You may take advantage of the function <a href="https://unibz-oofp-25-26.github.io/docs/higher/sections/useful_hofs/#find"><code>find</code></a> (in the module <code>Data.List</code>).</p>
+<!-- <blockquote class="book-hint info">
+   -->
+<!-- **_Hint._** -->
+<!-- You may take advantage of the function [`find`](https://unibz-oofp-25-26.github.io/docs/higher/sections/useful_hofs/#find) (in the module `Data.List`). -->
+<!---->
+<!-- 
 </blockquote>
+ -->
 <h3 id="metduring">
   <code>metDuring</code>
   <a class="anchor" href="#metduring">#</a>
@@ -1370,11 +1377,8 @@ You can assume that the meetings in <code>ms</code> are sorted in chronological 
 </span></span></code></pre></div><p>should evaluate to <code>Nothing</code>.</p>
 <blockquote class="book-hint info">
 <p><strong><em>Hint.</em></strong>
-You may take advantage of:</p>
-<ul>
-<li>the function <a href="https://unibz-oofp-25-26.github.io/docs/higher/sections/useful_hofs/#find"><code>find</code></a> (in the module <code>Data.List</code>), and/or</li>
-<li>the function <code>metDuring</code> described above.</li>
-</ul>
+You may take advantage of the function <code>metDuring</code> described above.</p>
+<!-- - the function [`find`](https://unibz-oofp-25-26.github.io/docs/higher/sections/useful_hofs/#find) (in the module `Data.List`), and/or -->
 </blockquote>
 <h3 id="contactssince">
   <code>contactsSince</code>
