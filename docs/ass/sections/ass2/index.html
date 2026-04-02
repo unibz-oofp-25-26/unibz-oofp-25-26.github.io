@@ -1,22 +1,11 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+<head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="
   Assignment 2: functional patterns
   #
-
-
-Hint.
-In this assignment,
-you may take advantage of:
-
-the native higher-order functions that we have encountered: filter, map, all, any, find, etc.
-the functions fmap for the type Maybe,
-the function &gt;&gt;= for the type Maybe,
-the function &gt;&gt;= for the type &ldquo;List&rdquo;.
-
 
 
   Exercise 1: utility functions
@@ -25,25 +14,45 @@ the function &gt;&gt;= for the type &ldquo;List&rdquo;.
 Implement the functions below by completing the function stubs in the file Src/Utility.hs.
 
 Hint.
-Some of these functions can be used to implement others.">
+Some of these functions can be used to implement others.
+
+
+Hint.
+Feel free to create additional (auxiliary) functions to simplify your implementation.
+
+
+  lastMatch
+  #
+
+Implement the function
+lastMatch :: (a -&gt; Bool) -&gt; [a] -&gt; Maybe a
+such that lastMatch f xs is:
+
+Just x if x is the last element of the list xs for which f x is True, or
+Nothing if there is no such x.
+
+For instance,">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/docs/ass/sections/ass2/">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://unibz-oofp-25-26.github.io/docs/ass/sections/ass2/">
   <meta property="og:site_name" content="OOFP 2025-26">
   <meta property="og:title" content="Assignment 2">
-  <meta property="og:description" content="Assignment 2: functional patterns # Hint. In this assignment, you may take advantage of:
-the native higher-order functions that we have encountered: filter, map, all, any, find, etc. the functions fmap for the type Maybe, the function &gt;&gt;= for the type Maybe, the function &gt;&gt;= for the type “List”. Exercise 1: utility functions # Implement the functions below by completing the function stubs in the file Src/Utility.hs.
-Hint. Some of these functions can be used to implement others.">
+  <meta property="og:description" content="Assignment 2: functional patterns # Exercise 1: utility functions # Implement the functions below by completing the function stubs in the file Src/Utility.hs.
+Hint. Some of these functions can be used to implement others.
+Hint. Feel free to create additional (auxiliary) functions to simplify your implementation.
+lastMatch # Implement the function
+lastMatch :: (a -&gt; Bool) -&gt; [a] -&gt; Maybe a such that lastMatch f xs is:
+Just x if x is the last element of the list xs for which f x is True, or Nothing if there is no such x. For instance,">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
 <title>Assignment 2 | OOFP 2025-26</title>
 <link rel="icon" href="/favicon.png" >
 <link rel="manifest" href="/manifest.json">
-<link rel="canonical" href="http://localhost:1313/docs/ass/sections/ass2/">
+<link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/ass/sections/ass2/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.00be75a0bb66179b5881f1d33e484fcf98dd9af9d9834995f506f08583bb8bfd.js" integrity="sha256-AL51oLtmF5tYgfHTPkhPz5jdmvnZg0mV9QbwhYO7i/0=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.f7cfc3a9f8acb8d7c794a8e684b835a039467271d2a1bcc310a12923a0fd72c3.js" integrity="sha256-98/DqfisuNfHlKjmhLg1oDlGcnHSobzDEKEpI6D9csM=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -706,19 +715,6 @@ https://github.com/alex-shpak/hugo-book
         </li>
       
     
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/recursion/sections/termination/" class="">Termination</a>
-  
-
-        </li>
-      
-    
   </ul>
 
         </li>
@@ -799,19 +795,6 @@ https://github.com/alex-shpak/hugo-book
 
           
   <ul>
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/pattern/sections/fold/" class="">Fold</a>
-  
-
-        </li>
-      
     
       
         <li>
@@ -907,19 +890,6 @@ https://github.com/alex-shpak/hugo-book
 
   
     <a href="/docs/objects/sections/value_ref/" class="">Passing by value or by reference</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/objects/sections/inheritance/" class="">Inheritance</a>
   
 
         </li>
@@ -1078,9 +1048,8 @@ https://github.com/alex-shpak/hugo-book
     <li><a href="#exercise-1-utility-functions">Exercise 1: utility functions</a>
       <ul>
         <li><a href="#lastmatch"><code>lastMatch</code></a></li>
-        <li><a href="#firstagreement"><code>firstAgreement</code></a></li>
-        <li><a href="#maybefirsthead"><code>maybeFirstHead</code></a></li>
         <li><a href="#compose"><code>compose</code></a></li>
+        <li><a href="#firstagreement"><code>firstAgreement</code></a></li>
         <li><a href="#keeplastoccin"><code>keepLastOccIn</code></a></li>
         <li><a href="#discarddups"><code>discardDups</code></a></li>
       </ul>
@@ -1089,12 +1058,10 @@ https://github.com/alex-shpak/hugo-book
       <ul>
         <li><a href="#attendances"><code>attendances</code></a></li>
         <li><a href="#neighborsof"><code>neighborsOf</code></a></li>
+        <li><a href="#firstpositivetest"><code>firstPositiveTest</code></a></li>
         <li><a href="#metduring"><code>metDuring</code></a></li>
         <li><a href="#lastmeetingbefore"><code>lastMeetingBefore</code></a></li>
-        <li><a href="#firstpositivetest"><code>firstPositiveTest</code></a></li>
-        <li><a href="#possibletransmitter"><code>possibleTransmitter</code></a></li>
         <li><a href="#contactssince"><code>contactsSince</code></a></li>
-        <li><a href="#riskyplaces"><code>riskyPlaces</code></a></li>
       </ul>
     </li>
   </ul>
@@ -1113,17 +1080,6 @@ https://github.com/alex-shpak/hugo-book
   Assignment 2: functional patterns
   <a class="anchor" href="#assignment-2-functional-patterns">#</a>
 </h1>
-<blockquote class="book-hint info">
-<p><strong><em>Hint.</em></strong>
-In this assignment,
-you may take advantage of:</p>
-<ul>
-<li>the native <a href="http://localhost:1313/docs/higher/sections/useful_hofs/">higher-order functions</a> that we have encountered: <code>filter</code>, <code>map</code>, <code>all</code>, <code>any</code>, <code>find</code>, etc.</li>
-<li>the functions <a href="http://localhost:1313/docs/pattern/sections/functor/"><code>fmap</code></a> for the type <code>Maybe</code>,</li>
-<li>the function <a href="http://localhost:1313/docs/pattern/sections/monad/#bind_maybe"><code>&gt;&gt;=</code></a> for the type <code>Maybe</code>,</li>
-<li>the function <a href="http://localhost:1313/docs/pattern/sections/monad/"><code>&gt;&gt;=</code></a> for the type &ldquo;List&rdquo;.</li>
-</ul>
-</blockquote>
 <h2 id="exercise-1-utility-functions">
   Exercise 1: utility functions
   <a class="anchor" href="#exercise-1-utility-functions">#</a>
@@ -1153,52 +1109,38 @@ Feel free to create additional (auxiliary) functions to simplify your implementa
 </span></span></code></pre></div><p>should evaluate to <code>Just 2</code>, whereas</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">lastMatch</span> even [<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">5</span>]
 </span></span></code></pre></div><p>should evaluate to <code>Nothing</code>.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">lastMatch</span> <span style="color:#f92672">::</span> (a <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span>) <span style="color:#f92672">-&gt;</span> [a] <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Maybe</span> a
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">lastMatch</span> f xs <span style="color:#f92672">=</span> find f (reverse xs)
-</span></span></code></pre></div><h3 id="firstagreement">
-  <code>firstAgreement</code>
-  <a class="anchor" href="#firstagreement">#</a>
-</h3>
-<p>Implement the function</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">firstAgreement</span> <span style="color:#f92672">::</span> (a <span style="color:#f92672">-&gt;</span> b) <span style="color:#f92672">-&gt;</span> (a <span style="color:#f92672">-&gt;</span> b) <span style="color:#f92672">-&gt;</span> [a] <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Maybe</span> b
-</span></span></code></pre></div><p>such that</p>
-<p><code>firstAgreement f g xs</code> is:</p>
-<ul>
-<li><code>Just (f x)</code> if <code>x</code> is the first element of the list <code>xs</code> for which <code>f x</code> is equal to <code>g x</code>, or</li>
-<li><code>Nothing</code> if there is no such <code>x</code> .</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">firstAgreement</span> <span style="color:#f92672">::</span> (a <span style="color:#f92672">-&gt;</span> b) <span style="color:#f92672">-&gt;</span> (a <span style="color:#f92672">-&gt;</span> b) <span style="color:#f92672">-&gt;</span> [b] <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Maybe</span> b
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">firstAgreement</span> f g xs <span style="color:#f92672">=</span> xs
-</span></span><span style="display:flex;"><span>              <span style="color:#f92672">&amp;</span> find (<span style="color:#a6e22e">\</span>x <span style="color:#f92672">-&gt;</span> (f x <span style="color:#f92672">==</span> g x))
-</span></span><span style="display:flex;"><span>              <span style="color:#f92672">&amp;</span> fmap f
-</span></span></code></pre></div><p>For instance,</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">firstAgreement</span> (`mod` <span style="color:#ae81ff">2</span>) (`mod` <span style="color:#ae81ff">3</span>) [<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">7</span>,<span style="color:#ae81ff">6</span>]
-</span></span></code></pre></div><p>should evaluate to <code>Just 1</code>, because:</p>
-<ul>
-<li><code>7</code> is the first element <code>x</code> in the list suvh taht x mod 2 = x mod 3, and</li>
-<li><code>7 \</code>mod` 2<code>is</code>1`</li>
-</ul>
-<p>Instead,</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">firstAgreement</span> (`mod` <span style="color:#ae81ff">2</span>) (`mod` <span style="color:#ae81ff">3</span>)[<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">8</span>]
-</span></span></code></pre></div><p>should evaluate to <code>Nothing</code>.</p>
-<h3 id="maybefirsthead">
-  <code>maybeFirstHead</code>
-  <a class="anchor" href="#maybefirsthead">#</a>
-</h3>
-<p>Implement the function</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">maybeFirstHead</span> <span style="color:#f92672">::</span> [[a]] <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Maybe</span> a
-</span></span></code></pre></div><p>such that <code>maybeFirstHead xss</code> is:</p>
-<ul>
-<li><code>Just x</code> if <code>x</code> is the head of the first nonempty list in <code>xss</code>, or</li>
-<li><code>Nothing</code> if there is no such <code>x</code>.</li>
-</ul>
-<p>For instance,</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">maybeFirstHead</span> [ <span style="color:#66d9ef">[]</span>, [<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">4</span>], <span style="color:#66d9ef">[]</span>, [<span style="color:#ae81ff">5</span>]]
-</span></span></code></pre></div><p>should evaluate to <code>Just 2</code>, whereas</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">maybeFirstHead</span> [<span style="color:#66d9ef">[]</span>, <span style="color:#66d9ef">[]</span>]
-</span></span></code></pre></div><p>and</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">maybeFirstHead</span> <span style="color:#66d9ef">[]</span>
-</span></span></code></pre></div><p>should both evaluate to <code>Nothing</code>.</p>
+<!-- ### `maybeFirstHead` -->
+<!---->
+<!-- Implement the function -->
+<!---->
+<!-- ```haskell -->
+<!-- maybeFirstHead :: [[a]] -> Maybe a -->
+<!-- ``` -->
+<!---->
+<!-- such that `maybeFirstHead xss` is: -->
+<!---->
+<!-- - `Just x` if `x` is the head of the first nonempty list in `xss`, or -->
+<!-- - `Nothing` if there is no such `x`. -->
+<!---->
+<!-- For instance, -->
+<!---->
+<!-- ```haskell -->
+<!-- maybeFirstHead [[], [2,4], [], [5]] -->
+<!-- ``` -->
+<!---->
+<!-- should evaluate to `Just 2`, whereas -->
+<!---->
+<!-- ```haskell -->
+<!-- maybeFirstHead [[], []] -->
+<!-- ``` -->
+<!---->
+<!-- and -->
+<!---->
+<!-- ```haskell -->
+<!-- maybeFirstHead [] -->
+<!-- ``` -->
+<!---->
+<!-- should both evaluate to `Nothing`. -->
 <h3 id="compose">
   <code>compose</code>
   <a class="anchor" href="#compose">#</a>
@@ -1219,25 +1161,51 @@ Function composition is associative, so no parenthesis is needed here.</p>
 </span></span></code></pre></div><p>such that <code>compose fs</code> is:</p>
 <ul>
 <li>the inductive composition of all functions in <code>fs</code> if <code>fs</code> is nonempty, or</li>
-<li>the <a href="http://localhost:1313/docs/haskell/sections/function/#id">identity function</a> otherwise.</li>
+<li>the <a href="https://unibz-oofp-25-26.github.io/docs/haskell/sections/function/#id">identity function</a> otherwise.</li>
 </ul>
 <p>For instance,</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">compose</span> [(<span style="color:#f92672">*</span><span style="color:#ae81ff">3</span>), (<span style="color:#f92672">+</span><span style="color:#ae81ff">2</span>)]
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">compose</span> [(<span style="color:#f92672">*</span> <span style="color:#ae81ff">3</span>), (<span style="color:#f92672">+</span> <span style="color:#ae81ff">2</span>)]
 </span></span></code></pre></div><p>is the function <code>\x -&gt; (x + 2) * 3</code>,</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">compose</span> [(<span style="color:#f92672">+</span><span style="color:#ae81ff">2</span>)]
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">compose</span> [(<span style="color:#f92672">+</span> <span style="color:#ae81ff">2</span>)]
 </span></span></code></pre></div><p>is the function <code>(+2)</code>, and</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">compose</span> <span style="color:#66d9ef">[]</span>
 </span></span></code></pre></div><p>is the identity function <code>id</code>.</p>
 <blockquote class="book-hint info">
 <p><strong><em>Hint.</em></strong>
-You may take advantage of one of the native <a href="http://localhost:1313/docs/higher/sections/useful_hofs/"><code>higher-order functions</code></a> that we have encountered.</p>
+You may take advantage of one of the native <a href="https://unibz-oofp-25-26.github.io/docs/higher/sections/useful_hofs/"><code>higher-order functions</code></a> that we have encountered.</p>
+</blockquote>
+<h3 id="firstagreement">
+  <code>firstAgreement</code>
+  <a class="anchor" href="#firstagreement">#</a>
+</h3>
+<p>Implement the function</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">firstAgreement</span> <span style="color:#f92672">::</span> (<span style="color:#66d9ef">Eq</span> b) <span style="color:#f92672">=&gt;</span> (a <span style="color:#f92672">-&gt;</span> b) <span style="color:#f92672">-&gt;</span> (a <span style="color:#f92672">-&gt;</span> b) <span style="color:#f92672">-&gt;</span> [a] <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Maybe</span> b
+</span></span></code></pre></div><p>such that</p>
+<p><code>firstAgreement f g xs</code> is:</p>
+<ul>
+<li><code>Just (f x)</code> if <code>x</code> is the first element of the list <code>xs</code> for which <code>f x</code> is equal to <code>g x</code>, or</li>
+<li><code>Nothing</code> if there is no such <code>x</code> .</li>
+</ul>
+<p>For instance,</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">firstAgreement</span> (`mod` <span style="color:#ae81ff">2</span>) (`mod` <span style="color:#ae81ff">3</span>) [<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">7</span>,<span style="color:#ae81ff">6</span>]
+</span></span></code></pre></div><p>should evaluate to <code>Just 1</code>, because:</p>
+<ul>
+<li><code>7</code> is the first element <code>x</code> in the list <code>[3,7,6]</code> such that <code>x `mod` 2 == x `mod` 3</code> and</li>
+<li><code>7 `mod` 2</code> is <code>1</code>.</li>
+</ul>
+<p>Instead,</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">firstAgreement</span> (`mod` <span style="color:#ae81ff">2</span>) (`mod` <span style="color:#ae81ff">3</span>)[<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">8</span>]
+</span></span></code></pre></div><p>should evaluate to <code>Nothing</code>.</p>
+<blockquote class="book-hint info">
+<p><strong><em>Hint.</em></strong>
+You may take advantage of the function <a href="https://unibz-oofp-25-26.github.io/docs/higher/sections/useful_hofs/#find"><code>find</code></a> (in the module <code>Data.List</code>).</p>
 </blockquote>
 <h3 id="keeplastoccin">
   <code>keepLastOccIn</code>
   <a class="anchor" href="#keeplastoccin">#</a>
 </h3>
 <p>Implement the function</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">keepLastOcc</span> <span style="color:#f92672">::</span> (<span style="color:#66d9ef">Eq</span> a) <span style="color:#f92672">=&gt;</span> a <span style="color:#f92672">-&gt;</span> [a] <span style="color:#f92672">-&gt;</span> [a]
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">keepLastOccIn</span> <span style="color:#f92672">::</span> (<span style="color:#66d9ef">Eq</span> a) <span style="color:#f92672">=&gt;</span> a <span style="color:#f92672">-&gt;</span> [a] <span style="color:#f92672">-&gt;</span> [a]
 </span></span></code></pre></div><p>such that <code>keepLastOccIn x xs</code> is the list identical to <code>xs</code> for all elements different from <code>x</code>, and where only the last occurrence of <code>x</code> (if any) is retained.</p>
 <p>For instance,</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">keepLastOccIn</span>  <span style="color:#ae81ff">2</span> [<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">5</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">4</span>]
@@ -1248,20 +1216,11 @@ You may take advantage of one of the native <a href="http://localhost:1313/docs/
 <p><strong><em>Hint.</em></strong>
 You may use recursion here, with either:</p>
 <ul>
-<li><a href="http://localhost:1313/docs/recursion/sections/intermediate/">additional intermediate results</a>, or</li>
-<li>an <a href="http://localhost:1313/docs/recursion/sections/accumulator/">accumulator</a>.</li>
+<li><a href="https://unibz-oofp-25-26.github.io/docs/recursion/sections/intermediate/">additional intermediate results</a>, or</li>
+<li>an <a href="https://unibz-oofp-25-26.github.io/docs/recursion/sections/accumulator/">accumulator</a>.</li>
 </ul>
 </blockquote>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">keepLastOcc</span> <span style="color:#f92672">::</span> a <span style="color:#f92672">-&gt;</span> [a] <span style="color:#f92672">-&gt;</span> [a]
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">keepLastOcc</span> x xs <span style="color:#f92672">=</span> ys
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">where</span> (<span style="color:#66d9ef">_</span>, ys) <span style="color:#f92672">=</span> keepLastOccRec x xs
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">keepLastOccRec</span> <span style="color:#f92672">::</span> a <span style="color:#f92672">-&gt;</span> [a] <span style="color:#f92672">-&gt;</span> (<span style="color:#66d9ef">Bool</span>, [a])
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">keepLastOccRec</span> <span style="color:#66d9ef">_</span> <span style="color:#66d9ef">[]</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">[]</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">keepLastOccRec</span> x (h <span style="color:#66d9ef">:</span> xs) <span style="color:#f92672">|</span> h <span style="color:#f92672">==</span> x <span style="color:#f92672">&amp;&amp;</span> not b <span style="color:#f92672">=</span> (<span style="color:#66d9ef">True</span>, h <span style="color:#66d9ef">:</span> xs)
-</span></span><span style="display:flex;"><span>                          <span style="color:#f92672">|</span> otherwise <span style="color:#f92672">=</span> bm xs
-</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">where</span> (b, ys) <span style="color:#f92672">=</span> keepLastOcc x (h <span style="color:#66d9ef">:</span> xs)
-</span></span></code></pre></div><h3 id="discarddups">
+<h3 id="discarddups">
   <code>discardDups</code>
   <a class="anchor" href="#discarddups">#</a>
 </h3>
@@ -1271,16 +1230,13 @@ You may use recursion here, with either:</p>
 <p>For instance,</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">discardDups</span> <span style="color:#ae81ff">2</span> [<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">5</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">4</span>]
 </span></span></code></pre></div><p>should evaluate to <code>[1,3,5,2,4]</code>.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">discardDups</span> <span style="color:#f92672">::</span> [a] <span style="color:#f92672">-&gt;</span> [a]
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">discardDups</span> <span style="color:#66d9ef">[]</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">[]</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">discardDups</span> (x <span style="color:#66d9ef">:</span> xs) <span style="color:#f92672">=</span> keepLastOcc x (discardDups xs)
-</span></span></code></pre></div><h2 id="exercise-2-tracing-a-virus">
+<h2 id="exercise-2-tracing-a-virus">
   Exercise 2: tracing a virus
   <a class="anchor" href="#exercise-2-tracing-a-virus">#</a>
 </h2>
 <blockquote class="book-hint warning">
 <p><strong><em>Data format.</em></strong>
-We will use the following <a href="">product types</a> to represent infection tests for a virus, as well as meetings:</p>
+We use the following <a href="">product types</a> to represent infection tests for a virus, as well as meetings:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#66d9ef">data</span> <span style="color:#66d9ef">Person</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">PersonC</span> {
 </span></span><span style="display:flex;"><span>    name <span style="color:#f92672">::</span> <span style="color:#66d9ef">String</span>,
 </span></span><span style="display:flex;"><span>    city <span style="color:#f92672">::</span> <span style="color:#66d9ef">String</span>
@@ -1288,35 +1244,39 @@ We will use the following <a href="">product types</a> to represent infection te
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">data</span> <span style="color:#66d9ef">Test</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">TestC</span> {
 </span></span><span style="display:flex;"><span>    subject <span style="color:#f92672">::</span> <span style="color:#66d9ef">Person</span>,
-</span></span><span style="display:flex;"><span>    time <span style="color:#f92672">::</span> <span style="color:#66d9ef">Int</span>,
+</span></span><span style="display:flex;"><span>    testTime <span style="color:#f92672">::</span> <span style="color:#66d9ef">Int</span>,
 </span></span><span style="display:flex;"><span>    positive <span style="color:#f92672">::</span> <span style="color:#66d9ef">Bool</span>
 </span></span><span style="display:flex;"><span>} <span style="color:#66d9ef">deriving</span> (<span style="color:#66d9ef">Show</span>, <span style="color:#66d9ef">Eq</span>)
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">data</span> <span style="color:#66d9ef">Meeting</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">MeetingC</span> {
-</span></span><span style="display:flex;"><span>    time <span style="color:#f92672">::</span> <span style="color:#66d9ef">Int</span>,
+</span></span><span style="display:flex;"><span>    meetingTime <span style="color:#f92672">::</span> <span style="color:#66d9ef">Int</span>,
 </span></span><span style="display:flex;"><span>    attendees <span style="color:#f92672">::</span> [<span style="color:#66d9ef">Person</span>]
 </span></span><span style="display:flex;"><span>} <span style="color:#66d9ef">deriving</span> (<span style="color:#66d9ef">Show</span>, <span style="color:#66d9ef">Eq</span>)
-</span></span></code></pre></div><p>The <code>time</code> attributes are integers that identify days, numbered from a certain origin.</p>
+</span></span></code></pre></div><p>The value of a <code>testTime</code> or <code>meetingTime</code> attribute is an integer that identifies a day, numbered from a certain origin.</p>
 <p>We assume for simplicity that all people have different names.</p>
 </blockquote>
 <blockquote class="book-hint info">
 <p><strong><em>Running example.</em></strong>
-We will use the following sample data to illustrate below the functions that we want to implement:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">alice</span>, bob, carol <span style="color:#f92672">::</span> <span style="color:#66d9ef">Person</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">alice</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">PersonC</span> { name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Alice&#34;</span>, city <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Bolzano&#34;</span> }
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">bob</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">PersonC</span> { name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Bob&#34;</span>, city <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Bolzano&#34;</span> }
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">carol</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">PersonC</span> { name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Carol&#34;</span>, city <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Trento&#34;</span> }
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">dan</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">PersonC</span> { name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Dan&#34;</span>, city <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Bolzano&#34;</span> }
+We will use the following sample data to illustrate and test the functions that we want to implement:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">alice</span>, bob, carol, dan, eve <span style="color:#f92672">::</span> <span style="color:#66d9ef">Person</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">alice</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">PersonC</span> {name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Alice&#34;</span>, city <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Bolzano&#34;</span>}
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">bob</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">PersonC</span> {name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Bob&#34;</span>, city <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Bolzano&#34;</span>}
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">carol</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">PersonC</span> {name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Carol&#34;</span>, city <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Trento&#34;</span>}
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">dan</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">PersonC</span> {name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Dan&#34;</span>, city <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Bolzano&#34;</span>}
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">eve</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">PersonC</span> {name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Eve&#34;</span>, city <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Rovereto&#34;</span>}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">test1</span>, test2 <span style="color:#f92672">::</span> <span style="color:#66d9ef">Test</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">test1</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">TestC</span> { subject <span style="color:#f92672">=</span> alice, time <span style="color:#f92672">=</span> <span style="color:#ae81ff">30</span>, positive <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span> }
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">test1</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">TestC</span> { subject <span style="color:#f92672">=</span> alice, time <span style="color:#f92672">=</span> <span style="color:#ae81ff">50</span>, positive <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span> }
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">test2</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">TestC</span> { subject <span style="color:#f92672">=</span> alice, time <span style="color:#f92672">=</span> <span style="color:#ae81ff">56</span>, positive <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span> }
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">t1</span>, t2, t3, t4, t5 <span style="color:#f92672">::</span> <span style="color:#66d9ef">Test</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">t1</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">TestC</span> {subject <span style="color:#f92672">=</span> alice, testTime <span style="color:#f92672">=</span> <span style="color:#ae81ff">48</span>, positive <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>}
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">t2</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">TestC</span> {subject <span style="color:#f92672">=</span> alice, testTime <span style="color:#f92672">=</span> <span style="color:#ae81ff">50</span>, positive <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>}
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">t3</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">TestC</span> {subject <span style="color:#f92672">=</span> alice, testTime <span style="color:#f92672">=</span> <span style="color:#ae81ff">56</span>, positive <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>}
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">t4</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">TestC</span> {subject <span style="color:#f92672">=</span> bob, testTime <span style="color:#f92672">=</span> <span style="color:#ae81ff">63</span>, positive <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>}
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">t5</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">TestC</span> {subject <span style="color:#f92672">=</span> carol, testTime <span style="color:#f92672">=</span> <span style="color:#ae81ff">66</span>, positive <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">m1</span>, m2 <span style="color:#f92672">::</span> <span style="color:#66d9ef">Meeting</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">m1</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">MeetingC</span> { time <span style="color:#f92672">=</span> <span style="color:#ae81ff">46</span>, attendees <span style="color:#f92672">=</span> [alice,bob] }
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">m2</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">MeetingC</span> { time <span style="color:#f92672">=</span> <span style="color:#ae81ff">54</span>, attendees <span style="color:#f92672">=</span> [alice,carol,dan] }
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">m3</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">MeetingC</span> { time <span style="color:#f92672">=</span> <span style="color:#ae81ff">58</span>, attendees <span style="color:#f92672">=</span> [bob,carol,dan] }
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">m1</span>, m2, m3, m4 <span style="color:#f92672">::</span> <span style="color:#66d9ef">Meeting</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">m1</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">MeetingC</span> {meetingTime <span style="color:#f92672">=</span> <span style="color:#ae81ff">46</span>, attendees <span style="color:#f92672">=</span> [alice, bob]}
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">m2</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">MeetingC</span> {meetingTime <span style="color:#f92672">=</span> <span style="color:#ae81ff">54</span>, attendees <span style="color:#f92672">=</span> [alice, carol, dan, eve]}
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">m3</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">MeetingC</span> {meetingTime <span style="color:#f92672">=</span> <span style="color:#ae81ff">58</span>, attendees <span style="color:#f92672">=</span> [bob, carol, dan]}
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">m4</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">MeetingC</span> {meetingTime <span style="color:#f92672">=</span> <span style="color:#ae81ff">61</span>, attendees <span style="color:#f92672">=</span> [carol, dan]}
 </span></span></code></pre></div></blockquote>
 <p>Implement the functions below by completing the function stubs in the file <code>Src/Virus.hs</code>.</p>
 <blockquote class="book-hint info">
@@ -1334,10 +1294,8 @@ Feel free to create additional (auxiliary) functions to simplify your implementa
 </h3>
 <p>Implement the function</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">attendances</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Person</span> <span style="color:#f92672">-&gt;</span> [<span style="color:#66d9ef">Meeting</span>] <span style="color:#f92672">-&gt;</span> [<span style="color:#66d9ef">Int</span>]
-</span></span></code></pre></div><p>such that <code>attendances p ms</code> contains the times of all meetings in <code>ms</code> that <code>p</code> attended, in the same order as they appear in <code>ms</code>.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">attendances</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Person</span> <span style="color:#f92672">-&gt;</span> [<span style="color:#66d9ef">Meeting</span>] <span style="color:#f92672">-&gt;</span> [<span style="color:#66d9ef">Int</span>]
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">attendances</span> p ms <span style="color:#f92672">=</span> [time m <span style="color:#f92672">|</span> m <span style="color:#f92672">&lt;-</span> ms, any (<span style="color:#f92672">==</span> p) (attendees m) ]
-</span></span></code></pre></div><p>For instance,</p>
+</span></span></code></pre></div><p>such that <code>attendances p ms</code> contains the times of all meetings in <code>ms</code> that <code>p</code> attended, in the same order as they appear in <code>ms</code>.<br>
+For instance,</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">attendances</span> bob [m1,m2,m3]
 </span></span></code></pre></div><p>should evaluate to <code>[46,58]</code>.</p>
 <h3 id="neighborsof">
@@ -1346,34 +1304,51 @@ Feel free to create additional (auxiliary) functions to simplify your implementa
 </h3>
 <p>Implement the function</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">neighborsOf</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Person</span> <span style="color:#f92672">-&gt;</span> [<span style="color:#66d9ef">Person</span>] <span style="color:#f92672">-&gt;</span> [<span style="color:#66d9ef">String</span>]
-</span></span></code></pre></div><p>such that <code>neighborsOf p ps</code> is the list of names people in <code>ps</code> who live in the same city as <code>p</code>, excluding <code>p</code>, and in the same order as they appear in <code>ps</code>.</p>
-<p>For instance,</p>
+</span></span></code></pre></div><p>such that <code>neighborsOf p ps</code> is the list of names of people in <code>ps</code> who live in the same city as <code>p</code>, excluding <code>p</code>, and in the same order as they appear in <code>ps</code>.<br>
+For instance,</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">neighborsOf</span> alice [alice,bob,carol,dan]
 </span></span></code></pre></div><p>should evaluate to <code>[&quot;Bob&quot;, &quot;Dan&quot;]</code>.</p>
 <blockquote class="book-hint warning">
 <p><strong><em>Restriction.</em></strong>
 You can assume that the list <code>ps</code> does not contain duplicates (but it may contain <code>p</code>).</p>
 </blockquote>
-<p>For</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">neighborsOf</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Person</span> <span style="color:#f92672">-&gt;</span> [<span style="color:#66d9ef">Person</span>] <span style="color:#f92672">-&gt;</span> [<span style="color:#66d9ef">Person</span>]
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">neighborsOf</span> p ps <span style="color:#f92672">=</span> [name p&#39; <span style="color:#f92672">|</span> p&#39; <span style="color:#f92672">&lt;-</span> ps, city p <span style="color:#f92672">==</span> city p&#39;, p <span style="color:#f92672">/=</span> p&#39;]
-</span></span></code></pre></div><h3 id="metduring">
+<h3 id="firstpositivetest">
+  <code>firstPositiveTest</code>
+  <a class="anchor" href="#firstpositivetest">#</a>
+</h3>
+<p>Implement the function</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">firstPositiveTest</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Person</span> <span style="color:#f92672">-&gt;</span> [<span style="color:#66d9ef">Test</span>] <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Maybe</span> <span style="color:#66d9ef">Int</span>
+</span></span></code></pre></div><p>such that <code>firstPositiveTest p ts</code> is:</p>
+<ul>
+<li><code>Just t</code> if <code>t</code> is the time of the first positive test in <code>ts</code> whose test subject was <code>p</code>, or</li>
+<li><code>Nothing</code> if there is no such test.</li>
+</ul>
+<p>For instance</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">firstPositiveTest</span> alice [t1,t2,t3]
+</span></span></code></pre></div><p>should evaluate to <code>Just 50</code>, whereas</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">firstPositiveTest</span> bob [t1,t2,t3]
+</span></span></code></pre></div><p>should evaluate to <code>Nothing</code>.</p>
+<blockquote class="book-hint warning">
+<p><strong><em>Restriction.</em></strong>
+You can assume that tests in <code>ts</code> are in chronological order.</p>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Hint.</em></strong>
+You may take advantage of the function <a href="https://unibz-oofp-25-26.github.io/docs/higher/sections/useful_hofs/#find"><code>find</code></a> (in the module <code>Data.List</code>).</p>
+</blockquote>
+<h3 id="metduring">
   <code>metDuring</code>
   <a class="anchor" href="#metduring">#</a>
 </h3>
 <p>Implement the function</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">metDuring</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Person</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Person</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Meeting</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span>
-</span></span></code></pre></div><p>such that <code>metDuring p1 p2 m</code> is <code>True</code> iff <code>p1</code> and <code>p2</code> are different people and both attended meeting <code>m</code>.</p>
-<p>For instance,</p>
+</span></span></code></pre></div><p>such that <code>metDuring p1 p2 m</code> is <code>True</code> iff <code>p1</code> and <code>p2</code> are different people and both attended meeting <code>m</code>.<br>
+For instance,</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">metDuring</span> alice bob m1
 </span></span></code></pre></div><p>should evaluate to <code>True</code>, whereas</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">metDuring</span> alice bob m2
 </span></span></code></pre></div><p>should evaluate to <code>False</code>.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">metDuring</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Person</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Person</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Meeting</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Boolean</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">metDuring</span> p1 p2 m <span style="color:#f92672">=</span> any (<span style="color:#f92672">==</span> p1) (attendees m) <span style="color:#f92672">&amp;&amp;</span>
-</span></span><span style="display:flex;"><span>  any any (<span style="color:#f92672">==</span> p2) (attendees m) <span style="color:#f92672">&amp;&amp;</span>
-</span></span><span style="display:flex;"><span>  p1 <span style="color:#f92672">/=</span> p2
-</span></span></code></pre></div><h3 id="lastmeetingbefore">
+<h3 id="lastmeetingbefore">
   <code>lastMeetingBefore</code>
   <a class="anchor" href="#lastmeetingbefore">#</a>
 </h3>
@@ -1381,7 +1356,7 @@ You can assume that the list <code>ps</code> does not contain duplicates (but it
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">lastMeetingBefore</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Person</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Person</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Int</span> <span style="color:#f92672">-&gt;</span> [<span style="color:#66d9ef">Meeting</span>] <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Maybe</span> <span style="color:#66d9ef">Int</span>
 </span></span></code></pre></div><p>such that <code>lastMeetingBefore p1 p2 t ms</code> is:</p>
 <ul>
-<li><code>Just t'</code> if <code>t'</code> is the time of the last meeting that took place earlier than <code>t</code> and where <code>p1</code> and <code>p2</code> met, or</li>
+<li><code>Just t'</code> if <code>p1</code> and <code>p2</code> are different people and <code>t'</code> is the time of the last meeting that took place earlier than <code>t</code> and where <code>p1</code> and <code>p2</code> met, or</li>
 <li><code>Nothing</code> is there is no such meeting.</li>
 </ul>
 <blockquote class="book-hint warning">
@@ -1389,76 +1364,41 @@ You can assume that the list <code>ps</code> does not contain duplicates (but it
 You can assume that the meetings in <code>ms</code> are sorted in chronological order.</p>
 </blockquote>
 <p>For instance</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">lastMeetingBefore</span> carol dan <span style="color:#ae81ff">56</span> <span style="color:#f92672">-&gt;</span> [m1,m2,m3]
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">lastMeetingBefore</span> carol dan <span style="color:#ae81ff">56</span> [m1,m2,m3]
 </span></span></code></pre></div><p>should evaluate to <code>Just 54</code>, whereas</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">lastMeetingBefore</span> carol dan <span style="color:#ae81ff">52</span> <span style="color:#f92672">-&gt;</span> [m1,m2,m3]
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">lastMeetingBefore</span> carol dan <span style="color:#ae81ff">52</span> [m1,m2,m3]
 </span></span></code></pre></div><p>should evaluate to <code>Nothing</code>.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">lastMeetingBefore</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Person</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Person</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Int</span> <span style="color:#f92672">-&gt;</span> [<span style="color:#66d9ef">Meeting</span>] <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Maybe</span> meeting
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">lastMeetingBefore</span> p1 p2 t ms <span style="color:#f92672">=</span> reverse ms <span style="color:#f92672">&amp;</span> find (metDuring p1 p2)
-</span></span></code></pre></div><h3 id="firstpositivetest">
-  <code>firstPositiveTest</code>
-  <a class="anchor" href="#firstpositivetest">#</a>
-</h3>
-<p>Implement the function</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">firstPositiveTest</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Person</span> <span style="color:#f92672">-&gt;</span> [<span style="color:#66d9ef">Test</span>] <span style="color:#f92672">=&gt;</span> <span style="color:#66d9ef">Maybe</span> <span style="color:#66d9ef">Int</span>
-</span></span></code></pre></div><p>such that <code>firstPositiveTest p ts</code> is:</p>
+<blockquote class="book-hint info">
+<p><strong><em>Hint.</em></strong>
+You may take advantage of:</p>
 <ul>
-<li><code>Just t</code> if <code>t</code> is the time of the first positive test in <code>ts</code> whose test subject was <code>p</code>, or</li>
-<li><code>Nothing</code> if there is no such test.</li>
+<li>the function <a href="https://unibz-oofp-25-26.github.io/docs/higher/sections/useful_hofs/#find"><code>find</code></a> (in the module <code>Data.List</code>), and/or</li>
+<li>the function <code>metDuring</code> described above.</li>
 </ul>
-<blockquote class="book-hint warning">
-<p><strong><em>Restriction.</em></strong>
-You can assume that tests in <code>ts</code> are in chronological order.</p>
 </blockquote>
-<h3 id="possibletransmitter">
-  <code>possibleTransmitter</code>
-  <a class="anchor" href="#possibletransmitter">#</a>
-</h3>
-<p>Implement the function</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">possibleTransmitter</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Person</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Person</span> <span style="color:#f92672">-&gt;</span> [<span style="color:#66d9ef">Test</span>] <span style="color:#f92672">-&gt;</span> [<span style="color:#66d9ef">Meeting</span>] <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span>
-</span></span></code></pre></div><p>such <code>possibleTransmitter p1 p2 ts ms</code> evaluate to <code>True</code> iff:</p>
-<ul>
-<li><code>p2</code> tested positive (according to <code>ts</code>) and</li>
-<li><code>p2</code> met <code>p1</code> (according to <code>ms</code>) at most <code>7</code> days before the first positive test of <code>p2</code>.</li>
-</ul>
-<p>For instance</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">possibleTransmitter</span> bob alice [t1,t2] [m1,m2,m3]
-</span></span></code></pre></div><p>should evaluate to <code>True</code>, whereas</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">possibleTransmitter</span> carol alice [t1,t2] [m1,m2,m3]
-</span></span></code></pre></div><p>should evaluate to <code>False</code>.</p>
-<blockquote class="book-hint warning">
-<p><strong><em>Restriction.</em></strong>
-You can assume that tests in <code>ts</code> and meetings in <code>ms</code> are in chronological order.</p>
-</blockquote>
-<p><strong><em>Hints.</em></strong> You may take advantage here of:</p>
-<ul>
-<li>the functions <code>firstPositiveTest</code> and <code>lastMeetingBefore</code> implemented above, and</li>
-<li>the &ldquo;bind&rdquo; function <code>&gt;&gt;=</code> (or the &ldquo;fish&rdquo; function <code>&gt;=&gt;</code>) for the <code>Maybe</code> monad.</li>
-</ul>
 <h3 id="contactssince">
   <code>contactsSince</code>
   <a class="anchor" href="#contactssince">#</a>
 </h3>
 <p>Implement the function</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">contactsSince</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Person</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Int</span> <span style="color:#f92672">-&gt;</span> [<span style="color:#66d9ef">Meeting</span>] <span style="color:#f92672">-&gt;</span> [<span style="color:#66d9ef">String</span>]
-</span></span></code></pre></div><p>such that <code>contactsSince p t ms</code></p>
-<p>is the list of names of people that <code>p</code> met in any meeting in <code>ms</code> that took place at a time <code>&gt; t</code>.
-The order of names in the output list does not matter.
+</span></span></code></pre></div><p>such that <code>contactsSince p t ms</code> is the list of names of people that <code>p</code> met in any meeting in <code>ms</code> that took place at a time <code>&gt; t</code>.</p>
+<p>Names in the output list can be in any order.
 This list:</p>
 <ul>
 <li>should not contain duplicates, and</li>
 <li>should not contain the name of <code>p</code>.</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">contactsSince</span> p t ms <span style="color:#f92672">=</span> ms <span style="color:#f92672">&amp;</span> filter (<span style="color:#a6e22e">\</span>m <span style="color:#f92672">-&gt;</span> time m <span style="color:#f92672">&gt;</span> t)
-</span></span><span style="display:flex;"><span>                          <span style="color:#f92672">&amp;</span> filter (<span style="color:#a6e22e">\</span>m <span style="color:#f92672">-&gt;</span> any (<span style="color:#a6e22e">\</span>p&#39; <span style="color:#f92672">-&gt;</span> name p&#39; <span style="color:#f92672">==</span> name p) attendees)
-</span></span><span style="display:flex;"><span>                          <span style="color:#f92672">&gt;&gt;=</span> (attendees)
-</span></span><span style="display:flex;"><span>                          <span style="color:#f92672">&amp;</span> filter (<span style="color:#a6e22e">\</span>p&#39; <span style="color:#f92672">-&gt;</span> name p&#39; <span style="color:#f92672">/=</span> name p)
-</span></span><span style="display:flex;"><span>                          <span style="color:#f92672">&amp;</span> discardDups
-</span></span></code></pre></div><p><strong><em>Hints.</em></strong> You may take advantage here of:</p>
+<p>For instance</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">contactsSince</span> carol <span style="color:#ae81ff">56</span> [m1,m2,m3,m4]
+</span></span></code></pre></div><p>should evaluate to <code>[&quot;Bob&quot;,&quot;Dan&quot;]</code> or <code>[&quot;Dan&quot;, &quot;Bob&quot;]</code>.</p>
+<blockquote class="book-hint info">
+<p><strong><em>Hints.</em></strong> You may take advantage of:</p>
 <ul>
 <li>the function <code>discardDups</code> implemented above, and</li>
-<li>the &ldquo;bind&rdquo; function <code>&gt;&gt;=</code> (or the &ldquo;fish&rdquo; function <code>&gt;=&gt;</code>) for the &ldquo;List&rdquo; monad.</li>
+<li>the &ldquo;bind&rdquo; function <a href="https://unibz-oofp-25-26.github.io/docs/pattern/sections/monad/"><code>&gt;&gt;=</code></a> for the type &ldquo;List&rdquo; (or equivalently, the function <code>concatMap</code>)</li>
 </ul>
+</blockquote>
 <!-- #### residences -->
 <!---->
 <!-- Implement the function `residences :: [Meeting] -> [String]` -->
@@ -1469,31 +1409,52 @@ This list:</p>
 <!-- - The list should not contain duplicates. -->
 <!---->
 <!-- the order of places in this list is irrelevant. -->
-<h3 id="riskyplaces">
-  <code>riskyPlaces</code>
-  <a class="anchor" href="#riskyplaces">#</a>
-</h3>
-<p>Implement the function</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">riskyPlaces</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Test</span> <span style="color:#f92672">-&gt;</span> [<span style="color:#66d9ef">Meeting</span>] <span style="color:#f92672">-&gt;</span> [<span style="color:#66d9ef">String</span>]
-</span></span></code></pre></div><p>such that</p>
-<ul>
-<li><code>riskyPlaces t ms</code> is empty if the test <code>t</code> was negative.</li>
-<li>otherwise, this list contains the city of the test subject, as well as the cities of all people they met up to two weeks (14 days) before the test.</li>
-</ul>
-<p>The order of locations in the output list is irrelevant.</p>
-<p>This list should not contain duplicates.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">riskyPlaces</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Test</span> <span style="color:#f92672">-&gt;</span> [<span style="color:#66d9ef">Meeting</span>] <span style="color:#f92672">-&gt;</span> [<span style="color:#66d9ef">String</span>]
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">riskyPlaces</span> t ms <span style="color:#f92672">|</span> not positive t <span style="color:#f92672">=</span> <span style="color:#66d9ef">[]</span>
-</span></span><span style="display:flex;"><span>                 <span style="color:#f92672">|</span> otherwise <span style="color:#f92672">=</span> attendances (subject t)
-</span></span><span style="display:flex;"><span>                                  <span style="color:#f92672">&amp;</span> filter (<span style="color:#a6e22e">\</span>test <span style="color:#f92672">-&gt;</span> t <span style="color:#f92672">-</span> (time test) <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">14</span>)
-</span></span><span style="display:flex;"><span>                                  <span style="color:#f92672">&gt;&gt;=</span> (attendees)
-</span></span><span style="display:flex;"><span>                                  <span style="color:#f92672">&amp;</span> map (city)
-</span></span><span style="display:flex;"><span>                                  <span style="color:#f92672">&amp;</span> discardDups
-</span></span></code></pre></div><p><strong><em>Hints.</em></strong> You may take advantage here of:</p>
-<ul>
-<li>the functions <code>attendances</code> and <code>discardDups</code> implemented above, and</li>
-<li>the &ldquo;bind&rdquo; function <code>&gt;&gt;=</code> (or the &ldquo;fish&rdquo; function <code>&gt;=&gt;</code>) for the &ldquo;List&rdquo; monad.</li>
-</ul>
+<!-- ### `riskyPlaces` -->
+<!---->
+<!-- Implement the function -->
+<!---->
+<!-- ```haskell -->
+<!-- riskyPlaces :: Test -> [Meeting] -> [String] -->
+<!-- ``` -->
+<!---->
+<!-- such that -->
+<!---->
+<!-- - `riskyPlaces t ms` is empty if the test `t` was negative, -->
+<!-- - otherwise, this list contains the city of the test subject, as well as the cities of all people they met up to 7 days before the test (according to `ms`). -->
+<!---->
+<!-- The order of locations in the output list is irrelevant. -->
+<!---->
+<!-- This list should not contain duplicates. -->
+<!---->
+<!-- For instance -->
+<!---->
+<!-- ```haskell -->
+<!-- riskyPlaces t3 [m1,m2,m3,m4] -->
+<!-- ``` -->
+<!---->
+<!-- should evaluate to some permutation of `["Bolzano","Rovereto","Trento"]`, whereas -->
+<!---->
+<!-- ```haskell -->
+<!-- riskyPlaces t1 [m1,m2,m3,m4] -->
+<!-- ``` -->
+<!---->
+<!-- should evaluate to `[]`. -->
+<!---->
+<!-- ```haskell -->
+<!-- riskyPlaces :: Test -> [Meeting] -> [String] -->
+<!-- riskyPlaces t ms | not positive t = [] -->
+<!--                  | otherwise = (city (subject t) : -->
+<!--                                   attendances (subject t) -->
+<!--                                   & filter (\m -> t - (meetingTime m) < 7) -->
+<!--                                   >>= (attendees) -->
+<!--                                   & map (city)) -->
+<!--                                   & discardDups -->
+<!-- ``` -->
+<!---->
+<!-- **_Hints._** You may take advantage here of: -->
+<!---->
+<!-- - the functions `attendances` and `discardDups` implemented above, and -->
+<!-- - the "bind" function `>>=` (or the "fish" function `>=>`) for the "List" monad. -->
 </article>
  
       
@@ -1538,9 +1499,8 @@ This list:</p>
     <li><a href="#exercise-1-utility-functions">Exercise 1: utility functions</a>
       <ul>
         <li><a href="#lastmatch"><code>lastMatch</code></a></li>
-        <li><a href="#firstagreement"><code>firstAgreement</code></a></li>
-        <li><a href="#maybefirsthead"><code>maybeFirstHead</code></a></li>
         <li><a href="#compose"><code>compose</code></a></li>
+        <li><a href="#firstagreement"><code>firstAgreement</code></a></li>
         <li><a href="#keeplastoccin"><code>keepLastOccIn</code></a></li>
         <li><a href="#discarddups"><code>discardDups</code></a></li>
       </ul>
@@ -1549,12 +1509,10 @@ This list:</p>
       <ul>
         <li><a href="#attendances"><code>attendances</code></a></li>
         <li><a href="#neighborsof"><code>neighborsOf</code></a></li>
+        <li><a href="#firstpositivetest"><code>firstPositiveTest</code></a></li>
         <li><a href="#metduring"><code>metDuring</code></a></li>
         <li><a href="#lastmeetingbefore"><code>lastMeetingBefore</code></a></li>
-        <li><a href="#firstpositivetest"><code>firstPositiveTest</code></a></li>
-        <li><a href="#possibletransmitter"><code>possibleTransmitter</code></a></li>
         <li><a href="#contactssince"><code>contactsSince</code></a></li>
-        <li><a href="#riskyplaces"><code>riskyPlaces</code></a></li>
       </ul>
     </li>
   </ul>

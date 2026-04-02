@@ -30,7 +30,7 @@ In this section, we will only focus on two of the simplest monads, namely the ty
 <link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/pattern/sections/monad/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.f1bbd1c000ea8276a9418727913e44504b226f0ae14cd3a6f8c710641c379817.js" integrity="sha256-8bvRwADqgnapQYcnkT5EUEsibwrhTNOm&#43;McQZBw3mBc=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.f7cfc3a9f8acb8d7c794a8e684b835a039467271d2a1bcc310a12923a0fd72c3.js" integrity="sha256-98/DqfisuNfHlKjmhLg1oDlGcnHSobzDEKEpI6D9csM=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -954,6 +954,19 @@ https://github.com/alex-shpak/hugo-book
         </li>
       
     
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/ass/sections/ass2/" class="">Assignment 2</a>
+  
+
+        </li>
+      
+    
   </ul>
 
         </li>
@@ -1179,13 +1192,13 @@ Let us introduce a <a href="https://unibz-oofp-25-26.github.io/docs/composite/se
 <blockquote class="book-hint warning">
 <p><strong><em>Syntax.</em></strong>
 For the monad &ldquo;List&rdquo;, the function <code>&gt;&gt;=</code> may be easier to understand if we intuitively &ldquo;swap&rdquo; the order of its arguments.</p>
-<p>The resulting function is sometimes called <code>flatmap</code>.
+<p>The corresponding function is called <code>concatMap</code>.
 It can be defined as:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">flatmap</span> <span style="color:#f92672">::</span> (a <span style="color:#f92672">-&gt;</span> [b]) <span style="color:#f92672">-&gt;</span> [a] <span style="color:#f92672">-&gt;</span> [b]
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">flatmap</span> f xs <span style="color:#f92672">=</span> xs <span style="color:#f92672">&gt;&gt;=</span> f    <span style="color:#75715e">-- swap the order of `f` and `xs`</span>
-</span></span></code></pre></div><p>The type of <code>flatmap</code> is closer to the types of other <a href="https://unibz-oofp-25-26.github.io/docs/higher/sections/useful_hofs/">higher-order functions</a> encountered for lists: <code>map</code>, <code>filter</code>, etc.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">concatMap</span> <span style="color:#f92672">::</span> (a <span style="color:#f92672">-&gt;</span> [b]) <span style="color:#f92672">-&gt;</span> [a] <span style="color:#f92672">-&gt;</span> [b]
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">concatMap</span> f xs <span style="color:#f92672">=</span> xs <span style="color:#f92672">&gt;&gt;=</span> f    <span style="color:#75715e">-- swap the order of `f` and `xs`</span>
+</span></span></code></pre></div><p>The type of <code>concatMap</code> is closer to the types of other <a href="https://unibz-oofp-25-26.github.io/docs/higher/sections/useful_hofs/">higher-order functions</a> encountered for lists: <code>map</code>, <code>filter</code>, etc.</p>
 <p>So we can write</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">flatmap</span> cities
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">concatMap</span> cities
 </span></span><span style="display:flex;"><span>[
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">ProvinceC</span> { name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;AltoAdige&#34;</span> , cities <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;Bolzano&#34;</span>, <span style="color:#e6db74">&#34;Merano&#34;</span>] },
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">ProvinceC</span> { name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Trentino&#34;</span> ,  cities <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;Trento&#34;</span>, <span style="color:#e6db74">&#34;Rovereto&#34;</span>]}
@@ -1276,7 +1289,7 @@ The following table recaps when <code>&gt;&gt;=</code>, <code>fmap</code> and pl
           <td></td>
       </tr>
       <tr>
-          <td><code>2 &gt;&gt;= preds</code></td>
+          <td><code>concatMap preds 2</code></td>
           <td></td>
           <td></td>
       </tr>
@@ -1291,7 +1304,7 @@ The following table recaps when <code>&gt;&gt;=</code>, <code>fmap</code> and pl
           <td></td>
       </tr>
       <tr>
-          <td><code>[2] &gt;&gt;= preds</code></td>
+          <td><code>concatMap preds [2]</code></td>
           <td></td>
           <td></td>
       </tr>
@@ -1306,7 +1319,7 @@ The following table recaps when <code>&gt;&gt;=</code>, <code>fmap</code> and pl
           <td></td>
       </tr>
       <tr>
-          <td><code>[2,3] &gt;&gt;= preds</code></td>
+          <td><code>concatMap preds [2,3]</code></td>
           <td></td>
           <td></td>
       </tr>
@@ -1656,7 +1669,7 @@ For instance</p>
 In addition to <code>maybeLog</code>, consider the function</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">safeDiv</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Float</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Float</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Maybe</span> <span style="color:#66d9ef">Float</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">safeDiv</span> <span style="color:#66d9ef">_</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">Nothing</span>          <span style="color:#75715e">-- if the divisor is `0`, then return `Nothing`</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">safeDiv</span> x y <span style="color:#f92672">=</span> <span style="color:#66d9ef">Just</span> (x <span style="color:#f92672">/</span> y)   <span style="color:#75715e">-- otherwise perform a division</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">safeDiv</span> x y <span style="color:#f92672">=</span> <span style="color:#66d9ef">Just</span> (x <span style="color:#f92672">/</span> y)     <span style="color:#75715e">-- otherwise perform a division</span>
 </span></span></code></pre></div><p>Intuitively,</p>
 <ul>
 <li><code>safeDiv</code> only &ldquo;succeeds&rdquo; for a divisor $\neq 0$, and</li>
