@@ -52,7 +52,7 @@ Just x if x is the last element of the list xs for which f x is True, or Nothing
 <link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/ass/sections/ass2/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.bf49480c882f3f870577337413c53ea987bf9ca702222c1eafb4430a62f78091.js" integrity="sha256-v0lIDIgvP4cFdzN0E8U&#43;qYe/nKcCIiwer7RDCmL3gJE=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.5eaf783249826de92239972592e03831b8d19b57c6d28fe8a2c0e567e33230ad.js" integrity="sha256-Xq94MkmCbekiOZclkuA4MbjRm1fG0o/oosDlZ&#43;MyMK0=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -1231,7 +1231,7 @@ You may use recursion here, with either:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">discardDups</span> <span style="color:#f92672">::</span> (<span style="color:#66d9ef">Eq</span> a) <span style="color:#f92672">=&gt;</span> [a] <span style="color:#f92672">-&gt;</span> [a]
 </span></span></code></pre></div><p>such that <code>discardDups xs</code> is the list identical to <code>xs</code>, but where only the last occurrence of each element of <code>xs</code> is retained.</p>
 <p>For instance,</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">discardDups</span> <span style="color:#ae81ff">2</span> [<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">5</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">4</span>]
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">discardDups</span> [<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">5</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">4</span>]
 </span></span></code></pre></div><p>should evaluate to <code>[1,3,5,2,4]</code>.</p>
 <h2 id="exercise-2-tracing-a-virus">
   Exercise 2: tracing a virus
