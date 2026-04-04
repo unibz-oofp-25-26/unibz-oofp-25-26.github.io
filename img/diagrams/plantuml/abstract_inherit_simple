@@ -12,7 +12,7 @@ class Unicorn {
 class Butterfly {
 }
 
-Character <|-- Unicorn : extends
-Character <|-- Butterfly : extends
+NPC <|-- Unicorn : extends
+NPC <|-- Butterfly : extends
 
 @enduml
