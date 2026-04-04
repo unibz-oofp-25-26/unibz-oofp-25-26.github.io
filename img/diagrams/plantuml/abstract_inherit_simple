@@ -1,7 +1,7 @@
 @startuml
 scale 400 width
 
-abstract class Character {
+abstract class NPC {
  int xp
  int moves
 }

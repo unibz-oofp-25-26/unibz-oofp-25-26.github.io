@@ -1,16 +1,15 @@
 @startuml
 scale 500 width
 
-abstract class Unit {
- int health
+abstract class NPC {
+ int xp
 }
 
-abstract class MobileUnit {
- String color
- int attackCountdown
+abstract class MobileNPC {
+ int moves
 }
 
-class Wall {
+class Flower {
 }
 
 class Unicorn {
@@ -19,9 +18,9 @@ class Unicorn {
 class Butterfly {
 }
 
-Unit <|-- MobileUnit : extends
-Unit <|-- Wall : extends
-MobileUnit <|-- Unicorn : extends
-MobileUnit <|-- Butterfly : extends
+NPC <|-- MobileNPC : extends
+NPC <|-- Flower : extends
+MobileNPC <|-- Unicorn : extends
+MobileNPC <|-- Butterfly : extends
 
 @enduml
