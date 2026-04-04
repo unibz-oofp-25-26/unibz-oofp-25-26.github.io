@@ -1,31 +1,31 @@
 @startuml
 scale 750 width
 
-abstract class Unit {
- int health
- void regen()
- void defend(MobileUnit attacker)
+abstract class NPC {
+ int xp
+ void meetsWith(NPC contact)
+ void learn()
+ void spiesOn(MobileNPC source)
 }
 
-abstract class MobileUnit {
- String color
- int attackCountdown
- void regen()
+abstract class MobileNPC {
+ int moves
+ void learn()
 }
 
-class Wall {
+class Flower {
 }
 
 class Unicorn {
- void defend(MobileUnit attacker)
 }
 
 class Butterfly {
+ void spiesOn(MobileNPC source)
 }
 
-Unit <|-- MobileUnit : extends
-Unit <|-- Wall : extends
-MobileUnit <|-- Unicorn : extends
-MobileUnit <|-- Butterfly : extends
+NPC <|-- MobileNPC : extends
+NPC <|-- Flower : extends
+MobileNPC <|-- Unicorn : extends
+MobileNPC <|-- Butterfly : extends
 
 @enduml

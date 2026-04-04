@@ -1,0 +1,1384 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  Instance method
+  #
+
+In many object-oriented languages (like Java), methods are implemented within classes.
+
+An instance method is called via an instance of the class where the method is declared.
+
+
+  In Java
+  #
+
+
+Example.
+Consider an instance method myMethod() declared in a class MyClass:
+public class MyClass {
+    ...
+    public MyClass(){
+        ...
+    }
+
+    public void myMethod(){
+        ...
+    }
+}
+This method can be called by appending . to a variable myVar of type MyClass, as follows:">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://unibz-oofp-25-26.github.io/docs/objects/sections/method/">
+  <meta property="og:site_name" content="OOFP 2025-26">
+  <meta property="og:title" content="Instance method">
+  <meta property="og:description" content="Instance method # In many object-oriented languages (like Java), methods are implemented within classes.
+An instance method is called via an instance of the class where the method is declared.
+In Java # Example. Consider an instance method myMethod() declared in a class MyClass:
+public class MyClass { ... public MyClass(){ ... } public void myMethod(){ ... } } This method can be called by appending . to a variable myVar of type MyClass, as follows:">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+<title>Instance method | OOFP 2025-26</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/objects/sections/method/">
+<link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.17230b547280f4729dc012abe9c039300a91a246b62553ce2942ceb70077c339.js" integrity="sha256-FyMLVHKA9HKdwBKr6cA5MAqRoka2JVPOKULOtwB3wzk=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css"
+  integrity="sha384-vKruj+a13U8yHIkAyGgK1J3ArTLzrFGBbBc0tDp4ad/EyewESeXE/Iv67Aj8gKZ0"
+  crossorigin="anonymous"
+/>
+
+
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js"
+  integrity="sha384-PwRUT/YqbnEjkZO0zZxNqcxACrXe+j766U2amXcgMg5457rve2Y7I6ZJSm2A0mS4"
+  crossorigin="anonymous"
+></script>
+
+
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js"
+  integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+  crossorigin="anonymous"
+  onload="renderMathInElement(document.body);"
+></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    renderMathInElement(document.body, {
+      delimiters: [
+        { left: "$$", right: "$$", display: true },
+        { left: "$", right: "$", display: false },
+      ],
+    });
+  });
+</script>
+
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>OOFP 2025-26</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-8b45d304a159d86710e1579c97aa5b43" class="toggle"  />
+    <label for="section-8b45d304a159d86710e1579c97aa5b43" class="flex justify-between">
+      <a href="/docs/intro/" class="">This course</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/organization/" class="">Organization</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/material/" class="">Material</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/reading_path/" class="">Reading path</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/evaluation/" class="">Evaluation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/prerequisites/" class="">Prerequisites</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/office_hours/" class="">Office hours</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/content/" class="">Content</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/resources/" class="">Additional resources</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/software/" class="">Software</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b17bf4b701f350b4430cc5371ccad607" class="toggle"  />
+    <label for="section-b17bf4b701f350b4430cc5371ccad607" class="flex justify-between">
+      <a href="/docs/paradigm/" class="">Paradigms and languages</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/paradigm/sections/paradigm/" class="">Paradigm</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/paradigm/sections/error/" class="">Compile time vs runtime error</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/paradigm/sections/type/" class="">Typing</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/paradigm/sections/pure/" class="">Pure function</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-eb0a250150a82657aa03f0717afdcd45" class="toggle"  />
+    <label for="section-eb0a250150a82657aa03f0717afdcd45" class="flex justify-between">
+      <a href="/docs/haskell/" class="">Basic syntax of Haskell</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/haskell/sections/tokens/" class="">Tokens</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/haskell/sections/type/" class="">Base types</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/haskell/sections/native/" class="">Native functions</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/haskell/sections/tuple/" class="">Tuple</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/haskell/sections/function/" class="">Function</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/haskell/sections/program/" class="">Program</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/haskell/sections/list/" class="">List</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-2e35b5b0c21ab79cc6b70c0c8a6135fa" class="toggle"  />
+    <label for="section-2e35b5b0c21ab79cc6b70c0c8a6135fa" class="flex justify-between">
+      <a href="/docs/higher/" class="">Higher-order function</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/higher/sections/anonymous/" class="">Anonymous function</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/higher/sections/currying/" class="">Currying</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/higher/sections/useful_hofs/" class="">A few higher-order functions</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-a9f24c38594f15da67150d02f87a60d7" class="toggle"  />
+    <label for="section-a9f24c38594f15da67150d02f87a60d7" class="flex justify-between">
+      <a href="/docs/control/" class="">Control flow</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/control/sections/pattern/" class="">Pattern matching</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/control/sections/condition/" class="">Boolean condition</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/control/sections/comprehension/" class="">List comprehension</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/control/sections/stack/" class="">Call stack</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-97db6297fa77b8e8a3d66808fea4d894" class="toggle"  />
+    <label for="section-97db6297fa77b8e8a3d66808fea4d894" class="flex justify-between">
+      <a href="/docs/generic/" class="">Genericity</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/generic/sections/variable/" class="">Type variable</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/generic/sections/bound/" class="">Bound</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/generic/sections/generic_type/" class="">Generic type</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/generic/sections/maybe/" class="">Option type</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-54a25c0ad53482778ca10b1a7db8e623" class="toggle"  />
+    <label for="section-54a25c0ad53482778ca10b1a7db8e623" class="flex justify-between">
+      <a href="/docs/recursion/" class="">Recursion</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/recursion/sections/linear/" class="">Linear recursion</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/recursion/sections/intermediate/" class="">Intermediate result</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/recursion/sections/accumulator/" class="">Accumulator and tail recursion</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d92e119f475bae7b2a2364fe0e1fc445" class="toggle"  />
+    <label for="section-d92e119f475bae7b2a2364fe0e1fc445" class="flex justify-between">
+      <a href="/docs/composite/" class="">Composite type</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/composite/sections/enum/" class="">Enumerated type</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/composite/sections/product/" class="">Product type</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/composite/sections/sum/" class="">Sum type</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-007945605153592d0fc2acb75802d872" class="toggle"  />
+    <label for="section-007945605153592d0fc2acb75802d872" class="flex justify-between">
+      <a href="/docs/pattern/" class="">Functional patterns</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/pattern/sections/pipe/" class="">Pipeline</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/pattern/sections/functor/" class="">Functor</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/pattern/sections/monad/" class="">Monad</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-799305e0300c702d39454ff1753190dd" class="toggle" checked />
+    <label for="section-799305e0300c702d39454ff1753190dd" class="flex justify-between">
+      <a href="/docs/objects/" class="">Object and class</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/objects/sections/object/" class="">Object</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/objects/sections/class/" class="">Class and instance</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/objects/sections/value_ref/" class="">Passing by value or by reference</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/objects/sections/inheritance/" class="">Inheritance</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/objects/sections/method/" class="active">Instance method</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d689bb2436bd0f51b31e8f95cf070b59" class="toggle"  />
+    <label for="section-d689bb2436bd0f51b31e8f95cf070b59" class="flex justify-between">
+      <a href="/docs/background/" class="">Background</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/background/sections/set_list/" class="">Set, list, tuple</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/background/sections/function/" class="">Function</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c98f96b18785aef1d766e440ba328a79" class="toggle"  />
+    <label for="section-c98f96b18785aef1d766e440ba328a79" class="flex justify-between">
+      <a href="/docs/ass/" class="">Assignments</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/ass/sections/ass1/" class="">Assignment 1</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/ass/sections/ass2/" class="">Assignment 2</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Instance method</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#in-java">In Java</a></li>
+    <li><a href="#overriding">Overriding</a></li>
+    <li><a href="#dispatch">Dynamic dispatch (a.k.a. runtime polymorphism)</a></li>
+    <li><a href="#code-factorization">Code factorization</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="instance-method">
+  Instance method
+  <a class="anchor" href="#instance-method">#</a>
+</h1>
+<p>In many object-oriented languages (like Java), methods are implemented within classes.</p>
+<blockquote class="book-hint warning">
+<p>An <strong>instance method</strong> is called via an <a href="https://unibz-oofp-25-26.github.io/docs/objects/sections/class/">instance</a> of the class where the method is declared.</p>
+</blockquote>
+<h2 id="in-java">
+  In Java
+  <a class="anchor" href="#in-java">#</a>
+</h2>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong>
+Consider an instance method <code>myMethod()</code> declared in a class <code>MyClass</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyClass</span> {
+</span></span><span style="display:flex;"><span>    ...
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">MyClass</span>(){
+</span></span><span style="display:flex;"><span>        ...
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">myMethod</span>(){
+</span></span><span style="display:flex;"><span>        ...
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>This method can be called by appending <code>.</code> to a variable <code>myVar</code> of type <code>MyClass</code>, as follows:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>MyClass myVar <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> MyClass();
+</span></span><span style="display:flex;"><span>myVar.<span style="color:#a6e22e">myMethod</span>();
+</span></span></code></pre></div></blockquote>
+<p>The object used to call an instance method can be accessed <em>within</em> this method.</p>
+<blockquote class="book-hint info">
+<p><strong><em>Example (continued).</em></strong>
+The object referenced by the variable <code>myVar</code> is accessible within <code>myMethod</code> (even though it is not passed as argument).</p>
+</blockquote>
+<blockquote class="book-hint warning">
+<p><strong><em>Benefit.</em></strong>
+This intuitively lets us write a method with one less argument.</p>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong>
+Recall the imaginary game introduced <a href="https://unibz-oofp-25-26.github.io/docs/objects/sections/inheritance/#game_example">earlier</a>.
+The method <code>meets</code> that we implemented is <em>not</em> and instance method.</p>
+<p>Instead, we can implement it as instance method <code>meetsWith</code>, as follows:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">NPC</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> xp;
+</span></span><span style="display:flex;"><span>    ...
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">meetsWith</span>(NPC contact){
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// same implementation as for `meet`</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">int</span> tmp <span style="color:#f92672">=</span> xp;
+</span></span><span style="display:flex;"><span>      xp <span style="color:#f92672">+=</span> contact.<span style="color:#a6e22e">xp</span>;
+</span></span><span style="display:flex;"><span>      contact.<span style="color:#a6e22e">xp</span> <span style="color:#f92672">+=</span> tmp;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>This method may be called as follows:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>Unicorn u <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Unicorn(3);
+</span></span><span style="display:flex;"><span>Butterfly b <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Butterfly(5);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>u.<span style="color:#a6e22e">meetsWith</span>(b);
+</span></span></code></pre></div></blockquote>
+<!-- In this example, observe that: -->
+<!-- - the implementation of `sameColorAs` is in the superclass `MobileNPC`, -->
+<!-- - in this method , we used the attribute `color`. -->
+<h2 id="overriding">
+  Overriding
+  <a class="anchor" href="#overriding">#</a>
+</h2>
+<blockquote class="book-hint warning">
+<p><strong><em>Terminology.</em></strong>
+A same instance method $m$ can be declared in a class $C$ and a subclass $S$ or $C$.
+In this case, we say that $S$ <strong>overrides</strong> $m$.</p>
+</blockquote>
+<p>When such a method is called, the <em>most specific</em> applicable version is executed.</p>
+<blockquote class="book-hint info">
+<p><strong><em>Example (continued).</em></strong>
+Let us extend our example with an instance method <code>learn</code>, declared in both <code>NPC</code> and <code>MobileNPC</code>, as follows:</p>
+<p><img src="/img/diagrams/plantuml/method_inherit_simple.svg" alt="" /></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">NPC</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">int</span> xp;
+</span></span><span style="display:flex;"><span>  ...
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">learn</span>(){
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span>(xp <span style="color:#f92672">&lt;</span> 10){
+</span></span><span style="display:flex;"><span>      xp <span style="color:#f92672">+=</span> 2;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>$\qquad$</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MobileNPC</span> <span style="color:#66d9ef">extends</span> NPC {
+</span></span><span style="display:flex;"><span>  ...
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">learn</span> (){
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span>(xp <span style="color:#f92672">&lt;</span> 10){
+</span></span><span style="display:flex;"><span>      xp <span style="color:#f92672">+=</span> 2;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    xp <span style="color:#f92672">+=</span> 1;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>The following increases the XP of (the object referenced by) <code>u</code> by <code>3</code>, because <code>Unicorn</code> is a subclass of <code>MobileNPC</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>Unicorn u <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Unicorn(3);
+</span></span><span style="display:flex;"><span>u.<span style="color:#a6e22e">learn</span>();      <span style="color:#75715e">// the implementation of `MobileNPC` is executed</span>
+</span></span></code></pre></div><p>In contrast, the following increases the XP of (the object referenced by) <code>f</code> by <code>2</code>, because <code>Flower</code> is a subclass of <code>NPC</code>, but not a subclass of <code>MobileNPC</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>Flower f <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Flower();
+</span></span><span style="display:flex;"><span>f.<span style="color:#a6e22e">learn</span>();      <span style="color:#75715e">// the implementation of `NPC` is executed</span>
+</span></span></code></pre></div></blockquote>
+<blockquote class="book-hint warning">
+<p><strong><em>Syntax.</em></strong> We can use the annotation <code>@Override</code> to indicate an overriding method, as follows:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MobileNPC</span> <span style="color:#66d9ef">extends</span> NPC {
+</span></span><span style="display:flex;"><span>    ...
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">learn</span>(){
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span>(xp <span style="color:#f92672">&lt;</span> 10){
+</span></span><span style="display:flex;"><span>            xp <span style="color:#f92672">+=</span> 2;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        xp <span style="color:#f92672">+=</span> 1;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>This is not necessary, but considered good practice.</p>
+<p>A benefit is that the program will not <a href="https://unibz-oofp-25-26.github.io/docs/paradigm/sections/error/">compile</a> if the overridden and overriding methods have different signatures.</p>
+</blockquote>
+<h2 id="dispatch">
+  Dynamic dispatch (a.k.a. runtime polymorphism)
+  <a class="anchor" href="#dispatch">#</a>
+</h2>
+<blockquote class="book-hint warning">
+<p><strong>Dynamic dispatch</strong> determines <em>at run time</em> which version of a method must be executed, if this cannot be determined by the compiler.
+This is a feature of most (class-based) object-oriented languages.</p>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Example (continued).</em></strong>
+Assume a method <code>generateRandomNPCs</code> that generates a random array of NPCs (butterflies, unicorns or flowers).</p>
+<p>Then call the method <code>learn</code> for each NPC in such an array:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>NPC<span style="color:#f92672">[]</span> ramdomNPCs <span style="color:#f92672">=</span> generateRandomNPCs();
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (NPC c: randomNPCs){
+</span></span><span style="display:flex;"><span>    c.<span style="color:#a6e22e">learn</span>();
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>The most specific applicable version of the method <code>learn</code> will be executed for each NPC, based on its type, even though this type <em>cannot be determined at compile time</em>.</p>
+<p>For instance, if the array contains an instance of <code>Unicorn</code>, then the method <code>MobileNPC.learn()</code> will be executed for it (rather than the method <code>NPC.learn()</code>).</p>
+</blockquote>
+<h2 id="code-factorization">
+  Code factorization
+  <a class="anchor" href="#code-factorization">#</a>
+</h2>
+<p>An overriding method often extends the functionality of the overridden one.
+This is a possible source of <a href="https://en.wikipedia.org/wiki/Duplicate_code">duplicate code</a>.</p>
+<blockquote class="book-hint info">
+<p><strong><em>Example (continued).</em></strong>
+Both implementations of <code>learn()</code> contain:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">if</span>(xp <span style="color:#f92672">&lt;</span> 10){
+</span></span><span style="display:flex;"><span>    xp <span style="color:#f92672">+=</span> 2;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></blockquote>
+<p>A common way to factorize this consists in calling the overridden method inside the overriding one.</p>
+<blockquote class="book-hint warning">
+<p><strong><em>Syntax.</em></strong>
+The keyword <code>super</code> (seen <a href="https://unibz-oofp-25-26.github.io/docs/objects/sections/inheritance/#extends">earlier</a> for constructors) lets us to distinguish an overridden method from an overriding one (since they have the same name).</p>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Example (continued).</em></strong>
+We can avoid duplicate code in the overriding method, as follows:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MobileNPC</span> <span style="color:#66d9ef">extends</span> NPC {
+</span></span><span style="display:flex;"><span>    ...
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">learn</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">super</span>.<span style="color:#a6e22e">learn</span>();
+</span></span><span style="display:flex;"><span>        xp <span style="color:#f92672">+=</span> 1;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></blockquote>
+<div class="book-tabs">
+<input type="radio" class="toggle" name="tabs-exercise_no_super_rec" id="tabs-exercise_no_super_rec-0" checked="checked" />
+<label for="tabs-exercise_no_super_rec-0">Exercise</label>
+<div class="book-tabs-content markdown-inner"><p>In this example, what would be the effect of replacing <code>super.learn()</code> with <code>learn()</code>?</p>
+</div>
+<!-- 
+<input type="radio" class="toggle" name="tabs-exercise_no_super_rec" id="tabs-exercise_no_super_rec-1"  />
+<label for="tabs-exercise_no_super_rec-1">Solution</label>
+<div class="book-tabs-content markdown-inner"><p>&ndash;&gt;</p>
+<!-- The method would not terminate. -->
+<!-- </div>
+ -->
+</div>
+<div class="book-tabs">
+<input type="radio" class="toggle" name="tabs-exercise_defender" id="tabs-exercise_defender-0" checked="checked" />
+<label for="tabs-exercise_defender-0">Exercise</label>
+<div class="book-tabs-content markdown-inner"><p>Extend our model with a method that lets an NPC spy on an NPC, such that:</p>
+<ul>
+<li>the spying NPC gains the XP of the one being spied on,</li>
+<li>a flower cannot be spied on, and</li>
+<li>when spying, a butterfly also gets to learn (by executing the method <code>learn()</code>).</li>
+</ul>
+</div>
+<!-- 
+<input type="radio" class="toggle" name="tabs-exercise_defender" id="tabs-exercise_defender-1"  />
+<label for="tabs-exercise_defender-1">Possible solution</label>
+<div class="book-tabs-content markdown-inner"><p>&ndash;&gt;</p>
+<!---->
+<!-- ![](/img/diagrams/plantuml/method_inherit_complex.svg) -->
+<!---->
+<!-- Observe that `Butterfly` overrides `spiesOn`, whereas `MobileNPC` does not. -->
+<!---->
+<!-- ```java -->
+<!-- public abstract class NPC { -->
+<!--     int xp; -->
+<!--     ... -->
+<!---->
+<!--     public void spiesOn(MobileNPC source) { -->
+<!--         xp += source.xp; -->
+<!--     } -->
+<!-- } -->
+<!-- ``` -->
+<!---->
+<!-- ```java -->
+<!-- public class Butterfly extends MobileNPC { -->
+<!--     ... -->
+<!---->
+<!--     @Override -->
+<!--     public void spiesOn(MobileNPC source) { -->
+<!--         super.spiesOn(source); -->
+<!--         learn(); -->
+<!--     } -->
+<!-- } -->
+<!-- ``` -->
+<!---->
+<!-- </div>
+ -->
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#in-java">In Java</a></li>
+    <li><a href="#overriding">Overriding</a></li>
+    <li><a href="#dispatch">Dynamic dispatch (a.k.a. runtime polymorphism)</a></li>
+    <li><a href="#code-factorization">Code factorization</a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
