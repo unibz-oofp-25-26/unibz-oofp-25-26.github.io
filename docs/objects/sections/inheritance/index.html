@@ -41,7 +41,7 @@ $\qquad$ “every $A$ is a $B$”.">
 <link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/objects/sections/inheritance/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.17230b547280f4729dc012abe9c039300a91a246b62553ce2942ceb70077c339.js" integrity="sha256-FyMLVHKA9HKdwBKr6cA5MAqRoka2JVPOKULOtwB3wzk=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.248b4e88e10e9b756dfff0eb943d0777c81cd6b13bb544267b10fcdcf67b0bcc.js" integrity="sha256-JItOiOEOm3Vt//DrlD0Hd8gc1rE7tUQmexD83PZ7C8w=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -1067,7 +1067,7 @@ https://github.com/alex-shpak/hugo-book
         <li><a href="#inheritance_principle">Inheritance</a></li>
       </ul>
     </li>
-    <li><a href="#in-java-factorizing-code-with-a-superclass">In Java: factorizing code with a superclass</a>
+    <li><a href="#factorizing-code-with-a-superclass-in-java">Factorizing code with a superclass (in Java)</a>
       <ul>
         <li><a href="#game_example">Running example</a></li>
         <li><a href="#abstract">Abstract class</a></li>
@@ -1320,9 +1320,9 @@ A person has a birth date.</p>
 A rectangle has four right angles.</p>
 <p>Since <em>every square is a rectangle</em>, a square also has four right angles.</p>
 </blockquote>
-<h2 id="in-java-factorizing-code-with-a-superclass">
-  In Java: factorizing code with a superclass
-  <a class="anchor" href="#in-java-factorizing-code-with-a-superclass">#</a>
+<h2 id="factorizing-code-with-a-superclass-in-java">
+  Factorizing code with a superclass (in Java)
+  <a class="anchor" href="#factorizing-code-with-a-superclass-in-java">#</a>
 </h2>
 <p>Inheritance can be used to avoid <a href="%7b%7b%22../../../notReleased.md%22%7d%7d">redundant code</a>.</p>
 <h3 id="game_example">
@@ -1351,7 +1351,7 @@ In Java:</p>
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><blockquote class="book-hint info">
-  <p><strong><em>Note.</em></strong> In this example, we use the prefix <code>this.</code> for the attribute <code>xp</code> only, because there is no ambiguity for the other attribute.</p>
+  <p><strong><em>Note.</em></strong> In this example, we use the prefix <code>this.</code> for the attribute <code>moves</code> only, because there is no ambiguity for the other attribute.</p>
 </blockquote>
 <p>We also create a class <code>Butterfly</code> on the same model:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Butterfly</span> {
@@ -1428,7 +1428,7 @@ In Java, the keyword <code>abstract</code> ensures that a class <em>cannot</em> 
 In the diagram above:</p>
 <ul>
 <li>the blue circled &ldquo;A&rdquo; indicates an abstract class,</li>
-<li>the green circled &ldquo;C&rdquo; indicates a regular (i.e. directly Instantiate) class.</li>
+<li>the green circled &ldquo;C&rdquo; indicates a regular (i.e. directly instantiated) class.</li>
 </ul>
 </blockquote>
 <blockquote class="book-hint info">
@@ -1642,7 +1642,7 @@ so that an instance of <code>Flower</code> only has the <code>xp</code> attribut
         <li><a href="#inheritance_principle">Inheritance</a></li>
       </ul>
     </li>
-    <li><a href="#in-java-factorizing-code-with-a-superclass">In Java: factorizing code with a superclass</a>
+    <li><a href="#factorizing-code-with-a-superclass-in-java">Factorizing code with a superclass (in Java)</a>
       <ul>
         <li><a href="#game_example">Running example</a></li>
         <li><a href="#abstract">Abstract class</a></li>
