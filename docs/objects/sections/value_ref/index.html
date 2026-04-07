@@ -13,7 +13,7 @@ Imperative languages differ in the way arguments are passed to methods/functions
 Two common strategies are:
 
 passing by value: the method receives as input a copy of each argument.
-passing by reference: the method receives as input a reference to each argument (which lets the method modify the originals).
+passing by reference: the method receives as input an (implicit) reference to each argument, which lets the method modify the originals.
 
 
 
@@ -43,7 +43,7 @@ Java (and many other programming languages, like C, Python, Javascript, etc.) pa
   <meta property="og:site_name" content="OOFP 2025-26">
   <meta property="og:title" content="Passing by value or by reference">
   <meta property="og:description" content="Passing by value or by reference # Definition. Imperative languages differ in the way arguments are passed to methods/functions. Two common strategies are:
-passing by value: the method receives as input a copy of each argument. passing by reference: the method receives as input a reference to each argument (which lets the method modify the originals). Example. Consider the following program (in pseudocode):
+passing by value: the method receives as input a copy of each argument. passing by reference: the method receives as input an (implicit) reference to each argument, which lets the method modify the originals. Example. Consider the following program (in pseudocode):
 myInteger = 0 myMethod(myInteger) print(myInteger) myMethod(argument){ argument &#43;= 1 } If the argument is passed by value, then the program prints 0. If the argument is passed by reference, then the program prints 1. In Java # Java (and many other programming languages, like C, Python, Javascript, etc.) passes arguments by value.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
@@ -54,7 +54,7 @@ myInteger = 0 myMethod(myInteger) print(myInteger) myMethod(argument){ argument 
 <link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/objects/sections/value_ref/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.86b190f1f38347730f8381756c3f19a6636330b3aa6a1016aadca4b3546b2bd5.js" integrity="sha256-hrGQ8fODR3MPg4F1bD8ZpmNjMLOqahAWqtyks1RrK9U=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.17a82627bbf3048fcda557037731c188e3c5abc184d52168de7a0f1fd76d52ab.js" integrity="sha256-F6gmJ7vzBI/NpVcDdzHBiOPFq8GE1SFo3noPH9dtUqs=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -1156,7 +1156,7 @@ Imperative languages differ in the way arguments are passed to methods/functions
 Two common strategies are:</p>
 <ul>
 <li><strong>passing by value</strong>: the method receives as input a <em>copy</em> of each argument.</li>
-<li><strong>passing by reference</strong>: the method receives as input a <a href="https://unibz-oofp-25-26.github.io/docs/objects/sections/object/#objectRef">reference</a> to each argument (which lets the method modify the originals).</li>
+<li><strong>passing by reference</strong>: the method receives as input an (implicit) <a href="https://unibz-oofp-25-26.github.io/docs/objects/sections/object/#objectRef">reference</a> to each argument, which lets the method modify the originals.</li>
 </ul>
 </blockquote>
 <blockquote class="book-hint info">
