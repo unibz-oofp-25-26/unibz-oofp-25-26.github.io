@@ -1156,7 +1156,7 @@ Imperative languages differ in the way arguments are passed to methods/functions
 Two common strategies are:</p>
 <ul>
 <li><strong>passing by value</strong>: the method receives as input a <em>copy</em> of each argument.</li>
-<li><strong>passing by reference</strong>: the method receives as input a <a href="https://unibz-oofp-25-26.github.io/docs/objects/sections/object/">reference</a> to each argument (which lets the method modify the originals).</li>
+<li><strong>passing by reference</strong>: the method receives as input a <a href="https://unibz-oofp-25-26.github.io/docs/objects/sections/object/#objectRef">reference</a> to each argument (which lets the method modify the originals).</li>
 </ul>
 </blockquote>
 <blockquote class="book-hint info">
@@ -1186,7 +1186,7 @@ Consider the following program (in pseudocode):</p>
 The example above translated into Java prints <code>0</code>.</p>
 </blockquote>
 <blockquote class="book-hint danger">
-<p><strong><em>Warning.</em></strong> Consider a method with a <a href="#refType">reference type</a> argument.
+<p><strong><em>Warning.</em></strong> Consider a method with a <a href="https://unibz-oofp-25-26.github.io/docs/objects/sections/class/#refType">reference type</a> argument.
 Because Java passes by value, this method will receive a copy of this argument.
 But this is a copy <em>of the reference</em>, not a copy of the object itself.</p>
 </blockquote>
