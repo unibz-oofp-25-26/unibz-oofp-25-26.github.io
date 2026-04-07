@@ -20,11 +20,11 @@ Example.
 Consider an instance method myMethod() declared in a class MyClass:
 public class MyClass {
     ...
-    public MyClass(){
+    public MyClass(){   // constructor
         ...
     }
 
-    public void myMethod(){
+    public void myMethod(){   // instance method
         ...
     }
 }
@@ -37,7 +37,7 @@ This method can be called by appending . to a variable myVar of type MyClass, as
   <meta property="og:description" content="Instance method # In many object-oriented languages (like Java), methods are implemented within classes.
 An instance method is called via an instance of the class where the method is declared.
 In Java # Example. Consider an instance method myMethod() declared in a class MyClass:
-public class MyClass { ... public MyClass(){ ... } public void myMethod(){ ... } } This method can be called by appending . to a variable myVar of type MyClass, as follows:">
+public class MyClass { ... public MyClass(){ // constructor ... } public void myMethod(){ // instance method ... } } This method can be called by appending . to a variable myVar of type MyClass, as follows:">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
@@ -47,7 +47,7 @@ public class MyClass { ... public MyClass(){ ... } public void myMethod(){ ... }
 <link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/objects/sections/method/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.17a82627bbf3048fcda557037731c188e3c5abc184d52168de7a0f1fd76d52ab.js" integrity="sha256-F6gmJ7vzBI/NpVcDdzHBiOPFq8GE1SFo3noPH9dtUqs=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.d63adb5cf676a9d8b0dbcaa45fbb9e4b7a85871f75b670267e2d13f0bfdb24ce.js" integrity="sha256-1jrbXPZ2qdiw28qkX7ueS3qFhx91tnAmfi0T8L/bJM4=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -1159,23 +1159,19 @@ https://github.com/alex-shpak/hugo-book
 Consider an instance method <code>myMethod()</code> declared in a class <code>MyClass</code>:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyClass</span> {
 </span></span><span style="display:flex;"><span>    ...
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">MyClass</span>(){
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">MyClass</span>(){   <span style="color:#75715e">// constructor</span>
 </span></span><span style="display:flex;"><span>        ...
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">myMethod</span>(){
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">myMethod</span>(){   <span style="color:#75715e">// instance method</span>
 </span></span><span style="display:flex;"><span>        ...
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>This method can be called by appending <code>.</code> to a variable <code>myVar</code> of type <code>MyClass</code>, as follows:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>MyClass myVar <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> MyClass();
-</span></span><span style="display:flex;"><span>myVar.<span style="color:#a6e22e">myMethod</span>();
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>MyClass myVar <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> MyClass();   <span style="color:#75715e">// call the constructor to create an instance</span>
+</span></span><span style="display:flex;"><span>myVar.<span style="color:#a6e22e">myMethod</span>();                <span style="color:#75715e">// call the method with that instance</span>
 </span></span></code></pre></div></blockquote>
-<p>The object used to call an instance method can be accessed <em>within</em> this method.</p>
-<blockquote class="book-hint info">
-<p><strong><em>Example (continued).</em></strong>
-The object referenced by the variable <code>myVar</code> is accessible within <code>myMethod</code> (even though it is not passed as argument).</p>
-</blockquote>
+<p>The attributes of the object used to call an instance method can be accessed <em>within</em> this method.</p>
 <blockquote class="book-hint warning">
 <p><strong><em>Benefit.</em></strong>
 This intuitively lets us write a method with one less argument.</p>
@@ -1262,7 +1258,7 @@ Let us extend our example with an instance method <code>learn</code>, declared i
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>This is not necessary, but considered good practice.</p>
-<p>A benefit is that the program will not <a href="https://unibz-oofp-25-26.github.io/docs/paradigm/sections/error/">compile</a> if the overridden and overriding methods have different signatures.</p>
+<p>A benefit is that the program does not <a href="https://unibz-oofp-25-26.github.io/docs/paradigm/sections/error/">compile</a> if the overridden and overriding methods have different signatures.</p>
 </blockquote>
 <h2 id="dispatch">
   Dynamic dispatch (a.k.a. runtime polymorphism)

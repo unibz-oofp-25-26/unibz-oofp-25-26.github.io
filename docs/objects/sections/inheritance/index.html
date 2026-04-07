@@ -12,7 +12,7 @@
   #
 
 
-In most (class-based) object-oriented languages, a class $A$ can extend another class $B$.
+In most (class-based) object-oriented languages, a class $A$ can extend a class $B$.
 In this case, $A$ is called a subclass of $B$.
 The intuitive meaning is inclusion ($\subseteq$) between their respective sets of instances, i.e. every instance of $A$ is also an instance of $B$ (but the converse may not hold).
 
@@ -26,7 +26,7 @@ $\qquad$ &ldquo;every $A$ is a $B$&rdquo;.">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="https://unibz-oofp-25-26.github.io/docs/objects/sections/inheritance/">
   <meta property="og:site_name" content="OOFP 2025-26">
   <meta property="og:title" content="Inheritance">
-  <meta property="og:description" content="Inheritance # Subclass # In most (class-based) object-oriented languages, a class $A$ can extend another class $B$. In this case, $A$ is called a subclass of $B$.
+  <meta property="og:description" content="Inheritance # Subclass # In most (class-based) object-oriented languages, a class $A$ can extend a class $B$. In this case, $A$ is called a subclass of $B$.
 The intuitive meaning is inclusion ($\subseteq$) between their respective sets of instances, i.e. every instance of $A$ is also an instance of $B$ (but the converse may not hold).
 Hint.
 $\qquad$ “$A$ extends $B$”
@@ -41,7 +41,7 @@ $\qquad$ “every $A$ is a $B$”.">
 <link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/objects/sections/inheritance/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.17a82627bbf3048fcda557037731c188e3c5abc184d52168de7a0f1fd76d52ab.js" integrity="sha256-F6gmJ7vzBI/NpVcDdzHBiOPFq8GE1SFo3noPH9dtUqs=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.d63adb5cf676a9d8b0dbcaa45fbb9e4b7a85871f75b670267e2d13f0bfdb24ce.js" integrity="sha256-1jrbXPZ2qdiw28qkX7ueS3qFhx91tnAmfi0T8L/bJM4=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -1156,7 +1156,7 @@ https://github.com/alex-shpak/hugo-book
   <a class="anchor" href="#subclass">#</a>
 </h2>
 <blockquote class="book-hint warning">
-<p>In most (class-based) object-oriented languages, a class $A$ can <strong>extend</strong> another class $B$.
+<p>In most (class-based) object-oriented languages, a class $A$ can <strong>extend</strong> a class $B$.
 In this case, $A$ is called a <strong>subclass</strong> of $B$.</p>
 <p>The intuitive meaning is inclusion ($\subseteq$) between their respective sets of instances, i.e. every instance of $A$ is also an instance of $B$ (but the converse may not hold).</p>
 </blockquote>
@@ -1505,7 +1505,7 @@ Here is a possible implementation of the abstract class <code>NPC</code></p>
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>Because this class is abstract, the following code does <em>not</em> compile:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// Compilation error: the class is abstract, so it cannot be directly instantiated.</span>
-</span></span><span style="display:flex;"><span>NPC c <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> NPC(2,3);
+</span></span><span style="display:flex;"><span>NPC c <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> NPC(2, 3);
 </span></span></code></pre></div></blockquote>
 <h3 id="extends">
   Subclass
@@ -1523,7 +1523,7 @@ Here is a possible implementation of the abstract class <code>NPC</code></p>
 We can now rewrite our class <code>Unicorn</code>, as follows:</p>
 <ul>
 <li>declare that <code>Unicorn</code> is a subclass of <code>NPC</code>, with <code>extends</code>, and</li>
-<li>(optionally) use the constructor of <code>NPC</code> within the constructor of <code>Unicorn</code>, with <code>super</code>.</li>
+<li>use the constructor of <code>NPC</code> within the constructor of <code>Unicorn</code>, with <code>super</code>.</li>
 </ul>
 <p>This yields:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Unicorn</span> <span style="color:#66d9ef">extends</span> NPC {
@@ -1579,7 +1579,7 @@ An instance of this class does not need the attribute <code>moves</code>.</p>
 This is unsatisfactory, because:</p>
 <ul>
 <li>unnecessary attributes make code harder to understand, and</li>
-<li>this is a potential source of <a href="https://unibz-oofp-25-26.github.io/docs/paradigm/sections/error/">bugs</a>, when the attribute <code>moves</code> for a flower is accidentally accessed.</li>
+<li>this is a potential source of <a href="https://unibz-oofp-25-26.github.io/docs/paradigm/sections/error/">bugs</a>, if the attribute <code>moves</code> for a flower is accidentally accessed.</li>
 </ul>
 </blockquote>
 <div class="book-tabs">
