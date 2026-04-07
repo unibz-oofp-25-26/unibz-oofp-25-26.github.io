@@ -1,0 +1,16 @@
+@startuml
+scale 350 width
+
+interface I {
+}
+
+interface J {
+}
+
+class C {
+}
+
+I <-- C : implements
+J <-- C : implements
+
+@enduml

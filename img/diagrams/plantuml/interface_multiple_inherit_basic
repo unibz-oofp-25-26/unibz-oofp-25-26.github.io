@@ -1,0 +1,16 @@
+@startuml
+scale 300 width
+
+interface I {
+}
+
+interface J {
+}
+
+interface K {
+}
+
+J <|.. I : extends
+K <|.. I : extends
+
+@enduml

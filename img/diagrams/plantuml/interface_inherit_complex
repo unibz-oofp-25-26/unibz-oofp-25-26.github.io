@@ -1,0 +1,39 @@
+@startuml
+scale 500 width
+
+interface NPC {
+ void learn()
+ void sleep()
+}
+
+interface MobileNPC {
+ void move(int x, int y)
+}
+
+abstract class AbstractNPC {
+ void learn()
+}
+
+abstract class AbstractMobileNPC {
+ void move(int x, int y)
+}
+
+class Unicorn {
+ void sleep()
+}
+
+class Butterfly {
+ void learn()
+}
+
+NPC <|.. MobileNPC : extends
+
+NPC <-- AbstractNPC : implements
+MobileNPC <-- AbstractMobileNPC : implements
+
+AbstractNPC <|-- AbstractMobileNPC : extends
+AbstractMobileNPC <|-- Unicorn : extends
+AbstractMobileNPC <|-- Butterfly : extends
+
+
+@enduml

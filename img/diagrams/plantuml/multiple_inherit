@@ -1,7 +1,7 @@
 @startuml
 scale 800 width
 
-interface Unit {
+interface NPC {
   void sleep()
 }
 
@@ -10,10 +10,10 @@ interface Animal {
 } 
 
 interface ImaginaryCreature {
-  void heal(Unit unit)
+  void heal(NPC c)
 }
 
-abstract class AbstractUnit {
+abstract class AbstractNPC {
   void sleep()
 }
 
@@ -23,22 +23,22 @@ class Butterfly {
 
 
 class Unicorn {
-  void heal(Unit unit)
+  void heal(NPC c)
 }
 
 
 
 
-Unit <|.. Animal : extends
-Unit <|.. ImaginaryCreature : extends
+NPC <|.. Animal : extends
+NPC <|.. ImaginaryCreature : extends
 
-Unit <--  AbstractUnit : implements
+NPC <--  AbstractNPC : implements
 Animal <--  Unicorn : implements
 Animal <--  Butterfly : implements
 ImaginaryCreature <-- Unicorn : implements
 
-AbstractUnit <|-- Unicorn : extends
-AbstractUnit <|-- Butterfly : extends
+AbstractNPC <|-- Unicorn : extends
+AbstractNPC <|-- Butterfly : extends
 
 
 
