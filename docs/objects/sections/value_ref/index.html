@@ -54,7 +54,7 @@ myInteger = 0 myMethod(myInteger) print(myInteger) myMethod(argument){ argument 
 <link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/objects/sections/value_ref/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.d63adb5cf676a9d8b0dbcaa45fbb9e4b7a85871f75b670267e2d13f0bfdb24ce.js" integrity="sha256-1jrbXPZ2qdiw28qkX7ueS3qFhx91tnAmfi0T8L/bJM4=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.6e9e76aaa61d90506badbf146064885a7f8d9752ef32248b71f5965e8a3b0547.js" integrity="sha256-bp52qqYdkFBrrb8UYGSIWn&#43;Nl1LvMiSLcfWWXoo7BUc=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -1216,22 +1216,15 @@ What does the following print?</p>
 </span></span><span style="display:flex;"><span>    System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(secondCity.<span style="color:#a6e22e">zipCode</span>);
 </span></span><span style="display:flex;"><span> }
 </span></span></code></pre></div></div>
-<!-- 
 <input type="radio" class="toggle" name="tabs-ex_passByValue" id="tabs-ex_passByValue-1"  />
 <label for="tabs-ex_passByValue-1">Solution</label>
-<div class="book-tabs-content markdown-inner"><p>&ndash;&gt;</p>
-<!---->
-<!-- ```java -->
-<!--   1 -->
-<!--   20590 -->
-<!--   00100 -->
-<!--   0 -->
-<!--   20590 -->
-<!--   46100 -->
-<!-- ``` -->
-<!---->
-<!-- </div>
- -->
+<div class="book-tabs-content markdown-inner"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>  1
+</span></span><span style="display:flex;"><span>  20590
+</span></span><span style="display:flex;"><span>  00100
+</span></span><span style="display:flex;"><span>  0
+</span></span><span style="display:flex;"><span>  20590
+</span></span><span style="display:flex;"><span>  46100
+</span></span></code></pre></div></div>
 </div>
 <div class="book-tabs">
 <input type="radio" class="toggle" name="tabs-ex_passByValue_sideEffect" id="tabs-ex_passByValue_sideEffect-0" checked="checked" />
@@ -1242,22 +1235,19 @@ What does the following print?</p>
 <li>If so, then which instruction(s) in this method have side effect(s)?</li>
 </ol>
 </div>
-<!-- 
 <input type="radio" class="toggle" name="tabs-ex_passByValue_sideEffect" id="tabs-ex_passByValue_sideEffect-1"  />
 <label for="tabs-ex_passByValue_sideEffect-1">Solution</label>
-<div class="book-tabs-content markdown-inner"><p>&ndash;&gt;</p>
-<!---->
-<!-- 1. Yes -->
-<!---->
-<!-- 2. The only instruction with a side effect is -->
-<!---->
-<!-- ```java -->
-<!-- firstCity.zipCode = 20590; -->
-<!-- ``` -->
-<!---->
-<!-- There is a side effect here, because the variable `firstCity` (which is local to `myMethod`) and the variable `myFirstCity` (which is defined outside of the scope of `myMethod`) hold the same reference. -->
-<!-- </div>
- -->
+<div class="book-tabs-content markdown-inner"><ol>
+<li>
+<p>Yes</p>
+</li>
+<li>
+<p>The only instruction with a side effect is</p>
+</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>firstCity.<span style="color:#a6e22e">zipCode</span> <span style="color:#f92672">=</span> 20590;
+</span></span></code></pre></div><p>There is a side effect here, because the variable <code>firstCity</code> (which is local to <code>myMethod</code>) and the variable <code>myFirstCity</code> (which is defined outside of the scope of <code>myMethod</code>) hold the same reference.</p>
+</div>
 </div>
 </article>
  

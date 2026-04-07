@@ -47,7 +47,7 @@ public class MyClass { ... public MyClass(){ // constructor ... } public void my
 <link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/objects/sections/method/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.d63adb5cf676a9d8b0dbcaa45fbb9e4b7a85871f75b670267e2d13f0bfdb24ce.js" integrity="sha256-1jrbXPZ2qdiw28qkX7ueS3qFhx91tnAmfi0T8L/bJM4=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.6e9e76aaa61d90506badbf146064885a7f8d9752ef32248b71f5965e8a3b0547.js" integrity="sha256-bp52qqYdkFBrrb8UYGSIWn&#43;Nl1LvMiSLcfWWXoo7BUc=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -1187,9 +1187,8 @@ The method <code>meets</code> that we implemented is <em>not</em> and instance m
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">meetsWith</span>(NPC contact){
 </span></span><span style="display:flex;"><span>      <span style="color:#75715e">// same implementation as for `meet`</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">int</span> tmp <span style="color:#f92672">=</span> xp;
 </span></span><span style="display:flex;"><span>      xp <span style="color:#f92672">+=</span> contact.<span style="color:#a6e22e">xp</span>;
-</span></span><span style="display:flex;"><span>      contact.<span style="color:#a6e22e">xp</span> <span style="color:#f92672">+=</span> tmp;
+</span></span><span style="display:flex;"><span>      contact.<span style="color:#a6e22e">xp</span> <span style="color:#f92672">=</span> xp;
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>This method may be called as follows:</p>
@@ -1322,13 +1321,10 @@ We can avoid duplicate code in the overriding method, as follows:</p>
 <label for="tabs-exercise_no_super_rec-0">Exercise</label>
 <div class="book-tabs-content markdown-inner"><p>In this example, what would be the effect of replacing <code>super.learn()</code> with <code>learn()</code>?</p>
 </div>
-<!-- 
 <input type="radio" class="toggle" name="tabs-exercise_no_super_rec" id="tabs-exercise_no_super_rec-1"  />
 <label for="tabs-exercise_no_super_rec-1">Solution</label>
-<div class="book-tabs-content markdown-inner"><p>&ndash;&gt;</p>
-<!-- The method would not terminate. -->
-<!-- </div>
- -->
+<div class="book-tabs-content markdown-inner"><p>The method would not terminate.</p>
+</div>
 </div>
 <div class="book-tabs">
 <input type="radio" class="toggle" name="tabs-exercise_defender" id="tabs-exercise_defender-0" checked="checked" />
