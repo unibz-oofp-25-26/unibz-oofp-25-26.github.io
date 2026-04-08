@@ -21,7 +21,7 @@ Example.
 Consider the following classes:
 
 The operation (Unicorn) npc below is a downcast.
-It lets us call the instance method sleep of the class Unicorn with a NPC.">
+It lets us call the instance method sleep of the class Unicorn with an NPC.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="https://unibz-oofp-25-26.github.io/docs/objects/sections/comparing/">
@@ -31,7 +31,7 @@ It lets us call the instance method sleep of the class Unicorn with a NPC.">
 This is called a downcast.
 Example. Consider the following classes:
 The operation (Unicorn) npc below is a downcast.
-It lets us call the instance method sleep of the class Unicorn with a NPC.">
+It lets us call the instance method sleep of the class Unicorn with an NPC.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
@@ -41,7 +41,7 @@ It lets us call the instance method sleep of the class Unicorn with a NPC.">
 <link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/objects/sections/comparing/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.00e9738269a6bbb92e88d39b29afb2671e94eeba109af70bc66fa7eb3f82e38f.js" integrity="sha256-AOlzgmmmu7kuiNObKa&#43;yZx6U7roQmvcLxm&#43;n6z&#43;C448=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.64e70d480df2e37490c1661679d9180a6ebca59d0f710bde117012040cc806af.js" integrity="sha256-ZOcNSA3y43SQwWYWedkYCm68pZ0PcQveEXASBAzIBq8=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -936,6 +936,19 @@ https://github.com/alex-shpak/hugo-book
         </li>
       
     
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/objects/sections/classasobject/" class="">Class as object</a>
+  
+
+        </li>
+      
+    
   </ul>
 
         </li>
@@ -1185,7 +1198,7 @@ using instead a <a href="https://unibz-oofp-25-26.github.io/notreleased/">subtyp
 Consider the following classes:</p>
 <p><img src="/img/diagrams/plantuml/downcast_simple.svg" alt="" /></p>
 <p>The operation <code>(Unicorn) npc</code> below is a downcast.</p>
-<p>It lets us call the instance method <code>sleep</code> of the class <code>Unicorn</code> with a <code>NPC</code>.</p>
+<p>It lets us call the instance method <code>sleep</code> of the class <code>Unicorn</code> with an <code>NPC</code>.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>NPC<span style="color:#f92672">[]</span> npcs <span style="color:#f92672">=</span> getNPCs();
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (NPC npc: npcs){
 </span></span><span style="display:flex;"><span>    ((Unicorn) npc).<span style="color:#a6e22e">sleep</span>();
@@ -1194,11 +1207,11 @@ Consider the following classes:</p>
 <blockquote class="book-hint danger">
 <p><strong><em>Warning.</em></strong>
 The cast in this example is not <strong>safe</strong>, because the array may contain butterflies.
-This would cause a <code>ClassCastException</code> at runtime.</p>
+This would cause a <code>ClassCastException</code> at <a href="https://unibz-oofp-25-26.github.io/docs/paradigm/sections/error/">runtime</a>.</p>
 </blockquote>
 <blockquote class="book-hint warning">
 <p><strong><em>Syntax.</em></strong> The keyword <code>instanceof</code> lets us check whether a downcast is safe
-(or alternatively the method <code>getClass()</code> of the class <a href="https://unibz-oofp-25-26.github.io/docs/objects/sections/tostring/#object"><code>Object</code></a>, illustrated <a href="#equals">below</a>).</p>
+(or alternatively the method <a href="https://unibz-oofp-25-26.github.io/docs/objects/sections/classasobject/#reflection"><code>getClass</code></a> of the class <a href="https://unibz-oofp-25-26.github.io/docs/objects/sections/tostring/#object"><code>Object</code></a>, illustrated <a href="#equals">below</a>).</p>
 </blockquote>
 <blockquote class="book-hint info">
 <p><strong><em>Example (continued).</em></strong>
@@ -1210,6 +1223,42 @@ We can use <code>instanceof</code> to check whether an <code>NPC</code> can be d
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div></blockquote>
+<blockquote class="book-hint warning">
+<p><strong><em>Hint.</em></strong> Casts can often be avoided by redesigning classes and/or <a href="https://unibz-oofp-25-26.github.io/docs/interface/sections/java_interface/">interfaces</a>.</p>
+</blockquote>
+<div class="book-tabs">
+<input type="radio" class="toggle" name="tabs-exercise_cast" id="tabs-exercise_cast-0" checked="checked" />
+<label for="tabs-exercise_cast-0">Exercise</label>
+<div class="book-tabs-content markdown-inner"><p>Modify the classes above, so that the following (cast-free) code:</p>
+<ul>
+<li>compiles, and</li>
+<li>has the same effect as the code in our example.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>NPC<span style="color:#f92672">[]</span> npcs <span style="color:#f92672">=</span> getNPCs();
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (NPC npc: npcs){
+</span></span><span style="display:flex;"><span>    npc.<span style="color:#a6e22e">sleep</span>();
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></div>
+<!-- 
+<input type="radio" class="toggle" name="tabs-exercise_cast" id="tabs-exercise_cast-1"  />
+<label for="tabs-exercise_cast-1">Possible solution</label>
+<div class="book-tabs-content markdown-inner"><p>&ndash;&gt;</p>
+<!-- We can add to the class `NPC` a default implementation of the method `sleep`, with no effect: -->
+<!---->
+<!-- ![](/img/diagrams/plantuml/downcast_exercise.svg) -->
+<!---->
+<!-- ```java -->
+<!-- public abstract class NPC { -->
+<!--    ... -->
+<!---->
+<!--     public void sleep() { } -->
+<!-- } -->
+<!-- ``` -->
+<!---->
+<!-- Thanks to [dynamic dispatch](https://unibz-oofp-25-26.github.io/docs/objects/sections/method/#dispatch), this implementation of `sleep` is executed for butterflies, whereas the other implementation (in the class `Unicorn`) is executed for unicorns. -->
+<!-- </div>
+ -->
+</div>
 <h2 id="equals">
   Object equality
   <a class="anchor" href="#equals">#</a>
@@ -1226,7 +1275,7 @@ Consider (a simplified version of) the class <code>City</code> that we saw <a hr
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">City</span>(String name, <span style="color:#66d9ef">int</span> zipCode){
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> name;
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">zipCode</span> <span style="color:#f92672">=</span> zipcode;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">zipCode</span> <span style="color:#f92672">=</span> zipCode;
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span> }
 </span></span></code></pre></div><p>The following outputs <code>false</code>:</p>
@@ -1287,7 +1336,7 @@ Here is a prototypical implementation of the method <code>equals</code> within o
 <blockquote class="book-hint warning">
 <p><strong><em>Note.</em></strong> In this example, observe:</p>
 <ul>
-<li><em>(Line 6):</em> the usage of the method <code>getClass()</code> (inherited from the class <code>Object</code>) to retrieve the classes associated with the current object and <code>o</code>,</li>
+<li><em>(Line 6):</em> the usage of the method <a href="https://unibz-oofp-25-26.github.io/docs/objects/sections/classasobject/#reflection"><code>getClass()</code></a> (inherited from the class <code>Object</code>) to retrieve the classes associated with the current object and <code>o</code>,</li>
 <li><em>(Line 9):</em> the (safe) <a href="https://unibz-oofp-25-26.github.io/docs/objects/sections/comparing/#downcast">cast</a> from <code>Object</code> to <code>City</code>, and</li>
 <li><em>(Line 11):</em> the recursive call to <code>equals</code> (because the attribute <code>name</code> has type <code>String</code>).</li>
 </ul>
@@ -1317,7 +1366,7 @@ We will encounter several of them during this course, notably for the class <cod
 <p><strong><em>Warning.</em></strong>
 The method <code>equals</code> is usually overridden together with another method of the class <code>Object</code>, called <code>hashCode</code>.</p>
 <p>In particular, this is needed for the method <code>equals</code> of the class <code>HashSet</code> to behave correctly.
-We will explore this topic <a href="%7b%7b%22../../dataStructures/sections/hash.md#hashCode%22%7d%7d">later in this course</a>, when we introduce the notion of a hash table.</p>
+We will explore this topic <a href="https://unibz-oofp-25-26.github.io/notreleased/">later in this course</a>, when we introduce the notion of a hash table.</p>
 </blockquote>
 </article>
  

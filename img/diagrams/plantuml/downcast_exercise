@@ -1,0 +1,19 @@
+@startuml
+scale 450 width
+
+abstract class NPC {
+ int xp
+ void sleep()
+}
+
+class Unicorn {
+ void sleep()
+}
+
+class Butterfly {
+}
+
+NPC <|-- Unicorn : extends
+NPC <|-- Butterfly : extends
+
+@enduml
