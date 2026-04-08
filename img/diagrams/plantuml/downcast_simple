@@ -1,18 +1,18 @@
 @startuml
 scale 500 width
 
-abstract class Unit {
- int health
+abstract class NPC {
+ int xp
 }
 
 class Unicorn {
- void regen()
+ void sleep()
 }
 
 class Butterfly {
 }
 
-Unit <|-- Unicorn : extends
-Unit <|-- Butterfly : extends
+NPC <|-- Unicorn : extends
+NPC <|-- Butterfly : extends
 
 @enduml

@@ -38,7 +38,7 @@ Illustration # Example. We may declare an interface for chess pieces, as follows
 <link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/interface/sections/java_interface/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.5994ab90cbbfdec69b8ecfa3bfd8cb619d70795b8104214092a0459cc5c09547.js" integrity="sha256-WZSrkMu/3sabjs&#43;jv9jLYZ1weVuBBCFAkqBFnMXAlUc=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.00e9738269a6bbb92e88d39b29afb2671e94eeba109af70bc66fa7eb3f82e38f.js" integrity="sha256-AOlzgmmmu7kuiNObKa&#43;yZx6U7roQmvcLxm&#43;n6z&#43;C448=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -907,6 +907,32 @@ https://github.com/alex-shpak/hugo-book
         </li>
       
     
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/objects/sections/tostring/" class="">Displaying an object</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/objects/sections/comparing/" class="">Cast and equality</a>
+  
+
+        </li>
+      
+    
   </ul>
 
         </li>
@@ -1165,7 +1191,7 @@ We may declare an interface for chess pieces, as follows.</p>
 </span></span><span style="display:flex;"><span>      ...
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>      <span style="color:#75715e">/* Returns `true` iff the piece at coordinates (x1,y1) can move to coordinates (x2,y2) */</span>
-</span></span><span style="display:flex;"><span>      bool <span style="color:#a6e22e">isValidMove</span>(Piece<span style="color:#f92672">[][]</span> board, <span style="color:#66d9ef">int</span> x1, <span style="color:#66d9ef">int</span> y1, <span style="color:#66d9ef">int</span> x2, <span style="color:#66d9ef">int</span> y2);
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">isValidMove</span>(Piece<span style="color:#f92672">[][]</span> board, <span style="color:#66d9ef">int</span> x1, <span style="color:#66d9ef">int</span> y1, <span style="color:#66d9ef">int</span> x2, <span style="color:#66d9ef">int</span> y2);
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>Observe that the method <code>isValidMove</code> is <em>not implemented</em> (it is only specified).</p>
 </blockquote>
@@ -1179,7 +1205,7 @@ each with its own implementation of the method <code>isValidMove</code>.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Queen</span> <span style="color:#66d9ef">implements</span> Piece {
 </span></span><span style="display:flex;"><span>      ...
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>      bool <span style="color:#a6e22e">isValidMove</span>(Piece<span style="color:#f92672">[][]</span> board, <span style="color:#66d9ef">int</span> x1, <span style="color:#66d9ef">int</span> y1, <span style="color:#66d9ef">int</span> x2, <span style="color:#66d9ef">int</span> y2){
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">isValidMove</span>(Piece<span style="color:#f92672">[][]</span> board, <span style="color:#66d9ef">int</span> x1, <span style="color:#66d9ef">int</span> y1, <span style="color:#66d9ef">int</span> x2, <span style="color:#66d9ef">int</span> y2){
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;</span>some code here<span style="color:#f92672">&gt;</span>
 </span></span><span style="display:flex;"><span>      }
@@ -1188,7 +1214,7 @@ each with its own implementation of the method <code>isValidMove</code>.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Knight</span> <span style="color:#66d9ef">implements</span> Piece {
 </span></span><span style="display:flex;"><span>      ...
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>      bool <span style="color:#a6e22e">isValidMove</span>(Piece<span style="color:#f92672">[][]</span> board, <span style="color:#66d9ef">int</span> x1, <span style="color:#66d9ef">int</span> y1, <span style="color:#66d9ef">int</span> x2, <span style="color:#66d9ef">int</span> y2){
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">isValidMove</span>(Piece<span style="color:#f92672">[][]</span> board, <span style="color:#66d9ef">int</span> x1, <span style="color:#66d9ef">int</span> y1, <span style="color:#66d9ef">int</span> x2, <span style="color:#66d9ef">int</span> y2){
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;</span>some code here<span style="color:#f92672">&gt;</span>
 </span></span><span style="display:flex;"><span>      }
