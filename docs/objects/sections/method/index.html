@@ -47,7 +47,7 @@ public class MyClass { ... public MyClass(){ // constructor ... } public void my
 <link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/objects/sections/method/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.64e70d480df2e37490c1661679d9180a6ebca59d0f710bde117012040cc806af.js" integrity="sha256-ZOcNSA3y43SQwWYWedkYCm68pZ0PcQveEXASBAzIBq8=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.c62ad09081de4174d97641c6cfb5a24d8ea4bee875fe74d9f6b2243c2ca0af46.js" integrity="sha256-xirQkIHeQXTZdkHGz7WiTY6kvuh1/nTZ9rIkPCygr0Y=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -1375,40 +1375,28 @@ We can avoid duplicate code in the overriding method, as follows:</p>
 <li>when spying, a butterfly also gets to learn (by executing the method <code>learn()</code>).</li>
 </ul>
 </div>
-<!-- 
 <input type="radio" class="toggle" name="tabs-exercise_defender" id="tabs-exercise_defender-1"  />
 <label for="tabs-exercise_defender-1">Possible solution</label>
-<div class="book-tabs-content markdown-inner"><p>&ndash;&gt;</p>
-<!---->
-<!-- ![](/img/diagrams/plantuml/method_inherit_complex.svg) -->
-<!---->
-<!-- Observe that `Butterfly` overrides `spiesOn`, whereas `MobileNPC` does not. -->
-<!---->
-<!-- ```java -->
-<!-- public abstract class NPC { -->
-<!--     int xp; -->
-<!--     ... -->
-<!---->
-<!--     public void spiesOn(MobileNPC source) { -->
-<!--         xp += source.xp; -->
-<!--     } -->
-<!-- } -->
-<!-- ``` -->
-<!---->
-<!-- ```java -->
-<!-- public class Butterfly extends MobileNPC { -->
-<!--     ... -->
-<!---->
-<!--     @Override -->
-<!--     public void spiesOn(MobileNPC source) { -->
-<!--         super.spiesOn(source); -->
-<!--         learn(); -->
-<!--     } -->
-<!-- } -->
-<!-- ``` -->
-<!---->
-<!-- </div>
- -->
+<div class="book-tabs-content markdown-inner"><p><img src="/img/diagrams/plantuml/method_inherit_complex.svg" alt="" /></p>
+<p>Observe that <code>Butterfly</code> overrides <code>spiesOn</code>, whereas <code>MobileNPC</code> does not.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">NPC</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> xp;
+</span></span><span style="display:flex;"><span>    ...
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">spiesOn</span>(MobileNPC source) {
+</span></span><span style="display:flex;"><span>        xp <span style="color:#f92672">+=</span> source.<span style="color:#a6e22e">xp</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Butterfly</span> <span style="color:#66d9ef">extends</span> MobileNPC {
+</span></span><span style="display:flex;"><span>    ...
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Override</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">spiesOn</span>(MobileNPC source) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">super</span>.<span style="color:#a6e22e">spiesOn</span>(source);
+</span></span><span style="display:flex;"><span>        learn();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></div>
 </div>
 </article>
  
