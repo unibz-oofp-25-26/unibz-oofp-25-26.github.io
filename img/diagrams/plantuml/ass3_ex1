@@ -1,0 +1,48 @@
+@startuml
+scale 250 width
+
+interface Node {
+ Node getNext()
+ Node getNext()
+ Node nextDifferentNode()
+ int redSum()
+}
+
+interface HeadNode {
+  boolean validList();
+}
+
+abstract class AbstractNode {
+ int label
+ Node next
+
+ Node getNext()
+ Node getNext()
+ Node nextDifferentNode()
+ int redSum()
+
+}
+
+class GreenNode {
+
+}
+
+class RedNode {
+
+}
+
+class HeadNodeImpl {
+  boolean validList();
+}
+
+GreenNode <|-- HeadNodeImpl : extends
+AbstractNode <|-- RedNode : extends
+AbstractNode <|-- GreenNode : extends
+
+Node <|.. HeadNode : extends
+
+
+HeadNode <-- HeadNodeImpl : implements
+Node <-- AbstractNode : implements
+
+@enduml
