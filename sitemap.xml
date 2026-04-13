@@ -2,6 +2,8 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://unibz-oofp-25-26.github.io/docs/abstractdatatypes/sections/collection/</loc>
+  </url><url>
     <loc>https://unibz-oofp-25-26.github.io/docs/composite/sections/enum/</loc>
   </url><url>
     <loc>https://unibz-oofp-25-26.github.io/docs/recursion/sections/linear/</loc>
@@ -135,6 +137,8 @@
     <loc>https://unibz-oofp-25-26.github.io/docs/objects/sections/boxed/</loc>
   </url><url>
     <loc>https://unibz-oofp-25-26.github.io/docs/objects/</loc>
+  </url><url>
+    <loc>https://unibz-oofp-25-26.github.io/docs/abstractdatatypes/</loc>
   </url><url>
     <loc>https://unibz-oofp-25-26.github.io/docs/interface/</loc>
   </url><url>
