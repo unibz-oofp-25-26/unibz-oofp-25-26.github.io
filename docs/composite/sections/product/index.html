@@ -112,7 +112,7 @@ in Haskell # Declaration # Syntax. A product type can be declared as">
 <link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/composite/sections/product/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.a64b475c7cf23f4d6a162091742fa7a0742fe8ae6b8e21f7f9582526543ea018.js" integrity="sha256-pktHXHzyP01qFiCRdC&#43;noHQv6K5rjiH3&#43;VglJlQ&#43;oBg=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.2fa2e9817e458416f266a36240956fdffbcc961a523595d12cef04d34b73a620.js" integrity="sha256-L6LpgX5FhBbyZqNiQJVv3/vMlhpSNZXRLO8E00tzpiA=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -1020,6 +1020,32 @@ https://github.com/alex-shpak/hugo-book
         </li>
       
     
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/objects/sections/string/" class="">String</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/objects/sections/boxed/" class="">Boxed primitive type</a>
+  
+
+        </li>
+      
+    
   </ul>
 
         </li>
@@ -1230,13 +1256,18 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#in-haskell">in Haskell</a>
+    <li><a href="#haskell">in Haskell</a>
       <ul>
         <li><a href="#declaration">Declaration</a></li>
         <li><a href="#usage">Usage</a></li>
         <li><a href="#naming-conventions">Naming conventions</a></li>
         <li><a href="#pattern-matching">Pattern matching</a></li>
         <li><a href="#record-like-notation">Record-like notation</a></li>
+      </ul>
+    </li>
+    <li><a href="#java">In Java</a>
+      <ul>
+        <li><a href="#record-vs-class">Record VS class</a></li>
       </ul>
     </li>
   </ul>
@@ -1257,9 +1288,9 @@ https://github.com/alex-shpak/hugo-book
 </h1>
 <!-- A product type describes values that consist of valuessimplistic -->
 <p>A product type can be viewed as a simplistic <a href="https://unibz-oofp-25-26.github.io/docs/objects/sections/class/">class</a>, and its values as simplistic <a href="https://unibz-oofp-25-26.github.io/docs/objects/sections/object/">objects</a>.</p>
-<h2 id="in-haskell">
+<h2 id="haskell">
   in Haskell
-  <a class="anchor" href="#in-haskell">#</a>
+  <a class="anchor" href="#haskell">#</a>
 </h2>
 <!-- <blockquote class="book-hint warning">
    -->
@@ -1556,6 +1587,90 @@ The expression</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#66d9ef">CardC</span> { suit <span style="color:#f92672">=</span> <span style="color:#66d9ef">Spades</span>, rank <span style="color:#f92672">=</span> <span style="color:#ae81ff">8</span> }
 </span></span></code></pre></div><p>has type <code>Card</code>.</p>
 </blockquote>
+<h2 id="java">
+  In Java
+  <a class="anchor" href="#java">#</a>
+</h2>
+<blockquote class="book-hint warning">
+<p><strong><em>Terminology.</em></strong> A product type in Java is called a <strong>record</strong>.</p>
+</blockquote>
+<p>Records are a relatively recent feature, introduced in Java 14 (2020).</p>
+<blockquote class="book-hint warning">
+<p><strong><em>Syntax.</em></strong>
+A minimal Java record is declared as</p>
+<pre tabindex="0"><code>record &lt;record name&gt; (&lt;type 1&gt; &lt;attribute 1&gt;, ..., &lt;type n&gt; &lt;attribute n&gt;){ }
+</code></pre></blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">record</span> <span style="color:#a6e22e">Card</span>(Suit suit, <span style="color:#66d9ef">int</span> rank) { }
+</span></span></code></pre></div></blockquote>
+<h3 id="record-vs-class">
+  Record VS class
+  <a class="anchor" href="#record-vs-class">#</a>
+</h3>
+<p>A record is a <em>concise alternative</em> to a simple Java class whose main purpose is to carry data.</p>
+<p>So records are often used to avoid boilerplate code.</p>
+<h4 id="implicit-methods">
+  Implicit methods
+  <a class="anchor" href="#implicit-methods">#</a>
+</h4>
+<blockquote class="book-hint warning">
+<p><strong><em>Syntactic sugar.</em></strong>
+A record:</p>
+<ul>
+<li>has an implicit <a href="https://unibz-oofp-25-26.github.io/docs/objects/sections/class/#constructor">constructor</a>, and</li>
+<li>implicitly implements <a href=""><code>equals</code></a>, <a href=""><code>hashcode</code></a> and <a href=""><code>toString</code></a> in the standard way (using all attributes).</li>
+</ul>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong>
+Here is a simple record for cities:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">record</span> <span style="color:#a6e22e">City</span>(String name, <span style="color:#66d9ef">int</span> zipCode) { }
+</span></span></code></pre></div><p>We can create two instances of this type and compare them, as follows:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// call the implicit constructor</span>
+</span></span><span style="display:flex;"><span>City florence <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> City(<span style="color:#e6db74">&#34;Florence&#34;</span>, 50100);
+</span></span><span style="display:flex;"><span>City florenceAgain <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> City(<span style="color:#e6db74">&#34;Florence&#34;</span>, 50100);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// outputs `true`, because the record `City` (implicitly) implements `equals`</span>
+</span></span><span style="display:flex;"><span>System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(florence.<span style="color:#a6e22e">equals</span>(florenceAgain));
+</span></span></code></pre></div><blockquote class="book-hint danger">
+  <p><strong><em>Warning.</em></strong>
+Recall that for an object, the <a href="https://unibz-oofp-25-26.github.io/docs/objects/sections/comparing/#equals">default implementation</a> of equals (inherited from the class <code>Object</code>) only compares references.
+So in this example, if <code>City</code> were a regular class that does not overrides <code>equals</code>, then the comparison would evaluate to <code>false</code>.</p>
+</blockquote>
+</blockquote>
+<h4 id="accessing-a-value">
+  Accessing a value
+  <a class="anchor" href="#accessing-a-value">#</a>
+</h4>
+<blockquote class="book-hint warning">
+<p><strong><em>Syntax.</em></strong>
+A record has an implicit (nullary) access methods for each attribute, which has the same name as the attribute.</p>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Example (continued).</em></strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>florence.<span style="color:#a6e22e">zipCode</span>()
+</span></span></code></pre></div><p>evaluates to <code>50100</code>.</p>
+</blockquote>
+<blockquote class="book-hint warning">
+<p><strong><em>Constraint.</em></strong>
+The attributes of a record are implicitly <a href="https://unibz-oofp-25-26.github.io/notreleased/">final</a>, meaning that their value <em>cannot be modified</em>.</p>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Example (continued).</em></strong>
+The following does not compile:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>City florenceStill <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> City(<span style="color:#e6db74">&#34;Florence&#34;</span>, 50100);
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// compilation error: the value of `zipCode` cannot be modified, because `City` is a record</span>
+</span></span><span style="display:flex;"><span>florenceStill.<span style="color:#a6e22e">zipCode</span>() <span style="color:#f92672">=</span> 50121;
+</span></span></code></pre></div></blockquote>
+<h4 id="modeling">
+  Modeling
+  <a class="anchor" href="#modeling">#</a>
+</h4>
+<blockquote class="book-hint warning">
+<p><strong><em>Limitation.</em></strong>
+Records do <em>not</em> support <a href="https://unibz-oofp-25-26.github.io/docs/objects/sections/inheritance/">inheritance</a>.</p>
+</blockquote>
 </article>
  
       
@@ -1597,13 +1712,18 @@ The expression</p>
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#in-haskell">in Haskell</a>
+    <li><a href="#haskell">in Haskell</a>
       <ul>
         <li><a href="#declaration">Declaration</a></li>
         <li><a href="#usage">Usage</a></li>
         <li><a href="#naming-conventions">Naming conventions</a></li>
         <li><a href="#pattern-matching">Pattern matching</a></li>
         <li><a href="#record-like-notation">Record-like notation</a></li>
+      </ul>
+    </li>
+    <li><a href="#java">In Java</a>
+      <ul>
+        <li><a href="#record-vs-class">Record VS class</a></li>
       </ul>
     </li>
   </ul>

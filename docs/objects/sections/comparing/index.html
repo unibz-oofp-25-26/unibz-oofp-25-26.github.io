@@ -20,7 +20,9 @@ This is called a downcast.
 Example.
 Consider the following classes:
 
-The operation (Unicorn) npc below is a downcast.
+The operation
+(Unicorn) npc
+below is a downcast.
 It lets us call the instance method sleep of the class Unicorn with an NPC.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
@@ -30,8 +32,8 @@ It lets us call the instance method sleep of the class Unicorn with an NPC.">
   <meta property="og:description" content="Cast and Equality # Downcast # Java (as well as C# and C&#43;&#43;) lets us change locally the type $c$ that the compiler associates to an object, using instead a subtype of $c$.
 This is called a downcast.
 Example. Consider the following classes:
-The operation (Unicorn) npc below is a downcast.
-It lets us call the instance method sleep of the class Unicorn with an NPC.">
+The operation
+(Unicorn) npc below is a downcast. It lets us call the instance method sleep of the class Unicorn with an NPC.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
@@ -41,7 +43,7 @@ It lets us call the instance method sleep of the class Unicorn with an NPC.">
 <link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/objects/sections/comparing/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.a64b475c7cf23f4d6a162091742fa7a0742fe8ae6b8e21f7f9582526543ea018.js" integrity="sha256-pktHXHzyP01qFiCRdC&#43;noHQv6K5rjiH3&#43;VglJlQ&#43;oBg=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.2fa2e9817e458416f266a36240956fdffbcc961a523595d12cef04d34b73a620.js" integrity="sha256-L6LpgX5FhBbyZqNiQJVv3/vMlhpSNZXRLO8E00tzpiA=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -949,6 +951,32 @@ https://github.com/alex-shpak/hugo-book
         </li>
       
     
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/objects/sections/string/" class="">String</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/objects/sections/boxed/" class="">Boxed primitive type</a>
+  
+
+        </li>
+      
+    
   </ul>
 
         </li>
@@ -1160,8 +1188,8 @@ https://github.com/alex-shpak/hugo-book
 <nav id="TableOfContents">
   <ul>
     <li><a href="#downcast">Downcast</a></li>
-    <li><a href="#equals">Object equality</a></li>
-    <li><a href="#the-method-equals">The method <code>equals</code></a>
+    <li><a href="#object-equality">Object equality</a></li>
+    <li><a href="#equals">The method <code>equals</code></a>
       <ul>
         <li><a href="#recursion">Recursion</a></li>
         <li><a href="#built-in-implementations">Built-in implementations</a></li>
@@ -1197,8 +1225,10 @@ using instead a <a href="https://unibz-oofp-25-26.github.io/notreleased/">subtyp
 <p><strong><em>Example.</em></strong>
 Consider the following classes:</p>
 <p><img src="/img/diagrams/plantuml/downcast_simple.svg" alt="" /></p>
-<p>The operation <code>(Unicorn) npc</code> below is a downcast.</p>
-<p>It lets us call the instance method <code>sleep</code> of the class <code>Unicorn</code> with an <code>NPC</code>.</p>
+<p>The operation</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>(Unicorn) npc
+</span></span></code></pre></div><p>below is a downcast.
+It lets us call the instance method <code>sleep</code> of the class <code>Unicorn</code> with an <code>NPC</code>.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>NPC<span style="color:#f92672">[]</span> npcs <span style="color:#f92672">=</span> getNPCs();
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (NPC npc: npcs){
 </span></span><span style="display:flex;"><span>    ((Unicorn) npc).<span style="color:#a6e22e">sleep</span>();
@@ -1210,8 +1240,8 @@ The cast in this example is not <strong>safe</strong>, because the array may con
 This would cause a <code>ClassCastException</code> at <a href="https://unibz-oofp-25-26.github.io/docs/paradigm/sections/error/">runtime</a>.</p>
 </blockquote>
 <blockquote class="book-hint warning">
-<p><strong><em>Syntax.</em></strong> The keyword <code>instanceof</code> lets us check whether a downcast is safe
-(or alternatively the method <a href="https://unibz-oofp-25-26.github.io/docs/objects/sections/classasobject/#reflection"><code>getClass</code></a> of the class <a href="https://unibz-oofp-25-26.github.io/docs/objects/sections/tostring/#object"><code>Object</code></a>, illustrated <a href="#equals">below</a>).</p>
+<p><strong><em>Syntax.</em></strong> The keyword <code>instanceof</code> lets us checks (at run time) whether an object belongs to a certain type.</p>
+<p>This is one way to avoid unsafe casts (the method <a href="https://unibz-oofp-25-26.github.io/docs/objects/sections/classasobject/#reflection"><code>getClass</code></a> of the class <a href="https://unibz-oofp-25-26.github.io/docs/objects/sections/tostring/#object"><code>Object</code></a> can be used in a similar fashion, as illustrated <a href="#equals">below</a>).</p>
 </blockquote>
 <blockquote class="book-hint info">
 <p><strong><em>Example (continued).</em></strong>
@@ -1223,7 +1253,7 @@ We can use <code>instanceof</code> to check whether an <code>NPC</code> can be d
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div></blockquote>
-<blockquote class="book-hint warning">
+<blockquote class="book-hint info">
 <p><strong><em>Hint.</em></strong> Casts can often be avoided by redesigning classes and/or <a href="https://unibz-oofp-25-26.github.io/docs/interface/sections/java_interface/">interfaces</a>.</p>
 </blockquote>
 <div class="book-tabs">
@@ -1259,15 +1289,18 @@ We can use <code>instanceof</code> to check whether an <code>NPC</code> can be d
 <!-- </div>
  -->
 </div>
-<h2 id="equals">
+<h2 id="object-equality">
   Object equality
-  <a class="anchor" href="#equals">#</a>
+  <a class="anchor" href="#object-equality">#</a>
 </h2>
-<p>As we saw <a href="https://unibz-oofp-25-26.github.io/docs/objects/sections/class/#constructor">previously</a>, a constructor in Java creates an object in memory and returns a <em>reference</em> to that object.
-Since two objects have different locations in memory, their respective references must differ, <em>even if the content of the two objects is identical</em>.</p>
+<blockquote class="book-hint warning">
+<p><strong><em>Reminder.</em></strong>
+As we saw <a href="https://unibz-oofp-25-26.github.io/docs/objects/sections/class/#constructor">earlier</a>, a constructor in Java creates an object in memory and returns a <em>reference</em> to that object.</p>
+</blockquote>
+<p>Since two objects have different locations in memory, their respective references must differ, <em>even if the content of the two objects is identical</em>.</p>
 <blockquote class="book-hint info">
 <p><strong><em>Example.</em></strong>
-Consider (a simplified version of) the class <code>City</code> that we saw <a href="https://unibz-oofp-25-26.github.io/docs/objects/sections/class/">earlier</a>.</p>
+Consider (a simplified version of) our class <a href="https://unibz-oofp-25-26.github.io/docs/objects/sections/class/"><code>City</code></a>:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span> <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">City</span> {
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    String name;
@@ -1283,14 +1316,14 @@ Consider (a simplified version of) the class <code>City</code> that we saw <a hr
 </span></span><span style="display:flex;"><span>City city2 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> City(<span style="color:#e6db74">&#34;Florence&#34;</span>, 50100);
 </span></span><span style="display:flex;"><span>System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(city1 <span style="color:#f92672">==</span> city2);
 </span></span></code></pre></div></blockquote>
-<h2 id="the-method-equals">
+<h2 id="equals">
   The method <code>equals</code>
-  <a class="anchor" href="#the-method-equals">#</a>
+  <a class="anchor" href="#equals">#</a>
 </h2>
-<p>In some scenarios, we may want to compare the content of two objects, rather than their references.
+<p>In some scenarios, one may want to compare the content of two objects, rather than their references.
 Java provides a native method called <code>equals</code> for this purpose.</p>
 <blockquote class="book-hint warning">
-<p>Like the method <code>toString</code> that we saw <a href="https://unibz-oofp-25-26.github.io/docs/objects/sections/tostring/">earlier</a>, <code>equals</code> is an instance method of class <a href="https://unibz-oofp-25-26.github.io/docs/objects/sections/tostring/#object"><code>Object</code></a>, which is an (implicit) superclass of every other class.
+<p>Like the method <code>toString</code> that we saw <a href="https://unibz-oofp-25-26.github.io/docs/objects/sections/tostring/#toString">earlier</a>, <code>equals</code> is an instance method of the class <a href="https://unibz-oofp-25-26.github.io/docs/objects/sections/tostring/#object"><code>Object</code></a>, which is an (implicit) superclass of every other class.
 So every (user-defined of native) class inherits <code>equals</code>.</p>
 </blockquote>
 <p>Here is the source code of <code>Object.equals</code>:</p>
@@ -1298,7 +1331,7 @@ So every (user-defined of native) class inherits <code>equals</code>.</p>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> (<span style="color:#66d9ef">this</span> <span style="color:#f92672">==</span> obj);
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>In other words, by default, this method behaves like the <code>==</code> operator.
-If we want another behavior, we need to <a href="https://unibz-oofp-25-26.github.io/docs/objects/sections/method/#overriding">override</a> it.</p>
+If we want a different behavior, then we need to <a href="https://unibz-oofp-25-26.github.io/docs/objects/sections/method/#overriding">override</a> it.</p>
 <blockquote class="book-hint info">
 <p><strong><em>Example (continued).</em></strong>
 Here is a prototypical implementation of the method <code>equals</code> within our class <code>City</code>:</p>
@@ -1349,8 +1382,8 @@ Here is a prototypical implementation of the method <code>equals</code> within o
   <a class="anchor" href="#recursion">#</a>
 </h3>
 <blockquote class="book-hint danger">
-<p><strong><em>Warning.</em></strong> Similarly to what we saw with the method <a href="https://unibz-oofp-25-26.github.io/docs/objects/sections/tostring/#recursion">toString</a>,
-beware of naive (recursive) implementations of <code>equals</code> if your program can create an object that refers to itself (directly or indirectly).</p>
+<p><strong><em>Warning.</em></strong> Similarly to what we saw earlier with the method <a href="https://unibz-oofp-25-26.github.io/docs/objects/sections/tostring/#recursion">toString</a>,
+beware standard (recursive) implementations of <code>equals</code>, if your program can create an object that refers to itself (directly or indirectly).</p>
 </blockquote>
 <h3 id="built-in-implementations">
   Built-in implementations
@@ -1410,8 +1443,8 @@ We will explore this topic <a href="https://unibz-oofp-25-26.github.io/notreleas
 <nav id="TableOfContents">
   <ul>
     <li><a href="#downcast">Downcast</a></li>
-    <li><a href="#equals">Object equality</a></li>
-    <li><a href="#the-method-equals">The method <code>equals</code></a>
+    <li><a href="#object-equality">Object equality</a></li>
+    <li><a href="#equals">The method <code>equals</code></a>
       <ul>
         <li><a href="#recursion">Recursion</a></li>
         <li><a href="#built-in-implementations">Built-in implementations</a></li>

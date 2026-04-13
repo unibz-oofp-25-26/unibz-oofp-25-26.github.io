@@ -63,7 +63,7 @@ Point is a product type, and Shape is a sum type. -- a point in the Euclidean pl
 <link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/composite/sections/sum/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.a64b475c7cf23f4d6a162091742fa7a0742fe8ae6b8e21f7f9582526543ea018.js" integrity="sha256-pktHXHzyP01qFiCRdC&#43;noHQv6K5rjiH3&#43;VglJlQ&#43;oBg=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.2fa2e9817e458416f266a36240956fdffbcc961a523595d12cef04d34b73a620.js" integrity="sha256-L6LpgX5FhBbyZqNiQJVv3/vMlhpSNZXRLO8E00tzpiA=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -971,6 +971,32 @@ https://github.com/alex-shpak/hugo-book
         </li>
       
     
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/objects/sections/string/" class="">String</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/objects/sections/boxed/" class="">Boxed primitive type</a>
+  
+
+        </li>
+      
+    
   </ul>
 
         </li>
@@ -1181,12 +1207,13 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#in-haskell">in Haskell</a>
+    <li><a href="#haskell">in Haskell</a>
       <ul>
         <li><a href="#pattern-matching">Pattern matching</a></li>
         <li><a href="#recursive">Recursive type</a></li>
       </ul>
     </li>
+    <li><a href="#java">In Java</a></li>
   </ul>
 </nav>
 
@@ -1204,9 +1231,9 @@ https://github.com/alex-shpak/hugo-book
   <a class="anchor" href="#sum-type">#</a>
 </h1>
 <p>A sum type represents several <em>alternative</em> types.</p>
-<h2 id="in-haskell">
+<h2 id="haskell">
   in Haskell
-  <a class="anchor" href="#in-haskell">#</a>
+  <a class="anchor" href="#haskell">#</a>
 </h2>
 <blockquote class="book-hint warning">
 <p><strong><em>Syntax.</em></strong>
@@ -1284,7 +1311,28 @@ The following type is equivalent to the type <code>[Int]</code>:</p>
 Recursive types are the standard way to define trees (and several other recursive structures) in Haskell.</p>
 <p>Due to limited time, we will not study trees (or more generally, n-ary recursion) in Haskell, but in Java instead.</p>
 </blockquote>
-</article>
+<h2 id="java">
+  In Java
+  <a class="anchor" href="#java">#</a>
+</h2>
+<p>Sum types are a recent addition to Java, with the introduction of the keywords <code>sealed</code> and <code>permits</code> (among others).
+They are closely related to <a href="https://unibz-oofp-25-26.github.io/docs/composite/sections/product/#java">product types</a> and <a href="https://unibz-oofp-25-26.github.io/notreleased/">pattern matching</a>.</p>
+<p>Sum types were only finalized in Java 17 (2021),</p>
+<p>Due to limited time, we will not cover them extensively.
+We only briefly illustrate their syntax.</p>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong>
+Here is a possible way to translate in Java the example above (in Haskell) about geometric shapes.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">record</span> <span style="color:#a6e22e">Point</span>(Float x, Float y) { }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// a shape can only be a triangle or a rectangle</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">sealed</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Shape</span> permits Triangle, Rectangle { }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">record</span> <span style="color:#a6e22e">Triangle</span>(Point p1, Point p2, Point p3) <span style="color:#66d9ef">implements</span> Shape { }
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">record</span> <span style="color:#a6e22e">Rectangle</span>(Point p1, Point p2, Point p3, Point p4) <span style="color:#66d9ef">implements</span> Shape { }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/</span>blockquote<span style="color:#f92672">&gt;</span>
+</span></span></code></pre></div></article>
  
       
 
@@ -1325,12 +1373,13 @@ Recursive types are the standard way to define trees (and several other recursiv
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#in-haskell">in Haskell</a>
+    <li><a href="#haskell">in Haskell</a>
       <ul>
         <li><a href="#pattern-matching">Pattern matching</a></li>
         <li><a href="#recursive">Recursive type</a></li>
       </ul>
     </li>
+    <li><a href="#java">In Java</a></li>
   </ul>
 </nav>
 
