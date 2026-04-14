@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+<head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="
@@ -8,39 +8,39 @@
   #
 
 
-The abstract data type list simulates a tuple.
+The abstract data type list simulates a finite list.
 
 Accordingly, a list may contain duplicates.
 A list may expose the following methods:
 
-isEmpty is self-explanatory,
-append adds an element at the end of the list,
-prepend adds an element at the beginning of the list,
-tail returns the sub-list identical to the current one, but without its first element,
+&ldquo;isEmpty&rdquo; is self-explanatory,
+&ldquo;append&rdquo; adds an element at the end of the list,
+&ldquo;prepend&rdquo; adds an element at the beginning of the list,
+&ldquo;tail&rdquo; returns the sub-list identical to the current one, but without its first element,
 etc.
 
 
-Note. The size of a list is often unbounded (as opposed to the size of an array for instance).
+Note. The length of a list is usually unbounded (as opposed to the length of an array).
 This can be implemented in different ways, for instance with a dynamic array or a linked list.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/docs/abstractdatatypes/sections/list/">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://unibz-oofp-25-26.github.io/docs/abstractdatatypes/sections/list/">
   <meta property="og:site_name" content="OOFP 2025-26">
   <meta property="og:title" content="List">
-  <meta property="og:description" content="List # The abstract data type list simulates a tuple.
+  <meta property="og:description" content="List # The abstract data type list simulates a finite list.
 Accordingly, a list may contain duplicates.
 A list may expose the following methods:
-isEmpty is self-explanatory, append adds an element at the end of the list, prepend adds an element at the beginning of the list, tail returns the sub-list identical to the current one, but without its first element, etc. Note. The size of a list is often unbounded (as opposed to the size of an array for instance). This can be implemented in different ways, for instance with a dynamic array or a linked list.">
+“isEmpty” is self-explanatory, “append” adds an element at the end of the list, “prepend” adds an element at the beginning of the list, “tail” returns the sub-list identical to the current one, but without its first element, etc. Note. The length of a list is usually unbounded (as opposed to the length of an array). This can be implemented in different ways, for instance with a dynamic array or a linked list.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
 <title>List | OOFP 2025-26</title>
 <link rel="icon" href="/favicon.png" >
 <link rel="manifest" href="/manifest.json">
-<link rel="canonical" href="http://localhost:1313/docs/abstractdatatypes/sections/list/">
+<link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/abstractdatatypes/sections/list/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.992c34869aca2f53a7e9df199b38b9b035aa03071c1c6206cbe991ebf541cda9.js" integrity="sha256-mSw0hprKL1On6d8Zmzi5sDWqAwccHGIGy&#43;mR6/VBzak=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.1b9798403ec7e4bdaa13f99a5cb945d08f6195940c7873656dc8ebfa53c65812.js" integrity="sha256-G5eYQD7H5L2qE/maXLlF0I9hlZQMeHNlbcjr&#43;lPGWBI=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -703,19 +703,6 @@ https://github.com/alex-shpak/hugo-book
         </li>
       
     
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/recursion/sections/termination/" class="">Termination</a>
-  
-
-        </li>
-      
-    
   </ul>
 
         </li>
@@ -796,19 +783,6 @@ https://github.com/alex-shpak/hugo-book
 
           
   <ul>
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/pattern/sections/fold/" class="">Fold</a>
-  
-
-        </li>
-      
     
       
         <li>
@@ -1028,7 +1002,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/abstractdatatypes/sections/java/" class="">ADT as a generic interface</a>
+    <a href="/docs/abstractdatatypes/sections/collection/" class="">ADT as a generic interface</a>
   
 
         </li>
@@ -1042,58 +1016,6 @@ https://github.com/alex-shpak/hugo-book
 
   
     <a href="/docs/abstractdatatypes/sections/list/" class="active">List</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/abstractdatatypes/sections/set/" class="">Set</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/abstractdatatypes/sections/map/" class="">Associative array</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/abstractdatatypes/sections/queue/" class="">Stack, queue, priority queue</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/abstractdatatypes/sections/sorting/" class="">Sorting</a>
   
 
         </li>
@@ -1253,19 +1175,6 @@ https://github.com/alex-shpak/hugo-book
         </li>
       
     
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/ass/sections/ass3/" class="">Assignment 3</a>
-  
-
-        </li>
-      
-    
   </ul>
 
         </li>
@@ -1344,91 +1253,104 @@ https://github.com/alex-shpak/hugo-book
   <a class="anchor" href="#list">#</a>
 </h1>
 <blockquote class="book-hint warning">
-<p>The abstract data type <strong>list</strong> simulates a <a href="http://localhost:1313/docs/background/sections/set_list/#tuple">tuple</a>.</p>
+<p>The abstract data type <strong>list</strong> simulates a finite <a href="https://unibz-oofp-25-26.github.io/docs/background/sections/set_list/#list">list</a>.</p>
 </blockquote>
 <p>Accordingly, a list may contain <em>duplicates</em>.</p>
 <p>A list may expose the following methods:</p>
 <ul>
-<li><strong>isEmpty</strong> is self-explanatory,</li>
-<li><strong>append</strong> adds an element at the end of the list,</li>
-<li><strong>prepend</strong> adds an element at the beginning of the list,</li>
-<li><strong>tail</strong> returns the sub-list identical to the current one, but without its first element,</li>
+<li>&ldquo;<strong>isEmpty</strong>&rdquo; is self-explanatory,</li>
+<li>&ldquo;<strong>append</strong>&rdquo; adds an element at the end of the list,</li>
+<li>&ldquo;<strong>prepend</strong>&rdquo; adds an element at the beginning of the list,</li>
+<li>&ldquo;<strong>tail</strong>&rdquo; returns the sub-list identical to the current one, but without its first element,</li>
 <li>etc.</li>
 </ul>
 <blockquote class="book-hint info">
-<p><strong><em>Note.</em></strong> The <em>size</em> of a list is often unbounded (as opposed to the size of an array for instance).
-This can be implemented in different ways, for instance with a <a href="http://localhost:1313/notreleased/">dynamic array</a> or a <a href="http://localhost:1313/notreleased/">linked list</a>.</p>
+<p><strong><em>Note.</em></strong> The length of a list is usually unbounded (as opposed to the length of an array).
+This can be implemented in different ways, for instance with a <a href="https://unibz-oofp-25-26.github.io/notreleased/">dynamic array</a> or a <a href="https://unibz-oofp-25-26.github.io/notreleased/">linked list</a>.</p>
 </blockquote>
 <h2 id="in-java">
   in Java
   <a class="anchor" href="#in-java">#</a>
 </h2>
-<p>Java has an interface <code>List</code> with 8 native implementations (i.e. 8 different <em>classes</em> that implement this interface).
-The most commonly used are <code>ArrayList</code> and <code>LinkedList</code>.</p>
+<p>Java has an <a href="https://unibz-oofp-25-26.github.io/docs/interface/sections/java_interface/">interface</a> <code>List</code> with 8 native implementations (meaning that 8 different <em>classes</em> <a href="https://unibz-oofp-25-26.github.io/docs/interface/sections/java_interface/#implement">implement</a> this interface).
+The most frequently used implementations are <code>ArrayList</code> and <code>LinkedList</code>.</p>
 <p>The interface <code>List</code> extends the interface <code>Collection</code>.</p>
 <h3 id="syntax">
   Syntax
   <a class="anchor" href="#syntax">#</a>
 </h3>
 <p>Here are code snippets for a few operations specified in the interface <code>List</code>.</p>
-<ul>
-<li>Create a <code>List</code> and populate it:</li>
-</ul>
+<blockquote class="book-hint info">
+<p>Create a <code>List</code> and populate it:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>City milan <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> City(<span style="color:#e6db74">&#34;Milan&#34;</span>, 20100);
 </span></span><span style="display:flex;"><span>City florence <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> City(<span style="color:#e6db74">&#34;Florence&#34;</span>, 50100);
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Creates an empty list of cities</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// create an empty list of cities;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// alternatively, we could use another implementation, like `LinkedList`</span>
 </span></span><span style="display:flex;"><span>List<span style="color:#f92672">&lt;</span>City<span style="color:#f92672">&gt;</span> myList <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ArrayList();
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Appends Milan to the list</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// append Milan to the list</span>
 </span></span><span style="display:flex;"><span>myList.<span style="color:#a6e22e">add</span>(milan);
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Appends Florence to the list</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// append Florence to the list</span>
 </span></span><span style="display:flex;"><span>myList.<span style="color:#a6e22e">add</span>(florence);
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Appends Milan again to the list</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// append Milan again to the list</span>
 </span></span><span style="display:flex;"><span>myList.<span style="color:#a6e22e">add</span>(milan);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Creates a list identical to the previous one, but which cannot be modified</span>
+</span></span></code></pre></div></blockquote>
+<blockquote class="book-hint warning">
+<p><strong><em>Convention.</em></strong>
+In this example, the class <code>ArrayList</code> is only used to <em>create</em> the list (by calling its constructor).
+The rest of the code refers to (methods of) the <a href="https://unibz-oofp-25-26.github.io/docs/interface/sections/java_interface/">interface</a> <code>List</code>.</p>
+<p>This is the <em>standard way</em> to use an interface in Java.</p>
+<p>As a benefit, we can use a different implementation of <code>List</code> by modifying a single line of code:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>List<span style="color:#f92672">&lt;</span>City<span style="color:#f92672">&gt;</span> myList <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ArrayList();
+</span></span></code></pre></div><p>becomes</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>List<span style="color:#f92672">&lt;</span>City<span style="color:#f92672">&gt;</span> myList <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> LinkedList();
+</span></span></code></pre></div></blockquote>
+<blockquote class="book-hint info">
+<p>Alternative syntaxes to create a list:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// create a list identical to the previous one, but which cannot be modified</span>
 </span></span><span style="display:flex;"><span>List<span style="color:#f92672">&lt;</span>City<span style="color:#f92672">&gt;</span> myOtherList <span style="color:#f92672">=</span> List.<span style="color:#a6e22e">of</span>(milan, florence, milan);
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>City<span style="color:#f92672">[]</span> myArray <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> City<span style="color:#f92672">[]</span>{milan, florence};
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Creates a fixed-lenght &#34;wrapper&#34; list around the array.</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// No data is duplicated.</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// create a fixed-lenght &#34;wrapper&#34; list around the array;</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// no data is duplicated</span>
 </span></span><span style="display:flex;"><span>List<span style="color:#f92672">&lt;</span>City<span style="color:#f92672">&gt;</span> yetAnotherList <span style="color:#f92672">=</span> Arrays.<span style="color:#a6e22e">asList</span>(myArray);
-</span></span></code></pre></div><ul>
-<li>Retrieve the size of a list:</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// Outputs 3</span>
+</span></span></code></pre></div></blockquote>
+<blockquote class="book-hint info">
+<p>Retrieve the size of a list:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// outputs 3</span>
 </span></span><span style="display:flex;"><span>System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(myList.<span style="color:#a6e22e">size</span>());
-</span></span></code></pre></div><ul>
-<li>Retrieve the element at index <em>i</em> (the first index being <code>0</code>, like in an array):</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// Contains (a reference to) Florence</span>
+</span></span></code></pre></div></blockquote>
+<blockquote class="book-hint info">
+<p>Retrieve the element at index <em>i</em> (the first index being <code>0</code>, like in an array):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// contains (a reference to) Florence</span>
 </span></span><span style="display:flex;"><span>City secondCity <span style="color:#f92672">=</span> myList.<span style="color:#a6e22e">get</span>(1);
-</span></span></code></pre></div><ul>
-<li>Insert an element at index <em>i</em> (shift the position of all subsequent elements by 1).</li>
-</ul>
+</span></span></code></pre></div></blockquote>
+<blockquote class="book-hint info">
+<p>Insert an element at index <em>i</em> (shifts the position of all subsequent elements by 1):</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>City trento <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> City(<span style="color:#e6db74">&#34;Trento&#34;</span>, 38100);
 </span></span><span style="display:flex;"><span>myList.<span style="color:#a6e22e">add</span>(1, trento);
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Now contains (a reference to) Trento</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// now contains (a reference to) Trento</span>
 </span></span><span style="display:flex;"><span>secondCity <span style="color:#f92672">=</span> myList.<span style="color:#a6e22e">get</span>(1);
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// contains (a reference to) Florence</span>
 </span></span><span style="display:flex;"><span>City thirdCity <span style="color:#f92672">=</span> myList.<span style="color:#a6e22e">get</span>(2);
-</span></span></code></pre></div><ul>
-<li>Remove the element a index <em>i</em> (shift the position of all subsequent elements by -1), and return it</li>
-</ul>
+</span></span></code></pre></div></blockquote>
+<blockquote class="book-hint info">
+<p>Remove the element at index <em>i</em> (shifts the position of all subsequent elements by -1), and return it:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>myList.<span style="color:#a6e22e">remove</span>(1);
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Outputs 3</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// outputs 3</span>
 </span></span><span style="display:flex;"><span>Sysetm.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(myList.<span style="color:#a6e22e">size</span>());
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Now contains (a reference to) Florence</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// now contains (a reference to) Florence</span>
 </span></span><span style="display:flex;"><span>secondCity <span style="color:#f92672">=</span> myList.<span style="color:#a6e22e">get</span>(1);
-</span></span></code></pre></div><ul>
-<li>Remove the first occurrence of an object in the list (shift the position of all subsequent elements by -1):</li>
-</ul>
+</span></span></code></pre></div></blockquote>
+<blockquote class="book-hint info">
+<p>Remove the first occurrence of an object in the list (shifts the position of all subsequent elements by -1):</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>myList.<span style="color:#a6e22e">remove</span>(milan);
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// contains (a reference to) Florence</span>
 </span></span><span style="display:flex;"><span>City firstCity <span style="color:#f92672">=</span> myList.<span style="color:#a6e22e">get</span>(0);
-</span></span></code></pre></div><p>For more operations, consult the <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html">Javadoc</a> of the interface <code>List</code>.</p>
+</span></span></code></pre></div></blockquote>
+<p>For more operations, consult the <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html">Javadoc</a> of the interface <code>List</code>.</p>
 </article>
  
       

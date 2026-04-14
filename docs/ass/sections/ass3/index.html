@@ -23,8 +23,7 @@ We model such lists with the following classes and interfaces:
 Restriction.
 You can assume that lists are acyclic, i.e. no node points to one of its ancestors.
 
-
-Hint. Feel free to:">
+Complete or modify the abstract class AbstractNode and the classes RedNode, GreenNode and HeadNodeImpl in the folder ex1, so that:">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/docs/ass/sections/ass3/">
@@ -33,7 +32,7 @@ Hint. Feel free to:">
   <meta property="og:description" content="Assignment 3: inheritance # Exercise 1: colored lists # We consider lists that:
 consist of green and red nodes, where each node is labeled with an integer, and the head node is green. We model such lists with the following classes and interfaces:
 Restriction. You can assume that lists are acyclic, i.e. no node points to one of its ancestors.
-Hint. Feel free to:">
+Complete or modify the abstract class AbstractNode and the classes RedNode, GreenNode and HeadNodeImpl in the folder ex1, so that:">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
@@ -43,7 +42,7 @@ Hint. Feel free to:">
 <link rel="canonical" href="http://localhost:1313/docs/ass/sections/ass3/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.ab50750624b88c9097756344e08cffb3d1da9f6b40029f29391db2400b24b92c.js" integrity="sha256-q1B1BiS4jJCXdWNE4Iz/s9Han2tAAp8pOR2yQAskuSw=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.1ea868f994de94abdcd9173bfc6bbde4c12dcb9b483330262a00b637e6f564aa.js" integrity="sha256-Hqho&#43;ZTelKvc2Rc7/Gu95MEty5tIMzAmKgC2N&#43;b1ZKo=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -1031,6 +1030,19 @@ https://github.com/alex-shpak/hugo-book
   
 
   
+    <a href="/docs/abstractdatatypes/sections/collection/" class="">ADT as a generic interface</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
     <a href="/docs/abstractdatatypes/sections/list/" class="">List</a>
   
 
@@ -1352,6 +1364,12 @@ https://github.com/alex-shpak/hugo-book
 <p><strong><em>Restriction.</em></strong>
 You can assume that lists are acyclic, i.e. no node points to one of its ancestors.</p>
 </blockquote>
+<p>Complete or modify the abstract class <code>AbstractNode</code> and the classes <code>RedNode</code>, <code>GreenNode</code> and <code>HeadNodeImpl</code> in the folder <code>ex1</code>, so that:</p>
+<ul>
+<li><code>RedNode</code> and <code>GreenNode</code> correctly implement the interface <code>Node</code>, and</li>
+<li><code>HeadNodeImpl</code> correctly implements the interface <code>HeadNode</code>.</li>
+</ul>
+<p>The expected behavior of each method is specified in the corresponding interface.</p>
 <blockquote class="book-hint info">
 <p><strong><em>Hint.</em></strong> Feel free to:</p>
 <ul>
@@ -1360,12 +1378,6 @@ You can assume that lists are acyclic, i.e. no node points to one of its ancesto
 <li>extend the interfaces with additional methods.</li>
 </ul>
 </blockquote>
-<p>Complete or modify the abstract class <code>AbstractNode</code> and the classes <code>RedNode</code>, <code>GreenNode</code> and <code>HeadNodeImpl</code> in the folder <code>ex1</code>, so that:</p>
-<ul>
-<li><code>RedNode</code> and <code>GreenNode</code> correctly implement the interface <code>Node</code>, and</li>
-<li><code>HeadNodeImpl</code> correctly implements the interface <code>HeadNode</code>.</li>
-</ul>
-<p>The expected behavior of each method is specified in the corresponding interface.</p>
 <blockquote class="book-hint info">
 <p><strong><em>Hint.</em></strong> Some methods may be easier to implement recursively.</p>
 </blockquote>
@@ -1374,22 +1386,14 @@ You can assume that lists are acyclic, i.e. no node points to one of its ancesto
 You can debug your code by running the tests in the folder <code>test/java/ex1</code>.</p>
 </blockquote>
 <blockquote class="book-hint warning">
-<p><strong><em>Convention.</em></strong> The logs for a failing test may mention the position of a node in a list.
-We consider that the head of a list has position 1.</p>
+<p><strong><em>Convention.</em></strong> The log for a failing test may mention the position of a node in a list.
+The head of a list has position 1.</p>
 </blockquote>
 <h2 id="exercise-2-card-bots">
   Exercise 2: card bots
   <a class="anchor" href="#exercise-2-card-bots">#</a>
 </h2>
 <p>We consider a game where each player hold a hand of cards.</p>
-<blockquote class="book-hint warning">
-<p><strong><em>Order.</em></strong>
-Cards are sorted:</p>
-<ul>
-<li>by suit in alphabetical order (i.e. Clubs -&gt; Diamonds -&gt; Hearts -&gt; Spades), and</li>
-<li>by rank within the same suit (where ace is the lowest rank and king is the highest).</li>
-</ul>
-</blockquote>
 <p>The table carries a pile of cards.</p>
 <blockquote class="book-hint warning">
 <p><strong><em>Terminology.</em></strong>
@@ -1398,14 +1402,13 @@ The card on top of the pile it called the <strong>visible</strong> card.</p>
 <p>On their turn, players can either:</p>
 <ol>
 <li>Swap the visible card with a card in their hand, and end their turn, or</li>
-<li>play cards from their hand by putting them on top of the pile, one by one (so that each card put on the pile becomes the visible card).
-A card can be put on the pile if it has either:
-<ul>
-<li>the same suit as the visible card and a superior rank, or</li>
-<li>the same rank as the visible card and a superior suit.</li>
-</ul>
-</li>
+<li>play cards from their hand by putting them on top of the pile, one by one (so that each card put on the pile becomes the visible card).</li>
 </ol>
+<p>A card can be played if it has either:</p>
+<ul>
+<li>the same suit as the visible card and a superior rank (where &ldquo;ace&rdquo; is the lowest rank and &ldquo;king&rdquo; is the highest), or</li>
+<li>the same rank as the visible card and a superior suit (in alphabetical order, i.e. Clubs -&gt; Diamonds -&gt; Hearts -&gt; Spades).</li>
+</ul>
 <p>The goal for a player is to discard as many cards as possible.</p>
 <blockquote class="book-hint warning">
 <p><strong><em>Restriction.</em></strong>
@@ -1441,11 +1444,16 @@ You can debug your code by running the tests in the folder <code>test/java/ex2</
   Swapping a card
   <a class="anchor" href="#swapping-a-card">#</a>
 </h3>
-<p>If a bot cannot play any card when its turn starts, then it swaps the visible card with the first card from its hand.</p>
+<p>If a bot cannot play any card when its turn starts, then it swaps the visible card with the first (a.k.a. leftmost) card from its hand.</p>
 <h3 id="order-of-cards-in-hand">
   Order of cards in hand
   <a class="anchor" href="#order-of-cards-in-hand">#</a>
 </h3>
+<p>Within a hand, cards are sorted:</p>
+<ul>
+<li>by suit in alphabetical order, and</li>
+<li>by rank within the same suit.</li>
+</ul>
 <blockquote class="book-hint warning">
 <p><strong><em>Restriction.</em></strong>
 You can assume that the hand of a bot is already sorted when a method of the interface <code>Player</code> is called.</p>
@@ -1456,7 +1464,7 @@ After executing one of these methods, the hand of a bot must still be sorted.
 In particular, when a swap is performed, the visible card must be inserted into the bot&rsquo;s hand at the correct position.</p>
 </blockquote>
 <blockquote class="book-hint warning">
-<p><strong><em>Syntax.</em></strong> In Java, two values <code>v1</code> and <code>v2</code> for an <a href="">enumerated type</a> can be compared with the native function <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Enum.html#compareTo%28E%29"><code>compareTo</code></a>.
+<p><strong><em>Syntax.</em></strong> In Java, two values <code>v1</code> and <code>v2</code> for an <a href="http://localhost:1313/docs/composite/sections/enum/#java">enumerated type</a> can be compared with the native instance method <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Enum.html#compareTo%28E%29"><code>compareTo</code></a>.
 This method returns:</p>
 <ul>
 <li>a negative <code>int</code> if <code>v1</code> is declared <em>before</em> <code>v2</code> (in the definition of the enumerated type),</li>
