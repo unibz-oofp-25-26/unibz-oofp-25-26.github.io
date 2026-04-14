@@ -43,7 +43,7 @@ The operation
 <link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/objects/sections/comparing/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.1b9798403ec7e4bdaa13f99a5cb945d08f6195940c7873656dc8ebfa53c65812.js" integrity="sha256-G5eYQD7H5L2qE/maXLlF0I9hlZQMeHNlbcjr&#43;lPGWBI=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.11e44a66b6e32e1501035085e3df28edde62421493c9893539c75128819cfeee.js" integrity="sha256-EeRKZrbjLhUBA1CF498o7d5iQhSTyYk1OcdRKIGc/u4=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -1316,25 +1316,17 @@ We can use <code>instanceof</code> to check whether an <code>NPC</code> can be d
 </span></span><span style="display:flex;"><span>    npc.<span style="color:#a6e22e">sleep</span>();
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div></div>
-<!-- 
 <input type="radio" class="toggle" name="tabs-exercise_cast" id="tabs-exercise_cast-1"  />
 <label for="tabs-exercise_cast-1">Possible solution</label>
-<div class="book-tabs-content markdown-inner"><p>&ndash;&gt;</p>
-<!-- We can add to the class `NPC` a default implementation of the method `sleep`, with no effect: -->
-<!---->
-<!-- ![](/img/diagrams/plantuml/downcast_exercise.svg) -->
-<!---->
-<!-- ```java -->
-<!-- public abstract class NPC { -->
-<!--    ... -->
-<!---->
-<!--     public void sleep() { } -->
-<!-- } -->
-<!-- ``` -->
-<!---->
-<!-- Thanks to [dynamic dispatch](https://unibz-oofp-25-26.github.io/docs/objects/sections/method/#dispatch), this implementation of `sleep` is executed for butterflies, whereas the other implementation (in the class `Unicorn`) is executed for unicorns. -->
-<!-- </div>
- -->
+<div class="book-tabs-content markdown-inner"><p>We can add to the class <code>NPC</code> a default implementation of the method <code>sleep</code>, with no effect:</p>
+<p><img src="/img/diagrams/plantuml/downcast_exercise.svg" alt="" /></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">abstract</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">NPC</span> {
+</span></span><span style="display:flex;"><span>   ...
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">sleep</span>() { }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Thanks to <a href="https://unibz-oofp-25-26.github.io/docs/objects/sections/method/#dispatch">dynamic dispatch</a>, this implementation of <code>sleep</code> is executed for butterflies, whereas the other implementation (in the class <code>Unicorn</code>) is executed for unicorns.</p>
+</div>
 </div>
 <h2 id="object-equality">
   Object equality
@@ -1370,7 +1362,7 @@ Consider (a simplified version of) our class <a href="https://unibz-oofp-25-26.g
 <p>In some scenarios, one may want to compare the content of two objects, rather than their references.
 Java provides a native method called <code>equals</code> for this purpose.</p>
 <blockquote class="book-hint warning">
-<p>Like the method <code>toString</code> that we saw <a href="https://unibz-oofp-25-26.github.io/docs/objects/sections/tostring/#toString">earlier</a>, <code>equals</code> is an instance method of the class <a href="https://unibz-oofp-25-26.github.io/docs/objects/sections/tostring/#object"><code>Object</code></a>, which is an (implicit) superclass of every other class.
+<p>Like the method <code>toString</code> that we saw <a href="https://unibz-oofp-25-26.github.io/docs/objects/sections/tostring/#toString">earlier</a>, <code>equals</code> is an <a href="https://unibz-oofp-25-26.github.io/docs/objects/sections/method/">instance method</a> of the class <a href="https://unibz-oofp-25-26.github.io/docs/objects/sections/tostring/#object"><code>Object</code></a>, which is an (implicit) superclass of every other class.
 So every (user-defined of native) class inherits <code>equals</code>.</p>
 </blockquote>
 <p>Here is the source code of <code>Object.equals</code>:</p>
