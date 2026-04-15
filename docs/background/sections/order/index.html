@@ -4,30 +4,56 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="
-  String
+  Relation, preorder
   #
 
-Many languages (such as Java, C#, Python, Ruby, JavaScript, Go, etc.) use an optimization technique called interning in order to manage strings (or sometimes integers, etc.) in memory.
 
-Interning consists in storing a single copy of each distinct string created during the execution of a program.
-Interned strings are stored in a shared pool, and each of them is immutable (meaning that it cannot be modified).
+  Binary relation
+  #
 
-Benefits include faster string comparison, lower memory footprint, etc.">
+
+Definition.
+A binary relation over a set $S$ is a set of pairs of elements of $S$, or equivalently a subset of $S \times S$,
+
+
+Example.
+If
+$\qquad S = \{a,b,c,d\}$
+then
+$\qquad \Big\{ (a,a),\ (a,b),\ (b,a),\ (b,c) \Big\}$
+is a binary relation over $S$.
+
+
+  Representations
+  #
+
+A binary relation can be represented in several ways.
+
+  As a graph
+  #
+
+
+A binary relation can be represented as a (directed) graph (and conversely).">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://unibz-oofp-25-26.github.io/docs/objects/sections/string/">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://unibz-oofp-25-26.github.io/docs/background/sections/order/">
   <meta property="og:site_name" content="OOFP 2025-26">
-  <meta property="og:title" content="String">
-  <meta property="og:description" content="String # Many languages (such as Java, C#, Python, Ruby, JavaScript, Go, etc.) use an optimization technique called interning in order to manage strings (or sometimes integers, etc.) in memory.
-Interning consists in storing a single copy of each distinct string created during the execution of a program. Interned strings are stored in a shared pool, and each of them is immutable (meaning that it cannot be modified).
-Benefits include faster string comparison, lower memory footprint, etc.">
+  <meta property="og:title" content="Relation, preorder">
+  <meta property="og:description" content="Relation, preorder # Binary relation # Definition. A binary relation over a set $S$ is a set of pairs of elements of $S$, or equivalently a subset of $S \times S$,
+Example. If
+$\qquad S = \{a,b,c,d\}$
+then
+$\qquad \Big\{ (a,a),\ (a,b),\ (b,a),\ (b,c) \Big\}$
+is a binary relation over $S$.
+Representations # A binary relation can be represented in several ways.
+As a graph # A binary relation can be represented as a (directed) graph (and conversely).">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
-<title>String | OOFP 2025-26</title>
+<title>Relation, preorder | OOFP 2025-26</title>
 <link rel="icon" href="/favicon.png" >
 <link rel="manifest" href="/manifest.json">
-<link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/objects/sections/string/">
+<link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/background/sections/order/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
   <script defer src="/en.search.min.04147d8d52c1ddc60ab391caf2f61b49362e9285935bff284143d7631d4ddfaf.js" integrity="sha256-BBR9jVLB3cYKs5HK8vYbSTYukoWTW/8oQUPXYx1N368=" crossorigin="anonymous"></script>
@@ -825,7 +851,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-799305e0300c702d39454ff1753190dd" class="toggle" checked />
+    <input type="checkbox" id="section-799305e0300c702d39454ff1753190dd" class="toggle"  />
     <label for="section-799305e0300c702d39454ff1753190dd" class="flex justify-between">
       <a href="/docs/objects/" class="">Object and class</a>
     </label>
@@ -945,7 +971,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/objects/sections/string/" class="active">String</a>
+    <a href="/docs/objects/sections/string/" class="">String</a>
   
 
         </li>
@@ -1109,7 +1135,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-d689bb2436bd0f51b31e8f95cf070b59" class="toggle"  />
+    <input type="checkbox" id="section-d689bb2436bd0f51b31e8f95cf070b59" class="toggle" checked />
     <label for="section-d689bb2436bd0f51b31e8f95cf070b59" class="flex justify-between">
       <a href="/docs/background/" class="">Background</a>
     </label>
@@ -1151,7 +1177,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/background/sections/order/" class="">Relation, preorder</a>
+    <a href="/docs/background/sections/order/" class="active">Relation, preorder</a>
   
 
         </li>
@@ -1270,7 +1296,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <h3>String</h3>
+  <h3>Relation, preorder</h3>
 
   <label for="toc-control">
     
@@ -1286,13 +1312,14 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#in-java">in Java</a>
+    <li><a href="#binary-relation">Binary relation</a>
       <ul>
-        <li><a href="#comparing-strings">Comparing strings</a></li>
-        <li><a href="#explicit-interning">Explicit interning</a></li>
-        <li><a href="#implicit-interning">Implicit interning</a></li>
-        <li><a href="#immutability">Immutability</a></li>
-        <li><a href="#equality">Equality</a></li>
+        <li><a href="#representations">Representations</a></li>
+        <li><a href="#reflexiveTransitiveAntisymmetric">Reflexivity, transitivity, antisymmetry</a></li>
+        <li><a href="#preorder">Preorder, order</a></li>
+        <li><a href="#total">Total vs partial</a></li>
+        <li><a href="#sorting">Sorting</a></li>
+        <li><a href="#lexProduct">Lexicographic product</a></li>
       </ul>
     </li>
   </ul>
@@ -1307,131 +1334,166 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown book-article"><h1 id="string">
-  String
-  <a class="anchor" href="#string">#</a>
+  <article class="markdown book-article"><h1 id="relation-preorder">
+  Relation, preorder
+  <a class="anchor" href="#relation-preorder">#</a>
 </h1>
-<p>Many languages (such as Java, C#, Python, Ruby, JavaScript, Go, etc.) use an optimization technique called interning in order to manage strings (or sometimes integers, etc.) in memory.</p>
-<blockquote class="book-hint warning">
-<p><strong>Interning</strong> consists in storing a single copy of each distinct string created during the execution of a program.
-Interned strings are stored in a shared <strong>pool</strong>, and each of them is <a href="https://unibz-oofp-25-26.github.io/notreleased/">immutable</a> (meaning that it cannot be modified).</p>
-</blockquote>
-<p>Benefits include faster string comparison, lower memory footprint, etc.</p>
-<p>In languages where strings are treated as (pseudo) objects, like Java, this can make behavior of some operations hard to predict.</p>
-<h2 id="in-java">
-  in Java
-  <a class="anchor" href="#in-java">#</a>
+<h2 id="binary-relation">
+  Binary relation
+  <a class="anchor" href="#binary-relation">#</a>
 </h2>
-<p>In Java, a string is an object.</p>
-<h3 id="comparing-strings">
-  Comparing strings
-  <a class="anchor" href="#comparing-strings">#</a>
-</h3>
-<p>As for regular objects, the <code>==</code> operator compares the references of two Java strings:</p>
-<blockquote class="book-hint info">
-<p><strong><em>Example.</em></strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>String myString <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> String(<span style="color:#e6db74">&#34;foo&#34;</span>);
-</span></span><span style="display:flex;"><span>String sameString <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> String(<span style="color:#e6db74">&#34;foo&#34;</span>);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Outputs false, because the two variables hold different references.</span>
-</span></span><span style="display:flex;"><span>System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(myString <span style="color:#f92672">==</span> sameString);
-</span></span></code></pre></div></blockquote>
-<h3 id="explicit-interning">
-  Explicit interning
-  <a class="anchor" href="#explicit-interning">#</a>
-</h3>
 <blockquote class="book-hint warning">
-<p><strong><em>Syntax.</em></strong>
-A string can be explicitly interned (i.e. added to the shared pool) with the (instance) method <code>intern</code>.<br>
-This method:</p>
-<ul>
-<li>tries to add the string to the pool, and then</li>
-<li>returns a reference to the (only) version of the string contained in the pool.</li>
-</ul>
+<p><strong><em>Definition.</em></strong>
+A <strong>binary relation</strong> over a set $S$ is a set of <a href="https://unibz-oofp-25-26.github.io/docs/background/sections/set_list/#tuple">pairs</a> of elements of $S$, or equivalently a subset of $S \times S$,</p>
 </blockquote>
 <blockquote class="book-hint info">
 <p><strong><em>Example.</em></strong>
-Let us assume that no string has been created before the following is executed:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// create a string &#34;foo&#34;</span>
-</span></span><span style="display:flex;"><span>String myString <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> String(<span style="color:#e6db74">&#34;foo&#34;</span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// add it to the pool</span>
-</span></span><span style="display:flex;"><span>myString <span style="color:#f92672">=</span> myString.<span style="color:#a6e22e">intern</span>();
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// create another string &#34;foo&#34;</span>
-</span></span><span style="display:flex;"><span>String sameString <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> String(<span style="color:#e6db74">&#34;foo&#34;</span>);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// outputs false</span>
-</span></span><span style="display:flex;"><span>System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(myString <span style="color:#f92672">==</span> sameString);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// try to add &#34;foo&#34; to the pool once again;</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// since the pool already contains a version of &#34;foo&#34;, returns a reference to it</span>
-</span></span><span style="display:flex;"><span>sameString <span style="color:#f92672">=</span> sameString.<span style="color:#a6e22e">intern</span>();
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// outputs true, because the two variables now hold the same reference</span>
-</span></span><span style="display:flex;"><span>System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(myString <span style="color:#f92672">==</span> sameString);
-</span></span></code></pre></div></blockquote>
-<h3 id="implicit-interning">
-  Implicit interning
-  <a class="anchor" href="#implicit-interning">#</a>
+If</p>
+<p>$\qquad S = \{a,b,c,d\}$</p>
+<p>then</p>
+<p>$\qquad \Big\{ (a,a),\ (a,b),\ (b,a),\ (b,c) \Big\}$</p>
+<p>is a binary relation over $S$.</p>
+</blockquote>
+<h3 id="representations">
+  Representations
+  <a class="anchor" href="#representations">#</a>
 </h3>
-<blockquote class="book-hint danger">
-<p><strong><em>Warning.</em></strong>
-A string that is initialized without constructor (i.e. directly with <code>&quot; &quot;</code>) <em>is interned</em>.</p>
+<p>A binary relation can be represented in several ways.</p>
+<h4 id="as-a-graph">
+  As a graph
+  <a class="anchor" href="#as-a-graph">#</a>
+</h4>
+<blockquote class="book-hint warning">
+<p>A binary relation can be represented as a (directed) <strong>graph</strong> (and conversely).</p>
 </blockquote>
 <blockquote class="book-hint info">
-<p><strong><em>Example.</em></strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>String myString <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;foo&#34;</span>;
-</span></span><span style="display:flex;"><span>String sameString <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;foo&#34;</span>;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// outputs true, because of (implicit) interning</span>
-</span></span><span style="display:flex;"><span>System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(myString <span style="color:#f92672">==</span> sameString);
-</span></span></code></pre></div></blockquote>
-<h3 id="immutability">
-  Immutability
-  <a class="anchor" href="#immutability">#</a>
-</h3>
-<p>In order to support interning, strings in Java are <a href="https://unibz-oofp-25-26.github.io/notreleased/">immutable</a>.</p>
-<blockquote class="book-hint danger">
-<p><strong><em>Warning.</em></strong>
-As a consequence, the instance methods of the class <code>String</code> do <em>not</em> modify the current string, contrary to what their name may suggest (<code>substring</code>, <code>replace</code>, etc.).</p>
-<p>Instead, these methods (may) return (a reference to) a <em>different</em> object.</p>
+<p><strong><em>Example.</em></strong>
+The relation</p>
+<p>$\qquad\Big\{ (a,a),\ (a,b),\ (b,a),\ (b,c) \Big\}$</p>
+<p>over</p>
+<p>$\qquad\{a,b,c,d\}$</p>
+<p>can be viewed as the graph:</p>
+<p><img src="/img/order/graph_basic.svg" alt="" /></p>
+</blockquote>
+<h4 id="infix-notation">
+  Infix notation
+  <a class="anchor" href="#infix-notation">#</a>
+</h4>
+<blockquote class="book-hint warning">
+<p>A binary relation can also be represented with a Boolean function in infix notation.</p>
 </blockquote>
 <blockquote class="book-hint info">
-<p><strong><em>Example.</em></strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>String foo <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> String(<span style="color:#e6db74">&#34;foo&#34;</span>);
-</span></span><span style="display:flex;"><span>String copy <span style="color:#f92672">=</span> foo;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// outputs true, because the two variables hold the same object reference</span>
-</span></span><span style="display:flex;"><span>System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(copy <span style="color:#f92672">==</span> foo);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>foo <span style="color:#f92672">=</span> foo.<span style="color:#a6e22e">replace</span>(<span style="color:#e6db74">&#39;o&#39;</span>,<span style="color:#e6db74">&#39;O&#39;</span>);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// outputs false, because the method &#39;replace&#39; returns a reference to another object</span>
-</span></span><span style="display:flex;"><span>System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(copy <span style="color:#f92672">==</span> foo);
-</span></span></code></pre></div></blockquote>
-<h3 id="equality">
-  Equality
-  <a class="anchor" href="#equality">#</a>
+<p><strong><em>Example(continued).</em></strong>
+The same relation</p>
+<p>$\qquad\Big\{ (a,a),\ (a,b),\ (b,a),\ (b,c) \Big\}$</p>
+<p>can be represented as</p>
+<p>$\qquad a \preceq a $, $\qquad a \preceq b$, $\qquad b \preceq a$, $\qquad  b \preceq c$.</p>
+</blockquote>
+<h3 id="reflexiveTransitiveAntisymmetric">
+  Reflexivity, transitivity, antisymmetry
+  <a class="anchor" href="#reflexiveTransitiveAntisymmetric">#</a>
 </h3>
 <blockquote class="book-hint warning">
-<p>The class <code>String</code> overrides the method <a href="https://unibz-oofp-25-26.github.io/docs/objects/sections/comparing/#equals">equals</a> so that it implements string comparison in the expected way.</p>
+<p><strong><em>Definition.</em></strong> A binary relation $\preceq$ over a set $S$ is</p>
+<ul>
+<li><strong>reflexive</strong> if $x \preceq x$ for all $x \in S$</li>
+<li><strong>transitive</strong> if for all $x, y, z \in S$</li>
+</ul>
+<p>$\qquad x \preceq y$ and $y \preceq z$ imply $x \preceq z$</p>
+<ul>
+<li><strong>antisymmetric</strong> if for all $x, y \in S$</li>
+</ul>
+<p>$\qquad x \preceq y$ and $y \preceq x$ imply $x = y$</p>
+</blockquote>
+<div class="book-tabs">
+<input type="radio" class="toggle" name="tabs-exercise_relation" id="tabs-exercise_relation-0" checked="checked" />
+<label for="tabs-exercise_relation-0">Exercise</label>
+<div class="book-tabs-content markdown-inner"><p>Which of these three properties does the relation below satisfy?</p>
+<p><img src="/img/order/graph_prop.svg" alt="" /></p>
+</div>
+<input type="radio" class="toggle" name="tabs-exercise_relation" id="tabs-exercise_relation-1"  />
+<label for="tabs-exercise_relation-1">Solution</label>
+<div class="book-tabs-content markdown-inner"><p>Only reflexivity.</p>
+</div>
+</div>
+<h3 id="preorder">
+  Preorder, order
+  <a class="anchor" href="#preorder">#</a>
+</h3>
+<blockquote class="book-hint warning">
+<p><strong><em>Definition.</em></strong>
+A binary relation is a <strong>preorder</strong> if it is reflexive and transitive.
+It is an <strong>order</strong> if it is also antisymmetric.</p>
+</blockquote>
+<h3 id="total">
+  Total vs partial
+  <a class="anchor" href="#total">#</a>
+</h3>
+<blockquote class="book-hint warning">
+<p><strong><em>Definition.</em></strong>
+A preorder $\preceq$ over $S$ is <strong>total</strong> if every two elements of $S$ are comparable, i.e. if</p>
+<p>$\qquad x \preceq y$ or $y \preceq x$ for all $x, y \in S$.</p>
+<p>A preorder that is not total is called <strong>partial</strong>.</p>
 </blockquote>
 <blockquote class="book-hint info">
-<p><strong><em>Example.</em></strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>String myString <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> String(<span style="color:#e6db74">&#34;foo&#34;</span>);
-</span></span><span style="display:flex;"><span>String sameString <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> String(<span style="color:#e6db74">&#34;foo&#34;</span>);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// outputs false</span>
-</span></span><span style="display:flex;"><span>System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(myString <span style="color:#f92672">==</span> sameString);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// outputs true</span>
-</span></span><span style="display:flex;"><span>System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(myString.<span style="color:#a6e22e">equals</span>(sameString));
-</span></span></code></pre></div></blockquote>
+<p><strong><em>Example.</em></strong>
+The natural order $\le$ over $\mathbb{R}$ is a total order (i.e. total, reflexive, transitive and antisymmetric).</p>
+</blockquote>
 <blockquote class="book-hint info">
-<p><strong><em>Hint.</em></strong>
-By default, you can always use <code>equals</code> to compare the values of two strings.
-This is less error-prone than <code>==</code> (albeit potentially less efficient).</p>
+<p><strong><em>Example.</em></strong>
+If $S$ is a set, then the set inclusion relation $\subseteq$ over the <a href="https://unibz-oofp-25-26.github.io/docs/background/sections/set_list/#set">power set</a> of $S$ is a partial order (i.e. reflexive, transitive and antisymmetric).</p>
+</blockquote>
+<blockquote class="book-hint danger">
+<p><strong><em>Warning.</em></strong>
+The term &ldquo;order&rdquo; is sometimes used to refer to a <em>total</em> order.</p>
+</blockquote>
+<h3 id="sorting">
+  Sorting
+  <a class="anchor" href="#sorting">#</a>
+</h3>
+<p>If $S$ is a set, then a total preorder over $S$ is intuitively any relation that allows <em>sorting</em> $S$.</p>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong>
+Let $P$ be the set of people, and let $\preceq_{\text{age}}$ be the relation defined over $P$ by</p>
+<p>$\qquad p_1 \preceq_{\text{age}} p_2$ iff $p_1$ is younger than (or as old as) $p_2$.</p>
+<p>Then $\preceq_{\text{age}}$ is a total preorder
+(i.e. total, reflexive and transitive), but it is not an order (i.e. not antisymmetric), because two persons can have the same age.</p>
+</blockquote>
+<h3 id="lexProduct">
+  Lexicographic product
+  <a class="anchor" href="#lexProduct">#</a>
+</h3>
+<blockquote class="book-hint warning">
+<p><strong><em>Notation.</em></strong> If $\preceq_o$ is a preorder, let us use:</p>
+<ul>
+<li>$x \prec_o y$ as a shortcut for ($ x \preceq_o y$ and $ y \not\preceq_o x$),</li>
+<li>$x =_o y$ as a shortcut for ($x \preceq_o y$ and $y \preceq_o x$ ).</li>
+</ul>
+</blockquote>
+<blockquote class="book-hint warning">
+<p><strong><em>Definition.</em></strong> The <strong>lexicographic product</strong> $\preceq_{1,2}$ of a preorder $\preceq_1$ by a preorder $\preceq_2$ is defined as</p>
+<p>$\qquad x \preceq_{1,2} y$ iff
+$x \prec_1 y$ or ( $x =_1 y$ and $x \preceq_2 y$ )</p>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong>
+Let $P$ be the set of people, and let $\preceq_{\text{age}}$ and
+$\preceq_{\text{size}}$
+be the total preorders defined over $S$ by</p>
+<p>$\qquad p_1 \preceq_{\text{age}} p_2$ iff $p_1$ is younger than (or as old as) $p_2$, and</p>
+<p>$\qquad p_1 \preceq_{\text{size}} p_2$ iff $p_1$ is smaller than (or as tall as) $p_2$.</p>
+<p>Then the lexicographic product $\preceq_{\text{age, size}}$ of $\preceq_{\text{age}}$ by $\preceq_{\text{size}}$ is defined by</p>
+<p>$\qquad p_1 \preceq_{\text{age, size}} p_2$ iff</p>
+<p>$\qquad \qquad p_1$ is strictly younger than $p_2$, or</p>
+<p>$\qquad \qquad$ they have the same age and $p_1$ is smaller than (or as tall as) $p_2$.</p>
+</blockquote>
+<blockquote class="book-hint danger">
+<p><strong><em>Warning.</em></strong>
+The lexicographic product of $\preceq_1$ by $\preceq_2$ may differ from the lexicographic product of $\preceq_2$ by $\preceq_1$.</p>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Note.</em></strong>
+The lexicographic product of a total preorder by a total preorder (resp. a total order) is itself a total preorder (resp. a total order).</p>
 </blockquote>
 </article>
  
@@ -1474,13 +1536,14 @@ This is less error-prone than <code>==</code> (albeit potentially less efficient
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#in-java">in Java</a>
+    <li><a href="#binary-relation">Binary relation</a>
       <ul>
-        <li><a href="#comparing-strings">Comparing strings</a></li>
-        <li><a href="#explicit-interning">Explicit interning</a></li>
-        <li><a href="#implicit-interning">Implicit interning</a></li>
-        <li><a href="#immutability">Immutability</a></li>
-        <li><a href="#equality">Equality</a></li>
+        <li><a href="#representations">Representations</a></li>
+        <li><a href="#reflexiveTransitiveAntisymmetric">Reflexivity, transitivity, antisymmetry</a></li>
+        <li><a href="#preorder">Preorder, order</a></li>
+        <li><a href="#total">Total vs partial</a></li>
+        <li><a href="#sorting">Sorting</a></li>
+        <li><a href="#lexProduct">Lexicographic product</a></li>
       </ul>
     </li>
   </ul>
