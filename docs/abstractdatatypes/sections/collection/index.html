@@ -22,7 +22,7 @@ List&lt;E&gt; in Java is analogous to [a] in Haskell.
 
 
 Constraint.
-In Java, a primitive type (like int or bool) cannot be a type parameter.">
+In Java, a primitive type (like int or bool) cannot be a type parameter, whereas a boxed type (like Integer or Boolean) can.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="https://unibz-oofp-25-26.github.io/docs/abstractdatatypes/sections/collection/">
@@ -32,7 +32,7 @@ In Java, a primitive type (like int or bool) cannot be a type parameter.">
 Example. A list of integers has type List&lt;Integer&gt;.
 Syntax. The type List&lt;E&gt; is a generic type, with type variable E
 Note. List&lt;E&gt; in Java is analogous to [a] in Haskell.
-Constraint. In Java, a primitive type (like int or bool) cannot be a type parameter.">
+Constraint. In Java, a primitive type (like int or bool) cannot be a type parameter, whereas a boxed type (like Integer or Boolean) can.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
@@ -42,7 +42,7 @@ Constraint. In Java, a primitive type (like int or bool) cannot be a type parame
 <link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/abstractdatatypes/sections/collection/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.d6fb17f5d2599eefb3ca3427f4856098f8c9bd79cb9c4516e1dd91470f38cc66.js" integrity="sha256-1vsX9dJZnu&#43;zyjQn9IVgmPjJvXnLnEUW4d2RRw84zGY=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.26d68fc31b63730ce312579fd6443ab1ba579c16f04099013e5819bfba126500.js" integrity="sha256-JtaPwxtjcwzjElef1kQ6sbpXnBbwQJkBPlgZv7oSZQA=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -1294,14 +1294,14 @@ https://github.com/alex-shpak/hugo-book
   ADT as a generic interface
   <a class="anchor" href="#adt-as-a-generic-interface">#</a>
 </h1>
-<p>An ADT in Java is usually a <a href="%7b%7b%22../generics/sections/generics.md#genericType%22%7d%7d">generic type</a>, meaning that it accepts one or several types as parameter(s).</p>
+<p>An ADT in Java is usually a <a href="%7b%7b%22../../../notReleased.md%22%7d%7d">generic type</a>, meaning that it accepts one or several types as parameter(s).</p>
 <blockquote class="book-hint info">
 <p><strong><em>Example.</em></strong>
 A list of integers has type <code>List&lt;Integer&gt;</code>.</p>
 </blockquote>
 <blockquote class="book-hint warning">
 <p><strong><em>Syntax.</em></strong>
-The type <code>List&lt;E&gt;</code> is a <a href="https://unibz-oofp-25-26.github.io/docs/generic/">generic type</a>, with <a href="https://unibz-oofp-25-26.github.io/docs/generic/sections/variable/">type variable</a> <code>E</code></p>
+The type <code>List&lt;E&gt;</code> is a <a href="https://unibz-oofp-25-26.github.io/notreleased/">generic type</a>, with <a href="https://unibz-oofp-25-26.github.io/docs/generic/sections/variable/">type variable</a> <code>E</code></p>
 </blockquote>
 <blockquote class="book-hint info">
 <p><strong><em>Note.</em></strong>
@@ -1309,18 +1309,17 @@ The type <code>List&lt;E&gt;</code> is a <a href="https://unibz-oofp-25-26.githu
 </blockquote>
 <blockquote class="book-hint warning">
 <p><strong><em>Constraint.</em></strong>
-In Java, a primitive type (like <code>int</code> or <code>bool</code>) <em>cannot</em> be a type parameter.</p>
-<p>In contrast, a <a href="https://unibz-oofp-25-26.github.io/docs/objects/sections/boxed/">boxed type</a> (like <code>Integer</code> or <code>Boolean</code>) can.</p>
+In Java, a primitive type (like <code>int</code> or <code>bool</code>) <em>cannot</em> be a type parameter, whereas a <a href="https://unibz-oofp-25-26.github.io/docs/objects/sections/boxed/">boxed type</a> (like <code>Integer</code> or <code>Boolean</code>) can.</p>
 </blockquote>
 <h2 id="collection">
   The interface <code>Collection</code>
   <a class="anchor" href="#collection">#</a>
 </h2>
-<p>Many Java ADTs and data structures extend or implement the <a href="https://unibz-oofp-25-26.github.io/docs/interface/sections/java_interface/">interface</a> called <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Collection.html">Collection</a>
+<p>Many Java ADTs (and data structures) extend or implement the <a href="https://unibz-oofp-25-26.github.io/docs/interface/sections/java_interface/">interface</a> called <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Collection.html">Collection</a>
 (the only exception in this chapter is <code>Map</code>).</p>
 <blockquote class="book-hint warning">
 <p><strong><em>Syntax.</em></strong>
-The interface <code>Collection</code> specifies the following methods (among others):</p>
+The interface <code>Collection</code> specifies the following instance methods (among others):</p>
 <ul>
 <li><code>int size()</code></li>
 <li><code>boolean add(E e)</code></li>
@@ -1343,11 +1342,20 @@ Some of these methods are called &ldquo;optional operations&rdquo;, meaning that
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (E element: myCollection){
 </span></span><span style="display:flex;"><span>      ...
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>Another way to iterate over a collection consists in using an <a href="https://www.baeldung.com/java-iterator">iterator</a>.</p>
+</span></span></code></pre></div><blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// create a list</span>
+</span></span><span style="display:flex;"><span>List<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> myList <span style="color:#f92672">=</span> List.<span style="color:#a6e22e">of</span>(1,2,3);
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// iterate over it</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (Integer i: myList){
+</span></span><span style="display:flex;"><span>    System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(i);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></blockquote>
+<p>Another way to iterate over a collection consists in using an <a href="https://www.baeldung.com/java-iterator">iterator</a>.</p>
 <blockquote class="book-hint danger">
 <p><strong><em>Warning.</em></strong>
 Some collections (e.g. some implementations of the subinterface <code>Set</code>) do <em>not</em> offer any guarantee on the order of their elements.
-Iterating over such a collection is not fully predictable.</p>
+So iterating over such a collection is not fully predictable.</p>
 </blockquote>
 <h3 id="external-libraries">
   External libraries
@@ -1356,7 +1364,7 @@ Iterating over such a collection is not fully predictable.</p>
 <p>Some external libraries provide additional implementations of Java&rsquo;s ADTs.</p>
 <blockquote class="book-hint info">
 <p><strong><em>Example.</em></strong>
-Java has 19 native implementations of the ADT <code>Map</code>, like <code>HashMap</code> or <code>TreeMap</code>.</p>
+Java has 19 native implementations of the ADT <a href="https://unibz-oofp-25-26.github.io/docs/abstractdatatypes/sections/map/"><code>Map</code></a>, like <code>HashMap</code> or <code>TreeMap</code>.</p>
 <p><a href="https://github.com/google/guava">Guava</a> provides additional ones, like <code>ImmutableMap</code> or <code>HashBiMap</code>.</p>
 </blockquote>
 </article>
