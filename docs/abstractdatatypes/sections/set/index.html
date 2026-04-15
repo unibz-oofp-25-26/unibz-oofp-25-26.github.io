@@ -37,7 +37,7 @@ A set may expose the following methods:
 <link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/abstractdatatypes/sections/set/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.22af84f9d975052d55938f6c2b96ff03de4dd33574a1012dece045c53ecb6fc7.js" integrity="sha256-Iq&#43;E&#43;dl1BS1Vk49sK5b/A95N0zV0oQEt7OBFxT7Lb8c=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.d6fb17f5d2599eefb3ca3427f4856098f8c9bd79cb9c4516e1dd91470f38cc66.js" integrity="sha256-1vsX9dJZnu&#43;zyjQn9IVgmPjJvXnLnEUW4d2RRw84zGY=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -1031,6 +1031,19 @@ https://github.com/alex-shpak/hugo-book
         </li>
       
     
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/abstractdatatypes/sections/map/" class="">Associative array</a>
+  
+
+        </li>
+      
+    
   </ul>
 
         </li>
@@ -1484,9 +1497,9 @@ We can use sets to check whether two lists contain the same (distinct) elements:
 <div class="book-tabs-content markdown-inner"><p>Consider a version of <a href="https://unibz-oofp-25-26.github.io/docs/objects/sections/inheritance/#game_example">our game</a> where each NPC stores a list of encountered NPCs (possibly with duplicates), in chronological order.</p>
 <p><img src="/img/diagrams/plantuml/encounters_simple.svg" alt="" /></p>
 <p>Let us assume that none of <code>NPC</code>, <code>Unicorn</code> or <code>Butterfly</code> overrides <code>equals</code> or <code>hashCode</code> (which is sensible in this example).</p>
-<p>Implement a method</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">countUnicornsMet</span>(NPC npc)
-</span></span></code></pre></div><p>such that <code>countUnicornsMet(c)</code> is the number of <em>distinct</em> unicorns that <code>c</code> has met.</p>
+<p>Implement the method</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">countUniFriends</span>(NPC npc)
+</span></span></code></pre></div><p>such that <code>countUniFriends(c)</code> is the number of <em>distinct</em> unicorns that <code>c</code> has met.</p>
 </div>
 <!-- 
 <input type="radio" class="toggle" name="tabs-exercise_set_encounters" id="tabs-exercise_set_encounters-1"  />
@@ -1494,7 +1507,7 @@ We can use sets to check whether two lists contain the same (distinct) elements:
 <div class="book-tabs-content markdown-inner"><p>&ndash;&gt;</p>
 <!---->
 <!-- ```java -->
-<!-- int countUnicornsMet(NPC c) { -->
+<!-- int countUniFriends(NPC c) { -->
 <!---->
 <!--     Set<NPC> unicorns = new HashSet<>(); -->
 <!---->

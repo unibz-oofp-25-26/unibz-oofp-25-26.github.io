@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+<head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="
@@ -9,34 +9,42 @@
 
 
 An associative array (or dictionary or map) simulates a function with finite domain.
-
-A associative array exposes at least the following methods:
-
-lookup (or get) takes a key as input, and returns the value for this key (if any).
-insert (or put) inserts a pair (key, value). If an entry for this key was already present, then overwrites its value.
-remove (or delete) deletes the entry for a given key (if any).
+Equivalently, it can viewed as a finite set of key-value pairs, where keys are distinct.
 
 
-Note. Associative arrays are pervasive in programming.
-Many data structures have been designed over the years whose main purpose is to implement associative arrays efficiently (notably hash maps and a variety of search trees).">
+Example.
+The following associative array maps a city to its country:
+$\qquad \{
+\textit{Verona} \mapsto \textit{Italy},\
+\textit{Rome} \mapsto \textit{Italy},\
+\textit{Innsbruck} \mapsto \textit{Austria}
+\}$
+The keys are $\textit{Verona}, \textit{Rome}$ and $\textit{Innsbruck}$.
+The values are $\textit{Italy}$ and $\textit{Austria}$.
+
+An associative array exposes at least the following methods:">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/docs/abstractdatatypes/sections/map/">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://unibz-oofp-25-26.github.io/docs/abstractdatatypes/sections/map/">
   <meta property="og:site_name" content="OOFP 2025-26">
   <meta property="og:title" content="Associative array">
   <meta property="og:description" content="Associative array # An associative array (or dictionary or map) simulates a function with finite domain.
-A associative array exposes at least the following methods:
-lookup (or get) takes a key as input, and returns the value for this key (if any). insert (or put) inserts a pair (key, value). If an entry for this key was already present, then overwrites its value. remove (or delete) deletes the entry for a given key (if any). Note. Associative arrays are pervasive in programming. Many data structures have been designed over the years whose main purpose is to implement associative arrays efficiently (notably hash maps and a variety of search trees).">
+Equivalently, it can viewed as a finite set of key-value pairs, where keys are distinct.
+Example. The following associative array maps a city to its country:
+$\qquad \{ \textit{Verona} \mapsto \textit{Italy},\ \textit{Rome} \mapsto \textit{Italy},\ \textit{Innsbruck} \mapsto \textit{Austria} \}$
+The keys are $\textit{Verona}, \textit{Rome}$ and $\textit{Innsbruck}$.
+The values are $\textit{Italy}$ and $\textit{Austria}$.
+An associative array exposes at least the following methods:">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
 <title>Associative array | OOFP 2025-26</title>
 <link rel="icon" href="/favicon.png" >
 <link rel="manifest" href="/manifest.json">
-<link rel="canonical" href="http://localhost:1313/docs/abstractdatatypes/sections/map/">
+<link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/abstractdatatypes/sections/map/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.b8565477055685c015298329ab595c8794e7551cff548d9f65eaad95abfb7b51.js" integrity="sha256-uFZUdwVWhcAVKYMpq1lch5TnVRz/VI2fZeqtlav7e1E=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.d6fb17f5d2599eefb3ca3427f4856098f8c9bd79cb9c4516e1dd91470f38cc66.js" integrity="sha256-1vsX9dJZnu&#43;zyjQn9IVgmPjJvXnLnEUW4d2RRw84zGY=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -699,19 +707,6 @@ https://github.com/alex-shpak/hugo-book
         </li>
       
     
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/recursion/sections/termination/" class="">Termination</a>
-  
-
-        </li>
-      
-    
   </ul>
 
         </li>
@@ -792,19 +787,6 @@ https://github.com/alex-shpak/hugo-book
 
           
   <ul>
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/pattern/sections/fold/" class="">Fold</a>
-  
-
-        </li>
-      
     
       
         <li>
@@ -1069,32 +1051,6 @@ https://github.com/alex-shpak/hugo-book
         </li>
       
     
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/abstractdatatypes/sections/queue/" class="">Stack, queue, priority queue</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/abstractdatatypes/sections/sorting/" class="">Sorting</a>
-  
-
-        </li>
-      
-    
   </ul>
 
         </li>
@@ -1342,139 +1298,160 @@ https://github.com/alex-shpak/hugo-book
   <a class="anchor" href="#associative-array">#</a>
 </h1>
 <blockquote class="book-hint warning">
-<p>An <strong>associative array</strong> (or <strong>dictionary</strong> or <strong>map</strong>) simulates a <a href="http://localhost:1313/docs/background/sections/function/">function</a> with <em>finite</em> domain.</p>
+<p>An <strong>associative array</strong> (or <strong>dictionary</strong> or <strong>map</strong>) simulates a <a href="https://unibz-oofp-25-26.github.io/docs/background/sections/function/">function</a> with finite domain.</p>
+<p>Equivalently, it can viewed as a finite set of <strong>key-value pairs</strong>, where keys are distinct.</p>
 </blockquote>
-<p>A associative array exposes at least the following methods:</p>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong>
+The following associative array maps a city to its country:</p>
+<p>$\qquad \{
+\textit{Verona} \mapsto \textit{Italy},\
+\textit{Rome} \mapsto \textit{Italy},\
+\textit{Innsbruck} \mapsto \textit{Austria}
+\}$</p>
+<p>The keys are $\textit{Verona}, \textit{Rome}$ and $\textit{Innsbruck}$.<br>
+The values are $\textit{Italy}$ and $\textit{Austria}$.</p>
+</blockquote>
+<p>An associative array exposes at least the following methods:</p>
 <ul>
-<li><strong>lookup</strong> (or <strong>get</strong>) takes a key as input, and returns the value for this key (if any).</li>
-<li><strong>insert</strong> (or <strong>put</strong>) inserts a pair <em>(key, value)</em>. If an entry for this key was already present, then overwrites its value.</li>
-<li><strong>remove</strong> (or <strong>delete</strong>) deletes the entry for a given key (if any).</li>
+<li>&ldquo;<strong>lookup</strong>&rdquo; (or &ldquo;<strong>get</strong>&rdquo;) takes a key as input, and returns the value for this key (if any).</li>
+<li>&ldquo;<strong>insert</strong>&rdquo; (or &ldquo;<strong>put</strong>&rdquo;) inserts a pair <em>(key, value)</em>. If an entry for this key was already present, then it overwrites its value.</li>
+<li>&ldquo;<strong>remove</strong>&rdquo; (or &ldquo;<strong>delete</strong>&rdquo;) deletes the entry for a given key (if any).</li>
 </ul>
 <blockquote class="book-hint info">
 <p><strong><em>Note.</em></strong> Associative arrays are pervasive in programming.
-Many data structures have been designed over the years whose main purpose is to implement associative arrays efficiently (notably hash maps and a variety of search trees).</p>
+Many data structures have been designed over the years whose main purpose is to implement associative arrays efficiently (notably <a href="https://unibz-oofp-25-26.github.io/notreleased/">hash tables</a> and a variety of search trees).</p>
 </blockquote>
 <h2 id="java">
   in Java
   <a class="anchor" href="#java">#</a>
 </h2>
-<p>Java provides an interface <code>Map</code> with 19 native implementations (i.e. 19 different <em>classes</em> that implement this interface).
-The most commonly used is <code>HashMap</code>.</p>
+<p>Java has an <a href="https://unibz-oofp-25-26.github.io/docs/interface/sections/java_interface/">interface</a> <code>Map</code> with 19 native implementations (meaning that 19 different <em>classes</em> <a href="https://unibz-oofp-25-26.github.io/docs/interface/sections/java_interface/#implement">implement</a> this interface).</p>
+<p>The most frequently used implementation is <code>HashMap</code>.</p>
 <blockquote class="book-hint info">
-<p><strong><em>Note.</em></strong> The interface <code>Map</code> does <em>not</em> extend the interface <code>Collection</code>.</p>
+<p><strong><em>Note.</em></strong> In contrast to <code>List</code> and <code>Set</code>, the interface <code>Map</code> does <em>not</em> extend the interface <code>Collection</code>.</p>
 </blockquote>
-<p><code>Map</code> is a parameterized type with <em>two</em> parameters: one for the type of its keys, and one for the type of its values.
-For instance, a map from integers to strings has type <code>Map&lt;Integer, String&gt;</code>.</p>
+<blockquote class="book-hint warning">
+<p><code>Map</code> is a <a href="https://unibz-oofp-25-26.github.io/notreleased/">generic</a> type with <em>two</em> parameters: one for the type of its keys, and one for the type of its values.</p>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong>
+A map from integers to strings has type <code>Map&lt;Integer, String&gt;</code>.</p>
+</blockquote>
 <h3 id="syntax">
   Syntax
   <a class="anchor" href="#syntax">#</a>
 </h3>
-<p>Here are code snippets for a few operations specified in the interface <code>Map</code>.</p>
-<ul>
-<li>Create a <code>Map</code> and populate it:</li>
-</ul>
+<p>Consider the classes <code>City</code> used in the section on <a href="https://unibz-oofp-25-26.github.io/docs/abstractdatatypes/sections/set/#duplicates">sets</a>.
+Here are code snippets for a few operations specified in the interface <code>Map</code>.</p>
+<blockquote class="book-hint info">
+<p>Create a <code>Map</code> and populate it:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>City milan <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> City(<span style="color:#e6db74">&#34;Milan&#34;</span>, 20100);
 </span></span><span style="display:flex;"><span>City florence <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> City(<span style="color:#e6db74">&#34;Florence&#34;</span>, 50100);
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Create an empty map whose keys are zipCodes,</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// create an empty map whose keys are zipCodes,</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// and whose values are cities</span>
 </span></span><span style="display:flex;"><span>Map<span style="color:#f92672">&lt;</span>Integer, City<span style="color:#f92672">&gt;</span> zipCodeToCity <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashMap<span style="color:#f92672">&lt;&gt;</span>();
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Adds { 20100 ↦ milan } to the map</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// add the entry { 20100 ↦ milan } to the map</span>
 </span></span><span style="display:flex;"><span>zipCodeToCity.<span style="color:#a6e22e">put</span>(milan.<span style="color:#a6e22e">zipCode</span>, milan);
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Adds { 50100 ↦ florence } to the map</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// add the entry { 50100 ↦ florence } to the map</span>
 </span></span><span style="display:flex;"><span>zipCodeToCity.<span style="color:#a6e22e">put</span>(florence.<span style="color:#a6e22e">zipCode</span>, florence);
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Creates a map identical to the previous one,</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// creates a map identical to the previous one,</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// but which cannot be modified</span>
 </span></span><span style="display:flex;"><span>Map<span style="color:#f92672">&lt;</span>Integer, City<span style="color:#f92672">&gt;</span> anotherMap <span style="color:#f92672">=</span> Map.<span style="color:#a6e22e">of</span>( milan.<span style="color:#a6e22e">zipCode</span>, milan,
 </span></span><span style="display:flex;"><span>                                        florence.<span style="color:#a6e22e">zipCode</span>, florence );
-</span></span></code></pre></div><ul>
-<li>Retrieve the value associated to a given key:</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// Contains (a reference to) Milan</span>
+</span></span></code></pre></div></blockquote>
+<blockquote class="book-hint info">
+<p>Retrieve the value associated to a given key:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// contains (a reference to) Milan</span>
 </span></span><span style="display:flex;"><span>City aCity <span style="color:#f92672">=</span> zipCodeToCity.<span style="color:#a6e22e">get</span>(20100);
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Has value null</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// has value null</span>
 </span></span><span style="display:flex;"><span>City anotherCity <span style="color:#f92672">=</span> zipCodeToCity.<span style="color:#a6e22e">get</span>(88888);
-</span></span></code></pre></div><ul>
-<li>Check whether a map contains an entry for a given key:</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// Outputs true</span>
+</span></span></code></pre></div></blockquote>
+<blockquote class="book-hint info">
+<p>Check whether a map contains an entry for a given key:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// outputs true</span>
 </span></span><span style="display:flex;"><span>System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(zipCodeToCity.<span style="color:#a6e22e">containsKey</span>(20100));
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Outputs false</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// outputs false</span>
 </span></span><span style="display:flex;"><span>System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(zipCodeToCity.<span style="color:#a6e22e">containsKey</span>(88888));
-</span></span></code></pre></div><ul>
-<li>Retrieve the number of entries in a map:</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// Outputs 2</span>
+</span></span></code></pre></div></blockquote>
+<blockquote class="book-hint info">
+<p>Retrieve the number of entries in a map:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// outputs 2</span>
 </span></span><span style="display:flex;"><span>System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(zipCodeToCity.<span style="color:#a6e22e">size</span>());
-</span></span></code></pre></div><ul>
-<li>Overwrite an entry in a map:</li>
-</ul>
+</span></span></code></pre></div></blockquote>
+<blockquote class="book-hint info">
+<p>Overwrite an entry in a map:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>City bologna <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> City(<span style="color:#e6db74">&#34;Bologna&#34;</span>, 40100);
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Replaces { 20100 ↦ milan } with { 20100 ↦ bologna }</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// replace { 20100 ↦ milan } with { 20100 ↦ bologna }</span>
 </span></span><span style="display:flex;"><span>zipCodeToCity.<span style="color:#a6e22e">put</span>(20100, bologna);
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Outputs 2</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// outputs 2</span>
 </span></span><span style="display:flex;"><span>System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(zipCodeToCity.<span style="color:#a6e22e">size</span>());
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Adds { 40100 ↦ bologna } to the map</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// add { 40100 ↦ bologna } to the map</span>
 </span></span><span style="display:flex;"><span>zipCodeToCity.<span style="color:#a6e22e">put</span>(bologna.<span style="color:#a6e22e">zipCode</span>, bologna);
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Outputs 3</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// outputs 3</span>
 </span></span><span style="display:flex;"><span>System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(zipCodeToCity.<span style="color:#a6e22e">size</span>());
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Replaces { 20100 ↦ bologna } with { 20100 ↦ milan }</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// replace { 20100 ↦ bologna } with { 20100 ↦ milan }</span>
 </span></span><span style="display:flex;"><span>zipCodeToCity.<span style="color:#a6e22e">put</span>(milan.<span style="color:#a6e22e">zipCode</span>, milan);
-</span></span></code></pre></div><ul>
-<li>Retrieve the set of keys of a map (note that this is an instance of <code>Set&lt;E&gt;</code>, where <code>E</code> is the type of the keys)</li>
-</ul>
+</span></span></code></pre></div></blockquote>
+<blockquote class="book-hint info">
+<p>Retrieve the set of keys of a map (this is an instance of <code>Set&lt;E&gt;</code>, where <code>E</code> is the type of the keys)</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Set<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> keys <span style="color:#f92672">=</span> zipCodeToCity.<span style="color:#a6e22e">keySet</span>();
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// Outputs true</span>
 </span></span><span style="display:flex;"><span>System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(keys.<span style="color:#a6e22e">contains</span>(20100));
-</span></span></code></pre></div><ul>
-<li>Retrieve a collection with all values in the map, in no specific order (may contain duplicates):</li>
-</ul>
+</span></span></code></pre></div></blockquote>
+<blockquote class="book-hint info">
+<p>Retrieve a collection with all values in the map, in no specific order (may contain duplicates):</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Collection<span style="color:#f92672">&lt;</span>City<span style="color:#f92672">&gt;</span> values <span style="color:#f92672">=</span> zipCodeToCity.<span style="color:#a6e22e">values</span>();
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Outputs true</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// outputs true</span>
 </span></span><span style="display:flex;"><span>System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(values.<span style="color:#a6e22e">contains</span>(milan));
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Outputs 3</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// outputs 3</span>
 </span></span><span style="display:flex;"><span>System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(values.<span style="color:#a6e22e">size</span>());
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Adds { 99999 ↦ milan } to the map</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// add { 99999 ↦ milan } to the map</span>
 </span></span><span style="display:flex;"><span>zipCodeToCity.<span style="color:#a6e22e">put</span>(99999, milan);
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Outputs 4</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// outputs 4</span>
 </span></span><span style="display:flex;"><span>System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(zipCodeToCity.<span style="color:#a6e22e">values</span>().<span style="color:#a6e22e">size</span>());
-</span></span></code></pre></div><ul>
-<li>Wrap the map into a <em>set</em> of entries (a.k.a. &ldquo;key-value&rdquo; pairs):</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// Creates a &#34;wrapper&#34; Set around the map.</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// No data is duplicated.</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Each element of this set has type Entry&lt;Integer,City&gt;</span>
+</span></span></code></pre></div></blockquote>
+<blockquote class="book-hint info">
+<p>Wrap the map into a set of entries (a.k.a. &ldquo;key-value&rdquo; pairs):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// create a &#34;wrapper&#34; `Set` around the map (no data is duplicated)</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// each element of this set has type `Entry&lt;Integer,City&gt;`</span>
 </span></span><span style="display:flex;"><span>Set<span style="color:#f92672">&lt;</span>Entry<span style="color:#f92672">&lt;</span>Integer,City<span style="color:#f92672">&gt;&gt;</span> entries <span style="color:#f92672">=</span> zipCodeToCity.<span style="color:#a6e22e">entrySet</span>();
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Iterates over entries</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// iterate over entries</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (Entry<span style="color:#f92672">&lt;</span>Integer, City<span style="color:#f92672">&gt;</span> entry : entries){
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Holds the entry&#39;s key</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// holds the entry&#39;s key</span>
 </span></span><span style="display:flex;"><span>    Integer zipCode <span style="color:#f92672">=</span> entry.<span style="color:#a6e22e">getKey</span>();
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Holds the entry&#39;s value</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// holds the entry&#39;s value</span>
 </span></span><span style="display:flex;"><span>    City city <span style="color:#f92672">=</span> entry.<span style="color:#a6e22e">getValue</span>();
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>Again, we refer to the <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html">Javadoc</a> for an exhaustive documentation.</p>
+</span></span></code></pre></div></blockquote>
+<p>Again, we refer to the <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html">Javadoc</a> for an exhaustive documentation.</p>
 <h3 id="comparing-keys">
   Comparing keys
   <a class="anchor" href="#comparing-keys">#</a>
 </h3>
-<p>The identity of two keys in Java is determined by the method <code>equals</code>, analogously to what we saw <a href="http://localhost:1313/docs/objects/sections/comparing/#equals">already</a> for the identity of two elements in a set.</p>
-<p>For instance, consider once again the classes <code>City</code> and <code>SmartCity</code> that we used in the section on <a href="http://localhost:1313/docs/abstractdatatypes/sections/set/#duplicates">sets</a>, where <code>SmartCity</code> overrides <code>equals</code> (and <code>hashCode</code>), whereas <code>City</code> does not:</p>
+<blockquote class="book-hint warning">
+<p>The identity of two keys is determined by the method <code>equals</code>, similarly to what we have seen for <a href="https://unibz-oofp-25-26.github.io/docs/abstractdatatypes/sections/set/#duplicates">sets</a>.</p>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong>
+Consider the classes <code>City</code> and <code>SmartCity</code> used in the section on <a href="https://unibz-oofp-25-26.github.io/docs/abstractdatatypes/sections/set/#duplicates">sets</a>, where <code>SmartCity</code> overrides <code>equals</code> (and <code>hashCode</code>), whereas <code>City</code> does not:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>City trento <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> City(<span style="color:#e6db74">&#34;Trento&#34;</span>, 38100);
 </span></span><span style="display:flex;"><span>City trentoAgain <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> City(<span style="color:#e6db74">&#34;Trento&#34;</span>, 38100);
 </span></span><span style="display:flex;"><span>Country italy <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Country(<span style="color:#e6db74">&#34;Italy&#34;</span>);
@@ -1483,7 +1460,7 @@ For instance, a map from integers to strings has type <code>Map&lt;Integer, Stri
 </span></span><span style="display:flex;"><span>cityToCountry.<span style="color:#a6e22e">put</span>(trento, italy);
 </span></span><span style="display:flex;"><span>cityToCountry.<span style="color:#a6e22e">put</span>(trentoAgain, italy);
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Outputs 2</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// outputs 2</span>
 </span></span><span style="display:flex;"><span>System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(cityToCountry.<span style="color:#a6e22e">size</span>());
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>SmartCity smartTrento <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> SmartCity(<span style="color:#e6db74">&#34;Trento&#34;</span>, 38100);
@@ -1493,118 +1470,138 @@ For instance, a map from integers to strings has type <code>Map&lt;Integer, Stri
 </span></span><span style="display:flex;"><span>smartCityToCountry.<span style="color:#a6e22e">put</span>(smartTrento, italy);
 </span></span><span style="display:flex;"><span>smartCityToCountry.<span style="color:#a6e22e">put</span>(smartTrentoAgain, italy);
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Outputs 1</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// outputs 1</span>
 </span></span><span style="display:flex;"><span>System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(smartCityToCountry.<span style="color:#a6e22e">size</span>());
-</span></span></code></pre></div><h2 id="usage">
+</span></span></code></pre></div></blockquote>
+<h2 id="usage">
   Usage
   <a class="anchor" href="#usage">#</a>
 </h2>
 <div class="book-tabs">
 <input type="radio" class="toggle" name="tabs-exercise_map_Countrepeated" id="tabs-exercise_map_Countrepeated-0" checked="checked" />
 <label for="tabs-exercise_map_Countrepeated-0">Exercise</label>
-<div class="book-tabs-content markdown-inner"><p>Write a Java method <code>int countRepeatedChars(char[] chars)</code> that takes as input an array of characters, and returns the number of characters that appear at least $3$ times in this array.</p>
-<p>For instance, for the input array
-<code>[a,e,b,c,b,a,d,b]</code>,
-the method should return
-<code>1</code>.</p>
+<div class="book-tabs-content markdown-inner"><p>Implement the method</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">countRepeatedChars</span>(<span style="color:#66d9ef">char</span><span style="color:#f92672">[]</span> chars)
+</span></span></code></pre></div><p>such that <code>countRepeatedChars(chars)</code> is the number of characters that appear at least $3$ times in <code>chars</code>.</p>
+<p>For instance, if <code>chars</code> is the array <code>['a','e','b','c','b','a','d','b']</code>, then <code>countRepeatedChars(chars)</code> should evaluate to <code>1</code>.</p>
+<blockquote class="book-hint warning">
+  <p><strong><em>Constraint.</em></strong>
+Your implementation should <em>not</em> sort the array.</p>
+</blockquote>
 </div>
+<!-- 
 <input type="radio" class="toggle" name="tabs-exercise_map_Countrepeated" id="tabs-exercise_map_Countrepeated-1"  />
 <label for="tabs-exercise_map_Countrepeated-1">Possible solution</label>
-<div class="book-tabs-content markdown-inner"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">countRepeatedChars</span>(<span style="color:#66d9ef">char</span><span style="color:#f92672">[]</span> chars) {
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// key: character</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// value: number of occurrences of this character</span>
-</span></span><span style="display:flex;"><span>    Map<span style="color:#f92672">&lt;</span>Character, Integer<span style="color:#f92672">&gt;</span> charToOcc <span style="color:#f92672">=</span> computeCharToOccMap(chars);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// return value</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> triplicatedChars <span style="color:#f92672">=</span> 0;
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// count the number of entries in the map with a value &gt; 2</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (Integer occ  : charToOcc.<span style="color:#a6e22e">values</span>()){
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span>(occ <span style="color:#f92672">&gt;</span> 2){
-</span></span><span style="display:flex;"><span>            triplicatedChars<span style="color:#f92672">++</span>;
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> triplicatedChars;
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">/**
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">* Auxiliary method.
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">*
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">* Returns a map that associates each character to its number of occurrences
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">*/</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span> Map<span style="color:#f92672">&lt;</span>Character, Integer<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">computeCharToOccMap</span>(<span style="color:#66d9ef">char</span><span style="color:#f92672">[]</span> chars) {
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// create an empty map</span>
-</span></span><span style="display:flex;"><span>    Map<span style="color:#f92672">&lt;</span>Character, Integer<span style="color:#f92672">&gt;</span> charToOcc <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashMap<span style="color:#f92672">&lt;&gt;</span>();
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// for each character in the input array</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">char</span> character : chars) {
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// retrieve the number of occurrences seen so far for this character</span>
-</span></span><span style="display:flex;"><span>        Integer occ <span style="color:#f92672">=</span> charToOcc.<span style="color:#a6e22e">get</span>(character);
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// increment this number by 1</span>
-</span></span><span style="display:flex;"><span>        occ <span style="color:#f92672">=</span> (occ <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span>) <span style="color:#f92672">?</span> 1 : occ <span style="color:#f92672">+</span> 1;
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// update the map for this character</span>
-</span></span><span style="display:flex;"><span>        charToOcc.<span style="color:#a6e22e">put</span>(character, occ);
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> charToOcc;
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div></div>
+<div class="book-tabs-content markdown-inner"><p>&ndash;&gt;</p>
+<!---->
+<!-- ```java -->
+<!-- int countRepeatedChars(char[] chars) { -->
+<!---->
+<!--     // key: character -->
+<!--     // value: number of occurrences of this character -->
+<!--     Map<Character, Integer> charToOcc = computeCharToOccMap(chars); -->
+<!---->
+<!--     // return value -->
+<!--     int triplicatedChars = 0; -->
+<!--     // count the number of entries in the map with a value > 2 -->
+<!--     for (Integer occ  : charToOcc.values()){ -->
+<!--         if(occ > 2){ -->
+<!--             triplicatedChars++; -->
+<!--         } -->
+<!--     } -->
+<!--     return triplicatedChars; -->
+<!-- } -->
+<!---->
+<!-- /** -->
+<!-- * Auxiliary method. -->
+<!-- * -->
+<!-- * Returns a map that associates each character to its number of occurrences -->
+<!-- */ -->
+<!-- private Map<Character, Integer> computeCharToOccMap(char[] chars) { -->
+<!---->
+<!--     // create an empty map -->
+<!--     Map<Character, Integer> charToOcc = new HashMap<>(); -->
+<!---->
+<!--     // for each character in the input array -->
+<!--     for (char character : chars) { -->
+<!--         // retrieve the number of occurrences seen so far for this character -->
+<!--         Integer occ = charToOcc.get(character); -->
+<!--         // increment this number by 1 -->
+<!--         occ = (occ == null) ? 1 : occ + 1; -->
+<!--         // update the map for this character -->
+<!--         charToOcc.put(character, occ); -->
+<!--     } -->
+<!--     return charToOcc; -->
+<!-- } -->
+<!-- ``` -->
+<!---->
+<!-- </div>
+ -->
 </div>
 <div class="book-tabs">
-<input type="radio" class="toggle" name="tabs-exercise_map_miniboard" id="tabs-exercise_map_miniboard-0" checked="checked" />
-<label for="tabs-exercise_map_miniboard-0">Exercise</label>
-<div class="book-tabs-content markdown-inner"><p>Consider the implementation of our game that we used previously in our exercise with sets.
-Assume in addition that the class <code>Unit</code> has an attribute <code>color</code> of type <code>String</code>.</p>
-<p>Write a (Java) method <code>void printNumberOfUnitsByColor(Unit[][] board)</code>
-that takes a board as input, and prints the number of unit of each color, in any order.</p>
-<p>For instance, for the board below:</p>
-<p><img src="/img/adt/miniboard.png" alt="" /></p>
-<p>The method could print:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-perl" data-lang="perl"><span style="display:flex;"><span>blue: <span style="color:#ae81ff">1</span>
-</span></span><span style="display:flex;"><span>yellow: <span style="color:#ae81ff">2</span>
-</span></span><span style="display:flex;"><span>red: <span style="color:#ae81ff">2</span>
+<input type="radio" class="toggle" name="tabs-exercise_map_groupsBy" id="tabs-exercise_map_groupsBy-0" checked="checked" />
+<label for="tabs-exercise_map_groupsBy-0">Exercise</label>
+<div class="book-tabs-content markdown-inner"><p>Consider the Java <a href="https://unibz-oofp-25-26.github.io/docs/composite/sections/product/#java">record</a></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">record</span> <span style="color:#a6e22e">City</span>(String name, String country) { }
+</span></span></code></pre></div><p>Implement the method</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">printNumberOfCitiesByCountry</span>(City<span style="color:#f92672">[]</span> cities)
+</span></span></code></pre></div><p>such that <code>printNumberOfCitiesByCountry(cities)</code> prints the number of cities for each country in the array <code>cities</code>, in any order.<br>
+For instance,</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>City verona <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> City(<span style="color:#e6db74">&#34;Verona&#34;</span>, <span style="color:#e6db74">&#34;Italy&#34;</span>);
+</span></span><span style="display:flex;"><span>City rome <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> City(<span style="color:#e6db74">&#34;Rome&#34;</span>, <span style="color:#e6db74">&#34;Italy&#34;</span>);
+</span></span><span style="display:flex;"><span>City innsbruck <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> City(<span style="color:#e6db74">&#34;Innsbruck&#34;</span>, <span style="color:#e6db74">&#34;Austria&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>printNumberOfCitiesByCountry(<span style="color:#66d9ef">new</span> City<span style="color:#f92672">[]</span>{verona, rome, innsbruck, rome});
+</span></span></code></pre></div><p>should print</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-perl" data-lang="perl"><span style="display:flex;"><span><span style="color:#e6db74">&#34;Italy&#34;</span>: <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;Austria&#34;</span>: <span style="color:#ae81ff">1</span>
+</span></span></code></pre></div><p>or</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-perl" data-lang="perl"><span style="display:flex;"><span><span style="color:#e6db74">&#34;Austria&#34;</span>: <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;Italy&#34;</span>: <span style="color:#ae81ff">2</span>
 </span></span></code></pre></div></div>
-<input type="radio" class="toggle" name="tabs-exercise_map_miniboard" id="tabs-exercise_map_miniboard-1"  />
-<label for="tabs-exercise_map_miniboard-1">Possible solution</label>
-<div class="book-tabs-content markdown-inner"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">printNumberOfUnitsByColor</span>(Unit<span style="color:#f92672">[][]</span> board) {
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// key: a color</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// value: the set of all units with this color</span>
-</span></span><span style="display:flex;"><span>    Map<span style="color:#f92672">&lt;</span>String, Set<span style="color:#f92672">&lt;</span>Unit<span style="color:#f92672">&gt;&gt;</span> colorToUnits <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashMap<span style="color:#f92672">&lt;&gt;</span>();
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (Unit<span style="color:#f92672">[]</span> row : board) {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (Unit unit : row) {
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (unit <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span>) {
-</span></span><span style="display:flex;"><span>                updateMap(unit, colorToUnits);
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// for each entry in the map</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (Entry<span style="color:#f92672">&lt;</span>String, Set<span style="color:#f92672">&lt;</span>Unit<span style="color:#f92672">&gt;&gt;</span> entry : colorToUnits.<span style="color:#a6e22e">entrySet</span>()) {
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// print the color and the number of units</span>
-</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(
-</span></span><span style="display:flex;"><span>            entry.<span style="color:#a6e22e">getKey</span>() <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;: &#34;</span> <span style="color:#f92672">+</span> entry.<span style="color:#a6e22e">getValue</span>().<span style="color:#a6e22e">size</span>()
-</span></span><span style="display:flex;"><span>        );
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">/**
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * Auxiliary method
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> */</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">updateMap</span>(Unit unit, Map<span style="color:#f92672">&lt;</span>String,Set<span style="color:#f92672">&lt;</span>Unit<span style="color:#f92672">&gt;&gt;</span> colorToUnits){
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// retrieve the set of units seen so for the color</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// of the current unit</span>
-</span></span><span style="display:flex;"><span>    Set<span style="color:#f92672">&lt;</span>Unit<span style="color:#f92672">&gt;</span> units <span style="color:#f92672">=</span> colorToUnits.<span style="color:#a6e22e">get</span>(unit.<span style="color:#a6e22e">color</span>);
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (units <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span>) {
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// if this is the first unit seen with this color,</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// then create an entry (in the map) for this color</span>
-</span></span><span style="display:flex;"><span>        units <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashSet<span style="color:#f92672">&lt;&gt;</span>();
-</span></span><span style="display:flex;"><span>        colorToUnits.<span style="color:#a6e22e">put</span>(unit.<span style="color:#a6e22e">color</span>, units);
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    units.<span style="color:#a6e22e">add</span>(unit);
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div></div>
+<!-- 
+<input type="radio" class="toggle" name="tabs-exercise_map_groupsBy" id="tabs-exercise_map_groupsBy-1"  />
+<label for="tabs-exercise_map_groupsBy-1">Possible solution</label>
+<div class="book-tabs-content markdown-inner"><p>&ndash;&gt;</p>
+<!---->
+<!-- ```java -->
+<!-- void printNumberOfCitiesByCountry(City[] cities) { -->
+<!---->
+<!--     // key: a country -->
+<!--     // value: the set of all cities in this country -->
+<!--     Map<String, Set<String>> countryToCities = new HashMap<>(); -->
+<!---->
+<!--     for (City[] city : cities) { -->
+<!--         updateMap(city, countryToCities); -->
+<!--     } -->
+<!--     // for each entry in the map -->
+<!--     for (Entry<String, Set<String>> entry : countryToCities.entrySet()) { -->
+<!--         // print the country and the number of cities -->
+<!--         System.out.println( -->
+<!--             entry.getKey() + ": " + entry.getValue().size() -->
+<!--         ); -->
+<!--     } -->
+<!-- } -->
+<!---->
+<!-- /** -->
+<!--  * Auxiliary method -->
+<!--  */ -->
+<!-- private void updateMap(city, Map<String,Set<String>> countryToCities){ -->
+<!---->
+<!--     // retrieve the set of cities seen so for this country -->
+<!--     Set<City> cities = countryToCities.get(city.country()); -->
+<!--     if (cities == null) { -->
+<!--         // if this is the first time we see this country, -->
+<!--         // then create an entry (in the map) for it -->
+<!--         cities = new HashSet<>(); -->
+<!--         countryToCities.put(city.country(), cities); -->
+<!--     } -->
+<!--     cities.add(country); -->
+<!-- } -->
+<!-- ``` -->
+<!---->
+<!-- </div>
+ -->
 </div>
 </article>
  
