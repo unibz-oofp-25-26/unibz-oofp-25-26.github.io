@@ -1,0 +1,18 @@
+@startuml
+scale 400 width
+
+abstract class NPC {
+ int xp
+ List<NPC> encounters
+}
+
+class Unicorn {
+}
+
+class Butterfly {
+}
+
+NPC <|-- Unicorn : extends
+NPC <|-- Butterfly : extends
+
+@enduml

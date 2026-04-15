@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+<head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="
@@ -8,36 +8,36 @@
   #
 
 
-The abstract data type set simulates a (usually finite) mathematical set.
+The abstract data type set simulates a (usually finite) set.
 
 A set may expose the following methods:
 
-add: adds an element to the set if it was not present already (and returns true iff this was the case),
-contains: checks whether an element belongs to the set,
-size: returns the cardinality of the set,
+&ldquo;add:&rdquo; adds an element to the set if it was not present already (and returns true iff this was the case),
+&ldquo;contains:&rdquo; checks whether an element belongs to the set,
+&ldquo;size:&rdquo; returns the cardinality of the set,
 etc.
 
 
 Warning.
-A set provides no guarantee on the order of its elements!">
+By default, there is no guarantee on the order of elements in a set.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/docs/abstractdatatypes/sections/set/">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://unibz-oofp-25-26.github.io/docs/abstractdatatypes/sections/set/">
   <meta property="og:site_name" content="OOFP 2025-26">
   <meta property="og:title" content="Set">
-  <meta property="og:description" content="Set # The abstract data type set simulates a (usually finite) mathematical set.
+  <meta property="og:description" content="Set # The abstract data type set simulates a (usually finite) set.
 A set may expose the following methods:
-add: adds an element to the set if it was not present already (and returns true iff this was the case), contains: checks whether an element belongs to the set, size: returns the cardinality of the set, etc. Warning. A set provides no guarantee on the order of its elements!">
+“add:” adds an element to the set if it was not present already (and returns true iff this was the case), “contains:” checks whether an element belongs to the set, “size:” returns the cardinality of the set, etc. Warning. By default, there is no guarantee on the order of elements in a set.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
 <title>Set | OOFP 2025-26</title>
 <link rel="icon" href="/favicon.png" >
 <link rel="manifest" href="/manifest.json">
-<link rel="canonical" href="http://localhost:1313/docs/abstractdatatypes/sections/set/">
+<link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/abstractdatatypes/sections/set/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.27206f0e495fd2fbd2ffe57708bf13c8a8a845fb26c2bf9f2071438b17b353c8.js" integrity="sha256-JyBvDklf0vvS/&#43;V3CL8TyKioRfsmwr&#43;fIHFDixezU8g=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.22af84f9d975052d55938f6c2b96ff03de4dd33574a1012dece045c53ecb6fc7.js" integrity="sha256-Iq&#43;E&#43;dl1BS1Vk49sK5b/A95N0zV0oQEt7OBFxT7Lb8c=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -700,19 +700,6 @@ https://github.com/alex-shpak/hugo-book
         </li>
       
     
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/recursion/sections/termination/" class="">Termination</a>
-  
-
-        </li>
-      
-    
   </ul>
 
         </li>
@@ -793,19 +780,6 @@ https://github.com/alex-shpak/hugo-book
 
           
   <ul>
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/pattern/sections/fold/" class="">Fold</a>
-  
-
-        </li>
-      
     
       
         <li>
@@ -1052,45 +1026,6 @@ https://github.com/alex-shpak/hugo-book
 
   
     <a href="/docs/abstractdatatypes/sections/set/" class="active">Set</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/abstractdatatypes/sections/map/" class="">Associative array</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/abstractdatatypes/sections/queue/" class="">Stack, queue, priority queue</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/abstractdatatypes/sections/sorting/" class="">Sorting</a>
   
 
         </li>
@@ -1343,96 +1278,104 @@ https://github.com/alex-shpak/hugo-book
   <a class="anchor" href="#set">#</a>
 </h1>
 <blockquote class="book-hint warning">
-<p>The abstract data type <strong>set</strong> simulates a (usually finite) mathematical <a href="http://localhost:1313/docs/background/sections/set_list/#set">set</a>.</p>
+<p>The abstract data type <strong>set</strong> simulates a (usually finite) <a href="https://unibz-oofp-25-26.github.io/docs/background/sections/set_list/#set">set</a>.</p>
 </blockquote>
 <p>A set may expose the following methods:</p>
 <ul>
-<li><strong>add</strong>: adds an element to the set if it was not present already (and returns true iff this was the case),</li>
-<li><strong>contains</strong>: checks whether an element belongs to the set,</li>
-<li><strong>size</strong>: returns the cardinality of the set,</li>
+<li>&ldquo;<strong>add</strong>:&rdquo; adds an element to the set if it was not present already (and returns true iff this was the case),</li>
+<li>&ldquo;<strong>contains</strong>:&rdquo; checks whether an element belongs to the set,</li>
+<li>&ldquo;<strong>size</strong>:&rdquo; returns the cardinality of the set,</li>
 <li>etc.</li>
 </ul>
 <blockquote class="book-hint danger">
 <p><strong><em>Warning.</em></strong>
-A set provides no guarantee on the <em>order</em> of its elements!</p>
+By default, there is no guarantee on the <em>order</em> of elements in a set.</p>
 </blockquote>
 <h2 id="java">
   in Java
   <a class="anchor" href="#java">#</a>
 </h2>
-<p>Java provides an interface <code>Set</code> with 8 native implementations (i.e. different <em>classes</em> that implement this interface).
-The most commonly used are <a href="http://localhost:1313/notreleased/">HashSet</a> and <a href="http://localhost:1313/notreleased/">TreeSet</a>.</p>
+<p>Java has an <a href="https://unibz-oofp-25-26.github.io/docs/interface/sections/java_interface/">interface</a> <code>Set</code> with 8 native implementations (meaning that 8 different <em>classes</em> <a href="https://unibz-oofp-25-26.github.io/docs/interface/sections/java_interface/#implement">implement</a> this interface).
+The most frequently used Implementations are <a href="https://unibz-oofp-25-26.github.io/notreleased/">HashSet</a> and <a href="https://unibz-oofp-25-26.github.io/notreleased/">TreeSet</a>.</p>
 <p>The interface <code>Set</code> extends the interface <code>Collection</code>.</p>
 <h3 id="syntax">
   Syntax
   <a class="anchor" href="#syntax">#</a>
 </h3>
 <p>Here are code snippets for a few simple operations specified in the interface <code>Set</code>.</p>
-<ul>
-<li>Create a <code>Set</code> and populate it:</li>
-</ul>
+<blockquote class="book-hint info">
+<p>Create a <code>Set</code> and populate it:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>City milan <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> City(<span style="color:#e6db74">&#34;Milan&#34;</span>, 20100);
 </span></span><span style="display:flex;"><span>City florence <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> City(<span style="color:#e6db74">&#34;Florence&#34;</span>, 50100);
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Creates an empty set of cities</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// create an empty set of cities</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// alternatively, we could use another implementation, like `TreeSet`</span>
 </span></span><span style="display:flex;"><span>Set<span style="color:#f92672">&lt;</span>City<span style="color:#f92672">&gt;</span> mySet <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashSet<span style="color:#f92672">&lt;&gt;</span>();
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Adds Milan to the set</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// add Milan to the set</span>
 </span></span><span style="display:flex;"><span>mySet.<span style="color:#a6e22e">add</span>(milan);
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Adds Florence to the set</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// add Florence to the set</span>
 </span></span><span style="display:flex;"><span>mySet.<span style="color:#a6e22e">add</span>(florence);
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Tries to add Milan again; this has no effect.</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// try to add Milan again, which has no effect</span>
 </span></span><span style="display:flex;"><span>mySet.<span style="color:#a6e22e">add</span>(milan);
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Creates a set identical to the previous one,</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// create a set identical to the previous one,</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// but which cannot be modified</span>
 </span></span><span style="display:flex;"><span>Set<span style="color:#f92672">&lt;</span>City<span style="color:#f92672">&gt;</span> myOtherSet <span style="color:#f92672">=</span> Set.<span style="color:#a6e22e">of</span>(milan, florence);
-</span></span></code></pre></div><ul>
-<li>Remove an element from a set:</li>
-</ul>
+</span></span></code></pre></div></blockquote>
+<blockquote class="book-hint info">
+<p>Remove an element from a set:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>mySet.<span style="color:#a6e22e">remove</span>(milan);
-</span></span></code></pre></div><ul>
-<li>Check whether a set contains an certain element:</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// Outputs false</span>
+</span></span></code></pre></div></blockquote>
+<blockquote class="book-hint info">
+<p>Check whether a set contains a certain element:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// outputs false</span>
 </span></span><span style="display:flex;"><span>System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(mySet.<span style="color:#a6e22e">contains</span>(milan));
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Outputs true</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// outputs true</span>
 </span></span><span style="display:flex;"><span>System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(mySet.<span style="color:#a6e22e">contains</span>(florence));
-</span></span></code></pre></div><ul>
-<li>Retrieve the cardinality of a set:</li>
-</ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// Outputs 1</span>
+</span></span></code></pre></div></blockquote>
+<blockquote class="book-hint info">
+<p>Get the cardinality of a set:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// outputs 1</span>
 </span></span><span style="display:flex;"><span>System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(mySet.<span style="color:#a6e22e">size</span>());
-</span></span></code></pre></div><ul>
-<li>Compute the intersection of two sets:</li>
-</ul>
+</span></span></code></pre></div></blockquote>
+<blockquote class="book-hint info">
+<p>Compute the intersection of two sets:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>mySet.<span style="color:#a6e22e">add</span>(<span style="color:#66d9ef">new</span> City(<span style="color:#e6db74">&#34;Bologna&#34;</span>, 40100));
 </span></span><span style="display:flex;"><span>mySet.<span style="color:#a6e22e">retainAll</span>(myOtherSet);
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// Outputs 1</span>
 </span></span><span style="display:flex;"><span>System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(mySet.<span style="color:#a6e22e">size</span>());
-</span></span></code></pre></div><ul>
-<li>Add a collection to a set:</li>
-</ul>
+</span></span></code></pre></div></blockquote>
+<blockquote class="book-hint info">
+<p>Add a collection to a set:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>mySet.<span style="color:#a6e22e">addAll</span>(myOtherSet);
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// Outputs 2</span>
 </span></span><span style="display:flex;"><span>System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(mySet.<span style="color:#a6e22e">size</span>());
-</span></span></code></pre></div><p>For more operations, consult the <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Set.html">Javadoc</a> of the interface <code>Set</code>.</p>
+</span></span></code></pre></div></blockquote>
+<p>For more operations, consult the <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Set.html">Javadoc</a> of the interface <code>Set</code>.</p>
 <h3 id="duplicates">
   Duplicates
   <a class="anchor" href="#duplicates">#</a>
 </h3>
-<p>By definition, a set cannot contain identical elements.
-But what does &ldquo;identical&rdquo; mean for two objects?</p>
-<p>In Java, the method <code>equals</code> is (implicitly) used to determine whether two elements added to a <code>Set</code> should be considered identical.</p>
+<p>By definition, a set cannot contain identical elements.</p>
+<blockquote class="book-hint info">
+<p><strong><em>Question.</em></strong>
+What does &ldquo;identical&rdquo; mean for two objects?</p>
+</blockquote>
+<blockquote class="book-hint warning">
+<p>In Java, the method <a href="https://unibz-oofp-25-26.github.io/docs/objects/sections/comparing/#equals"><code>equals</code></a> (implicitly) determines whether two elements added to a <code>Set</code> should be considered identical.</p>
+</blockquote>
 <blockquote class="book-hint danger">
 <p><strong><em>Warning.</em></strong>
-<a href="http://localhost:1313/docs/objects/sections/comparing/#hashCode">Recall</a> that the method <code>equals</code> should be overridden <em>together with</em> the method <code>hashCode</code> (more on this later).
-This is essential for a <code>HashSet</code> to behave as expected (more on this <a href="http://localhost:1313/notreleased/">later</a>).</p>
+<a href="https://unibz-oofp-25-26.github.io/docs/objects/sections/comparing/#hashCode">Recall</a> that the method <code>equals</code> should be overridden <em>together with</em> the method <code>hashCode</code>.
+This is necessary for a <code>HashSet</code> to behave as expected (more on this <a href="https://unibz-oofp-25-26.github.io/notreleased/">later</a>).</p>
 </blockquote>
-<p>For instance, consider a naive implementation of the class <code>City</code>, which does <em>not</em> override <code>equals</code> (or <code>hashCode</code>):</p>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong>
+Consider a naive implementation of the class <code>City</code>, which does <em>not</em> override <code>equals</code> (or <code>hashCode</code>):</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">City</span> {
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    String name;
@@ -1443,15 +1386,17 @@ This is essential for a <code>HashSet</code> to behave as expected (more on this
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">zipCode</span> <span style="color:#f92672">=</span>zipCode;
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p><a href="http://localhost:1313/docs/objects/sections/comparing/#equals">Recall</a>
+</span></span></code></pre></div><p><a href="https://unibz-oofp-25-26.github.io/docs/objects/sections/comparing/#equals">Recall</a>
 that every class inherits a default implementation of <code>equals</code> (and <code>hashCode</code>), from the class <code>Object</code>.
 According to this default implementation, <code>equals</code> behaves like <code>==</code>.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>City trento <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> City(<span style="color:#e6db74">&#34;Trento&#34;</span>, 38100);
 </span></span><span style="display:flex;"><span>City trentoAgain <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> City(<span style="color:#e6db74">&#34;Trento&#34;</span>, 38100);
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>Set<span style="color:#f92672">&lt;</span>City<span style="color:#f92672">&gt;</span> cities <span style="color:#f92672">=</span> Set.<span style="color:#a6e22e">of</span>(trento, trentoAgain);
+</span></span><span style="display:flex;"><span>Set<span style="color:#f92672">&lt;</span>City<span style="color:#f92672">&gt;</span> cities <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashSet<span style="color:#f92672">&lt;&gt;</span>();
+</span></span><span style="display:flex;"><span>smartCities.<span style="color:#a6e22e">add</span>(trento);
+</span></span><span style="display:flex;"><span>smartCities.<span style="color:#a6e22e">add</span>(trentoAgain);
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Outputs 2</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// outputs 2</span>
 </span></span><span style="display:flex;"><span>System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(cities.<span style="color:#a6e22e">size</span>());
 </span></span></code></pre></div><p>Now consider a class <code>SmartCity</code> identical to <code>City</code>, but that overrides <code>equals</code> (and<code>hashCode</code>) in the standard way:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SmartCity</span> {
@@ -1489,69 +1434,81 @@ According to this default implementation, <code>equals</code> behaves like <code
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// Outputs false</span>
 </span></span><span style="display:flex;"><span>System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(smartCities.<span style="color:#a6e22e">add</span>(smartTrentoAgain));
-</span></span></code></pre></div><blockquote class="book-hint info">
-<p><strong><em>Note.</em></strong> Recall that many native Java classes already override <code>equals</code> (and <code>hashCode</code>).
-Among others: <code>String</code>, boxed types (like <code>Integer</code>), but also most implementations of the <code>Collection</code> interface (including <code>HashSet</code>).</p>
+</span></span></code></pre></div></blockquote>
+<blockquote class="book-hint warning">
+<p><strong><em>Reminder.</em></strong> Many native Java classes already override <code>equals</code> (and <code>hashCode</code>), in the expected way.<br>
+These include:</p>
+<ul>
+<li><code>String</code>,</li>
+<li>boxed types (like <code>Integer</code>),</li>
+<li>most implementations of the <code>Collection</code> interface (including <code>HashSet</code>).</li>
+</ul>
 </blockquote>
 <blockquote class="book-hint info">
 <p><strong><em>Note.</em></strong>
-Some implementations of <code>List</code> also provide methods that perform &ldquo;set-like&rdquo; comparisons.
-E.g. <code>containsAll</code>, <code>removeAll</code>, <code>retainAll</code>, etc.
+Some implementations of <code>List</code> also provide methods that perform &ldquo;set-like&rdquo; comparisons, like <code>containsAll</code>, <code>removeAll</code>, <code>retainAll</code>, etc.
 Again, we refer to the <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html">Javadoc</a> for an exhaustive documentation.</p>
 </blockquote>
 <h2 id="usage">
   Usage
   <a class="anchor" href="#usage">#</a>
 </h2>
-<p>Implementations of the ADT set can be useful in a variety of contexts.
-For instance, remove duplicates from an array (assuming that the order of elements in the array is irrelevant):</p>
+<p>The ADT &ldquo;set&rdquo; can be useful in a variety of contexts.</p>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong>
+We can use a set to remove duplicates in an array (if the order of elements in the array is irrelevant):</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Integer<span style="color:#f92672">[]</span> myArray <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Integer<span style="color:#f92672">[]</span>{1,2,3,1,2};
-</span></span><span style="display:flex;"><span>List<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> tuple <span style="color:#f92672">=</span> List.<span style="color:#a6e22e">of</span>(myArray);
-</span></span><span style="display:flex;"><span>Set<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> set <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashSet<span style="color:#f92672">&lt;&gt;</span>(tuple);
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// the constructor of `HashSet` cannot take an array as input, so we wrap the array into a list</span>
+</span></span><span style="display:flex;"><span>Set<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> set <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashSet<span style="color:#f92672">&lt;&gt;</span>(List.<span style="color:#a6e22e">of</span>(myArray));
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// Outputs 3</span>
 </span></span><span style="display:flex;"><span>System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(set.<span style="color:#a6e22e">size</span>());
-</span></span></code></pre></div><p>Or check whether two lists contain the same (distinct) elements:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>SmartCity mantova <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> SmartCity(<span style="color:#e6db74">&#34;Mantua&#34;</span>, 46100);
-</span></span><span style="display:flex;"><span>SmartCity bergamo <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> SmartCity(<span style="color:#e6db74">&#34;Bergamo&#34;</span>, 24100);
-</span></span><span style="display:flex;"><span>List<span style="color:#f92672">&lt;</span>SmartCity<span style="color:#f92672">&gt;</span> list1 <span style="color:#f92672">=</span> List.<span style="color:#a6e22e">of</span>(mantova, bergamo);
-</span></span><span style="display:flex;"><span>List<span style="color:#f92672">&lt;</span>SmartCity<span style="color:#f92672">&gt;</span> list2 <span style="color:#f92672">=</span> List.<span style="color:#a6e22e">of</span>(bergamo, mantova);
+</span></span></code></pre></div></blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong>
+We can use sets to check whether two lists contain the same (distinct) elements:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>City mantua <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> City(<span style="color:#e6db74">&#34;Mantua&#34;</span>, 46100);
+</span></span><span style="display:flex;"><span>City bergamo <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> City(<span style="color:#e6db74">&#34;Bergamo&#34;</span>, 24100);
+</span></span><span style="display:flex;"><span>List<span style="color:#f92672">&lt;</span>City<span style="color:#f92672">&gt;</span> list1 <span style="color:#f92672">=</span> List.<span style="color:#a6e22e">of</span>(mantua, bergamo);
+</span></span><span style="display:flex;"><span>List<span style="color:#f92672">&lt;</span>City<span style="color:#f92672">&gt;</span> list2 <span style="color:#f92672">=</span> List.<span style="color:#a6e22e">of</span>(bergamo, mantua, bergamo);
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>Set<span style="color:#f92672">&lt;</span>SmartCity<span style="color:#f92672">&gt;</span> set1 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashSet<span style="color:#f92672">&lt;&gt;</span>(list1);
-</span></span><span style="display:flex;"><span>Set<span style="color:#f92672">&lt;</span>SmartCity<span style="color:#f92672">&gt;</span> set2 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashSet<span style="color:#f92672">&lt;&gt;</span>(list2);
+</span></span><span style="display:flex;"><span>Set<span style="color:#f92672">&lt;</span>City<span style="color:#f92672">&gt;</span> set1 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashSet<span style="color:#f92672">&lt;&gt;</span>(list1);
+</span></span><span style="display:flex;"><span>Set<span style="color:#f92672">&lt;</span>City<span style="color:#f92672">&gt;</span> set2 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashSet<span style="color:#f92672">&lt;&gt;</span>(list2);
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// Outputs true</span>
 </span></span><span style="display:flex;"><span>System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(set1.<span style="color:#a6e22e">equals</span>(set2));
-</span></span></code></pre></div><div class="book-tabs">
-<input type="radio" class="toggle" name="tabs-exercise_set_miniboard" id="tabs-exercise_set_miniboard-0" checked="checked" />
-<label for="tabs-exercise_set_miniboard-0">Exercise</label>
-<div class="book-tabs-content markdown-inner"><p>In our game, a same unit may sit on two (or more) adjacent tiles.</p>
-<p>Consider an implementation where:</p>
-<ul>
-<li>a board consists of a two-dimensional array with type <code>Unit[][]</code>, and</li>
-<li>if a same unit sits on several tiles, then these tiles contain (a reference to) the same (instance of) <code>Unit</code>, and</li>
-<li><code>Unit</code> does <em>not</em> override <code>equals</code> (neither do its sub or superclasses).</li>
-</ul>
-<p>Write a Java method <code>int countUnits(Unit[][] board)</code> that takes such an array as input, and returns the number of different units on the board.</p>
-<p>For instance, with the board below as input, the method should return 5.</p>
-<p><img src="/img/adt/miniboard.png" alt="" /></p>
+</span></span></code></pre></div></blockquote>
+<div class="book-tabs">
+<input type="radio" class="toggle" name="tabs-exercise_set_encounters" id="tabs-exercise_set_encounters-0" checked="checked" />
+<label for="tabs-exercise_set_encounters-0">Exercise</label>
+<div class="book-tabs-content markdown-inner"><p>Consider a version of <a href="https://unibz-oofp-25-26.github.io/docs/objects/sections/inheritance/#game_example">our game</a> where each NPC stores a list of encountered NPCs (possibly with duplicates), in chronological order.</p>
+<p><img src="/img/diagrams/plantuml/encounters_simple.svg" alt="" /></p>
+<p>Let us assume that none of <code>NPC</code>, <code>Unicorn</code> or <code>Butterfly</code> overrides <code>equals</code> or <code>hashCode</code> (which is sensible in this example).</p>
+<p>Implement a method</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">countUnicornsMet</span>(NPC npc)
+</span></span></code></pre></div><p>such that <code>countUnicornsMet(c)</code> is the number of <em>distinct</em> unicorns that <code>c</code> has met.</p>
 </div>
-<input type="radio" class="toggle" name="tabs-exercise_set_miniboard" id="tabs-exercise_set_miniboard-1"  />
-<label for="tabs-exercise_set_miniboard-1">Possible solution</label>
-<div class="book-tabs-content markdown-inner"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">countUnits</span>(Unit<span style="color:#f92672">[][]</span> board) {
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    Set<span style="color:#f92672">&lt;</span>Unit<span style="color:#f92672">&gt;</span> units <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashSet<span style="color:#f92672">&lt;&gt;</span>();
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (Unit<span style="color:#f92672">[]</span> row : board) {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (Unit unit : row) {
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (unit <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span>) {
-</span></span><span style="display:flex;"><span>                  units.<span style="color:#a6e22e">add</span>(unit);
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> units.<span style="color:#a6e22e">size</span>();
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div></div>
+<!-- 
+<input type="radio" class="toggle" name="tabs-exercise_set_encounters" id="tabs-exercise_set_encounters-1"  />
+<label for="tabs-exercise_set_encounters-1">Possible solution</label>
+<div class="book-tabs-content markdown-inner"><p>&ndash;&gt;</p>
+<!---->
+<!-- ```java -->
+<!-- int countUnicornsMet(NPC c) { -->
+<!---->
+<!--     Set<NPC> unicorns = new HashSet<>(); -->
+<!---->
+<!--     for (NPC encounter : c.encounter) { -->
+<!--         if (encounter instanceof Unicorn) { -->
+<!--             unicorns.add(encounter); -->
+<!--         } -->
+<!--     } -->
+<!--     return unicorns.size(); -->
+<!-- } -->
+<!-- ``` -->
+<!---->
+<!-- </div>
+ -->
 </div>
 <div class="book-tabs">
 <input type="radio" class="toggle" name="tabs-exercise_set_family" id="tabs-exercise_set_family-0" checked="checked" />
@@ -1572,10 +1529,13 @@ For instance, remove duplicates from an array (assuming that the order of elemen
 </span></span><span style="display:flex;"><span>anotherSet.<span style="color:#a6e22e">add</span>(2);
 </span></span><span style="display:flex;"><span>System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(aFamily.<span style="color:#a6e22e">size</span>());
 </span></span></code></pre></div></div>
+<!-- 
 <input type="radio" class="toggle" name="tabs-exercise_set_family" id="tabs-exercise_set_family-1"  />
 <label for="tabs-exercise_set_family-1">Solution</label>
-<div class="book-tabs-content markdown-inner"><p><code>2</code> and <code>2</code>.</p>
-</div>
+<div class="book-tabs-content markdown-inner"><p>&ndash;&gt;</p>
+<!-- `2` and `2`. -->
+<!-- </div>
+ -->
 </div>
 </article>
  
