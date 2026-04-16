@@ -37,7 +37,7 @@ A set may expose the following methods:
 <link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/abstractdatatypes/sections/set/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.349f126f4861fec26f0f1b4f9ed2456c0bf0028f034706bf35556c89f3e43b49.js" integrity="sha256-NJ8Sb0hh/sJvDxtPntJFbAvwAo8DRwa/NVVsifPkO0k=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.87c11c601ca8327a9c273c0318a50ab4c12bcbe702ae163137bfe48ea15647e6.js" integrity="sha256-h8EcYByoMnqcJzwDGKUKtMEry&#43;cCrhYxN7/kjqFWR&#43;Y=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -1525,29 +1525,22 @@ We can use sets to check whether two lists contain the same (distinct) elements:
 <p>Let us assume that none of <code>NPC</code>, <code>Unicorn</code> or <code>Butterfly</code> overrides <code>equals</code> or <code>hashCode</code> (which is sensible in this example).</p>
 <p>Implement the method</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">countUniFriends</span>(NPC npc)
-</span></span></code></pre></div><p>such that <code>countUniFriends(c)</code> is the number of <em>distinct</em> unicorns that <code>c</code> has met.</p>
+</span></span></code></pre></div><p>such that <code>countUniFriends(npc)</code> is the number of <em>distinct</em> unicorns that <code>c</code> has met.</p>
 </div>
-<!-- 
 <input type="radio" class="toggle" name="tabs-exercise_set_encounters" id="tabs-exercise_set_encounters-1"  />
 <label for="tabs-exercise_set_encounters-1">Possible solution</label>
-<div class="book-tabs-content markdown-inner"><p>&ndash;&gt;</p>
-<!---->
-<!-- ```java -->
-<!-- int countUniFriends(NPC c) { -->
-<!---->
-<!--     Set<NPC> unicorns = new HashSet<>(); -->
-<!---->
-<!--     for (NPC encounter : c.encounter) { -->
-<!--         if (encounter instanceof Unicorn) { -->
-<!--             unicorns.add(encounter); -->
-<!--         } -->
-<!--     } -->
-<!--     return unicorns.size(); -->
-<!-- } -->
-<!-- ``` -->
-<!---->
-<!-- </div>
- -->
+<div class="book-tabs-content markdown-inner"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">countUniFriends</span>(NPC npc) {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    Set<span style="color:#f92672">&lt;</span>NPC<span style="color:#f92672">&gt;</span> unicorns <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashSet<span style="color:#f92672">&lt;&gt;</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (NPC encounter : npc.<span style="color:#a6e22e">encounters</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (encounter <span style="color:#66d9ef">instanceof</span> Unicorn) {
+</span></span><span style="display:flex;"><span>            unicorns.<span style="color:#a6e22e">add</span>(encounter);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> unicorns.<span style="color:#a6e22e">size</span>();
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></div>
 </div>
 <div class="book-tabs">
 <input type="radio" class="toggle" name="tabs-exercise_set_family" id="tabs-exercise_set_family-0" checked="checked" />
@@ -1568,13 +1561,10 @@ We can use sets to check whether two lists contain the same (distinct) elements:
 </span></span><span style="display:flex;"><span>anotherSet.<span style="color:#a6e22e">add</span>(2);
 </span></span><span style="display:flex;"><span>System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(aFamily.<span style="color:#a6e22e">size</span>());
 </span></span></code></pre></div></div>
-<!-- 
 <input type="radio" class="toggle" name="tabs-exercise_set_family" id="tabs-exercise_set_family-1"  />
 <label for="tabs-exercise_set_family-1">Solution</label>
-<div class="book-tabs-content markdown-inner"><p>&ndash;&gt;</p>
-<!-- `2` and `2`. -->
-<!-- </div>
- -->
+<div class="book-tabs-content markdown-inner"><p><code>2</code> and <code>2</code>.</p>
+</div>
 </div>
 </article>
  

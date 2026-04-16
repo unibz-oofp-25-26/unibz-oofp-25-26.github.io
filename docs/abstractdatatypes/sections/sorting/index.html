@@ -13,8 +13,11 @@ Sorting a collection (of values or objects) is needed in a variety of scenarios.
   #
 
 In order to sort a collection of values (resp. objects), we need a sorting criterion, i.e. a way to compare two values (resp. objects).
+
+Example.
 Some data types come with a natural way to compare two values.
 For instance, two real numbers can be compared w.r.t. $\le$.
+
 
 Observation.
 Some data types have several natural sorting criteria.
@@ -26,7 +29,7 @@ For instance, strings may be sorted alphabetically from left to right (in Englis
   <meta property="og:title" content="Sorting">
   <meta property="og:description" content="Sorting # Sorting a collection (of values or objects) is needed in a variety of scenarios.
 Sorting criterion # In order to sort a collection of values (resp. objects), we need a sorting criterion, i.e. a way to compare two values (resp. objects).
-Some data types come with a natural way to compare two values. For instance, two real numbers can be compared w.r.t. $\le$.
+Example. Some data types come with a natural way to compare two values. For instance, two real numbers can be compared w.r.t. $\le$.
 Observation. Some data types have several natural sorting criteria. For instance, strings may be sorted alphabetically from left to right (in English, Hindi, Russian, etc.) or from right to left (in Arabic, Hebrew, Persian, etc.).">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
@@ -37,7 +40,7 @@ Observation. Some data types have several natural sorting criteria. For instance
 <link rel="canonical" href="http://localhost:1313/docs/abstractdatatypes/sections/sorting/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.3d9e55d3f507dafd9655f208b02e8e260cd830243d79ff392452e181980950e3.js" integrity="sha256-PZ5V0/UH2v2WVfIIsC6OJgzYMCQ9ef85JFLhgZgJUOM=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.e67c3110e294793d0e9897aace849d5986325891c870eeef910c7b6065194f1b.js" integrity="sha256-5nwxEOKUeT0OmJeqzoSdWYYyWJHIcO7vkQx7YGUZTxs=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -1368,8 +1371,11 @@ https://github.com/alex-shpak/hugo-book
   <a class="anchor" href="#criterion">#</a>
 </h2>
 <p>In order to sort a collection of values (resp. objects), we need a <em>sorting criterion</em>, i.e. a way to compare two values (resp. objects).</p>
-<p>Some data types come with a natural way to compare two values.
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong>
+Some data types come with a natural way to compare two values.
 For instance, two real numbers can be compared w.r.t. $\le$.</p>
+</blockquote>
 <blockquote class="book-hint info">
 <p><strong><em>Observation.</em></strong>
 Some data types have several natural sorting criteria.
@@ -1378,11 +1384,11 @@ For instance, strings may be sorted alphabetically from left to right (in Englis
 <blockquote>
 <p><strong><em>Question.</em></strong>
 What about objects, i.e.
-which sorting criterion can be used to sort a collection of people, cities, sets, lists, trees, etc.?</p>
+which sorting criterion can we use to sort a collection of people, cities, sets, lists, trees, etc.?</p>
 </blockquote>
 <blockquote>
 <p><strong><em>Answer.</em></strong>
-Any <a href="http://localhost:1313/notreleased/">total preorder</a> (i.e. a total, reflexive and transitive binary relation) can be used to sort a collection.</p>
+Any <a href="http://localhost:1313/docs/background/sections/order/#preorder">total preorder</a> (i.e. a total, reflexive and transitive binary relation) can be used to sort a collection.</p>
 </blockquote>
 <div class="book-tabs">
 <input type="radio" class="toggle" name="tabs-exercise_preorders" id="tabs-exercise_preorders-0" checked="checked" />
@@ -1461,9 +1467,12 @@ $\big(p_1.{\text{age}} \le p_2.{\text{age}}$ or $p_1.{\text{size}} \le p_2.{\tex
   Properties of sorting algorithms
   <a class="anchor" href="#properties-of-sorting-algorithms">#</a>
 </h2>
-<p><a href="https://en.wikipedia.org/wiki/Sorting_algorithm">Sorting algorithms</a> have been extensively studied.
-We will <em>not</em> cover them this semester (with one exception), because this is part of another course of the bachelor.</p>
-<p>We only highlight some of their properties.</p>
+<p><a href="https://en.wikipedia.org/wiki/Sorting_algorithm">Sorting algorithms</a> have been extensively studied.</p>
+<blockquote class="book-hint info">
+<p><strong><em>Disclaimer.</em></strong>
+We will <em>not</em> cover sorting algorithms this semester (with one exception), because this is part of another course of the bachelor.
+We only highlight some of their properties.</p>
+</blockquote>
 <h3 id="stable">
   Stability
   <a class="anchor" href="#stable">#</a>
@@ -1474,12 +1483,12 @@ A sorting algorithm is <strong>stable</strong> if it preserves the initial order
 </blockquote>
 <blockquote class="book-hint info">
 <p><strong><em>Example.</em></strong>
-Consider an array <code>[u1, u2]</code> of type <code>Unit[]</code>,
-where (the objects referenced by) <code>u1</code> and <code>u2</code> both have health <code>2</code>.
-And let us sort the elements of this array by health.</p>
+Consider an array <code>[c1, c2]</code> of type <code>NPC[]</code>,
+where (the objects referenced by) <code>c1</code> and <code>c2</code> both have XP <code>2</code>.</p>
+<p>Let us sort the elements of this array <em>by XP</em>.</p>
 <ul>
-<li>A <em>stable</em> sorting algorithm outputs <code>[u1, u2]</code>.</li>
-<li>A <em>non-stable</em> sorting algorithm may output <code>[u1, u2]</code> or <code>[u2, u1]</code>.</li>
+<li>A <em>stable</em> sorting algorithm outputs <code>[c1, c2]</code>.</li>
+<li>A <em>non-stable</em> sorting algorithm may output <code>[c1, c2]</code> or <code>[c2, c1]</code>.</li>
 </ul>
 </blockquote>
 <h3 id="in-place">
@@ -1512,20 +1521,23 @@ We can create a class <code>City</code> that implements <code>Comparable&lt;City
 </span></span><span style="display:flex;"><span>    ...
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div></blockquote>
-<p>The interface <code>Comparable&lt;T&gt;</code> specifies a single method</p>
+<p>The interface <code>Comparable&lt;T&gt;</code> specifies a single <a href="http://localhost:1313/docs/objects/sections/method/">instance method</a>:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">compareTo</span> (T otherObject);
-</span></span></code></pre></div><p>This method should define a <a href="http://localhost:1313/notreleased/">total preorder</a> $\preceq$ over instances of <code>T</code>, as follows.</p>
-<p>Let $o_1$ be the current object (i.e. the instance used to call the method), and let $o_2$ be the other object (i.e. the argument of the method <code>compareTo</code>).
-Then this method should return:</p>
+</span></span></code></pre></div><blockquote class="book-hint warning">
+<p><strong><em>Usage.</em></strong>
+The method <code>compareTo(T otherObject)</code> should define a <a href="http://localhost:1313/docs/background/sections/order/">total preorder</a> $\preceq$ over instances of <code>T</code>, as follows.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>o1.<span style="color:#a6e22e">compareTo</span>(T o2)
+</span></span></code></pre></div><p>should evaluate to</p>
 <ul>
-<li>a negative integer if $o_1 \prec_o o_2$ (i.e. if $o_1 \preceq_o o_2$ and $o_2 \not\preceq_o o_1$),</li>
-<li><code>0</code> if $o_1 =_o o_2$ (i.e. if $o_1 \preceq_o o_2$ and $o_2 \preceq_o o_1$),</li>
+<li>a negative integer if <code>o1</code> $\prec_o$ <code>o_2</code> (i.e. if <code>o1</code> $\preceq_o$ <code>o2</code> and <code>o2</code> $\not\preceq_o$ <code>o1</code>),</li>
+<li><code>0</code> if <code>o1</code> $=_o$ <code>o2</code> (i.e. if <code>o1</code> $\preceq_o$ <code>o2</code> and <code>o2</code> $\preceq_o$ <code>o1</code>),</li>
 <li>a positive integer otherwise.</li>
 </ul>
+</blockquote>
 <blockquote class="book-hint info">
 <p><strong><em>Example (continued).</em></strong>
-Here is an implementation of the method <code>compareTo</code> where cities are compared by zip code:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">City</span> <span style="color:#66d9ef">implements</span> Comparable<span style="color:#f92672">&lt;</span>City<span style="color:#f92672">&gt;</span> {
+Here is an implementation of the method <code>compareTo</code> where cities are compared by zip code (in increasing order):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">City</span> <span style="color:#66d9ef">implements</span> Comparable<span style="color:#f92672">&lt;</span>City<span style="color:#f92672">&gt;</span> {  <span style="color:#75715e">// City implements the interface `Comparable`</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> String name;
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> zipCode;
@@ -1537,20 +1549,21 @@ Here is an implementation of the method <code>compareTo</code> where cities are 
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Override</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">compareTo</span>(City otherCity) {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> zipCode <span style="color:#f92672">-</span> otherCity.<span style="color:#a6e22e">zipCode</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> zipCode <span style="color:#f92672">-</span> otherCity.<span style="color:#a6e22e">zipCode</span>; <span style="color:#75715e">// this implementation satisfies the constraints above</span>
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div></blockquote>
+<h4 id="default-implementations">
+  Default implementations
+  <a class="anchor" href="#default-implementations">#</a>
+</h4>
+<p>Some native Java classes already implement <code>Comparable</code>, in the expected way.<br>
+These include <code>Integer</code>, <code>String</code> (left to right alphabetical order), etc.</p>
+<p>Comparator methods are also available for primitive types (like <code>int</code>, or <code>bool</code>).</p>
 <blockquote class="book-hint info">
-<p><strong><em>Hint.</em></strong>
-Some native Java classes already implement <code>Comparable</code>, in the expected way.
-For instance <code>Integer</code>, <code>String</code> (left to right alphabetical order), etc.</p>
-</blockquote>
-<blockquote class="book-hint info">
-<p><strong><em>Hint.</em></strong>
-Comparator methods are also available for primitive types (like <code>int</code>, or <code>bool</code>).
-For instance, <code>Integer</code> has a static method <code>compare(int x, int y)</code> that behaves like <code>compareTo</code>.
-So the method <code>compareTo</code> in the example above can be simplified as follows:</p>
+<p><strong><em>Example (continued).</em></strong>
+<code>Integer</code> has a <a href="http://localhost:1313/docs/objects/sections/classasobject/#staticMethods">static</a> method <code>compare(int x, int y)</code> that behaves like <code>compareTo</code>.
+So the method <code>compareTo</code> in the example above can alternatively be written:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">City</span> <span style="color:#66d9ef">implements</span> Comparable<span style="color:#f92672">&lt;</span>City<span style="color:#f92672">&gt;</span> {
 </span></span><span style="display:flex;"><span>  ...
 </span></span><span style="display:flex;"><span>
@@ -1562,11 +1575,11 @@ So the method <code>compareTo</code> in the example above can be simplified as f
 </span></span></code></pre></div></blockquote>
 <blockquote class="book-hint danger">
 <p><strong><em>Warning.</em></strong>
-The method <code>compareTo</code> is implicitly used by some of Java&rsquo;s native data structures (e.g. <code>TreeSet</code>).
-So it is usually recommended to implement <code>compareTo</code> in such a way that it &ldquo;complies&rdquo; with <code>equals</code> (and <code>hashCode</code>).
+The method <code>compareTo</code> is implicitly used by some of Java&rsquo;s native data structures (e.g. <code>TreeSet</code>).</p>
+<p>So it is usually recommended to implement <code>compareTo</code> in such a way that it &ldquo;complies&rdquo; with <code>equals</code> (and <code>hashCode</code>).<br>
 This means that</p>
 <p>$\qquad \qquad $<code>o1.compareTo(o2)</code> should return <code>0</code> iff <code>o1.equals(o2)</code> returns <code>true</code>.</p>
-<p>If you want to use a sorting criterion that does <em>not</em> satisfy this constraint (or if you want to use alternative sorting criteria for the same class),
+<p>If you want to use a sorting criterion that does <em>not</em> satisfy this constraint,
 then we recommend using a <code>Comparator</code> instead (explained below).</p>
 </blockquote>
 <h4 id="comparator">
@@ -1576,7 +1589,7 @@ then we recommend using a <code>Comparator</code> instead (explained below).</p>
 <p>A <code>Comparator</code> in Java is intuitively a total preorder.</p>
 <p>The Java interface <code>Comparator&lt;T&gt;</code> specifies one method that must be implemented by each instance, with signature:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">compare</span>(T o1, T o2)
-</span></span></code></pre></div><p>The return value (negative integer, <code>0</code> or positive integer) has the same meaning as the one of <code>Comparable.compareTo</code>.</p>
+</span></span></code></pre></div><p>The return value (negative integer, <code>0</code> or positive integer) has the same meaning as for method <code>Comparable.compareTo</code> seen above.</p>
 <blockquote class="book-hint info">
 <p><strong><em>Example (continued).</em></strong>
 We can create another comparator for our class <code>City</code>, which uses the city&rsquo; name rather than zip code.</p>
