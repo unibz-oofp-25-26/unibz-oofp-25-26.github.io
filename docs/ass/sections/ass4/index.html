@@ -1,57 +1,56 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-<head>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="
-  Boxed primitive type
+  Assignment 4: abstract data types
   #
 
 
-  Primitive type
+  Exercise 1: board game
   #
 
+We model a simple board game with rooms and players.
 
-Java has 8 primitive types: byte, short, int, long, float, double, boolean and char.
+Each room has:
+
+a set of adjacent rooms, and
+a set of players present in the room.
+
+Each player has
+
+a type (paper, rock or scissor), and
+a number of health points.
+
+An action consists in moving one player from a room to another (adjacent) room:
+
+When the player enters the room, it may deal one point of damage to each other player that is already in the room (based on their rock/paper/scissor types), and receive damage in the same way.
+After all these operations have been performed, if a player has no more health points, then it should be removed from the board.
 
 
-Warning.
-A variable with primitive type hold a value, not a reference.
-
-
-  Boxed type
-  #
-
-
-For each primitive type, Java has a so-called boxed or (wrapper) type:
-Byte, Short, Integer, Long, Float, Double, Boolean and Character.
-
-
-Usage.
-
-
-Boxed types can be used as type parameters (notably in Java collections like Set or List),
-whereas primitive types cannot.">
+Complete the class BoardImpl so that it correctly implements the interface Board.
+The expected behavior of each method is described in the interface.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://unibz-oofp-25-26.github.io/docs/objects/sections/boxed/">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/docs/ass/sections/ass4/">
   <meta property="og:site_name" content="OOFP 2025-26">
-  <meta property="og:title" content="Boxed primitive type">
-  <meta property="og:description" content="Boxed primitive type # Primitive type # Java has 8 primitive types: byte, short, int, long, float, double, boolean and char.
-Warning. A variable with primitive type hold a value, not a reference.
-Boxed type # For each primitive type, Java has a so-called boxed or (wrapper) type: Byte, Short, Integer, Long, Float, Double, Boolean and Character.
-Usage.
-Boxed types can be used as type parameters (notably in Java collections like Set or List), whereas primitive types cannot.">
+  <meta property="og:title" content="Assignment 4">
+  <meta property="og:description" content="Assignment 4: abstract data types # Exercise 1: board game # We model a simple board game with rooms and players.
+Each room has:
+a set of adjacent rooms, and a set of players present in the room. Each player has
+a type (paper, rock or scissor), and a number of health points. An action consists in moving one player from a room to another (adjacent) room:
+When the player enters the room, it may deal one point of damage to each other player that is already in the room (based on their rock/paper/scissor types), and receive damage in the same way. After all these operations have been performed, if a player has no more health points, then it should be removed from the board. Complete the class BoardImpl so that it correctly implements the interface Board. The expected behavior of each method is described in the interface.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
-<title>Boxed primitive type | OOFP 2025-26</title>
+<title>Assignment 4 | OOFP 2025-26</title>
 <link rel="icon" href="/favicon.png" >
 <link rel="manifest" href="/manifest.json">
-<link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/objects/sections/boxed/">
+<link rel="canonical" href="http://localhost:1313/docs/ass/sections/ass4/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.4970ba911cca06057bd4c9b290ea34dff2b280f789cfab95a918b1b345cb1cc4.js" integrity="sha256-SXC6kRzKBgV71MmykOo03/KygPeJz6uVqRixs0XLHMQ=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.4bd138d0d784d78ec34218e645c2f16a5d1b9c1d6c4d1c642cd4cf494cb2154c.js" integrity="sha256-S9E40NeE147DQhjmRcLxal0bnB1sTRxkLNTPSUyyFUw=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -714,6 +713,19 @@ https://github.com/alex-shpak/hugo-book
         </li>
       
     
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/recursion/sections/termination/" class="">Termination</a>
+  
+
+        </li>
+      
+    
   </ul>
 
         </li>
@@ -802,6 +814,19 @@ https://github.com/alex-shpak/hugo-book
   
 
   
+    <a href="/docs/pattern/sections/fold/" class="">Fold</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
     <a href="/docs/pattern/sections/pipe/" class="">Pipeline</a>
   
 
@@ -846,7 +871,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-799305e0300c702d39454ff1753190dd" class="toggle" checked />
+    <input type="checkbox" id="section-799305e0300c702d39454ff1753190dd" class="toggle"  />
     <label for="section-799305e0300c702d39454ff1753190dd" class="flex justify-between">
       <a href="/docs/objects/" class="">Object and class</a>
     </label>
@@ -979,7 +1004,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/objects/sections/boxed/" class="active">Boxed primitive type</a>
+    <a href="/docs/objects/sections/boxed/" class="">Boxed primitive type</a>
   
 
         </li>
@@ -1216,7 +1241,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <input type="checkbox" id="section-c98f96b18785aef1d766e440ba328a79" class="toggle"  />
+    <input type="checkbox" id="section-c98f96b18785aef1d766e440ba328a79" class="toggle" checked />
     <label for="section-c98f96b18785aef1d766e440ba328a79" class="flex justify-between">
       <a href="/docs/ass/" class="">Assignments</a>
     </label>
@@ -1264,6 +1289,19 @@ https://github.com/alex-shpak/hugo-book
         </li>
       
     
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/ass/sections/ass4/" class="active">Assignment 4</a>
+  
+
+        </li>
+      
+    
   </ul>
 
         </li>
@@ -1304,7 +1342,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <h3>Boxed primitive type</h3>
+  <h3>Assignment 4</h3>
 
   <label for="toc-control">
     
@@ -1320,13 +1358,8 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#primitive-type">Primitive type</a></li>
-    <li><a href="#boxed-type">Boxed type</a></li>
-    <li><a href="#immutability">Immutability</a>
-      <ul>
-        <li><a href="#interning">Interning</a></li>
-      </ul>
-    </li>
+    <li><a href="#exercise-1-board-game">Exercise 1: board game</a></li>
+    <li><a href="#exercise-2-restaurant">Exercise 2: restaurant</a></li>
   </ul>
 </nav>
 
@@ -1339,85 +1372,79 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown book-article"><h1 id="boxed-primitive-type">
-  Boxed primitive type
-  <a class="anchor" href="#boxed-primitive-type">#</a>
+  <article class="markdown book-article"><h1 id="assignment-4-abstract-data-types">
+  Assignment 4: abstract data types
+  <a class="anchor" href="#assignment-4-abstract-data-types">#</a>
 </h1>
-<h2 id="primitive-type">
-  Primitive type
-  <a class="anchor" href="#primitive-type">#</a>
+<h2 id="exercise-1-board-game">
+  Exercise 1: board game
+  <a class="anchor" href="#exercise-1-board-game">#</a>
 </h2>
-<blockquote class="book-hint warning">
-<p>Java has 8 <strong>primitive types</strong>: <code>byte</code>, <code>short</code>, <code>int</code>, <code>long</code>, <code>float</code>, <code>double</code>, <code>boolean</code> and <code>char</code>.</p>
-</blockquote>
-<blockquote class="book-hint danger">
-<p><strong><em>Warning.</em></strong>
-A variable with primitive type hold a <em>value</em>, not a <a href="https://unibz-oofp-25-26.github.io/docs/objects/sections/class/#refType">reference</a>.</p>
-</blockquote>
-<h2 id="boxed-type">
-  Boxed type
-  <a class="anchor" href="#boxed-type">#</a>
-</h2>
-<blockquote class="book-hint warning">
-<p>For each primitive type, Java has a so-called <strong>boxed</strong> or (<strong>wrapper</strong>) type:
-<code>Byte</code>, <code>Short</code>, <code>Integer</code>, <code>Long</code>, <code>Float</code>, <code>Double</code>, <code>Boolean</code> and <code>Character</code>.</p>
-</blockquote>
-<blockquote class="book-hint info">
-<p><strong><em>Usage.</em></strong></p>
+<p>We model a simple board game with rooms and players.</p>
+<blockquote>
+<p>Each room has:</p>
 <ul>
-<li>
-<p>Boxed types can be used as <a href="https://unibz-oofp-25-26.github.io/notreleased/">type parameters</a> (notably in Java <a href="https://unibz-oofp-25-26.github.io/docs/abstractdatatypes/sections/collection/">collections</a> like <code>Set</code> or <code>List</code>),
-whereas primitive types cannot.</p>
-</li>
-<li>
-<p>Some boxed types offer additional functionalities, via instance methods (e.g. an <code>Integer</code> can represent a positive numbers up to $2^{32} - 1$).</p>
-</li>
+<li>a set of adjacent rooms, and</li>
+<li>a set of players present in the room.</li>
+</ul>
+<p>Each player has</p>
+<ul>
+<li>a type (paper, rock or scissor), and</li>
+<li>a number of health points.</li>
+</ul>
+<p>An action consists in moving one player from a room to another (adjacent) room:</p>
+<ul>
+<li>When the player enters the room, it may deal one point of damage to each other player that is already in the room (based on their rock/paper/scissor types), and receive damage in the same way.</li>
+<li>After all these operations have been performed, if a player has no more health points, then it should be removed from the board.</li>
 </ul>
 </blockquote>
-<blockquote class="book-hint warning">
-<p><strong><em>Syntax.</em></strong>
-Constructors for boxed types are deprecated.
-Instead, instances can be created via so-called <strong>autoboxing</strong>.</p>
+<p>Complete the class <code>BoardImpl</code> so that it correctly implements the interface <code>Board</code>.
+The expected behavior of each method is described in the interface.</p>
+<blockquote class="book-hint info">
+<p><strong><em>Hint.</em></strong>
+Feel free to create auxiliary (private) methods to simplify your code.</p>
 </blockquote>
 <blockquote class="book-hint info">
-<p><strong><em>Examples.</em></strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Integer myInteger <span style="color:#f92672">=</span> 2;
-</span></span><span style="display:flex;"><span>Character myCharacter <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;a&#39;</span>;
-</span></span></code></pre></div></blockquote>
-<blockquote class="book-hint warning">
-<p><strong><em>Syntax.</em></strong>
-Several Java operators (like <code>+</code>, <code>==</code>, <code>&lt;=</code>, etc.) are overloaded: they behave with boxed types as they would with primitive types.</p>
+<p><strong><em>Hint.</em></strong>
+You can debug your code by running the tests in the folder <code>test/java/ex1</code>.</p>
 </blockquote>
-<blockquote class="book-hint info">
-<p><strong><em>Example.</em></strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Integer i <span style="color:#f92672">=</span> 1;
-</span></span><span style="display:flex;"><span>i <span style="color:#f92672">+=</span> 1;
-</span></span><span style="display:flex;"><span>Integer j <span style="color:#f92672">=</span> 2;
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// Outputs true</span>
-</span></span><span style="display:flex;"><span>System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(i <span style="color:#f92672">==</span> j);
-</span></span></code></pre></div></blockquote>
-<h2 id="immutability">
-  Immutability
-  <a class="anchor" href="#immutability">#</a>
+<h2 id="exercise-2-restaurant">
+  Exercise 2: restaurant
+  <a class="anchor" href="#exercise-2-restaurant">#</a>
 </h2>
-<blockquote class="book-hint warning">
-<p>Like strings, instances of boxed types in Java are <a href="https://unibz-oofp-25-26.github.io/notreleased/">immutable</a>.</p>
+<p>We model arrivals, departures and waiting line in a restaurant.</p>
+<blockquote>
+<p>A restaurant has a fixed number of tables, each with a certain capacity (i.e. the number of people who can sit at this table).</p>
+<p>When a party arrives:</p>
+<ul>
+<li>if there is an empty table, then the party gets immediately seated at (one of) the smallest table(s) that can host it,</li>
+<li>otherwise the party is put on the waiting list.</li>
+</ul>
+<p>When a party finishes eating, it pays and leaves the restaurant, thus freeing up a table for another party to sit.
+When this happens, the next party to be seated should be the first on the waiting line that fits at this table.</p>
+<p>A party on the waiting list may also decide to leave before being seated.</p>
 </blockquote>
-<p>This may affect performance.</p>
+<p>Complete the class <code>RestaurantImpl</code> so that it correctly implements the interface <code>Restaurant</code>.
+The expected behavior of each method is specified in the interface.</p>
 <blockquote class="book-hint info">
-<p><strong><em>Example.</em></strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> (Integer i <span style="color:#f92672">=</span> 0; i <span style="color:#f92672">&lt;</span> 1000000 ; i<span style="color:#f92672">++</span>){
-</span></span><span style="display:flex;"><span>    ...
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>may create up to 1 million objects in memory.</p>
+<p><strong><em>Hint.</em></strong> Make use of the <a href="http://localhost:1313/docs/abstractdatatypes/">abstract data types</a> seen during the lectures: <code>List</code>, <code>Set</code>, <code>Map</code>, etc.</p>
+<p>For instance, you may maintain (among others) a Java <code>Map</code> that maps each table capacity to the number of free tables that have this capacity.</p>
 </blockquote>
-<p>This is one of the reasons why it is usually recommended to use primitive types whenever possible (see for instance <a href="https://unibz-oofp-25-26.github.io/docs/intro/sections/resources/#effectiveJava">Effective Java</a>,
-Item 61).</p>
-<h3 id="interning">
-  Interning
-  <a class="anchor" href="#interning">#</a>
-</h3>
-<p>Some boxed types in Java are (partially) <a href="https://unibz-oofp-25-26.github.io/docs/objects/sections/string/">interned</a>, analogously to strings.</p>
+<blockquote class="book-hint info">
+<p><strong><em>Hint.</em></strong> Aside from the methods seen in the lectures, the following may simplify the exercise:</p>
+<ul>
+<li><a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html#remove-java.lang.Object-">List.remove(Object o)</a></li>
+<li><a href="https://docs.oracle.com/javase/8/docs/api/java/util/TreeMap.html">TreeMap.ceilingKey(k key)</a> or <a href="https://docs.oracle.com/javase/8/docs/api/java/util/TreeMap.html">TreeMap.ceilingEntry(k key)</a></li>
+</ul>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Hint.</em></strong>
+Feel free to create auxiliary methods to make your code more readable and/or easier to maintain.</p>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Hint.</em></strong>
+You can debug your code by running the tests in the folder <code>test/java/ex2</code>.</p>
+</blockquote>
 </article>
  
       
@@ -1459,13 +1486,8 @@ Item 61).</p>
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#primitive-type">Primitive type</a></li>
-    <li><a href="#boxed-type">Boxed type</a></li>
-    <li><a href="#immutability">Immutability</a>
-      <ul>
-        <li><a href="#interning">Interning</a></li>
-      </ul>
-    </li>
+    <li><a href="#exercise-1-board-game">Exercise 1: board game</a></li>
+    <li><a href="#exercise-2-restaurant">Exercise 2: restaurant</a></li>
   </ul>
 </nav>
 
