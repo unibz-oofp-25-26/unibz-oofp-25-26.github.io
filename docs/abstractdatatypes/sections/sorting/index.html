@@ -38,7 +38,7 @@ Some datatypes have several natural sorting criteria.">
 <link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/abstractdatatypes/sections/sorting/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.b08423ca89115339ca9c402ae8ad7615f3ea970d506a09578aea55630d4d6922.js" integrity="sha256-sIQjyokRUznKnEAq6K12FfPqlw1QaglXiupVYw1NaSI=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.5405817f61dc29bf1704e83cb947d270ad4df58860f9705790cba04e1e9defc4.js" integrity="sha256-VAWBf2HcKb8XBOg8uUfScK1N9Yhg&#43;XBXkMugTh6d78Q=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -1501,7 +1501,7 @@ We can create a class <code>City</code> that implements <code>Comparable&lt;City
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">compareTo</span> (T otherObject);
 </span></span></code></pre></div><blockquote class="book-hint warning">
 <p><strong><em>Usage.</em></strong>
-The method <code>compareTo(T otherObject)</code> should define a <a href="https://unibz-oofp-25-26.github.io/docs/background/sections/order/">total preorder</a> $\preceq$ over instances of <code>T</code>, as follows.</p>
+The method <code>compareTo</code> should define a <a href="https://unibz-oofp-25-26.github.io/docs/background/sections/order/">total preorder</a> $\preceq_o$ over instances of <code>T</code>, as follows.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>o1.<span style="color:#a6e22e">compareTo</span>(T o2)
 </span></span></code></pre></div><p>should evaluate to</p>
 <ul>
@@ -1513,7 +1513,7 @@ The method <code>compareTo(T otherObject)</code> should define a <a href="https:
 <blockquote class="book-hint info">
 <p><strong><em>Example (continued).</em></strong>
 Here is an implementation of the method <code>compareTo</code> where cities are compared by zip code (in increasing order):</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">City</span> <span style="color:#66d9ef">implements</span> Comparable<span style="color:#f92672">&lt;</span>City<span style="color:#f92672">&gt;</span> {  <span style="color:#75715e">// City implements the interface `Comparable`</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">City</span> <span style="color:#66d9ef">implements</span> Comparable<span style="color:#f92672">&lt;</span>City<span style="color:#f92672">&gt;</span> {  <span style="color:#75715e">// `City` implements the interface `Comparable&lt;City&gt;`</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> String name;
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span> zipCode;
@@ -1556,7 +1556,7 @@ The method <code>compareTo</code> is implicitly used by some of Java&rsquo;s nat
 This means that</p>
 <p>$\qquad \qquad $<code>o1.compareTo(o2)</code> should return <code>0</code> iff <code>o1.equals(o2)</code> returns <code>true</code>.</p>
 <p>If you want to use a sorting criterion that does <em>not</em> satisfy this constraint,
-then we recommend using a <a href=""><code>Comparator</code></a> instead</p>
+then we recommend using a <a href="#comparator"><code>Comparator</code></a> instead.</p>
 </blockquote>
 <h4 id="comparator">
   Comparator
@@ -1581,7 +1581,9 @@ We only highlight one of them.</p>
 </h4>
 <blockquote class="book-hint warning">
 <p><strong><em>Syntax.</em></strong>
-The <a href="https://unibz-oofp-25-26.github.io/docs/objects/sections/classasobject/">static</a> method <code>Arrays.sort(T[] array)</code> sorts an array with type <code>T[]</code>.</p>
+The class <code>Arrays</code> provides a <a href="https://unibz-oofp-25-26.github.io/docs/objects/sections/classasobject/">static</a> method</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">sort</span>(T<span style="color:#f92672">[]</span> array)
+</span></span></code></pre></div><p>that sorts an array.</p>
 </blockquote>
 <blockquote class="book-hint info">
 <p><strong><em>Example.</em></strong></p>
@@ -1613,7 +1615,9 @@ a list can be found <a href="https://docs.oracle.com/javase/tutorial/collections
 </span></span></code></pre></div></blockquote>
 <blockquote class="book-hint warning">
 <p><strong><em>To go further.</em></strong>
-The method <code>Arrays.sort(T[] array, Comparator&lt;? super T&gt; c)</code> is similar, but it uses the input comparator to sort the array.</p>
+The static method</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>sort(T<span style="color:#f92672">[]</span> array, Comparator<span style="color:#f92672">&lt;?</span> <span style="color:#66d9ef">super</span> T<span style="color:#f92672">&gt;</span> c)
+</span></span></code></pre></div><p>of the class <code>Arrays</code> is similar, but it uses the input comparator to sort the array.</p>
 </blockquote>
 <blockquote class="book-hint info">
 <p><strong><em>Algorithms.</em></strong>
@@ -1627,8 +1631,13 @@ which is stable.</p>
   Sorting a list
   <a class="anchor" href="#sortList">#</a>
 </h4>
-<p>The class <code>Collections</code> provides a static method <code>Collections.sort(List&lt;T&gt; list)</code>, whose behavior is analogous to <code>Arrays.sort</code>.
-In particular, it also guarantees stable sorting.</p>
+<blockquote class="book-hint warning">
+<p><strong><em>Syntax.</em></strong>
+The class <code>Collections</code> provides a static method</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">sort</span>(List<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> list)
+</span></span></code></pre></div><p>whose behavior is analogous to <code>Arrays.sort</code>.</p>
+<p>In particular, it also guarantees stable sorting.</p>
+</blockquote>
 <blockquote class="book-hint info">
 <p><strong><em>Example(continued).</em></strong></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span>City bologna <span style="color:#f92672">=</span>  <span style="color:#66d9ef">new</span> City(<span style="color:#e6db74">&#34;Bologna&#34;</span>, 40100);
@@ -1645,7 +1654,6 @@ In particular, it also guarantees stable sorting.</p>
 <p><strong><em>To go further.</em></strong>
 Like <code>Arrays.sort</code>, the method <code>Collections.sort</code> has a variant that takes a <code>Comparator</code> as additional argument.</p>
 </blockquote>
-<p>Collections.compare(List&lt;? extends T&gt; list1, List&lt;? extends T&gt; list2)</p>
 </article>
  
       
