@@ -8,7 +8,7 @@
   #
 
 
-Definition.
+Terminology.
 A recursive function/method is linear recursive if it performs at most one recursive call each time it is executed.
 
 
@@ -23,7 +23,7 @@ Accordingly, in this section, we will mostly use Haskell as an illustration.">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="https://unibz-oofp-25-26.github.io/docs/recursion/sections/linear/">
   <meta property="og:site_name" content="OOFP 2025-26">
   <meta property="og:title" content="Linear recursion">
-  <meta property="og:description" content="Linear recursion # Definition. A recursive function/method is linear recursive if it performs at most one recursive call each time it is executed.
+  <meta property="og:description" content="Linear recursion # Terminology. A recursive function/method is linear recursive if it performs at most one recursive call each time it is executed.
 Hint. In an imperative language (like Java), a linear recursive algorithm can easily be transformed into an iterative one (i.e. an algorithm that uses only loops).
 Haskell does not admit loops, so linear recursion is the standard way to perform simple iterations (although list comprehensions can be used instead in certain cases). Accordingly, in this section, we will mostly use Haskell as an illustration.">
   <meta property="og:locale" content="en_us">
@@ -35,7 +35,7 @@ Haskell does not admit loops, so linear recursion is the standard way to perform
 <link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/recursion/sections/linear/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.e051d785fcb1a850f3d2a878cbdf34e22fc5c9da9bcd0056ac58dd97bd24093c.js" integrity="sha256-4FHXhfyxqFDz0qh4y9804i/FydqbzQBWrFjdl70kCTw=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.c2d5656e1d4542a3dc0f72232f83887614d9ee0c209af61e5e735e25dfee3813.js" integrity="sha256-wtVlbh1FQqPcD3IjL4OIdhTZ7gwgmvYeXnNeJd/uOBM=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -679,6 +679,19 @@ https://github.com/alex-shpak/hugo-book
   
 
   
+    <a href="/docs/recursion/sections/nary/" class="">N-ary recursion</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
     <a href="/docs/recursion/sections/intermediate/" class="">Intermediate result</a>
   
 
@@ -693,6 +706,19 @@ https://github.com/alex-shpak/hugo-book
 
   
     <a href="/docs/recursion/sections/accumulator/" class="">Accumulator and tail recursion</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/recursion/sections/minimax/" class="">Minimax/maximin</a>
   
 
         </li>
@@ -1344,7 +1370,7 @@ https://github.com/alex-shpak/hugo-book
 <nav id="TableOfContents">
   <ul>
     <li><a href="#exec">Execution</a></li>
-    <li><a href="#solving-a-problem-recursively">Solving a problem recursively</a></li>
+    <li><a href="#methodology">Solving a problem recursively</a></li>
     <li><a href="#correctness">Correctness</a></li>
     <li><a href="#examples">Examples</a></li>
   </ul>
@@ -1364,7 +1390,7 @@ https://github.com/alex-shpak/hugo-book
   <a class="anchor" href="#linear-recursion">#</a>
 </h1>
 <blockquote class="book-hint warning">
-<p><strong><em>Definition.</em></strong>
+<p><strong><em>Terminology.</em></strong>
 A recursive function/method is <strong>linear recursive</strong> if it performs at most <em>one</em> recursive call each time it is executed.</p>
 </blockquote>
 <blockquote class="book-hint info">
@@ -1425,9 +1451,9 @@ The following function sums a list of integers:</p>
 Understanding the execution of a recursive program (as we did above) is mostly useful for debugging.
 In order to <em>write</em> a recursive program, one can very often use a simpler, high-level methodology, sketched immediately below.</p>
 </blockquote>
-<h2 id="solving-a-problem-recursively">
+<h2 id="methodology">
   Solving a problem recursively
-  <a class="anchor" href="#solving-a-problem-recursively">#</a>
+  <a class="anchor" href="#methodology">#</a>
 </h2>
 <blockquote class="book-hint info">
 <p><strong><em>Hint.</em></strong>
@@ -1703,7 +1729,7 @@ For instance,</p>
 <nav id="TableOfContents">
   <ul>
     <li><a href="#exec">Execution</a></li>
-    <li><a href="#solving-a-problem-recursively">Solving a problem recursively</a></li>
+    <li><a href="#methodology">Solving a problem recursively</a></li>
     <li><a href="#correctness">Correctness</a></li>
     <li><a href="#examples">Examples</a></li>
   </ul>

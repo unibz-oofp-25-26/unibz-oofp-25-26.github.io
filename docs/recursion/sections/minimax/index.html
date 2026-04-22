@@ -1,0 +1,1733 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  To go further: Minimax/maximin
+  #
+
+
+Warning.
+You do not need to read this page to prepare for the exam.
+It is only here for you to deepen your understanding of recursive algorithms.
+
+Minimax is a recursive algorithm with applications in games, robotics, decision making, etc.
+Minimax may be easier to explain in the context of a turn-based zero-sum game, i.e. a game (like chess or tic-tac-toe) where players compete with each other (as opposed for instance to a collaborative game).">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://unibz-oofp-25-26.github.io/docs/recursion/sections/minimax/">
+  <meta property="og:site_name" content="OOFP 2025-26">
+  <meta property="og:title" content="Minimax/maximin">
+  <meta property="og:description" content="To go further: Minimax/maximin # Warning. You do not need to read this page to prepare for the exam.
+It is only here for you to deepen your understanding of recursive algorithms.
+Minimax is a recursive algorithm with applications in games, robotics, decision making, etc.
+Minimax may be easier to explain in the context of a turn-based zero-sum game, i.e. a game (like chess or tic-tac-toe) where players compete with each other (as opposed for instance to a collaborative game).">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+<title>Minimax/maximin | OOFP 2025-26</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/recursion/sections/minimax/">
+<link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.c2d5656e1d4542a3dc0f72232f83887614d9ee0c209af61e5e735e25dfee3813.js" integrity="sha256-wtVlbh1FQqPcD3IjL4OIdhTZ7gwgmvYeXnNeJd/uOBM=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css"
+  integrity="sha384-vKruj+a13U8yHIkAyGgK1J3ArTLzrFGBbBc0tDp4ad/EyewESeXE/Iv67Aj8gKZ0"
+  crossorigin="anonymous"
+/>
+
+
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js"
+  integrity="sha384-PwRUT/YqbnEjkZO0zZxNqcxACrXe+j766U2amXcgMg5457rve2Y7I6ZJSm2A0mS4"
+  crossorigin="anonymous"
+></script>
+
+
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js"
+  integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+  crossorigin="anonymous"
+  onload="renderMathInElement(document.body);"
+></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    renderMathInElement(document.body, {
+      delimiters: [
+        { left: "$$", right: "$$", display: true },
+        { left: "$", right: "$", display: false },
+      ],
+    });
+  });
+</script>
+
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>OOFP 2025-26</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-8b45d304a159d86710e1579c97aa5b43" class="toggle"  />
+    <label for="section-8b45d304a159d86710e1579c97aa5b43" class="flex justify-between">
+      <a href="/docs/intro/" class="">This course</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/organization/" class="">Organization</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/material/" class="">Material</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/reading_path/" class="">Reading path</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/evaluation/" class="">Evaluation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/prerequisites/" class="">Prerequisites</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/office_hours/" class="">Office hours</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/content/" class="">Content</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/resources/" class="">Additional resources</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/software/" class="">Software</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b17bf4b701f350b4430cc5371ccad607" class="toggle"  />
+    <label for="section-b17bf4b701f350b4430cc5371ccad607" class="flex justify-between">
+      <a href="/docs/paradigm/" class="">Paradigms and languages</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/paradigm/sections/paradigm/" class="">Paradigm</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/paradigm/sections/error/" class="">Compile time vs runtime error</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/paradigm/sections/type/" class="">Typing</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/paradigm/sections/pure/" class="">Pure function</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-eb0a250150a82657aa03f0717afdcd45" class="toggle"  />
+    <label for="section-eb0a250150a82657aa03f0717afdcd45" class="flex justify-between">
+      <a href="/docs/haskell/" class="">Basic syntax of Haskell</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/haskell/sections/tokens/" class="">Tokens</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/haskell/sections/type/" class="">Base types</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/haskell/sections/native/" class="">Native functions</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/haskell/sections/tuple/" class="">Tuple</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/haskell/sections/function/" class="">Function</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/haskell/sections/program/" class="">Program</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/haskell/sections/list/" class="">List</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-2e35b5b0c21ab79cc6b70c0c8a6135fa" class="toggle"  />
+    <label for="section-2e35b5b0c21ab79cc6b70c0c8a6135fa" class="flex justify-between">
+      <a href="/docs/higher/" class="">Higher-order function</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/higher/sections/anonymous/" class="">Anonymous function</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/higher/sections/currying/" class="">Currying</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/higher/sections/useful_hofs/" class="">A few higher-order functions</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-a9f24c38594f15da67150d02f87a60d7" class="toggle"  />
+    <label for="section-a9f24c38594f15da67150d02f87a60d7" class="flex justify-between">
+      <a href="/docs/control/" class="">Control flow</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/control/sections/pattern/" class="">Pattern matching</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/control/sections/condition/" class="">Boolean condition</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/control/sections/comprehension/" class="">List comprehension</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/control/sections/stack/" class="">Call stack</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-97db6297fa77b8e8a3d66808fea4d894" class="toggle"  />
+    <label for="section-97db6297fa77b8e8a3d66808fea4d894" class="flex justify-between">
+      <a href="/docs/generic/" class="">Genericity</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/generic/sections/variable/" class="">Type variable</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/generic/sections/bound/" class="">Bound</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/generic/sections/generic_type/" class="">Generic type</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/generic/sections/maybe/" class="">Option type</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-54a25c0ad53482778ca10b1a7db8e623" class="toggle" checked />
+    <label for="section-54a25c0ad53482778ca10b1a7db8e623" class="flex justify-between">
+      <a href="/docs/recursion/" class="">Recursion</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/recursion/sections/linear/" class="">Linear recursion</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/recursion/sections/nary/" class="">N-ary recursion</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/recursion/sections/intermediate/" class="">Intermediate result</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/recursion/sections/accumulator/" class="">Accumulator and tail recursion</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/recursion/sections/minimax/" class="active">Minimax/maximin</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d92e119f475bae7b2a2364fe0e1fc445" class="toggle"  />
+    <label for="section-d92e119f475bae7b2a2364fe0e1fc445" class="flex justify-between">
+      <a href="/docs/composite/" class="">Composite type</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/composite/sections/enum/" class="">Enumerated type</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/composite/sections/product/" class="">Product type</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/composite/sections/sum/" class="">Sum type</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-007945605153592d0fc2acb75802d872" class="toggle"  />
+    <label for="section-007945605153592d0fc2acb75802d872" class="flex justify-between">
+      <a href="/docs/pattern/" class="">Functional patterns</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/pattern/sections/pipe/" class="">Pipeline</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/pattern/sections/functor/" class="">Functor</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/pattern/sections/monad/" class="">Monad</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-799305e0300c702d39454ff1753190dd" class="toggle"  />
+    <label for="section-799305e0300c702d39454ff1753190dd" class="flex justify-between">
+      <a href="/docs/objects/" class="">Object and class</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/objects/sections/object/" class="">Object</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/objects/sections/class/" class="">Class and instance</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/objects/sections/value_ref/" class="">Passing by value or by reference</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/objects/sections/inheritance/" class="">Inheritance</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/objects/sections/method/" class="">Instance method</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/objects/sections/tostring/" class="">Displaying an object</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/objects/sections/comparing/" class="">Cast and equality</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/objects/sections/classasobject/" class="">Class as object</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/objects/sections/string/" class="">String</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/objects/sections/boxed/" class="">Boxed primitive type</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/objects/sections/encapsulation/" class="">Encapsulation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/objects/sections/mutability/" class="">Mutability</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c34bda991aa58acb3c5c88344f5ff4d1" class="toggle"  />
+    <label for="section-c34bda991aa58acb3c5c88344f5ff4d1" class="flex justify-between">
+      <a href="/docs/abstractdatatypes/" class="">Abstract data type</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/abstractdatatypes/sections/collection/" class="">ADT as a generic interface</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/abstractdatatypes/sections/list/" class="">List</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/abstractdatatypes/sections/set/" class="">Set</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/abstractdatatypes/sections/map/" class="">Associative array</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/abstractdatatypes/sections/queue/" class="">Stack, queue, priority queue</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/abstractdatatypes/sections/sorting/" class="">Sorting</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c5f1310fa6b2ad1b4f803a63275b0f17" class="toggle"  />
+    <label for="section-c5f1310fa6b2ad1b4f803a63275b0f17" class="flex justify-between">
+      <a href="/docs/interface/" class="">Interface</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/interface/sections/specification/" class="">Specification and programming interface</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/interface/sections/java_interface/" class="">Java interface</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d689bb2436bd0f51b31e8f95cf070b59" class="toggle"  />
+    <label for="section-d689bb2436bd0f51b31e8f95cf070b59" class="flex justify-between">
+      <a href="/docs/background/" class="">Background</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/background/sections/set_list/" class="">Set, list, tuple</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/background/sections/function/" class="">Function</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/background/sections/order/" class="">Relation, preorder</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/background/sections/problem/" class="">Computational problem</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c98f96b18785aef1d766e440ba328a79" class="toggle"  />
+    <label for="section-c98f96b18785aef1d766e440ba328a79" class="flex justify-between">
+      <a href="/docs/ass/" class="">Assignments</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/ass/sections/ass1/" class="">Assignment 1</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/ass/sections/ass2/" class="">Assignment 2</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/ass/sections/ass3/" class="">Assignment 3</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/ass/sections/ass4/" class="">Assignment 4</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Minimax/maximin</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#winning-strategy">Winning strategy</a></li>
+        <li><a href="#naive-algorithm">Naive algorithm</a></li>
+        <li><a href="#application">Application</a></li>
+        <li><a href="#generalization">Generalization</a></li>
+        <li><a href="#optimization">Optimization</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="to-go-further-minimaxmaximin">
+  To go further: Minimax/maximin
+  <a class="anchor" href="#to-go-further-minimaxmaximin">#</a>
+</h1>
+<blockquote class="book-hint danger">
+<p><strong><em>Warning.</em></strong>
+You do <em>not</em> need to read this page to prepare for the exam.</p>
+<p>It is only here for you to deepen your understanding of recursive algorithms.</p>
+</blockquote>
+<p>Minimax is a recursive algorithm with applications in games, robotics, decision making, etc.</p>
+<p>Minimax may be easier to explain in the context of a turn-based <strong>zero-sum game</strong>, i.e. a game (like chess or tic-tac-toe) where players compete with each other (as opposed for instance to a <strong>collaborative game</strong>).</p>
+<p>Zero-sum two player games can be used to model decisions that minimize risk, assuming that the worst will happen if it can.
+In other words, one the two players represents the decision maker, and the other player represents &ldquo;bad luck&rdquo;.</p>
+<p>Numerous extensions and heuristics have been devise for Minimax.
+Here we only focus on the algorithm in its basic form.</p>
+<h3 id="winning-strategy">
+  Winning strategy
+  <a class="anchor" href="#winning-strategy">#</a>
+</h3>
+<p>Let Alice and Bob be our two players.</p>
+<div class="book-tabs">
+<input type="radio" class="toggle" name="tabs-exercise_tictactoe" id="tabs-exercise_tictactoe-0" checked="checked" />
+<label for="tabs-exercise_tictactoe-0">Exercise</label>
+<div class="book-tabs-content markdown-inner"><p>Consider the following state of a game of tic-tac-toe, where Alice plays with crosses, and is the next person to play.</p>
+<p><img src="/img/tictactoe/state/tictactoe.svg" alt="" /></p>
+<p>Assuming that Alice plays optimally, she already has won the game.
+Can you see why?</p>
+</div>
+<input type="radio" class="toggle" name="tabs-exercise_tictactoe" id="tabs-exercise_tictactoe-1"  />
+<label for="tabs-exercise_tictactoe-1">Solution</label>
+<div class="book-tabs-content markdown-inner"><p><img src="/img/tictactoe/state/tictactoe.svg" alt="" /></p>
+<p>If Alice plays top right or bottom right, then <em>regardless</em> of Bob&rsquo;s action, she can complete a line or a diagonal as her next move.</p>
+</div>
+</div>
+<p>Let us generalize this observation.</p>
+<blockquote class="book-hint warning">
+<p>In a turn-based two player game, a sequence of moves can be viewed as a <strong>list</strong> of board states, whose head is the initial board state.</p>
+<p>The <strong>tree</strong> that consists of all these lists represents all possible sequences of moves from the initial board state.</p>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong>
+In the following tree, the root is a board state (of an imaginary game), and each branch represents a possible sequence of moves.
+Alice&rsquo;s possible moves are the green edges, and Bob&rsquo;s possible moves are the red edges.</p>
+<p>The numbers on the leaves represent the payoff for Alice:</p>
+<ul>
+<li>9 if this is a winning state for Alice, and</li>
+<li>0 if this is a winning state for Bob.</li>
+</ul>
+<p><img src="/img/graphs/minimax.svg" alt="" /></p>
+</blockquote>
+<blockquote class="book-hint danger">
+<p><strong><em>Warning.</em></strong>
+In such a tree, several nodes may represent the <em>same</em> board state (e.g. in a chess game, where different sequences of moves may lead to the same board state).</p>
+</blockquote>
+<div class="book-tabs">
+<input type="radio" class="toggle" name="tabs-exercise_tree_winning" id="tabs-exercise_tree_winning-0" checked="checked" />
+<label for="tabs-exercise_tree_winning-0">Exercise</label>
+<div class="book-tabs-content markdown-inner"><p>In the tree above, determine whether Alice has already won the game (assuming that she plays optimally).</p>
+</div>
+<input type="radio" class="toggle" name="tabs-exercise_tree_winning" id="tabs-exercise_tree_winning-1"  />
+<label for="tabs-exercise_tree_winning-1">Solution</label>
+<div class="book-tabs-content markdown-inner"><p>The answer is yes, if Alice selects the right child of the tree&rsquo;s root.</p>
+</div>
+</div>
+<blockquote class="book-hint info">
+<p><strong><em>Observation.</em></strong>
+In both exercises above, we were able to determine that Alice had already won the game, <em>regardless</em> of Bob&rsquo;s actions.
+Intuitively, this holds iff:</p>
+<ul>
+<li><em>there is</em> a move for Alice such that,
+<ul>
+<li>for <em>every</em> possible move of Bob,
+<ul>
+<li><em>there is</em> a move for Alice such that,
+<ul>
+<li>for <em>every</em> possible move of Bob,
+<ul>
+<li>&hellip;
+<ul>
+<li>either:
+<ul>
+<li><em>there is</em> a move for Alice that produces a winning state for Alice, or</li>
+<li><em>every</em> possible move of Bob produces a winning state for Alice.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<p>This observation leads to a natural recursive definition.</p>
+<blockquote class="book-hint warning">
+<p><strong><em>Terminology.</em></strong>
+In our tree, let us assuming that the root has depth $0$.
+We call a node <strong>existential</strong> if its depth is even, and <strong>universal</strong> if its depth is odd.</p>
+</blockquote>
+<p>Existential (resp. universal) nodes are the ones where Alice (resp. Bob) plays.</p>
+<blockquote class="book-hint warning">
+<p><strong><em>Definition.</em></strong>
+A node $n$ is a <strong>winning node</strong> (for Alice) if:</p>
+<ul>
+<li>it represents a winning state for Alice, or</li>
+<li>$n$ is existential and <em>some</em> child of $n$ is a winning node, or</li>
+<li>$n$ is universal and <em>all</em> children of $n$ are a winning nodes.</li>
+</ul>
+</blockquote>
+<h3 id="naive-algorithm">
+  Naive algorithm
+  <a class="anchor" href="#naive-algorithm">#</a>
+</h3>
+<p>Let us start with a naive algorithm for games where:</p>
+<ul>
+<li>the height of the tree is finite (as opposed to chess for instance, where there can be infinite sequences of moves).</li>
+<li>each leaf is a winning state for either Alice or Bob (as opposed to tic-tac-toe for instance, where there can be a draw).</li>
+</ul>
+<p>In such a game, every node of the tree must be a winning node for Alice or for Bob.
+In order to determine this, we can intuitively propagate labels up the tree:</p>
+<p><img src="/img/graphs/minimax_labeled.svg" alt="" /></p>
+<p>Let us assume that nodes in our tree are instance of the following class <code>Node</code>.</p>
+<p><img src="/img/diagrams/plantuml/node_game.svg" alt="" /></p>
+<blockquote class="book-hint warning">
+<p><strong><em>Notation.</em></strong>
+If <code>nodes</code> is an array of nodes and <code>f</code> a function that takes a node as argument, we will use:</p>
+<p>$\qquad$ <code>[ f(n) | n in nodes ]</code></p>
+<p>for the array obtained by applying <code>f</code> to each element of <code>nodes</code>.</p>
+</blockquote>
+<!--Let us also assume a method `int maxLabel(Node[] nodes)` (resp. `int minLabel(Node[] nodes)`) that takes as argument an array of labeled nodes, and returns the largest (resp. least) among their labels.-->
+<blockquote class="book-hint info">
+<p><strong><em>Observation.</em></strong>
+Let <code>n</code> be a non-leaf node whose children have label <code>0</code> or <code>9</code>.
+Then:</p>
+<ul>
+<li><em>there exists</em> a child of <code>n</code> with label <code>9</code> iff
+<code>max [ c.label | c in n.children ] = 9</code></li>
+<li><em>every child</em> of $n$ is labeled with <code>9</code> iff
+<code>min [ c.label | c in n.children ] = 9</code></li>
+</ul>
+</blockquote>
+<p>Using this observation and our definition of a winning node (above), we can write the following recursive method <code>maxiMin</code> (in pseudocode).
+It takes an existential node as input, and returns:</p>
+<ul>
+<li><code>9</code> if this node is a winning node for Alice, or</li>
+<li><code>0</code> if this node is a winning node for Bob.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// existential node</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">maxiMin</span>(Node n){
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// base case (leaf node)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span>(n.<span style="color:#a6e22e">children</span>.<span style="color:#a6e22e">length</span> <span style="color:#f92672">==</span> 0){
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> n.<span style="color:#a6e22e">label</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// inductive case: return the largest label computed for a child</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> max <span style="color:#f92672">[</span> miniMax(c) <span style="color:#f92672">|</span> c in n.<span style="color:#a6e22e">children</span> <span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// universal node</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">miniMax</span>(Node n){
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// base case (leaf node)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span>(n.<span style="color:#a6e22e">children</span>.<span style="color:#a6e22e">length</span> <span style="color:#f92672">==</span> 0){
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> n.<span style="color:#a6e22e">label</span>
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// inductive case: return the least label computed for a child</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> min <span style="color:#f92672">[</span> maxiMin(c) <span style="color:#f92672">|</span> c in n.<span style="color:#a6e22e">children</span> <span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>In this algorithm, the method <code>miniMax</code> takes a universal node as input, and its return value has the same meaning as <code>maximin</code> (i.e. <code>9</code> if the node is a winning node for Alice, or <code>0</code> if it is a winning node for Bob).</p>
+<blockquote class="book-hint info">
+<p><strong><em>Note.</em></strong>
+The code can be (slightly) factorized by writing a unique recursive method, with an additional boolean argument that indicates whether the input node is existential or universal.</p>
+<p>This is usually how the algorithm is presented.
+We used two methods instead for readability.</p>
+</blockquote>
+<!-- **_Note._** -->
+<!-- Traditionally, the purpose of the player (Alice here) is to minimize the score, and the purpose of the opponent (Bob here) is to maximize it. -->
+<!-- This is arguably more intuitive in the case of decision system, where labels measure _risk_ (which has to be minimized). -->
+<!-- In this case, `miniMax` (resp. `maxiMin`) takes as argument an existential (resp. universal) node. -->
+<!-- We used the opposite here for didactic reasons. -->
+<h3 id="application">
+  Application
+  <a class="anchor" href="#application">#</a>
+</h3>
+<p>In practice, in order to apply this algorithm to a game, the class <code>Node</code> is unnecessary.
+Instead, we can use:</p>
+<ul>
+<li>an auxiliary procedure <code>possibleMoves</code> that compute the &ldquo;children of a node&rdquo;, i.e. takes as argument a board state, and enumerates all board states that can be reached from it in one move.</li>
+<li>an auxiliary procedure <code>score</code> that returns the &ldquo;label of a leaf node&rdquo;.
+This procedure takes a state as input, and determines whether this state is a winning state for Alice or Bob.</li>
+</ul>
+<p>The method <code>maxiMin</code> becomes:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">maxiMin</span>(State s){
+</span></span><span style="display:flex;"><span>    Set<span style="color:#f92672">&lt;</span>State<span style="color:#f92672">&gt;</span> children <span style="color:#f92672">=</span> possibleMoves(s)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// base case (leaf node)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span>(children.<span style="color:#a6e22e">size</span> <span style="color:#f92672">==</span> 0){
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> score(s)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// inductive case: return the largest label computed for a child</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> max <span style="color:#f92672">[</span> miniMax(c) <span style="color:#f92672">|</span> c in children <span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>And similarly for <code>miniMax</code>.</p>
+<p>Then Alice can decide her next move by calling <code>miniMax(c)</code> for each successor state <code>c</code> of the current state, and select one of the states with the highest score.</p>
+<h3 id="generalization">
+  Generalization
+  <a class="anchor" href="#generalization">#</a>
+</h3>
+<h4 id="arbitrary-weights">
+  Arbitrary weights
+  <a class="anchor" href="#arbitrary-weights">#</a>
+</h4>
+<p>The Minimax algorithm can be generalized to scenarios where a leaf node may not represent a winning state for Alice or Bob.
+For instance, in order to model tic-tac-toe, we may label some leaves with the value <code>4</code> for a draw.</p>
+<p>More generally, any function <code>score</code> that assigns a score to a node can be used, as long as it assigns a <em>maximal</em> value to a winning state for Alice, and a <em>minimal</em> value to a winning state for Bob.</p>
+<p>The algorithm is unchanged.</p>
+<h4 id="large-or-infinite-trees">
+  Large or infinite trees
+  <a class="anchor" href="#large-or-infinite-trees">#</a>
+</h4>
+<blockquote class="book-hint danger">
+<p><strong><em>Warning</em></strong>
+Minimax can be <em>prohibitive</em> for games with an important tree height (since the number of board states to explore may grow exponentially with the height of the tree).</p>
+<p>Besides, Minimax does <em>not</em> terminate if the tree has infinite branches (for instance in a chess game).</p>
+</blockquote>
+<p>This is why the tree of game states is usually explored <em>up to a certain depth</em>.</p>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong>
+<a href="https://en.wikipedia.org/wiki/Deep_Blue_%28chess_computer%29">Deep Blue</a> (the first program that defeated a chess world champion) was only looking 12 moves ahead.</p>
+</blockquote>
+<p>The algorithm becomes:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// existential node</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">maxiMin</span>(State s, <span style="color:#66d9ef">int</span> depth){
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    Set<span style="color:#f92672">&lt;</span>State<span style="color:#f92672">&gt;</span> children <span style="color:#f92672">=</span> possibleMoves(s)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// base case</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span>(children.<span style="color:#a6e22e">size</span> <span style="color:#f92672">==</span> 0 <span style="color:#f92672">|</span> depth <span style="color:#f92672">==</span> 0){
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> score(s)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// inductive case: return the largest label computed for a child</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> max <span style="color:#f92672">[</span> miniMax(c, depth <span style="color:#f92672">-</span> 1) <span style="color:#f92672">|</span> c in children <span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// universal node</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">miniMax</span>(Node n, <span style="color:#66d9ef">int</span> depth){
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    Set<span style="color:#f92672">&lt;</span>State<span style="color:#f92672">&gt;</span> children <span style="color:#f92672">=</span> possibleMoves(s)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// base case</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span>(children.<span style="color:#a6e22e">size</span> <span style="color:#f92672">==</span> 0 <span style="color:#f92672">|</span> depth <span style="color:#f92672">==</span> 0){
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> score(s)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// inductive case: return the least label computed for a child</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> min <span style="color:#f92672">[</span> maxiMin(c, depth <span style="color:#f92672">-</span> 1) <span style="color:#f92672">|</span> c in children <span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="optimization">
+  Optimization
+  <a class="anchor" href="#optimization">#</a>
+</h3>
+<p>A variety of optimization techniques have been developed for Minimax.
+For instance:</p>
+<ul>
+<li>keeping track of visited board states (recall that different nodes in our tree may represent the same board state),</li>
+<li><a href="https://en.wikipedia.org/wiki/Alpha%E2%80%93beta_pruning">alpha-beta pruning</a>.</li>
+</ul>
+<p>These are beyond the scope of this course.</p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#winning-strategy">Winning strategy</a></li>
+        <li><a href="#naive-algorithm">Naive algorithm</a></li>
+        <li><a href="#application">Application</a></li>
+        <li><a href="#generalization">Generalization</a></li>
+        <li><a href="#optimization">Optimization</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

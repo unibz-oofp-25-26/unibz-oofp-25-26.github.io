@@ -9,27 +9,29 @@
 
 In some cases, we need recursive calls to return more information than what the function should compute.
 
+  Linear recursion
+  #
+
+
 Example.
-We want to implement a function
+We want to implement a Haskell function
 longestWord :: String -&gt; Int
 that maps a string to the length of its longest word.
 For simplicity, we will assume that words are separated by a blank space (noted &#39; &#39; in Haskell).
 For instance,
 longestWord &#34;Hi there&#34;
-should evaluate to 5.
-Recall that a string in Haskell is an array of characters.">
+should evaluate to 5.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="https://unibz-oofp-25-26.github.io/docs/recursion/sections/intermediate/">
   <meta property="og:site_name" content="OOFP 2025-26">
   <meta property="og:title" content="Intermediate result">
   <meta property="og:description" content="Recursion and intermediate result # In some cases, we need recursive calls to return more information than what the function should compute.
-Example. We want to implement a function
+Linear recursion # Example. We want to implement a Haskell function
 longestWord :: String -&gt; Int that maps a string to the length of its longest word.
 For simplicity, we will assume that words are separated by a blank space (noted &#39; &#39; in Haskell).
 For instance,
-longestWord &#34;Hi there&#34; should evaluate to 5.
-Recall that a string in Haskell is an array of characters.">
+longestWord &#34;Hi there&#34; should evaluate to 5.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
@@ -39,7 +41,7 @@ Recall that a string in Haskell is an array of characters.">
 <link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/recursion/sections/intermediate/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.e051d785fcb1a850f3d2a878cbdf34e22fc5c9da9bcd0056ac58dd97bd24093c.js" integrity="sha256-4FHXhfyxqFDz0qh4y9804i/FydqbzQBWrFjdl70kCTw=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.c2d5656e1d4542a3dc0f72232f83887614d9ee0c209af61e5e735e25dfee3813.js" integrity="sha256-wtVlbh1FQqPcD3IjL4OIdhTZ7gwgmvYeXnNeJd/uOBM=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -683,6 +685,19 @@ https://github.com/alex-shpak/hugo-book
   
 
   
+    <a href="/docs/recursion/sections/nary/" class="">N-ary recursion</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
     <a href="/docs/recursion/sections/intermediate/" class="active">Intermediate result</a>
   
 
@@ -697,6 +712,19 @@ https://github.com/alex-shpak/hugo-book
 
   
     <a href="/docs/recursion/sections/accumulator/" class="">Accumulator and tail recursion</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/recursion/sections/minimax/" class="">Minimax/maximin</a>
   
 
         </li>
@@ -1345,7 +1373,12 @@ https://github.com/alex-shpak/hugo-book
   <aside class="hidden clearfix">
     
   
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#linear-recursion">Linear recursion</a></li>
+    <li><a href="#binary">Binary recursion</a></li>
+  </ul>
+</nav>
 
 
 
@@ -1361,9 +1394,13 @@ https://github.com/alex-shpak/hugo-book
   <a class="anchor" href="#recursion-and-intermediate-result">#</a>
 </h1>
 <p>In some cases, we need recursive calls to return <em>more information</em> than what the function should compute.</p>
+<h2 id="linear-recursion">
+  Linear recursion
+  <a class="anchor" href="#linear-recursion">#</a>
+</h2>
 <blockquote class="book-hint info">
 <p><strong><em>Example.</em></strong>
-We want to implement a function</p>
+We want to implement a Haskell function</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">longestWord</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">String</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Int</span>
 </span></span></code></pre></div><p>that maps a string to the length of its longest word.</p>
 <p>For simplicity, we will assume that words are separated by a blank space (noted <code>' '</code> in Haskell).<br>
@@ -1403,6 +1440,69 @@ we can create an <em>auxiliary</em> recursive function that provides all the inf
 Auxiliary recursive functions (like the one above) are a very frequent, in all kinds of programming languages (imperative, functional, etc.).</p>
 <!-- They are also needed for _accumulators_ (introduced [below]()). -->
 </blockquote>
+<h2 id="binary">
+  Binary recursion
+  <a class="anchor" href="#binary">#</a>
+</h2>
+<div class="book-tabs">
+<input type="radio" class="toggle" name="tabs-exercise_complete_tree" id="tabs-exercise_complete_tree-0" checked="checked" />
+<label for="tabs-exercise_complete_tree-0">Exercise</label>
+<div class="book-tabs-content markdown-inner"><p>A binary tree is <strong>complete</strong> if it intuitively has the shape of a triangle (or is empty).</p>
+<p>For instance, the following tree is complete:</p>
+<p><img src="/img/binaryTrees/unlabeled/complete/tree.svg" alt="" /></p>
+<p>Let us represent a node in a binary tree as an instance of the following class</p>
+<p><img src="/img/diagrams/plantuml/node.svg" alt="" /></p>
+<p>Implement a method</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">isComplete</span>(Node root)
+</span></span></code></pre></div><p>such that <code>isComplete(root)</code> evaluates to <code>true</code> iff the tree with root <code>root</code> is complete.</p>
+</div>
+<!-- 
+<input type="radio" class="toggle" name="tabs-exercise_complete_tree" id="tabs-exercise_complete_tree-1"  />
+<label for="tabs-exercise_complete_tree-1">Possible solution</label>
+<div class="book-tabs-content markdown-inner"><p>&ndash;&gt;</p>
+<!---->
+<!-- A binary tree is complete iff: -->
+<!---->
+<!-- - its two children are complete, and -->
+<!-- - they have the same height. -->
+<!---->
+<!-- So we can use a recursive auxiliary method that provides two kinds of information: -->
+<!---->
+<!-- - whether a tree is complete, and -->
+<!-- - its height. -->
+<!---->
+<!-- For the return type of such a method, we may use a [record](https://unibz-oofp-25-26.github.io/docs/composite/sections/product/#java). -->
+<!---->
+<!-- ```java -->
+<!-- // this method is not recursive -->
+<!-- boolean isComplete(Node root){ -->
+<!--     return isCompleteRec(root).complete; -->
+<!-- } -->
+<!---->
+<!-- // carries the two results of a recursive call -->
+<!-- record Result(boolean complete, int height) { } -->
+<!---->
+<!-- // recursive auxiliary method -->
+<!-- Result isCompleteRec(Node root){ -->
+<!---->
+<!--     // base case -->
+<!--     if(root == null){ -->
+<!--         return new Record(true, 0); -->
+<!--     } -->
+<!---->
+<!--     //inductive case -->
+<!--     Result leftResult = isCompleteRec(root.leftChild); -->
+<!--     Result rightResult = isCompleteRec(root.rightChild); -->
+<!--     return new Result( -->
+<!--             leftResult.complete && rightResult.complete && leftResult.height == rightResult.height, -->
+<!--             1 + Math.max(leftResult.height, rightResult.height) -->
+<!--     ); -->
+<!-- } -->
+<!-- ``` -->
+<!---->
+<!-- </div>
+ -->
+</div>
 <!-- <div class="book-tabs">
  -->
 <!-- 
@@ -1412,9 +1512,8 @@ Auxiliary recursive functions (like the one above) are a very frequent, in all k
 <!---->
 <!-- Implement the function -->
 <!---->
-<!-- ```haskell -->
+<!-- haskell -->
 <!-- lastWord :: String -> String -->
-<!-- ``` -->
 <!---->
 <!-- that maps a string to its last word (or the empty string if there is none). -->
 <!---->
@@ -1430,7 +1529,7 @@ Auxiliary recursive functions (like the one above) are a very frequent, in all k
 <label for="tabs-exercise_last_word-1">Possible solution</label>
 <div class="book-tabs-content markdown-inner"><p>&ndash;&gt;</p>
 <!---->
-<!-- ```haskell -->
+<!-- haskell -->
 <!-- lastWord :: String -> String -->
 <!-- lastWord s = lw -->
 <!--     where (_, lw) = lastWordRec s -->
@@ -1447,7 +1546,6 @@ Auxiliary recursive functions (like the one above) are a very frequent, in all k
 <!--                             ' ' -> (True, lw) -- if `c` is blank, then update `b` (`lw` is unchanged) -->
 <!--                             _   -> (b, c : lw) -- if `c` is not blank, then update `lw` (`b` is unchanged) -->
 <!--               where (b, lw) = lastWordRec cs -- recursive call -->
-<!-- ``` -->
 <!---->
 <!-- </div>
  -->
@@ -1494,7 +1592,12 @@ Auxiliary recursive functions (like the one above) are a very frequent, in all k
       <div class="book-toc-content">
         
   
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#linear-recursion">Linear recursion</a></li>
+    <li><a href="#binary">Binary recursion</a></li>
+  </ul>
+</nav>
 
 
  

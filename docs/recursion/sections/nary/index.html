@@ -1,0 +1,1900 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  N-ary recursion
+  #
+
+
+Terminology.
+A recursive method that is not linear recursive uses n-ary recursion.
+Specific cases include:
+
+binary recursion if a method performs up to two recursive calls each time it is executed,
+ternary recursion if it performs up to three recursive calls each time it is executed,
+etc.
+
+
+In an imperative language (like Java), a linear recursive algorithm can easily be converted into an iterative one (i.e. an algorithm that uses loops).
+This is often not the case with n-ary recursion.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://unibz-oofp-25-26.github.io/docs/recursion/sections/nary/">
+  <meta property="og:site_name" content="OOFP 2025-26">
+  <meta property="og:title" content="N-ary recursion">
+  <meta property="og:description" content="N-ary recursion # Terminology. A recursive method that is not linear recursive uses n-ary recursion.
+Specific cases include:
+binary recursion if a method performs up to two recursive calls each time it is executed, ternary recursion if it performs up to three recursive calls each time it is executed, etc. In an imperative language (like Java), a linear recursive algorithm can easily be converted into an iterative one (i.e. an algorithm that uses loops). This is often not the case with n-ary recursion.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+<title>N-ary recursion | OOFP 2025-26</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/recursion/sections/nary/">
+<link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.c2d5656e1d4542a3dc0f72232f83887614d9ee0c209af61e5e735e25dfee3813.js" integrity="sha256-wtVlbh1FQqPcD3IjL4OIdhTZ7gwgmvYeXnNeJd/uOBM=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css"
+  integrity="sha384-vKruj+a13U8yHIkAyGgK1J3ArTLzrFGBbBc0tDp4ad/EyewESeXE/Iv67Aj8gKZ0"
+  crossorigin="anonymous"
+/>
+
+
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js"
+  integrity="sha384-PwRUT/YqbnEjkZO0zZxNqcxACrXe+j766U2amXcgMg5457rve2Y7I6ZJSm2A0mS4"
+  crossorigin="anonymous"
+></script>
+
+
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js"
+  integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+  crossorigin="anonymous"
+  onload="renderMathInElement(document.body);"
+></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    renderMathInElement(document.body, {
+      delimiters: [
+        { left: "$$", right: "$$", display: true },
+        { left: "$", right: "$", display: false },
+      ],
+    });
+  });
+</script>
+
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>OOFP 2025-26</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-8b45d304a159d86710e1579c97aa5b43" class="toggle"  />
+    <label for="section-8b45d304a159d86710e1579c97aa5b43" class="flex justify-between">
+      <a href="/docs/intro/" class="">This course</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/organization/" class="">Organization</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/material/" class="">Material</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/reading_path/" class="">Reading path</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/evaluation/" class="">Evaluation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/prerequisites/" class="">Prerequisites</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/office_hours/" class="">Office hours</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/content/" class="">Content</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/resources/" class="">Additional resources</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/software/" class="">Software</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b17bf4b701f350b4430cc5371ccad607" class="toggle"  />
+    <label for="section-b17bf4b701f350b4430cc5371ccad607" class="flex justify-between">
+      <a href="/docs/paradigm/" class="">Paradigms and languages</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/paradigm/sections/paradigm/" class="">Paradigm</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/paradigm/sections/error/" class="">Compile time vs runtime error</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/paradigm/sections/type/" class="">Typing</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/paradigm/sections/pure/" class="">Pure function</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-eb0a250150a82657aa03f0717afdcd45" class="toggle"  />
+    <label for="section-eb0a250150a82657aa03f0717afdcd45" class="flex justify-between">
+      <a href="/docs/haskell/" class="">Basic syntax of Haskell</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/haskell/sections/tokens/" class="">Tokens</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/haskell/sections/type/" class="">Base types</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/haskell/sections/native/" class="">Native functions</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/haskell/sections/tuple/" class="">Tuple</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/haskell/sections/function/" class="">Function</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/haskell/sections/program/" class="">Program</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/haskell/sections/list/" class="">List</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-2e35b5b0c21ab79cc6b70c0c8a6135fa" class="toggle"  />
+    <label for="section-2e35b5b0c21ab79cc6b70c0c8a6135fa" class="flex justify-between">
+      <a href="/docs/higher/" class="">Higher-order function</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/higher/sections/anonymous/" class="">Anonymous function</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/higher/sections/currying/" class="">Currying</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/higher/sections/useful_hofs/" class="">A few higher-order functions</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-a9f24c38594f15da67150d02f87a60d7" class="toggle"  />
+    <label for="section-a9f24c38594f15da67150d02f87a60d7" class="flex justify-between">
+      <a href="/docs/control/" class="">Control flow</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/control/sections/pattern/" class="">Pattern matching</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/control/sections/condition/" class="">Boolean condition</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/control/sections/comprehension/" class="">List comprehension</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/control/sections/stack/" class="">Call stack</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-97db6297fa77b8e8a3d66808fea4d894" class="toggle"  />
+    <label for="section-97db6297fa77b8e8a3d66808fea4d894" class="flex justify-between">
+      <a href="/docs/generic/" class="">Genericity</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/generic/sections/variable/" class="">Type variable</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/generic/sections/bound/" class="">Bound</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/generic/sections/generic_type/" class="">Generic type</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/generic/sections/maybe/" class="">Option type</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-54a25c0ad53482778ca10b1a7db8e623" class="toggle" checked />
+    <label for="section-54a25c0ad53482778ca10b1a7db8e623" class="flex justify-between">
+      <a href="/docs/recursion/" class="">Recursion</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/recursion/sections/linear/" class="">Linear recursion</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/recursion/sections/nary/" class="active">N-ary recursion</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/recursion/sections/intermediate/" class="">Intermediate result</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/recursion/sections/accumulator/" class="">Accumulator and tail recursion</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/recursion/sections/minimax/" class="">Minimax/maximin</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d92e119f475bae7b2a2364fe0e1fc445" class="toggle"  />
+    <label for="section-d92e119f475bae7b2a2364fe0e1fc445" class="flex justify-between">
+      <a href="/docs/composite/" class="">Composite type</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/composite/sections/enum/" class="">Enumerated type</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/composite/sections/product/" class="">Product type</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/composite/sections/sum/" class="">Sum type</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-007945605153592d0fc2acb75802d872" class="toggle"  />
+    <label for="section-007945605153592d0fc2acb75802d872" class="flex justify-between">
+      <a href="/docs/pattern/" class="">Functional patterns</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/pattern/sections/pipe/" class="">Pipeline</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/pattern/sections/functor/" class="">Functor</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/pattern/sections/monad/" class="">Monad</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-799305e0300c702d39454ff1753190dd" class="toggle"  />
+    <label for="section-799305e0300c702d39454ff1753190dd" class="flex justify-between">
+      <a href="/docs/objects/" class="">Object and class</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/objects/sections/object/" class="">Object</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/objects/sections/class/" class="">Class and instance</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/objects/sections/value_ref/" class="">Passing by value or by reference</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/objects/sections/inheritance/" class="">Inheritance</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/objects/sections/method/" class="">Instance method</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/objects/sections/tostring/" class="">Displaying an object</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/objects/sections/comparing/" class="">Cast and equality</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/objects/sections/classasobject/" class="">Class as object</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/objects/sections/string/" class="">String</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/objects/sections/boxed/" class="">Boxed primitive type</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/objects/sections/encapsulation/" class="">Encapsulation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/objects/sections/mutability/" class="">Mutability</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c34bda991aa58acb3c5c88344f5ff4d1" class="toggle"  />
+    <label for="section-c34bda991aa58acb3c5c88344f5ff4d1" class="flex justify-between">
+      <a href="/docs/abstractdatatypes/" class="">Abstract data type</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/abstractdatatypes/sections/collection/" class="">ADT as a generic interface</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/abstractdatatypes/sections/list/" class="">List</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/abstractdatatypes/sections/set/" class="">Set</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/abstractdatatypes/sections/map/" class="">Associative array</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/abstractdatatypes/sections/queue/" class="">Stack, queue, priority queue</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/abstractdatatypes/sections/sorting/" class="">Sorting</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c5f1310fa6b2ad1b4f803a63275b0f17" class="toggle"  />
+    <label for="section-c5f1310fa6b2ad1b4f803a63275b0f17" class="flex justify-between">
+      <a href="/docs/interface/" class="">Interface</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/interface/sections/specification/" class="">Specification and programming interface</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/interface/sections/java_interface/" class="">Java interface</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d689bb2436bd0f51b31e8f95cf070b59" class="toggle"  />
+    <label for="section-d689bb2436bd0f51b31e8f95cf070b59" class="flex justify-between">
+      <a href="/docs/background/" class="">Background</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/background/sections/set_list/" class="">Set, list, tuple</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/background/sections/function/" class="">Function</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/background/sections/order/" class="">Relation, preorder</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/background/sections/problem/" class="">Computational problem</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c98f96b18785aef1d766e440ba328a79" class="toggle"  />
+    <label for="section-c98f96b18785aef1d766e440ba328a79" class="flex justify-between">
+      <a href="/docs/ass/" class="">Assignments</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/ass/sections/ass1/" class="">Assignment 1</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/ass/sections/ass2/" class="">Assignment 2</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/ass/sections/ass3/" class="">Assignment 3</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/ass/sections/ass4/" class="">Assignment 4</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>N-ary recursion</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#binaryTrees">Example: binary trees</a>
+      <ul>
+        <li><a href="#traversal">Processing order</a></li>
+      </ul>
+    </li>
+    <li><a href="#divide-and-conquer">Divide-and-conquer</a>
+      <ul>
+        <li><a href="#mergesort">Example: Mergesort</a></li>
+      </ul>
+    </li>
+    <li><a href="#tree-and-graph-traversal">Tree and graph traversal</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="n-ary-recursion">
+  N-ary recursion
+  <a class="anchor" href="#n-ary-recursion">#</a>
+</h1>
+<blockquote class="book-hint warning">
+<p><strong><em>Terminology.</em></strong>
+A recursive method that is <em>not</em> <a href="">linear recursive</a> uses <strong>n-ary recursion</strong>.</p>
+<p>Specific cases include:</p>
+<ul>
+<li><strong>binary recursion</strong> if a method performs <em>up to two</em> recursive calls each time it is executed,</li>
+<li><strong>ternary recursion</strong> if it performs <em>up to three</em> recursive calls each time it is executed,</li>
+<li>etc.</li>
+</ul>
+</blockquote>
+<p>In an imperative language (like Java), a <em>linear</em> recursive algorithm can easily be converted into an iterative one (i.e. an algorithm that uses loops).
+This is often <em>not</em> the case with n-ary recursion.</p>
+<p>Due to limited time, we will focus on Java (rather than Haskell) in this course to illustrate n-ary recursion.</p>
+<h2 id="binaryTrees">
+  Example: binary trees
+  <a class="anchor" href="#binaryTrees">#</a>
+</h2>
+<blockquote class="book-hint warning">
+<p><strong><em>Definition.</em></strong>
+An <strong>ordered tree</strong> is a tree where the children of each node are totally ordered.</p>
+</blockquote>
+<blockquote class="book-hint warning">
+<p><strong><em>Definition.</em></strong>
+A <strong>binary tree</strong> is an ordered tree where each node has exactly two (possibly null) children.</p>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong> This is a binary tree:</p>
+<p><img src="/img/binaryTrees/unlabeled/generic/tree.svg" alt="" /></p>
+</blockquote>
+<div class="book-tabs">
+<input type="radio" class="toggle" name="tabs-exercise_binTree_sum" id="tabs-exercise_binTree_sum-0" checked="checked" />
+<label for="tabs-exercise_binTree_sum-0">Exercise</label>
+<div class="book-tabs-content markdown-inner"><p>Let us represent a node in a binary tree as an instance of the following Java class:</p>
+<p><img src="/img/diagrams/plantuml/nodeWithIntLabel.svg" alt="" /></p>
+<p>Implement a method</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">sum</span>(Node root)
+</span></span></code></pre></div><p>such that <code>sum(root)</code> is the sum of all values in the binary tree with root <code>root</code>.</p>
+<p>For instance, for the following tree, the method should return 13:</p>
+<p><img src="/img/binaryTrees/labeled/int/tree.svg" alt="" /></p>
+<blockquote class="book-hint info">
+  <p><strong><em>Hint.</em></strong> Recall the methodology that we have seen <a href="https://unibz-oofp-25-26.github.io/docs/recursion/sections/linear/#methodology">earlier</a> to solve a problem recursively.</p>
+</blockquote>
+</div>
+<!-- 
+<input type="radio" class="toggle" name="tabs-exercise_binTree_sum" id="tabs-exercise_binTree_sum-1"  />
+<label for="tabs-exercise_binTree_sum-1">Possible solution</label>
+<div class="book-tabs-content markdown-inner"><p>&ndash;&gt;</p>
+<!---->
+<!-- ```java -->
+<!-- int sum(Node root){ -->
+<!---->
+<!--     // base case -->
+<!--     if (root == null){ -->
+<!--         return 0; -->
+<!--     } -->
+<!--     // inductive case -->
+<!--     return root.value + sum(root.leftChild) + sum(root.rightChild); -->
+<!-- } -->
+<!-- ``` -->
+<!---->
+<!-- </div>
+ -->
+</div>
+<div class="book-tabs">
+<input type="radio" class="toggle" name="tabs-exercise_binTree_height" id="tabs-exercise_binTree_height-0" checked="checked" />
+<label for="tabs-exercise_binTree_height-0">Exercise</label>
+<div class="book-tabs-content markdown-inner"><p>Let us represent a binary tree as above, but where nodes have no label:</p>
+<p><img src="/img/diagrams/plantuml/node.svg" alt="" /></p>
+<p>Implement a method</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">height</span>(Node root)
+</span></span></code></pre></div><p>such that <code>height(root)</code> is the number of nodes in the longest branch of the binary tree with root <code>root</code>.</p>
+<p>For instance, for the following tree, the method should return 4:</p>
+<p><img src="/img/binaryTrees/unlabeled/height/tree.svg" alt="" /></p>
+<blockquote class="book-hint info">
+  <p><strong><em>Syntax.</em></strong> In Java, the <a href="https://unibz-oofp-25-26.github.io/docs/objects/sections/classasobject/#staticMethods">static</a> method</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">max</span>(<span style="color:#66d9ef">int</span> x, <span style="color:#66d9ef">int</span> y)
+</span></span></code></pre></div><p>of the class <code>Math</code> returns the maximum of <code>x</code> and <code>y</code>.</p>
+</blockquote>
+</div>
+<!-- 
+<input type="radio" class="toggle" name="tabs-exercise_binTree_height" id="tabs-exercise_binTree_height-1"  />
+<label for="tabs-exercise_binTree_height-1">Possible solution</label>
+<div class="book-tabs-content markdown-inner"><p>&ndash;&gt;</p>
+<!---->
+<!-- ```java -->
+<!-- int height(Node root){ -->
+<!--     //base case -->
+<!--     if (root == null){ -->
+<!--         return 0; -->
+<!--     } -->
+<!--     // inductive case -->
+<!--     return 1 + max( -->
+<!--                 height(root.leftChild), -->
+<!--                 height(root.rightChild) -->
+<!--     ); -->
+<!-- } -->
+<!-- ``` -->
+<!---->
+<!-- </div>
+ -->
+</div>
+<h3 id="traversal">
+  Processing order
+  <a class="anchor" href="#traversal">#</a>
+</h3>
+<div class="book-tabs">
+<input type="radio" class="toggle" name="tabs-exercise_preorder_traversal" id="tabs-exercise_preorder_traversal-0" checked="checked" />
+<label for="tabs-exercise_preorder_traversal-0">Exercise</label>
+<div class="book-tabs-content markdown-inner"><p>Let us represent a binary tree as above, but where nodes are labeled with a character.</p>
+<p><img src="/img/diagrams/plantuml/nodeWithChar.svg" alt="" /></p>
+<p>Consider the following recursive method:</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">traverse</span>(Node root){
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// inductive case only (do nothing in the base case)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (root <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span>){
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">print</span>(root.<span style="color:#a6e22e">label</span>);
+</span></span><span style="display:flex;"><span>        traverse(root.<span style="color:#a6e22e">leftChild</span>);
+</span></span><span style="display:flex;"><span>        traverse(root.<span style="color:#a6e22e">rightChild</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>What does this method print if <code>root</code> is the root of the following tree?</p>
+<p><img src="/img/binaryTrees/labeled/char/tree.svg" alt="" /></p>
+</div>
+<!-- 
+<input type="radio" class="toggle" name="tabs-exercise_preorder_traversal" id="tabs-exercise_preorder_traversal-1"  />
+<label for="tabs-exercise_preorder_traversal-1">Solution</label>
+<div class="book-tabs-content markdown-inner"><p>&ndash;&gt;</p>
+<!---->
+<!-- A B D H E I J C F K L G M -->
+<!-- </div>
+ -->
+</div>
+<div class="book-tabs">
+<input type="radio" class="toggle" name="tabs-exercise_inorder_traversal" id="tabs-exercise_inorder_traversal-0" checked="checked" />
+<label for="tabs-exercise_inorder_traversal-0">Exercise</label>
+<div class="book-tabs-content markdown-inner"><p>Same question for the following method (for the same tree as above).</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">traverse</span>(Node root){
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// inductive case only (do nothing in the base case)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (root <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span>){
+</span></span><span style="display:flex;"><span>        traverse(root.<span style="color:#a6e22e">leftChild</span>);
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">print</span>(root.<span style="color:#a6e22e">label</span>);
+</span></span><span style="display:flex;"><span>        traverse(root.<span style="color:#a6e22e">rightChild</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></td></tr></table>
+</div>
+</div></div>
+<!-- 
+<input type="radio" class="toggle" name="tabs-exercise_inorder_traversal" id="tabs-exercise_inorder_traversal-1"  />
+<label for="tabs-exercise_inorder_traversal-1">Solution</label>
+<div class="book-tabs-content markdown-inner"><p>&ndash;&gt;</p>
+<!-- D H B I E J A K F L C G M -->
+<!-- </div>
+ -->
+</div>
+<div class="book-tabs">
+<input type="radio" class="toggle" name="tabs-exercise_postorder_traversal" id="tabs-exercise_postorder_traversal-0" checked="checked" />
+<label for="tabs-exercise_postorder_traversal-0">Exercise</label>
+<div class="book-tabs-content markdown-inner"><p>Same question for the following method (for the same tree as above).</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">traverse</span>(Node root){
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// inductive case only (do nothing in the base case)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (root <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span>){
+</span></span><span style="display:flex;"><span>        traverse(root.<span style="color:#a6e22e">leftChild</span>);
+</span></span><span style="display:flex;"><span>        traverse(root.<span style="color:#a6e22e">rightChild</span>);
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">print</span>(root.<span style="color:#a6e22e">label</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></td></tr></table>
+</div>
+</div></div>
+<!-- 
+<input type="radio" class="toggle" name="tabs-exercise_postorder_traversal" id="tabs-exercise_postorder_traversal-1"  />
+<label for="tabs-exercise_postorder_traversal-1">Solution</label>
+<div class="book-tabs-content markdown-inner"><p>&ndash;&gt;</p>
+<!---->
+<!-- H D I J E B A K L F M G C -->
+<!-- </div>
+ -->
+</div>
+<blockquote class="book-hint warning">
+<p><strong><em>Definition.</em></strong>
+In the above exercises, the three node processing orders are respectively called:</p>
+<ul>
+<li><strong>pre-order traversal</strong>,</li>
+<li><strong>in-order traversal</strong> and</li>
+<li><strong>post-order traversal</strong>.</li>
+</ul>
+</blockquote>
+<p>These three approaches can be adapted to solve a variety of problems.</p>
+<blockquote class="book-hint info">
+<p><strong><em>Hint.</em></strong>
+In-order traversal processes nodes in left-to-right order (when projected to a line).</p>
+</blockquote>
+<div class="book-tabs">
+<input type="radio" class="toggle" name="tabs-exercise_leftMost" id="tabs-exercise_leftMost-0" checked="checked" />
+<label for="tabs-exercise_leftMost-0">Exercise</label>
+<div class="book-tabs-content markdown-inner"><p>Let us consider once again a binary tree where nodes are labeled with a character.</p>
+<p><img src="/img/diagrams/plantuml/nodeWithChar.svg" alt="" /></p>
+<p>Implement a method</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Node <span style="color:#a6e22e">leftMost</span>(Node root, <span style="color:#66d9ef">char</span> label)
+</span></span></code></pre></div><p>such that <code>leftMost(root, label)</code> is the leftmost node labeled with <code>label</code> in the tree with root <code>root</code> (or <code>null</code> if there is no such node).</p>
+</div>
+<!-- 
+<input type="radio" class="toggle" name="tabs-exercise_leftMost" id="tabs-exercise_leftMost-1"  />
+<label for="tabs-exercise_leftMost-1">Possible solution</label>
+<div class="book-tabs-content markdown-inner"><p>&ndash;&gt;</p>
+<!---->
+<!-- We can adapt the in-order traversal algorithm (above), as follows: -->
+<!---->
+<!-- ```java -->
+<!-- Node leftMost(Node root, char label){ -->
+<!--     // Base case. -->
+<!--     if(root == null){ -->
+<!--         return null; -->
+<!--     } -->
+<!---->
+<!--     // Inductive case. -->
+<!--     // Explore the left subtree first. -->
+<!--     Node candidate = leftMost(root.leftChild, label); -->
+<!--     // If the call succeeded, then we found the leftmost occurrence in the tree. -->
+<!--     if(candidate != null){ -->
+<!--         return candidate; -->
+<!--     } -->
+<!--     // Otherwise the next candidate (from left to right) is the current node. -->
+<!--     if (root.label == label) { -->
+<!--         return root; -->
+<!--     } -->
+<!--     // If both attempts failed, then explore the right subtree. -->
+<!--     return leftMost(root.rightChild, label); -->
+<!-- } -->
+<!-- ``` -->
+<!---->
+<!-- </div>
+ -->
+</div>
+<h2 id="divide-and-conquer">
+  Divide-and-conquer
+  <a class="anchor" href="#divide-and-conquer">#</a>
+</h2>
+<blockquote class="book-hint warning">
+<p><strong>Divide-and-conquer</strong> is a variation of the methodology seen <a href="https://unibz-oofp-25-26.github.io/docs/recursion/#methodology">earlier</a> to solve a problem recursively.
+In the divide-and-conquer approach, the smaller inputs $I_1$, .., $I_k$ usually have (nearly) the <em>same size</em>.</p>
+</blockquote>
+<p>Divide-and-conquer has been instrumental in discovering efficient solutions to pervasive computational problems.
+Well-known examples include:</p>
+<ul>
+<li>the <a href="https://en.wikipedia.org/wiki/Karatsuba_algorithm">Karatsuba algorithm</a> for multiplying two numbers,</li>
+<li>the <a href="https://en.wikipedia.org/wiki/Strassen_algorithm">Strassen algorithm</a> for matrix product,</li>
+<li><a href="#mergesort">Mergesort</a> for (stable) sorting.</li>
+</ul>
+<h3 id="mergesort">
+  Example: Mergesort
+  <a class="anchor" href="#mergesort">#</a>
+</h3>
+<p>Mergesort is one of (many) algorithms commonly used to sort an array, i.e. to solve the following problem:</p>
+<blockquote>
+<p><strong><em>Input:</em></strong> an array $A$</p>
+<p><strong><em>Output:</em></strong> a sorted array with the same elements as $A$</p>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Observation.</em></strong>
+As we saw <a href="https://unibz-oofp-25-26.github.io/docs/abstractdatatypes/sections/sorting/">already</a>, the array can be of any type (<code>int</code>, <code>String</code>, <code>City</code>, <code>NPC</code>, etc.), and the sorting criterion can be any <a href="https://unibz-oofp-25-26.github.io/docs/background/sections/order/#preorder">total preorder</a> over this type.</p>
+</blockquote>
+<blockquote class="book-hint warning">
+<p>The Mergesort algorithm may be summarized as follows:</p>
+<ul>
+<li><strong><em>(Base case).</em></strong> If $A$ has size $1$, then return it ($A$ is already sorted).</li>
+<li><strong><em>(Inductive case)</em></strong>. Otherwise:
+<ul>
+<li><em>(divide):</em> partition $A$ into its left half $A_1$ and its right half $A_2$,</li>
+<li><em>(solve):</em> sort $A_1$ and sort $A_2$ (recursively),</li>
+<li><em>(combine):</em> merge (the sorted versions of) $A_1$ and $A_2$.</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<p>Here is a naive implementation, in pseudocode:</p>
+<blockquote class="book-hint danger">
+<p><strong><em>Warning.</em></strong> This implementation is suboptimal (some arrays can be reused).
+We only used it to keep the explanation simple.</p>
+</blockquote>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// Returns a sorted array that contains the same elements as A.</span>
+</span></span><span style="display:flex;"><span>T<span style="color:#f92672">[]</span> <span style="color:#a6e22e">mergesort</span>(T<span style="color:#f92672">[]</span> A) {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Base case: the input array has size 1, it is already sorted.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span>(A.<span style="color:#a6e22e">length</span> <span style="color:#f92672">==</span> 1){
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> A
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Inductive case (the input array has size &gt; 1)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Compute the middle index (rounded down)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> middleIndex <span style="color:#f92672">=</span> (A.<span style="color:#a6e22e">length</span> <span style="color:#f92672">-</span> 1) <span style="color:#f92672">/</span> 2
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Copy the left half of A into a new array</span>
+</span></span><span style="display:flex;"><span>    T<span style="color:#f92672">[]</span> leftHalf <span style="color:#f92672">=</span> copy(A<span style="color:#f92672">[</span>0 .. middleIndex<span style="color:#f92672">]</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Sort it</span>
+</span></span><span style="display:flex;"><span>    leftHalf <span style="color:#f92672">=</span> mergesort(leftHalf)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Copy the right half of A into a new array</span>
+</span></span><span style="display:flex;"><span>    T<span style="color:#f92672">[]</span> rightHalf <span style="color:#f92672">=</span>  copy(A<span style="color:#f92672">[</span>middleIndex <span style="color:#f92672">+</span> 1 .. A.<span style="color:#a6e22e">length</span> <span style="color:#f92672">-</span> 1<span style="color:#f92672">]</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Sort it</span>
+</span></span><span style="display:flex;"><span>    rightHalf <span style="color:#f92672">=</span> mergesort(rightHalf)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// merge the two sorted halves</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> merge(leftHalf, rightHalf)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>where the auxiliary method <code>merge</code> is analogous to the function <a href="https://unibz-oofp-25-26.github.io/docs/ass/sections/ass1/#mergeSorted"><code>mergeSorted</code></a> that we have seen in the first assignment.</p>
+<blockquote class="book-hint info">
+<p><strong><em>In action.</em></strong>
+You can find visual illustrations of the execution of merge sort online.
+For instance <a href="https://imgur.com/gallery/HU2tfzo">this animation</a>,
+or <a href="https://willrosenbaum.com/blog/2022/merge-sort/">this (more accurate) one</a>.</p>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Observation.</em></strong>
+Merge sort is a <a href="https://unibz-oofp-25-26.github.io/docs/abstractdatatypes/sections/sorting/#stable">stable</a> sorting algorithm.</p>
+</blockquote>
+<h2 id="tree-and-graph-traversal">
+  Tree and graph traversal
+  <a class="anchor" href="#tree-and-graph-traversal">#</a>
+</h2>
+<p><a href="#traversal">Earlier</a> in this chapter, we used different methods to traverse a binary tree, where nodes were instances of the following class:</p>
+<p><img src="/img/diagrams/plantuml/nodeWithChar.svg" alt="" /></p>
+<p>One of these methods was the so-called &ldquo;pre-order traversal&rdquo;:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">traverse</span>(Node root){
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// inductive case only (do nothing in the base case)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (root <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span>){
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">print</span>(root.<span style="color:#a6e22e">label</span>);
+</span></span><span style="display:flex;"><span>        traverse(root.<span style="color:#a6e22e">leftChild</span>);
+</span></span><span style="display:flex;"><span>        traverse(root.<span style="color:#a6e22e">rightChild</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>This method naturally generalizes to trees where nodes may have more than two children.
+Nodes in such a tree can be represented as instances of the following class:</p>
+<p><img src="/img/diagrams/plantuml/node_nary.svg" alt="" /></p>
+<p>And the method becomes:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">traverse</span>(Node root){
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (root <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span>){
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">print</span>(root.<span style="color:#a6e22e">label</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span>(Node child : root.<span style="color:#a6e22e">children</span> {
+</span></span><span style="display:flex;"><span>            traverse(child);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>This approach can in turn be adapted to traverse a <em>graph</em>.
+Precisely, to explore all nodes reachable (directly or transitively) from a given source node in the graph.</p>
+<blockquote class="book-hint danger">
+<p><strong><em>Warning.</em></strong>
+If applied naively to a graph, the algorithm above:</p>
+<ul>
+<li>may not terminate (if the graph contains a loop),</li>
+<li>may process some nodes multiple times (even if the graph is acyclic).</li>
+</ul>
+</blockquote>
+<p><img src="/img/graphs/graph_labeled_small.svg" alt="" /></p>
+<p>In order to avoid this, a technique consists in labelling nodes in a graph with an additional boolean attribute <code>visited</code>,
+which indicates whether a node has already been visited during a traversal:</p>
+<p><img src="/img/diagrams/plantuml/node_nary_visited.svg" alt="" /></p>
+<p>And the method becomes:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">traverse</span>(Node root){
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (root <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">!</span>root.<span style="color:#a6e22e">visited</span>){
+</span></span><span style="display:flex;"><span>        root.<span style="color:#a6e22e">visited</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">print</span>(root.<span style="color:#a6e22e">label</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span>(Node child : root.<span style="color:#a6e22e">children</span> {
+</span></span><span style="display:flex;"><span>            traverse(child);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><blockquote class="book-hint warning">
+<p><strong><em>Terminology.</em></strong> This approach is often called <strong>depth-first</strong> exploration of a graph.</p>
+</blockquote>
+<div class="book-tabs">
+<input type="radio" class="toggle" name="tabs-exercise_graph_traversal" id="tabs-exercise_graph_traversal-0" checked="checked" />
+<label for="tabs-exercise_graph_traversal-0">Exercise</label>
+<div class="book-tabs-content markdown-inner"><p>Consider the following graph.</p>
+<p><img src="/img/graphs/graph_labeled.svg" alt="" /></p>
+<p>What does the above method print for input node A, assuming that the children of each node are sorted in label&rsquo;s alphabetical order?</p>
+</div>
+<!-- 
+<input type="radio" class="toggle" name="tabs-exercise_graph_traversal" id="tabs-exercise_graph_traversal-1"  />
+<label for="tabs-exercise_graph_traversal-1">Solution</label>
+<div class="book-tabs-content markdown-inner"><p>&ndash;&gt;</p>
+<!-- A B D F C E -->
+<!-- </div>
+ -->
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#binaryTrees">Example: binary trees</a>
+      <ul>
+        <li><a href="#traversal">Processing order</a></li>
+      </ul>
+    </li>
+    <li><a href="#divide-and-conquer">Divide-and-conquer</a>
+      <ul>
+        <li><a href="#mergesort">Example: Mergesort</a></li>
+      </ul>
+    </li>
+    <li><a href="#tree-and-graph-traversal">Tree and graph traversal</a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

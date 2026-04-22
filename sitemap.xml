@@ -32,8 +32,6 @@
   </url><url>
     <loc>https://unibz-oofp-25-26.github.io/docs/paradigm/sections/error/</loc>
   </url><url>
-    <loc>https://unibz-oofp-25-26.github.io/docs/recursion/sections/intermediate/</loc>
-  </url><url>
     <loc>https://unibz-oofp-25-26.github.io/docs/interface/sections/java_interface/</loc>
   </url><url>
     <loc>https://unibz-oofp-25-26.github.io/docs/abstractdatatypes/sections/list/</loc>
@@ -62,6 +60,8 @@
   </url><url>
     <loc>https://unibz-oofp-25-26.github.io/docs/higher/</loc>
   </url><url>
+    <loc>https://unibz-oofp-25-26.github.io/docs/recursion/sections/nary/</loc>
+  </url><url>
     <loc>https://unibz-oofp-25-26.github.io/docs/haskell/sections/native/</loc>
   </url><url>
     <loc>https://unibz-oofp-25-26.github.io/docs/intro/sections/reading_path/</loc>
@@ -72,8 +72,6 @@
   </url><url>
     <loc>https://unibz-oofp-25-26.github.io/docs/paradigm/sections/type/</loc>
   </url><url>
-    <loc>https://unibz-oofp-25-26.github.io/docs/recursion/sections/accumulator/</loc>
-  </url><url>
     <loc>https://unibz-oofp-25-26.github.io/docs/ass/sections/ass3/</loc>
   </url><url>
     <loc>https://unibz-oofp-25-26.github.io/docs/control/sections/condition/</loc>
@@ -81,6 +79,8 @@
     <loc>https://unibz-oofp-25-26.github.io/docs/intro/sections/evaluation/</loc>
   </url><url>
     <loc>https://unibz-oofp-25-26.github.io/docs/objects/sections/inheritance/</loc>
+  </url><url>
+    <loc>https://unibz-oofp-25-26.github.io/docs/recursion/sections/intermediate/</loc>
   </url><url>
     <loc>https://unibz-oofp-25-26.github.io/docs/pattern/sections/pipe/</loc>
   </url><url>
@@ -109,6 +109,8 @@
     <loc>https://unibz-oofp-25-26.github.io/docs/pattern/sections/monad/</loc>
   </url><url>
     <loc>https://unibz-oofp-25-26.github.io/docs/intro/sections/office_hours/</loc>
+  </url><url>
+    <loc>https://unibz-oofp-25-26.github.io/docs/recursion/sections/accumulator/</loc>
   </url><url>
     <loc>https://unibz-oofp-25-26.github.io/docs/intro/sections/content/</loc>
   </url><url>
@@ -145,6 +147,8 @@
     <loc>https://unibz-oofp-25-26.github.io/docs/background/sections/problem/</loc>
   </url><url>
     <loc>https://unibz-oofp-25-26.github.io/docs/pattern/</loc>
+  </url><url>
+    <loc>https://unibz-oofp-25-26.github.io/docs/recursion/sections/minimax/</loc>
   </url><url>
     <loc>https://unibz-oofp-25-26.github.io/docs/intro/sections/software/</loc>
   </url><url>
