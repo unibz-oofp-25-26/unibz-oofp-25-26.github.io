@@ -36,7 +36,7 @@ binary recursion if a method performs up to two recursive calls each time it is 
 <link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/recursion/sections/nary/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.c2d5656e1d4542a3dc0f72232f83887614d9ee0c209af61e5e735e25dfee3813.js" integrity="sha256-wtVlbh1FQqPcD3IjL4OIdhTZ7gwgmvYeXnNeJd/uOBM=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.a278a0ef772c807eb2441449959dbe422764768eedb2c0797acffb204c28b79a.js" integrity="sha256-onig73csgH6yRBRJlZ2&#43;Qidkdo7tssB5es/7IEwot5o=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -475,6 +475,19 @@ https://github.com/alex-shpak/hugo-book
 
   
     <a href="/docs/higher/sections/currying/" class="">Currying</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/higher/sections/type_java/" class="">Method type in Java</a>
   
 
         </li>
@@ -1440,25 +1453,18 @@ A <strong>binary tree</strong> is an ordered tree where each node has exactly tw
   <p><strong><em>Hint.</em></strong> Recall the methodology that we have seen <a href="https://unibz-oofp-25-26.github.io/docs/recursion/sections/linear/#methodology">earlier</a> to solve a problem recursively.</p>
 </blockquote>
 </div>
-<!-- 
 <input type="radio" class="toggle" name="tabs-exercise_binTree_sum" id="tabs-exercise_binTree_sum-1"  />
 <label for="tabs-exercise_binTree_sum-1">Possible solution</label>
-<div class="book-tabs-content markdown-inner"><p>&ndash;&gt;</p>
-<!---->
-<!-- ```java -->
-<!-- int sum(Node root){ -->
-<!---->
-<!--     // base case -->
-<!--     if (root == null){ -->
-<!--         return 0; -->
-<!--     } -->
-<!--     // inductive case -->
-<!--     return root.value + sum(root.leftChild) + sum(root.rightChild); -->
-<!-- } -->
-<!-- ``` -->
-<!---->
-<!-- </div>
- -->
+<div class="book-tabs-content markdown-inner"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">sum</span>(Node root){
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// base case</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (root <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span>){
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> 0;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// inductive case</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> root.<span style="color:#a6e22e">value</span> <span style="color:#f92672">+</span> sum(root.<span style="color:#a6e22e">leftChild</span>) <span style="color:#f92672">+</span> sum(root.<span style="color:#a6e22e">rightChild</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></div>
 </div>
 <div class="book-tabs">
 <input type="radio" class="toggle" name="tabs-exercise_binTree_height" id="tabs-exercise_binTree_height-0" checked="checked" />
@@ -1470,33 +1476,26 @@ A <strong>binary tree</strong> is an ordered tree where each node has exactly tw
 </span></span></code></pre></div><p>such that <code>height(root)</code> is the number of nodes in the longest branch of the binary tree with root <code>root</code>.</p>
 <p>For instance, for the following tree, the method should return 4:</p>
 <p><img src="/img/binaryTrees/unlabeled/height/tree.svg" alt="" /></p>
-<blockquote class="book-hint info">
+<blockquote class="book-hint warning">
   <p><strong><em>Syntax.</em></strong> In Java, the <a href="https://unibz-oofp-25-26.github.io/docs/objects/sections/classasobject/#staticMethods">static</a> method</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">max</span>(<span style="color:#66d9ef">int</span> x, <span style="color:#66d9ef">int</span> y)
 </span></span></code></pre></div><p>of the class <code>Math</code> returns the maximum of <code>x</code> and <code>y</code>.</p>
 </blockquote>
 </div>
-<!-- 
 <input type="radio" class="toggle" name="tabs-exercise_binTree_height" id="tabs-exercise_binTree_height-1"  />
 <label for="tabs-exercise_binTree_height-1">Possible solution</label>
-<div class="book-tabs-content markdown-inner"><p>&ndash;&gt;</p>
-<!---->
-<!-- ```java -->
-<!-- int height(Node root){ -->
-<!--     //base case -->
-<!--     if (root == null){ -->
-<!--         return 0; -->
-<!--     } -->
-<!--     // inductive case -->
-<!--     return 1 + max( -->
-<!--                 height(root.leftChild), -->
-<!--                 height(root.rightChild) -->
-<!--     ); -->
-<!-- } -->
-<!-- ``` -->
-<!---->
-<!-- </div>
- -->
+<div class="book-tabs-content markdown-inner"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">height</span>(Node root){
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//base case</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (root <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span>){
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> 0;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// inductive case</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> 1 <span style="color:#f92672">+</span> max(
+</span></span><span style="display:flex;"><span>                height(root.<span style="color:#a6e22e">leftChild</span>),
+</span></span><span style="display:flex;"><span>                height(root.<span style="color:#a6e22e">rightChild</span>)
+</span></span><span style="display:flex;"><span>    );
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></div>
 </div>
 <h3 id="traversal">
   Processing order
@@ -1533,14 +1532,10 @@ A <strong>binary tree</strong> is an ordered tree where each node has exactly tw
 </div><p>What does this method print if <code>root</code> is the root of the following tree?</p>
 <p><img src="/img/binaryTrees/labeled/char/tree.svg" alt="" /></p>
 </div>
-<!-- 
 <input type="radio" class="toggle" name="tabs-exercise_preorder_traversal" id="tabs-exercise_preorder_traversal-1"  />
 <label for="tabs-exercise_preorder_traversal-1">Solution</label>
-<div class="book-tabs-content markdown-inner"><p>&ndash;&gt;</p>
-<!---->
-<!-- A B D H E I J C F K L G M -->
-<!-- </div>
- -->
+<div class="book-tabs-content markdown-inner"><p>A B D H E I J C F K L G M</p>
+</div>
 </div>
 <div class="book-tabs">
 <input type="radio" class="toggle" name="tabs-exercise_inorder_traversal" id="tabs-exercise_inorder_traversal-0" checked="checked" />
@@ -1569,13 +1564,10 @@ A <strong>binary tree</strong> is an ordered tree where each node has exactly tw
 </span></span></code></pre></td></tr></table>
 </div>
 </div></div>
-<!-- 
 <input type="radio" class="toggle" name="tabs-exercise_inorder_traversal" id="tabs-exercise_inorder_traversal-1"  />
 <label for="tabs-exercise_inorder_traversal-1">Solution</label>
-<div class="book-tabs-content markdown-inner"><p>&ndash;&gt;</p>
-<!-- D H B I E J A K F L C G M -->
-<!-- </div>
- -->
+<div class="book-tabs-content markdown-inner"><p>D H B I E J A K F L C G M</p>
+</div>
 </div>
 <div class="book-tabs">
 <input type="radio" class="toggle" name="tabs-exercise_postorder_traversal" id="tabs-exercise_postorder_traversal-0" checked="checked" />
@@ -1604,14 +1596,10 @@ A <strong>binary tree</strong> is an ordered tree where each node has exactly tw
 </span></span></code></pre></td></tr></table>
 </div>
 </div></div>
-<!-- 
 <input type="radio" class="toggle" name="tabs-exercise_postorder_traversal" id="tabs-exercise_postorder_traversal-1"  />
 <label for="tabs-exercise_postorder_traversal-1">Solution</label>
-<div class="book-tabs-content markdown-inner"><p>&ndash;&gt;</p>
-<!---->
-<!-- H D I J E B A K L F M G C -->
-<!-- </div>
- -->
+<div class="book-tabs-content markdown-inner"><p>H D I J E B A K L F M G C</p>
+</div>
 </div>
 <blockquote class="book-hint warning">
 <p><strong><em>Definition.</em></strong>
@@ -1636,38 +1624,30 @@ In-order traversal processes nodes in left-to-right order (when projected to a l
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Node <span style="color:#a6e22e">leftMost</span>(Node root, <span style="color:#66d9ef">char</span> label)
 </span></span></code></pre></div><p>such that <code>leftMost(root, label)</code> is the leftmost node labeled with <code>label</code> in the tree with root <code>root</code> (or <code>null</code> if there is no such node).</p>
 </div>
-<!-- 
 <input type="radio" class="toggle" name="tabs-exercise_leftMost" id="tabs-exercise_leftMost-1"  />
 <label for="tabs-exercise_leftMost-1">Possible solution</label>
-<div class="book-tabs-content markdown-inner"><p>&ndash;&gt;</p>
-<!---->
-<!-- We can adapt the in-order traversal algorithm (above), as follows: -->
-<!---->
-<!-- ```java -->
-<!-- Node leftMost(Node root, char label){ -->
-<!--     // Base case. -->
-<!--     if(root == null){ -->
-<!--         return null; -->
-<!--     } -->
-<!---->
-<!--     // Inductive case. -->
-<!--     // Explore the left subtree first. -->
-<!--     Node candidate = leftMost(root.leftChild, label); -->
-<!--     // If the call succeeded, then we found the leftmost occurrence in the tree. -->
-<!--     if(candidate != null){ -->
-<!--         return candidate; -->
-<!--     } -->
-<!--     // Otherwise the next candidate (from left to right) is the current node. -->
-<!--     if (root.label == label) { -->
-<!--         return root; -->
-<!--     } -->
-<!--     // If both attempts failed, then explore the right subtree. -->
-<!--     return leftMost(root.rightChild, label); -->
-<!-- } -->
-<!-- ``` -->
-<!---->
-<!-- </div>
- -->
+<div class="book-tabs-content markdown-inner"><p>We can adapt the in-order traversal algorithm (above), as follows:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Node <span style="color:#a6e22e">leftMost</span>(Node root, <span style="color:#66d9ef">char</span> label){
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Base case.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span>(root <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span>){
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">null</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Inductive case.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Explore the left subtree first.</span>
+</span></span><span style="display:flex;"><span>    Node candidate <span style="color:#f92672">=</span> leftMost(root.<span style="color:#a6e22e">leftChild</span>, label);
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// If the call succeeded, then we found the leftmost occurrence in the tree.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span>(candidate <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span>){
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> candidate;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Otherwise the next candidate (from left to right) is the current node.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (root.<span style="color:#a6e22e">label</span> <span style="color:#f92672">==</span> label) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> root;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// If both attempts failed, then explore the right subtree.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> leftMost(root.<span style="color:#a6e22e">rightChild</span>, label);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></div>
 </div>
 <h2 id="divide-and-conquer">
   Divide-and-conquer
@@ -1813,13 +1793,10 @@ which indicates whether a node has already been visited during a traversal:</p>
 <p><img src="/img/graphs/graph_labeled.svg" alt="" /></p>
 <p>What does the above method print for input node A, assuming that the children of each node are sorted in label&rsquo;s alphabetical order?</p>
 </div>
-<!-- 
 <input type="radio" class="toggle" name="tabs-exercise_graph_traversal" id="tabs-exercise_graph_traversal-1"  />
 <label for="tabs-exercise_graph_traversal-1">Solution</label>
-<div class="book-tabs-content markdown-inner"><p>&ndash;&gt;</p>
-<!-- A B D F C E -->
-<!-- </div>
- -->
+<div class="book-tabs-content markdown-inner"><p>A B D F C E</p>
+</div>
 </div>
 </article>
  
