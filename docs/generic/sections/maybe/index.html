@@ -34,7 +34,7 @@ Motivation # Problem. A programming language may not have a type that exactly fi
 <link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/generic/sections/maybe/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.a278a0ef772c807eb2441449959dbe422764768eedb2c0797acffb204c28b79a.js" integrity="sha256-onig73csgH6yRBRJlZ2&#43;Qidkdo7tssB5es/7IEwot5o=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.95a564d26ca8cd0c6d38781be3237d1f94033373e7bdb92939cb8cfc62186011.js" integrity="sha256-laVk0myozQxtOHgb4yN9H5QDM3PnvbkpOcuM/GIYYBE=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -1388,6 +1388,13 @@ https://github.com/alex-shpak/hugo-book
     </li>
     <li><a href="#option-type-1">Option type</a></li>
     <li><a href="#haskell">In Haskell</a></li>
+    <li><a href="#java">In Java</a>
+      <ul>
+        <li><a href="#create-an-optional-value">Create an optional value</a></li>
+        <li><a href="#access-an-optional-value">Access an optional value</a></li>
+        <li><a href="#propagation">Propagation</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 
@@ -1576,6 +1583,75 @@ The following function maps a nonempty list with head <code>x</code> to <code>Ju
 </span></span><span style="display:flex;"><span>                <span style="color:#f92672">|</span> otherwise <span style="color:#f92672">=</span> find f xs
 </span></span></code></pre></div></div>
 </div>
+<h2 id="java">
+  In Java
+  <a class="anchor" href="#java">#</a>
+</h2>
+<p>The option type in Java is implemented as the <a href="https://unibz-oofp-25-26.github.io/notreleased/">generic</a> class <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Optional.html"><code>Optional&lt;T&gt;</code></a>, introduced in Java 8 (2014).</p>
+<h3 id="create-an-optional-value">
+  Create an optional value
+  <a class="anchor" href="#create-an-optional-value">#</a>
+</h3>
+<blockquote class="book-hint warning">
+<p><strong><em>Syntax.</em></strong>
+An empty <code>Optional</code>
+can be created with the <a href="https://unibz-oofp-25-26.github.io/docs/objects/sections/classasobject/#staticMethods">static</a> method</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Optional<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">empty</span>()
+</span></span></code></pre></div><p>This is analogous to <code>Nothing</code> in Haskell.</p>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Optional<span style="color:#f92672">&lt;</span>NPC<span style="color:#f92672">&gt;</span> npc <span style="color:#f92672">=</span> Optional.<span style="color:#a6e22e">empty</span>();
+</span></span></code></pre></div></blockquote>
+<blockquote class="book-hint warning">
+<p><strong><em>Syntax.</em></strong>
+A nonempty <code>Optional</code> can be created with the <a href="https://unibz-oofp-25-26.github.io/docs/objects/sections/classasobject/#staticMethods">static</a> method</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Optional<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">of</span>(T value)
+</span></span></code></pre></div><p>This is analogous to <code>Just value</code> in Haskell.</p>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Optional<span style="color:#f92672">&lt;</span>NPC<span style="color:#f92672">&gt;</span> npc <span style="color:#f92672">=</span> Optional.<span style="color:#a6e22e">of</span>(<span style="color:#66d9ef">new</span> Unicorn(5));
+</span></span></code></pre></div></blockquote>
+<h3 id="access-an-optional-value">
+  Access an optional value
+  <a class="anchor" href="#access-an-optional-value">#</a>
+</h3>
+<blockquote class="book-hint warning">
+<p><strong><em>Syntax.</em></strong>
+The instance method</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">isPresent</span>()
+</span></span></code></pre></div><p>lets us check whether an <code>Optional</code> contains a value.</p>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Optional<span style="color:#f92672">&lt;</span>NPC<span style="color:#f92672">&gt;</span> npc <span style="color:#f92672">=</span> Optional.<span style="color:#a6e22e">empty</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// outputs false</span>
+</span></span><span style="display:flex;"><span>System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(npc.<span style="color:#a6e22e">isPresent</span>());
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>npc <span style="color:#f92672">=</span> Optional.<span style="color:#a6e22e">of</span>(<span style="color:#66d9ef">new</span> Unicorn(5));
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// outputs true</span>
+</span></span><span style="display:flex;"><span>System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(npc.<span style="color:#a6e22e">isPresent</span>());
+</span></span></code></pre></div></blockquote>
+<blockquote class="book-hint warning">
+<p><strong><em>Syntax.</em></strong>
+The instance method</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>T <span style="color:#a6e22e">get</span>()
+</span></span></code></pre></div><p>lets us access the value of a <em>nonempty</em> <code>Optional</code>.</p>
+<blockquote class="book-hint danger">
+  <p><strong><em>Warning.</em></strong>
+If the <code>Optional</code> is empty, then this method throws a <a href="https://unibz-oofp-25-26.github.io/docs/paradigm/sections/error/">runtime</a> exception.</p>
+</blockquote>
+</blockquote>
+<h3 id="propagation">
+  Propagation
+  <a class="anchor" href="#propagation">#</a>
+</h3>
+<p>The class <code>Optional</code> provides convenient methods that intuitively take care of <a href="#null_prop">propagating</a> &ldquo;missing&rdquo; values.</p>
+<p>This includes methods analogous to Haskell&rsquo;s <code>fmap</code> and bind (a.k.a. <code>&gt;&gt;=</code>) functions.
+We introduce them in the sections dedicated to <a href="https://unibz-oofp-25-26.github.io/docs/pattern/sections/functor/#optional">functors</a> and <a href="https://unibz-oofp-25-26.github.io/docs/pattern/sections/monad/#optional">monads</a> respectively.</p>
 </article>
  
       
@@ -1624,6 +1700,13 @@ The following function maps a nonempty list with head <code>x</code> to <code>Ju
     </li>
     <li><a href="#option-type-1">Option type</a></li>
     <li><a href="#haskell">In Haskell</a></li>
+    <li><a href="#java">In Java</a>
+      <ul>
+        <li><a href="#create-an-optional-value">Create an optional value</a></li>
+        <li><a href="#access-an-optional-value">Access an optional value</a></li>
+        <li><a href="#propagation">Propagation</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 
