@@ -1,0 +1,1816 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  First-class method
+  #
+
+By default, imperative languages do not provide a syntax to treat methods as regular values.
+This rules out higher-order methods.
+We will see how Java 8 (2014) introduced a syntax to:
+
+refer to a method, and
+give it a type.
+
+
+  Method type in Java
+  #
+
+
+  Java VS Haskell
+  #
+
+
+Example.
+We have seen already that a function $f \colon \mathsf{String} \to \mathbb{Z}$ in Haskell is written:">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://unibz-oofp-25-26.github.io/docs/higher/sections/first_class_java/">
+  <meta property="og:site_name" content="OOFP 2025-26">
+  <meta property="og:title" content="First-class method">
+  <meta property="og:description" content="First-class method # By default, imperative languages do not provide a syntax to treat methods as regular values.
+This rules out higher-order methods.
+We will see how Java 8 (2014) introduced a syntax to:
+refer to a method, and give it a type. Method type in Java # Java VS Haskell # Example. We have seen already that a function $f \colon \mathsf{String} \to \mathbb{Z}$ in Haskell is written:">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+<title>First-class method | OOFP 2025-26</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/higher/sections/first_class_java/">
+<link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.de4c4b0971feaf73d987c39395f974b09af207d709421db2203853cccbf18556.js" integrity="sha256-3kxLCXH&#43;r3PZh8OTlfl0sJryB9cJQh2yIDhTzMvxhVY=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css"
+  integrity="sha384-vKruj+a13U8yHIkAyGgK1J3ArTLzrFGBbBc0tDp4ad/EyewESeXE/Iv67Aj8gKZ0"
+  crossorigin="anonymous"
+/>
+
+
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js"
+  integrity="sha384-PwRUT/YqbnEjkZO0zZxNqcxACrXe+j766U2amXcgMg5457rve2Y7I6ZJSm2A0mS4"
+  crossorigin="anonymous"
+></script>
+
+
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js"
+  integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+  crossorigin="anonymous"
+  onload="renderMathInElement(document.body);"
+></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    renderMathInElement(document.body, {
+      delimiters: [
+        { left: "$$", right: "$$", display: true },
+        { left: "$", right: "$", display: false },
+      ],
+    });
+  });
+</script>
+
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>OOFP 2025-26</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-8b45d304a159d86710e1579c97aa5b43" class="toggle"  />
+    <label for="section-8b45d304a159d86710e1579c97aa5b43" class="flex justify-between">
+      <a href="/docs/intro/" class="">This course</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/organization/" class="">Organization</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/material/" class="">Material</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/reading_path/" class="">Reading path</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/evaluation/" class="">Evaluation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/prerequisites/" class="">Prerequisites</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/office_hours/" class="">Office hours</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/content/" class="">Content</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/resources/" class="">Additional resources</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/software/" class="">Software</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b17bf4b701f350b4430cc5371ccad607" class="toggle"  />
+    <label for="section-b17bf4b701f350b4430cc5371ccad607" class="flex justify-between">
+      <a href="/docs/paradigm/" class="">Paradigms and languages</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/paradigm/sections/paradigm/" class="">Paradigm</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/paradigm/sections/error/" class="">Compile time vs runtime error</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/paradigm/sections/type/" class="">Typing</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/paradigm/sections/pure/" class="">Pure function</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-eb0a250150a82657aa03f0717afdcd45" class="toggle"  />
+    <label for="section-eb0a250150a82657aa03f0717afdcd45" class="flex justify-between">
+      <a href="/docs/haskell/" class="">Basic syntax of Haskell</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/haskell/sections/tokens/" class="">Tokens</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/haskell/sections/type/" class="">Base types</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/haskell/sections/native/" class="">Native functions</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/haskell/sections/tuple/" class="">Tuple</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/haskell/sections/function/" class="">Function</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/haskell/sections/program/" class="">Program</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/haskell/sections/list/" class="">List</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-2e35b5b0c21ab79cc6b70c0c8a6135fa" class="toggle" checked />
+    <label for="section-2e35b5b0c21ab79cc6b70c0c8a6135fa" class="flex justify-between">
+      <a href="/docs/higher/" class="">Higher-order function</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/higher/sections/anonymous/" class="">Anonymous function</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/higher/sections/currying/" class="">Currying</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/higher/sections/first_class_java/" class="active">First-class method</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/higher/sections/closure/" class="">Closure</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/higher/sections/useful_hofs/" class="">A few higher-order functions</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-a9f24c38594f15da67150d02f87a60d7" class="toggle"  />
+    <label for="section-a9f24c38594f15da67150d02f87a60d7" class="flex justify-between">
+      <a href="/docs/control/" class="">Control flow</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/control/sections/pattern/" class="">Pattern matching</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/control/sections/condition/" class="">Boolean condition</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/control/sections/comprehension/" class="">List comprehension</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/control/sections/stack/" class="">Call stack</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-97db6297fa77b8e8a3d66808fea4d894" class="toggle"  />
+    <label for="section-97db6297fa77b8e8a3d66808fea4d894" class="flex justify-between">
+      <a href="/docs/generic/" class="">Genericity</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/generic/sections/variable/" class="">Type variable</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/generic/sections/bound/" class="">Bound</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/generic/sections/generic_type/" class="">Generic type</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/generic/sections/maybe/" class="">Option type</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-54a25c0ad53482778ca10b1a7db8e623" class="toggle"  />
+    <label for="section-54a25c0ad53482778ca10b1a7db8e623" class="flex justify-between">
+      <a href="/docs/recursion/" class="">Recursion</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/recursion/sections/linear/" class="">Linear recursion</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/recursion/sections/nary/" class="">N-ary recursion</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/recursion/sections/intermediate/" class="">Intermediate result</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/recursion/sections/accumulator/" class="">Accumulator and tail recursion</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/recursion/sections/minimax/" class="">Minimax/maximin</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d92e119f475bae7b2a2364fe0e1fc445" class="toggle"  />
+    <label for="section-d92e119f475bae7b2a2364fe0e1fc445" class="flex justify-between">
+      <a href="/docs/composite/" class="">Composite type</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/composite/sections/enum/" class="">Enumerated type</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/composite/sections/product/" class="">Product type</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/composite/sections/sum/" class="">Sum type</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-007945605153592d0fc2acb75802d872" class="toggle"  />
+    <label for="section-007945605153592d0fc2acb75802d872" class="flex justify-between">
+      <a href="/docs/pattern/" class="">Functional patterns</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/pattern/sections/pipe/" class="">Pipeline</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/pattern/sections/functor/" class="">Functor</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/pattern/sections/monad/" class="">Monad</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-799305e0300c702d39454ff1753190dd" class="toggle"  />
+    <label for="section-799305e0300c702d39454ff1753190dd" class="flex justify-between">
+      <a href="/docs/objects/" class="">Object and class</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/objects/sections/object/" class="">Object</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/objects/sections/class/" class="">Class and instance</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/objects/sections/value_ref/" class="">Passing by value or by reference</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/objects/sections/inheritance/" class="">Inheritance</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/objects/sections/method/" class="">Instance method</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/objects/sections/tostring/" class="">Displaying an object</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/objects/sections/comparing/" class="">Cast and equality</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/objects/sections/classasobject/" class="">Class as object</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/objects/sections/string/" class="">String</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/objects/sections/boxed/" class="">Boxed primitive type</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/objects/sections/encapsulation/" class="">Encapsulation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/objects/sections/mutability/" class="">Mutability</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c34bda991aa58acb3c5c88344f5ff4d1" class="toggle"  />
+    <label for="section-c34bda991aa58acb3c5c88344f5ff4d1" class="flex justify-between">
+      <a href="/docs/abstractdatatypes/" class="">Abstract data type</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/abstractdatatypes/sections/collection/" class="">ADT as a generic interface</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/abstractdatatypes/sections/list/" class="">List</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/abstractdatatypes/sections/set/" class="">Set</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/abstractdatatypes/sections/map/" class="">Associative array</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/abstractdatatypes/sections/queue/" class="">Stack, queue, priority queue</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/abstractdatatypes/sections/sorting/" class="">Sorting</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c5f1310fa6b2ad1b4f803a63275b0f17" class="toggle"  />
+    <label for="section-c5f1310fa6b2ad1b4f803a63275b0f17" class="flex justify-between">
+      <a href="/docs/interface/" class="">Interface</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/interface/sections/specification/" class="">Specification and programming interface</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/interface/sections/java_interface/" class="">Java interface</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d689bb2436bd0f51b31e8f95cf070b59" class="toggle"  />
+    <label for="section-d689bb2436bd0f51b31e8f95cf070b59" class="flex justify-between">
+      <a href="/docs/background/" class="">Background</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/background/sections/set_list/" class="">Set, list, tuple</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/background/sections/function/" class="">Function</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/background/sections/order/" class="">Relation, preorder</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/background/sections/problem/" class="">Computational problem</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c98f96b18785aef1d766e440ba328a79" class="toggle"  />
+    <label for="section-c98f96b18785aef1d766e440ba328a79" class="flex justify-between">
+      <a href="/docs/ass/" class="">Assignments</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/ass/sections/ass1/" class="">Assignment 1</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/ass/sections/ass2/" class="">Assignment 2</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/ass/sections/ass3/" class="">Assignment 3</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/ass/sections/ass4/" class="">Assignment 4</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>First-class method</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#type">Method type in Java</a>
+      <ul>
+        <li><a href="#java-vs-haskell">Java VS Haskell</a></li>
+        <li><a href="#currying">Currying</a></li>
+      </ul>
+    </li>
+    <li><a href="#functional_interface">Functional interface</a>
+      <ul>
+        <li><a href="#notation">Notation</a></li>
+        <li><a href="#definition">Definition</a></li>
+        <li><a href="#native_functional_interfaces">Native functional interfaces</a></li>
+      </ul>
+    </li>
+    <li><a href="#reference">Method reference</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="first-class-method">
+  First-class method
+  <a class="anchor" href="#first-class-method">#</a>
+</h1>
+<p>By default, imperative languages do not provide a syntax to treat methods as regular values.</p>
+<p>This rules out <a href="https://unibz-oofp-25-26.github.io/docs/higher/">higher-order</a> methods.</p>
+<p>We will see how Java 8 (2014) introduced a syntax to:</p>
+<ul>
+<li><a href="#reference">refer</a> to a method, and</li>
+<li>give it a <a href="#type">type</a>.</li>
+</ul>
+<h2 id="type">
+  Method type in Java
+  <a class="anchor" href="#type">#</a>
+</h2>
+<h3 id="java-vs-haskell">
+  Java VS Haskell
+  <a class="anchor" href="#java-vs-haskell">#</a>
+</h3>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong>
+We have seen <a href="https://unibz-oofp-25-26.github.io/docs/haskell/sections/function/#function-type">already</a> that a function $f \colon \mathsf{String} \to \mathbb{Z}$ in Haskell is written:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">f</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">String</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Integer</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">f</span> s <span style="color:#f92672">=</span> <span style="color:#f92672">&lt;</span>some code here<span style="color:#f92672">&gt;</span>
+</span></span></code></pre></div><p>In Java, this function is written:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Integer <span style="color:#a6e22e">f</span>(String s) {
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;</span>some code here<span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></blockquote>
+<blockquote class="book-hint warning">
+<p>A <strong>type</strong> for a function/method consists of:</p>
+<ul>
+<li>a type for its input, and</li>
+<li>a type for its output.</li>
+</ul>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Example (continued).</em></strong>
+In Haskell, the function <code>f</code> above has type</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#66d9ef">String</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Integer</span>
+</span></span></code></pre></div><blockquote>
+<p><strong><em>Question.</em></strong>
+What is the type of the function <code>f</code> in Java?</p>
+</blockquote>
+</blockquote>
+<p>Java 8 (2014) introduced a syntax (explained <a href="#functional_interface">below</a>) for the type of a method.</p>
+<blockquote class="book-hint info">
+<p><strong><em>Example (continued).</em></strong>
+Since Java 8, the function <code>f</code> above has type</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Function<span style="color:#f92672">&lt;</span>String, Integer<span style="color:#f92672">&gt;</span>
+</span></span></code></pre></div></blockquote>
+<p>This allows us to write <a href="https://unibz-oofp-25-26.github.io/docs/higher/">higher-order</a> methods:</p>
+<blockquote class="book-hint info">
+<p><strong><em>Example (continued).</em></strong>
+We can define in Java a method:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>String <span style="color:#a6e22e">g</span>(Function<span style="color:#f92672">&lt;</span>String, Integer<span style="color:#f92672">&gt;</span> f, String s)
+</span></span></code></pre></div><p>We may call this method <code>g</code> as follows:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>g(x <span style="color:#f92672">-&gt;</span> x.<span style="color:#a6e22e">length</span>(), <span style="color:#e6db74">&#34;Hello&#34;</span>)
+</span></span></code></pre></div><p>The equivalent of <code>g</code> in Haskell is an <a href="https://unibz-oofp-25-26.github.io/docs/higher/sections/currying/">uncurried</a> function:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">g</span> <span style="color:#f92672">::</span> ((<span style="color:#66d9ef">String</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Integer</span>), <span style="color:#66d9ef">String</span>) <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">String</span>
+</span></span></code></pre></div></blockquote>
+<h3 id="currying">
+  Currying
+  <a class="anchor" href="#currying">#</a>
+</h3>
+<p>Java method types also let us write functions in <a href="https://unibz-oofp-25-26.github.io/docs/higher/sections/currying/">curried form</a>.</p>
+<blockquote class="book-hint info">
+<p><strong><em>Example (continued).</em></strong>
+In Haskell, the curried form of the function <code>g</code> above is usually preferred:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">g</span> <span style="color:#f92672">::</span> (<span style="color:#66d9ef">String</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Integer</span>) <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">String</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">String</span>
+</span></span></code></pre></div><p>We can call this function with</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">g</span> f
+</span></span></code></pre></div><p>which evaluates to a function with type</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#66d9ef">String</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">String</span>
+</span></span></code></pre></div><p>Similarly, we can define the curried form of <code>g</code> in Java:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Function<span style="color:#f92672">&lt;</span>String, String<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">g</span>(Function<span style="color:#f92672">&lt;</span>String, Integer<span style="color:#f92672">&gt;</span> f)
+</span></span></code></pre></div><p>and call it with</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>g(f)
+</span></span></code></pre></div></blockquote>
+<blockquote class="book-hint warning">
+<p><strong><em>Convention.</em></strong>
+Currying is useful in some contexts, but is <em>not</em> the norm in Java (as opposed to Haskell). One reason is syntactic.</p>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong>
+The Haskell function</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">h</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Integer</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Integer</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Bool</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">String</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">String</span>
+</span></span></code></pre></div><p>is written in Java</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Function<span style="color:#f92672">&lt;</span>Integer, Function<span style="color:#f92672">&lt;</span>Boolean, Function<span style="color:#f92672">&lt;</span>String, String<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#a6e22e">h</span>(Integer i)
+</span></span></code></pre></div><p>which is not easy to read.
+In contrast, the uncurried form of this method is</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>String <span style="color:#a6e22e">h</span>(Integer i1, Integer i2, Boolean b, String s)
+</span></span></code></pre></div></blockquote>
+<h2 id="functional_interface">
+  Functional interface
+  <a class="anchor" href="#functional_interface">#</a>
+</h2>
+<h3 id="notation">
+  Notation
+  <a class="anchor" href="#notation">#</a>
+</h3>
+<blockquote class="book-hint warning">
+<p><strong><em>Notation.</em></strong>
+For readability, we may use an <em>abstract notation</em> to describe the type of a Java method, inspired by mathematical <a href="https://unibz-oofp-25-26.github.io/docs/background/sections/function/">functions</a>.</p>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Examples.</em></strong>
+We may use the type:</p>
+<ul>
+<li><code>Integer</code> $\times$ <code>Integer</code> $\to$ <code>Integer</code> for a method that takes two <code>Integer</code>s and returns another,</li>
+<li><code>NPC</code> $\times$ <code>Integer</code> $\to$ <code>NPC</code> for a method that takes an <code>NPC</code> and an <code>Integer</code> (in that order), and returns an <code>NPC</code>,</li>
+<li><code>NPC[]</code> $\to$ <code>void</code> for a method that takes an array of <code>NPC</code>s and returns nothing.</li>
+</ul>
+</blockquote>
+<!-- As illustrated above (with the method `g`), in order to declare a [higher-order](https://unibz-oofp-25-26.github.io/docs/higher/sections/useful_hofs/) method in Java, wee need a syntax for the type of its argument and return value. -->
+<h3 id="definition">
+  Definition
+  <a class="anchor" href="#definition">#</a>
+</h3>
+<p>A method type in Java is described with a so-called functional interface.</p>
+<blockquote class="book-hint warning">
+<p><strong><em>Syntax.</em></strong> A Java <strong>functional interface</strong> is an <a href="https://unibz-oofp-25-26.github.io/docs/interface/sections/java_interface/">interface</a> with a <em>single</em> (standard) method.</p>
+<blockquote class="book-hint info">
+  <p><strong><em>Note.</em></strong>
+&ldquo;Standard&rdquo; here stands for a method that does not have the <a href="https://unibz-oofp-25-26.github.io/docs/interface/sections/java_interface/#interfaceVsAbstractClass">default</a> qualifier (a &ldquo;standard&rdquo; interface method is sometimes called &ldquo;abstract&rdquo;).</p>
+</blockquote>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong>
+The following is a functional interface, which describes the type <code>NPC</code> $\times$ <code>NPC</code> $\to$ <code>Boolean</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">NPCPerNPCToBoolean</span> {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    Boolean <span style="color:#a6e22e">execute</span>(NPC c1, NPC c2);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Any <em>method</em> with type <code>NPC</code> $\times$ <code>NPC</code> $\to$ <code>Boolean</code> <em>automatically</em> implements this functional interface.
+<br> For instance, the method</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Boolean <span style="color:#a6e22e">hasLessXPThan</span> (NPC c1, NPC c2){
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> c1.<span style="color:#a6e22e">xp</span> <span style="color:#f92672">&lt;=</span> c2.<span style="color:#a6e22e">xp</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>implements this interface.</p>
+</blockquote>
+<p>An instance of a functional interface (which is a method) can be <em>executed</em> by calling the (only) method declared in the interface.</p>
+<blockquote class="book-hint info">
+<p><strong><em>Example (continued).</em></strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>hasLessXPThan.<span style="color:#a6e22e">execute</span>(<span style="color:#66d9ef">new</span> Unicorn(3), <span style="color:#66d9ef">new</span> Butterfly(4));
+</span></span></code></pre></div><p>is equivalent to</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>hasLessXPThan(<span style="color:#66d9ef">new</span> Unicorn(3), <span style="color:#66d9ef">new</span> Butterfly(4));
+</span></span></code></pre></div></blockquote>
+<p>This is useful when a <em>variable</em> stands for a method.</p>
+<blockquote class="book-hint info">
+<p><strong><em>Example (continued).</em></strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>NPCPerNPCToBoolean f <span style="color:#f92672">=</span> getMyMethod();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>f.<span style="color:#a6e22e">execute</span>(<span style="color:#66d9ef">new</span> Unicorn(3), <span style="color:#66d9ef">new</span> Butterfly(4));
+</span></span></code></pre></div></blockquote>
+<blockquote class="book-hint warning">
+<p><strong><em>Syntax.</em></strong>
+The name of a functional interface is irrelevant, as well as the name of its (unique) method.</p>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong>
+The following functional interface also describes the type <code>NPC</code> $\times$ <code>NPC</code> $\to$ <code>Boolean</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Just</span> {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    Boolean <span style="color:#a6e22e">because</span>(NPC we, NPC can);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></blockquote>
+<blockquote class="book-hint warning">
+<p><strong><em>Syntax.</em></strong>
+A functional interface can be annotated with <code>@FunctionalInterface</code>.<br>
+This is considered good practice:</p>
+<ul>
+<li>for documentation, and</li>
+<li>because it prevents compilation if the interface has more than one (non-default) methods.</li>
+</ul>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@FunctionalInterface</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">NPCPerNPCToBoolean</span> {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    Boolean <span style="color:#a6e22e">execute</span>(NPC c1, NPC c2);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></blockquote>
+<h3 id="native_functional_interfaces">
+  Native functional interfaces
+  <a class="anchor" href="#native_functional_interfaces">#</a>
+</h3>
+<p>Java provides native (generic) functional interfaces for some frequent method types.</p>
+<p>We highlight here a few of them:</p>
+<h4 id="function">
+  <code>Function</code>
+  <a class="anchor" href="#function">#</a>
+</h4>
+<blockquote class="book-hint warning">
+<p>The functional interface</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Function<span style="color:#f92672">&lt;</span>T,R<span style="color:#f92672">&gt;</span>
+</span></span></code></pre></div><p>stands for the type <code>T</code> $\to$ <code>R</code>.</p>
+<p>Its method is called <code>apply</code>.</p>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong>
+A method with type <code>NPC</code> $\to$ <code>Integer</code> implements the functional interface</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Function<span style="color:#f92672">&lt;</span>NPC,Integer<span style="color:#f92672">&gt;</span>
+</span></span></code></pre></div></blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong>
+Here is a non-generic and uncurried version of the higher-order function <a href="https://unibz-oofp-25-26.github.io/docs/higher/sections/useful_hofs/#map"><code>map</code></a>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>List<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">myMap</span>(Function<span style="color:#f92672">&lt;</span>NPC, Integer<span style="color:#f92672">&gt;</span> f, List<span style="color:#f92672">&lt;</span>NPC<span style="color:#f92672">&gt;</span> cs){
+</span></span><span style="display:flex;"><span>    List<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> outputList <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ArrayList<span style="color:#f92672">&lt;&gt;</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (NPC c : cs){
+</span></span><span style="display:flex;"><span>        outputList.<span style="color:#a6e22e">add</span>(f.<span style="color:#a6e22e">apply</span>(c));
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> outputList;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><blockquote class="book-hint info">
+  <p><strong><em>Hint.</em></strong> We will see a more concise syntax for (a generic version of) this function in the section dedicated to <a href="https://unibz-oofp-25-26.github.io/notreleased/">Java Streams</a>.</p>
+</blockquote>
+</blockquote>
+<h4 id="bifunction">
+  <code>BiFunction</code>
+  <a class="anchor" href="#bifunction">#</a>
+</h4>
+<blockquote class="book-hint warning">
+<p>The functional interface</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>BiFunction<span style="color:#f92672">&lt;</span>T,U,R<span style="color:#f92672">&gt;</span>
+</span></span></code></pre></div><p>stands for the type <code>T</code> $\times$ <code>U</code> $\to$ <code>R</code>.</p>
+<p>Its method is called is also called <code>apply</code>.</p>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong>
+A method with type <code>NPC</code> $\times$ <code>NPC</code> $\to$ <code>Integer</code> implements the functional interface</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>BiFunction<span style="color:#f92672">&lt;</span>NPC,NPC,Integer<span style="color:#f92672">&gt;</span>
+</span></span></code></pre></div></blockquote>
+<h4 id="consumer">
+  <code>Consumer</code>
+  <a class="anchor" href="#consumer">#</a>
+</h4>
+<blockquote class="book-hint warning">
+<p>The functional interface</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Consumer<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span>
+</span></span></code></pre></div><p>stands for the type <code>T</code> $\to$ <code>void</code>.</p>
+<p>Its method is called <code>accept</code>.</p>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong> A method with type <code>NPC</code> $\to$ <code>void</code> implements the functional interface</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Consumer<span style="color:#f92672">&lt;</span>NPC<span style="color:#f92672">&gt;</span>
+</span></span></code></pre></div></blockquote>
+<h4 id="biconsumer">
+  <code>BiConsumer</code>
+  <a class="anchor" href="#biconsumer">#</a>
+</h4>
+<p>This is the analogous of <code>BiFunction</code>, but for consumers.</p>
+<h4 id="supplier">
+  <code>Supplier</code>
+  <a class="anchor" href="#supplier">#</a>
+</h4>
+<blockquote class="book-hint warning">
+<p>The functional interface</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Supplier<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span>
+</span></span></code></pre></div><p>stands for the type <code>void</code> $\to$ <code>T</code>.</p>
+<p>Its method is called <code>get</code>.</p>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong>
+A method with type <code>void</code> $\to$ <code>NPC</code> implements the functional interface</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Supplier<span style="color:#f92672">&lt;</span>NPC<span style="color:#f92672">&gt;</span>
+</span></span></code></pre></div></blockquote>
+<h4 id="predicate">
+  <code>Predicate</code>
+  <a class="anchor" href="#predicate">#</a>
+</h4>
+<blockquote class="book-hint warning">
+<p>The functional interface</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Predicate<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span>
+</span></span></code></pre></div><p>stands for the type <code>T</code> $\to$ <code>Boolean</code>.</p>
+<p>Its method is called <code>test</code>.</p>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Note.</em></strong>
+<code>Predicate&lt;T&gt;</code> is syntactic sugar for <code>Function&lt;T,Boolean&gt;</code>, but their methods have different names (<code>test</code> and <code>apply</code> respectively).</p>
+</blockquote>
+<h2 id="reference">
+  Method reference
+  <a class="anchor" href="#reference">#</a>
+</h2>
+<blockquote class="book-hint warning">
+<p><strong><em>Syntax.</em></strong>
+In order to refer to a method, we can use a <strong>method reference</strong>, written</p>
+<ul>
+<li><code>&lt;ClassName&gt;::&lt;methodName&gt;</code> for a static method,</li>
+<li><code>&lt;objectVariable&gt;::&lt;methodName&gt;</code> for an instance method,</li>
+<li><code>&lt;ClassName&gt;::new</code> for a constructor.</li>
+</ul>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong>
+The static method</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">double</span> <span style="color:#a6e22e">ceil</span>(<span style="color:#66d9ef">double</span> x)
+</span></span></code></pre></div><p>of the class <code>Math</code> intuitively rounds up <code>x</code> to the nearest integer.</p>
+<p>Now assume a function</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>List<span style="color:#f92672">&lt;</span>Double<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">myMap</span>(Function<span style="color:#f92672">&lt;</span>Double, Double<span style="color:#f92672">&gt;</span> f, List<span style="color:#f92672">&lt;</span>Double<span style="color:#f92672">&gt;</span> xs)
+</span></span></code></pre></div><p>We can pass the method <code>ceil</code> to <code>myMap</code> as follows:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>myMap(Math::ceil, List.<span style="color:#a6e22e">of</span>(2.<span style="color:#a6e22e">0</span>,3.<span style="color:#a6e22e">1</span>));
+</span></span></code></pre></div></blockquote>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#type">Method type in Java</a>
+      <ul>
+        <li><a href="#java-vs-haskell">Java VS Haskell</a></li>
+        <li><a href="#currying">Currying</a></li>
+      </ul>
+    </li>
+    <li><a href="#functional_interface">Functional interface</a>
+      <ul>
+        <li><a href="#notation">Notation</a></li>
+        <li><a href="#definition">Definition</a></li>
+        <li><a href="#native_functional_interfaces">Native functional interfaces</a></li>
+      </ul>
+    </li>
+    <li><a href="#reference">Method reference</a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

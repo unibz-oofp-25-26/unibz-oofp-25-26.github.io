@@ -1,9 +1,20 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-<head>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="
+  First-class method in Java
+  #
+
+By default, imperative languages do not provide a syntax to treat methods as regular values.
+This rules out higher-order methods.
+We will see how Java 8 (2014) introduced a syntax to:
+
+refer to a method, and
+give it a type.
+
+
   Method type in Java
   #
 
@@ -13,43 +24,26 @@
 
 
 Example.
-We have seen already that a function $f \colon \mathsf{String} \to \mathbb{Z}$ in Haskell is written:
-f :: String -&gt; Integer
-f x = &lt;some code here&gt;
-In Java, this function is written:
-Integer f(String x) {
-  &lt;some code here&gt;
-}
-
-
-A type for a function/method consists of:
-
-a type for its input, and
-a type for its output.
-
-
-
-Example (continued).
-In Haskell, the function f above has type">
+We have seen already that a function $f \colon \mathsf{String} \to \mathbb{Z}$ in Haskell is written:">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://unibz-oofp-25-26.github.io/docs/higher/sections/type_java/">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/docs/higher/sections/type_java/">
   <meta property="og:site_name" content="OOFP 2025-26">
-  <meta property="og:title" content="Method type in Java">
-  <meta property="og:description" content="Method type in Java # Java VS Haskell # Example. We have seen already that a function $f \colon \mathsf{String} \to \mathbb{Z}$ in Haskell is written:
-f :: String -&gt; Integer f x = &lt;some code here&gt; In Java, this function is written:
-Integer f(String x) { &lt;some code here&gt; } A type for a function/method consists of:
-a type for its input, and a type for its output. Example (continued). In Haskell, the function f above has type">
+  <meta property="og:title" content="First-class method in Java">
+  <meta property="og:description" content="First-class method in Java # By default, imperative languages do not provide a syntax to treat methods as regular values.
+This rules out higher-order methods.
+We will see how Java 8 (2014) introduced a syntax to:
+refer to a method, and give it a type. Method type in Java # Java VS Haskell # Example. We have seen already that a function $f \colon \mathsf{String} \to \mathbb{Z}$ in Haskell is written:">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
-<title>Method type in Java | OOFP 2025-26</title>
+<title>First-class method in Java | OOFP 2025-26</title>
 <link rel="icon" href="/favicon.png" >
 <link rel="manifest" href="/manifest.json">
-<link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/higher/sections/type_java/">
+<link rel="canonical" href="http://localhost:1313/docs/higher/sections/type_java/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.95a564d26ca8cd0c6d38781be3237d1f94033373e7bdb92939cb8cfc62186011.js" integrity="sha256-laVk0myozQxtOHgb4yN9H5QDM3PnvbkpOcuM/GIYYBE=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.1f598939346476e438495bb10b93ce2aadc71dd402c6b2b5b3beea3d5a005f29.js" integrity="sha256-H1mJOTRkduQ4SVuxC5POKq3HHdQCxrK1s77qPVoAXyk=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -500,7 +494,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/higher/sections/type_java/" class="active">Method type in Java</a>
+    <a href="/docs/higher/sections/type_java/" class="active">First-class method in Java</a>
   
 
         </li>
@@ -745,6 +739,19 @@ https://github.com/alex-shpak/hugo-book
   
 
   
+    <a href="/docs/recursion/sections/termination/" class="">Termination</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
     <a href="/docs/recursion/sections/minimax/" class="">Minimax/maximin</a>
   
 
@@ -831,6 +838,19 @@ https://github.com/alex-shpak/hugo-book
 
           
   <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/pattern/sections/fold/" class="">Fold</a>
+  
+
+        </li>
+      
     
       
         <li>
@@ -1380,7 +1400,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <h3>Method type in Java</h3>
+  <h3>First-class method in Java</h3>
 
   <label for="toc-control">
     
@@ -1396,17 +1416,20 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#java-vs-haskell">Java VS Haskell</a>
+    <li><a href="#type">Method type in Java</a>
       <ul>
+        <li><a href="#java-vs-haskell">Java VS Haskell</a></li>
         <li><a href="#currying">Currying</a></li>
-        <li><a href="#refer-to-a-method">Refer to a method</a></li>
       </ul>
     </li>
     <li><a href="#functional_interface">Functional interface</a>
       <ul>
+        <li><a href="#notation">Notation</a></li>
+        <li><a href="#definition">Definition</a></li>
         <li><a href="#native_functional_interfaces">Native functional interfaces</a></li>
       </ul>
     </li>
+    <li><a href="#reference">Method reference</a></li>
   </ul>
 </nav>
 
@@ -1419,21 +1442,32 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown book-article"><h1 id="method-type-in-java">
-  Method type in Java
-  <a class="anchor" href="#method-type-in-java">#</a>
+  <article class="markdown book-article"><h1 id="first-class-method-in-java">
+  First-class method in Java
+  <a class="anchor" href="#first-class-method-in-java">#</a>
 </h1>
-<h2 id="java-vs-haskell">
+<p>By default, imperative languages do not provide a syntax to treat methods as regular values.</p>
+<p>This rules out <a href="http://localhost:1313/docs/higher/">higher-order</a> methods.</p>
+<p>We will see how Java 8 (2014) introduced a syntax to:</p>
+<ul>
+<li><a href="#reference">refer</a> to a method, and</li>
+<li>give it a <a href="#type">type</a>.</li>
+</ul>
+<h2 id="type">
+  Method type in Java
+  <a class="anchor" href="#type">#</a>
+</h2>
+<h3 id="java-vs-haskell">
   Java VS Haskell
   <a class="anchor" href="#java-vs-haskell">#</a>
-</h2>
+</h3>
 <blockquote class="book-hint info">
 <p><strong><em>Example.</em></strong>
-We have seen <a href="https://unibz-oofp-25-26.github.io/docs/haskell/sections/function/#function-type">already</a> that a function $f \colon \mathsf{String} \to \mathbb{Z}$ in Haskell is written:</p>
+We have seen <a href="http://localhost:1313/docs/haskell/sections/function/#function-type">already</a> that a function $f \colon \mathsf{String} \to \mathbb{Z}$ in Haskell is written:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">f</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">String</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Integer</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">f</span> x <span style="color:#f92672">=</span> <span style="color:#f92672">&lt;</span>some code here<span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">f</span> s <span style="color:#f92672">=</span> <span style="color:#f92672">&lt;</span>some code here<span style="color:#f92672">&gt;</span>
 </span></span></code></pre></div><p>In Java, this function is written:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Integer <span style="color:#a6e22e">f</span>(String x) {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Integer <span style="color:#a6e22e">f</span>(String s) {
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">&lt;</span>some code here<span style="color:#f92672">&gt;</span>
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div></blockquote>
@@ -1459,21 +1493,21 @@ What is the type of the function <code>f</code> in Java?</p>
 Since Java 8, the function <code>f</code> above has type</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Function<span style="color:#f92672">&lt;</span>String, Integer<span style="color:#f92672">&gt;</span>
 </span></span></code></pre></div></blockquote>
-<p>This allows us to write <a href="https://unibz-oofp-25-26.github.io/docs/higher/sections/useful_hofs/">higher-order</a> methods.</p>
+<p>This allows us to write <a href="http://localhost:1313/docs/higher/">higher-order</a> methods:</p>
 <blockquote class="book-hint info">
 <p><strong><em>Example (continued).</em></strong>
-We can define in Java a function:</p>
+We can define in Java a method:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>String <span style="color:#a6e22e">g</span>(Function<span style="color:#f92672">&lt;</span>String, Integer<span style="color:#f92672">&gt;</span> f, String s)
 </span></span></code></pre></div><p>We may call this method <code>g</code> as follows:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>g(x <span style="color:#f92672">-&gt;</span> x.<span style="color:#a6e22e">length</span>(), <span style="color:#e6db74">&#34;Hello&#34;</span>)
-</span></span></code></pre></div><p>The equivalent of <code>g</code> in Haskell is an <a href="https://unibz-oofp-25-26.github.io/docs/higher/sections/currying/">uncurried</a> function:</p>
+</span></span></code></pre></div><p>The equivalent of <code>g</code> in Haskell is an <a href="http://localhost:1313/docs/higher/sections/currying/">uncurried</a> function:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">g</span> <span style="color:#f92672">::</span> ((<span style="color:#66d9ef">String</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Integer</span>), <span style="color:#66d9ef">String</span>) <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">String</span>
 </span></span></code></pre></div></blockquote>
 <h3 id="currying">
   Currying
   <a class="anchor" href="#currying">#</a>
 </h3>
-<p>Java method types also let us write functions in <a href="https://unibz-oofp-25-26.github.io/docs/higher/sections/currying/">curried form</a>.</p>
+<p>Java method types also let us write functions in <a href="http://localhost:1313/docs/higher/sections/currying/">curried form</a>.</p>
 <blockquote class="book-hint info">
 <p><strong><em>Example (continued).</em></strong>
 In Haskell, the curried form of the function <code>g</code> above is usually preferred:</p>
@@ -1501,38 +1535,17 @@ The Haskell function</p>
 In contrast, the uncurried form of this method is</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>String <span style="color:#a6e22e">h</span>(Integer i1, Integer i2, Boolean b, String s)
 </span></span></code></pre></div></blockquote>
-<h3 id="refer-to-a-method">
-  Refer to a method
-  <a class="anchor" href="#refer-to-a-method">#</a>
-</h3>
-<blockquote class="book-hint warning">
-<p><strong><em>Syntax.</em></strong>
-In order to refer to a method, we can use a <strong>*method reference</strong>, written</p>
-<ul>
-<li><code>&lt;ClassName&gt;::&lt;methodName&gt;</code> for a static method,</li>
-<li><code>&lt;objectVariable&gt;::&lt;methodName&gt;</code> for an instance method,</li>
-<li><code>&lt;ClassName&gt;::new</code> for a constructor.</li>
-</ul>
-</blockquote>
-<blockquote class="book-hint info">
-<p><strong><em>Example.</em></strong>
-The static method</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Set<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">singleton</span>(T element)
-</span></span></code></pre></div><p>of the class <code>Collections</code> returns a singleton set that contains the input element.</p>
-<p>Now assume a function</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>h(Function<span style="color:#f92672">&lt;</span>NPC, Set<span style="color:#f92672">&lt;</span>NPC<span style="color:#f92672">&gt;&gt;</span> f, List<span style="color:#f92672">&lt;</span>NPC<span style="color:#f92672">&gt;</span> npc)
-</span></span></code></pre></div><p>We can pass the method <code>singleton</code> to <code>h</code> as follows:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>List<span style="color:#f92672">&lt;</span>NPC<span style="color:#f92672">&gt;</span> nocs <span style="color:#f92672">=</span> getNPCs();
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>h(Collections::singleton, npcs);
-</span></span></code></pre></div></blockquote>
 <h2 id="functional_interface">
   Functional interface
   <a class="anchor" href="#functional_interface">#</a>
 </h2>
+<h3 id="notation">
+  Notation
+  <a class="anchor" href="#notation">#</a>
+</h3>
 <blockquote class="book-hint warning">
 <p><strong><em>Notation.</em></strong>
-For readability, we may use an abstract notation to describe the type of a Java method, inspired by mathematical <a href="https://unibz-oofp-25-26.github.io/docs/background/sections/function/">functions</a>.</p>
+For readability, we may use an <em>abstract notation</em> to describe the type of a Java method, inspired by mathematical <a href="http://localhost:1313/docs/background/sections/function/">functions</a>.</p>
 </blockquote>
 <blockquote class="book-hint info">
 <p><strong><em>Examples.</em></strong>
@@ -1540,39 +1553,49 @@ We may use the type:</p>
 <ul>
 <li><code>Integer</code> $\times$ <code>Integer</code> $\to$ <code>Integer</code> for a method that takes two <code>Integer</code>s and returns another,</li>
 <li><code>NPC</code> $\times$ <code>Integer</code> $\to$ <code>NPC</code> for a method that takes an <code>NPC</code> and an <code>Integer</code> (in that order), and returns an <code>NPC</code>,</li>
-<li><code>NPC[]</code> $\to$ <code>void</code> for a method that takes an array of <code>NPC</code>s and returns nothing,</li>
+<li><code>NPC[]</code> $\to$ <code>void</code> for a method that takes an array of <code>NPC</code>s and returns nothing.</li>
 </ul>
 </blockquote>
-<!-- As illustrated above (with the method `g`), in order to declare a [higher-order](https://unibz-oofp-25-26.github.io/docs/higher/sections/useful_hofs/) method in Java, wee need a syntax for the type of its argument and return value. -->
-<p>A method type in Java is described with a so-called <em>functional interface</em>.</p>
+<!-- As illustrated above (with the method `g`), in order to declare a [higher-order](http://localhost:1313/docs/higher/sections/useful_hofs/) method in Java, wee need a syntax for the type of its argument and return value. -->
+<h3 id="definition">
+  Definition
+  <a class="anchor" href="#definition">#</a>
+</h3>
+<p>A method type in Java is described with a so-called functional interface.</p>
 <blockquote class="book-hint warning">
-<p><strong><em>Syntax.</em></strong> A Java <strong>functional interface</strong> is an <a href="https://unibz-oofp-25-26.github.io/docs/interface/sections/java_interface/">interface</a> with a <em>single</em> (standard) method.</p>
-</blockquote>
+<p><strong><em>Syntax.</em></strong> A Java <strong>functional interface</strong> is an <a href="http://localhost:1313/docs/interface/sections/java_interface/">interface</a> with a <em>single</em> (standard) method.</p>
 <blockquote class="book-hint info">
-<p><strong><em>Note.</em></strong>
-In this definition, &ldquo;standard&rdquo; stands for a method that does not have the <a href="https://unibz-oofp-25-26.github.io/docs/interface/sections/java_interface/#interfaceVsAbstractClass">default</a> qualifier (&ldquo;standard&rdquo; interface methods are also called &ldquo;abstract&rdquo;).</p>
+  <p><strong><em>Note.</em></strong>
+&ldquo;Standard&rdquo; here stands for a method that does not have the <a href="http://localhost:1313/docs/interface/sections/java_interface/#interfaceVsAbstractClass">default</a> qualifier (a &ldquo;standard&rdquo; interface method is sometimes called &ldquo;abstract&rdquo;).</p>
+</blockquote>
 </blockquote>
 <blockquote class="book-hint info">
 <p><strong><em>Example.</em></strong>
-The following is a functional interface, which describes the type <code>NPC</code> $\times$ <code>Integer</code> $\to$ <code>NPC</code>.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">NPCPerIntegerToNPC</span> {
+The following is a functional interface, which describes the type <code>NPC</code> $\times$ <code>NPC</code> $\to$ <code>Boolean</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">NPCPerNPCToBoolean</span> {
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    NPC <span style="color:#a6e22e">execute</span>(NPC npc, Integer i);
+</span></span><span style="display:flex;"><span>    Boolean <span style="color:#a6e22e">execute</span>(NPC c1, NPC c2);
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>Any <em>method</em> with type <code>NPC</code> $\times$ <code>Integer</code> $\to$ <code>NPC</code> automatically implements this functional interface.
+</span></span></code></pre></div><p>Any <em>method</em> with type <code>NPC</code> $\times$ <code>NPC</code> $\to$ <code>Boolean</code> <em>automatically</em> implements this functional interface.
 <br> For instance, the method</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>NPC <span style="color:#a6e22e">boostXp</span> (NPC npc, Integer inc){
-</span></span><span style="display:flex;"><span>    npc.<span style="color:#a6e22e">xp</span> <span style="color:#f92672">+=</span> inc;
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> npc;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Boolean <span style="color:#a6e22e">hasLessXPThan</span> (NPC c1, NPC c2){
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> c1.<span style="color:#a6e22e">xp</span> <span style="color:#f92672">&lt;=</span> c2.<span style="color:#a6e22e">xp</span>;
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>implements this interface.
-Accordingly, we can write</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>NPCPerIntegerToNPC myMethod <span style="color:#f92672">=</span> boostXP;
-</span></span></code></pre></div></blockquote>
+</span></span></code></pre></div><p>implements this interface.</p>
+</blockquote>
 <p>An instance of a functional interface (which is a method) can be <em>executed</em> by calling the (only) method declared in the interface.</p>
 <blockquote class="book-hint info">
 <p><strong><em>Example (continued).</em></strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>NPC boostedNPC <span style="color:#f92672">=</span> myMethod.<span style="color:#a6e22e">execute</span>(<span style="color:#66d9ef">new</span> Unicorn(), 5);
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>hasLessXPThan.<span style="color:#a6e22e">execute</span>(<span style="color:#66d9ef">new</span> Unicorn(3), <span style="color:#66d9ef">new</span> Butterfly(4));
+</span></span></code></pre></div><p>is equivalent to</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>hasLessXPThan(<span style="color:#66d9ef">new</span> Unicorn(3), <span style="color:#66d9ef">new</span> Butterfly(4));
+</span></span></code></pre></div></blockquote>
+<p>This is useful when a <em>variable</em> stands for a method.</p>
+<blockquote class="book-hint info">
+<p><strong><em>Example (continued).</em></strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>NPCPerNPCToBoolean f <span style="color:#f92672">=</span> getMyMethod();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>f.<span style="color:#a6e22e">execute</span>(<span style="color:#66d9ef">new</span> Unicorn(3), <span style="color:#66d9ef">new</span> Butterfly(4));
 </span></span></code></pre></div></blockquote>
 <blockquote class="book-hint warning">
 <p><strong><em>Syntax.</em></strong>
@@ -1580,10 +1603,10 @@ The name of a functional interface is irrelevant, as well as the name of its (un
 </blockquote>
 <blockquote class="book-hint info">
 <p><strong><em>Example.</em></strong>
-The following functional interface also describes the type <code>NPC</code> $\times$ <code>Integer</code> $\to$ <code>NPC</code>.</p>
+The following functional interface also describes the type <code>NPC</code> $\times$ <code>NPC</code> $\to$ <code>Boolean</code>.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Just</span> {
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    NPC <span style="color:#a6e22e">because</span>(NPC we, Integer can);
+</span></span><span style="display:flex;"><span>    Boolean <span style="color:#a6e22e">because</span>(NPC we, NPC can);
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div></blockquote>
 <blockquote class="book-hint warning">
@@ -1598,9 +1621,9 @@ This is considered good practice:</p>
 <blockquote class="book-hint info">
 <p><strong><em>Example.</em></strong></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@FunctionalInterface</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">NPCPerIntegerToNPC</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">NPCPerNPCToBoolean</span> {
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    NPC <span style="color:#a6e22e">execute</span>(NPC npc, Integer i);
+</span></span><span style="display:flex;"><span>    Boolean <span style="color:#a6e22e">execute</span>(NPC c1, NPC c2);
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div></blockquote>
 <h3 id="native_functional_interfaces">
@@ -1615,27 +1638,27 @@ This is considered good practice:</p>
 </h4>
 <blockquote class="book-hint warning">
 <p>The functional interface</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Function<span style="color:#f92672">&lt;</span>InputType, OutputType<span style="color:#f92672">&gt;</span>
-</span></span></code></pre></div><p>stands for the type <code>InputType</code> $\to$ <code>OutputType</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Function<span style="color:#f92672">&lt;</span>T,R<span style="color:#f92672">&gt;</span>
+</span></span></code></pre></div><p>stands for the type <code>T</code> $\to$ <code>R</code>.</p>
 <p>Its method is called <code>apply</code>.</p>
 </blockquote>
 <blockquote class="book-hint info">
-<p><strong><em>Examples.</em></strong></p>
-<ul>
-<li>A method with type <code>NPC</code> $\to$ <code>Integer</code> implements the functional interface <code>Function&lt;NPC, Integer&gt;</code></li>
-<li>A method with type <code>NPC</code> $\to$ <code>NPC</code> implements the functional interface <code>Function&lt;NPC, NPC&gt;</code></li>
-</ul>
-</blockquote>
+<p><strong><em>Example.</em></strong>
+A method with type <code>NPC</code> $\to$ <code>Integer</code> implements the functional interface</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Function<span style="color:#f92672">&lt;</span>NPC,Integer<span style="color:#f92672">&gt;</span>
+</span></span></code></pre></div></blockquote>
 <blockquote class="book-hint info">
-<p><strong><em>Usage.</em></strong>
-Here is an ad-hoc version of the higher-order function <a href="https://unibz-oofp-25-26.github.io/notreleased/"><code>map</code></a>:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Integer<span style="color:#f92672">[]</span> <span style="color:#a6e22e">myMap</span>(Function<span style="color:#f92672">&lt;</span>NPC, Integer<span style="color:#f92672">&gt;</span> f, NPC<span style="color:#f92672">[]</span> npcs){
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (NPC npc : npcs){
-</span></span><span style="display:flex;"><span>        f.<span style="color:#a6e22e">apply</span>(npc);
+<p><strong><em>Example.</em></strong>
+Here is a non-generic and uncurried version of the higher-order function <a href="http://localhost:1313/docs/higher/sections/useful_hofs/#map"><code>map</code></a>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>List<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">myMap</span>(Function<span style="color:#f92672">&lt;</span>NPC, Integer<span style="color:#f92672">&gt;</span> f, List<span style="color:#f92672">&lt;</span>NPC<span style="color:#f92672">&gt;</span> cs){
+</span></span><span style="display:flex;"><span>    List<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> outputList <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ArrayList<span style="color:#f92672">&lt;&gt;</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (NPC c : cs){
+</span></span><span style="display:flex;"><span>        outputList.<span style="color:#a6e22e">add</span>(f.<span style="color:#a6e22e">apply</span>(c));
 </span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> outputList;
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><blockquote class="book-hint info">
-  <p><strong><em>Hint.</em></strong> We will see a more generic (and concise) syntax for this function in the section dedicated to <a href="https://unibz-oofp-25-26.github.io/notreleased/">Java Streams</a>.</p>
+  <p><strong><em>Hint.</em></strong> We will see a more concise syntax for (a generic version of) this function in the section dedicated to <a href="http://localhost:1313/notreleased/">Java Streams</a>.</p>
 </blockquote>
 </blockquote>
 <h4 id="bifunction">
@@ -1644,31 +1667,29 @@ Here is an ad-hoc version of the higher-order function <a href="https://unibz-oo
 </h4>
 <blockquote class="book-hint warning">
 <p>The functional interface</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>BiFunction<span style="color:#f92672">&lt;</span>InputType1, InputType2, OutputType<span style="color:#f92672">&gt;</span>
-</span></span></code></pre></div><p>stands for the type <code>InputType1</code> $\times$ <code>InputType2</code> $\to$ <code>OutputType</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>BiFunction<span style="color:#f92672">&lt;</span>T,U,R<span style="color:#f92672">&gt;</span>
+</span></span></code></pre></div><p>stands for the type <code>T</code> $\times$ <code>U</code> $\to$ <code>R</code>.</p>
 <p>Its method is called is also called <code>apply</code>.</p>
 </blockquote>
 <blockquote class="book-hint info">
 <p><strong><em>Example.</em></strong>
-A method with type <code>NPC</code> $\times$ <code>NPC</code> $\to$ <code>Integer</code> implements the functional interface <code>BiFunction&lt;NPC, NPC, Integer&gt;</code></p>
-</blockquote>
+A method with type <code>NPC</code> $\times$ <code>NPC</code> $\to$ <code>Integer</code> implements the functional interface</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>BiFunction<span style="color:#f92672">&lt;</span>NPC,NPC,Integer<span style="color:#f92672">&gt;</span>
+</span></span></code></pre></div></blockquote>
 <h4 id="consumer">
   <code>Consumer</code>
   <a class="anchor" href="#consumer">#</a>
 </h4>
 <blockquote class="book-hint warning">
 <p>The functional interface</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Consumer<span style="color:#f92672">&lt;</span>InputType<span style="color:#f92672">&gt;</span>
-</span></span></code></pre></div><p>stands for the type <code>InputType</code> $\to$ <code>void</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Consumer<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span>
+</span></span></code></pre></div><p>stands for the type <code>T</code> $\to$ <code>void</code>.</p>
 <p>Its method is called <code>accept</code>.</p>
 </blockquote>
 <blockquote class="book-hint info">
-<p><strong><em>Examples.</em></strong></p>
-<ul>
-<li>A method with type <code>Integer</code> $\to$ <code>void</code> implements the functional interface <code>Consumer&lt;Integer&gt;</code></li>
-<li>A method with type <code>NPC</code> $\to$ <code>void</code> implements the functional interface <code>Consumer&lt;NPC&gt;</code></li>
-</ul>
-</blockquote>
+<p><strong><em>Example.</em></strong> A method with type <code>NPC</code> $\to$ <code>void</code> implements the functional interface</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Consumer<span style="color:#f92672">&lt;</span>NPC<span style="color:#f92672">&gt;</span>
+</span></span></code></pre></div></blockquote>
 <h4 id="biconsumer">
   <code>BiConsumer</code>
   <a class="anchor" href="#biconsumer">#</a>
@@ -1680,17 +1701,52 @@ A method with type <code>NPC</code> $\times$ <code>NPC</code> $\to$ <code>Intege
 </h4>
 <blockquote class="book-hint warning">
 <p>The functional interface</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Supplier<span style="color:#f92672">&lt;</span>OutputType<span style="color:#f92672">&gt;</span>
-</span></span></code></pre></div><p>stands for the type <code>void</code> $\to$ <code>OutputType</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Supplier<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span>
+</span></span></code></pre></div><p>stands for the type <code>void</code> $\to$ <code>T</code>.</p>
 <p>Its method is called <code>get</code>.</p>
 </blockquote>
 <blockquote class="book-hint info">
-<p><strong><em>Examples.</em></strong></p>
+<p><strong><em>Example.</em></strong>
+A method with type <code>void</code> $\to$ <code>NPC</code> implements the functional interface</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Supplier<span style="color:#f92672">&lt;</span>NPC<span style="color:#f92672">&gt;</span>
+</span></span></code></pre></div></blockquote>
+<h4 id="predicate">
+  <code>Predicate</code>
+  <a class="anchor" href="#predicate">#</a>
+</h4>
+<blockquote class="book-hint warning">
+<p>The functional interface</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Predicate<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span>
+</span></span></code></pre></div><p>stands for the type <code>T</code> $\to$ <code>Boolean</code>.</p>
+<p>Its method is called <code>test</code>.</p>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Note.</em></strong>
+<code>Predicate&lt;T&gt;</code> is syntactic sugar for <code>Function&lt;T,Boolean&gt;</code>, but their methods have different names (<code>test</code> and <code>apply</code> respectively).</p>
+</blockquote>
+<h2 id="reference">
+  Method reference
+  <a class="anchor" href="#reference">#</a>
+</h2>
+<blockquote class="book-hint warning">
+<p><strong><em>Syntax.</em></strong>
+In order to refer to a method, we can use a <strong>method reference</strong>, written</p>
 <ul>
-<li>A method with type <code>void</code> $\to$ <code>Integer</code> implements the functional interface <code>Supplier&lt;Integer&gt;</code></li>
-<li>A method with type <code>void</code> $\to$ <code>NPC</code> implements the functional interface <code>Supplier&lt;NPC&gt;</code></li>
+<li><code>&lt;ClassName&gt;::&lt;methodName&gt;</code> for a static method,</li>
+<li><code>&lt;objectVariable&gt;::&lt;methodName&gt;</code> for an instance method,</li>
+<li><code>&lt;ClassName&gt;::new</code> for a constructor.</li>
 </ul>
 </blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong>
+The static method</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">double</span> <span style="color:#a6e22e">ceil</span>(<span style="color:#66d9ef">double</span> x)
+</span></span></code></pre></div><p>of the class <code>Math</code> intuitively rounds up <code>x</code> to the nearest integer.</p>
+<p>Now assume a function</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>List<span style="color:#f92672">&lt;</span>Double<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">myMap</span>(Function<span style="color:#f92672">&lt;</span>Double, Double<span style="color:#f92672">&gt;</span> f, List<span style="color:#f92672">&lt;</span>Double<span style="color:#f92672">&gt;</span> xs)
+</span></span></code></pre></div><p>We can pass the method <code>ceil</code> to <code>myMap</code> as follows:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>myMap(Math::ceil, List.<span style="color:#a6e22e">of</span>(2.<span style="color:#a6e22e">0</span>,3.<span style="color:#a6e22e">1</span>));
+</span></span></code></pre></div></blockquote>
 </article>
  
       
@@ -1732,17 +1788,20 @@ A method with type <code>NPC</code> $\times$ <code>NPC</code> $\to$ <code>Intege
   
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#java-vs-haskell">Java VS Haskell</a>
+    <li><a href="#type">Method type in Java</a>
       <ul>
+        <li><a href="#java-vs-haskell">Java VS Haskell</a></li>
         <li><a href="#currying">Currying</a></li>
-        <li><a href="#refer-to-a-method">Refer to a method</a></li>
       </ul>
     </li>
     <li><a href="#functional_interface">Functional interface</a>
       <ul>
+        <li><a href="#notation">Notation</a></li>
+        <li><a href="#definition">Definition</a></li>
         <li><a href="#native_functional_interfaces">Native functional interfaces</a></li>
       </ul>
     </li>
+    <li><a href="#reference">Method reference</a></li>
   </ul>
 </nav>
 
