@@ -1,5 +1,5 @@
 @startuml
-scale 750 width
+scale 1150 width
 
 interface Expression {
   int evaluate()

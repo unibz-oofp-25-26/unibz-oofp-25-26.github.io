@@ -60,7 +60,7 @@ public class User { int id; String name; } /* Input: - ids: a nonempty array of 
 <link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/objects/sections/mutability/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.df1bf6f065cb5adf9e1669e595d54c4bc8fc53e36f19c1b5547ca06004667cde.js" integrity="sha256-3xv28GXLWt&#43;eFmnlldVMS8j8U&#43;NvGcG1VHygYARmfN4=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.c097efce6f8c98564aec3331c78d449607fe7f76e8a60be06a2b05d8617cac12.js" integrity="sha256-wJfvzm&#43;MmFZK7DMxx41Elgf&#43;f3bopgvgaisF2GF8rBI=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -1422,7 +1422,7 @@ https://github.com/alex-shpak/hugo-book
   <ul>
     <li><a href="#illustration">Illustration</a></li>
     <li><a href="#immutable-object">Immutable object</a></li>
-    <li><a href="#polysemy">Polysemy</a></li>
+    <li><a href="#terminology-final-vs-immutable">Terminology: final vs immutable</a></li>
     <li><a href="#in-java">in Java</a>
       <ul>
         <li><a href="#final"><code>final</code></a></li>
@@ -1554,19 +1554,19 @@ For a more in-depth analysis of the benefits of immutability, we refer to <a hre
 (Pure) functional programming guarantees immutability.
 In particular, it is enforced in Haskell by default.</p>
 </blockquote>
-<blockquote class="book-hint info">
+<blockquote class="book-hint danger">
 <p><strong><em>Drawback.</em></strong>
 On a large scale (e.g. thousands of objects), reusing existing object can be more efficient that creating (fresh) immutable ones.</p>
 </blockquote>
-<h2 id="polysemy">
-  Polysemy
-  <a class="anchor" href="#polysemy">#</a>
+<h2 id="terminology-final-vs-immutable">
+  Terminology: final vs immutable
+  <a class="anchor" href="#terminology-final-vs-immutable">#</a>
 </h2>
 <p>The precise meaning of &ldquo;immutable object&rdquo; (or &ldquo;immutable class&rdquo;) may vary.<br>
 In particular:</p>
 <ul>
 <li>a weaker notion of immutability only requires the <em>attributes</em> of an object to be non-modifiable,</li>
-<li>a stronger notion also requires the <em>objects that are referred to</em> (transitively) to be non-modifiable.</li>
+<li>a stronger notion also requires the other objects that are <em>referred to</em> (transitively) to be non-modifiable.</li>
 </ul>
 <blockquote class="book-hint warning">
 <p><strong><em>Terminology.</em></strong>
@@ -1636,7 +1636,10 @@ The following Java program compiles, and the instances of <code>User</code> are 
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div></blockquote>
-<p>Alternatively, a <code>final</code> instance attribute can be instantiated immediately after it is declared (because this instruction is executed before the constructor).</p>
+<blockquote class="book-hint warning">
+<p><strong><em>Syntax.</em></strong>
+Alternatively, a <code>final</code> instance attribute can be instantiated immediately after it is declared (because this instruction is executed before the constructor).</p>
+</blockquote>
 <blockquote class="book-hint info">
 <p><strong><em>Example.</em></strong>
 The following program compiles.</p>
@@ -1698,12 +1701,12 @@ Instances of the class <code>User</code> below are final, but not immutable, bec
   Final and immutable types
   <a class="anchor" href="#final-and-immutable-types">#</a>
 </h3>
-<p>We already encountered several types of Java object and quasi-objects that are:</p>
+<p>We already encountered several types of Java object (and quasi-objects) that are:</p>
 <ul>
 <li>final:
 <ul>
 <li>records,</li>
-<li>sets (resp. lists, maps) that are declared with <code>Set.of()</code> (resp. <code>List.of()</code>, <code>Map.of()</code>),</li>
+<li>sets (resp. lists, maps) that are declared with <code>Set.of()</code> (resp. <code>List.of()</code>, <code>Map.of()</code>)</li>
 </ul>
 </li>
 <li>immutable:
@@ -1730,6 +1733,11 @@ Because strings are immutable, the following records are immutable:</p>
   <a class="anchor" href="#set-list-map">#</a>
 </h4>
 <p>If a set (resp. list, map) is created with <code>Set.of()</code> (resp. <code>List.of()</code>, <code>Map.of()</code>), then its content is final.</p>
+<blockquote class="book-hint danger">
+<p><strong><em>Warning.</em></strong>
+These static methods are only available since Java 9.</p>
+<p>Since Codeboard only supports Java 8, they cannot be used in your assignments.</p>
+</blockquote>
 <blockquote class="book-hint info">
 <p><strong><em>Example.</em></strong>
 The following Java program throws an <code>UnsupportedOperation</code> exception.</p>
@@ -1767,7 +1775,6 @@ It provides instance methods like <code>append</code>, <code>insert</code>, <cod
 <p>Java&rsquo;s <a href="https://unibz-oofp-25-26.github.io/docs/objects/sections/boxed/">boxed types</a> (like <code>Integer</code> or <code>Boolean</code>) are immutable.</p>
 <blockquote class="book-hint warning">
 <p><strong><em>To go further.</em></strong>
-The class <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/StringBuilder.html">StringBuilder</a> implements a mutable string.
 Each boxed types has a mutable &ldquo;atomic&rdquo; counterpart, e.g. <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/concurrent/atomic/AtomicInteger.html">AtomicInteger</a> for <code>Integer</code> and <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/concurrent/atomic/AtomicBoolean.html">AtomicBoolean</a> for <code>Boolean</code>.</p>
 <p>The main purpose of these classes is to offer build-in <a href="https://unibz-oofp-25-26.github.io/notreleased/">thread safety</a> for common sequences of operations.</p>
 </blockquote>
@@ -1864,7 +1871,7 @@ Each boxed types has a mutable &ldquo;atomic&rdquo; counterpart, e.g. <a href="h
   <ul>
     <li><a href="#illustration">Illustration</a></li>
     <li><a href="#immutable-object">Immutable object</a></li>
-    <li><a href="#polysemy">Polysemy</a></li>
+    <li><a href="#terminology-final-vs-immutable">Terminology: final vs immutable</a></li>
     <li><a href="#in-java">in Java</a>
       <ul>
         <li><a href="#final"><code>final</code></a></li>
