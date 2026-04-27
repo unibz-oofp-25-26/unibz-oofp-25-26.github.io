@@ -29,7 +29,7 @@ Thanks to lazy evaluation, each operation in the pipeline can start feeding part
 <link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/pattern/sections/pipe/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.de4c4b0971feaf73d987c39395f974b09af207d709421db2203853cccbf18556.js" integrity="sha256-3kxLCXH&#43;r3PZh8OTlfl0sJryB9cJQh2yIDhTzMvxhVY=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.df1bf6f065cb5adf9e1669e595d54c4bc8fc53e36f19c1b5547ca06004667cde.js" integrity="sha256-3xv28GXLWt&#43;eFmnlldVMS8j8U&#43;NvGcG1VHygYARmfN4=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -1397,6 +1397,13 @@ https://github.com/alex-shpak/hugo-book
         <li><a href="#simplified-syntax">Simplified syntax</a></li>
       </ul>
     </li>
+    <li><a href="#java">in Java</a>
+      <ul>
+        <li><a href="#source">Source</a></li>
+        <li><a href="#intermediate">Intermediate operation</a></li>
+        <li><a href="#terminal">Terminal operation</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 
@@ -1625,6 +1632,824 @@ The pipeline above can alternatively be defined as</p>
 </ol>
 </div>
 </div>
+<h2 id="java">
+  in Java
+  <a class="anchor" href="#java">#</a>
+</h2>
+<p>Functional pipelines have been introduced in Java 8 (2014), via the interface <code>Stream</code>.</p>
+<blockquote class="book-hint warning">
+<p>Java <code>Stream</code> computations are specified as a pipeline that consists of:</p>
+<ol>
+<li>a <a href="#source"><strong>source</strong></a> (e.g. a <a href="https://unibz-oofp-25-26.github.io/docs/abstractdatatypes/sections/collection/#collection">collection</a> or an I/O channel),</li>
+<li>a sequence of zero or more <a href="#intermediate"><strong>intermediate operations</strong></a> (filter, map, etc.), each of which transforms a <code>Stream</code> into another,</li>
+<li>at most <em>one</em> <a href="#terminal"><strong>terminal operation</strong></a> (e.g. collect the elements of the stream).</li>
+</ol>
+</blockquote>
+<p><img src="/img/stream/streams_explained.jpg" alt="" /></p>
+<p>Like in Haskell, a Java <code>Stream</code> pipeline may take advantage of <a href="https://unibz-oofp-25-26.github.io/docs/control/#lazy">lazy evaluation</a>.</p>
+<!-- Intermediate operations are generally specified via [callback methods]() (the terminal operation may as well). -->
+<!-- More precisely, the Java interface [Stream](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/stream/Stream.html) provides instance methods (like `filter` or `map`) that take a callback method as argument, and transform the stream accordingly. -->
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong>
+Consider the following classes <code>NPC</code>, <code>Butterfly</code>, <code>Caterpillar</code> and <code>Unicorn</code>,</p>
+<p><img src="/img/diagrams/plantuml/abstract_inherit_three.svg" alt="" /></p>
+<p>Here is a pipeline that transforms a list of NPCs into a set of integers:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>List<span style="color:#f92672">&lt;</span>NPC<span style="color:#f92672">&gt;</span> npcs <span style="color:#f92672">=</span> getNPCs();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Set<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> butterflyXPs <span style="color:#f92672">=</span> npcs.<span style="color:#a6e22e">stream</span>()                          <span style="color:#75715e">// create a stream</span>
+</span></span><span style="display:flex;"><span>                             .<span style="color:#a6e22e">filter</span>(c <span style="color:#f92672">-&gt;</span> c <span style="color:#66d9ef">instanceof</span> Butterfly)  <span style="color:#75715e">// retain butterflies</span>
+</span></span><span style="display:flex;"><span>                             .<span style="color:#a6e22e">map</span>(c <span style="color:#f92672">-&gt;</span> c.<span style="color:#a6e22e">xp</span>)                       <span style="color:#75715e">// map each butterfly to its XP</span>
+</span></span><span style="display:flex;"><span>                             .<span style="color:#a6e22e">collect</span>(Collectors.<span style="color:#a6e22e">toSet</span>());         <span style="color:#75715e">// collect the values as a set</span>
+</span></span></code></pre></div><p>The pipeline can be decomposed as follows:</p>
+<blockquote class="book-hint info">
+  <p><strong><em>Source.</em></strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>npcs.<span style="color:#a6e22e">stream</span>()
+</span></span></code></pre></div><p>generates a stream out of the list <code>npcs</code>.<br>
+The output has type <code>Stream&lt;NPC&gt;</code>.</p>
+</blockquote>
+<blockquote class="book-hint info">
+  <p><strong><em>Intermediate operation.</em></strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>.<span style="color:#a6e22e">filter</span>(c <span style="color:#f92672">-&gt;</span> c <span style="color:#66d9ef">instanceof</span> Butterfly)
+</span></span></code></pre></div><p>retains all instances of <code>Butterfly</code> in this stream.<br>
+The output has type <code>Stream&lt;NPC&gt;</code>.</p>
+</blockquote>
+<blockquote class="book-hint info">
+  <p><strong><em>Intermediate operation.</em></strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>.<span style="color:#a6e22e">map</span>(c <span style="color:#f92672">-&gt;</span> c.<span style="color:#a6e22e">xp</span>)
+</span></span></code></pre></div><p>maps each remaining butterfly to its XP.<br>
+The output has type <code>Stream&lt;Integer&gt;</code>.</p>
+</blockquote>
+<blockquote class="book-hint info">
+  <p><strong><em>Terminal operation.</em></strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>.<span style="color:#a6e22e">collect</span>(Collectors.<span style="color:#a6e22e">toSet</span>());
+</span></span></code></pre></div><p>collects the XPs into a set.<br>
+The output has type <code>Set&lt;Integer&gt;</code>.</p>
+<!-- The instance method [Collection.stream](<https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Collection.html#stream()>) generates a stream out of a collection (e.g. out of a `List` or a `Set`). -->
+</blockquote>
+</blockquote>
+<!-- #### Source -->
+<!---->
+<!-- <blockquote class="book-hint info">
+   -->
+<!-- **_Example (continued)._** -->
+<!---->
+<!-- 
+</blockquote>
+ -->
+<!-- produces a stream with type `Stream<NPC>` (since `npcs` has type `List<NPC>`). -->
+<!---->
+<!-- ### Intermediate operations -->
+<!---->
+<!-- #### Filter -->
+<!---->
+<!-- The instance method -->
+<!---->
+<!-- ```java -->
+<!-- Stream<T> filter(Predicate<? super T> predicate) -->
+<!-- ``` -->
+<!---->
+<!-- of the interface `Stream<T>` is analogous to Haskell's `filter`. -->
+<!---->
+<!-- Here `? super T` stands for a [supertype]() of `T` (possibly `T` itself). -->
+<!---->
+<!-- <blockquote class="book-hint info">
+   -->
+<!-- **_Reminder._** -->
+<!-- `Predicate<U>` is a [functional interface](https://unibz-oofp-25-26.github.io/docs/higher/sections/first_class_java/#functional_interface) for Boolean methods (i.e. methods with type `U` $\to$ Boolean`). -->
+<!-- 
+</blockquote>
+ -->
+<!---->
+<!-- <blockquote class="book-hint info">
+   -->
+<!-- **_Example (continued)._** -->
+<!-- In the example above, -->
+<!---->
+<!-- ```java -->
+<!-- .filter(u -> u instanceof Butterfly) -->
+<!-- ``` -->
+<!---->
+<!-- retains all instances of `Butterfly` in the input stream. -->
+<!-- 
+</blockquote>
+ -->
+<!---->
+<!-- #### Map -->
+<!---->
+<!-- ```java -->
+<!-- .map(b -> b.color) -->
+<!-- ``` -->
+<!---->
+<!-- The instance method [Stream.map](<https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/stream/Stream.html#map(java.util.function.Function)>) applies a function to each element of the stream. -->
+<!---->
+<!-- Let us assume that the stream has type `Stream<`$\mathit{T}$`>` (for instance, in our example, $\mathit{T}$ is `NPC`). -->
+<!---->
+<!-- The method `map` takes as argument a callback function of type -->
+<!---->
+<!-- $\qquad T \to T'$ -->
+<!---->
+<!-- where $T'$ can be any type (equivalently, in Java's terminology, the callback function must implement the native functional interface `Function<`$T$`,`$T'$`>`, [seen earlier]()). -->
+<!---->
+<!-- In this example, the callback function is -->
+<!---->
+<!-- ```java -->
+<!-- b -> b.color -->
+<!-- ``` -->
+<!---->
+<!-- which has type -->
+<!---->
+<!-- $\qquad$ `NPC` $\to$ `String` -->
+<!---->
+<!-- Let us name this callback function $f$. -->
+<!---->
+<!-- The method `map` returns a `Stream<`$\mathit{T'}$`>` (e.g. in this example a `Stream<String>`) that consists of all objects $f(a)$ such that $a$ belongs to the original stream. -->
+<!---->
+<!-- ### Terminal operation -->
+<!---->
+<!-- ```java -->
+<!-- .collect(Collectors.toSet()); -->
+<!-- ``` -->
+<!---->
+<!-- The instance method [Stream.collect](<https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/stream/Stream.html#collect(java.util.stream.Collector)>) takes as argument a so-called [Collector](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/stream/Collector.html), which is in charge of collecting the elements of the stream into a [Collection](https://unibz-oofp-25-26.github.io/docs/abstractdatatypes/#collection) (e.g. `List` or `Set`), or a `Map`, a `String`, etc. -->
+<!---->
+<!-- In this example, we call the static method [Collectors.toSet](<https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/stream/Collectors.html#toSet()>), which returns a collector that produces a set. -->
+<!-- Because the stream has type `Stream<String>`, the instruction `.collect(Collectors.toSet())` returns a set with type `Set<String>`. -->
+<!---->
+<div class="book-tabs">
+<input type="radio" class="toggle" name="tabs-exercise_stream_setIntersection" id="tabs-exercise_stream_setIntersection-0" checked="checked" />
+<label for="tabs-exercise_stream_setIntersection-0">Exercise</label>
+<div class="book-tabs-content markdown-inner"><p>What do the following methods compute?</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Set<span style="color:#f92672">&lt;</span>NPC<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">method1</span>(Set<span style="color:#f92672">&lt;</span>NPC<span style="color:#f92672">&gt;</span> set1, Set<span style="color:#f92672">&lt;</span>NPC<span style="color:#f92672">&gt;</span> set2) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> set1.<span style="color:#a6e22e">stream</span>()
+</span></span><span style="display:flex;"><span>            .<span style="color:#a6e22e">filter</span>(c <span style="color:#f92672">-&gt;</span> set2.<span style="color:#a6e22e">contains</span>(c))
+</span></span><span style="display:flex;"><span>            .<span style="color:#a6e22e">collect</span>(Collectors.<span style="color:#a6e22e">toSet</span>());
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Set<span style="color:#f92672">&lt;</span>NPC<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">method2</span>(Set<span style="color:#f92672">&lt;</span>NPC<span style="color:#f92672">&gt;</span> set1, Set<span style="color:#f92672">&lt;</span>NPC<span style="color:#f92672">&gt;</span> set2) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> set1.<span style="color:#a6e22e">stream</span>()
+</span></span><span style="display:flex;"><span>            .<span style="color:#a6e22e">filter</span>(set2::contains)
+</span></span><span style="display:flex;"><span>            .<span style="color:#a6e22e">collect</span>(Collectors.<span style="color:#a6e22e">toSet</span>());
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></div>
+<input type="radio" class="toggle" name="tabs-exercise_stream_setIntersection" id="tabs-exercise_stream_setIntersection-1"  />
+<label for="tabs-exercise_stream_setIntersection-1">Solution</label>
+<div class="book-tabs-content markdown-inner"><p>Both methods compute the intersection of <code>set1</code> and <code>set2</code>.</p>
+</div>
+</div>
+<div class="book-tabs">
+<input type="radio" class="toggle" name="tabs-exercise_stream_npcs" id="tabs-exercise_stream_npcs-0" checked="checked" />
+<label for="tabs-exercise_stream_npcs-0">Exercise</label>
+<div class="book-tabs-content markdown-inner"><p>What do the methods <code>method1</code> to <code>method4</code> below compute?</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Stream<span style="color:#f92672">&lt;</span>NPC<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">method1</span>(List<span style="color:#f92672">&lt;</span>NPC<span style="color:#f92672">&gt;</span> npcs) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> npcs.<span style="color:#a6e22e">stream</span>()
+</span></span><span style="display:flex;"><span>            .<span style="color:#a6e22e">filter</span>(c <span style="color:#f92672">-&gt;</span> c.<span style="color:#a6e22e">xp</span> <span style="color:#f92672">&gt;</span> 10);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>List<span style="color:#f92672">&lt;</span>NPC<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">method2</span>(Stream<span style="color:#f92672">&lt;</span>NPC<span style="color:#f92672">&gt;</span> stream) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> stream.<span style="color:#a6e22e">map</span>(c <span style="color:#f92672">-&gt;</span> transform(c))
+</span></span><span style="display:flex;"><span>            .<span style="color:#a6e22e">toList</span>();   <span style="color:#75715e">// collects the stream as a final `List`</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>NPC <span style="color:#a6e22e">transform</span>(NPC c) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (c <span style="color:#66d9ef">instanceof</span> Caterpillar) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> Butterfly(c.<span style="color:#a6e22e">moves</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> c;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>List<span style="color:#f92672">&lt;</span>NPC<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">method3</span>(List<span style="color:#f92672">&lt;</span>NPC<span style="color:#f92672">&gt;</span> npcs) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> method2(method1(npcs));
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>List<span style="color:#f92672">&lt;</span>NPC<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">method4</span>(List<span style="color:#f92672">&lt;</span>NPC<span style="color:#f92672">&gt;</span> npcs) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> npcs.<span style="color:#a6e22e">stream</span>()
+</span></span><span style="display:flex;"><span>            .<span style="color:#a6e22e">filter</span>(c <span style="color:#f92672">-&gt;</span> c.<span style="color:#a6e22e">xp</span> <span style="color:#f92672">&gt;</span> 10)
+</span></span><span style="display:flex;"><span>            .<span style="color:#a6e22e">map</span>(c <span style="color:#f92672">-&gt;</span> c <span style="color:#66d9ef">instanceof</span> Caterpillar <span style="color:#f92672">?</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">new</span> Butterfly(c.<span style="color:#a6e22e">moves</span>) :
+</span></span><span style="display:flex;"><span>                    c
+</span></span><span style="display:flex;"><span>            )
+</span></span><span style="display:flex;"><span>            .<span style="color:#a6e22e">toList</span>();
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></div>
+<input type="radio" class="toggle" name="tabs-exercise_stream_npcs" id="tabs-exercise_stream_npcs-1"  />
+<label for="tabs-exercise_stream_npcs-1">Solution</label>
+<div class="book-tabs-content markdown-inner"><ul>
+<li><code>method1</code>:
+<ul>
+<li><strong>Input:</strong> A list of npcs.</li>
+<li><strong>Output:</strong> a stream that contains the same npcs, but discarding npcs with less than 10 xp.</li>
+</ul>
+</li>
+<li><code>method2</code>:
+<ul>
+<li><strong>Input:</strong> A stream of npcs.</li>
+<li><strong>Output:</strong> A list that contains the same npcs, but where caterpillars become butterflies.</li>
+</ul>
+</li>
+<li><code>method3</code>:
+<ul>
+<li><strong>Input:</strong> A list of npcs.</li>
+<li><strong>Output:</strong> A list that contains the same npcs, but discarding npcs with less than 10 xp, and transforming caterpillars into butterflies.</li>
+</ul>
+</li>
+<li><code>method4</code> is equivalent to <code>method3</code>.</li>
+</ul>
+</div>
+</div>
+<p>In the rest of this section, we introduce a few common ways to specify the source, the intermediate operations and the terminal operation of a pipeline.</p>
+<h3 id="source">
+  Source
+  <a class="anchor" href="#source">#</a>
+</h3>
+<h4 id="collection">
+  Collection
+  <a class="anchor" href="#collection">#</a>
+</h4>
+<blockquote class="book-hint warning">
+<p><strong><em>Syntax.</em></strong>
+The instance method</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Stream<span style="color:#f92672">&lt;</span>E<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">stream</span>()
+</span></span></code></pre></div><p>of the interface <code>Collection&lt;E&gt;</code> lets us create a stream out of a <code>Collection</code>.</p>
+<blockquote class="book-hint info">
+  <p><strong><em>Hint.</em></strong>
+Recall that the interfaces <a href=""><code>List&lt;E&gt;</code></a> and <a href=""><code>Set&lt;E&gt;</code></a> both extend <code>Collection&lt;E&gt;</code>.</p>
+</blockquote>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>List<span style="color:#f92672">&lt;</span>NPC<span style="color:#f92672">&gt;</span> npcs <span style="color:#f92672">=</span> getNPCs();
+</span></span><span style="display:flex;"><span>Stream<span style="color:#f92672">&lt;</span>NPC<span style="color:#f92672">&gt;</span> myStream <span style="color:#f92672">=</span> npcs.<span style="color:#a6e22e">stream</span>();
+</span></span></code></pre></div></blockquote>
+<p>If the collection has a predictable order of iteration (e.g. if the collection is a <code>List</code>), then the elements will appear in this order in the stream.</p>
+<blockquote class="book-hint info">
+<p><strong><em>Hint.</em></strong>
+To create a stream out of the entries of a map, we can use the instance method <code>entrySet</code> of the interface <code>Map</code>, which we have seen <a href="https://unibz-oofp-25-26.github.io/docs/abstractdatatypes/sections/map/#java">earlier</a>. It returns a <code>Set</code> (which is a collection).</p>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Map<span style="color:#f92672">&lt;</span>String, Integer<span style="color:#f92672">&gt;</span> map <span style="color:#f92672">=</span> getMap();
+</span></span><span style="display:flex;"><span>Stream<span style="color:#f92672">&lt;</span>Entry<span style="color:#f92672">&lt;</span>String, Integer<span style="color:#f92672">&gt;&gt;</span> myStream <span style="color:#f92672">=</span> map.<span style="color:#a6e22e">entrySet</span>().<span style="color:#a6e22e">stream</span>();
+</span></span></code></pre></div></blockquote>
+<h4 id="array">
+  Array
+  <a class="anchor" href="#array">#</a>
+</h4>
+<blockquote class="book-hint warning">
+<p><strong><em>Syntax.</em></strong>
+A stream can also be created out of an array, with the <a href="https://unibz-oofp-25-26.github.io/docs/objects/sections/classasobject/#staticMethods">static</a> method</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Stream<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">stream</span>(T<span style="color:#f92672">[]</span> array)
+</span></span></code></pre></div><p>of the class <code>Arrays</code>.</p>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>NPC<span style="color:#f92672">[]</span> npcs <span style="color:#f92672">=</span> getNPCs();
+</span></span><span style="display:flex;"><span>Stream<span style="color:#f92672">&lt;</span>NPC<span style="color:#f92672">&gt;</span> myStream <span style="color:#f92672">=</span> Arrays.<span style="color:#a6e22e">stream</span>(npcs);
+</span></span></code></pre></div></blockquote>
+<h4 id="direct-instantiation">
+  Direct instantiation
+  <a class="anchor" href="#direct-instantiation">#</a>
+</h4>
+<blockquote class="book-hint warning">
+<p><strong><em>Syntax.</em></strong>
+The static method</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Stream<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">of</span>(T... values)
+</span></span></code></pre></div><p>of the interface <code>Stream</code> lets us instantiate a <code>Stream</code> directly with (a few) elements.</p>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Stream<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> myStream <span style="color:#f92672">=</span> Stream.<span style="color:#a6e22e">of</span>(1,4,2,1);
+</span></span></code></pre></div></blockquote>
+<h3 id="intermediate">
+  Intermediate operation
+  <a class="anchor" href="#intermediate">#</a>
+</h3>
+<p>An intermediate operation transforms a stream into another.</p>
+<h4 id="filter">
+  <code>filter</code>
+  <a class="anchor" href="#filter">#</a>
+</h4>
+<blockquote class="book-hint warning">
+<p><strong><em>Syntax.</em></strong>
+The instance method</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Stream<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">filter</span>(Predicate<span style="color:#f92672">&lt;?</span> <span style="color:#66d9ef">super</span> T<span style="color:#f92672">&gt;</span> predicate)
+</span></span></code></pre></div><p>of the interface <code>Stream&lt;T&gt;</code> is analogous to Haskell&rsquo;s <a href=""><code>filter</code></a>, where
+<code>? super T</code> stands for a <a href="https://unibz-oofp-25-26.github.io/notreleased/">supertype</a> of <code>T</code> (possibly <code>T</code> itself).</p>
+<blockquote class="book-hint info">
+  <p><strong><em>Reminder.</em></strong>
+<code>Predicate&lt;U&gt;</code> is a <a href="https://unibz-oofp-25-26.github.io/docs/higher/sections/first_class_java/#predicate">functional interface</a> for Boolean methods (i.e. methods with type <code>U</code> $\to$ <code>Boolean</code>).</p>
+</blockquote>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// contains [4,2,2]</span>
+</span></span><span style="display:flex;"><span>Stream.<span style="color:#a6e22e">of</span>(1,4,2,1,2)
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">filter</span>(x <span style="color:#f92672">-&gt;</span> x <span style="color:#f92672">%</span> 2 <span style="color:#f92672">==</span> 0)
+</span></span></code></pre></div></blockquote>
+<h4 id="map">
+  <code>map</code>
+  <a class="anchor" href="#map">#</a>
+</h4>
+<blockquote class="book-hint warning">
+<p><strong><em>Syntax.</em></strong>
+The instance method</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Stream<span style="color:#f92672">&lt;</span>R<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">map</span>(Function<span style="color:#f92672">&lt;?</span> <span style="color:#66d9ef">super</span> T, <span style="color:#f92672">?</span> <span style="color:#66d9ef">extends</span> R<span style="color:#f92672">&gt;</span> function)
+</span></span></code></pre></div><p>of the interface <code>Stream&lt;T&gt;</code> is analogous to Haskell&rsquo;s <a href="https://unibz-oofp-25-26.github.io/docs/higher/sections/useful_hofs/#map"><code>map</code></a>,
+where:</p>
+<ul>
+<li><code>? super T</code> stands for a <a href="https://unibz-oofp-25-26.github.io/notreleased/">supertype</a> of <code>T</code> (possibly <code>T</code> itself), and</li>
+<li><code>? extends R</code> stands for a <a href="https://unibz-oofp-25-26.github.io/notreleased/">subtype</a> of <code>R</code> (possibly <code>R</code> itself).</li>
+</ul>
+<blockquote class="book-hint info">
+  <p><strong><em>Reminder.</em></strong>
+<code>Function&lt;U,V&gt;</code> is a <a href="https://unibz-oofp-25-26.github.io/docs/higher/sections/first_class_java/#function">functional interface</a> for methods with type <code>U</code> $\to$ <code>V</code>.</p>
+</blockquote>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// contains [2,5,3,2,3]</span>
+</span></span><span style="display:flex;"><span>Stream.<span style="color:#a6e22e">of</span>(1,4,2,1,2)
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">map</span>(x <span style="color:#f92672">-&gt;</span> x <span style="color:#f92672">+</span> 1)
+</span></span></code></pre></div></blockquote>
+<h4 id="flatMap">
+  <code>flatMap</code>
+  <a class="anchor" href="#flatMap">#</a>
+</h4>
+<blockquote class="book-hint warning">
+<p><strong><em>Syntax.</em></strong>
+The instance method</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Stream<span style="color:#f92672">&lt;</span>R<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">flatMap</span>(Function<span style="color:#f92672">&lt;?</span> <span style="color:#66d9ef">super</span> T, <span style="color:#f92672">?</span> <span style="color:#66d9ef">extends</span> Stream<span style="color:#f92672">&lt;?</span> <span style="color:#66d9ef">extends</span> R<span style="color:#f92672">&gt;&gt;</span> mapper)
+</span></span></code></pre></div><p>of the interface <code>Stream&lt;T&gt;</code> is analogous to Haskell&rsquo;s <a href="https://unibz-oofp-25-26.github.io/docs/pattern/sections/monad/#concatMap"><code>concatMap</code></a>.</p>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// contains [1,2,4,5,2,3]</span>
+</span></span><span style="display:flex;"><span>Stream.<span style="color:#a6e22e">of</span>(1,4,2)
+</span></span><span style="display:flex;"><span>    .<span style="color:#a6e22e">flatMap</span>(x <span style="color:#f92672">-&gt;</span> Stream.<span style="color:#a6e22e">of</span>(x, x <span style="color:#f92672">+</span> 1))
+</span></span></code></pre></div></blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong>
+Consider the following classes <code>City</code> and <code>Region</code>.</p>
+<p><img src="/img/diagrams/plantuml/two_classes.svg" alt="" /></p>
+<p>We can transform a stream of regions into a &ldquo;flat&rdquo; stream that consists of all cities in these regions, as follows:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Stream<span style="color:#f92672">&lt;</span>Region<span style="color:#f92672">&gt;</span> regions <span style="color:#f92672">=</span> getRegions();
+</span></span><span style="display:flex;"><span>Stream<span style="color:#f92672">&lt;</span>City<span style="color:#f92672">&gt;</span> cities <span style="color:#f92672">=</span> regions.<span style="color:#a6e22e">flatMap</span>(r <span style="color:#f92672">-&gt;</span> r.<span style="color:#a6e22e">cities</span>.<span style="color:#a6e22e">stream</span>());
+</span></span></code></pre></div><p>In contrast,</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>regions.<span style="color:#a6e22e">map</span>(r <span style="color:#f92672">-&gt;</span> r.<span style="color:#a6e22e">cities</span>)
+</span></span></code></pre></div><p>has type <code>Stream&lt;List&lt;City&gt;&gt;</code>.</p>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Example (continued).</em></strong>
+The following method maps a list of regions to the stream of zip codes of all cities in these regions,
+with the exceptions of the zip code(s) of Bologna:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Stream<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">allZipCodesButBologna</span>(List<span style="color:#f92672">&lt;</span>Region<span style="color:#f92672">&gt;</span> regions) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> regions.<span style="color:#a6e22e">stream</span>()
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">flatMap</span>(r <span style="color:#f92672">-&gt;</span> r.<span style="color:#a6e22e">cities</span>.<span style="color:#a6e22e">stream</span>())
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">filter</span>(c <span style="color:#f92672">-&gt;</span> <span style="color:#f92672">!</span>c.<span style="color:#a6e22e">name</span>.<span style="color:#a6e22e">equals</span>(<span style="color:#e6db74">&#34;Bologna&#34;</span>))
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">map</span>(c <span style="color:#f92672">-&gt;</span> c.<span style="color:#a6e22e">zipCode</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></blockquote>
+<h4 id="distinct">
+  <code>distinct</code>
+  <a class="anchor" href="#distinct">#</a>
+</h4>
+<blockquote class="book-hint warning">
+<p><strong><em>Syntax.</em></strong>
+The instance method</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Stream<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">distinct</span>()
+</span></span></code></pre></div><p>of the interface <code>Stream&lt;T&gt;</code> produces an identical stream, but without duplicates.</p>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// contains [2, 1, 3]</span>
+</span></span><span style="display:flex;"><span>Stream.<span style="color:#a6e22e">of</span>(2, 1, 1, 3, 1, 2).<span style="color:#a6e22e">distinct</span>()
+</span></span></code></pre></div></blockquote>
+<p>For a stream of objects, duplicates are determined by the method <a href="https://unibz-oofp-25-26.github.io/docs/objects/sections/comparing/#equals">equals</a> (similarly to what we have <a href="https://unibz-oofp-25-26.github.io/docs/abstractdatatypes/sections/set/#duplicates">seen already</a> for a <code>Set</code>).</p>
+<blockquote class="book-hint danger">
+<p><strong><em>Reminder.</em></strong>
+If a class overrides the method <code>equals</code>, then it should also override <code>hashCode</code> (and these two implementations should be consistent with each other).</p>
+</blockquote>
+<h4 id="sorted">
+  <code>sorted</code>
+  <a class="anchor" href="#sorted">#</a>
+</h4>
+<blockquote class="book-hint warning">
+<p><strong><em>Syntax.</em></strong>
+The instance method</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Stream<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">sorted</span>()
+</span></span></code></pre></div><p>of the interface <code>Stream&lt;T&gt;</code> produces an identical stream, but where elements are sorted.
+Its behavior is analogous to <a href="https://unibz-oofp-25-26.github.io/docs/abstractdatatypes/sections/sorting/#sortArray">Arrays.sort</a> and <a href="https://unibz-oofp-25-26.github.io/docs/abstractdatatypes/sections/sorting/#sortList">Collection.sort</a>.</p>
+<blockquote class="book-hint warning">
+  <p><strong><em>To go further.</em></strong>
+An alternative version of <code>sorted</code> takes a <a href="#max"><code>Comparator</code></a> as input.</p>
+</blockquote>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// contains [1, 1, 2, 2, 3]</span>
+</span></span><span style="display:flex;"><span>Stream.<span style="color:#a6e22e">of</span>(2, 1, 3, 1, 2).<span style="color:#a6e22e">sorted</span>()
+</span></span></code></pre></div></blockquote>
+<h4 id="limit">
+  <code>limit</code>
+  <a class="anchor" href="#limit">#</a>
+</h4>
+<blockquote class="book-hint warning">
+<p><strong><em>Syntax.</em></strong>
+The instance method</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Stream<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">limit</span>(<span style="color:#66d9ef">long</span> n)
+</span></span></code></pre></div><p>of the interface <code>Stream&lt;T&gt;</code> retains the <code>n</code> first elements of the stream (or the whole stream if its size if inferior to <code>n</code>).</p>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// contains [2, 1, 3, 1]</span>
+</span></span><span style="display:flex;"><span>Stream.<span style="color:#a6e22e">of</span>(2, 1, 3, 1, 2).<span style="color:#a6e22e">limit</span>(4)
+</span></span></code></pre></div></blockquote>
+<h4 id="skip">
+  <code>skip</code>
+  <a class="anchor" href="#skip">#</a>
+</h4>
+<blockquote class="book-hint warning">
+<p><strong><em>Syntax.</em></strong>
+The instance method</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Stream<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">skip</span>(<span style="color:#66d9ef">long</span> n)
+</span></span></code></pre></div><p>of the interface <code>Stream&lt;T&gt;</code> discards the <code>n</code> first elements of the stream.</p>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// contains [3, 1, 2]</span>
+</span></span><span style="display:flex;"><span>Stream.<span style="color:#a6e22e">of</span>(2, 1, 3, 1, 2).<span style="color:#a6e22e">skip</span>(2)
+</span></span></code></pre></div></blockquote>
+<h4 id="stateless-vs-stateful-intermediate-operation">
+  Stateless VS stateful intermediate operation
+  <a class="anchor" href="#stateless-vs-stateful-intermediate-operation">#</a>
+</h4>
+<blockquote class="book-hint warning">
+<p><strong><em>Terminology.</em></strong>
+A <strong>stateless</strong> operation processes each element of the input stream independently, without the need to memorize information about previous elements in the stream.</p>
+<p>An operation is <strong>stateful</strong> if it is not stateless.</p>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Examples.</em></strong></p>
+<ul>
+<li><code>filter</code>, <code>map</code> and <code>flatmap</code> are stateless,</li>
+<li><code>distinct</code>, <code>sorted</code>, <code>limit</code> and <code>skip</code> are stateful.</li>
+</ul>
+</blockquote>
+<blockquote class="book-hint warning">
+<p><strong><em>To go further.</em></strong>
+Stateless operations can be easily parallelized (as long as they have no <a href="https://unibz-oofp-25-26.github.io/docs/paradigm/sections/pure/#side-effect">side-effect</a>), as opposed to stateful operations.</p>
+</blockquote>
+<h3 id="terminal">
+  Terminal operation
+  <a class="anchor" href="#terminal">#</a>
+</h3>
+<p>A stream pipeline has at most <em>one</em> terminal operation (and it must be the last one).</p>
+<blockquote class="book-hint info">
+<p><strong><em>Examples.</em></strong>
+A terminal operation may:</p>
+<ul>
+<li>collect the elements of a stream (e.g. as a set), or</li>
+<li>aggregate these elements (e.g. sum the values of a stream of integers), or</li>
+<li>execute a method for each element (e.g. print its value).</li>
+</ul>
+</blockquote>
+<h4 id="forEach">
+  <code>forEach</code>
+  <a class="anchor" href="#forEach">#</a>
+</h4>
+<blockquote class="book-hint warning">
+<p><strong><em>Syntax.</em></strong>
+The instance method</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">forEach</span>(Consumer<span style="color:#f92672">&lt;?</span> <span style="color:#66d9ef">super</span> T<span style="color:#f92672">&gt;</span> action)
+</span></span></code></pre></div><p>of the interface <code>Stream&lt;T&gt;</code> applies the method <code>action</code> to each element of the stream.</p>
+<blockquote class="book-hint info">
+  <p><strong><em>Reminder.</em></strong>
+<code>Consumer&lt;U&gt;</code> is a <a href="https://unibz-oofp-25-26.github.io/docs/higher/sections/first_class_java/#consumer">functional interface</a> for methods with type <code>U</code> $\to$ <code>void</code>.</p>
+</blockquote>
+</blockquote>
+<p><code>forEach</code> is similar to <a href="#map"><code>map</code></a>, but its input method <code>action</code> only operates via <a href="https://unibz-oofp-25-26.github.io/docs/paradigm/sections/pure/#side-effect">side-effects</a> (since it has no return value).</p>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// outputs `4, `2` and `4`</span>
+</span></span><span style="display:flex;"><span>Stream.<span style="color:#a6e22e">of</span>(4, 1, 3, 2, 4)
+</span></span><span style="display:flex;"><span>      .<span style="color:#a6e22e">filter</span>(x <span style="color:#f92672">-&gt;</span> x <span style="color:#f92672">%</span> 2 <span style="color:#f92672">==</span> 0)
+</span></span><span style="display:flex;"><span>      .<span style="color:#a6e22e">forEach</span>(System.<span style="color:#a6e22e">out</span>::println);
+</span></span></code></pre></div></blockquote>
+<h4 id="all_any">
+  <code>allMatch</code> and <code>anyMatch</code>
+  <a class="anchor" href="#all_any">#</a>
+</h4>
+<blockquote class="book-hint warning">
+<p><strong><em>Syntax.</em></strong>
+The instance methods</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">allMatch</span>(Predicate<span style="color:#f92672">&lt;?</span> <span style="color:#66d9ef">super</span> T<span style="color:#f92672">&gt;</span> predicate);
+</span></span></code></pre></div><p>and</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">anyMatch</span>(Predicate<span style="color:#f92672">&lt;?</span> <span style="color:#66d9ef">super</span> T<span style="color:#f92672">&gt;</span> predicate);
+</span></span></code></pre></div><p>of the interface <code>Stream&lt;T&gt;</code> are analogous to the Haskell functions <a href="https://unibz-oofp-25-26.github.io/docs/higher/sections/useful_hofs/#all_any"><code>all</code> and <code>any</code></a></p>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// has value `false`</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">boolean</span> allEven <span style="color:#f92672">=</span> Stream.<span style="color:#a6e22e">of</span>(1, 3, 4, 2, 1)
+</span></span><span style="display:flex;"><span>          .<span style="color:#a6e22e">allMatch</span>(x <span style="color:#f92672">-&gt;</span> x <span style="color:#f92672">%</span> 2 <span style="color:#f92672">==</span> 0);
+</span></span></code></pre></div></blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// has value `true`</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">boolean</span> anyEven <span style="color:#f92672">=</span> Stream.<span style="color:#a6e22e">of</span>(1, 3, 4, 2, 1)
+</span></span><span style="display:flex;"><span>          .<span style="color:#a6e22e">anyMatch</span>(x <span style="color:#f92672">-&gt;</span> x <span style="color:#f92672">%</span> 2 <span style="color:#f92672">==</span> 0);
+</span></span></code></pre></div></blockquote>
+<blockquote class="book-hint danger">
+<p><strong><em>Warning.</em></strong>
+<code>anyMatch</code> (resp. <code>allMatch</code>) is a <strong>short-circuiting</strong> operations, meaning that the stream is <em>interrupted</em> after the first match (resp. first non-match), if any.</p>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong>
+The two following are equivalent:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>List<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> integers <span style="color:#f92672">=</span> getIntegers();
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">boolean</span> anyEven <span style="color:#f92672">=</span> integers.<span style="color:#a6e22e">stream</span>()
+</span></span><span style="display:flex;"><span>          .<span style="color:#a6e22e">anyMatch</span>(x <span style="color:#f92672">-&gt;</span> x <span style="color:#f92672">%</span> 2 <span style="color:#f92672">==</span> 0);
+</span></span></code></pre></div><p>$\qquad$</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>List<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> integers <span style="color:#f92672">=</span> getIntegers();
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">boolean</span> anyEven <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">int</span> x : integers){
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span>(x <span style="color:#f92672">%</span> 2 <span style="color:#f92672">==</span> 0){
+</span></span><span style="display:flex;"><span>        anyEven <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></blockquote>
+<blockquote class="book-hint danger">
+<p><strong><em>Coding style.</em></strong>
+A method with multiple boolean flags can be complex to read and/or debug, in particular when combined with <code>break</code> and/or <code>continue</code> statements.</p>
+<p>Streams with short-circuiting operations (like <code>anyMatch</code>, <code>allMatch</code> and <code>findFirst</code>) can be a way to avoid them.</p>
+</blockquote>
+<div class="book-tabs">
+<input type="radio" class="toggle" name="tabs-exercise_break" id="tabs-exercise_break-0" checked="checked" />
+<label for="tabs-exercise_break-0">Exercise</label>
+<div class="book-tabs-content markdown-inner"><p>Use <code>anyMatch</code> and/or <code>allMatch</code> to rewrite the following Java method:</p>
+<ul>
+<li>without boolean flag, and</li>
+<li>without <code>break</code> statement.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * Returns true iff each of the input lists contains a number &gt; 20
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> */</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">check</span>(List<span style="color:#f92672">&lt;</span>List<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;&gt;</span> lists) {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">boolean</span> flag1 <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">boolean</span> flag2;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (List<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> list : lists) {
+</span></span><span style="display:flex;"><span>        flag2 <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> value : list) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (value <span style="color:#f92672">&gt;</span> 20) {
+</span></span><span style="display:flex;"><span>                flag2 <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>flag2) {
+</span></span><span style="display:flex;"><span>            flag1 <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> flag1;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></div>
+<input type="radio" class="toggle" name="tabs-exercise_break" id="tabs-exercise_break-1"  />
+<label for="tabs-exercise_break-1">Possible Solution</label>
+<div class="book-tabs-content markdown-inner"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">check</span>(List<span style="color:#f92672">&lt;</span>List<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;&gt;</span> lists) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> lists.<span style="color:#a6e22e">stream</span>()
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">allMatch</span>(l <span style="color:#f92672">-&gt;</span> l.<span style="color:#a6e22e">stream</span>().<span style="color:#a6e22e">anyMatch</span>(v <span style="color:#f92672">-&gt;</span> v <span style="color:#f92672">&gt;</span> 20));
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></div>
+</div>
+<h4 id="findFirst">
+  <code>findFirst</code>
+  <a class="anchor" href="#findFirst">#</a>
+</h4>
+<blockquote class="book-hint warning">
+<p><strong><em>Syntax.</em></strong>
+The instance method</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Optional<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">findFirst</span>()
+</span></span></code></pre></div><p>of the interface <code>Stream&lt;T&gt;</code> returns the first element of the stream, if any.</p>
+<p>It is analogous to the Haskell function <code>maybeHead</code> that we implement <a href="https://unibz-oofp-25-26.github.io/docs/generic/sections/maybe/#haskell">earlier</a> (or equivalently, <code>find (\x -&gt; True)</code>).</p>
+<p><code>Optional</code> is the <a href="https://unibz-oofp-25-26.github.io/docs/generic/sections/maybe/">option type</a> of Java (analogous to Haskell&rsquo;s <code>Maybe</code>), which we will cover <a href="https://unibz-oofp-25-26.github.io/docs/generic/sections/maybe/#java">later on</a>.</p>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// has value `Optional[4]`</span>
+</span></span><span style="display:flex;"><span>Optional<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> firstEven <span style="color:#f92672">=</span> Stream.<span style="color:#a6e22e">of</span>(1, 3, 4, 2, 1)
+</span></span><span style="display:flex;"><span>                    .<span style="color:#a6e22e">filter</span>(x <span style="color:#f92672">-&gt;</span> x <span style="color:#f92672">%</span> 2 <span style="color:#f92672">==</span> 0)
+</span></span><span style="display:flex;"><span>                    .<span style="color:#a6e22e">findFirst</span>();
+</span></span></code></pre></div></blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// has value `Optional.empty`</span>
+</span></span><span style="display:flex;"><span>Optional<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> firstEven <span style="color:#f92672">=</span> Stream.<span style="color:#a6e22e">of</span>(1, 3, 1)
+</span></span><span style="display:flex;"><span>                    .<span style="color:#a6e22e">filter</span>(x <span style="color:#f92672">-&gt;</span> x <span style="color:#f92672">%</span> 2 <span style="color:#f92672">==</span> 0)
+</span></span><span style="display:flex;"><span>                    .<span style="color:#a6e22e">findFirst</span>();
+</span></span></code></pre></div></blockquote>
+<blockquote class="book-hint danger">
+<p><strong><em>Warning.</em></strong>
+<code>findFirst</code> is a short-circuiting operation
+(like <code>allMatch</code> and <code>anyMatch</code>).</p>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Example</em></strong>
+The following two programs are equivalent:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>List<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> integers <span style="color:#f92672">=</span> getIntegers();
+</span></span><span style="display:flex;"><span>Optional<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> firstEven <span style="color:#f92672">=</span> integers.<span style="color:#a6e22e">stream</span>()
+</span></span><span style="display:flex;"><span>                    .<span style="color:#a6e22e">filter</span>(x <span style="color:#f92672">-&gt;</span> x <span style="color:#f92672">%</span> 2 <span style="color:#f92672">==</span> 0)
+</span></span><span style="display:flex;"><span>                    .<span style="color:#a6e22e">findFirst</span>();
+</span></span></code></pre></div><p>$\qquad$</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>List<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> integers <span style="color:#f92672">=</span> getIntegers();
+</span></span><span style="display:flex;"><span>Optional<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> firstEven <span style="color:#f92672">=</span> Optional.<span style="color:#a6e22e">empty</span>();
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">int</span> x : integers){
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span>(x <span style="color:#f92672">%</span> 2 <span style="color:#f92672">==</span> 0){
+</span></span><span style="display:flex;"><span>        firstEven <span style="color:#f92672">=</span> Optional.<span style="color:#a6e22e">of</span>(x);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></blockquote>
+<h4 id="count">
+  <code>count</code>
+  <a class="anchor" href="#count">#</a>
+</h4>
+<blockquote class="book-hint warning">
+<p><strong><em>Syntax.</em></strong>
+The instance method</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">count</span>()
+</span></span></code></pre></div><p>of the interface <code>Stream&lt;T&gt;</code> returns the size of the stream.</p>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// has value 2</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> size <span style="color:#f92672">=</span> Stream.<span style="color:#a6e22e">of</span>(2, 1, 3, 1, 2)
+</span></span><span style="display:flex;"><span>            .<span style="color:#a6e22e">filter</span>(x <span style="color:#f92672">-&gt;</span> x <span style="color:#f92672">%</span> 2 <span style="color:#f92672">==</span> 0)
+</span></span><span style="display:flex;"><span>            .<span style="color:#a6e22e">count</span>();
+</span></span></code></pre></div></blockquote>
+<h4 id="max">
+  <code>max</code>
+  <a class="anchor" href="#max">#</a>
+</h4>
+<blockquote class="book-hint warning">
+<p><strong><em>Syntax.</em></strong>
+The instance method</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Optional<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">max</span>(Comparator<span style="color:#f92672">&lt;?</span> <span style="color:#66d9ef">super</span> T<span style="color:#f92672">&gt;</span> comparator);
+</span></span></code></pre></div><p>of the interface <code>Stream&lt;T&gt;</code> returns the (first) maximal element in the stream (if any) according to <code>comparator</code>.</p>
+<p>In this declaration:</p>
+<ul>
+<li>
+<p><code>Optional</code> is the <a href="https://unibz-oofp-25-26.github.io/docs/generic/sections/maybe/">option type</a> of Java (analogous to Haskell&rsquo;s <code>Maybe</code>), which we will cover <a href="https://unibz-oofp-25-26.github.io/docs/generic/sections/maybe/#java">later on</a>.</p>
+</li>
+<li>
+<p><code>Comparator&lt;U&gt;</code> is a <a href="">functional interface</a> that stands for the type <code>U</code> $\times$ <code>U</code> $\to$ <code>Integer</code>.</p>
+<p>A method that implements <code>Comparator&lt;U&gt;</code> specifies a sorting criterion (aka total preorder) over<code>T</code>, similarly to the method <a href="https://unibz-oofp-25-26.github.io/docs/abstractdatatypes/sections/sorting/#comparing"><code>compareTo</code></a>.</p>
+</li>
+</ul>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// has value `Optional[4]`</span>
+</span></span><span style="display:flex;"><span>Optional<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> max <span style="color:#f92672">=</span> Stream.<span style="color:#a6e22e">of</span>(2, 1, 3, 4, 5)
+</span></span><span style="display:flex;"><span>          .<span style="color:#a6e22e">filter</span>(x <span style="color:#f92672">-&gt;</span> x <span style="color:#f92672">%</span> 2 <span style="color:#f92672">==</span> 0)
+</span></span><span style="display:flex;"><span>          .<span style="color:#a6e22e">max</span>(Integer::compare);
+</span></span></code></pre></div></blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// has value `Optional.empty`</span>
+</span></span><span style="display:flex;"><span>Optional<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> max <span style="color:#f92672">=</span> Stream.<span style="color:#a6e22e">of</span>(5, 1)
+</span></span><span style="display:flex;"><span>          .<span style="color:#a6e22e">filter</span>(x <span style="color:#f92672">-&gt;</span> x <span style="color:#f92672">%</span> 2 <span style="color:#f92672">==</span> 0)
+</span></span><span style="display:flex;"><span>          .<span style="color:#a6e22e">max</span>(Integer::compare);
+</span></span></code></pre></div></blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>City ancona <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> City(<span style="color:#e6db74">&#34;Ancona&#34;</span>, 60100);,
+</span></span><span style="display:flex;"><span>City bologna <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> City(<span style="color:#e6db74">&#34;Bologna&#34;</span>, 40100);,
+</span></span><span style="display:flex;"><span>City matera <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> City(<span style="color:#e6db74">&#34;Matera&#34;</span>, 75100);,
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// has value `Optional[matera]`</span>
+</span></span><span style="display:flex;"><span>Optional<span style="color:#f92672">&lt;</span>City<span style="color:#f92672">&gt;</span> selectedCity <span style="color:#f92672">=</span> Stream.<span style="color:#a6e22e">of</span>(ancona, bologna, matera)
+</span></span><span style="display:flex;"><span>                .<span style="color:#a6e22e">max</span>((c1, c2) <span style="color:#f92672">-&gt;</span> c1.<span style="color:#a6e22e">zipCode</span> <span style="color:#f92672">-</span> c2.<span style="color:#a6e22e">zipCode</span>);
+</span></span></code></pre></div></blockquote>
+<h4 id="reduce">
+  <code>reduce</code>
+  <a class="anchor" href="#reduce">#</a>
+</h4>
+<blockquote class="book-hint warning">
+<p><strong><em>Syntax.</em></strong>
+The instance method</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>T <span style="color:#a6e22e">reduce</span>(T defaultValue, BinaryOperator<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> function);
+</span></span></code></pre></div><p>of the interface <code>Stream&lt;T&gt;</code> is a simplified <a href="https://unibz-oofp-25-26.github.io/docs/higher/sections/useful_hofs/#foldl"><code>left fold</code></a>, where:</p>
+<ul>
+<li><code>defaultValue</code> is the default value (for the empty <code>Stream</code>), and</li>
+<li><code>function</code> is the aggregation function.</li>
+</ul>
+<blockquote class="book-hint info">
+  <p><strong><em>Reminder.</em></strong>
+<code>BinaryOperator&lt;T&gt;</code> is a <a href="https://unibz-oofp-25-26.github.io/docs/higher/sections/first_class_java/#binaryOp">functional interface</a> for methods with type <code>T</code> $\times$ <code>T</code> $\to$ <code>T</code>).</p>
+</blockquote>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// has value 24</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> product <span style="color:#f92672">=</span> Stream.<span style="color:#a6e22e">of</span>(1, 2, 3, 4)
+</span></span><span style="display:flex;"><span>                .<span style="color:#a6e22e">reduce</span>(1, (x, y) <span style="color:#f92672">-&gt;</span> x <span style="color:#f92672">*</span> y);
+</span></span></code></pre></div></blockquote>
+<h4 id="toList">
+  <code>toList</code>
+  <a class="anchor" href="#toList">#</a>
+</h4>
+<blockquote class="book-hint warning">
+<p><strong><em>Syntax.</em></strong>
+The instance method</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>List<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">toList</span>()
+</span></span></code></pre></div><p>of the interface <code>Stream&lt;T&gt;</code> produces a <a href="https://unibz-oofp-25-26.github.io/docs/objects/sections/mutability/#final">final</a> <code>List</code> with the elements of the stream.</p>
+</blockquote>
+<blockquote class="book-hint danger">
+<p><strong><em>Warning.</em></strong>
+This method was introduced in Java 16.
+You <em>cannot</em> use it in your assignments, because Codeboard uses Java 8.</p>
+</blockquote>
+<h4 id="collect">
+  <code>collect</code>
+  <a class="anchor" href="#collect">#</a>
+</h4>
+<blockquote class="book-hint warning">
+<p><strong><em>Syntax.</em></strong>
+The instance method
+<code>collect</code> of the interface <code>Stream&lt;T&gt;</code> takes as argument a so-called <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/stream/Collector.html"><code>Collector</code></a>, which is in charge of collecting the elements of the stream into:</p>
+<ul>
+<li>a <a href="https://unibz-oofp-25-26.github.io/docs/abstractdatatypes/#collection">Collection</a> (e.g. <code>List</code> or <code>Set</code>), or</li>
+<li>a <code>Map</code>, or</li>
+<li>a <code>String</code>,</li>
+<li>etc.</li>
+</ul>
+</blockquote>
+<p>The utility class <code>Collectors</code> provides a variety of static methods that return a <code>Collector</code>.
+We highlight below a few of them</p>
+<h5 id="collectorsjoining">
+  <code>Collectors.joining</code>
+  <a class="anchor" href="#collectorsjoining">#</a>
+</h5>
+<p>This collector concatenates a stream of strings.</p>
+<blockquote class="book-hint warning">
+<p><strong><em>Syntax.</em></strong>
+<code>Collectors.joining</code> (optionally) take a <code>String</code> as input, which becomes the separator in the output string.</p>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Example</em></strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>City ancona <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> City(<span style="color:#e6db74">&#34;Ancona&#34;</span>, 60100);
+</span></span><span style="display:flex;"><span>City bologna <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> City(<span style="color:#e6db74">&#34;Bologna&#34;</span>, 40100);
+</span></span><span style="display:flex;"><span>City matera <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> City(<span style="color:#e6db74">&#34;Matera&#34;</span>, 75100);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// contains the string `Ancona:Bologna:Matera`</span>
+</span></span><span style="display:flex;"><span>String concat <span style="color:#f92672">=</span> Stream.<span style="color:#a6e22e">of</span>(ancona, bologna, matera)
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">map</span>(c <span style="color:#f92672">-&gt;</span> c.<span style="color:#a6e22e">name</span>)
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">collect</span>(Collectors.<span style="color:#a6e22e">joining</span>(<span style="color:#e6db74">&#34;:&#34;</span>));
+</span></span></code></pre></div></blockquote>
+<h5 id="collectorstoset">
+  <code>Collectors.toSet</code>
+  <a class="anchor" href="#collectorstoset">#</a>
+</h5>
+<p>This collector produces a Java <code>Set</code> out of the elements of current stream.</p>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// contains {1, 2, 3}</span>
+</span></span><span style="display:flex;"><span>Set<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> mySet <span style="color:#f92672">=</span> Stream.<span style="color:#a6e22e">of</span>(2, 1, 3, 1, 2)
+</span></span><span style="display:flex;"><span>              .<span style="color:#a6e22e">collect</span>(Collectors.<span style="color:#a6e22e">toSet</span>());
+</span></span></code></pre></div></blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Note.</em></strong>
+The Java specification does <em>not</em> require a specific implementation.
+So this set could for instance be a <code>HashSet</code>or a <code>TreeSet</code>, depending on compiler and/or execution environment.</p>
+</blockquote>
+<h5 id="collectorstolist">
+  <code>Collectors.toList</code>
+  <a class="anchor" href="#collectorstolist">#</a>
+</h5>
+<blockquote class="book-hint warning">
+<p>This collector is analogous to <code>Collectors.toSet</code>, but produces a Java <code>List</code>.</p>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// contains [2, 1, 3, 1, 2]</span>
+</span></span><span style="display:flex;"><span>List<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> myList <span style="color:#f92672">=</span> Stream.<span style="color:#a6e22e">of</span>(2, 1, 3, 1, 2)
+</span></span><span style="display:flex;"><span>              .<span style="color:#a6e22e">collect</span>(Collectors.<span style="color:#a6e22e">toList</span>());
+</span></span></code></pre></div></blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Note.</em></strong>
+As for <code>Collectors.toSet</code>, there is no requirement on the specific implementation of this <code>List</code>.</p>
+</blockquote>
+<blockquote class="book-hint warning">
+<p><strong><em>To go further.</em></strong>
+Other useful collectors include:</p>
+<ul>
+<li><code>Colllectors.toMap</code></li>
+<li><code>Colllectors.groupingBy</code></li>
+<li><code>Colllectors.toCollection</code> (for a specific implementation of a <code>Collection</code>)</li>
+</ul>
+</blockquote>
 </article>
  
       
@@ -1672,6 +2497,13 @@ The pipeline above can alternatively be defined as</p>
         <li><a href="#composition">Composition</a></li>
         <li><a href="#evaluation">Evaluation</a></li>
         <li><a href="#simplified-syntax">Simplified syntax</a></li>
+      </ul>
+    </li>
+    <li><a href="#java">in Java</a>
+      <ul>
+        <li><a href="#source">Source</a></li>
+        <li><a href="#intermediate">Intermediate operation</a></li>
+        <li><a href="#terminal">Terminal operation</a></li>
       </ul>
     </li>
   </ul>

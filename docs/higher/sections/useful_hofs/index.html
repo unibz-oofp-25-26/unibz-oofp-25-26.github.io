@@ -70,7 +70,7 @@ In Haskell # filter # The function filter retains elements of a list that satisf
 <link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/higher/sections/useful_hofs/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.de4c4b0971feaf73d987c39395f974b09af207d709421db2203853cccbf18556.js" integrity="sha256-3kxLCXH&#43;r3PZh8OTlfl0sJryB9cJQh2yIDhTzMvxhVY=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.df1bf6f065cb5adf9e1669e595d54c4bc8fc53e36f19c1b5547ca06004667cde.js" integrity="sha256-3xv28GXLWt&#43;eFmnlldVMS8j8U&#43;NvGcG1VHygYARmfN4=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -1441,6 +1441,7 @@ https://github.com/alex-shpak/hugo-book
         <li><a href="#flip"><code>flip</code></a></li>
       </ul>
     </li>
+    <li><a href="#java">In Java</a></li>
   </ul>
 </nav>
 
@@ -1885,6 +1886,20 @@ for the same aggregation function <code>f</code>.</p>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">-- flip the function `appearsIn` defined in exercise above</span>
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">contains</span> <span style="color:#f92672">=</span> flip appearsIn
 </span></span></code></pre></div></blockquote>
+<h2 id="java">
+  In Java
+  <a class="anchor" href="#java">#</a>
+</h2>
+<p>Most of the Haskell functions above have an equivalent as an operation on a Java <code>Stream</code>.</p>
+<p>Several of them are described in the <a href="https://unibz-oofp-25-26.github.io/docs/pattern/sections/pipe/#java">dedicated section</a>.
+We only provide links here:</p>
+<ul>
+<li><code>filter</code>, <code>map</code>, <code>all</code> and <code>any</code> have direct counterparts, called <a href="https://unibz-oofp-25-26.github.io/docs/pattern/sections/pipe/#filter"><code>filter</code></a>, <a href="https://unibz-oofp-25-26.github.io/docs/pattern/sections/pipe/#map"><code>map</code></a>, <a href="https://unibz-oofp-25-26.github.io/docs/pattern/sections/pipe/#all_any"><code>allMatch</code> and <code>anyMatch</code></a> respectively,</li>
+<li><code>find (\x -&gt; True)</code> (which we called <a href="https://unibz-oofp-25-26.github.io/docs/generic/sections/maybe/#haskell"><code>maybeHead</code></a> in the section dedicated to the option type) has a counterpart called <a href="https://unibz-oofp-25-26.github.io/docs/pattern/sections/pipe/#findFirst"><code>findFirst</code></a>,</li>
+<li><code>find</code> can be simulated with Java&rsquo;s <a href="https://unibz-oofp-25-26.github.io/docs/pattern/sections/pipe/#filter"><code>filter</code></a> and <a href="https://unibz-oofp-25-26.github.io/docs/pattern/sections/pipe/#findFirst"><code>findFirsrt</code></a>,</li>
+<li><code>foldl</code> has a (simplified) counterpart called <a href="https://unibz-oofp-25-26.github.io/docs/pattern/sections/pipe/#reduce"><code>reduce</code></a> (among others, not covered in this course),</li>
+<li><code>takeWhile</code> has a counterpart since Java 9, also called <code>takeWhile</code>.</li>
+</ul>
 </article>
  
       
@@ -1937,6 +1952,7 @@ for the same aggregation function <code>f</code>.</p>
         <li><a href="#flip"><code>flip</code></a></li>
       </ul>
     </li>
+    <li><a href="#java">In Java</a></li>
   </ul>
 </nav>
 
