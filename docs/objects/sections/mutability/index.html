@@ -42,7 +42,9 @@ User[] createUsers(int[] ids, String[] names){
     return users;
 }
 
-">
+
+Possible solution
+The output array contains $i$ times the same user (with the last id and name from the input arrays).">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="https://unibz-oofp-25-26.github.io/docs/objects/sections/mutability/">
@@ -50,7 +52,7 @@ User[] createUsers(int[] ids, String[] names){
   <meta property="og:title" content="Mutability">
   <meta property="og:description" content="Mutability # Illustration # Exercise The Java method createUsers below is incorrect.
 Can you see why, and how to fix this?
-public class User { int id; String name; } /* Input: - ids: a nonempty array of user identifiers - names: an array of the same length as &#39;ids&#39; that contains user names Ouput: an array of users of the same length as &#39;ids&#39;, such as the i-th user has identifier ids[i] and name names[i] */ User[] createUsers(int[] ids, String[] names){ User[] users = new User[names.length]; User currentUser = new User(); for(int i = 0; i &lt; ids.length; i&#43;&#43;){ currentUser.id = ids[i]; currentUser.name = names[i]; users[i] = currentUser; } return users; }">
+public class User { int id; String name; } /* Input: - ids: a nonempty array of user identifiers - names: an array of the same length as &#39;ids&#39; that contains user names Ouput: an array of users of the same length as &#39;ids&#39;, such as the i-th user has identifier ids[i] and name names[i] */ User[] createUsers(int[] ids, String[] names){ User[] users = new User[names.length]; User currentUser = new User(); for(int i = 0; i &lt; ids.length; i&#43;&#43;){ currentUser.id = ids[i]; currentUser.name = names[i]; users[i] = currentUser; } return users; } Possible solution The output array contains $i$ times the same user (with the last id and name from the input arrays).">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
@@ -60,7 +62,7 @@ public class User { int id; String name; } /* Input: - ids: a nonempty array of 
 <link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/objects/sections/mutability/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.ff9449b9e8e06550d6c29a4628736b67b22981ae91a4c5bb85c21a1c0904c310.js" integrity="sha256-/5RJuejgZVDWwppGKHNrZ7Ipga6RpMW7hcIaHAkEwxA=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.30da5e7fff7a530d4558982475c99c3167d03e115db09f53f59d55c46c0daa7d.js" integrity="sha256-MNpef/96Uw1FWJgkdcmcMWfQPhFdsJ9T9Z1VxGwNqn0=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -670,7 +672,46 @@ https://github.com/alex-shpak/hugo-book
   
 
   
+    <a href="/docs/generic/sections/subtype/" class="">Subtype</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
     <a href="/docs/generic/sections/generic_type/" class="">Generic type</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/generic/sections/variance/" class="">Variance</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/generic/sections/erasure/" class="">Type erasure</a>
   
 
         </li>
@@ -1481,46 +1522,36 @@ https://github.com/alex-shpak/hugo-book
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> users;
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div></div>
-<!-- 
 <input type="radio" class="toggle" name="tabs-exercise_mutability_intro" id="tabs-exercise_mutability_intro-1"  />
 <label for="tabs-exercise_mutability_intro-1">Possible solution</label>
-<div class="book-tabs-content markdown-inner"><p>&ndash;&gt;</p>
-<!---->
-<!-- The output array contains $i$ times the same user (with the last id and name from the input arrays). -->
-<!---->
-<!-- One way to fix this is: -->
-<!---->
-<!-- - add an explicit constructor to the class `User`: -->
-<!---->
-<!-- ```java -->
-<!-- public class User { -->
-<!---->
-<!--     int id; -->
-<!--     String name; -->
-<!---->
-<!--     public User(int id, String name){ -->
-<!--           this.id = id; -->
-<!--           this.name = name; -->
-<!--     } -->
-<!-- } -->
-<!-- ``` -->
-<!---->
-<!-- - call this constructor for each new user: -->
-<!---->
-<!-- ```java -->
-<!-- public User[] createUsers(int[] ids, String[] names) { -->
-<!---->
-<!--     User[] users = new User[names.length]; -->
-<!---->
-<!--     for(int i = 0; i < ids.length; i++){ -->
-<!--         users[i] = new User(ids[i], names[i]); -->
-<!--     } -->
-<!--     return users; -->
-<!-- } -->
-<!-- ``` -->
-<!---->
-<!-- </div>
- -->
+<div class="book-tabs-content markdown-inner"><p>The output array contains $i$ times the same user (with the last id and name from the input arrays).</p>
+<p>One way to fix this is:</p>
+<ul>
+<li>add an explicit constructor to the class <code>User</code>:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">User</span> {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> id;
+</span></span><span style="display:flex;"><span>    String name;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">User</span>(<span style="color:#66d9ef">int</span> id, String name){
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">id</span> <span style="color:#f92672">=</span> id;
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> name;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
+<li>call this constructor for each new user:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> User<span style="color:#f92672">[]</span> <span style="color:#a6e22e">createUsers</span>(<span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> ids, String<span style="color:#f92672">[]</span> names) {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    User<span style="color:#f92672">[]</span> users <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> User<span style="color:#f92672">[</span>names.<span style="color:#a6e22e">length</span><span style="color:#f92672">]</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 0; i <span style="color:#f92672">&lt;</span> ids.<span style="color:#a6e22e">length</span>; i<span style="color:#f92672">++</span>){
+</span></span><span style="display:flex;"><span>        users<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> User(ids<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span>, names<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> users;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></div>
 </div>
 <p>In this example, an instance of the class <code>User</code> is a <em>mutable</em> object, meaning that its attributes (<code>id</code> and <code>name</code>) can be modified after the object is created.</p>
 <p>However, these two values (or at least the value of the attribute <code>id</code>) are unlikely to change.</p>

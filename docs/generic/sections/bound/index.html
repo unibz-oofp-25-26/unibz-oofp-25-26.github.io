@@ -39,7 +39,7 @@ In Haskell # Example. The following function does not compile, because the opera
 <link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/generic/sections/bound/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.ff9449b9e8e06550d6c29a4628736b67b22981ae91a4c5bb85c21a1c0904c310.js" integrity="sha256-/5RJuejgZVDWwppGKHNrZ7Ipga6RpMW7hcIaHAkEwxA=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.30da5e7fff7a530d4558982475c99c3167d03e115db09f53f59d55c46c0daa7d.js" integrity="sha256-MNpef/96Uw1FWJgkdcmcMWfQPhFdsJ9T9Z1VxGwNqn0=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -649,7 +649,46 @@ https://github.com/alex-shpak/hugo-book
   
 
   
+    <a href="/docs/generic/sections/subtype/" class="">Subtype</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
     <a href="/docs/generic/sections/generic_type/" class="">Generic type</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/generic/sections/variance/" class="">Variance</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/generic/sections/erasure/" class="">Type erasure</a>
   
 
         </li>
@@ -1404,6 +1443,7 @@ https://github.com/alex-shpak/hugo-book
         <li><a href="#class">Type class</a></li>
       </ul>
     </li>
+    <li><a href="#java">In Java</a></li>
   </ul>
 </nav>
 
@@ -1556,6 +1596,33 @@ For instance:</p>
 </ul>
 <p>We will <em>not</em> cover this notion in this course.</p>
 </blockquote>
+<h2 id="java">
+  In Java
+  <a class="anchor" href="#java">#</a>
+</h2>
+<blockquote class="book-hint warning">
+<p><strong><em>Syntax.</em></strong>
+We can declare an upper bound <code>C</code> on the value of a <a href="https://unibz-oofp-25-26.github.io/docs/generic/sections/variable/#java">type variable</a> <code>T</code>, with the keyword <code>extends</code>, as follows:</p>
+<p>$\qquad$ <code>&lt;T extends C&gt;</code></p>
+<p>This restricts the possible values for <code>T</code> to <a href="https://unibz-oofp-25-26.github.io/docs/generic/sections/subtype/">subtypes</a> of <code>C</code>.</p>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong>
+The declaration <code>&lt;T extends NPC&gt;</code> below restricts the possible values for <code>T</code> to subtypes of <code>NPC</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">&lt;</span>T <span style="color:#66d9ef">extends</span> NPC<span style="color:#f92672">&gt;</span> T<span style="color:#f92672">[]</span> <span style="color:#a6e22e">f</span>(T<span style="color:#f92672">[]</span> cs){
+</span></span><span style="display:flex;"><span>    ...
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></blockquote>
+<blockquote class="book-hint warning">
+<p><strong><em>Syntax.</em></strong>
+The upper bound may itself be a type variable.</p>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">&lt;</span>T <span style="color:#66d9ef">extends</span> NPC, U <span style="color:#66d9ef">extends</span> T<span style="color:#f92672">&gt;</span> T<span style="color:#f92672">[]</span> <span style="color:#a6e22e">f</span>(T<span style="color:#f92672">[]</span> cs, U c){
+</span></span><span style="display:flex;"><span>    ...
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div></blockquote>
 </article>
  
       
@@ -1602,6 +1669,7 @@ For instance:</p>
         <li><a href="#class">Type class</a></li>
       </ul>
     </li>
+    <li><a href="#java">In Java</a></li>
   </ul>
 </nav>
 

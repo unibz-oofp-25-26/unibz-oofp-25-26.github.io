@@ -1,0 +1,1743 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="
+  Subtype
+  #
+
+In object-oriented languages (like Java), subtyping generalizes the notion of subclass.
+
+Intuitively, $A$ is a subtype of $B$ if &ldquo;every $A$ is a $B$&rdquo;.
+
+
+Examples.
+In Java, $A$ is a subtype of $B$ if:
+
+$A$ and $B$ are classes and $A$ extends $B$ (directly or transitively), or
+$A$ and $B$ are interfaces and $A$ extends $B$ (directly or transitively), or
+$A$ is a class, $B$ is an interface and $A$ implements $B$ (directly or transitively), or
+etc.
+
+
+
+  The subtype relation
+  #
+
+
+Notation.
+We will use $A \sqsubseteq B$ to indicate that $A$ is a subtype of $B$.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://unibz-oofp-25-26.github.io/docs/generic/sections/subtype/">
+  <meta property="og:site_name" content="OOFP 2025-26">
+  <meta property="og:title" content="Subtype">
+  <meta property="og:description" content="Subtype # In object-oriented languages (like Java), subtyping generalizes the notion of subclass.
+Intuitively, $A$ is a subtype of $B$ if “every $A$ is a $B$”.
+Examples. In Java, $A$ is a subtype of $B$ if:
+$A$ and $B$ are classes and $A$ extends $B$ (directly or transitively), or $A$ and $B$ are interfaces and $A$ extends $B$ (directly or transitively), or $A$ is a class, $B$ is an interface and $A$ implements $B$ (directly or transitively), or etc. The subtype relation # Notation. We will use $A \sqsubseteq B$ to indicate that $A$ is a subtype of $B$.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="docs">
+<title>Subtype | OOFP 2025-26</title>
+<link rel="icon" href="/favicon.png" >
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/generic/sections/subtype/">
+<link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
+  <script defer src="/fuse.min.js"></script>
+  <script defer src="/en.search.min.30da5e7fff7a530d4558982475c99c3167d03e115db09f53f59d55c46c0daa7d.js" integrity="sha256-MNpef/96Uw1FWJgkdcmcMWfQPhFdsJ9T9Z1VxGwNqn0=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css"
+  integrity="sha384-vKruj+a13U8yHIkAyGgK1J3ArTLzrFGBbBc0tDp4ad/EyewESeXE/Iv67Aj8gKZ0"
+  crossorigin="anonymous"
+/>
+
+
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js"
+  integrity="sha384-PwRUT/YqbnEjkZO0zZxNqcxACrXe+j766U2amXcgMg5457rve2Y7I6ZJSm2A0mS4"
+  crossorigin="anonymous"
+></script>
+
+
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js"
+  integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+  crossorigin="anonymous"
+  onload="renderMathInElement(document.body);"
+></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    renderMathInElement(document.body, {
+      delimiters: [
+        { left: "$$", right: "$$", display: true },
+        { left: "$", right: "$", display: false },
+      ],
+    });
+  });
+</script>
+
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>OOFP 2025-26</span>
+  </a>
+</h2>
+
+
+<div class="book-search hidden">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+<script>document.querySelector(".book-search").classList.remove("hidden")</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-8b45d304a159d86710e1579c97aa5b43" class="toggle"  />
+    <label for="section-8b45d304a159d86710e1579c97aa5b43" class="flex justify-between">
+      <a href="/docs/intro/" class="">This course</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/organization/" class="">Organization</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/material/" class="">Material</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/reading_path/" class="">Reading path</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/evaluation/" class="">Evaluation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/prerequisites/" class="">Prerequisites</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/office_hours/" class="">Office hours</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/content/" class="">Content</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/resources/" class="">Additional resources</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/intro/sections/software/" class="">Software</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b17bf4b701f350b4430cc5371ccad607" class="toggle"  />
+    <label for="section-b17bf4b701f350b4430cc5371ccad607" class="flex justify-between">
+      <a href="/docs/paradigm/" class="">Paradigms and languages</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/paradigm/sections/paradigm/" class="">Paradigm</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/paradigm/sections/error/" class="">Compile time vs runtime error</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/paradigm/sections/type/" class="">Typing</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/paradigm/sections/pure/" class="">Pure function</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-eb0a250150a82657aa03f0717afdcd45" class="toggle"  />
+    <label for="section-eb0a250150a82657aa03f0717afdcd45" class="flex justify-between">
+      <a href="/docs/haskell/" class="">Basic syntax of Haskell</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/haskell/sections/tokens/" class="">Tokens</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/haskell/sections/type/" class="">Base types</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/haskell/sections/native/" class="">Native functions</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/haskell/sections/tuple/" class="">Tuple</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/haskell/sections/function/" class="">Function</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/haskell/sections/program/" class="">Program</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/haskell/sections/list/" class="">List</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-2e35b5b0c21ab79cc6b70c0c8a6135fa" class="toggle"  />
+    <label for="section-2e35b5b0c21ab79cc6b70c0c8a6135fa" class="flex justify-between">
+      <a href="/docs/higher/" class="">Higher-order function</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/higher/sections/anonymous/" class="">Anonymous function</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/higher/sections/currying/" class="">Currying</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/higher/sections/first_class_java/" class="">First-class method</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/higher/sections/closure/" class="">Closure</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/higher/sections/useful_hofs/" class="">A few higher-order functions</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-a9f24c38594f15da67150d02f87a60d7" class="toggle"  />
+    <label for="section-a9f24c38594f15da67150d02f87a60d7" class="flex justify-between">
+      <a href="/docs/control/" class="">Control flow</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/control/sections/pattern/" class="">Pattern matching</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/control/sections/condition/" class="">Boolean condition</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/control/sections/comprehension/" class="">List comprehension</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/control/sections/stack/" class="">Call stack</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-97db6297fa77b8e8a3d66808fea4d894" class="toggle" checked />
+    <label for="section-97db6297fa77b8e8a3d66808fea4d894" class="flex justify-between">
+      <a href="/docs/generic/" class="">Genericity</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/generic/sections/variable/" class="">Type variable</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/generic/sections/bound/" class="">Bound</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/generic/sections/subtype/" class="active">Subtype</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/generic/sections/generic_type/" class="">Generic type</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/generic/sections/variance/" class="">Variance</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/generic/sections/erasure/" class="">Type erasure</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/generic/sections/maybe/" class="">Option type</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-54a25c0ad53482778ca10b1a7db8e623" class="toggle"  />
+    <label for="section-54a25c0ad53482778ca10b1a7db8e623" class="flex justify-between">
+      <a href="/docs/recursion/" class="">Recursion</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/recursion/sections/linear/" class="">Linear recursion</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/recursion/sections/nary/" class="">N-ary recursion</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/recursion/sections/intermediate/" class="">Intermediate result</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/recursion/sections/accumulator/" class="">Accumulator and tail recursion</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/recursion/sections/minimax/" class="">Minimax/maximin</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d92e119f475bae7b2a2364fe0e1fc445" class="toggle"  />
+    <label for="section-d92e119f475bae7b2a2364fe0e1fc445" class="flex justify-between">
+      <a href="/docs/composite/" class="">Composite type</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/composite/sections/enum/" class="">Enumerated type</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/composite/sections/product/" class="">Product type</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/composite/sections/sum/" class="">Sum type</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-007945605153592d0fc2acb75802d872" class="toggle"  />
+    <label for="section-007945605153592d0fc2acb75802d872" class="flex justify-between">
+      <a href="/docs/pattern/" class="">Functional patterns</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/pattern/sections/pipe/" class="">Pipeline</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/pattern/sections/functor/" class="">Functor</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/pattern/sections/monad/" class="">Monad</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-799305e0300c702d39454ff1753190dd" class="toggle"  />
+    <label for="section-799305e0300c702d39454ff1753190dd" class="flex justify-between">
+      <a href="/docs/objects/" class="">Object and class</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/objects/sections/object/" class="">Object</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/objects/sections/class/" class="">Class and instance</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/objects/sections/value_ref/" class="">Passing by value or by reference</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/objects/sections/inheritance/" class="">Inheritance</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/objects/sections/method/" class="">Instance method</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/objects/sections/tostring/" class="">Displaying an object</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/objects/sections/comparing/" class="">Cast and equality</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/objects/sections/classasobject/" class="">Class as object</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/objects/sections/string/" class="">String</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/objects/sections/boxed/" class="">Boxed primitive type</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/objects/sections/encapsulation/" class="">Encapsulation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/objects/sections/mutability/" class="">Mutability</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c34bda991aa58acb3c5c88344f5ff4d1" class="toggle"  />
+    <label for="section-c34bda991aa58acb3c5c88344f5ff4d1" class="flex justify-between">
+      <a href="/docs/abstractdatatypes/" class="">Abstract data type</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/abstractdatatypes/sections/collection/" class="">ADT as a generic interface</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/abstractdatatypes/sections/list/" class="">List</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/abstractdatatypes/sections/set/" class="">Set</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/abstractdatatypes/sections/map/" class="">Associative array</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/abstractdatatypes/sections/queue/" class="">Stack, queue, priority queue</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/abstractdatatypes/sections/sorting/" class="">Sorting</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c5f1310fa6b2ad1b4f803a63275b0f17" class="toggle"  />
+    <label for="section-c5f1310fa6b2ad1b4f803a63275b0f17" class="flex justify-between">
+      <a href="/docs/interface/" class="">Interface</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/interface/sections/specification/" class="">Specification and programming interface</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/interface/sections/java_interface/" class="">Java interface</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d689bb2436bd0f51b31e8f95cf070b59" class="toggle"  />
+    <label for="section-d689bb2436bd0f51b31e8f95cf070b59" class="flex justify-between">
+      <a href="/docs/background/" class="">Background</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/background/sections/set_list/" class="">Set, list, tuple</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/background/sections/function/" class="">Function</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/background/sections/order/" class="">Relation, preorder</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/background/sections/problem/" class="">Computational problem</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c98f96b18785aef1d766e440ba328a79" class="toggle"  />
+    <label for="section-c98f96b18785aef1d766e440ba328a79" class="flex justify-between">
+      <a href="/docs/ass/" class="">Assignments</a>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/ass/sections/ass1/" class="">Assignment 1</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/ass/sections/ass2/" class="">Assignment 2</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/ass/sections/ass3/" class="">Assignment 3</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/ass/sections/ass4/" class="">Assignment 4</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <h3>Subtype</h3>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#subtype">The subtype relation</a></li>
+    <li><a href="#functionSubtype">Method subtyping</a>
+      <ul>
+        <li><a href="#domain-codomain-and-set-inclusion">Domain, codomain and set inclusion</a></li>
+        <li><a href="#method_type">Method type</a></li>
+        <li><a href="#generalization">Generalization</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown book-article"><h1 id="subtype">
+  Subtype
+  <a class="anchor" href="#subtype">#</a>
+</h1>
+<p>In object-oriented languages (like Java), subtyping generalizes the notion of <a href="https://unibz-oofp-25-26.github.io/docs/objects/sections/inheritance/#subclass">subclass</a>.</p>
+<blockquote class="book-hint warning">
+<p>Intuitively, $A$ is a <strong>subtype</strong> of $B$ if &ldquo;every $A$ is a $B$&rdquo;.</p>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Examples.</em></strong>
+In Java, $A$ is a subtype of $B$ if:</p>
+<ul>
+<li>$A$ and $B$ are classes and $A$ <code>extends</code> $B$ (directly or transitively), or</li>
+<li>$A$ and $B$ are interfaces and $A$ <code>extends</code> $B$ (directly or transitively), or</li>
+<li>$A$ is a class, $B$ is an interface and $A$ <code>implements</code> $B$ (directly or transitively), or</li>
+<li>etc.</li>
+</ul>
+</blockquote>
+<h2 id="subtype">
+  The subtype relation
+  <a class="anchor" href="#subtype">#</a>
+</h2>
+<blockquote class="book-hint warning">
+<p><strong><em>Notation.</em></strong>
+We will use $A \sqsubseteq B$ to indicate that $A$ is a subtype of $B$.</p>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Examples.</em></strong>
+In Java,</p>
+<ul>
+<li><code>Integer</code> $\sqsubseteq$ <code>Number</code></li>
+<li><code>String</code> $\sqsubseteq$ <code>Object</code></li>
+</ul>
+</blockquote>
+<blockquote class="book-hint warning">
+<p><strong><em>Observation.</em></strong>
+$\sqsubseteq$ is a <a href="https://unibz-oofp-25-26.github.io/docs/background/sections/order/#binaryRelation">binary relation</a>.
+This relation is both:</p>
+<ul>
+<li>
+<p><a href="https://unibz-oofp-25-26.github.io/docs/background/sections/order/#reflexiveTransitiveAntisymmetric">reflexive</a>:
+$A \sqsubseteq A$ for every type $A$</p>
+</li>
+<li>
+<p><a href="https://unibz-oofp-25-26.github.io/docs/background/sections/order/#reflexiveTransitiveAntisymmetric">transitive</a>:
+$A \sqsubseteq B$ and $B \sqsubseteq C$ imply $A \sqsubseteq C$</p>
+</li>
+</ul>
+</blockquote>
+<blockquote class="book-hint warning">
+<p><strong><em>Observation.</em></strong>
+If an object $o$ has type $A$ and $A \sqsubseteq B$, then $o$ also has type $B$.</p>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Examples.</em></strong>
+In Java:</p>
+<ul>
+<li>if $o$ has type <code>Integer</code>, then $o$ also has type <code>Number</code></li>
+<li>if $o$ has type <code>String</code>, then $o$ also has type <code>Object</code></li>
+</ul>
+</blockquote>
+<h2 id="functionSubtype">
+  Method subtyping
+  <a class="anchor" href="#functionSubtype">#</a>
+</h2>
+<blockquote>
+<p><strong><em>Question.</em></strong> How can we generalize $\sqsubseteq$ to <em>method</em> types?</p>
+</blockquote>
+<p>To answer this question, we will first use mathematical <a href="https://unibz-oofp-25-26.github.io/docs/background/sections/function/">functions</a> as an analogy.</p>
+<h3 id="domain-codomain-and-set-inclusion">
+  Domain, codomain and set inclusion
+  <a class="anchor" href="#domain-codomain-and-set-inclusion">#</a>
+</h3>
+<blockquote class="book-hint warning">
+<p><strong><em>Reminder.</em></strong>
+A function $f\colon X \to Y$ maps <em>every</em> element of $X$ to <em>some</em> element of $Y$.</p>
+</blockquote>
+<!-- <blockquote class="book-hint info">
+   -->
+<!-- **_Notation._** -->
+<!-- if $X$ and $Y$ are sets, then we will use $X \to Y$ for the set of all functions with domain $X$ and codomain $Y$ (although a more common notation for $X \to Y$ is $Y^X$). -->
+<!-- 
+</blockquote>
+ -->
+<blockquote class="book-hint info">
+<p><strong><em>Glossary (reminder).</em></strong></p>
+<ul>
+<li>$\mathbb{N}$ : natural numbers (a.k.a. positive integers, including <code>0</code>)</li>
+<li>$\mathbb{Z}$ : integers</li>
+<li>$\mathbb{Q}$ : rational numbers</li>
+</ul>
+<p>Observe that $\mathbb{N} \subseteq \mathbb{Z} \subseteq \mathbb{Q}$.</p>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong>
+Let $\mathsf{ItalianCities}$ denote the set of all Italian cities.</p>
+<p>Consider the function $\mathit{pop}$ that maps an Italian city to its number of inhabitants.<br>
+We can write</p>
+<p>$\qquad \mathit{pop}\,\colon \mathsf{ItalianCities} \to \mathbb{N}$</p>
+<p>because $\mathit{pop}$ maps <em>every</em> Italian city to <em>some</em> natural number.</p>
+<p>We can also write</p>
+<p>$\qquad \mathit{pop}\,\colon \mathsf{ItalianCities} \to \mathbb{Z}$</p>
+<p>because $\mathit{pop}$ maps every Italian city to an integer (since natural numbers are integers).</p>
+<p>For the same reason, we can also write</p>
+<p>$\qquad \mathit{pop}\,\colon \mathsf{ItalianCities} \to \mathbb{Q}$</p>
+<p>However, we <em>cannot</em> write</p>
+<p>$\qquad \mathit{pop}\,\colon \mathsf{Cities} \to \mathbb{N}$</p>
+<p>because $\mathit{pop}$ does not map <em>every</em> city (only Italian ones).</p>
+</blockquote>
+<h3 id="method_type">
+  Method type
+  <a class="anchor" href="#method_type">#</a>
+</h3>
+<p>We can lift these operations to method types, using $\sqsubseteq$ instead of $\subseteq$.</p>
+<!-- Simple method types are analogous to the domains and codomains of functions: -->
+<!---->
+<!-- <blockquote class="book-hint warning">
+   -->
+<!-- **_Definition._** -->
+<!-- A method has **type** $X \to Y$ if it accepts as input any element with type $X$, and returns an element with type $Y$. -->
+<!---->
+<!-- 
+</blockquote>
+ -->
+<!-- ### Exercises -->
+<div class="book-tabs">
+<input type="radio" class="toggle" name="tabs-exercise_function_types" id="tabs-exercise_function_types-0" checked="checked" />
+<label for="tabs-exercise_function_types-0">Exercise</label>
+<div class="book-tabs-content markdown-inner"><p>Consider a programming language with a types for $\mathbb{N}$, $\mathbb{Z}$ and $\mathbb{Q}$ (this can be simulated with the <code>java.math</code> library).
+In this language, we naturally have $\mathbb{N} \sqsubseteq \mathbb{Z} \sqsubseteq \mathbb{Q}$.</p>
+<p>Now consider a method $f$ with type $\mathbb{Q} \to \mathbb{Q}$ that maps a number $x$ to $x^2$.</p>
+<p>Which of the following types are also valid for $f$ ?</p>
+<ol>
+<li>$\qquad \mathbb{Q} \to \mathbb{Z}$</li>
+<li>$\qquad \mathbb{Q} \to \mathbb{N}$</li>
+<li>$\qquad \mathbb{Z} \to \mathbb{Q}$</li>
+<li>$\qquad \mathbb{Z} \to \mathbb{Z}$</li>
+<li>$\qquad \mathbb{Z} \to \mathbb{N}$</li>
+<li>$\qquad \mathbb{N} \to \mathbb{Q}$</li>
+<li>$\qquad \mathbb{N} \to \mathbb{Z}$</li>
+<li>$\qquad \mathbb{N} \to \mathbb{N}$</li>
+</ol>
+</div>
+<!-- 
+<input type="radio" class="toggle" name="tabs-exercise_function_types" id="tabs-exercise_function_types-1"  />
+<label for="tabs-exercise_function_types-1">Solution</label>
+<div class="book-tabs-content markdown-inner"><p>&ndash;&gt;</p>
+<!-- 3, 4, 5, 6, 7, 8 -->
+<!---->
+<!-- </div>
+ -->
+</div>
+<div class="book-tabs">
+<input type="radio" class="toggle" name="tabs-exercise_function_subtypes" id="tabs-exercise_function_subtypes-0" checked="checked" />
+<label for="tabs-exercise_function_subtypes-0">Exercise (continued)</label>
+<div class="book-tabs-content markdown-inner"><p>In our language, which of the following are correct?</p>
+<p>A method with type $\mathbb{Z} \to \mathbb{Z}$ also has type:</p>
+<ol>
+<li>$\qquad \mathbb{N} \to \mathbb{N}$</li>
+<li>$\qquad \mathbb{N} \to \mathbb{Z}$</li>
+<li>$\qquad \mathbb{N} \to \mathbb{Q}$</li>
+<li>$\qquad \mathbb{Z} \to \mathbb{N}$</li>
+<li>$\qquad \mathbb{Z} \to \mathbb{Q}$</li>
+<li>$\qquad \mathbb{Q} \to \mathbb{N}$</li>
+<li>$\qquad \mathbb{Q} \to \mathbb{Z}$</li>
+<li>$\qquad \mathbb{Q} \to \mathbb{Q}$</li>
+</ol>
+</div>
+<!-- 
+<input type="radio" class="toggle" name="tabs-exercise_function_subtypes" id="tabs-exercise_function_subtypes-1"  />
+<label for="tabs-exercise_function_subtypes-1">Solution</label>
+<div class="book-tabs-content markdown-inner"><p>&ndash;&gt;</p>
+<!-- 2, 3, 5 -->
+<!-- </div>
+ -->
+</div>
+<h3 id="generalization">
+  Generalization
+  <a class="anchor" href="#generalization">#</a>
+</h3>
+<p>We can now generalize these observations:</p>
+<blockquote class="book-hint warning">
+<p><strong><em>Property.</em></strong></p>
+<p>$\qquad$ $X_1 \sqsubseteq X_2$ and $Y_1 \sqsubseteq Y_2$</p>
+<p>imply</p>
+<p>$\qquad X_2 \to Y_1 \sqsubseteq X_1 \to Y_2$</p>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Example.</em></strong>
+If <code>Butterfly</code> $\sqsubseteq$ <code>NPC</code>, then a Java method with type <code>NPC</code> $\to$ <code>Integer</code> also has type:</p>
+<ul>
+<li><code>Butterfly</code> $\to$ <code>Integer</code></li>
+<li><code>NPC</code> $\to$ <code>Number</code></li>
+<li><code>Butterfly</code> $\to$ <code>Number</code></li>
+</ul>
+<p>or in other words:</p>
+<ul>
+<li><code>NPC</code> $\to$ <code>Integer</code> $\sqsubseteq$ <code>Butterfly</code> $\to$ <code>Integer</code></li>
+<li><code>NPC</code> $\to$ <code>Integer</code> $\sqsubseteq$ <code>NPC</code> $\to$ <code>Number</code></li>
+<li><code>NPC</code> $\to$ <code>Integer</code> $\sqsubseteq$ <code>Butterfly</code> $\to$ <code>Number</code></li>
+</ul>
+</blockquote>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#subtype">The subtype relation</a></li>
+    <li><a href="#functionSubtype">Method subtyping</a>
+      <ul>
+        <li><a href="#domain-codomain-and-set-inclusion">Domain, codomain and set inclusion</a></li>
+        <li><a href="#method_type">Method type</a></li>
+        <li><a href="#generalization">Generalization</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
