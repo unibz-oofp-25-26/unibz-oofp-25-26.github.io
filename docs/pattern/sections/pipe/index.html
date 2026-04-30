@@ -29,7 +29,7 @@ Thanks to lazy evaluation, each operation in the pipeline can start feeding part
 <link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/pattern/sections/pipe/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.30da5e7fff7a530d4558982475c99c3167d03e115db09f53f59d55c46c0daa7d.js" integrity="sha256-MNpef/96Uw1FWJgkdcmcMWfQPhFdsJ9T9Z1VxGwNqn0=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.16f09330d4135d82bb10aa495cff3319d419824ac431f2d506db1813bdd59cba.js" integrity="sha256-FvCTMNQTXYK7EKpJXP8zGdQZgkrEMfLVBtsYE73VnLo=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -1372,6 +1372,19 @@ https://github.com/alex-shpak/hugo-book
         </li>
       
     
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/ass/sections/ass5/" class="">Assignment 5</a>
+  
+
+        </li>
+      
+    
   </ul>
 
         </li>
@@ -2165,7 +2178,7 @@ The instance method</p>
 <code>Consumer&lt;U&gt;</code> is a <a href="https://unibz-oofp-25-26.github.io/docs/higher/sections/first_class_java/#consumer">functional interface</a> for methods with type <code>U</code> $\to$ <code>void</code>.</p>
 </blockquote>
 </blockquote>
-<p><code>forEach</code> is similar to <a href="#map"><code>map</code></a>, but its input method <code>action</code> only operates via <a href="https://unibz-oofp-25-26.github.io/docs/paradigm/sections/pure/#side-effect">side-effects</a> (since it has no return value).</p>
+<p><code>forEach</code> is similar to <a href="#map"><code>map</code></a>, but its input method only operates via <a href="https://unibz-oofp-25-26.github.io/docs/paradigm/sections/pure/#side-effect">side-effects</a> (since it has no return value).</p>
 <blockquote class="book-hint info">
 <p><strong><em>Example.</em></strong></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// outputs `4, `2` and then `4` (each on a new line)</span>
@@ -2254,55 +2267,41 @@ A method with multiple boolean flags can be complex to read and/or debug, in par
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> flag1;
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div></div>
-<!-- 
 <input type="radio" class="toggle" name="tabs-exercise_break" id="tabs-exercise_break-1"  />
 <label for="tabs-exercise_break-1">Possible Solution</label>
-<div class="book-tabs-content markdown-inner"><p>&ndash;&gt;</p>
-<!---->
-<!-- ```java -->
-<!-- boolean check(List<List<Integer>> lists) { -->
-<!--     return lists.stream() -->
-<!--         .allMatch(l -> l.stream().anyMatch(v -> v > 20)); -->
-<!-- } -->
-<!-- ``` -->
-<!---->
-<!-- <blockquote class="book-hint info">
-  <p>&ndash;&gt;</p>
-<!-- **_Note._** -->
-<!-- In this example, boolean flags and `break` statements can also be avoided with: -->
-<!---->
-<!-- - `return` statements, and -->
-<!-- - an auxiliary method. -->
-<!---->
-<!-- For instance: -->
-<!---->
-<!-- ```java -->
-<!-- boolean check(List<List<Integer>> lists) { -->
-<!---->
-<!--     for (List<Integer> list : lists) { -->
-<!--         if(!isValid(list)) { -->
-<!--             return false; -->
-<!--         } -->
-<!--     } -->
-<!--     return true; -->
-<!-- } -->
-<!---->
-<!-- private boolean isValid(List<Integer> values) { -->
-<!--     for (int value : values) { -->
-<!--         if(value > 20) { -->
-<!--             return true; -->
-<!--         } -->
-<!--     } -->
-<!--     return false; -->
-<!-- } -->
-<!-- ``` -->
-<!---->
-<!-- 
+<div class="book-tabs-content markdown-inner"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">check</span>(List<span style="color:#f92672">&lt;</span>List<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;&gt;</span> lists) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> lists.<span style="color:#a6e22e">stream</span>()
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">allMatch</span>(l <span style="color:#f92672">-&gt;</span> l.<span style="color:#a6e22e">stream</span>().<span style="color:#a6e22e">anyMatch</span>(v <span style="color:#f92672">-&gt;</span> v <span style="color:#f92672">&gt;</span> 20));
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><blockquote class="book-hint info">
+  <p><strong><em>Note.</em></strong>
+In this example, boolean flags and <code>break</code> statements can also be avoided with:</p>
+<ul>
+<li><code>return</code> statements, and</li>
+<li>an auxiliary method.</li>
+</ul>
+<p>For instance:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">check</span>(List<span style="color:#f92672">&lt;</span>List<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;&gt;</span> lists) {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (List<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> list : lists) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span>(<span style="color:#f92672">!</span>isValid(list)) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">isValid</span>(List<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> values) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> value : values) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span>(value <span style="color:#f92672">&gt;</span> 20) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
 </blockquote>
- -->
-<!---->
-<!-- </div>
- -->
+</div>
 </div>
 <h4 id="findFirst">
   <code>findFirst</code>
