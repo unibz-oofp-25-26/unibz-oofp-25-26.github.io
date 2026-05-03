@@ -122,6 +122,8 @@
   </url><url>
     <loc>https://unibz-oofp-25-26.github.io/docs/higher/sections/closure/</loc>
   </url><url>
+    <loc>https://unibz-oofp-25-26.github.io/docs/composite/</loc>
+  </url><url>
     <loc>https://unibz-oofp-25-26.github.io/docs/intro/sections/content/</loc>
   </url><url>
     <loc>https://unibz-oofp-25-26.github.io/docs/objects/sections/tostring/</loc>
@@ -150,8 +152,6 @@
   </url><url>
     <loc>https://unibz-oofp-25-26.github.io/docs/intro/sections/resources/</loc>
   </url><url>
-    <loc>https://unibz-oofp-25-26.github.io/docs/composite/</loc>
-  </url><url>
     <loc>https://unibz-oofp-25-26.github.io/docs/haskell/sections/list/</loc>
   </url><url>
     <loc>https://unibz-oofp-25-26.github.io/docs/generic/sections/maybe/</loc>
@@ -174,9 +174,11 @@
   </url><url>
     <loc>https://unibz-oofp-25-26.github.io/docs/objects/</loc>
   </url><url>
+    <loc>https://unibz-oofp-25-26.github.io/docs/interface/</loc>
+  </url><url>
     <loc>https://unibz-oofp-25-26.github.io/docs/abstractdatatypes/</loc>
   </url><url>
-    <loc>https://unibz-oofp-25-26.github.io/docs/interface/</loc>
+    <loc>https://unibz-oofp-25-26.github.io/docs/datastructures/</loc>
   </url><url>
     <loc>https://unibz-oofp-25-26.github.io/docs/objects/sections/encapsulation/</loc>
   </url><url>
