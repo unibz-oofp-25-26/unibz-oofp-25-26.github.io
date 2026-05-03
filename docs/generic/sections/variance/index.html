@@ -39,7 +39,7 @@ Some object-oriented languages (like Java or C#) let us use this property to ext
 <link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/generic/sections/variance/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.14ebd02610d5c95b7d56059af4aeeb68aafc9bd13cb59debd1501f922b869963.js" integrity="sha256-FOvQJhDVyVt9VgWa9K7raKr8m9E8tZ3r0VAfkiuGmWM=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.6483a08f35a519f296be3cf1da03852a1bc7d2edf2e533854f5b26926ddc8b22.js" integrity="sha256-ZIOgjzWlGfKWvjzx2gOFKhvH0u3y5TOFT1smkm3ciyI=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -1453,8 +1453,8 @@ https://github.com/alex-shpak/hugo-book
   <ul>
     <li><a href="#definition">Definition</a>
       <ul>
-        <li><a href="#covariance">Covariance</a></li>
-        <li><a href="#contravariance">Contravariance</a></li>
+        <li><a href="#covariant">Covariance</a></li>
+        <li><a href="#contravariant">Contravariance</a></li>
         <li><a href="#invariance">Invariance</a></li>
         <li><a href="#combinations">Combinations</a></li>
       </ul>
@@ -1518,9 +1518,9 @@ We will focus here on Java.</p>
   Definition
   <a class="anchor" href="#definition">#</a>
 </h2>
-<h3 id="covariance">
+<h3 id="covariant">
   Covariance
-  <a class="anchor" href="#covariance">#</a>
+  <a class="anchor" href="#covariant">#</a>
 </h3>
 <blockquote class="book-hint info">
 <p><strong><em>Example.</em></strong>
@@ -1539,9 +1539,9 @@ Consider the generic type <code>Set&lt;T&gt;</code></p>
 A generic type <code>Gen&lt;T&gt;</code> is <strong>covariant</strong> if for any types <code>A</code> and <code>B</code>,</p>
 <p>$\qquad$ <code>A</code> $\sqsubseteq$ <code>B</code> implies <code>Gen&lt;A&gt;</code> $\sqsubseteq$ <code>Gen&lt;B&gt;</code></p>
 </blockquote>
-<h3 id="contravariance">
+<h3 id="contravariant">
   Contravariance
-  <a class="anchor" href="#contravariance">#</a>
+  <a class="anchor" href="#contravariant">#</a>
 </h3>
 <p>What intuitively holds above for sets does not seem to hold for all generic types.</p>
 <blockquote class="book-hint info">
@@ -1637,9 +1637,9 @@ The following Java program does <em>not</em> compile, because the generic type <
 <p>So a Java generic type cannot be <em>declared</em> as covariant or contravariant.</p>
 <p>Instead, each time we <em>use</em> a generic type,
 we can specify that it should be interpreted by the compiler as covariant (resp. contravariant, or some combination of these).</p>
-<h5 id="covariance-1">
+<h5 id="covariance">
   Covariance
-  <a class="anchor" href="#covariance-1">#</a>
+  <a class="anchor" href="#covariance">#</a>
 </h5>
 <blockquote class="book-hint warning">
 <p><strong><em>Syntax.</em></strong>
@@ -1653,9 +1653,9 @@ The following Java program does compile:</p>
 </span></span><span style="display:flex;"><span>List<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> anotherList <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ArrayList<span style="color:#f92672">&lt;&gt;</span>();
 </span></span><span style="display:flex;"><span>aList <span style="color:#f92672">=</span> anotherList;
 </span></span></code></pre></div></blockquote>
-<h5 id="contravariance-1">
+<h5 id="contravariance">
   Contravariance
-  <a class="anchor" href="#contravariance-1">#</a>
+  <a class="anchor" href="#contravariance">#</a>
 </h5>
 <blockquote class="book-hint warning">
 <p><strong><em>Syntax.</em></strong>
@@ -1743,8 +1743,8 @@ and returns a <code>Stream&lt;R&gt;</code></p>
   <ul>
     <li><a href="#definition">Definition</a>
       <ul>
-        <li><a href="#covariance">Covariance</a></li>
-        <li><a href="#contravariance">Contravariance</a></li>
+        <li><a href="#covariant">Covariance</a></li>
+        <li><a href="#contravariant">Contravariance</a></li>
         <li><a href="#invariance">Invariance</a></li>
         <li><a href="#combinations">Combinations</a></li>
       </ul>
