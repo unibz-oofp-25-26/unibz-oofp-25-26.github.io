@@ -39,7 +39,7 @@ Some object-oriented languages (like Java or C#) let us use this property to ext
 <link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/generic/sections/variance/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.96d5ecbcfe4f1ba786bcde177c5d497d4f13dece7dccde29522d8e01a1e01904.js" integrity="sha256-ltXsvP5PG6eGvN4XfF1JfU8T3s59zN4pUi2OAaHgGQQ=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.9628a9b3bea29bb3528780f3f35df23c2499cd8162e00b56cce6edeb6b46e72f.js" integrity="sha256-liips76im7NSh4Dz813yPCSZzYFi4AtWzObt62tG5y8=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -1719,8 +1719,7 @@ Accordingly, the signature of <code>filter</code> is</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Stream<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">filter</span>(Predicate<span style="color:#f92672">&lt;?</span> <span style="color:#66d9ef">super</span> T<span style="color:#f92672">&gt;</span> predicate)
 </span></span></code></pre></div><p>It accepts as argument any method with type <code>Predicate&lt;V&gt;</code> such that <code>T</code> $\sqsubseteq$ <code>V</code>.<br>
 So the following program compiles:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>List<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> integers <span style="color:#f92672">=</span> getIntegers();
-</span></span><span style="display:flex;"><span>Stream<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> myStream <span style="color:#f92672">=</span> integers.<span style="color:#a6e22e">stream</span>()
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Stream<span style="color:#f92672">&lt;</span>Integer<span style="color:#f92672">&gt;</span> myStream <span style="color:#f92672">=</span> Stream.<span style="color:#a6e22e">of</span>(1,2,3)
 </span></span><span style="display:flex;"><span>                  .<span style="color:#a6e22e">filter</span>(MyClass::myPredicate);
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyClass</span> {
