@@ -45,7 +45,7 @@ the number of entries for array, the number of nodes for tree, etc. Time or memo
 <link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/background/sections/cost/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.9628a9b3bea29bb3528780f3f35df23c2499cd8162e00b56cce6edeb6b46e72f.js" integrity="sha256-liips76im7NSh4Dz813yPCSZzYFi4AtWzObt62tG5y8=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.1eca5518cc90ee13060d2872200939d61cc613fab8766619bef6cb31c25235f7.js" integrity="sha256-HspVGMyQ7hMGDShyIAk51hzGE/q4dmYZvvbLMcJSNfc=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -1686,7 +1686,7 @@ The following are linear functions:</p>
   Comparing cost functions
   <a class="anchor" href="#comparing-cost-functions">#</a>
 </h3>
-<p>Two cost functions $f$ and $g$ are said to be <strong>asymptotically equivalent</strong> if they intuitively have the same growth, modulo fixed costs.</p>
+<p>Two cost functions $f$ and $g$ are said to be <strong>asymptotically equivalent</strong> if they intuitively have the same growth, <em>modulo fixed costs</em>.</p>
 <!-- <blockquote class="book-hint info">
    -->
 <!-- **_Examples._** -->
@@ -1705,7 +1705,7 @@ A function $f: X \to Y$ is <strong>monotone</strong> if $x_1 \le x_2$ implies $f
 </blockquote>
 <blockquote class="book-hint warning">
 <p><strong><em>Definition.</em></strong>
-Let $f$ and $g$ be two monotone functions over $\mathbb{N}$ such that
+Let $f$ and $g$ be two monotone, positive functions over $\mathbb{N}$ such that
 $\lim_{n \to  \infty} \frac{f(n)}{g(n)}$ is defined.
 And let $l$ be this limit.</p>
 <ul>
@@ -1718,6 +1718,7 @@ And let $l$ be this limit.</p>
   In practice
   <a class="anchor" href="#in-practice">#</a>
 </h3>
+<p>Here a two convenient techniques to determine whether a cost function outgrows another (asymptotically).</p>
 <blockquote class="book-hint warning">
 <p><strong><em>Observation.</em></strong>
 $f$ outgrows $g$ iff the derivative of $f$ outgrows the derivative of $g$
