@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+<head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="
@@ -12,37 +12,29 @@ A Binary Search Tree (BST) is another data structure used to store an associativ
 Definition.
 A BST is a binary tree such that each node&rsquo;s label is:
 
-larger than its left child&rsquo;s label (if any), and
-smaller than its right child&rsquo;s label (if any).
+larger than the label of its left child (if any), and
+smaller than the label of its right child (if any).
 
 
-Equivalently, a BST is a binary tree whose nodes are sorted w.r.t. in-order traversal.
-
-
-  Associative array as a binary search tree
-  #
-
-Recall that an associative array is a finite set of key-value pairs.
-Again, let us assume keys have type $K$, and that values have type $V$.">
+Equivalently, a BST is a binary tree whose nodes are sorted w.r.t. in-order traversal.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/docs/datastructures/sections/tree/">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://unibz-oofp-25-26.github.io/docs/datastructures/sections/tree/">
   <meta property="og:site_name" content="OOFP 2025-26">
   <meta property="og:title" content="Binary search tree">
   <meta property="og:description" content="Binary search tree # A Binary Search Tree (BST) is another data structure used to store an associative array (e.g. a Java Map).
 Definition. A BST is a binary tree such that each node’s label is:
-larger than its left child’s label (if any), and smaller than its right child’s label (if any). Equivalently, a BST is a binary tree whose nodes are sorted w.r.t. in-order traversal.
-Associative array as a binary search tree # Recall that an associative array is a finite set of key-value pairs. Again, let us assume keys have type $K$, and that values have type $V$.">
+larger than the label of its left child (if any), and smaller than the label of its right child (if any). Equivalently, a BST is a binary tree whose nodes are sorted w.r.t. in-order traversal.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="docs">
 <title>Binary search tree | OOFP 2025-26</title>
 <link rel="icon" href="/favicon.png" >
 <link rel="manifest" href="/manifest.json">
-<link rel="canonical" href="http://localhost:1313/docs/datastructures/sections/tree/">
+<link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/datastructures/sections/tree/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.f4ae8175570c41ae58106c554cced2516cd4116800ea7bee40b04c4b84351198.js" integrity="sha256-9K6BdVcMQa5YEGxVTM7SUWzUEWgA6nvuQLBMS4Q1EZg=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.d09bc896fa39dd3b0e118e9d74a48e08b19ca98b2eebbf3d995ee5b103a90771.js" integrity="sha256-0JvIlvo53TsOEY6ddKSOCLGcqYsu6789mV7lsQOpB3E=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -850,19 +842,6 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/recursion/sections/termination/" class="">Termination</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-  
-
-  
     <a href="/docs/recursion/sections/minimax/" class="">Minimax/maximin</a>
   
 
@@ -889,19 +868,6 @@ https://github.com/alex-shpak/hugo-book
 
           
   <ul>
-    
-      
-        <li>
-          
-  
-  
-
-  
-    <a href="/docs/pattern/sections/fold/" class="">Fold</a>
-  
-
-        </li>
-      
     
       
         <li>
@@ -1560,8 +1526,14 @@ https://github.com/alex-shpak/hugo-book
       </ul>
     </li>
     <li><a href="#benefits">Benefits</a></li>
-    <li><a href="#selfBalancing">Self balancing trees</a></li>
-    <li><a href="#treeMap">in Java</a></li>
+    <li><a href="#selfBalancing">Self-balancing tree</a></li>
+    <li><a href="#in-java">in Java</a>
+      <ul>
+        <li><a href="#treeMap">Associative array</a></li>
+        <li><a href="#set">Set</a></li>
+        <li><a href="#order">Order</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 
@@ -1578,45 +1550,59 @@ https://github.com/alex-shpak/hugo-book
   Binary search tree
   <a class="anchor" href="#binary-search-tree">#</a>
 </h1>
-<p>A <strong>Binary Search Tree (BST)</strong> is another data structure used to store an <a href="http://localhost:1313/docs/abstractdatatypes/sections/map/">associative array</a> (e.g. a Java <code>Map</code>).</p>
+<p>A <strong>Binary Search Tree (BST)</strong> is another data structure used to store an <a href="https://unibz-oofp-25-26.github.io/docs/abstractdatatypes/sections/map/">associative array</a> (e.g. a Java <code>Map</code>).</p>
 <blockquote class="book-hint warning">
 <p><strong><em>Definition.</em></strong>
-A BST is a binary tree such that each node&rsquo;s label is:</p>
+A <strong>BST</strong> is a <a href="https://unibz-oofp-25-26.github.io/docs/recursion/sections/nary/#binaryTrees">binary tree</a> such that each node&rsquo;s label is:</p>
 <ul>
-<li>larger than its left child&rsquo;s label (if any), and</li>
-<li>smaller than its right child&rsquo;s label (if any).</li>
+<li>larger than the label of its left child (if any), and</li>
+<li>smaller than the label of its right child (if any).</li>
 </ul>
 </blockquote>
-<p>Equivalently, a BST is a binary tree whose nodes are sorted w.r.t. <a href="http://localhost:1313/docs/recursion/#traversal">in-order traversal</a>.</p>
+<p>Equivalently, a BST is a binary tree whose nodes are sorted w.r.t. <a href="https://unibz-oofp-25-26.github.io/docs/recursion/sections/nary/#traversal">in-order traversal</a>.</p>
 <p><img src="/img/binaryTrees/labeled/bst/tree.svg" alt="" /></p>
 <h2 id="associative-array-as-a-binary-search-tree">
   Associative array as a binary search tree
   <a class="anchor" href="#associative-array-as-a-binary-search-tree">#</a>
 </h2>
-<p>Recall that an associative array is a finite set of key-value pairs.
-Again, let us assume keys have type $K$, and that values have type $V$.</p>
-<p>When a BST implements an associative array:</p>
+<blockquote class="book-hint info">
+<p><strong><em>Reminder.</em></strong>
+An <a href="https://unibz-oofp-25-26.github.io/docs/abstractdatatypes/sections/map/">associative array</a> is a finite set of key-value pairs.</p>
+</blockquote>
+<p>Again, let us assume keys have type $K$, and that values have type $V$.</p>
+<blockquote class="book-hint warning">
+<p><strong><em>Structure.</em></strong>
+A BST stores an associative array as follows:</p>
 <ul>
-<li>each node of the tree stores a key-value pair,</li>
-<li>nodes are sorted by key, using their natural order or any other <a href="http://localhost:1313/docs/background/sections/order/#total">total order</a> over $K$.</li>
+<li>Each node of the tree stores a key-value pair:</li>
 </ul>
 <p><img src="/img/diagrams/plantuml/bst.svg" alt="" /></p>
+<ul>
+<li>Nodes are sorted by key, using their natural order or any other <a href="https://unibz-oofp-25-26.github.io/docs/background/sections/order/#total">total order</a> over $K$.</li>
+</ul>
+</blockquote>
 <h3 id="lookup">
   Lookup
   <a class="anchor" href="#lookup">#</a>
 </h3>
-<p>Recall that the <a href="http://localhost:1313/docs/abstractdatatypes/sections/map/">lookup</a> operation for an associative array:</p>
+<blockquote class="book-hint info">
+<p><strong><em>Reminder.</em></strong>
+The <a href="https://unibz-oofp-25-26.github.io/docs/abstractdatatypes/sections/map/">lookup</a> operation for an associative array:</p>
 <ul>
 <li>takes as input a key $k$, and</li>
-<li>returns the value $v$ associated to this key (if any).</li>
+<li>returns the value $v$ associated to $k$ (if any).</li>
 </ul>
-<p>Over a BST, this operation is similar to performing a binary search in a sorted array:</p>
-<ul>
+</blockquote>
+<blockquote class="book-hint warning">
+<p><strong><em>Algorithm.</em></strong>
+Over a BST, lookup is similar to a binary search in a sorted array.</p>
+<blockquote class="book-hint warning">
+  <p><strong><em>Base case.</em></strong> If the tree is empty, then it (trivially) does not contain an entry with key $k$.</p>
+</blockquote>
+<blockquote class="book-hint warning">
+  <ul>
 <li>
-<p>If the tree is empty, then it (trivially) does not contain an entry with key $k$.</p>
-</li>
-<li>
-<p>Otherwise, compare $k$ with the label $l$ of the tree&rsquo;s root:</p>
+<p><strong><em>Inductive case.</em></strong> Compare $k$ with the label $l$ of the tree&rsquo;s root:</p>
 <ul>
 <li>if $k = l$, then return the value stored in the root,</li>
 <li>if $k &lt; l$, then repeat over the left subtree,</li>
@@ -1624,30 +1610,52 @@ Again, let us assume keys have type $K$, and that values have type $V$.</p>
 </ul>
 </li>
 </ul>
+</blockquote>
 <p>Or in pseudocode:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>V <span style="color:#a6e22e">lookup</span>(Node root, K key){
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// base case: empty tree</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span>(root <span style="color:#f92672">==</span> <span style="color:#66d9ef">null</span>){
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">null</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">null</span>
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// inductive case</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span>(root.<span style="color:#a6e22e">key</span> <span style="color:#f92672">==</span> key){
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> root.<span style="color:#a6e22e">value</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> root.<span style="color:#a6e22e">value</span>
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span>(root.<span style="color:#a6e22e">key</span> <span style="color:#f92672">&gt;</span> key){
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> lookup(root.<span style="color:#a6e22e">leftChild</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> lookup(root.<span style="color:#a6e22e">leftChild</span>)
 </span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> lookup(root.<span style="color:#a6e22e">right</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> lookup(root.<span style="color:#a6e22e">right</span>)
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><div class="book-tabs">
+</span></span></code></pre></div></blockquote>
+<div class="book-tabs">
 <input type="radio" class="toggle" name="tabs-exercise_binTree" id="tabs-exercise_binTree-0" checked="checked" />
 <label for="tabs-exercise_binTree-0">Exercise</label>
 <div class="book-tabs-content markdown-inner"><p>If $h$ is the height of the tree, what is the asymptotic worst case running time of this algorithm, expressed as a function of $h$?</p>
 </div>
+<!-- 
 <input type="radio" class="toggle" name="tabs-exercise_binTree" id="tabs-exercise_binTree-1"  />
 <label for="tabs-exercise_binTree-1">Solution</label>
-<div class="book-tabs-content markdown-inner"><p>$\Theta(h)$</p>
+<div class="book-tabs-content markdown-inner"><p>&ndash;&gt;</p>
+<!---->
+<!-- $\Theta(h)$ -->
+<!---->
+<!-- </div>
+ -->
 </div>
+<div class="book-tabs">
+<input type="radio" class="toggle" name="tabs-exercise_binTree_linear" id="tabs-exercise_binTree_linear-0" checked="checked" />
+<label for="tabs-exercise_binTree_linear-0">Exercise</label>
+<div class="book-tabs-content markdown-inner"><p>Does this algorithm rely on <a href="https://unibz-oofp-25-26.github.io/docs/recursion/sections/linear/">linear recursion</a> or <a href="https://unibz-oofp-25-26.github.io/docs/recursion/sections/nary/">binary recursion</a>?</p>
+</div>
+<!-- 
+<input type="radio" class="toggle" name="tabs-exercise_binTree_linear" id="tabs-exercise_binTree_linear-1"  />
+<label for="tabs-exercise_binTree_linear-1">Solution</label>
+<div class="book-tabs-content markdown-inner"><p>&ndash;&gt;</p>
+<!-- Linear recursion, because at most one (direct) recursive call can be performed during the evaluation of the method. -->
+<!-- $\Theta(h)$ -->
+<!---->
+<!-- </div>
+ -->
 </div>
 <h3 id="insert-and-delete">
   Insert and delete
@@ -1660,32 +1668,68 @@ Again, let us assume keys have type $K$, and that values have type $V$.</p>
   Benefits
   <a class="anchor" href="#benefits">#</a>
 </h2>
-<p>Recall that a <a href="http://localhost:1313/docs/datastructures/sections/hash/">hash table</a> does <em>not</em> preserve the order of an associative array&rsquo;s keys
-(at best, we saw that Java&rsquo;s <a href="http://localhost:1313/docs/datastructures/sections/hash/#hashMap">LinkedHashMap</a> preserves the order of insertion).</p>
-<p>Instead, keys in a BST remain sorted, after any number of insertion or deletion operations.
-Besides, any <a href="http://localhost:1313/docs/background/sections/order/#total">total order</a> can be used for this purpose (e.g. alphabetical order if the keys are strings).</p>
+<p>Recall that a <a href="https://unibz-oofp-25-26.github.io/docs/datastructures/sections/hash/">hash table</a> does <em>not</em> preserve the order of an associative array&rsquo;s keys
+(at best, we saw that Java&rsquo;s <a href="https://unibz-oofp-25-26.github.io/docs/datastructures/sections/hash/#hashMap">LinkedHashMap</a> preserves the order of <em>insertion</em>).</p>
+<blockquote class="book-hint warning">
+<p><strong><em>Property.</em></strong>
+Keys in a BST are remain <em>sorted</em>, after any number of insertion or deletion operations.</p>
+</blockquote>
+<blockquote class="book-hint warning">
+<p><strong><em>Observation.</em></strong>
+A BST can use any <a href="https://unibz-oofp-25-26.github.io/docs/background/sections/order/#total">total order</a>.</p>
+</blockquote>
 <h2 id="selfBalancing">
-  Self balancing trees
+  Self-balancing tree
   <a class="anchor" href="#selfBalancing">#</a>
 </h2>
 <blockquote class="book-hint warning">
-<p>A <strong>self balancing tree</strong> is a specific type of BST, which guarantees that the tree remains balanced after an insertion or deletion, meaning that its height remains <em>logarithmic</em> in the number of nodes.</p>
+<p>A <strong>self-balancing tree</strong> is a specific type of BST.</p>
+<p>It guarantees that the tree remains balanced after an insertion or deletion, meaning that its height remains <em>logarithmic</em> in the number of nodes.</p>
 </blockquote>
-<p>Two widely used types of self balancing trees are <a href="https://en.wikipedia.org/wiki/Red%E2%80%93black_tree">red-black trees</a> and <a href="https://en.wikipedia.org/wiki/AVL_tree">AVL trees</a>.</p>
-<h2 id="treeMap">
+<blockquote class="book-hint warning">
+<p><strong><em>To go further.</em></strong>
+Two widely used types of self balancing trees are <a href="https://en.wikipedia.org/wiki/Red%E2%80%93black_tree">red-black trees</a> and <a href="https://en.wikipedia.org/wiki/AVL_tree">AVL trees</a>.</p>
+</blockquote>
+<h2 id="in-java">
   in Java
-  <a class="anchor" href="#treeMap">#</a>
+  <a class="anchor" href="#in-java">#</a>
 </h2>
-<ul>
-<li>
-<p>The class <code>java.util.TreeMap</code> implements the interface <code>java.util.Map</code> as a red-black-tree.</p>
-</li>
-<li>
-<p>The class <code>java.util.TreeSet</code> implements the interface <code>java.util.Set</code> as a red-black-tree.</p>
-</li>
-</ul>
-<p>By default, keys are sorted according to their natural order.
-But both classes provide an alternative constructor that accept an arbitrary <a href="http://localhost:1313/docs/abstractdatatypes/sections/sorting/#comparator">Comparator</a> over $K$.</p>
+<h3 id="treeMap">
+  Associative array
+  <a class="anchor" href="#treeMap">#</a>
+</h3>
+<blockquote class="book-hint info">
+<p><strong><em>Reminder.</em></strong>
+As we saw in the <a href="https://unibz-oofp-25-26.github.io/docs/abstractdatatypes/sections/map/#java">dedicated section</a>, the <a href="https://unibz-oofp-25-26.github.io/docs/interface/sections/java_interface/">interface</a> <code>Map</code> represents an associative array.</p>
+</blockquote>
+<blockquote class="book-hint warning">
+<p>The class <code>TreeMap</code> implements the interface <code>Map</code> as a red-black-tree.</p>
+</blockquote>
+<h3 id="set">
+  Set
+  <a class="anchor" href="#set">#</a>
+</h3>
+<blockquote class="book-hint info">
+<p><strong><em>Reminder.</em></strong>
+As we saw in the <a href="https://unibz-oofp-25-26.github.io/docs/abstractdatatypes/sections/set/#java">dedicated section</a>, the <a href="https://unibz-oofp-25-26.github.io/docs/interface/sections/java_interface/">interface</a> <code>Set</code> represents a set.</p>
+</blockquote>
+<blockquote class="book-hint warning">
+<p>The class <code>TreeSet</code> implements the interface <code>Set</code> as a red-black-tree.</p>
+</blockquote>
+<h3 id="order">
+  Order
+  <a class="anchor" href="#order">#</a>
+</h3>
+<p>By default, keys in a <code>TreeMap</code> (resp. elements of a <code>TreeSet</code>) are sorted according to their natural order.</p>
+<blockquote class="book-hint warning">
+<p><strong><em>Syntax.</em></strong>
+Both classes also provide an alternative constructor that accept an arbitrary <a href="https://unibz-oofp-25-26.github.io/docs/abstractdatatypes/sections/sorting/#comparator">Comparator</a> over $K$.</p>
+</blockquote>
+<blockquote class="book-hint info">
+<p><strong><em>Usage.</em></strong>
+<code>TreeMap</code> lets us <a href="https://unibz-oofp-25-26.github.io/docs/abstractdatatypes/sections/collection/#iteration">iterate</a> over the entries of the <code>Map</code> in a predictable order (as opposed to a <code>HashMap</code>), which is not the order of insertion (as opposed to a <code>LinkedHashMap</code>).</p>
+<p>And similarly for the elements of a <code>Treeset</code>.</p>
+</blockquote>
 </article>
  
       
@@ -1734,8 +1778,14 @@ But both classes provide an alternative constructor that accept an arbitrary <a 
       </ul>
     </li>
     <li><a href="#benefits">Benefits</a></li>
-    <li><a href="#selfBalancing">Self balancing trees</a></li>
-    <li><a href="#treeMap">in Java</a></li>
+    <li><a href="#selfBalancing">Self-balancing tree</a></li>
+    <li><a href="#in-java">in Java</a>
+      <ul>
+        <li><a href="#treeMap">Associative array</a></li>
+        <li><a href="#set">Set</a></li>
+        <li><a href="#order">Order</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 
