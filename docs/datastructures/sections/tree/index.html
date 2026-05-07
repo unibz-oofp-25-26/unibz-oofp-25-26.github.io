@@ -34,7 +34,7 @@ larger than the label of its left child (if any), and smaller than the label of 
 <link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/datastructures/sections/tree/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.554820f2b165a01ba3afac95b5c2aedd3fdb1ad30550f971c08c1ab1c54473fc.js" integrity="sha256-VUgg8rFloBujr6yVtcKu3T/bGtMFUPlxwIwascVEc/w=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.66cd67b142ef70b4591abf89860b8c4898957f6bcf1f4f2c8dfdf689ec4f1a25.js" integrity="sha256-Zs1nsULvcLRZGr&#43;JhguMSJiVf2vPH08sjf32iexPGiU=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -1530,7 +1530,7 @@ https://github.com/alex-shpak/hugo-book
     <li><a href="#in-java">in Java</a>
       <ul>
         <li><a href="#treeMap">Associative array</a></li>
-        <li><a href="#set">Set</a></li>
+        <li><a href="#treeSet">Set</a></li>
         <li><a href="#order">Order</a></li>
       </ul>
     </li>
@@ -1600,15 +1600,11 @@ Over a BST, lookup is similar to a binary search in a sorted array.</p>
   <p><strong><em>Base case.</em></strong> If the tree is empty, then it (trivially) does not contain an entry with key $k$.</p>
 </blockquote>
 <blockquote class="book-hint warning">
-  <ul>
-<li>
-<p><strong><em>Inductive case.</em></strong> Compare $k$ with the label $l$ of the tree&rsquo;s root:</p>
+  <p><strong><em>Inductive case.</em></strong> Compare $k$ with the key $k&rsquo;$ of the tree&rsquo;s root:</p>
 <ul>
-<li>if $k = l$, then return the value stored in the root,</li>
-<li>if $k &lt; l$, then repeat over the left subtree,</li>
-<li>if $k &gt; l$, then repeat over the right subtree.</li>
-</ul>
-</li>
+<li>if $k = k&rsquo;$, then return the value stored in the root,</li>
+<li>if $k &lt; k&rsquo;$, then repeat over the left subtree,</li>
+<li>if $k &gt; k&rsquo;$, then repeat over the right subtree.</li>
 </ul>
 </blockquote>
 <p>Or in pseudocode:</p>
@@ -1632,38 +1628,26 @@ Over a BST, lookup is similar to a binary search in a sorted array.</p>
 <label for="tabs-exercise_binTree-0">Exercise</label>
 <div class="book-tabs-content markdown-inner"><p>If $h$ is the height of the tree, what is the asymptotic worst case running time of this algorithm, expressed as a function of $h$?</p>
 </div>
-<!-- 
 <input type="radio" class="toggle" name="tabs-exercise_binTree" id="tabs-exercise_binTree-1"  />
 <label for="tabs-exercise_binTree-1">Solution</label>
-<div class="book-tabs-content markdown-inner"><p>&ndash;&gt;</p>
-<!---->
-<!-- $\Theta(h)$ -->
-<!---->
-<!-- </div>
- -->
+<div class="book-tabs-content markdown-inner"><p>$\Theta(h)$</p>
+</div>
 </div>
 <div class="book-tabs">
 <input type="radio" class="toggle" name="tabs-exercise_binTree_linear" id="tabs-exercise_binTree_linear-0" checked="checked" />
 <label for="tabs-exercise_binTree_linear-0">Exercise</label>
 <div class="book-tabs-content markdown-inner"><p>Does this algorithm rely on <a href="https://unibz-oofp-25-26.github.io/docs/recursion/sections/linear/">linear recursion</a> or <a href="https://unibz-oofp-25-26.github.io/docs/recursion/sections/nary/">binary recursion</a>?</p>
 </div>
-<!-- 
 <input type="radio" class="toggle" name="tabs-exercise_binTree_linear" id="tabs-exercise_binTree_linear-1"  />
 <label for="tabs-exercise_binTree_linear-1">Solution</label>
-<div class="book-tabs-content markdown-inner"><p>&ndash;&gt;</p>
-<!-- Linear recursion, because at most one (direct) recursive call can be performed during the evaluation of the method. -->
-<!-- $\Theta(h)$ -->
-<!---->
-<!-- </div>
- -->
+<div class="book-tabs-content markdown-inner"><p>Linear recursion, because at most one (direct) recursive call can be performed during the evaluation of the method.</p>
+</div>
 </div>
 <h3 id="insert-and-delete">
   Insert and delete
   <a class="anchor" href="#insert-and-delete">#</a>
 </h3>
 <p>Insertion and deletion can also be performed in linear time in the height $h$ of the tree.</p>
-<!--(inserting is -->
-<!--(we leave these as an exercise).-->
 <h2 id="benefits">
   Benefits
   <a class="anchor" href="#benefits">#</a>
@@ -1705,9 +1689,9 @@ As we saw in the <a href="https://unibz-oofp-25-26.github.io/docs/abstractdataty
 <blockquote class="book-hint warning">
 <p>The class <code>TreeMap</code> implements the interface <code>Map</code> as a red-black-tree.</p>
 </blockquote>
-<h3 id="set">
+<h3 id="treeSet">
   Set
-  <a class="anchor" href="#set">#</a>
+  <a class="anchor" href="#treeSet">#</a>
 </h3>
 <blockquote class="book-hint info">
 <p><strong><em>Reminder.</em></strong>
@@ -1782,7 +1766,7 @@ Both classes also provide an alternative constructor that accept an arbitrary <a
     <li><a href="#in-java">in Java</a>
       <ul>
         <li><a href="#treeMap">Associative array</a></li>
-        <li><a href="#set">Set</a></li>
+        <li><a href="#treeSet">Set</a></li>
         <li><a href="#order">Order</a></li>
       </ul>
     </li>
