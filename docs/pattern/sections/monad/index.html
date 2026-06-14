@@ -15,22 +15,22 @@ In this section, we will only focus on two of the simplest monads, namely the ty
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="https://unibz-oofp-25-26.github.io/docs/pattern/sections/monad/">
-  <meta property="og:site_name" content="OOFP 2025-26">
-  <meta property="og:title" content="Monad">
-  <meta property="og:description" content="Monad # Like functors, monads come from category theory.
+	<meta property="og:site_name" content="OOFP 2025-26">
+	<meta property="og:title" content="Monad">
+	<meta property="og:description" content="Monad # Like functors, monads come from category theory.
 For programmers, a monad can be viewed as a functor that implements additional functions, while respecting certain constraints.
 Monads serve a variety of purposes in functional programs. This includes (among other) writing to a log, or reading data.
 In this section, we will only focus on two of the simplest monads, namely the type of lists and the option type (as we did for functors).">
-  <meta property="og:locale" content="en_us">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="docs">
+	<meta property="og:locale" content="en_us">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="docs">
 <title>Monad | OOFP 2025-26</title>
 <link rel="icon" href="/favicon.png" >
 <link rel="manifest" href="/manifest.json">
 <link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/pattern/sections/monad/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.66cd67b142ef70b4591abf89860b8c4898957f6bcf1f4f2c8dfdf689ec4f1a25.js" integrity="sha256-Zs1nsULvcLRZGr&#43;JhguMSJiVf2vPH08sjf32iexPGiU=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.67adb9402be240235be4264072681c354dde48f9f39af9762c0dbe731e30845c.js" integrity="sha256-Z625QCviQCNb5CZAcmgcNU3eSPnzmvl2LA2&#43;cx4whFw=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -1730,38 +1730,38 @@ The following table recaps when <code>&gt;&gt;=</code>, <code>fmap</code> and pl
 <p>For instance, the first line reads as follows:</p>
 <p>$\qquad$ if <code>x</code> has type <code>a</code> and <code>f</code> has type <code>a -&gt; b</code>, then <code>f x</code> has type <code>b</code>.</p>
 <table>
-  <thead>
-      <tr>
-          <th>type of $x$</th>
-          <th>type of $f$</th>
-          <th>expression $e$</th>
-          <th>equivalent expression $e'$</th>
-          <th>type of $e$ (and $e&rsquo;$)</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td><code>a</code></td>
-          <td><code>a -&gt; b</code></td>
-          <td><code>f x</code></td>
-          <td><code>x &amp; f</code></td>
-          <td><code>b</code></td>
-      </tr>
-      <tr>
-          <td><code>m a</code></td>
-          <td><code>a -&gt; b</code></td>
-          <td><code>fmap f x</code></td>
-          <td><code>x &amp; (fmap f)</code></td>
-          <td><code>m b</code></td>
-      </tr>
-      <tr>
-          <td><code>m a</code></td>
-          <td><code>a -&gt; m b</code></td>
-          <td></td>
-          <td><code>x &gt;&gt;= f</code></td>
-          <td><code>m b</code></td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>type of $x$</th>
+					<th>type of $f$</th>
+					<th>expression $e$</th>
+					<th>equivalent expression $e'$</th>
+					<th>type of $e$ (and $e&rsquo;$)</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>a</code></td>
+					<td><code>a -&gt; b</code></td>
+					<td><code>f x</code></td>
+					<td><code>x &amp; f</code></td>
+					<td><code>b</code></td>
+			</tr>
+			<tr>
+					<td><code>m a</code></td>
+					<td><code>a -&gt; b</code></td>
+					<td><code>fmap f x</code></td>
+					<td><code>x &amp; (fmap f)</code></td>
+					<td><code>m b</code></td>
+			</tr>
+			<tr>
+					<td><code>m a</code></td>
+					<td><code>a -&gt; m b</code></td>
+					<td></td>
+					<td><code>x &gt;&gt;= f</code></td>
+					<td><code>m b</code></td>
+			</tr>
+	</tbody>
 </table>
 </blockquote>
 <div class="book-tabs">
@@ -1772,60 +1772,60 @@ The following table recaps when <code>&gt;&gt;=</code>, <code>fmap</code> and pl
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">preds</span> x <span style="color:#f92672">=</span> [ y <span style="color:#f92672">|</span> y <span style="color:#f92672">&lt;-</span> [<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>], y <span style="color:#f92672">&lt;</span> x ]
 </span></span></code></pre></div><p>Complete the table below</p>
 <table>
-  <thead>
-      <tr>
-          <th>expression</th>
-          <th>is valid</th>
-          <th>value (if valid)</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td><code>preds 2</code></td>
-          <td>yes</td>
-          <td><code>[0,1]</code></td>
-      </tr>
-      <tr>
-          <td><code>fmap preds 2</code></td>
-          <td></td>
-          <td></td>
-      </tr>
-      <tr>
-          <td><code>concatMap preds 2</code></td>
-          <td></td>
-          <td></td>
-      </tr>
-      <tr>
-          <td><code>preds [2]</code></td>
-          <td></td>
-          <td></td>
-      </tr>
-      <tr>
-          <td><code>fmap preds [2]</code></td>
-          <td></td>
-          <td></td>
-      </tr>
-      <tr>
-          <td><code>concatMap preds [2]</code></td>
-          <td></td>
-          <td></td>
-      </tr>
-      <tr>
-          <td><code>preds [2,3]</code></td>
-          <td></td>
-          <td></td>
-      </tr>
-      <tr>
-          <td><code>fmap preds [2,3]</code></td>
-          <td></td>
-          <td></td>
-      </tr>
-      <tr>
-          <td><code>concatMap preds [2,3]</code></td>
-          <td></td>
-          <td></td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>expression</th>
+					<th>is valid</th>
+					<th>value (if valid)</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>preds 2</code></td>
+					<td>yes</td>
+					<td><code>[0,1]</code></td>
+			</tr>
+			<tr>
+					<td><code>fmap preds 2</code></td>
+					<td></td>
+					<td></td>
+			</tr>
+			<tr>
+					<td><code>concatMap preds 2</code></td>
+					<td></td>
+					<td></td>
+			</tr>
+			<tr>
+					<td><code>preds [2]</code></td>
+					<td></td>
+					<td></td>
+			</tr>
+			<tr>
+					<td><code>fmap preds [2]</code></td>
+					<td></td>
+					<td></td>
+			</tr>
+			<tr>
+					<td><code>concatMap preds [2]</code></td>
+					<td></td>
+					<td></td>
+			</tr>
+			<tr>
+					<td><code>preds [2,3]</code></td>
+					<td></td>
+					<td></td>
+			</tr>
+			<tr>
+					<td><code>fmap preds [2,3]</code></td>
+					<td></td>
+					<td></td>
+			</tr>
+			<tr>
+					<td><code>concatMap preds [2,3]</code></td>
+					<td></td>
+					<td></td>
+			</tr>
+	</tbody>
 </table>
 </div>
 <input type="radio" class="toggle" name="tabs-exercise_bind_fmap_app" id="tabs-exercise_bind_fmap_app-1"  />
@@ -1833,60 +1833,60 @@ The following table recaps when <code>&gt;&gt;=</code>, <code>fmap</code> and pl
 <div class="book-tabs-content markdown-inner"><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#a6e22e">preds</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Int</span> <span style="color:#f92672">-&gt;</span> [<span style="color:#66d9ef">Int</span>]
 </span></span><span style="display:flex;"><span><span style="color:#a6e22e">preds</span> x <span style="color:#f92672">=</span> [ y <span style="color:#f92672">|</span> y <span style="color:#f92672">&lt;-</span> [<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>], y <span style="color:#f92672">&lt;</span> x ]
 </span></span></code></pre></div><table>
-  <thead>
-      <tr>
-          <th>expression</th>
-          <th>is valid</th>
-          <th>value (if valid)</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td><code>preds 2</code></td>
-          <td>yes</td>
-          <td><code>[0,1]</code></td>
-      </tr>
-      <tr>
-          <td><code>fmap preds 2</code></td>
-          <td>no</td>
-          <td></td>
-      </tr>
-      <tr>
-          <td><code>2 &gt;&gt;= preds</code></td>
-          <td>no</td>
-          <td></td>
-      </tr>
-      <tr>
-          <td><code>preds [2]</code></td>
-          <td>no</td>
-          <td></td>
-      </tr>
-      <tr>
-          <td><code>fmap preds [2]</code></td>
-          <td>yes</td>
-          <td><code>[[0,1]]</code></td>
-      </tr>
-      <tr>
-          <td><code>[2] &gt;&gt;= preds</code></td>
-          <td>yes</td>
-          <td><code>[0,1]</code></td>
-      </tr>
-      <tr>
-          <td><code>preds [2,3]</code></td>
-          <td>no</td>
-          <td></td>
-      </tr>
-      <tr>
-          <td><code>fmap preds [2,3]</code></td>
-          <td>yes</td>
-          <td><code>[[0,1], [0,1,2]]</code></td>
-      </tr>
-      <tr>
-          <td><code>[2,3] &gt;&gt;= preds</code></td>
-          <td>yes</td>
-          <td><code>[0,1,0,1,2]</code></td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>expression</th>
+					<th>is valid</th>
+					<th>value (if valid)</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>preds 2</code></td>
+					<td>yes</td>
+					<td><code>[0,1]</code></td>
+			</tr>
+			<tr>
+					<td><code>fmap preds 2</code></td>
+					<td>no</td>
+					<td></td>
+			</tr>
+			<tr>
+					<td><code>2 &gt;&gt;= preds</code></td>
+					<td>no</td>
+					<td></td>
+			</tr>
+			<tr>
+					<td><code>preds [2]</code></td>
+					<td>no</td>
+					<td></td>
+			</tr>
+			<tr>
+					<td><code>fmap preds [2]</code></td>
+					<td>yes</td>
+					<td><code>[[0,1]]</code></td>
+			</tr>
+			<tr>
+					<td><code>[2] &gt;&gt;= preds</code></td>
+					<td>yes</td>
+					<td><code>[0,1]</code></td>
+			</tr>
+			<tr>
+					<td><code>preds [2,3]</code></td>
+					<td>no</td>
+					<td></td>
+			</tr>
+			<tr>
+					<td><code>fmap preds [2,3]</code></td>
+					<td>yes</td>
+					<td><code>[[0,1], [0,1,2]]</code></td>
+			</tr>
+			<tr>
+					<td><code>[2,3] &gt;&gt;= preds</code></td>
+					<td>yes</td>
+					<td><code>[0,1,0,1,2]</code></td>
+			</tr>
+	</tbody>
 </table>
 </div>
 </div>

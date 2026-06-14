@@ -22,23 +22,23 @@ Some datatypes have several natural sorting criteria.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="https://unibz-oofp-25-26.github.io/docs/abstractdatatypes/sections/sorting/">
-  <meta property="og:site_name" content="OOFP 2025-26">
-  <meta property="og:title" content="Sorting">
-  <meta property="og:description" content="Sorting # Sorting a collection (of values or objects) is needed in a variety of scenarios.
+	<meta property="og:site_name" content="OOFP 2025-26">
+	<meta property="og:title" content="Sorting">
+	<meta property="og:description" content="Sorting # Sorting a collection (of values or objects) is needed in a variety of scenarios.
 Sorting criterion # In order to sort a collection of values (resp. objects), we need a sorting criterion, i.e. a way to compare two values (resp. objects).
 Some datatypes come with a natural way to compare two values.
 Example. Two real numbers can be compared w.r.t. $\le$.
 Some datatypes have several natural sorting criteria.">
-  <meta property="og:locale" content="en_us">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="docs">
+	<meta property="og:locale" content="en_us">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="docs">
 <title>Sorting | OOFP 2025-26</title>
 <link rel="icon" href="/favicon.png" >
 <link rel="manifest" href="/manifest.json">
 <link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/abstractdatatypes/sections/sorting/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.66cd67b142ef70b4591abf89860b8c4898957f6bcf1f4f2c8dfdf689ec4f1a25.js" integrity="sha256-Zs1nsULvcLRZGr&#43;JhguMSJiVf2vPH08sjf32iexPGiU=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.67adb9402be240235be4264072681c354dde48f9f39af9762c0dbe731e30845c.js" integrity="sha256-Z625QCviQCNb5CZAcmgcNU3eSPnzmvl2LA2&#43;cx4whFw=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -1630,30 +1630,30 @@ $\big(p_1.{\text{age}} \le p_2.{\text{age}}$ or $p_1.{\text{size}} \le p_2.{\tex
 <p>The others are total preorders.</p>
 <p>To see why 4. is not transitive, consider the example:</p>
 <table>
-  <thead>
-      <tr>
-          <th>Person</th>
-          <th>Age</th>
-          <th>Height</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>Alice</td>
-          <td>24</td>
-          <td>175</td>
-      </tr>
-      <tr>
-          <td>Bob</td>
-          <td>25</td>
-          <td>160</td>
-      </tr>
-      <tr>
-          <td>Carol</td>
-          <td>21</td>
-          <td>170</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>Person</th>
+					<th>Age</th>
+					<th>Height</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Alice</td>
+					<td>24</td>
+					<td>175</td>
+			</tr>
+			<tr>
+					<td>Bob</td>
+					<td>25</td>
+					<td>160</td>
+			</tr>
+			<tr>
+					<td>Carol</td>
+					<td>21</td>
+					<td>170</td>
+			</tr>
+	</tbody>
 </table>
 </div>
 </div>
@@ -1723,7 +1723,7 @@ The method <code>compareTo</code> should define a <a href="https://unibz-oofp-25
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>o1.<span style="color:#a6e22e">compareTo</span>(T o2)
 </span></span></code></pre></div><p>should evaluate to</p>
 <ul>
-<li>a negative integer if <code>o1</code> $\prec_o$ <code>o_2</code> (i.e. if <code>o1</code> $\preceq_o$ <code>o2</code> and <code>o2</code> $\not\preceq_o$ <code>o1</code>),</li>
+<li>a negative integer if <code>o1</code> $\prec_o$ <code>o2</code> (i.e. if <code>o1</code> $\preceq_o$ <code>o2</code> and <code>o2</code> $\not\preceq_o$ <code>o1</code>),</li>
 <li><code>0</code> if <code>o1</code> $=_o$ <code>o2</code> (i.e. if <code>o1</code> $\preceq_o$ <code>o2</code> and <code>o2</code> $\preceq_o$ <code>o1</code>),</li>
 <li>a positive integer otherwise.</li>
 </ul>

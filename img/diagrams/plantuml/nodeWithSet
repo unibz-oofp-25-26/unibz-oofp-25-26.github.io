@@ -1,0 +1,10 @@
+@startuml
+scale 250 width
+
+class Node {
+ Node leftChild
+ Node rightChild
+ Set<Integer> label
+}
+
+@enduml

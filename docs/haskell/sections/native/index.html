@@ -12,65 +12,65 @@ Syntax. Many native functions/operators (e.g. over numbers or Boolean values) ha
 This includes equality (==), sum (&#43;), product (*), etc.
 We highlight below a few cases where the two syntaxes differ:
 
-  
-      
-          meaning
-          syntax in Haskell
-          example
-          syntax in Java
-          example
-      
-  
-  
-      
-          inequality
-          /=
-          x /= 2
-          !=
-          x != 2
-      
-      
-          negation (NOT)
-          not
-          not x
-          !
-          !x
-      
-      
-          disjunction (OR)
-          ||
-          x || y
-          || (lazy evaluation) or  | (full evaluation)
-          x || y or  x | y
-      
-      
-          conjunction (AND)
-          &amp;&amp;
-          x &amp;&amp; y
-          &amp;&amp; (lazy evaluation) or &amp; (full evaluation)
-          x &amp;&amp; y or  x &amp; y
-      
-  
+	
+			
+					meaning
+					syntax in Haskell
+					example
+					syntax in Java
+					example
+			
+	
+	
+			
+					inequality
+					/=
+					x /= 2
+					!=
+					x != 2
+			
+			
+					negation (NOT)
+					not
+					not x
+					!
+					!x
+			
+			
+					disjunction (OR)
+					||
+					x || y
+					|| (lazy evaluation) or  | (full evaluation)
+					x || y or  x | y
+			
+			
+					conjunction (AND)
+					&amp;&amp;
+					x &amp;&amp; y
+					&amp;&amp; (lazy evaluation) or &amp; (full evaluation)
+					x &amp;&amp; y or  x &amp; y
+			
+	
 
 ">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="https://unibz-oofp-25-26.github.io/docs/haskell/sections/native/">
-  <meta property="og:site_name" content="OOFP 2025-26">
-  <meta property="og:title" content="Native functions">
-  <meta property="og:description" content="Native functions # Syntax. Many native functions/operators (e.g. over numbers or Boolean values) have the same syntax in Haskell and Java. This includes equality (==), sum (&#43;), product (*), etc.
+	<meta property="og:site_name" content="OOFP 2025-26">
+	<meta property="og:title" content="Native functions">
+	<meta property="og:description" content="Native functions # Syntax. Many native functions/operators (e.g. over numbers or Boolean values) have the same syntax in Haskell and Java. This includes equality (==), sum (&#43;), product (*), etc.
 We highlight below a few cases where the two syntaxes differ:
 meaning syntax in Haskell example syntax in Java example inequality /= x /= 2 != x != 2 negation (NOT) not not x ! !x disjunction (OR) || x || y || (lazy evaluation) or | (full evaluation) x || y or x | y conjunction (AND) &amp;&amp; x &amp;&amp; y &amp;&amp; (lazy evaluation) or &amp; (full evaluation) x &amp;&amp; y or x &amp; y">
-  <meta property="og:locale" content="en_us">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="docs">
+	<meta property="og:locale" content="en_us">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="docs">
 <title>Native functions | OOFP 2025-26</title>
 <link rel="icon" href="/favicon.png" >
 <link rel="manifest" href="/manifest.json">
 <link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/haskell/sections/native/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.66cd67b142ef70b4591abf89860b8c4898957f6bcf1f4f2c8dfdf689ec4f1a25.js" integrity="sha256-Zs1nsULvcLRZGr&#43;JhguMSJiVf2vPH08sjf32iexPGiU=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.67adb9402be240235be4264072681c354dde48f9f39af9762c0dbe731e30845c.js" integrity="sha256-Z625QCviQCNb5CZAcmgcNU3eSPnzmvl2LA2&#43;cx4whFw=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -1573,45 +1573,45 @@ https://github.com/alex-shpak/hugo-book
 This includes equality (<code>==</code>), sum (<code>+</code>), product (<code>*</code>), etc.</p>
 <p>We highlight below a few cases where the two syntaxes differ:</p>
 <table>
-  <thead>
-      <tr>
-          <th>meaning</th>
-          <th>syntax in Haskell</th>
-          <th>example</th>
-          <th>syntax in Java</th>
-          <th>example</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>inequality</td>
-          <td><code>/=</code></td>
-          <td><code>x /= 2</code></td>
-          <td><code>!=</code></td>
-          <td><code>x != 2</code></td>
-      </tr>
-      <tr>
-          <td>negation (NOT)</td>
-          <td><code>not</code></td>
-          <td><code>not x</code></td>
-          <td><code>!</code></td>
-          <td><code>!x</code></td>
-      </tr>
-      <tr>
-          <td>disjunction (OR)</td>
-          <td><code>||</code></td>
-          <td><code>x || y</code></td>
-          <td><code>||</code> (lazy evaluation) or <br> <code>|</code> (full evaluation)</td>
-          <td><code>x || y</code> or <br> <code>x | y</code></td>
-      </tr>
-      <tr>
-          <td>conjunction (AND)</td>
-          <td><code>&amp;&amp;</code></td>
-          <td><code>x &amp;&amp; y</code></td>
-          <td><code>&amp;&amp;</code> (lazy evaluation) or <br><code>&amp;</code> (full evaluation)</td>
-          <td><code>x &amp;&amp; y</code> or <br> <code>x &amp; y</code></td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>meaning</th>
+					<th>syntax in Haskell</th>
+					<th>example</th>
+					<th>syntax in Java</th>
+					<th>example</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>inequality</td>
+					<td><code>/=</code></td>
+					<td><code>x /= 2</code></td>
+					<td><code>!=</code></td>
+					<td><code>x != 2</code></td>
+			</tr>
+			<tr>
+					<td>negation (NOT)</td>
+					<td><code>not</code></td>
+					<td><code>not x</code></td>
+					<td><code>!</code></td>
+					<td><code>!x</code></td>
+			</tr>
+			<tr>
+					<td>disjunction (OR)</td>
+					<td><code>||</code></td>
+					<td><code>x || y</code></td>
+					<td><code>||</code> (lazy evaluation) or <br> <code>|</code> (full evaluation)</td>
+					<td><code>x || y</code> or <br> <code>x | y</code></td>
+			</tr>
+			<tr>
+					<td>conjunction (AND)</td>
+					<td><code>&amp;&amp;</code></td>
+					<td><code>x &amp;&amp; y</code></td>
+					<td><code>&amp;&amp;</code> (lazy evaluation) or <br><code>&amp;</code> (full evaluation)</td>
+					<td><code>x &amp;&amp; y</code> or <br> <code>x &amp; y</code></td>
+			</tr>
+	</tbody>
 </table>
 </blockquote>
 </article>
