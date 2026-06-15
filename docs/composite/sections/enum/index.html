@@ -32,7 +32,7 @@ In the first assignment, we modeled these values as four characters &#39;C&#39;,
 <link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/composite/sections/enum/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.67adb9402be240235be4264072681c354dde48f9f39af9762c0dbe731e30845c.js" integrity="sha256-Z625QCviQCNb5CZAcmgcNU3eSPnzmvl2LA2&#43;cx4whFw=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.01d3330d9a097c856313053cbbee95ee4b6f9bdc862d50a9b3b65b2b1d90981e.js" integrity="sha256-AdMzDZoJfIVjEwU8u&#43;6V7ktvm9yGLVCps7ZbKx2QmB4=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -1583,7 +1583,7 @@ The type <code>Bool</code> in Haskell is an enumerated type (with values <code>T
 By default, when we create a type, it does not support functions like <code>==</code>, <code>/=</code>, <code>show</code>, <code>print</code>, etc.</p>
 <p>A solution is the keyword <code>deriving</code>.
 It lets us declare that our type belongs to some <a href="https://unibz-oofp-25-26.github.io/docs/generic/sections/bound/">type classes</a>.
-The compiler will automatically implement the function associated these classes for our type.<br>
+The compiler will automatically implement the functions associated with these classes for our type.<br>
 For instance:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#66d9ef">data</span> <span style="color:#66d9ef">Suit</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">Clubs</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">Diamonds</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">Hearts</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">Spades</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">deriving</span> (<span style="color:#66d9ef">Eq</span>, <span style="color:#66d9ef">Show</span>) <span style="color:#75715e">-- declare that `Suit` belongs to the type classes `Eq` and `Show`</span>

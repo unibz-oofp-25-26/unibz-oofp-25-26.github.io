@@ -46,7 +46,7 @@ $A$ and $B$ are classes and $A$ extends $B$ (directly or transitively), or $A$ a
 <link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/generic/sections/subtype/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.67adb9402be240235be4264072681c354dde48f9f39af9762c0dbe731e30845c.js" integrity="sha256-Z625QCviQCNb5CZAcmgcNU3eSPnzmvl2LA2&#43;cx4whFw=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.01d3330d9a097c856313053cbbee95ee4b6f9bdc862d50a9b3b65b2b1d90981e.js" integrity="sha256-AdMzDZoJfIVjEwU8u&#43;6V7ktvm9yGLVCps7ZbKx2QmB4=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -1602,7 +1602,7 @@ $A \sqsubseteq B$ and $B \sqsubseteq C$ imply $A \sqsubseteq C$</p>
 </blockquote>
 <blockquote class="book-hint warning">
 <p><strong><em>Observation.</em></strong>
-If an object $o$ has type $A$ and $A \sqsubseteq B$, then $o$ also has type $B$.</p>
+If an object $o$ has type $A$ and if $A \sqsubseteq B$, then $o$ also has type $B$.</p>
 </blockquote>
 <blockquote class="book-hint info">
 <p><strong><em>Examples.</em></strong>
@@ -1679,8 +1679,8 @@ We can write</p>
 <div class="book-tabs">
 <input type="radio" class="toggle" name="tabs-exercise_function_types" id="tabs-exercise_function_types-0" checked="checked" />
 <label for="tabs-exercise_function_types-0">Exercise</label>
-<div class="book-tabs-content markdown-inner"><p>Consider a programming language with a types for $\mathbb{N}$, $\mathbb{Z}$ and $\mathbb{Q}$ (this can be simulated with the <code>java.math</code> library).
-In this language, we naturally have $\mathbb{N} \sqsubseteq \mathbb{Z} \sqsubseteq \mathbb{Q}$.</p>
+<div class="book-tabs-content markdown-inner"><p>Consider a programming language with types for $\mathbb{N}$, $\mathbb{Z}$ and $\mathbb{Q}$ (this can be simulated with the <code>java.math</code> library),
+and such that $\mathbb{N} \sqsubseteq \mathbb{Z} \sqsubseteq \mathbb{Q}$.</p>
 <p>Now consider a method $f$ with type $\mathbb{Q} \to \mathbb{Q}$ that maps a number $x$ to $x^2$.</p>
 <p>Which of the following types are also valid for $f$ ?</p>
 <ol>
@@ -1733,7 +1733,7 @@ In this language, we naturally have $\mathbb{N} \sqsubseteq \mathbb{Z} \sqsubset
 </blockquote>
 <blockquote class="book-hint info">
 <p><strong><em>Example.</em></strong>
-If <code>Butterfly</code> $\sqsubseteq$ <code>NPC</code>, then a Java method with type <code>NPC</code> $\to$ <code>Integer</code> also has type:</p>
+If <code>Butterfly</code> $\sqsubseteq$ <code>NPC</code>, then a method with type <code>NPC</code> $\to$ <code>Integer</code> also has type:</p>
 <ul>
 <li><code>Butterfly</code> $\to$ <code>Integer</code></li>
 <li><code>NPC</code> $\to$ <code>Number</code></li>

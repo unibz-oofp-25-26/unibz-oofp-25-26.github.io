@@ -28,7 +28,7 @@ half :: [a] -&gt; [a]    -- `a` is a type variable here
 
 or in Java:
 
-/* will be revealed later */
+&lt;T&gt; List&lt;T&gt; half(List&lt;T&gt;)  // `T` is a type variable here
 
 
 
@@ -50,7 +50,7 @@ In Haskell, a type variable starts with a lowercase letter (like a regular varia
 Example. Consider a function half that maps a list to its first half (say rounded down if the list has odd length).
 The implementation of this function is identical for:
 a list of strings, a list of integers, a list of Boolean values, etc. A type variable lets us declare such a function
-in Haskell: half :: [a] -&gt; [a] -- `a` is a type variable here or in Java: /* will be revealed later */ In Haskell # Syntax. In Haskell, a type variable starts with a lowercase letter (like a regular variable).">
+in Haskell: half :: [a] -&gt; [a] -- `a` is a type variable here or in Java: &lt;T&gt; List&lt;T&gt; half(List&lt;T&gt;) // `T` is a type variable here In Haskell # Syntax. In Haskell, a type variable starts with a lowercase letter (like a regular variable).">
 	<meta property="og:locale" content="en_us">
 	<meta property="og:type" content="article">
 		<meta property="article:section" content="docs">
@@ -60,7 +60,7 @@ in Haskell: half :: [a] -&gt; [a] -- `a` is a type variable here or in Java: /* 
 <link rel="canonical" href="https://unibz-oofp-25-26.github.io/docs/generic/sections/variable/">
 <link rel="stylesheet" href="/book.min.c6f0ab8898a9b8e243f0aacc03c73275192bd36dfd0d01e4417d38cbfcafdc42.css" integrity="sha256-xvCriJipuOJD8KrMA8cydRkr0239DQHkQX04y/yv3EI=" crossorigin="anonymous">
   <script defer src="/fuse.min.js"></script>
-  <script defer src="/en.search.min.67adb9402be240235be4264072681c354dde48f9f39af9762c0dbe731e30845c.js" integrity="sha256-Z625QCviQCNb5CZAcmgcNU3eSPnzmvl2LA2&#43;cx4whFw=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.01d3330d9a097c856313053cbbee95ee4b6f9bdc862d50a9b3b65b2b1d90981e.js" integrity="sha256-AdMzDZoJfIVjEwU8u&#43;6V7ktvm9yGLVCps7ZbKx2QmB4=" crossorigin="anonymous"></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -1588,7 +1588,7 @@ Consider a function <code>half</code> that maps a list to its first half (say ro
 </span></span></code></pre></div><ul>
 <li>or in Java:</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">/* will be revealed later */</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> List<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">half</span>(List<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span>)  <span style="color:#75715e">// `T` is a type variable here</span>
 </span></span></code></pre></div><!-- ```java -->
 <!-- /*`T` is a type variable in this declaration */ -->
 <!-- <T> List<T> half (List<T> inputList) -->
